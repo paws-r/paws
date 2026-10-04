@@ -11,7 +11,7 @@ kinesis_list_channels(StreamFilter = NULL, MaxResults = NULL, NextToken = NULL)
 
 \item{MaxResults}{The maximum number of channels to return in a single call. The default value is 100. If you specify a value greater than 100, at most 100 results are returned.}
 
-\item{NextToken}{The pagination token returned by a previous call. Specify this token to retrieve the next page of results. This value is \code{null} when there are no more results to return.}
+\item{NextToken}{The pagination token returned by a previous call. Specify this token to retrieve the next page of results.}
 }
 \description{
 Lists the channels in your account. You can filter the results by source stream. The results are paginated. Use the \code{NextToken} value returned in the response to retrieve additional results.

@@ -2,8 +2,8 @@
 % Please edit documentation in R/pinpointsmsvoicev2_operations.R
 \name{pinpointsmsvoicev2_list_available_phone_numbers}
 \alias{pinpointsmsvoicev2_list_available_phone_numbers}
-\title{Search available phone numbers from aggregator inventory, optionally
-filtered by pattern}
+\title{Retrieves a list of phone numbers that are available to request, based
+on the country, capabilities, and number type that you specify}
 \usage{
 pinpointsmsvoicev2_list_available_phone_numbers(
   IsoCountryCode,
@@ -28,14 +28,14 @@ pinpointsmsvoicev2_list_available_phone_numbers(
 \item The Amazon Resource Name (ARN) of the registration.
 }}
 
-\item{NumberPreference}{Optional. If omitted, returns unfiltered available numbers. Max 1 element for List API.}
+\item{NumberPreference}{An optional selection preference used to return only phone numbers that match a specific digit pattern, such as numbers that start with, end with, or contain a particular sequence. You can specify at most one preference. Number preferences apply only to \code{TEN_DLC} numbers in the \code{US}.}
 
 \item{NextToken}{The token returned from a previous request to retrieve the next page of results.}
 
 \item{MaxResults}{The maximum number of results to return per page. If you don't specify a value, the default is 10.}
 }
 \description{
-Search available phone numbers from aggregator inventory, optionally filtered by pattern. If NumberPreference is omitted, returns unfiltered available numbers. Returns empty list (not an exception) when no numbers match. ResourceNotFoundException is thrown only for invalid RegistrationId (campaign not found).
+Retrieves a list of phone numbers that are available to request, based on the country, capabilities, and number type that you specify. You can optionally provide a number preference to return only numbers that match a specific digit pattern.
 
 See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_list_available_phone_numbers/} for full documentation.
 }

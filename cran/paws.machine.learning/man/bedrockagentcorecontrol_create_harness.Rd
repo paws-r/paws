@@ -19,6 +19,7 @@ bedrockagentcorecontrol_create_harness(
   allowedTools = NULL,
   memory = NULL,
   truncation = NULL,
+  hooks = NULL,
   maxIterations = NULL,
   maxTokens = NULL,
   timeoutSeconds = NULL,
@@ -53,6 +54,8 @@ bedrockagentcorecontrol_create_harness(
 \item{memory}{The AgentCore Memory configuration for persisting conversation context across sessions.}
 
 \item{truncation}{The truncation configuration for managing conversation context when it exceeds model limits.}
+
+\item{hooks}{The lifecycle hooks to run at defined points in the agent loop.}
 
 \item{maxIterations}{The maximum number of iterations the agent loop can execute per invocation.}
 

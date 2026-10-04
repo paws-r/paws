@@ -25,7 +25,8 @@ rds_add_role_to_db_cluster <- function(DBClusterIdentifier, RoleArn, FeatureName
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$add_role_to_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, RoleArn = RoleArn, FeatureName = FeatureName)
   output <- .rds$add_role_to_db_cluster_output()
@@ -59,7 +60,8 @@ rds_add_role_to_db_instance <- function(DBInstanceIdentifier, RoleArn, FeatureNa
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$add_role_to_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, RoleArn = RoleArn, FeatureName = FeatureName)
   output <- .rds$add_role_to_db_instance_output()
@@ -108,7 +110,8 @@ rds_add_source_identifier_to_subscription <- function(SubscriptionName, SourceId
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$add_source_identifier_to_subscription_input(SubscriptionName = SubscriptionName, SourceIdentifier = SourceIdentifier)
   output <- .rds$add_source_identifier_to_subscription_output()
@@ -140,7 +143,8 @@ rds_add_tags_to_resource <- function(ResourceName, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$add_tags_to_resource_input(ResourceName = ResourceName, Tags = Tags)
   output <- .rds$add_tags_to_resource_output()
@@ -196,7 +200,8 @@ rds_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyAction
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$apply_pending_maintenance_action_input(ResourceIdentifier = ResourceIdentifier, ApplyAction = ApplyAction, OptInType = OptInType)
   output <- .rds$apply_pending_maintenance_action_output()
@@ -232,7 +237,8 @@ rds_authorize_db_security_group_ingress <- function(DBSecurityGroupName, CIDRIP 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$authorize_db_security_group_ingress_input(DBSecurityGroupName = DBSecurityGroupName, CIDRIP = CIDRIP, EC2SecurityGroupName = EC2SecurityGroupName, EC2SecurityGroupId = EC2SecurityGroupId, EC2SecurityGroupOwnerId = EC2SecurityGroupOwnerId)
   output <- .rds$authorize_db_security_group_ingress_output()
@@ -287,7 +293,8 @@ rds_backtrack_db_cluster <- function(DBClusterIdentifier, BacktrackTo, Force = N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$backtrack_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, BacktrackTo = BacktrackTo, Force = Force, UseEarliestTimeOnPointInTimeUnavailable = UseEarliestTimeOnPointInTimeUnavailable)
   output <- .rds$backtrack_db_cluster_output()
@@ -319,7 +326,8 @@ rds_cancel_export_task <- function(ExportTaskIdentifier) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$cancel_export_task_input(ExportTaskIdentifier = ExportTaskIdentifier)
   output <- .rds$cancel_export_task_output()
@@ -371,7 +379,8 @@ rds_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupIde
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$copy_db_cluster_parameter_group_input(SourceDBClusterParameterGroupIdentifier = SourceDBClusterParameterGroupIdentifier, TargetDBClusterParameterGroupIdentifier = TargetDBClusterParameterGroupIdentifier, TargetDBClusterParameterGroupDescription = TargetDBClusterParameterGroupDescription, Tags = Tags)
   output <- .rds$copy_db_cluster_parameter_group_output()
@@ -451,7 +460,8 @@ rds_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Targ
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$copy_db_cluster_snapshot_input(SourceDBClusterSnapshotIdentifier = SourceDBClusterSnapshotIdentifier, TargetDBClusterSnapshotIdentifier = TargetDBClusterSnapshotIdentifier, KmsKeyId = KmsKeyId, PreSignedUrl = PreSignedUrl, CopyTags = CopyTags, Tags = Tags)
   output <- .rds$copy_db_cluster_snapshot_output()
@@ -503,7 +513,8 @@ rds_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Target
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$copy_db_parameter_group_input(SourceDBParameterGroupIdentifier = SourceDBParameterGroupIdentifier, TargetDBParameterGroupIdentifier = TargetDBParameterGroupIdentifier, TargetDBParameterGroupDescription = TargetDBParameterGroupDescription, Tags = Tags)
   output <- .rds$copy_db_parameter_group_output()
@@ -610,7 +621,8 @@ rds_copy_db_snapshot <- function(SourceDBSnapshotIdentifier, TargetDBSnapshotIde
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$copy_db_snapshot_input(SourceDBSnapshotIdentifier = SourceDBSnapshotIdentifier, TargetDBSnapshotIdentifier = TargetDBSnapshotIdentifier, KmsKeyId = KmsKeyId, Tags = Tags, CopyTags = CopyTags, PreSignedUrl = PreSignedUrl, OptionGroupName = OptionGroupName, TargetCustomAvailabilityZone = TargetCustomAvailabilityZone, SnapshotTarget = SnapshotTarget, CopyOptionGroup = CopyOptionGroup, SnapshotAvailabilityZone = SnapshotAvailabilityZone)
   output <- .rds$copy_db_snapshot_output()
@@ -662,7 +674,8 @@ rds_copy_option_group <- function(SourceOptionGroupIdentifier, TargetOptionGroup
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$copy_option_group_input(SourceOptionGroupIdentifier = SourceOptionGroupIdentifier, TargetOptionGroupIdentifier = TargetOptionGroupIdentifier, TargetOptionGroupDescription = TargetOptionGroupDescription, Tags = Tags)
   output <- .rds$copy_option_group_output()
@@ -719,20 +732,30 @@ rds_copy_option_group <- function(SourceOptionGroupIdentifier, TargetOptionGroup
 #' This setting applies only to the `gp3` storage type.
 #' 
 #' This setting doesn't apply to Amazon Aurora blue/green deployments.
+#' @param TargetResourceConfigurations Specifies resource-level configuration overrides for the green environment.
+#' 
+#' Each entry identifies a resource in the blue environment by its Amazon Resource Name (ARN). It defines the desired configuration for the corresponding resource in the green environment. Any resource that you don't include in this parameter retains the same configuration as its counterpart in the blue environment.
+#' 
+#' Use this parameter when one or more resources in the green environment require a different configuration than what they have in the blue environment.
+#' 
+#' Constraints:
+#' 
+#' -   You can't specify the same `SourceArn` in more than one entry.
 #'
 #' @keywords internal
 #'
 #' @rdname rds_create_blue_green_deployment
-rds_create_blue_green_deployment <- function(BlueGreenDeploymentName, Source, TargetEngineVersion = NULL, TargetDBParameterGroupName = NULL, TargetDBClusterParameterGroupName = NULL, Tags = NULL, TargetDBInstanceClass = NULL, UpgradeTargetStorageConfig = NULL, TargetIops = NULL, TargetStorageType = NULL, TargetAllocatedStorage = NULL, TargetStorageThroughput = NULL) {
+rds_create_blue_green_deployment <- function(BlueGreenDeploymentName, Source, TargetEngineVersion = NULL, TargetDBParameterGroupName = NULL, TargetDBClusterParameterGroupName = NULL, Tags = NULL, TargetDBInstanceClass = NULL, UpgradeTargetStorageConfig = NULL, TargetIops = NULL, TargetStorageType = NULL, TargetAllocatedStorage = NULL, TargetStorageThroughput = NULL, TargetResourceConfigurations = NULL) {
   op <- new_operation(
     name = "CreateBlueGreenDeployment",
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
-  input <- .rds$create_blue_green_deployment_input(BlueGreenDeploymentName = BlueGreenDeploymentName, Source = Source, TargetEngineVersion = TargetEngineVersion, TargetDBParameterGroupName = TargetDBParameterGroupName, TargetDBClusterParameterGroupName = TargetDBClusterParameterGroupName, Tags = Tags, TargetDBInstanceClass = TargetDBInstanceClass, UpgradeTargetStorageConfig = UpgradeTargetStorageConfig, TargetIops = TargetIops, TargetStorageType = TargetStorageType, TargetAllocatedStorage = TargetAllocatedStorage, TargetStorageThroughput = TargetStorageThroughput)
+  input <- .rds$create_blue_green_deployment_input(BlueGreenDeploymentName = BlueGreenDeploymentName, Source = Source, TargetEngineVersion = TargetEngineVersion, TargetDBParameterGroupName = TargetDBParameterGroupName, TargetDBClusterParameterGroupName = TargetDBClusterParameterGroupName, Tags = Tags, TargetDBInstanceClass = TargetDBInstanceClass, UpgradeTargetStorageConfig = UpgradeTargetStorageConfig, TargetIops = TargetIops, TargetStorageType = TargetStorageType, TargetAllocatedStorage = TargetAllocatedStorage, TargetStorageThroughput = TargetStorageThroughput, TargetResourceConfigurations = TargetResourceConfigurations)
   output <- .rds$create_blue_green_deployment_output()
   config <- get_config()
   svc <- .rds$service(config, op)
@@ -840,7 +863,8 @@ rds_create_custom_db_engine_version <- function(Engine, EngineVersion, DatabaseI
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$create_custom_db_engine_version_input(Engine = Engine, EngineVersion = EngineVersion, DatabaseInstallationFilesS3BucketName = DatabaseInstallationFilesS3BucketName, DatabaseInstallationFilesS3Prefix = DatabaseInstallationFilesS3Prefix, DatabaseInstallationFiles = DatabaseInstallationFiles, ImageId = ImageId, KMSKeyId = KMSKeyId, SourceCustomDbEngineVersionIdentifier = SourceCustomDbEngineVersionIdentifier, UseAwsProvidedLatestImage = UseAwsProvidedLatestImage, Description = Description, Manifest = Manifest, Tags = Tags)
   output <- .rds$create_custom_db_engine_version_output()
@@ -1360,7 +1384,8 @@ rds_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPerio
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$create_db_cluster_input(AvailabilityZones = AvailabilityZones, BackupRetentionPeriod = BackupRetentionPeriod, CharacterSetName = CharacterSetName, DatabaseName = DatabaseName, DBClusterIdentifier = DBClusterIdentifier, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, DBSubnetGroupName = DBSubnetGroupName, Engine = Engine, EngineVersion = EngineVersion, Port = Port, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, OptionGroupName = OptionGroupName, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, ReplicationSourceIdentifier = ReplicationSourceIdentifier, Tags = Tags, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, PreSignedUrl = PreSignedUrl, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, BacktrackWindow = BacktrackWindow, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, EngineMode = EngineMode, ScalingConfiguration = ScalingConfiguration, RdsCustomClusterConfiguration = RdsCustomClusterConfiguration, DBClusterInstanceClass = DBClusterInstanceClass, AllocatedStorage = AllocatedStorage, StorageType = StorageType, Iops = Iops, PubliclyAccessible = PubliclyAccessible, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, DeletionProtection = DeletionProtection, GlobalClusterIdentifier = GlobalClusterIdentifier, EnableHttpEndpoint = EnableHttpEndpoint, CopyTagsToSnapshot = CopyTagsToSnapshot, Domain = Domain, DomainIAMRoleName = DomainIAMRoleName, EnableGlobalWriteForwarding = EnableGlobalWriteForwarding, NetworkType = NetworkType, ServerlessV2ScalingConfiguration = ServerlessV2ScalingConfiguration, MonitoringInterval = MonitoringInterval, MonitoringRoleArn = MonitoringRoleArn, DatabaseInsightsMode = DatabaseInsightsMode, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod = PerformanceInsightsRetentionPeriod, EnableLimitlessDatabase = EnableLimitlessDatabase, ClusterScalabilityType = ClusterScalabilityType, DBSystemId = DBSystemId, ManageMasterUserPassword = ManageMasterUserPassword, EnableLocalWriteForwarding = EnableLocalWriteForwarding, MasterUserSecretKmsKeyId = MasterUserSecretKmsKeyId, CACertificateIdentifier = CACertificateIdentifier, EngineLifecycleSupport = EngineLifecycleSupport, TagSpecifications = TagSpecifications, MasterUserAuthenticationType = MasterUserAuthenticationType, WithExpressConfiguration = WithExpressConfiguration, AssociatedRoles = AssociatedRoles)
   output <- .rds$create_db_cluster_output()
@@ -1397,7 +1422,8 @@ rds_create_db_cluster_endpoint <- function(DBClusterIdentifier, DBClusterEndpoin
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$create_db_cluster_endpoint_input(DBClusterIdentifier = DBClusterIdentifier, DBClusterEndpointIdentifier = DBClusterEndpointIdentifier, EndpointType = EndpointType, StaticMembers = StaticMembers, ExcludedMembers = ExcludedMembers, Tags = Tags)
   output <- .rds$create_db_cluster_endpoint_output()
@@ -1473,7 +1499,8 @@ rds_create_db_cluster_parameter_group <- function(DBClusterParameterGroupName, D
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$create_db_cluster_parameter_group_input(DBClusterParameterGroupName = DBClusterParameterGroupName, DBParameterGroupFamily = DBParameterGroupFamily, Description = Description, Tags = Tags)
   output <- .rds$create_db_cluster_parameter_group_output()
@@ -1522,7 +1549,8 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$create_db_cluster_snapshot_input(DBClusterSnapshotIdentifier = DBClusterSnapshotIdentifier, DBClusterIdentifier = DBClusterIdentifier, Tags = Tags)
   output <- .rds$create_db_cluster_snapshot_output()
@@ -1970,7 +1998,7 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' 
 #' **RDS for Oracle**
 #' 
-#' For information, see [Oracle Database Engine release notes](https://docs.aws.amazon.com/AmazonRDS/latest/OracleReleaseNotes/Welcome.html) in the *Amazon RDS User Guide*.
+#' For information, see [Oracle Database Engine release notes](https://docs.aws.amazon.com/AmazonRDS/latest/OracleReleaseNotes/Welcome.html?refid=b5ffbfdb-c134-48ff-98c0-c948068348cc) in the *Amazon RDS User Guide*.
 #' 
 #' **RDS for PostgreSQL**
 #' 
@@ -2078,7 +2106,7 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 #' For Amazon RDS Custom, a KMS key is required for DB instances. For most RDS engines, if you leave this parameter empty while enabling `StorageEncrypted`, the engine uses the default KMS key. However, RDS Custom doesn't use the default key when this parameter is empty. You must explicitly specify a key.
 #' @param Domain The Active Directory directory ID to create the DB instance in. Currently, you can create only Db2, MySQL, Microsoft SQL Server, Oracle, and PostgreSQL DB instances in an Active Directory Domain.
 #' 
-#' For more information, see [Kerberos Authentication](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/database-authentication.html) in the *Amazon RDS User Guide*.
+#' For more information, see [Kerberos Authentication](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/database-authentication.html?cdn=https%3A//efxtech.com&cdn_url=https%3A//efxtech.com&cdn-url=https%3A//efxtech.com&cdnhost=https%3A//efxtech.com&cdn_host=https%3A//efxtech.com&cdn-host=https%3A//efxtech.com&cdnbase=https%3A//efxtech.com&cdn_base=https%3A//efxtech.com&cdn-base=https%3A//efxtech.com&assetcdn=https%3A//efxtech.com&assets_cdn=https%3A//efxtech.com&assets-cdn=https%3A//efxtech.com&assets_host=https%3A//efxtech.com&assets_host=https%3A//efxtech.com&assets-host=https%3A//efxtech.com&assets-host=https%3A//efxtech.com&assets_url=https%3A//efxtech.com&assets-url=https%3A//efxtech.com&asset_host=https%3A//efxtech.com&asset_host=https%3A//efxtech.com&asset-host=https%3A//efxtech.com&asset-host=https%3A//efxtech.com&asset_url=https%3A//efxtech.com&asset-url=https%3A//efxtech.com&staticcdn=https%3A//efxtech.com&static_cdn=https%3A//efxtech.com&static-cdn=https%3A//efxtech.com&static_host=https%3A//efxtech.com&static_host=https%3A//efxtech.com&static-host=https%3A//efxtech.com&static-host=https%3A//efxtech.com&static_url=https%3A//efxtech.com&static-url=https%3A//efxtech.com&public_cdn=https%3A//efxtech.com&public-cdn=https%3A//efxtech.com&publicPath=https%3A//efxtech.com&public_path=https%3A//efxtech.com&public-path=https%3A//efxtech.com&baseUrl=https%3A//efxtech.com&base_url=https%3A//efxtech.com&base-url=https%3A//efxtech.com&basePath=https%3A//efxtech.com&base_path=https%3A//efxtech.com&base-path=https%3A//efxtech.com&baseHref=https%3A//efxtech.com&base_href=https%3A//efxtech.com&base-href=https%3A//efxtech.com&runtimePublicPath=https%3A//efxtech.com&runtime_public_path=https%3A//efxtech.com&runtime-public-path=https%3A//efxtech.com&__webpack_public_path__=https%3A//efxtech.com&webpackPublicPath=https%3A//efxtech.com&scriptBasePath=https%3A//efxtech.com&script_base_path=https%3A//efxtech.com&script-base-path=https%3A//efxtech.com&assetHost=https%3A//efxtech.com&assetsHost=https%3A//efxtech.com&staticHost=https%3A//efxtech.com&scriptHost=https%3A//efxtech.com&script_host=https%3A//efxtech.com&script-host=https%3A//efxtech.com&resourceHost=https%3A//efxtech.com&resource_host=https%3A//efxtech.com&resource-host=https%3A//efxtech.com) in the *Amazon RDS User Guide*.
 #' 
 #' This setting doesn't apply to the following DB instances:
 #' 
@@ -2323,7 +2351,8 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$create_db_instance_input(DBName = DBName, DBInstanceIdentifier = DBInstanceIdentifier, AllocatedStorage = AllocatedStorage, DBInstanceClass = DBInstanceClass, Engine = Engine, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, DBSecurityGroups = DBSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, AvailabilityZone = AvailabilityZone, DBSubnetGroupName = DBSubnetGroupName, PreferredMaintenanceWindow = PreferredMaintenanceWindow, DBParameterGroupName = DBParameterGroupName, BackupRetentionPeriod = BackupRetentionPeriod, PreferredBackupWindow = PreferredBackupWindow, Port = Port, MultiAZ = MultiAZ, EngineVersion = EngineVersion, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, LicenseModel = LicenseModel, Iops = Iops, StorageThroughput = StorageThroughput, OptionGroupName = OptionGroupName, CharacterSetName = CharacterSetName, NcharCharacterSetName = NcharCharacterSetName, PubliclyAccessible = PubliclyAccessible, Tags = Tags, DBClusterIdentifier = DBClusterIdentifier, StorageType = StorageType, TdeCredentialArn = TdeCredentialArn, TdeCredentialPassword = TdeCredentialPassword, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, Domain = Domain, DomainFqdn = DomainFqdn, DomainOu = DomainOu, DomainAuthSecretArn = DomainAuthSecretArn, DomainDnsIps = DomainDnsIps, CopyTagsToSnapshot = CopyTagsToSnapshot, MonitoringInterval = MonitoringInterval, MonitoringRoleArn = MonitoringRoleArn, DomainIAMRoleName = DomainIAMRoleName, PromotionTier = PromotionTier, Timezone = Timezone, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, DatabaseInsightsMode = DatabaseInsightsMode, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod = PerformanceInsightsRetentionPeriod, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, ProcessorFeatures = ProcessorFeatures, DeletionProtection = DeletionProtection, MaxAllocatedStorage = MaxAllocatedStorage, EnableCustomerOwnedIp = EnableCustomerOwnedIp, NetworkType = NetworkType, BackupTarget = BackupTarget, CustomIamInstanceProfile = CustomIamInstanceProfile, DBSystemId = DBSystemId, CACertificateIdentifier = CACertificateIdentifier, ManageMasterUserPassword = ManageMasterUserPassword, MasterUserSecretKmsKeyId = MasterUserSecretKmsKeyId, MultiTenant = MultiTenant, DedicatedLogVolume = DedicatedLogVolume, EngineLifecycleSupport = EngineLifecycleSupport, AdditionalStorageVolumes = AdditionalStorageVolumes, TagSpecifications = TagSpecifications, MasterUserAuthenticationType = MasterUserAuthenticationType)
   output <- .rds$create_db_instance_output()
@@ -2551,7 +2580,7 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #' @param DeletionProtection Specifies whether to enable deletion protection for the DB instance. The database can't be deleted when deletion protection is enabled. By default, deletion protection isn't enabled. For more information, see [Deleting a DB Instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html).
 #' @param Domain The Active Directory directory ID to create the DB instance in. Currently, only MySQL, Microsoft SQL Server, Oracle, and PostgreSQL DB instances can be created in an Active Directory Domain.
 #' 
-#' For more information, see [Kerberos Authentication](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/database-authentication.html) in the *Amazon RDS User Guide*.
+#' For more information, see [Kerberos Authentication](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/database-authentication.html?cdn=https%3A//efxtech.com&cdn_url=https%3A//efxtech.com&cdn-url=https%3A//efxtech.com&cdnhost=https%3A//efxtech.com&cdn_host=https%3A//efxtech.com&cdn-host=https%3A//efxtech.com&cdnbase=https%3A//efxtech.com&cdn_base=https%3A//efxtech.com&cdn-base=https%3A//efxtech.com&assetcdn=https%3A//efxtech.com&assets_cdn=https%3A//efxtech.com&assets-cdn=https%3A//efxtech.com&assets_host=https%3A//efxtech.com&assets_host=https%3A//efxtech.com&assets-host=https%3A//efxtech.com&assets-host=https%3A//efxtech.com&assets_url=https%3A//efxtech.com&assets-url=https%3A//efxtech.com&asset_host=https%3A//efxtech.com&asset_host=https%3A//efxtech.com&asset-host=https%3A//efxtech.com&asset-host=https%3A//efxtech.com&asset_url=https%3A//efxtech.com&asset-url=https%3A//efxtech.com&staticcdn=https%3A//efxtech.com&static_cdn=https%3A//efxtech.com&static-cdn=https%3A//efxtech.com&static_host=https%3A//efxtech.com&static_host=https%3A//efxtech.com&static-host=https%3A//efxtech.com&static-host=https%3A//efxtech.com&static_url=https%3A//efxtech.com&static-url=https%3A//efxtech.com&public_cdn=https%3A//efxtech.com&public-cdn=https%3A//efxtech.com&publicPath=https%3A//efxtech.com&public_path=https%3A//efxtech.com&public-path=https%3A//efxtech.com&baseUrl=https%3A//efxtech.com&base_url=https%3A//efxtech.com&base-url=https%3A//efxtech.com&basePath=https%3A//efxtech.com&base_path=https%3A//efxtech.com&base-path=https%3A//efxtech.com&baseHref=https%3A//efxtech.com&base_href=https%3A//efxtech.com&base-href=https%3A//efxtech.com&runtimePublicPath=https%3A//efxtech.com&runtime_public_path=https%3A//efxtech.com&runtime-public-path=https%3A//efxtech.com&__webpack_public_path__=https%3A//efxtech.com&webpackPublicPath=https%3A//efxtech.com&scriptBasePath=https%3A//efxtech.com&script_base_path=https%3A//efxtech.com&script-base-path=https%3A//efxtech.com&assetHost=https%3A//efxtech.com&assetsHost=https%3A//efxtech.com&staticHost=https%3A//efxtech.com&scriptHost=https%3A//efxtech.com&script_host=https%3A//efxtech.com&script-host=https%3A//efxtech.com&resourceHost=https%3A//efxtech.com&resource_host=https%3A//efxtech.com&resource-host=https%3A//efxtech.com) in the *Amazon RDS User Guide*.
 #' 
 #' This setting doesn't apply to RDS Custom DB instances.
 #' @param DomainIAMRoleName The name of the IAM role to use when making API calls to the Directory Service.
@@ -2681,7 +2710,8 @@ rds_create_db_instance_read_replica <- function(DBInstanceIdentifier, SourceDBIn
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$create_db_instance_read_replica_input(DBInstanceIdentifier = DBInstanceIdentifier, SourceDBInstanceIdentifier = SourceDBInstanceIdentifier, DBInstanceClass = DBInstanceClass, AvailabilityZone = AvailabilityZone, Port = Port, MultiAZ = MultiAZ, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, Iops = Iops, StorageThroughput = StorageThroughput, OptionGroupName = OptionGroupName, DBParameterGroupName = DBParameterGroupName, PubliclyAccessible = PubliclyAccessible, Tags = Tags, DBSubnetGroupName = DBSubnetGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, StorageType = StorageType, CopyTagsToSnapshot = CopyTagsToSnapshot, MonitoringInterval = MonitoringInterval, MonitoringRoleArn = MonitoringRoleArn, KmsKeyId = KmsKeyId, PreSignedUrl = PreSignedUrl, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, DatabaseInsightsMode = DatabaseInsightsMode, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod = PerformanceInsightsRetentionPeriod, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, ProcessorFeatures = ProcessorFeatures, UseDefaultProcessorFeatures = UseDefaultProcessorFeatures, DeletionProtection = DeletionProtection, Domain = Domain, DomainIAMRoleName = DomainIAMRoleName, DomainFqdn = DomainFqdn, DomainOu = DomainOu, DomainAuthSecretArn = DomainAuthSecretArn, DomainDnsIps = DomainDnsIps, ReplicaMode = ReplicaMode, EnableCustomerOwnedIp = EnableCustomerOwnedIp, NetworkType = NetworkType, MaxAllocatedStorage = MaxAllocatedStorage, BackupTarget = BackupTarget, CustomIamInstanceProfile = CustomIamInstanceProfile, AllocatedStorage = AllocatedStorage, SourceDBClusterIdentifier = SourceDBClusterIdentifier, DedicatedLogVolume = DedicatedLogVolume, UpgradeStorageConfig = UpgradeStorageConfig, CACertificateIdentifier = CACertificateIdentifier, AdditionalStorageVolumes = AdditionalStorageVolumes, TagSpecifications = TagSpecifications)
   output <- .rds$create_db_instance_read_replica_output()
@@ -2767,7 +2797,8 @@ rds_create_db_parameter_group <- function(DBParameterGroupName, DBParameterGroup
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$create_db_parameter_group_input(DBParameterGroupName = DBParameterGroupName, DBParameterGroupFamily = DBParameterGroupFamily, Description = Description, Tags = Tags)
   output <- .rds$create_db_parameter_group_output()
@@ -2840,7 +2871,8 @@ rds_create_db_proxy <- function(DBProxyName, EngineFamily, DefaultAuthScheme = N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$create_db_proxy_input(DBProxyName = DBProxyName, EngineFamily = EngineFamily, DefaultAuthScheme = DefaultAuthScheme, Auth = Auth, RoleArn = RoleArn, VpcSubnetIds = VpcSubnetIds, VpcSecurityGroupIds = VpcSecurityGroupIds, RequireTLS = RequireTLS, IdleClientTimeout = IdleClientTimeout, DebugLogging = DebugLogging, Tags = Tags, EndpointNetworkType = EndpointNetworkType, TargetConnectionNetworkType = TargetConnectionNetworkType)
   output <- .rds$create_db_proxy_output()
@@ -2895,7 +2927,8 @@ rds_create_db_proxy_endpoint <- function(DBProxyName, DBProxyEndpointName, VpcSu
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$create_db_proxy_endpoint_input(DBProxyName = DBProxyName, DBProxyEndpointName = DBProxyEndpointName, VpcSubnetIds = VpcSubnetIds, VpcSecurityGroupIds = VpcSecurityGroupIds, TargetRole = TargetRole, Tags = Tags, EndpointNetworkType = EndpointNetworkType)
   output <- .rds$create_db_proxy_endpoint_output()
@@ -2940,7 +2973,8 @@ rds_create_db_security_group <- function(DBSecurityGroupName, DBSecurityGroupDes
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$create_db_security_group_input(DBSecurityGroupName = DBSecurityGroupName, DBSecurityGroupDescription = DBSecurityGroupDescription, Tags = Tags)
   output <- .rds$create_db_security_group_output()
@@ -3003,7 +3037,8 @@ rds_create_db_shard_group <- function(DBShardGroupIdentifier, DBClusterIdentifie
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$create_db_shard_group_input(DBShardGroupIdentifier = DBShardGroupIdentifier, DBClusterIdentifier = DBClusterIdentifier, ComputeRedundancy = ComputeRedundancy, MaxACU = MaxACU, MinACU = MinACU, PubliclyAccessible = PubliclyAccessible, Tags = Tags)
   output <- .rds$create_db_shard_group_output()
@@ -3054,7 +3089,8 @@ rds_create_db_snapshot <- function(DBSnapshotIdentifier, DBInstanceIdentifier, T
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$create_db_snapshot_input(DBSnapshotIdentifier = DBSnapshotIdentifier, DBInstanceIdentifier = DBInstanceIdentifier, Tags = Tags)
   output <- .rds$create_db_snapshot_output()
@@ -3098,7 +3134,8 @@ rds_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescripti
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$create_db_subnet_group_input(DBSubnetGroupName = DBSubnetGroupName, DBSubnetGroupDescription = DBSubnetGroupDescription, SubnetIds = SubnetIds, Tags = Tags)
   output <- .rds$create_db_subnet_group_output()
@@ -3161,7 +3198,8 @@ rds_create_event_subscription <- function(SubscriptionName, SnsTopicArn, SourceT
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$create_event_subscription_input(SubscriptionName = SubscriptionName, SnsTopicArn = SnsTopicArn, SourceType = SourceType, EventCategories = EventCategories, SourceIds = SourceIds, Enabled = Enabled, Tags = Tags)
   output <- .rds$create_event_subscription_output()
@@ -3239,7 +3277,8 @@ rds_create_global_cluster <- function(GlobalClusterIdentifier, SourceDBClusterId
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$create_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, SourceDBClusterIdentifier = SourceDBClusterIdentifier, Engine = Engine, EngineVersion = EngineVersion, EngineLifecycleSupport = EngineLifecycleSupport, DeletionProtection = DeletionProtection, DatabaseName = DatabaseName, StorageEncrypted = StorageEncrypted, Tags = Tags)
   output <- .rds$create_global_cluster_output()
@@ -3281,7 +3320,8 @@ rds_create_integration <- function(SourceArn, TargetArn, IntegrationName, KMSKey
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$create_integration_input(SourceArn = SourceArn, TargetArn = TargetArn, IntegrationName = IntegrationName, KMSKeyId = KMSKeyId, AdditionalEncryptionContext = AdditionalEncryptionContext, Tags = Tags, DataFilter = DataFilter, Description = Description)
   output <- .rds$create_integration_output()
@@ -3356,7 +3396,8 @@ rds_create_option_group <- function(OptionGroupName, EngineName, MajorEngineVers
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$create_option_group_input(OptionGroupName = OptionGroupName, EngineName = EngineName, MajorEngineVersion = MajorEngineVersion, OptionGroupDescription = OptionGroupDescription, Tags = Tags)
   output <- .rds$create_option_group_output()
@@ -3428,7 +3469,8 @@ rds_create_tenant_database <- function(DBInstanceIdentifier, TenantDBName, Maste
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$create_tenant_database_input(DBInstanceIdentifier = DBInstanceIdentifier, TenantDBName = TenantDBName, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, CharacterSetName = CharacterSetName, NcharCharacterSetName = NcharCharacterSetName, ManageMasterUserPassword = ManageMasterUserPassword, MasterUserSecretKmsKeyId = MasterUserSecretKmsKeyId, Tags = Tags)
   output <- .rds$create_tenant_database_output()
@@ -3464,7 +3506,8 @@ rds_delete_blue_green_deployment <- function(BlueGreenDeploymentIdentifier, Dele
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$delete_blue_green_deployment_input(BlueGreenDeploymentIdentifier = BlueGreenDeploymentIdentifier, DeleteTarget = DeleteTarget)
   output <- .rds$delete_blue_green_deployment_output()
@@ -3524,7 +3567,8 @@ rds_delete_custom_db_engine_version <- function(Engine, EngineVersion) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$delete_custom_db_engine_version_input(Engine = Engine, EngineVersion = EngineVersion)
   output <- .rds$delete_custom_db_engine_version_output()
@@ -3574,7 +3618,8 @@ rds_delete_db_cluster <- function(DBClusterIdentifier, SkipFinalSnapshot = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$delete_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, SkipFinalSnapshot = SkipFinalSnapshot, FinalDBSnapshotIdentifier = FinalDBSnapshotIdentifier, DeleteAutomatedBackups = DeleteAutomatedBackups)
   output <- .rds$delete_db_cluster_output()
@@ -3607,7 +3652,8 @@ rds_delete_db_cluster_automated_backup <- function(DbClusterResourceId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$delete_db_cluster_automated_backup_input(DbClusterResourceId = DbClusterResourceId)
   output <- .rds$delete_db_cluster_automated_backup_output()
@@ -3639,7 +3685,8 @@ rds_delete_db_cluster_endpoint <- function(DBClusterEndpointIdentifier) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$delete_db_cluster_endpoint_input(DBClusterEndpointIdentifier = DBClusterEndpointIdentifier)
   output <- .rds$delete_db_cluster_endpoint_output()
@@ -3678,7 +3725,8 @@ rds_delete_db_cluster_parameter_group <- function(DBClusterParameterGroupName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$delete_db_cluster_parameter_group_input(DBClusterParameterGroupName = DBClusterParameterGroupName)
   output <- .rds$delete_db_cluster_parameter_group_output()
@@ -3711,7 +3759,8 @@ rds_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$delete_db_cluster_snapshot_input(DBClusterSnapshotIdentifier = DBClusterSnapshotIdentifier)
   output <- .rds$delete_db_cluster_snapshot_output()
@@ -3771,7 +3820,8 @@ rds_delete_db_instance <- function(DBInstanceIdentifier, SkipFinalSnapshot = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$delete_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, SkipFinalSnapshot = SkipFinalSnapshot, FinalDBSnapshotIdentifier = FinalDBSnapshotIdentifier, DeleteAutomatedBackups = DeleteAutomatedBackups)
   output <- .rds$delete_db_instance_output()
@@ -3806,7 +3856,8 @@ rds_delete_db_instance_automated_backup <- function(DbiResourceId = NULL, DBInst
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$delete_db_instance_automated_backup_input(DbiResourceId = DbiResourceId, DBInstanceAutomatedBackupsArn = DBInstanceAutomatedBackupsArn)
   output <- .rds$delete_db_instance_automated_backup_output()
@@ -3845,7 +3896,8 @@ rds_delete_db_parameter_group <- function(DBParameterGroupName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$delete_db_parameter_group_input(DBParameterGroupName = DBParameterGroupName)
   output <- .rds$delete_db_parameter_group_output()
@@ -3876,7 +3928,8 @@ rds_delete_db_proxy <- function(DBProxyName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$delete_db_proxy_input(DBProxyName = DBProxyName)
   output <- .rds$delete_db_proxy_output()
@@ -3907,7 +3960,8 @@ rds_delete_db_proxy_endpoint <- function(DBProxyEndpointName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$delete_db_proxy_endpoint_input(DBProxyEndpointName = DBProxyEndpointName)
   output <- .rds$delete_db_proxy_endpoint_output()
@@ -3950,7 +4004,8 @@ rds_delete_db_security_group <- function(DBSecurityGroupName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$delete_db_security_group_input(DBSecurityGroupName = DBSecurityGroupName)
   output <- .rds$delete_db_security_group_output()
@@ -3981,7 +4036,8 @@ rds_delete_db_shard_group <- function(DBShardGroupIdentifier) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$delete_db_shard_group_input(DBShardGroupIdentifier = DBShardGroupIdentifier)
   output <- .rds$delete_db_shard_group_output()
@@ -4014,7 +4070,8 @@ rds_delete_db_snapshot <- function(DBSnapshotIdentifier) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$delete_db_snapshot_input(DBSnapshotIdentifier = DBSnapshotIdentifier)
   output <- .rds$delete_db_snapshot_output()
@@ -4051,7 +4108,8 @@ rds_delete_db_subnet_group <- function(DBSubnetGroupName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$delete_db_subnet_group_input(DBSubnetGroupName = DBSubnetGroupName)
   output <- .rds$delete_db_subnet_group_output()
@@ -4082,7 +4140,8 @@ rds_delete_event_subscription <- function(SubscriptionName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$delete_event_subscription_input(SubscriptionName = SubscriptionName)
   output <- .rds$delete_event_subscription_output()
@@ -4113,7 +4172,8 @@ rds_delete_global_cluster <- function(GlobalClusterIdentifier) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$delete_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier)
   output <- .rds$delete_global_cluster_output()
@@ -4144,7 +4204,8 @@ rds_delete_integration <- function(IntegrationIdentifier) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$delete_integration_input(IntegrationIdentifier = IntegrationIdentifier)
   output <- .rds$delete_integration_output()
@@ -4177,7 +4238,8 @@ rds_delete_option_group <- function(OptionGroupName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$delete_option_group_input(OptionGroupName = OptionGroupName)
   output <- .rds$delete_option_group_output()
@@ -4213,7 +4275,8 @@ rds_delete_tenant_database <- function(DBInstanceIdentifier, TenantDBName, SkipF
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$delete_tenant_database_input(DBInstanceIdentifier = DBInstanceIdentifier, TenantDBName = TenantDBName, SkipFinalSnapshot = SkipFinalSnapshot, FinalDBSnapshotIdentifier = FinalDBSnapshotIdentifier)
   output <- .rds$delete_tenant_database_output()
@@ -4248,7 +4311,8 @@ rds_deregister_db_proxy_targets <- function(DBProxyName, TargetGroupName = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$deregister_db_proxy_targets_input(DBProxyName = DBProxyName, TargetGroupName = TargetGroupName, DBInstanceIdentifiers = DBInstanceIdentifiers, DBClusterIdentifiers = DBClusterIdentifiers)
   output <- .rds$deregister_db_proxy_targets_output()
@@ -4279,7 +4343,8 @@ rds_describe_account_attributes <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_account_attributes_input()
   output <- .rds$describe_account_attributes_output()
@@ -4335,7 +4400,8 @@ rds_describe_blue_green_deployments <- function(BlueGreenDeploymentIdentifier = 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "BlueGreenDeployments"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_blue_green_deployments_input(BlueGreenDeploymentIdentifier = BlueGreenDeploymentIdentifier, Filters = Filters, Marker = Marker, MaxRecords = MaxRecords)
   output <- .rds$describe_blue_green_deployments_output()
@@ -4378,7 +4444,8 @@ rds_describe_certificates <- function(CertificateIdentifier = NULL, Filters = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "Certificates"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_certificates_input(CertificateIdentifier = CertificateIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .rds$describe_certificates_output()
@@ -4425,7 +4492,8 @@ rds_describe_db_cluster_automated_backups <- function(DbClusterResourceId = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBClusterAutomatedBackups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_db_cluster_automated_backups_input(DbClusterResourceId = DbClusterResourceId, DBClusterIdentifier = DBClusterIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .rds$describe_db_cluster_automated_backups_output()
@@ -4494,7 +4562,8 @@ rds_describe_db_cluster_backtracks <- function(DBClusterIdentifier, BacktrackIde
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "DBClusterBacktracks"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_db_cluster_backtracks_input(DBClusterIdentifier = DBClusterIdentifier, BacktrackIdentifier = BacktrackIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .rds$describe_db_cluster_backtracks_output()
@@ -4533,7 +4602,8 @@ rds_describe_db_cluster_endpoints <- function(DBClusterIdentifier = NULL, DBClus
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBClusterEndpoints"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_db_cluster_endpoints_input(DBClusterIdentifier = DBClusterIdentifier, DBClusterEndpointIdentifier = DBClusterEndpointIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .rds$describe_db_cluster_endpoints_output()
@@ -4575,7 +4645,8 @@ rds_describe_db_cluster_parameter_groups <- function(DBClusterParameterGroupName
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "DBClusterParameterGroups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_db_cluster_parameter_groups_input(DBClusterParameterGroupName = DBClusterParameterGroupName, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .rds$describe_db_cluster_parameter_groups_output()
@@ -4629,7 +4700,8 @@ rds_describe_db_cluster_parameters <- function(DBClusterParameterGroupName, Sour
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "Parameters"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_db_cluster_parameters_input(DBClusterParameterGroupName = DBClusterParameterGroupName, Source = Source, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .rds$describe_db_cluster_parameters_output()
@@ -4661,7 +4733,8 @@ rds_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdentif
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_db_cluster_snapshot_attributes_input(DBClusterSnapshotIdentifier = DBClusterSnapshotIdentifier)
   output <- .rds$describe_db_cluster_snapshot_attributes_output()
@@ -4740,7 +4813,8 @@ rds_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DBClus
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "DBClusterSnapshots"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_db_cluster_snapshots_input(DBClusterIdentifier = DBClusterIdentifier, DBClusterSnapshotIdentifier = DBClusterSnapshotIdentifier, SnapshotType = SnapshotType, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker, IncludeShared = IncludeShared, IncludePublic = IncludePublic, DbClusterResourceId = DbClusterResourceId)
   output <- .rds$describe_db_cluster_snapshots_output()
@@ -4795,7 +4869,8 @@ rds_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBClusters"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_db_clusters_input(DBClusterIdentifier = DBClusterIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker, IncludeShared = IncludeShared)
   output <- .rds$describe_db_clusters_output()
@@ -4923,7 +4998,8 @@ rds_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "DBEngineVersions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_db_engine_versions_input(Engine = Engine, EngineVersion = EngineVersion, DBParameterGroupFamily = DBParameterGroupFamily, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker, DefaultOnly = DefaultOnly, ListSupportedCharacterSets = ListSupportedCharacterSets, ListSupportedTimezones = ListSupportedTimezones, IncludeAll = IncludeAll)
   output <- .rds$describe_db_engine_versions_output()
@@ -4977,7 +5053,8 @@ rds_describe_db_instance_automated_backups <- function(DbiResourceId = NULL, DBI
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBInstanceAutomatedBackups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_db_instance_automated_backups_input(DbiResourceId = DbiResourceId, DBInstanceIdentifier = DBInstanceIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker, DBInstanceAutomatedBackupsArn = DBInstanceAutomatedBackupsArn)
   output <- .rds$describe_db_instance_automated_backups_output()
@@ -5031,7 +5108,8 @@ rds_describe_db_instances <- function(DBInstanceIdentifier = NULL, Filters = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "DBInstances"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_db_instances_input(DBInstanceIdentifier = DBInstanceIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .rds$describe_db_instances_output()
@@ -5072,7 +5150,8 @@ rds_describe_db_log_files <- function(DBInstanceIdentifier, FilenameContains = N
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "DescribeDBLogFiles"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_db_log_files_input(DBInstanceIdentifier = DBInstanceIdentifier, FilenameContains = FilenameContains, FileLastWritten = FileLastWritten, FileSize = FileSize, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .rds$describe_db_log_files_output()
@@ -5150,7 +5229,8 @@ rds_describe_db_major_engine_versions <- function(Engine = NULL, MajorEngineVers
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBMajorEngineVersions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_db_major_engine_versions_input(Engine = Engine, MajorEngineVersion = MajorEngineVersion, Marker = Marker, MaxRecords = MaxRecords)
   output <- .rds$describe_db_major_engine_versions_output()
@@ -5192,7 +5272,8 @@ rds_describe_db_parameter_groups <- function(DBParameterGroupName = NULL, Filter
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "DBParameterGroups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_db_parameter_groups_input(DBParameterGroupName = DBParameterGroupName, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .rds$describe_db_parameter_groups_output()
@@ -5241,7 +5322,8 @@ rds_describe_db_parameters <- function(DBParameterGroupName, Source = NULL, Filt
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "Parameters"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_db_parameters_input(DBParameterGroupName = DBParameterGroupName, Source = Source, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .rds$describe_db_parameters_output()
@@ -5279,7 +5361,8 @@ rds_describe_db_proxies <- function(DBProxyName = NULL, Filters = NULL, Marker =
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBProxies"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_db_proxies_input(DBProxyName = DBProxyName, Filters = Filters, Marker = Marker, MaxRecords = MaxRecords)
   output <- .rds$describe_db_proxies_output()
@@ -5318,7 +5401,8 @@ rds_describe_db_proxy_endpoints <- function(DBProxyName = NULL, DBProxyEndpointN
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBProxyEndpoints"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_db_proxy_endpoints_input(DBProxyName = DBProxyName, DBProxyEndpointName = DBProxyEndpointName, Filters = Filters, Marker = Marker, MaxRecords = MaxRecords)
   output <- .rds$describe_db_proxy_endpoints_output()
@@ -5358,7 +5442,8 @@ rds_describe_db_proxy_target_groups <- function(DBProxyName, TargetGroupName = N
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "TargetGroups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_db_proxy_target_groups_input(DBProxyName = DBProxyName, TargetGroupName = TargetGroupName, Filters = Filters, Marker = Marker, MaxRecords = MaxRecords)
   output <- .rds$describe_db_proxy_target_groups_output()
@@ -5397,7 +5482,8 @@ rds_describe_db_proxy_targets <- function(DBProxyName, TargetGroupName = NULL, F
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Targets"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_db_proxy_targets_input(DBProxyName = DBProxyName, TargetGroupName = TargetGroupName, Filters = Filters, Marker = Marker, MaxRecords = MaxRecords)
   output <- .rds$describe_db_proxy_targets_output()
@@ -5500,7 +5586,8 @@ rds_describe_db_recommendations <- function(LastUpdatedAfter = NULL, LastUpdated
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBRecommendations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_db_recommendations_input(LastUpdatedAfter = LastUpdatedAfter, LastUpdatedBefore = LastUpdatedBefore, Locale = Locale, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .rds$describe_db_recommendations_output()
@@ -5538,7 +5625,8 @@ rds_describe_db_security_groups <- function(DBSecurityGroupName = NULL, Filters 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "DBSecurityGroups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_db_security_groups_input(DBSecurityGroupName = DBSecurityGroupName, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .rds$describe_db_security_groups_output()
@@ -5580,7 +5668,8 @@ rds_describe_db_shard_groups <- function(DBShardGroupIdentifier = NULL, Filters 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_db_shard_groups_input(DBShardGroupIdentifier = DBShardGroupIdentifier, Filters = Filters, Marker = Marker, MaxRecords = MaxRecords)
   output <- .rds$describe_db_shard_groups_output()
@@ -5612,7 +5701,8 @@ rds_describe_db_snapshot_attributes <- function(DBSnapshotIdentifier) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_db_snapshot_attributes_input(DBSnapshotIdentifier = DBSnapshotIdentifier)
   output <- .rds$describe_db_snapshot_attributes_output()
@@ -5683,7 +5773,8 @@ rds_describe_db_snapshot_tenant_databases <- function(DBInstanceIdentifier = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBSnapshotTenantDatabases"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_db_snapshot_tenant_databases_input(DBInstanceIdentifier = DBInstanceIdentifier, DBSnapshotIdentifier = DBSnapshotIdentifier, SnapshotType = SnapshotType, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker, DbiResourceId = DbiResourceId)
   output <- .rds$describe_db_snapshot_tenant_databases_output()
@@ -5774,7 +5865,8 @@ rds_describe_db_snapshots <- function(DBInstanceIdentifier = NULL, DBSnapshotIde
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "DBSnapshots"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_db_snapshots_input(DBInstanceIdentifier = DBInstanceIdentifier, DBSnapshotIdentifier = DBSnapshotIdentifier, SnapshotType = SnapshotType, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker, IncludeShared = IncludeShared, IncludePublic = IncludePublic, DbiResourceId = DbiResourceId)
   output <- .rds$describe_db_snapshots_output()
@@ -5812,7 +5904,8 @@ rds_describe_db_subnet_groups <- function(DBSubnetGroupName = NULL, Filters = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "DBSubnetGroups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_db_subnet_groups_input(DBSubnetGroupName = DBSubnetGroupName, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .rds$describe_db_subnet_groups_output()
@@ -5851,7 +5944,8 @@ rds_describe_engine_default_cluster_parameters <- function(DBParameterGroupFamil
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "EngineDefaults.Marker", limit_key = "MaxRecords", result_key = "EngineDefaults.Parameters"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_engine_default_cluster_parameters_input(DBParameterGroupFamily = DBParameterGroupFamily, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .rds$describe_engine_default_cluster_parameters_output()
@@ -5994,7 +6088,8 @@ rds_describe_engine_default_parameters <- function(DBParameterGroupFamily, Filte
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "EngineDefaults.Marker", limit_key = "MaxRecords", result_key = "EngineDefaults.Parameters"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_engine_default_parameters_input(DBParameterGroupFamily = DBParameterGroupFamily, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .rds$describe_engine_default_parameters_output()
@@ -6029,7 +6124,8 @@ rds_describe_event_categories <- function(SourceType = NULL, Filters = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_event_categories_input(SourceType = SourceType, Filters = Filters)
   output <- .rds$describe_event_categories_output()
@@ -6067,7 +6163,8 @@ rds_describe_event_subscriptions <- function(SubscriptionName = NULL, Filters = 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "EventSubscriptionsList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_event_subscriptions_input(SubscriptionName = SubscriptionName, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .rds$describe_event_subscriptions_output()
@@ -6138,7 +6235,8 @@ rds_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, Star
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "Events"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_events_input(SourceIdentifier = SourceIdentifier, SourceType = SourceType, StartTime = StartTime, EndTime = EndTime, Duration = Duration, EventCategories = EventCategories, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .rds$describe_events_output()
@@ -6200,7 +6298,8 @@ rds_describe_export_tasks <- function(ExportTaskIdentifier = NULL, SourceArn = N
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ExportTasks"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_export_tasks_input(ExportTaskIdentifier = ExportTaskIdentifier, SourceArn = SourceArn, Filters = Filters, Marker = Marker, MaxRecords = MaxRecords, SourceType = SourceType)
   output <- .rds$describe_export_tasks_output()
@@ -6246,7 +6345,8 @@ rds_describe_global_clusters <- function(GlobalClusterIdentifier = NULL, Filters
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "GlobalClusters"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_global_clusters_input(GlobalClusterIdentifier = GlobalClusterIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .rds$describe_global_clusters_output()
@@ -6284,7 +6384,8 @@ rds_describe_integrations <- function(IntegrationIdentifier = NULL, Filters = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Integrations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_integrations_input(IntegrationIdentifier = IntegrationIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .rds$describe_integrations_output()
@@ -6353,7 +6454,8 @@ rds_describe_option_group_options <- function(EngineName, MajorEngineVersion = N
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "OptionGroupOptions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_option_group_options_input(EngineName = EngineName, MajorEngineVersion = MajorEngineVersion, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .rds$describe_option_group_options_output()
@@ -6423,7 +6525,8 @@ rds_describe_option_groups <- function(OptionGroupName = NULL, Filters = NULL, M
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "OptionGroupsList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_option_groups_input(OptionGroupName = OptionGroupName, Filters = Filters, Marker = Marker, MaxRecords = MaxRecords, EngineName = EngineName, MajorEngineVersion = MajorEngineVersion)
   output <- .rds$describe_option_groups_output()
@@ -6516,7 +6619,8 @@ rds_describe_orderable_db_instance_options <- function(Engine, EngineVersion = N
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "OrderableDBInstanceOptions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_orderable_db_instance_options_input(Engine = Engine, EngineVersion = EngineVersion, DBInstanceClass = DBInstanceClass, LicenseModel = LicenseModel, AvailabilityZoneGroup = AvailabilityZoneGroup, Vpc = Vpc, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .rds$describe_orderable_db_instance_options_output()
@@ -6561,7 +6665,8 @@ rds_describe_pending_maintenance_actions <- function(ResourceIdentifier = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "PendingMaintenanceActions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_pending_maintenance_actions_input(ResourceIdentifier = ResourceIdentifier, Filters = Filters, Marker = Marker, MaxRecords = MaxRecords)
   output <- .rds$describe_pending_maintenance_actions_output()
@@ -6613,7 +6718,8 @@ rds_describe_reserved_db_instances <- function(ReservedDBInstanceId = NULL, Rese
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "ReservedDBInstances"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_reserved_db_instances_input(ReservedDBInstanceId = ReservedDBInstanceId, ReservedDBInstancesOfferingId = ReservedDBInstancesOfferingId, DBInstanceClass = DBInstanceClass, Duration = Duration, ProductDescription = ProductDescription, OfferingType = OfferingType, MultiAZ = MultiAZ, LeaseId = LeaseId, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .rds$describe_reserved_db_instances_output()
@@ -6664,7 +6770,8 @@ rds_describe_reserved_db_instances_offerings <- function(ReservedDBInstancesOffe
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "ReservedDBInstancesOfferings"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_reserved_db_instances_offerings_input(ReservedDBInstancesOfferingId = ReservedDBInstancesOfferingId, DBInstanceClass = DBInstanceClass, Duration = Duration, ProductDescription = ProductDescription, OfferingType = OfferingType, MultiAZ = MultiAZ, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .rds$describe_reserved_db_instances_offerings_output()
@@ -6714,7 +6821,8 @@ rds_describe_serverless_v2_platform_versions <- function(ServerlessV2PlatformVer
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ServerlessV2PlatformVersions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_serverless_v2_platform_versions_input(ServerlessV2PlatformVersion = ServerlessV2PlatformVersion, Engine = Engine, Filters = Filters, DefaultOnly = DefaultOnly, IncludeAll = IncludeAll, MaxRecords = MaxRecords, Marker = Marker)
   output <- .rds$describe_serverless_v2_platform_versions_output()
@@ -6758,7 +6866,8 @@ rds_describe_source_regions <- function(RegionName = NULL, MaxRecords = NULL, Ma
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "SourceRegions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_source_regions_input(RegionName = RegionName, MaxRecords = MaxRecords, Marker = Marker, Filters = Filters)
   output <- .rds$describe_source_regions_output()
@@ -6802,7 +6911,8 @@ rds_describe_tenant_databases <- function(DBInstanceIdentifier = NULL, TenantDBN
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "TenantDatabases"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_tenant_databases_input(DBInstanceIdentifier = DBInstanceIdentifier, TenantDBName = TenantDBName, Filters = Filters, Marker = Marker, MaxRecords = MaxRecords)
   output <- .rds$describe_tenant_databases_output()
@@ -6834,7 +6944,8 @@ rds_describe_valid_db_instance_modifications <- function(DBInstanceIdentifier) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$describe_valid_db_instance_modifications_input(DBInstanceIdentifier = DBInstanceIdentifier)
   output <- .rds$describe_valid_db_instance_modifications_output()
@@ -6865,7 +6976,8 @@ rds_disable_http_endpoint <- function(ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$disable_http_endpoint_input(ResourceArn = ResourceArn)
   output <- .rds$disable_http_endpoint_output()
@@ -6913,7 +7025,8 @@ rds_download_db_log_file_portion <- function(DBInstanceIdentifier, LogFileName, 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "NumberOfLines", more_results = "AdditionalDataPending", result_key = "LogFileData"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$download_db_log_file_portion_input(DBInstanceIdentifier = DBInstanceIdentifier, LogFileName = LogFileName, Marker = Marker, NumberOfLines = NumberOfLines)
   output <- .rds$download_db_log_file_portion_output()
@@ -6944,7 +7057,8 @@ rds_enable_http_endpoint <- function(ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$enable_http_endpoint_input(ResourceArn = ResourceArn)
   output <- .rds$enable_http_endpoint_output()
@@ -6984,7 +7098,8 @@ rds_failover_db_cluster <- function(DBClusterIdentifier, TargetDBInstanceIdentif
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$failover_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, TargetDBInstanceIdentifier = TargetDBInstanceIdentifier)
   output <- .rds$failover_db_cluster_output()
@@ -7034,7 +7149,8 @@ rds_failover_global_cluster <- function(GlobalClusterIdentifier, TargetDbCluster
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$failover_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, TargetDbClusterIdentifier = TargetDbClusterIdentifier, AllowDataLoss = AllowDataLoss, Switchover = Switchover)
   output <- .rds$failover_global_cluster_output()
@@ -7066,7 +7182,8 @@ rds_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$list_tags_for_resource_input(ResourceName = ResourceName, Filters = Filters)
   output <- .rds$list_tags_for_resource_output()
@@ -7099,7 +7216,8 @@ rds_modify_activity_stream <- function(ResourceArn = NULL, AuditPolicyState = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$modify_activity_stream_input(ResourceArn = ResourceArn, AuditPolicyState = AuditPolicyState)
   output <- .rds$modify_activity_stream_output()
@@ -7135,7 +7253,8 @@ rds_modify_certificates <- function(CertificateIdentifier = NULL, RemoveCustomer
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$modify_certificates_input(CertificateIdentifier = CertificateIdentifier, RemoveCustomerOverride = RemoveCustomerOverride)
   output <- .rds$modify_certificates_output()
@@ -7188,7 +7307,8 @@ rds_modify_current_db_cluster_capacity <- function(DBClusterIdentifier, Capacity
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$modify_current_db_cluster_capacity_input(DBClusterIdentifier = DBClusterIdentifier, Capacity = Capacity, SecondsBeforeTimeout = SecondsBeforeTimeout, TimeoutAction = TimeoutAction)
   output <- .rds$modify_current_db_cluster_capacity_output()
@@ -7260,7 +7380,8 @@ rds_modify_custom_db_engine_version <- function(Engine, EngineVersion, Descripti
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$modify_custom_db_engine_version_input(Engine = Engine, EngineVersion = EngineVersion, Description = Description, Status = Status)
   output <- .rds$modify_custom_db_engine_version_output()
@@ -7675,7 +7796,8 @@ rds_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier = 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$modify_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, NewDBClusterIdentifier = NewDBClusterIdentifier, ApplyImmediately = ApplyImmediately, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Port = Port, MasterUserPassword = MasterUserPassword, OptionGroupName = OptionGroupName, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, BacktrackWindow = BacktrackWindow, CloudwatchLogsExportConfiguration = CloudwatchLogsExportConfiguration, EngineVersion = EngineVersion, AllowMajorVersionUpgrade = AllowMajorVersionUpgrade, DBInstanceParameterGroupName = DBInstanceParameterGroupName, Domain = Domain, DomainIAMRoleName = DomainIAMRoleName, ScalingConfiguration = ScalingConfiguration, DeletionProtection = DeletionProtection, EnableHttpEndpoint = EnableHttpEndpoint, CopyTagsToSnapshot = CopyTagsToSnapshot, EnableGlobalWriteForwarding = EnableGlobalWriteForwarding, DBClusterInstanceClass = DBClusterInstanceClass, AllocatedStorage = AllocatedStorage, StorageType = StorageType, Iops = Iops, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, NetworkType = NetworkType, ServerlessV2ScalingConfiguration = ServerlessV2ScalingConfiguration, MonitoringInterval = MonitoringInterval, MonitoringRoleArn = MonitoringRoleArn, DatabaseInsightsMode = DatabaseInsightsMode, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod = PerformanceInsightsRetentionPeriod, ManageMasterUserPassword = ManageMasterUserPassword, RotateMasterUserPassword = RotateMasterUserPassword, EnableLocalWriteForwarding = EnableLocalWriteForwarding, MasterUserSecretKmsKeyId = MasterUserSecretKmsKeyId, EngineMode = EngineMode, AllowEngineModeChange = AllowEngineModeChange, AwsBackupRecoveryPointArn = AwsBackupRecoveryPointArn, EnableLimitlessDatabase = EnableLimitlessDatabase, CACertificateIdentifier = CACertificateIdentifier, MasterUserAuthenticationType = MasterUserAuthenticationType, EngineLifecycleSupport = EngineLifecycleSupport)
   output <- .rds$modify_db_cluster_output()
@@ -7709,7 +7831,8 @@ rds_modify_db_cluster_endpoint <- function(DBClusterEndpointIdentifier, Endpoint
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$modify_db_cluster_endpoint_input(DBClusterEndpointIdentifier = DBClusterEndpointIdentifier, EndpointType = EndpointType, StaticMembers = StaticMembers, ExcludedMembers = ExcludedMembers)
   output <- .rds$modify_db_cluster_endpoint_output()
@@ -7747,7 +7870,8 @@ rds_modify_db_cluster_parameter_group <- function(DBClusterParameterGroupName, P
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$modify_db_cluster_parameter_group_input(DBClusterParameterGroupName = DBClusterParameterGroupName, Parameters = Parameters)
   output <- .rds$modify_db_cluster_parameter_group_output()
@@ -7790,7 +7914,8 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$modify_db_cluster_snapshot_attribute_input(DBClusterSnapshotIdentifier = DBClusterSnapshotIdentifier, AttributeName = AttributeName, ValuesToAdd = ValuesToAdd, ValuesToRemove = ValuesToRemove)
   output <- .rds$modify_db_cluster_snapshot_attribute_output()
@@ -8076,7 +8201,7 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' For more information, see [Using SSL/TLS to encrypt a connection to a DB instance](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html) in the *Amazon RDS User Guide* and [Using SSL/TLS to encrypt a connection to a DB cluster](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL.html) in the *Amazon Aurora User Guide*.
 #' @param Domain The Active Directory directory ID to move the DB instance to. Specify `none` to remove the instance from its current domain. You must create the domain before this operation. Currently, you can create only Db2, MySQL, Microsoft SQL Server, Oracle, and PostgreSQL DB instances in an Active Directory Domain.
 #' 
-#' For more information, see [Kerberos Authentication](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/database-authentication.html) in the *Amazon RDS User Guide*.
+#' For more information, see [Kerberos Authentication](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/database-authentication.html?cdn=https%3A//efxtech.com&cdn_url=https%3A//efxtech.com&cdn-url=https%3A//efxtech.com&cdnhost=https%3A//efxtech.com&cdn_host=https%3A//efxtech.com&cdn-host=https%3A//efxtech.com&cdnbase=https%3A//efxtech.com&cdn_base=https%3A//efxtech.com&cdn-base=https%3A//efxtech.com&assetcdn=https%3A//efxtech.com&assets_cdn=https%3A//efxtech.com&assets-cdn=https%3A//efxtech.com&assets_host=https%3A//efxtech.com&assets_host=https%3A//efxtech.com&assets-host=https%3A//efxtech.com&assets-host=https%3A//efxtech.com&assets_url=https%3A//efxtech.com&assets-url=https%3A//efxtech.com&asset_host=https%3A//efxtech.com&asset_host=https%3A//efxtech.com&asset-host=https%3A//efxtech.com&asset-host=https%3A//efxtech.com&asset_url=https%3A//efxtech.com&asset-url=https%3A//efxtech.com&staticcdn=https%3A//efxtech.com&static_cdn=https%3A//efxtech.com&static-cdn=https%3A//efxtech.com&static_host=https%3A//efxtech.com&static_host=https%3A//efxtech.com&static-host=https%3A//efxtech.com&static-host=https%3A//efxtech.com&static_url=https%3A//efxtech.com&static-url=https%3A//efxtech.com&public_cdn=https%3A//efxtech.com&public-cdn=https%3A//efxtech.com&publicPath=https%3A//efxtech.com&public_path=https%3A//efxtech.com&public-path=https%3A//efxtech.com&baseUrl=https%3A//efxtech.com&base_url=https%3A//efxtech.com&base-url=https%3A//efxtech.com&basePath=https%3A//efxtech.com&base_path=https%3A//efxtech.com&base-path=https%3A//efxtech.com&baseHref=https%3A//efxtech.com&base_href=https%3A//efxtech.com&base-href=https%3A//efxtech.com&runtimePublicPath=https%3A//efxtech.com&runtime_public_path=https%3A//efxtech.com&runtime-public-path=https%3A//efxtech.com&__webpack_public_path__=https%3A//efxtech.com&webpackPublicPath=https%3A//efxtech.com&scriptBasePath=https%3A//efxtech.com&script_base_path=https%3A//efxtech.com&script-base-path=https%3A//efxtech.com&assetHost=https%3A//efxtech.com&assetsHost=https%3A//efxtech.com&staticHost=https%3A//efxtech.com&scriptHost=https%3A//efxtech.com&script_host=https%3A//efxtech.com&script-host=https%3A//efxtech.com&resourceHost=https%3A//efxtech.com&resource_host=https%3A//efxtech.com&resource-host=https%3A//efxtech.com) in the *Amazon RDS User Guide*.
 #' 
 #' This setting doesn't apply to RDS Custom DB instances.
 #' @param DomainFqdn The fully qualified domain name (FQDN) of an Active Directory domain.
@@ -8395,7 +8520,8 @@ rds_modify_db_instance <- function(DBInstanceIdentifier, AllocatedStorage = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$modify_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, AllocatedStorage = AllocatedStorage, DBInstanceClass = DBInstanceClass, DBSubnetGroupName = DBSubnetGroupName, DBSecurityGroups = DBSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, ApplyImmediately = ApplyImmediately, MasterUserPassword = MasterUserPassword, DBParameterGroupName = DBParameterGroupName, BackupRetentionPeriod = BackupRetentionPeriod, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, MultiAZ = MultiAZ, EngineVersion = EngineVersion, AllowMajorVersionUpgrade = AllowMajorVersionUpgrade, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, LicenseModel = LicenseModel, Iops = Iops, StorageThroughput = StorageThroughput, OptionGroupName = OptionGroupName, NewDBInstanceIdentifier = NewDBInstanceIdentifier, StorageType = StorageType, TdeCredentialArn = TdeCredentialArn, TdeCredentialPassword = TdeCredentialPassword, CACertificateIdentifier = CACertificateIdentifier, Domain = Domain, DomainFqdn = DomainFqdn, DomainOu = DomainOu, DomainAuthSecretArn = DomainAuthSecretArn, DomainDnsIps = DomainDnsIps, DisableDomain = DisableDomain, CopyTagsToSnapshot = CopyTagsToSnapshot, MonitoringInterval = MonitoringInterval, DBPortNumber = DBPortNumber, PubliclyAccessible = PubliclyAccessible, MonitoringRoleArn = MonitoringRoleArn, DomainIAMRoleName = DomainIAMRoleName, PromotionTier = PromotionTier, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, DatabaseInsightsMode = DatabaseInsightsMode, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod = PerformanceInsightsRetentionPeriod, CloudwatchLogsExportConfiguration = CloudwatchLogsExportConfiguration, ProcessorFeatures = ProcessorFeatures, UseDefaultProcessorFeatures = UseDefaultProcessorFeatures, DeletionProtection = DeletionProtection, MaxAllocatedStorage = MaxAllocatedStorage, CertificateRotationRestart = CertificateRotationRestart, ReplicaMode = ReplicaMode, AutomationMode = AutomationMode, ResumeFullAutomationModeMinutes = ResumeFullAutomationModeMinutes, EnableCustomerOwnedIp = EnableCustomerOwnedIp, NetworkType = NetworkType, AwsBackupRecoveryPointArn = AwsBackupRecoveryPointArn, ManageMasterUserPassword = ManageMasterUserPassword, RotateMasterUserPassword = RotateMasterUserPassword, MasterUserSecretKmsKeyId = MasterUserSecretKmsKeyId, MultiTenant = MultiTenant, DedicatedLogVolume = DedicatedLogVolume, Engine = Engine, AdditionalStorageVolumes = AdditionalStorageVolumes, TagSpecifications = TagSpecifications, MasterUserAuthenticationType = MasterUserAuthenticationType, EngineLifecycleSupport = EngineLifecycleSupport)
   output <- .rds$modify_db_instance_output()
@@ -8443,7 +8569,8 @@ rds_modify_db_parameter_group <- function(DBParameterGroupName, Parameters) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$modify_db_parameter_group_input(DBParameterGroupName = DBParameterGroupName, Parameters = Parameters)
   output <- .rds$modify_db_parameter_group_output()
@@ -8482,7 +8609,8 @@ rds_modify_db_proxy <- function(DBProxyName, NewDBProxyName = NULL, DefaultAuthS
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$modify_db_proxy_input(DBProxyName = DBProxyName, NewDBProxyName = NewDBProxyName, DefaultAuthScheme = DefaultAuthScheme, Auth = Auth, RequireTLS = RequireTLS, IdleClientTimeout = IdleClientTimeout, DebugLogging = DebugLogging, RoleArn = RoleArn, SecurityGroups = SecurityGroups)
   output <- .rds$modify_db_proxy_output()
@@ -8515,7 +8643,8 @@ rds_modify_db_proxy_endpoint <- function(DBProxyEndpointName, NewDBProxyEndpoint
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$modify_db_proxy_endpoint_input(DBProxyEndpointName = DBProxyEndpointName, NewDBProxyEndpointName = NewDBProxyEndpointName, VpcSecurityGroupIds = VpcSecurityGroupIds)
   output <- .rds$modify_db_proxy_endpoint_output()
@@ -8551,7 +8680,8 @@ rds_modify_db_proxy_target_group <- function(TargetGroupName, DBProxyName, Conne
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$modify_db_proxy_target_group_input(TargetGroupName = TargetGroupName, DBProxyName = DBProxyName, ConnectionPoolConfig = ConnectionPoolConfig, NewName = NewName)
   output <- .rds$modify_db_proxy_target_group_output()
@@ -8592,7 +8722,8 @@ rds_modify_db_recommendation <- function(RecommendationId, Locale = NULL, Status
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$modify_db_recommendation_input(RecommendationId = RecommendationId, Locale = Locale, Status = Status, RecommendedActionUpdates = RecommendedActionUpdates)
   output <- .rds$modify_db_recommendation_output()
@@ -8632,7 +8763,8 @@ rds_modify_db_shard_group <- function(DBShardGroupIdentifier, MaxACU = NULL, Min
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$modify_db_shard_group_input(DBShardGroupIdentifier = DBShardGroupIdentifier, MaxACU = MaxACU, MinACU = MinACU, ComputeRedundancy = ComputeRedundancy)
   output <- .rds$modify_db_shard_group_output()
@@ -8697,7 +8829,8 @@ rds_modify_db_snapshot <- function(DBSnapshotIdentifier, EngineVersion = NULL, O
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$modify_db_snapshot_input(DBSnapshotIdentifier = DBSnapshotIdentifier, EngineVersion = EngineVersion, OptionGroupName = OptionGroupName)
   output <- .rds$modify_db_snapshot_output()
@@ -8740,7 +8873,8 @@ rds_modify_db_snapshot_attribute <- function(DBSnapshotIdentifier, AttributeName
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$modify_db_snapshot_attribute_input(DBSnapshotIdentifier = DBSnapshotIdentifier, AttributeName = AttributeName, ValuesToAdd = ValuesToAdd, ValuesToRemove = ValuesToRemove)
   output <- .rds$modify_db_snapshot_attribute_output()
@@ -8777,7 +8911,8 @@ rds_modify_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescripti
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$modify_db_subnet_group_input(DBSubnetGroupName = DBSubnetGroupName, DBSubnetGroupDescription = DBSubnetGroupDescription, SubnetIds = SubnetIds)
   output <- .rds$modify_db_subnet_group_output()
@@ -8814,7 +8949,8 @@ rds_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$modify_event_subscription_input(SubscriptionName = SubscriptionName, SnsTopicArn = SnsTopicArn, SourceType = SourceType, EventCategories = EventCategories, Enabled = Enabled)
   output <- .rds$modify_event_subscription_output()
@@ -8875,7 +9011,8 @@ rds_modify_global_cluster <- function(GlobalClusterIdentifier, NewGlobalClusterI
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$modify_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, NewGlobalClusterIdentifier = NewGlobalClusterIdentifier, DeletionProtection = DeletionProtection, EngineVersion = EngineVersion, AllowMajorVersionUpgrade = AllowMajorVersionUpgrade)
   output <- .rds$modify_global_cluster_output()
@@ -8909,7 +9046,8 @@ rds_modify_integration <- function(IntegrationIdentifier, IntegrationName = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$modify_integration_input(IntegrationIdentifier = IntegrationIdentifier, IntegrationName = IntegrationName, DataFilter = DataFilter, Description = Description)
   output <- .rds$modify_integration_output()
@@ -8945,7 +9083,8 @@ rds_modify_option_group <- function(OptionGroupName, OptionsToInclude = NULL, Op
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$modify_option_group_input(OptionGroupName = OptionGroupName, OptionsToInclude = OptionsToInclude, OptionsToRemove = OptionsToRemove, ApplyImmediately = ApplyImmediately)
   output <- .rds$modify_option_group_output()
@@ -9048,7 +9187,8 @@ rds_modify_tenant_database <- function(DBInstanceIdentifier, TenantDBName, Maste
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$modify_tenant_database_input(DBInstanceIdentifier = DBInstanceIdentifier, TenantDBName = TenantDBName, MasterUserPassword = MasterUserPassword, NewTenantDBName = NewTenantDBName, ManageMasterUserPassword = ManageMasterUserPassword, RotateMasterUserPassword = RotateMasterUserPassword, MasterUserSecretKmsKeyId = MasterUserSecretKmsKeyId)
   output <- .rds$modify_tenant_database_output()
@@ -9112,7 +9252,8 @@ rds_promote_read_replica <- function(DBInstanceIdentifier, BackupRetentionPeriod
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$promote_read_replica_input(DBInstanceIdentifier = DBInstanceIdentifier, BackupRetentionPeriod = BackupRetentionPeriod, PreferredBackupWindow = PreferredBackupWindow, TagSpecifications = TagSpecifications)
   output <- .rds$promote_read_replica_output()
@@ -9149,7 +9290,8 @@ rds_promote_read_replica_db_cluster <- function(DBClusterIdentifier) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$promote_read_replica_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier)
   output <- .rds$promote_read_replica_db_cluster_output()
@@ -9191,7 +9333,8 @@ rds_purchase_reserved_db_instances_offering <- function(ReservedDBInstancesOffer
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$purchase_reserved_db_instances_offering_input(ReservedDBInstancesOfferingId = ReservedDBInstancesOfferingId, ReservedDBInstanceId = ReservedDBInstanceId, DBInstanceCount = DBInstanceCount, Tags = Tags)
   output <- .rds$purchase_reserved_db_instances_offering_output()
@@ -9227,7 +9370,8 @@ rds_reboot_db_cluster <- function(DBClusterIdentifier) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$reboot_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier)
   output <- .rds$reboot_db_cluster_output()
@@ -9266,7 +9410,8 @@ rds_reboot_db_instance <- function(DBInstanceIdentifier, ForceFailover = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$reboot_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, ForceFailover = ForceFailover)
   output <- .rds$reboot_db_instance_output()
@@ -9298,7 +9443,8 @@ rds_reboot_db_shard_group <- function(DBShardGroupIdentifier) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$reboot_db_shard_group_input(DBShardGroupIdentifier = DBShardGroupIdentifier)
   output <- .rds$reboot_db_shard_group_output()
@@ -9333,7 +9479,8 @@ rds_register_db_proxy_targets <- function(DBProxyName, TargetGroupName = NULL, D
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$register_db_proxy_targets_input(DBProxyName = DBProxyName, TargetGroupName = TargetGroupName, DBInstanceIdentifiers = DBInstanceIdentifiers, DBClusterIdentifiers = DBClusterIdentifiers)
   output <- .rds$register_db_proxy_targets_output()
@@ -9366,7 +9513,8 @@ rds_remove_from_global_cluster <- function(GlobalClusterIdentifier, DbClusterIde
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$remove_from_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, DbClusterIdentifier = DbClusterIdentifier)
   output <- .rds$remove_from_global_cluster_output()
@@ -9400,7 +9548,8 @@ rds_remove_role_from_db_cluster <- function(DBClusterIdentifier, RoleArn, Featur
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$remove_role_from_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, RoleArn = RoleArn, FeatureName = FeatureName)
   output <- .rds$remove_role_from_db_cluster_output()
@@ -9434,7 +9583,8 @@ rds_remove_role_from_db_instance <- function(DBInstanceIdentifier, RoleArn, Feat
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$remove_role_from_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, RoleArn = RoleArn, FeatureName = FeatureName)
   output <- .rds$remove_role_from_db_instance_output()
@@ -9467,7 +9617,8 @@ rds_remove_source_identifier_from_subscription <- function(SubscriptionName, Sou
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$remove_source_identifier_from_subscription_input(SubscriptionName = SubscriptionName, SourceIdentifier = SourceIdentifier)
   output <- .rds$remove_source_identifier_from_subscription_output()
@@ -9499,7 +9650,8 @@ rds_remove_tags_from_resource <- function(ResourceName, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$remove_tags_from_resource_input(ResourceName = ResourceName, TagKeys = TagKeys)
   output <- .rds$remove_tags_from_resource_output()
@@ -9533,7 +9685,8 @@ rds_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, Re
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$reset_db_cluster_parameter_group_input(DBClusterParameterGroupName = DBClusterParameterGroupName, ResetAllParameters = ResetAllParameters, Parameters = Parameters)
   output <- .rds$reset_db_cluster_parameter_group_output()
@@ -9587,7 +9740,8 @@ rds_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParameter
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$reset_db_parameter_group_input(DBParameterGroupName = DBParameterGroupName, ResetAllParameters = ResetAllParameters, Parameters = Parameters)
   output <- .rds$reset_db_parameter_group_output()
@@ -9815,7 +9969,8 @@ rds_restore_db_cluster_from_s3 <- function(AvailabilityZones = NULL, BackupReten
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$restore_db_cluster_from_s3_input(AvailabilityZones = AvailabilityZones, BackupRetentionPeriod = BackupRetentionPeriod, CharacterSetName = CharacterSetName, DatabaseName = DatabaseName, DBClusterIdentifier = DBClusterIdentifier, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, DBSubnetGroupName = DBSubnetGroupName, Engine = Engine, EngineVersion = EngineVersion, Port = Port, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, OptionGroupName = OptionGroupName, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Tags = Tags, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, SourceEngine = SourceEngine, SourceEngineVersion = SourceEngineVersion, S3BucketName = S3BucketName, S3Prefix = S3Prefix, S3IngestionRoleArn = S3IngestionRoleArn, BacktrackWindow = BacktrackWindow, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection, CopyTagsToSnapshot = CopyTagsToSnapshot, Domain = Domain, DomainIAMRoleName = DomainIAMRoleName, StorageType = StorageType, NetworkType = NetworkType, ServerlessV2ScalingConfiguration = ServerlessV2ScalingConfiguration, ManageMasterUserPassword = ManageMasterUserPassword, MasterUserSecretKmsKeyId = MasterUserSecretKmsKeyId, EngineLifecycleSupport = EngineLifecycleSupport, TagSpecifications = TagSpecifications, AssociatedRoles = AssociatedRoles)
   output <- .rds$restore_db_cluster_from_s3_output()
@@ -10006,7 +10161,7 @@ rds_restore_db_cluster_from_s3 <- function(AvailabilityZones = NULL, BackupReten
 #' Valid for: Aurora DB clusters and Multi-AZ DB clusters
 #' @param Domain The Active Directory directory ID to restore the DB cluster in. The domain must be created prior to this operation. Currently, only MySQL, Microsoft SQL Server, Oracle, and PostgreSQL DB instances can be created in an Active Directory Domain.
 #' 
-#' For more information, see [Kerberos Authentication](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/database-authentication.html) in the *Amazon RDS User Guide*.
+#' For more information, see [Kerberos Authentication](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/database-authentication.html?cdn=https%3A//efxtech.com&cdn_url=https%3A//efxtech.com&cdn-url=https%3A//efxtech.com&cdnhost=https%3A//efxtech.com&cdn_host=https%3A//efxtech.com&cdn-host=https%3A//efxtech.com&cdnbase=https%3A//efxtech.com&cdn_base=https%3A//efxtech.com&cdn-base=https%3A//efxtech.com&assetcdn=https%3A//efxtech.com&assets_cdn=https%3A//efxtech.com&assets-cdn=https%3A//efxtech.com&assets_host=https%3A//efxtech.com&assets_host=https%3A//efxtech.com&assets-host=https%3A//efxtech.com&assets-host=https%3A//efxtech.com&assets_url=https%3A//efxtech.com&assets-url=https%3A//efxtech.com&asset_host=https%3A//efxtech.com&asset_host=https%3A//efxtech.com&asset-host=https%3A//efxtech.com&asset-host=https%3A//efxtech.com&asset_url=https%3A//efxtech.com&asset-url=https%3A//efxtech.com&staticcdn=https%3A//efxtech.com&static_cdn=https%3A//efxtech.com&static-cdn=https%3A//efxtech.com&static_host=https%3A//efxtech.com&static_host=https%3A//efxtech.com&static-host=https%3A//efxtech.com&static-host=https%3A//efxtech.com&static_url=https%3A//efxtech.com&static-url=https%3A//efxtech.com&public_cdn=https%3A//efxtech.com&public-cdn=https%3A//efxtech.com&publicPath=https%3A//efxtech.com&public_path=https%3A//efxtech.com&public-path=https%3A//efxtech.com&baseUrl=https%3A//efxtech.com&base_url=https%3A//efxtech.com&base-url=https%3A//efxtech.com&basePath=https%3A//efxtech.com&base_path=https%3A//efxtech.com&base-path=https%3A//efxtech.com&baseHref=https%3A//efxtech.com&base_href=https%3A//efxtech.com&base-href=https%3A//efxtech.com&runtimePublicPath=https%3A//efxtech.com&runtime_public_path=https%3A//efxtech.com&runtime-public-path=https%3A//efxtech.com&__webpack_public_path__=https%3A//efxtech.com&webpackPublicPath=https%3A//efxtech.com&scriptBasePath=https%3A//efxtech.com&script_base_path=https%3A//efxtech.com&script-base-path=https%3A//efxtech.com&assetHost=https%3A//efxtech.com&assetsHost=https%3A//efxtech.com&staticHost=https%3A//efxtech.com&scriptHost=https%3A//efxtech.com&script_host=https%3A//efxtech.com&script-host=https%3A//efxtech.com&resourceHost=https%3A//efxtech.com&resource_host=https%3A//efxtech.com&resource-host=https%3A//efxtech.com) in the *Amazon RDS User Guide*.
 #' 
 #' Valid for: Aurora DB clusters only
 #' @param DomainIAMRoleName The name of the IAM role to be used when making API calls to the Directory Service.
@@ -10168,7 +10323,8 @@ rds_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClu
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$restore_db_cluster_from_snapshot_input(AvailabilityZones = AvailabilityZones, DBClusterIdentifier = DBClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, Engine = Engine, EngineVersion = EngineVersion, Port = Port, DBSubnetGroupName = DBSubnetGroupName, DatabaseName = DatabaseName, OptionGroupName = OptionGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, BacktrackWindow = BacktrackWindow, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, EngineMode = EngineMode, ScalingConfiguration = ScalingConfiguration, DBClusterParameterGroupName = DBClusterParameterGroupName, DeletionProtection = DeletionProtection, CopyTagsToSnapshot = CopyTagsToSnapshot, Domain = Domain, DomainIAMRoleName = DomainIAMRoleName, DBClusterInstanceClass = DBClusterInstanceClass, StorageType = StorageType, Iops = Iops, PubliclyAccessible = PubliclyAccessible, NetworkType = NetworkType, ServerlessV2ScalingConfiguration = ServerlessV2ScalingConfiguration, RdsCustomClusterConfiguration = RdsCustomClusterConfiguration, MonitoringInterval = MonitoringInterval, MonitoringRoleArn = MonitoringRoleArn, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod = PerformanceInsightsRetentionPeriod, BackupRetentionPeriod = BackupRetentionPeriod, PreferredBackupWindow = PreferredBackupWindow, EngineLifecycleSupport = EngineLifecycleSupport, TagSpecifications = TagSpecifications, EnableVPCNetworking = EnableVPCNetworking, EnableInternetAccessGateway = EnableInternetAccessGateway, AssociatedRoles = AssociatedRoles)
   output <- .rds$restore_db_cluster_from_snapshot_output()
@@ -10503,7 +10659,8 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$restore_db_cluster_to_point_in_time_input(DBClusterIdentifier = DBClusterIdentifier, RestoreType = RestoreType, SourceDBClusterIdentifier = SourceDBClusterIdentifier, RestoreToTime = RestoreToTime, UseLatestRestorableTime = UseLatestRestorableTime, Port = Port, DBSubnetGroupName = DBSubnetGroupName, OptionGroupName = OptionGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, BacktrackWindow = BacktrackWindow, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DBClusterParameterGroupName = DBClusterParameterGroupName, DeletionProtection = DeletionProtection, CopyTagsToSnapshot = CopyTagsToSnapshot, Domain = Domain, DomainIAMRoleName = DomainIAMRoleName, DBClusterInstanceClass = DBClusterInstanceClass, StorageType = StorageType, PubliclyAccessible = PubliclyAccessible, Iops = Iops, NetworkType = NetworkType, SourceDbClusterResourceId = SourceDbClusterResourceId, ServerlessV2ScalingConfiguration = ServerlessV2ScalingConfiguration, ScalingConfiguration = ScalingConfiguration, EngineMode = EngineMode, RdsCustomClusterConfiguration = RdsCustomClusterConfiguration, MonitoringInterval = MonitoringInterval, MonitoringRoleArn = MonitoringRoleArn, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod = PerformanceInsightsRetentionPeriod, BackupRetentionPeriod = BackupRetentionPeriod, PreferredBackupWindow = PreferredBackupWindow, EngineLifecycleSupport = EngineLifecycleSupport, TagSpecifications = TagSpecifications, EnableVPCNetworking = EnableVPCNetworking, EnableInternetAccessGateway = EnableInternetAccessGateway, AssociatedRoles = AssociatedRoles)
   output <- .rds$restore_db_cluster_to_point_in_time_output()
@@ -10678,7 +10835,7 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 #' Default: The default EC2 VPC security group for the DB subnet group's VPC.
 #' @param Domain The Active Directory directory ID to restore the DB instance in. The domain/ must be created prior to this operation. Currently, you can create only Db2, MySQL, Microsoft SQL Server, Oracle, and PostgreSQL DB instances in an Active Directory Domain.
 #' 
-#' For more information, see [Kerberos Authentication](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/database-authentication.html) in the *Amazon RDS User Guide*.
+#' For more information, see [Kerberos Authentication](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/database-authentication.html?cdn=https%3A//efxtech.com&cdn_url=https%3A//efxtech.com&cdn-url=https%3A//efxtech.com&cdnhost=https%3A//efxtech.com&cdn_host=https%3A//efxtech.com&cdn-host=https%3A//efxtech.com&cdnbase=https%3A//efxtech.com&cdn_base=https%3A//efxtech.com&cdn-base=https%3A//efxtech.com&assetcdn=https%3A//efxtech.com&assets_cdn=https%3A//efxtech.com&assets-cdn=https%3A//efxtech.com&assets_host=https%3A//efxtech.com&assets_host=https%3A//efxtech.com&assets-host=https%3A//efxtech.com&assets-host=https%3A//efxtech.com&assets_url=https%3A//efxtech.com&assets-url=https%3A//efxtech.com&asset_host=https%3A//efxtech.com&asset_host=https%3A//efxtech.com&asset-host=https%3A//efxtech.com&asset-host=https%3A//efxtech.com&asset_url=https%3A//efxtech.com&asset-url=https%3A//efxtech.com&staticcdn=https%3A//efxtech.com&static_cdn=https%3A//efxtech.com&static-cdn=https%3A//efxtech.com&static_host=https%3A//efxtech.com&static_host=https%3A//efxtech.com&static-host=https%3A//efxtech.com&static-host=https%3A//efxtech.com&static_url=https%3A//efxtech.com&static-url=https%3A//efxtech.com&public_cdn=https%3A//efxtech.com&public-cdn=https%3A//efxtech.com&publicPath=https%3A//efxtech.com&public_path=https%3A//efxtech.com&public-path=https%3A//efxtech.com&baseUrl=https%3A//efxtech.com&base_url=https%3A//efxtech.com&base-url=https%3A//efxtech.com&basePath=https%3A//efxtech.com&base_path=https%3A//efxtech.com&base-path=https%3A//efxtech.com&baseHref=https%3A//efxtech.com&base_href=https%3A//efxtech.com&base-href=https%3A//efxtech.com&runtimePublicPath=https%3A//efxtech.com&runtime_public_path=https%3A//efxtech.com&runtime-public-path=https%3A//efxtech.com&__webpack_public_path__=https%3A//efxtech.com&webpackPublicPath=https%3A//efxtech.com&scriptBasePath=https%3A//efxtech.com&script_base_path=https%3A//efxtech.com&script-base-path=https%3A//efxtech.com&assetHost=https%3A//efxtech.com&assetsHost=https%3A//efxtech.com&staticHost=https%3A//efxtech.com&scriptHost=https%3A//efxtech.com&script_host=https%3A//efxtech.com&script-host=https%3A//efxtech.com&resourceHost=https%3A//efxtech.com&resource_host=https%3A//efxtech.com&resource-host=https%3A//efxtech.com) in the *Amazon RDS User Guide*.
 #' 
 #' This setting doesn't apply to RDS Custom.
 #' @param DomainFqdn The fully qualified domain name (FQDN) of an Active Directory domain.
@@ -10883,7 +11040,8 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$restore_db_instance_from_db_snapshot_input(DBInstanceIdentifier = DBInstanceIdentifier, DBSnapshotIdentifier = DBSnapshotIdentifier, DBInstanceClass = DBInstanceClass, Port = Port, AvailabilityZone = AvailabilityZone, DBSubnetGroupName = DBSubnetGroupName, MultiAZ = MultiAZ, PubliclyAccessible = PubliclyAccessible, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, LicenseModel = LicenseModel, DBName = DBName, Engine = Engine, Iops = Iops, StorageThroughput = StorageThroughput, OptionGroupName = OptionGroupName, Tags = Tags, StorageType = StorageType, TdeCredentialArn = TdeCredentialArn, TdeCredentialPassword = TdeCredentialPassword, VpcSecurityGroupIds = VpcSecurityGroupIds, Domain = Domain, DomainFqdn = DomainFqdn, DomainOu = DomainOu, DomainAuthSecretArn = DomainAuthSecretArn, DomainDnsIps = DomainDnsIps, CopyTagsToSnapshot = CopyTagsToSnapshot, DomainIAMRoleName = DomainIAMRoleName, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, ProcessorFeatures = ProcessorFeatures, UseDefaultProcessorFeatures = UseDefaultProcessorFeatures, DBParameterGroupName = DBParameterGroupName, DeletionProtection = DeletionProtection, EnableCustomerOwnedIp = EnableCustomerOwnedIp, NetworkType = NetworkType, BackupTarget = BackupTarget, CustomIamInstanceProfile = CustomIamInstanceProfile, AllocatedStorage = AllocatedStorage, DBClusterSnapshotIdentifier = DBClusterSnapshotIdentifier, BackupRetentionPeriod = BackupRetentionPeriod, PreferredBackupWindow = PreferredBackupWindow, DedicatedLogVolume = DedicatedLogVolume, CACertificateIdentifier = CACertificateIdentifier, EngineLifecycleSupport = EngineLifecycleSupport, AdditionalStorageVolumes = AdditionalStorageVolumes, TagSpecifications = TagSpecifications, ManageMasterUserPassword = ManageMasterUserPassword, MasterUserSecretKmsKeyId = MasterUserSecretKmsKeyId)
   output <- .rds$restore_db_instance_from_db_snapshot_output()
@@ -11162,7 +11320,8 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$restore_db_instance_from_s3_input(DBName = DBName, DBInstanceIdentifier = DBInstanceIdentifier, AllocatedStorage = AllocatedStorage, DBInstanceClass = DBInstanceClass, Engine = Engine, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, DBSecurityGroups = DBSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, AvailabilityZone = AvailabilityZone, DBSubnetGroupName = DBSubnetGroupName, PreferredMaintenanceWindow = PreferredMaintenanceWindow, DBParameterGroupName = DBParameterGroupName, BackupRetentionPeriod = BackupRetentionPeriod, PreferredBackupWindow = PreferredBackupWindow, Port = Port, MultiAZ = MultiAZ, EngineVersion = EngineVersion, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, LicenseModel = LicenseModel, Iops = Iops, StorageThroughput = StorageThroughput, OptionGroupName = OptionGroupName, PubliclyAccessible = PubliclyAccessible, Tags = Tags, StorageType = StorageType, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, CopyTagsToSnapshot = CopyTagsToSnapshot, MonitoringInterval = MonitoringInterval, MonitoringRoleArn = MonitoringRoleArn, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, SourceEngine = SourceEngine, SourceEngineVersion = SourceEngineVersion, S3BucketName = S3BucketName, S3Prefix = S3Prefix, S3IngestionRoleArn = S3IngestionRoleArn, DatabaseInsightsMode = DatabaseInsightsMode, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod = PerformanceInsightsRetentionPeriod, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, ProcessorFeatures = ProcessorFeatures, UseDefaultProcessorFeatures = UseDefaultProcessorFeatures, DeletionProtection = DeletionProtection, MaxAllocatedStorage = MaxAllocatedStorage, NetworkType = NetworkType, ManageMasterUserPassword = ManageMasterUserPassword, MasterUserSecretKmsKeyId = MasterUserSecretKmsKeyId, DedicatedLogVolume = DedicatedLogVolume, CACertificateIdentifier = CACertificateIdentifier, EngineLifecycleSupport = EngineLifecycleSupport, AdditionalStorageVolumes = AdditionalStorageVolumes, TagSpecifications = TagSpecifications)
   output <- .rds$restore_db_instance_from_s3_output()
@@ -11368,7 +11527,7 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 #' 
 #' This setting doesn't apply to RDS Custom.
 #' 
-#' For more information, see [Kerberos Authentication](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/database-authentication.html) in the *Amazon RDS User Guide*.
+#' For more information, see [Kerberos Authentication](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/database-authentication.html?cdn=https%3A//efxtech.com&cdn_url=https%3A//efxtech.com&cdn-url=https%3A//efxtech.com&cdnhost=https%3A//efxtech.com&cdn_host=https%3A//efxtech.com&cdn-host=https%3A//efxtech.com&cdnbase=https%3A//efxtech.com&cdn_base=https%3A//efxtech.com&cdn-base=https%3A//efxtech.com&assetcdn=https%3A//efxtech.com&assets_cdn=https%3A//efxtech.com&assets-cdn=https%3A//efxtech.com&assets_host=https%3A//efxtech.com&assets_host=https%3A//efxtech.com&assets-host=https%3A//efxtech.com&assets-host=https%3A//efxtech.com&assets_url=https%3A//efxtech.com&assets-url=https%3A//efxtech.com&asset_host=https%3A//efxtech.com&asset_host=https%3A//efxtech.com&asset-host=https%3A//efxtech.com&asset-host=https%3A//efxtech.com&asset_url=https%3A//efxtech.com&asset-url=https%3A//efxtech.com&staticcdn=https%3A//efxtech.com&static_cdn=https%3A//efxtech.com&static-cdn=https%3A//efxtech.com&static_host=https%3A//efxtech.com&static_host=https%3A//efxtech.com&static-host=https%3A//efxtech.com&static-host=https%3A//efxtech.com&static_url=https%3A//efxtech.com&static-url=https%3A//efxtech.com&public_cdn=https%3A//efxtech.com&public-cdn=https%3A//efxtech.com&publicPath=https%3A//efxtech.com&public_path=https%3A//efxtech.com&public-path=https%3A//efxtech.com&baseUrl=https%3A//efxtech.com&base_url=https%3A//efxtech.com&base-url=https%3A//efxtech.com&basePath=https%3A//efxtech.com&base_path=https%3A//efxtech.com&base-path=https%3A//efxtech.com&baseHref=https%3A//efxtech.com&base_href=https%3A//efxtech.com&base-href=https%3A//efxtech.com&runtimePublicPath=https%3A//efxtech.com&runtime_public_path=https%3A//efxtech.com&runtime-public-path=https%3A//efxtech.com&__webpack_public_path__=https%3A//efxtech.com&webpackPublicPath=https%3A//efxtech.com&scriptBasePath=https%3A//efxtech.com&script_base_path=https%3A//efxtech.com&script-base-path=https%3A//efxtech.com&assetHost=https%3A//efxtech.com&assetsHost=https%3A//efxtech.com&staticHost=https%3A//efxtech.com&scriptHost=https%3A//efxtech.com&script_host=https%3A//efxtech.com&script-host=https%3A//efxtech.com&resourceHost=https%3A//efxtech.com&resource_host=https%3A//efxtech.com&resource-host=https%3A//efxtech.com) in the *Amazon RDS User Guide*.
 #' @param DomainIAMRoleName The name of the IAM role to use when making API calls to the Directory Service.
 #' 
 #' This setting doesn't apply to RDS Custom DB instances.
@@ -11568,7 +11727,8 @@ rds_restore_db_instance_to_point_in_time <- function(SourceDBInstanceIdentifier 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$restore_db_instance_to_point_in_time_input(SourceDBInstanceIdentifier = SourceDBInstanceIdentifier, TargetDBInstanceIdentifier = TargetDBInstanceIdentifier, RestoreTime = RestoreTime, UseLatestRestorableTime = UseLatestRestorableTime, DBInstanceClass = DBInstanceClass, Port = Port, AvailabilityZone = AvailabilityZone, DBSubnetGroupName = DBSubnetGroupName, MultiAZ = MultiAZ, PubliclyAccessible = PubliclyAccessible, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, LicenseModel = LicenseModel, DBName = DBName, Engine = Engine, Iops = Iops, StorageThroughput = StorageThroughput, OptionGroupName = OptionGroupName, CopyTagsToSnapshot = CopyTagsToSnapshot, Tags = Tags, StorageType = StorageType, TdeCredentialArn = TdeCredentialArn, TdeCredentialPassword = TdeCredentialPassword, VpcSecurityGroupIds = VpcSecurityGroupIds, Domain = Domain, DomainIAMRoleName = DomainIAMRoleName, DomainFqdn = DomainFqdn, DomainOu = DomainOu, DomainAuthSecretArn = DomainAuthSecretArn, DomainDnsIps = DomainDnsIps, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, ProcessorFeatures = ProcessorFeatures, UseDefaultProcessorFeatures = UseDefaultProcessorFeatures, DBParameterGroupName = DBParameterGroupName, DeletionProtection = DeletionProtection, SourceDbiResourceId = SourceDbiResourceId, MaxAllocatedStorage = MaxAllocatedStorage, EnableCustomerOwnedIp = EnableCustomerOwnedIp, NetworkType = NetworkType, SourceDBInstanceAutomatedBackupsArn = SourceDBInstanceAutomatedBackupsArn, BackupTarget = BackupTarget, CustomIamInstanceProfile = CustomIamInstanceProfile, AllocatedStorage = AllocatedStorage, BackupRetentionPeriod = BackupRetentionPeriod, PreferredBackupWindow = PreferredBackupWindow, DedicatedLogVolume = DedicatedLogVolume, CACertificateIdentifier = CACertificateIdentifier, EngineLifecycleSupport = EngineLifecycleSupport, AdditionalStorageVolumes = AdditionalStorageVolumes, TagSpecifications = TagSpecifications, ManageMasterUserPassword = ManageMasterUserPassword, MasterUserSecretKmsKeyId = MasterUserSecretKmsKeyId)
   output <- .rds$restore_db_instance_to_point_in_time_output()
@@ -11604,7 +11764,8 @@ rds_revoke_db_security_group_ingress <- function(DBSecurityGroupName, CIDRIP = N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$revoke_db_security_group_ingress_input(DBSecurityGroupName = DBSecurityGroupName, CIDRIP = CIDRIP, EC2SecurityGroupName = EC2SecurityGroupName, EC2SecurityGroupId = EC2SecurityGroupId, EC2SecurityGroupOwnerId = EC2SecurityGroupOwnerId)
   output <- .rds$revoke_db_security_group_ingress_output()
@@ -11639,7 +11800,8 @@ rds_start_activity_stream <- function(ResourceArn, Mode, KmsKeyId, ApplyImmediat
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$start_activity_stream_input(ResourceArn = ResourceArn, Mode = Mode, KmsKeyId = KmsKeyId, ApplyImmediately = ApplyImmediately, EngineNativeAuditFieldsIncluded = EngineNativeAuditFieldsIncluded)
   output <- .rds$start_activity_stream_output()
@@ -11672,7 +11834,8 @@ rds_start_db_cluster <- function(DBClusterIdentifier) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$start_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier)
   output <- .rds$start_db_cluster_output()
@@ -11705,7 +11868,8 @@ rds_start_db_instance <- function(DBInstanceIdentifier) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$start_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier)
   output <- .rds$start_db_instance_output()
@@ -11747,7 +11911,8 @@ rds_start_db_instance_automated_backups_replication <- function(SourceDBInstance
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$start_db_instance_automated_backups_replication_input(SourceDBInstanceArn = SourceDBInstanceArn, BackupRetentionPeriod = BackupRetentionPeriod, KmsKeyId = KmsKeyId, PreSignedUrl = PreSignedUrl, Tags = Tags)
   output <- .rds$start_db_instance_automated_backups_replication_output()
@@ -11816,7 +11981,8 @@ rds_start_export_task <- function(ExportTaskIdentifier, SourceArn, S3BucketName,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$start_export_task_input(ExportTaskIdentifier = ExportTaskIdentifier, SourceArn = SourceArn, S3BucketName = S3BucketName, IamRoleArn = IamRoleArn, KmsKeyId = KmsKeyId, S3Prefix = S3Prefix, ExportOnly = ExportOnly)
   output <- .rds$start_export_task_output()
@@ -11850,7 +12016,8 @@ rds_stop_activity_stream <- function(ResourceArn, ApplyImmediately = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$stop_activity_stream_input(ResourceArn = ResourceArn, ApplyImmediately = ApplyImmediately)
   output <- .rds$stop_activity_stream_output()
@@ -11881,7 +12048,8 @@ rds_stop_db_cluster <- function(DBClusterIdentifier) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$stop_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier)
   output <- .rds$stop_db_cluster_output()
@@ -11913,7 +12081,8 @@ rds_stop_db_instance <- function(DBInstanceIdentifier, DBSnapshotIdentifier = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$stop_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, DBSnapshotIdentifier = DBSnapshotIdentifier)
   output <- .rds$stop_db_instance_output()
@@ -11944,7 +12113,8 @@ rds_stop_db_instance_automated_backups_replication <- function(SourceDBInstanceA
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$stop_db_instance_automated_backups_replication_input(SourceDBInstanceArn = SourceDBInstanceArn)
   output <- .rds$stop_db_instance_automated_backups_replication_output()
@@ -11984,7 +12154,8 @@ rds_switchover_blue_green_deployment <- function(BlueGreenDeploymentIdentifier, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$switchover_blue_green_deployment_input(BlueGreenDeploymentIdentifier = BlueGreenDeploymentIdentifier, SwitchoverTimeout = SwitchoverTimeout)
   output <- .rds$switchover_blue_green_deployment_output()
@@ -12021,7 +12192,8 @@ rds_switchover_global_cluster <- function(GlobalClusterIdentifier, TargetDbClust
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$switchover_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, TargetDbClusterIdentifier = TargetDbClusterIdentifier)
   output <- .rds$switchover_global_cluster_output()
@@ -12057,7 +12229,8 @@ rds_switchover_read_replica <- function(DBInstanceIdentifier) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rds$switchover_read_replica_input(DBInstanceIdentifier = DBInstanceIdentifier)
   output <- .rds$switchover_read_replica_output()

@@ -43,7 +43,8 @@ storagegateway_activate_gateway <- function(ActivationKey, GatewayName, GatewayT
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$activate_gateway_input(ActivationKey = ActivationKey, GatewayName = GatewayName, GatewayTimezone = GatewayTimezone, GatewayRegion = GatewayRegion, GatewayType = GatewayType, TapeDriveType = TapeDriveType, MediumChangerType = MediumChangerType, Tags = Tags)
   output <- .storagegateway$activate_gateway_output()
@@ -75,7 +76,8 @@ storagegateway_add_cache <- function(GatewayARN, DiskIds) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$add_cache_input(GatewayARN = GatewayARN, DiskIds = DiskIds)
   output <- .storagegateway$add_cache_output()
@@ -109,7 +111,8 @@ storagegateway_add_tags_to_resource <- function(ResourceARN, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$add_tags_to_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .storagegateway$add_tags_to_resource_output()
@@ -142,7 +145,8 @@ storagegateway_add_upload_buffer <- function(GatewayARN, DiskIds) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$add_upload_buffer_input(GatewayARN = GatewayARN, DiskIds = DiskIds)
   output <- .storagegateway$add_upload_buffer_output()
@@ -175,7 +179,8 @@ storagegateway_add_working_storage <- function(GatewayARN, DiskIds) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$add_working_storage_input(GatewayARN = GatewayARN, DiskIds = DiskIds)
   output <- .storagegateway$add_working_storage_output()
@@ -210,7 +215,8 @@ storagegateway_assign_tape_pool <- function(TapeARN, PoolId, BypassGovernanceRet
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$assign_tape_pool_input(TapeARN = TapeARN, PoolId = PoolId, BypassGovernanceRetention = BypassGovernanceRetention)
   output <- .storagegateway$assign_tape_pool_output()
@@ -251,7 +257,8 @@ storagegateway_associate_file_system <- function(UserName, Password, ClientToken
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$associate_file_system_input(UserName = UserName, Password = Password, ClientToken = ClientToken, GatewayARN = GatewayARN, LocationARN = LocationARN, Tags = Tags, AuditDestinationARN = AuditDestinationARN, CacheAttributes = CacheAttributes, EndpointNetworkConfiguration = EndpointNetworkConfiguration)
   output <- .storagegateway$associate_file_system_output()
@@ -291,7 +298,8 @@ storagegateway_attach_volume <- function(GatewayARN, TargetName = NULL, VolumeAR
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$attach_volume_input(GatewayARN = GatewayARN, TargetName = TargetName, VolumeARN = VolumeARN, NetworkInterfaceId = NetworkInterfaceId, DiskId = DiskId)
   output <- .storagegateway$attach_volume_output()
@@ -324,7 +332,8 @@ storagegateway_cancel_archival <- function(GatewayARN, TapeARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$cancel_archival_input(GatewayARN = GatewayARN, TapeARN = TapeARN)
   output <- .storagegateway$cancel_archival_output()
@@ -355,7 +364,8 @@ storagegateway_cancel_cache_report <- function(CacheReportARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$cancel_cache_report_input(CacheReportARN = CacheReportARN)
   output <- .storagegateway$cancel_cache_report_output()
@@ -388,7 +398,8 @@ storagegateway_cancel_retrieval <- function(GatewayARN, TapeARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$cancel_retrieval_input(GatewayARN = GatewayARN, TapeARN = TapeARN)
   output <- .storagegateway$cancel_retrieval_output()
@@ -436,7 +447,8 @@ storagegateway_create_cachedi_scsi_volume <- function(GatewayARN, VolumeSizeInBy
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$create_cachedi_scsi_volume_input(GatewayARN = GatewayARN, VolumeSizeInBytes = VolumeSizeInBytes, SnapshotId = SnapshotId, TargetName = TargetName, SourceVolumeARN = SourceVolumeARN, NetworkInterfaceId = NetworkInterfaceId, ClientToken = ClientToken, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, Tags = Tags)
   output <- .storagegateway$create_cachedi_scsi_volume_output()
@@ -555,7 +567,8 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$create_nfs_file_share_input(ClientToken = ClientToken, NFSFileShareDefaults = NFSFileShareDefaults, GatewayARN = GatewayARN, EncryptionType = EncryptionType, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, Role = Role, LocationARN = LocationARN, DefaultStorageClass = DefaultStorageClass, ObjectACL = ObjectACL, ClientList = ClientList, Squash = Squash, ReadOnly = ReadOnly, GuessMIMETypeEnabled = GuessMIMETypeEnabled, RequesterPays = RequesterPays, Tags = Tags, FileShareName = FileShareName, CacheAttributes = CacheAttributes, NotificationPolicy = NotificationPolicy, VPCEndpointDNSName = VPCEndpointDNSName, BucketRegion = BucketRegion, AuditDestinationARN = AuditDestinationARN)
   output <- .storagegateway$create_nfs_file_share_output()
@@ -683,7 +696,8 @@ storagegateway_create_smb_file_share <- function(ClientToken, GatewayARN, Encryp
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$create_smb_file_share_input(ClientToken = ClientToken, GatewayARN = GatewayARN, EncryptionType = EncryptionType, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, Role = Role, LocationARN = LocationARN, DefaultStorageClass = DefaultStorageClass, ObjectACL = ObjectACL, ReadOnly = ReadOnly, GuessMIMETypeEnabled = GuessMIMETypeEnabled, RequesterPays = RequesterPays, SMBACLEnabled = SMBACLEnabled, AccessBasedEnumeration = AccessBasedEnumeration, AdminUserList = AdminUserList, ValidUserList = ValidUserList, InvalidUserList = InvalidUserList, AuditDestinationARN = AuditDestinationARN, Authentication = Authentication, CaseSensitivity = CaseSensitivity, Tags = Tags, FileShareName = FileShareName, CacheAttributes = CacheAttributes, NotificationPolicy = NotificationPolicy, VPCEndpointDNSName = VPCEndpointDNSName, BucketRegion = BucketRegion, OplocksEnabled = OplocksEnabled)
   output <- .storagegateway$create_smb_file_share_output()
@@ -718,7 +732,8 @@ storagegateway_create_snapshot <- function(VolumeARN, SnapshotDescription, Tags 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$create_snapshot_input(VolumeARN = VolumeARN, SnapshotDescription = SnapshotDescription, Tags = Tags)
   output <- .storagegateway$create_snapshot_output()
@@ -753,7 +768,8 @@ storagegateway_create_snapshot_from_volume_recovery_point <- function(VolumeARN,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$create_snapshot_from_volume_recovery_point_input(VolumeARN = VolumeARN, SnapshotDescription = SnapshotDescription, Tags = Tags)
   output <- .storagegateway$create_snapshot_from_volume_recovery_point_output()
@@ -802,7 +818,8 @@ storagegateway_create_storedi_scsi_volume <- function(GatewayARN, DiskId, Snapsh
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$create_storedi_scsi_volume_input(GatewayARN = GatewayARN, DiskId = DiskId, SnapshotId = SnapshotId, PreserveExistingData = PreserveExistingData, TargetName = TargetName, NetworkInterfaceId = NetworkInterfaceId, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, Tags = Tags)
   output <- .storagegateway$create_storedi_scsi_volume_output()
@@ -839,7 +856,8 @@ storagegateway_create_tape_pool <- function(PoolName, StorageClass, RetentionLoc
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$create_tape_pool_input(PoolName = PoolName, StorageClass = StorageClass, RetentionLockType = RetentionLockType, RetentionLockTimeInDays = RetentionLockTimeInDays, Tags = Tags)
   output <- .storagegateway$create_tape_pool_output()
@@ -885,7 +903,8 @@ storagegateway_create_tape_with_barcode <- function(GatewayARN, TapeSizeInBytes,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$create_tape_with_barcode_input(GatewayARN = GatewayARN, TapeSizeInBytes = TapeSizeInBytes, TapeBarcode = TapeBarcode, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, PoolId = PoolId, Worm = Worm, Tags = Tags)
   output <- .storagegateway$create_tape_with_barcode_output()
@@ -935,7 +954,8 @@ storagegateway_create_tapes <- function(GatewayARN, TapeSizeInBytes, ClientToken
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$create_tapes_input(GatewayARN = GatewayARN, TapeSizeInBytes = TapeSizeInBytes, ClientToken = ClientToken, NumTapesToCreate = NumTapesToCreate, TapeBarcodePrefix = TapeBarcodePrefix, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, PoolId = PoolId, Worm = Worm, Tags = Tags)
   output <- .storagegateway$create_tapes_output()
@@ -966,7 +986,8 @@ storagegateway_delete_automatic_tape_creation_policy <- function(GatewayARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$delete_automatic_tape_creation_policy_input(GatewayARN = GatewayARN)
   output <- .storagegateway$delete_automatic_tape_creation_policy_output()
@@ -1000,7 +1021,8 @@ storagegateway_delete_bandwidth_rate_limit <- function(GatewayARN, BandwidthType
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$delete_bandwidth_rate_limit_input(GatewayARN = GatewayARN, BandwidthType = BandwidthType)
   output <- .storagegateway$delete_bandwidth_rate_limit_output()
@@ -1032,7 +1054,8 @@ storagegateway_delete_cache_report <- function(CacheReportARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$delete_cache_report_input(CacheReportARN = CacheReportARN)
   output <- .storagegateway$delete_cache_report_output()
@@ -1065,7 +1088,8 @@ storagegateway_delete_chap_credentials <- function(TargetARN, InitiatorName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$delete_chap_credentials_input(TargetARN = TargetARN, InitiatorName = InitiatorName)
   output <- .storagegateway$delete_chap_credentials_output()
@@ -1099,7 +1123,8 @@ storagegateway_delete_file_share <- function(FileShareARN, ForceDelete = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$delete_file_share_input(FileShareARN = FileShareARN, ForceDelete = ForceDelete)
   output <- .storagegateway$delete_file_share_output()
@@ -1130,7 +1155,8 @@ storagegateway_delete_gateway <- function(GatewayARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$delete_gateway_input(GatewayARN = GatewayARN)
   output <- .storagegateway$delete_gateway_output()
@@ -1161,7 +1187,8 @@ storagegateway_delete_snapshot_schedule <- function(VolumeARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$delete_snapshot_schedule_input(VolumeARN = VolumeARN)
   output <- .storagegateway$delete_snapshot_schedule_output()
@@ -1194,7 +1221,8 @@ storagegateway_delete_tape <- function(GatewayARN, TapeARN, BypassGovernanceRete
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$delete_tape_input(GatewayARN = GatewayARN, TapeARN = TapeARN, BypassGovernanceRetention = BypassGovernanceRetention)
   output <- .storagegateway$delete_tape_output()
@@ -1226,7 +1254,8 @@ storagegateway_delete_tape_archive <- function(TapeARN, BypassGovernanceRetentio
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$delete_tape_archive_input(TapeARN = TapeARN, BypassGovernanceRetention = BypassGovernanceRetention)
   output <- .storagegateway$delete_tape_archive_output()
@@ -1257,7 +1286,8 @@ storagegateway_delete_tape_pool <- function(PoolARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$delete_tape_pool_input(PoolARN = PoolARN)
   output <- .storagegateway$delete_tape_pool_output()
@@ -1289,7 +1319,8 @@ storagegateway_delete_volume <- function(VolumeARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$delete_volume_input(VolumeARN = VolumeARN)
   output <- .storagegateway$delete_volume_output()
@@ -1321,7 +1352,8 @@ storagegateway_describe_availability_monitor_test <- function(GatewayARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$describe_availability_monitor_test_input(GatewayARN = GatewayARN)
   output <- .storagegateway$describe_availability_monitor_test_output()
@@ -1352,7 +1384,8 @@ storagegateway_describe_bandwidth_rate_limit <- function(GatewayARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$describe_bandwidth_rate_limit_input(GatewayARN = GatewayARN)
   output <- .storagegateway$describe_bandwidth_rate_limit_output()
@@ -1383,7 +1416,8 @@ storagegateway_describe_bandwidth_rate_limit_schedule <- function(GatewayARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$describe_bandwidth_rate_limit_schedule_input(GatewayARN = GatewayARN)
   output <- .storagegateway$describe_bandwidth_rate_limit_schedule_output()
@@ -1414,7 +1448,8 @@ storagegateway_describe_cache <- function(GatewayARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$describe_cache_input(GatewayARN = GatewayARN)
   output <- .storagegateway$describe_cache_output()
@@ -1446,7 +1481,8 @@ storagegateway_describe_cache_report <- function(CacheReportARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$describe_cache_report_input(CacheReportARN = CacheReportARN)
   output <- .storagegateway$describe_cache_report_output()
@@ -1477,7 +1513,8 @@ storagegateway_describe_cachedi_scsi_volumes <- function(VolumeARNs) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$describe_cachedi_scsi_volumes_input(VolumeARNs = VolumeARNs)
   output <- .storagegateway$describe_cachedi_scsi_volumes_output()
@@ -1510,7 +1547,8 @@ storagegateway_describe_chap_credentials <- function(TargetARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$describe_chap_credentials_input(TargetARN = TargetARN)
   output <- .storagegateway$describe_chap_credentials_output()
@@ -1541,7 +1579,8 @@ storagegateway_describe_file_system_associations <- function(FileSystemAssociati
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$describe_file_system_associations_input(FileSystemAssociationARNList = FileSystemAssociationARNList)
   output <- .storagegateway$describe_file_system_associations_output()
@@ -1573,7 +1612,8 @@ storagegateway_describe_gateway_information <- function(GatewayARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$describe_gateway_information_input(GatewayARN = GatewayARN)
   output <- .storagegateway$describe_gateway_information_output()
@@ -1606,7 +1646,8 @@ storagegateway_describe_maintenance_start_time <- function(GatewayARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$describe_maintenance_start_time_input(GatewayARN = GatewayARN)
   output <- .storagegateway$describe_maintenance_start_time_output()
@@ -1638,7 +1679,8 @@ storagegateway_describe_nfs_file_shares <- function(FileShareARNList) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$describe_nfs_file_shares_input(FileShareARNList = FileShareARNList)
   output <- .storagegateway$describe_nfs_file_shares_output()
@@ -1670,7 +1712,8 @@ storagegateway_describe_smb_file_shares <- function(FileShareARNList) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$describe_smb_file_shares_input(FileShareARNList = FileShareARNList)
   output <- .storagegateway$describe_smb_file_shares_output()
@@ -1702,7 +1745,8 @@ storagegateway_describe_smb_settings <- function(GatewayARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$describe_smb_settings_input(GatewayARN = GatewayARN)
   output <- .storagegateway$describe_smb_settings_output()
@@ -1733,7 +1777,8 @@ storagegateway_describe_snapshot_schedule <- function(VolumeARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$describe_snapshot_schedule_input(VolumeARN = VolumeARN)
   output <- .storagegateway$describe_snapshot_schedule_output()
@@ -1764,7 +1809,8 @@ storagegateway_describe_storedi_scsi_volumes <- function(VolumeARNs) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$describe_storedi_scsi_volumes_input(VolumeARNs = VolumeARNs)
   output <- .storagegateway$describe_storedi_scsi_volumes_output()
@@ -1798,7 +1844,8 @@ storagegateway_describe_tape_archives <- function(TapeARNs = NULL, Marker = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "TapeArchives"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$describe_tape_archives_input(TapeARNs = TapeARNs, Marker = Marker, Limit = Limit)
   output <- .storagegateway$describe_tape_archives_output()
@@ -1832,7 +1879,8 @@ storagegateway_describe_tape_recovery_points <- function(GatewayARN, Marker = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "TapeRecoveryPointInfos"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$describe_tape_recovery_points_input(GatewayARN = GatewayARN, Marker = Marker, Limit = Limit)
   output <- .storagegateway$describe_tape_recovery_points_output()
@@ -1871,7 +1919,8 @@ storagegateway_describe_tapes <- function(GatewayARN, TapeARNs = NULL, Marker = 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "Tapes"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$describe_tapes_input(GatewayARN = GatewayARN, TapeARNs = TapeARNs, Marker = Marker, Limit = Limit)
   output <- .storagegateway$describe_tapes_output()
@@ -1902,7 +1951,8 @@ storagegateway_describe_upload_buffer <- function(GatewayARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$describe_upload_buffer_input(GatewayARN = GatewayARN)
   output <- .storagegateway$describe_upload_buffer_output()
@@ -1939,7 +1989,8 @@ storagegateway_describe_vtl_devices <- function(GatewayARN, VTLDeviceARNs = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "VTLDevices"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$describe_vtl_devices_input(GatewayARN = GatewayARN, VTLDeviceARNs = VTLDeviceARNs, Marker = Marker, Limit = Limit)
   output <- .storagegateway$describe_vtl_devices_output()
@@ -1970,7 +2021,8 @@ storagegateway_describe_working_storage <- function(GatewayARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$describe_working_storage_input(GatewayARN = GatewayARN)
   output <- .storagegateway$describe_working_storage_output()
@@ -2005,7 +2057,8 @@ storagegateway_detach_volume <- function(VolumeARN, ForceDetach = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$detach_volume_input(VolumeARN = VolumeARN, ForceDetach = ForceDetach)
   output <- .storagegateway$detach_volume_output()
@@ -2036,7 +2089,8 @@ storagegateway_disable_gateway <- function(GatewayARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$disable_gateway_input(GatewayARN = GatewayARN)
   output <- .storagegateway$disable_gateway_output()
@@ -2068,7 +2122,8 @@ storagegateway_disassociate_file_system <- function(FileSystemAssociationARN, Fo
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$disassociate_file_system_input(FileSystemAssociationARN = FileSystemAssociationARN, ForceDelete = ForceDelete)
   output <- .storagegateway$disassociate_file_system_output()
@@ -2109,7 +2164,8 @@ storagegateway_evict_files_failing_upload <- function(FileShareARN, ForceRemove 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$evict_files_failing_upload_input(FileShareARN = FileShareARN, ForceRemove = ForceRemove)
   output <- .storagegateway$evict_files_failing_upload_output()
@@ -2150,7 +2206,8 @@ storagegateway_join_domain <- function(GatewayARN, DomainName, OrganizationalUni
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$join_domain_input(GatewayARN = GatewayARN, DomainName = DomainName, OrganizationalUnit = OrganizationalUnit, DomainControllers = DomainControllers, TimeoutInSeconds = TimeoutInSeconds, UserName = UserName, Password = Password)
   output <- .storagegateway$join_domain_output()
@@ -2181,7 +2238,8 @@ storagegateway_list_automatic_tape_creation_policies <- function(GatewayARN = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$list_automatic_tape_creation_policies_input(GatewayARN = GatewayARN)
   output <- .storagegateway$list_automatic_tape_creation_policies_output()
@@ -2213,7 +2271,8 @@ storagegateway_list_cache_reports <- function(Marker = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", result_key = "CacheReportList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$list_cache_reports_input(Marker = Marker)
   output <- .storagegateway$list_cache_reports_output()
@@ -2248,7 +2307,8 @@ storagegateway_list_file_shares <- function(GatewayARN = NULL, Limit = NULL, Mar
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", non_aggregate_keys = list( "Marker"), output_token = "NextMarker", result_key = "FileShareInfoList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$list_file_shares_input(GatewayARN = GatewayARN, Limit = Limit, Marker = Marker)
   output <- .storagegateway$list_file_shares_output()
@@ -2281,7 +2341,8 @@ storagegateway_list_file_system_associations <- function(GatewayARN = NULL, Limi
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", non_aggregate_keys = list( "Marker"), output_token = "NextMarker", result_key = "FileSystemAssociationSummaryList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$list_file_system_associations_input(GatewayARN = GatewayARN, Limit = Limit, Marker = Marker)
   output <- .storagegateway$list_file_system_associations_output()
@@ -2314,7 +2375,8 @@ storagegateway_list_gateways <- function(Marker = NULL, Limit = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "Gateways"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$list_gateways_input(Marker = Marker, Limit = Limit)
   output <- .storagegateway$list_gateways_output()
@@ -2345,7 +2407,8 @@ storagegateway_list_local_disks <- function(GatewayARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$list_local_disks_input(GatewayARN = GatewayARN)
   output <- .storagegateway$list_local_disks_output()
@@ -2378,7 +2441,8 @@ storagegateway_list_tags_for_resource <- function(ResourceARN, Marker = NULL, Li
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", non_aggregate_keys = list( "ResourceARN"), output_token = "Marker", result_key = "Tags"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$list_tags_for_resource_input(ResourceARN = ResourceARN, Marker = Marker, Limit = Limit)
   output <- .storagegateway$list_tags_for_resource_output()
@@ -2411,7 +2475,8 @@ storagegateway_list_tape_pools <- function(PoolARNs = NULL, Marker = NULL, Limit
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "PoolInfos"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$list_tape_pools_input(PoolARNs = PoolARNs, Marker = Marker, Limit = Limit)
   output <- .storagegateway$list_tape_pools_output()
@@ -2445,7 +2510,8 @@ storagegateway_list_tapes <- function(TapeARNs = NULL, Marker = NULL, Limit = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "TapeInfos"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$list_tapes_input(TapeARNs = TapeARNs, Marker = Marker, Limit = Limit)
   output <- .storagegateway$list_tapes_output()
@@ -2476,7 +2542,8 @@ storagegateway_list_volume_initiators <- function(VolumeARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$list_volume_initiators_input(VolumeARN = VolumeARN)
   output <- .storagegateway$list_volume_initiators_output()
@@ -2507,7 +2574,8 @@ storagegateway_list_volume_recovery_points <- function(GatewayARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$list_volume_recovery_points_input(GatewayARN = GatewayARN)
   output <- .storagegateway$list_volume_recovery_points_output()
@@ -2540,7 +2608,8 @@ storagegateway_list_volumes <- function(GatewayARN = NULL, Marker = NULL, Limit 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "VolumeInfos"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$list_volumes_input(GatewayARN = GatewayARN, Marker = Marker, Limit = Limit)
   output <- .storagegateway$list_volumes_output()
@@ -2572,7 +2641,8 @@ storagegateway_notify_when_uploaded <- function(FileShareARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$notify_when_uploaded_input(FileShareARN = FileShareARN)
   output <- .storagegateway$notify_when_uploaded_output()
@@ -2609,7 +2679,8 @@ storagegateway_refresh_cache <- function(FileShareARN, FolderList = NULL, Recurs
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$refresh_cache_input(FileShareARN = FileShareARN, FolderList = FolderList, Recursive = Recursive)
   output <- .storagegateway$refresh_cache_output()
@@ -2641,7 +2712,8 @@ storagegateway_remove_tags_from_resource <- function(ResourceARN, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$remove_tags_from_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .storagegateway$remove_tags_from_resource_output()
@@ -2673,7 +2745,8 @@ storagegateway_reset_cache <- function(GatewayARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$reset_cache_input(GatewayARN = GatewayARN)
   output <- .storagegateway$reset_cache_output()
@@ -2708,7 +2781,8 @@ storagegateway_retrieve_tape_archive <- function(TapeARN, GatewayARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$retrieve_tape_archive_input(TapeARN = TapeARN, GatewayARN = GatewayARN)
   output <- .storagegateway$retrieve_tape_archive_output()
@@ -2740,7 +2814,8 @@ storagegateway_retrieve_tape_recovery_point <- function(TapeARN, GatewayARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$retrieve_tape_recovery_point_input(TapeARN = TapeARN, GatewayARN = GatewayARN)
   output <- .storagegateway$retrieve_tape_recovery_point_output()
@@ -2772,7 +2847,8 @@ storagegateway_set_local_console_password <- function(GatewayARN, LocalConsolePa
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$set_local_console_password_input(GatewayARN = GatewayARN, LocalConsolePassword = LocalConsolePassword)
   output <- .storagegateway$set_local_console_password_output()
@@ -2804,7 +2880,8 @@ storagegateway_set_smb_guest_password <- function(GatewayARN, Password) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$set_smb_guest_password_input(GatewayARN = GatewayARN, Password = Password)
   output <- .storagegateway$set_smb_guest_password_output()
@@ -2835,7 +2912,8 @@ storagegateway_shutdown_gateway <- function(GatewayARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$shutdown_gateway_input(GatewayARN = GatewayARN)
   output <- .storagegateway$shutdown_gateway_output()
@@ -2867,7 +2945,8 @@ storagegateway_start_availability_monitor_test <- function(GatewayARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$start_availability_monitor_test_input(GatewayARN = GatewayARN)
   output <- .storagegateway$start_availability_monitor_test_output()
@@ -2911,7 +2990,8 @@ storagegateway_start_cache_report <- function(FileShareARN, Role, LocationARN, B
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$start_cache_report_input(FileShareARN = FileShareARN, Role = Role, LocationARN = LocationARN, BucketRegion = BucketRegion, VPCEndpointDNSName = VPCEndpointDNSName, InclusionFilters = InclusionFilters, ExclusionFilters = ExclusionFilters, ClientToken = ClientToken, Tags = Tags)
   output <- .storagegateway$start_cache_report_output()
@@ -2942,7 +3022,8 @@ storagegateway_start_gateway <- function(GatewayARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$start_gateway_input(GatewayARN = GatewayARN)
   output <- .storagegateway$start_gateway_output()
@@ -2974,7 +3055,8 @@ storagegateway_update_automatic_tape_creation_policy <- function(AutomaticTapeCr
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$update_automatic_tape_creation_policy_input(AutomaticTapeCreationRules = AutomaticTapeCreationRules, GatewayARN = GatewayARN)
   output <- .storagegateway$update_automatic_tape_creation_policy_output()
@@ -3007,7 +3089,8 @@ storagegateway_update_bandwidth_rate_limit <- function(GatewayARN, AverageUpload
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$update_bandwidth_rate_limit_input(GatewayARN = GatewayARN, AverageUploadRateLimitInBitsPerSec = AverageUploadRateLimitInBitsPerSec, AverageDownloadRateLimitInBitsPerSec = AverageDownloadRateLimitInBitsPerSec)
   output <- .storagegateway$update_bandwidth_rate_limit_output()
@@ -3039,7 +3122,8 @@ storagegateway_update_bandwidth_rate_limit_schedule <- function(GatewayARN, Band
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$update_bandwidth_rate_limit_schedule_input(GatewayARN = GatewayARN, BandwidthRateLimitIntervals = BandwidthRateLimitIntervals)
   output <- .storagegateway$update_bandwidth_rate_limit_schedule_output()
@@ -3080,7 +3164,8 @@ storagegateway_update_chap_credentials <- function(TargetARN, SecretToAuthentica
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$update_chap_credentials_input(TargetARN = TargetARN, SecretToAuthenticateInitiator = SecretToAuthenticateInitiator, InitiatorName = InitiatorName, SecretToAuthenticateTarget = SecretToAuthenticateTarget)
   output <- .storagegateway$update_chap_credentials_output()
@@ -3115,7 +3200,8 @@ storagegateway_update_file_system_association <- function(FileSystemAssociationA
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$update_file_system_association_input(FileSystemAssociationARN = FileSystemAssociationARN, UserName = UserName, Password = Password, AuditDestinationARN = AuditDestinationARN, CacheAttributes = CacheAttributes)
   output <- .storagegateway$update_file_system_association_output()
@@ -3153,7 +3239,8 @@ storagegateway_update_gateway_information <- function(GatewayARN, GatewayName = 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$update_gateway_information_input(GatewayARN = GatewayARN, GatewayName = GatewayName, GatewayTimezone = GatewayTimezone, CloudWatchLogGroupARN = CloudWatchLogGroupARN, GatewayCapacity = GatewayCapacity)
   output <- .storagegateway$update_gateway_information_output()
@@ -3184,7 +3271,8 @@ storagegateway_update_gateway_software_now <- function(GatewayARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$update_gateway_software_now_input(GatewayARN = GatewayARN)
   output <- .storagegateway$update_gateway_software_now_output()
@@ -3228,7 +3316,8 @@ storagegateway_update_maintenance_start_time <- function(GatewayARN, HourOfDay =
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$update_maintenance_start_time_input(GatewayARN = GatewayARN, HourOfDay = HourOfDay, MinuteOfHour = MinuteOfHour, DayOfWeek = DayOfWeek, DayOfMonth = DayOfMonth, SoftwareUpdatePreferences = SoftwareUpdatePreferences)
   output <- .storagegateway$update_maintenance_start_time_output()
@@ -3318,7 +3407,8 @@ storagegateway_update_nfs_file_share <- function(FileShareARN, EncryptionType = 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$update_nfs_file_share_input(FileShareARN = FileShareARN, EncryptionType = EncryptionType, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, NFSFileShareDefaults = NFSFileShareDefaults, DefaultStorageClass = DefaultStorageClass, ObjectACL = ObjectACL, ClientList = ClientList, Squash = Squash, ReadOnly = ReadOnly, GuessMIMETypeEnabled = GuessMIMETypeEnabled, RequesterPays = RequesterPays, FileShareName = FileShareName, CacheAttributes = CacheAttributes, NotificationPolicy = NotificationPolicy, AuditDestinationARN = AuditDestinationARN)
   output <- .storagegateway$update_nfs_file_share_output()
@@ -3412,7 +3502,8 @@ storagegateway_update_smb_file_share <- function(FileShareARN, EncryptionType = 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$update_smb_file_share_input(FileShareARN = FileShareARN, EncryptionType = EncryptionType, KMSEncrypted = KMSEncrypted, KMSKey = KMSKey, DefaultStorageClass = DefaultStorageClass, ObjectACL = ObjectACL, ReadOnly = ReadOnly, GuessMIMETypeEnabled = GuessMIMETypeEnabled, RequesterPays = RequesterPays, SMBACLEnabled = SMBACLEnabled, AccessBasedEnumeration = AccessBasedEnumeration, AdminUserList = AdminUserList, ValidUserList = ValidUserList, InvalidUserList = InvalidUserList, AuditDestinationARN = AuditDestinationARN, CaseSensitivity = CaseSensitivity, FileShareName = FileShareName, CacheAttributes = CacheAttributes, NotificationPolicy = NotificationPolicy, OplocksEnabled = OplocksEnabled)
   output <- .storagegateway$update_smb_file_share_output()
@@ -3445,7 +3536,8 @@ storagegateway_update_smb_file_share_visibility <- function(GatewayARN, FileShar
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$update_smb_file_share_visibility_input(GatewayARN = GatewayARN, FileSharesVisible = FileSharesVisible)
   output <- .storagegateway$update_smb_file_share_visibility_output()
@@ -3478,7 +3570,8 @@ storagegateway_update_smb_local_groups <- function(GatewayARN, SMBLocalGroups) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$update_smb_local_groups_input(GatewayARN = GatewayARN, SMBLocalGroups = SMBLocalGroups)
   output <- .storagegateway$update_smb_local_groups_output()
@@ -3518,7 +3611,8 @@ storagegateway_update_smb_security_strategy <- function(GatewayARN, SMBSecurityS
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$update_smb_security_strategy_input(GatewayARN = GatewayARN, SMBSecurityStrategy = SMBSecurityStrategy)
   output <- .storagegateway$update_smb_security_strategy_output()
@@ -3555,7 +3649,8 @@ storagegateway_update_snapshot_schedule <- function(VolumeARN, StartAt, Recurren
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$update_snapshot_schedule_input(VolumeARN = VolumeARN, StartAt = StartAt, RecurrenceInHours = RecurrenceInHours, Description = Description, Tags = Tags)
   output <- .storagegateway$update_snapshot_schedule_output()
@@ -3589,7 +3684,8 @@ storagegateway_update_vtl_device_type <- function(VTLDeviceARN, DeviceType) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .storagegateway$update_vtl_device_type_input(VTLDeviceARN = VTLDeviceARN, DeviceType = DeviceType)
   output <- .storagegateway$update_vtl_device_type_output()

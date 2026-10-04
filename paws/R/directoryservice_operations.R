@@ -55,7 +55,8 @@ directoryservice_accept_shared_directory <- function(SharedDirectoryId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$accept_shared_directory_input(SharedDirectoryId = SharedDirectoryId)
   output <- .directoryservice$accept_shared_directory_output()
@@ -156,7 +157,8 @@ directoryservice_add_ip_routes <- function(DirectoryId, IpRoutes, UpdateSecurity
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$add_ip_routes_input(DirectoryId = DirectoryId, IpRoutes = IpRoutes, UpdateSecurityGroupForDirectoryControllers = UpdateSecurityGroupForDirectoryControllers)
   output <- .directoryservice$add_ip_routes_output()
@@ -210,7 +212,8 @@ directoryservice_add_region <- function(DirectoryId, RegionName, VPCSettings) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$add_region_input(DirectoryId = DirectoryId, RegionName = RegionName, VPCSettings = VPCSettings)
   output <- .directoryservice$add_region_output()
@@ -261,7 +264,8 @@ directoryservice_add_tags_to_resource <- function(ResourceId, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$add_tags_to_resource_input(ResourceId = ResourceId, Tags = Tags)
   output <- .directoryservice$add_tags_to_resource_output()
@@ -307,7 +311,8 @@ directoryservice_cancel_schema_extension <- function(DirectoryId, SchemaExtensio
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$cancel_schema_extension_input(DirectoryId = DirectoryId, SchemaExtensionId = SchemaExtensionId)
   output <- .directoryservice$cancel_schema_extension_output()
@@ -390,7 +395,8 @@ directoryservice_connect_directory <- function(Name, ShortName = NULL, Password,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$connect_directory_input(Name = Name, ShortName = ShortName, Password = Password, Description = Description, Size = Size, ConnectSettings = ConnectSettings, Tags = Tags, NetworkType = NetworkType)
   output <- .directoryservice$connect_directory_output()
@@ -446,7 +452,8 @@ directoryservice_create_alias <- function(DirectoryId, Alias) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$create_alias_input(DirectoryId = DirectoryId, Alias = Alias)
   output <- .directoryservice$create_alias_output()
@@ -518,7 +525,8 @@ directoryservice_create_computer <- function(DirectoryId, ComputerName, Password
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$create_computer_input(DirectoryId = DirectoryId, ComputerName = ComputerName, Password = Password, OrganizationalUnitDistinguishedName = OrganizationalUnitDistinguishedName, ComputerAttributes = ComputerAttributes)
   output <- .directoryservice$create_computer_output()
@@ -574,7 +582,8 @@ directoryservice_create_conditional_forwarder <- function(DirectoryId, RemoteDom
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$create_conditional_forwarder_input(DirectoryId = DirectoryId, RemoteDomainName = RemoteDomainName, DnsIpAddrs = DnsIpAddrs, DnsIpv6Addrs = DnsIpv6Addrs)
   output <- .directoryservice$create_conditional_forwarder_output()
@@ -617,7 +626,7 @@ directoryservice_create_conditional_forwarder <- function(DirectoryId, RemoteDom
 #' 
 #' -   Numbers and upper case and special characters (?=.*\\d)(?=.*\[A-Z\])(?=.*\[^A-Za-z0-9\\s\])
 #' 
-#' For additional information about how Active Directory passwords are enforced, see [Password must meet complexity requirements](https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements) on the Microsoft website.
+#' For additional information about how Active Directory passwords are enforced, see [Password must meet complexity requirements](https://learn.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements) on the Microsoft website.
 #' @param Description A description for the directory.
 #' @param Size &#91;required&#93; The size of the directory.
 #' @param VpcSettings A DirectoryVpcSettings object that contains additional information for the operation.
@@ -668,7 +677,8 @@ directoryservice_create_directory <- function(Name, ShortName = NULL, Password, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$create_directory_input(Name = Name, ShortName = ShortName, Password = Password, Description = Description, Size = Size, VpcSettings = VpcSettings, Tags = Tags, NetworkType = NetworkType)
   output <- .directoryservice$create_directory_output()
@@ -733,7 +743,8 @@ directoryservice_create_hybrid_ad <- function(SecretArn, AssessmentId, Tags = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$create_hybrid_ad_input(SecretArn = SecretArn, AssessmentId = AssessmentId, Tags = Tags)
   output <- .directoryservice$create_hybrid_ad_output()
@@ -781,7 +792,8 @@ directoryservice_create_log_subscription <- function(DirectoryId, LogGroupName) 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$create_log_subscription_input(DirectoryId = DirectoryId, LogGroupName = LogGroupName)
   output <- .directoryservice$create_log_subscription_output()
@@ -859,7 +871,8 @@ directoryservice_create_microsoft_ad <- function(Name, ShortName = NULL, Passwor
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$create_microsoft_ad_input(Name = Name, ShortName = ShortName, Password = Password, Description = Description, VpcSettings = VpcSettings, Edition = Edition, Tags = Tags, NetworkType = NetworkType)
   output <- .directoryservice$create_microsoft_ad_output()
@@ -913,7 +926,8 @@ directoryservice_create_snapshot <- function(DirectoryId, Name = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$create_snapshot_input(DirectoryId = DirectoryId, Name = Name)
   output <- .directoryservice$create_snapshot_output()
@@ -985,7 +999,8 @@ directoryservice_create_trust <- function(DirectoryId, RemoteDomainName, TrustPa
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$create_trust_input(DirectoryId = DirectoryId, RemoteDomainName = RemoteDomainName, TrustPassword = TrustPassword, TrustDirection = TrustDirection, TrustType = TrustType, ConditionalForwarderIpAddrs = ConditionalForwarderIpAddrs, ConditionalForwarderIpv6Addrs = ConditionalForwarderIpv6Addrs, SelectiveAuth = SelectiveAuth)
   output <- .directoryservice$create_trust_output()
@@ -1036,7 +1051,8 @@ directoryservice_delete_ad_assessment <- function(AssessmentId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$delete_ad_assessment_input(AssessmentId = AssessmentId)
   output <- .directoryservice$delete_ad_assessment_output()
@@ -1084,7 +1100,8 @@ directoryservice_delete_conditional_forwarder <- function(DirectoryId, RemoteDom
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$delete_conditional_forwarder_input(DirectoryId = DirectoryId, RemoteDomainName = RemoteDomainName)
   output <- .directoryservice$delete_conditional_forwarder_output()
@@ -1135,7 +1152,8 @@ directoryservice_delete_directory <- function(DirectoryId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$delete_directory_input(DirectoryId = DirectoryId)
   output <- .directoryservice$delete_directory_output()
@@ -1179,7 +1197,8 @@ directoryservice_delete_log_subscription <- function(DirectoryId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$delete_log_subscription_input(DirectoryId = DirectoryId)
   output <- .directoryservice$delete_log_subscription_output()
@@ -1228,7 +1247,8 @@ directoryservice_delete_snapshot <- function(SnapshotId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$delete_snapshot_input(SnapshotId = SnapshotId)
   output <- .directoryservice$delete_snapshot_output()
@@ -1281,7 +1301,8 @@ directoryservice_delete_trust <- function(TrustId, DeleteAssociatedConditionalFo
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$delete_trust_input(TrustId = TrustId, DeleteAssociatedConditionalForwarder = DeleteAssociatedConditionalForwarder)
   output <- .directoryservice$delete_trust_output()
@@ -1328,7 +1349,8 @@ directoryservice_deregister_certificate <- function(DirectoryId, CertificateId) 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$deregister_certificate_input(DirectoryId = DirectoryId, CertificateId = CertificateId)
   output <- .directoryservice$deregister_certificate_output()
@@ -1375,7 +1397,8 @@ directoryservice_deregister_event_topic <- function(DirectoryId, TopicName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$deregister_event_topic_input(DirectoryId = DirectoryId, TopicName = TopicName)
   output <- .directoryservice$deregister_event_topic_output()
@@ -1473,7 +1496,8 @@ directoryservice_describe_ad_assessment <- function(AssessmentId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$describe_ad_assessment_input(AssessmentId = AssessmentId)
   output <- .directoryservice$describe_ad_assessment_output()
@@ -1529,7 +1553,8 @@ directoryservice_describe_ca_enrollment_policy <- function(DirectoryId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$describe_ca_enrollment_policy_input(DirectoryId = DirectoryId)
   output <- .directoryservice$describe_ca_enrollment_policy_output()
@@ -1596,7 +1621,8 @@ directoryservice_describe_certificate <- function(DirectoryId, CertificateId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$describe_certificate_input(DirectoryId = DirectoryId, CertificateId = CertificateId)
   output <- .directoryservice$describe_certificate_output()
@@ -1662,7 +1688,8 @@ directoryservice_describe_client_authentication_settings <- function(DirectoryId
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "ClientAuthenticationSettingsInfo"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$describe_client_authentication_settings_input(DirectoryId = DirectoryId, Type = Type, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$describe_client_authentication_settings_output()
@@ -1729,7 +1756,8 @@ directoryservice_describe_conditional_forwarders <- function(DirectoryId, Remote
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$describe_conditional_forwarders_input(DirectoryId = DirectoryId, RemoteDomainNames = RemoteDomainNames)
   output <- .directoryservice$describe_conditional_forwarders_output()
@@ -1920,7 +1948,8 @@ directoryservice_describe_directories <- function(DirectoryIds = NULL, NextToken
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "DirectoryDescriptions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$describe_directories_input(DirectoryIds = DirectoryIds, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$describe_directories_output()
@@ -1970,7 +1999,8 @@ directoryservice_describe_directory_data_access <- function(DirectoryId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$describe_directory_data_access_input(DirectoryId = DirectoryId)
   output <- .directoryservice$describe_directory_data_access_output()
@@ -2047,7 +2077,8 @@ directoryservice_describe_domain_controllers <- function(DirectoryId, DomainCont
     http_path = "/",
     host_prefix = "",
     paginator = list(result_key = "DomainControllers", output_token = "NextToken", input_token = "NextToken", limit_key = "Limit"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$describe_domain_controllers_input(DirectoryId = DirectoryId, DomainControllerIds = DomainControllerIds, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$describe_domain_controllers_output()
@@ -2115,7 +2146,8 @@ directoryservice_describe_event_topics <- function(DirectoryId = NULL, TopicName
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$describe_event_topics_input(DirectoryId = DirectoryId, TopicNames = TopicNames)
   output <- .directoryservice$describe_event_topics_output()
@@ -2231,7 +2263,8 @@ directoryservice_describe_hybrid_ad_update <- function(DirectoryId, UpdateType =
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$describe_hybrid_ad_update_input(DirectoryId = DirectoryId, UpdateType = UpdateType, NextToken = NextToken)
   output <- .directoryservice$describe_hybrid_ad_update_output()
@@ -2296,7 +2329,8 @@ directoryservice_describe_ldaps_settings <- function(DirectoryId, Type = NULL, N
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "LDAPSSettingsInfo"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$describe_ldaps_settings_input(DirectoryId = DirectoryId, Type = Type, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$describe_ldaps_settings_output()
@@ -2374,7 +2408,8 @@ directoryservice_describe_regions <- function(DirectoryId, RegionName = NULL, Ne
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "RegionsDescription"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$describe_regions_input(DirectoryId = DirectoryId, RegionName = RegionName, NextToken = NextToken)
   output <- .directoryservice$describe_regions_output()
@@ -2450,7 +2485,8 @@ directoryservice_describe_settings <- function(DirectoryId, Status = NULL, NextT
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$describe_settings_input(DirectoryId = DirectoryId, Status = Status, NextToken = NextToken)
   output <- .directoryservice$describe_settings_output()
@@ -2525,7 +2561,8 @@ directoryservice_describe_shared_directories <- function(OwnerDirectoryId, Share
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "SharedDirectories"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$describe_shared_directories_input(OwnerDirectoryId = OwnerDirectoryId, SharedDirectoryIds = SharedDirectoryIds, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$describe_shared_directories_output()
@@ -2600,7 +2637,8 @@ directoryservice_describe_snapshots <- function(DirectoryId = NULL, SnapshotIds 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Snapshots"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$describe_snapshots_input(DirectoryId = DirectoryId, SnapshotIds = SnapshotIds, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$describe_snapshots_output()
@@ -2683,7 +2721,8 @@ directoryservice_describe_trusts <- function(DirectoryId = NULL, TrustIds = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Trusts"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$describe_trusts_input(DirectoryId = DirectoryId, TrustIds = TrustIds, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$describe_trusts_output()
@@ -2763,7 +2802,8 @@ directoryservice_describe_update_directory <- function(DirectoryId, UpdateType, 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "UpdateActivities"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$describe_update_directory_input(DirectoryId = DirectoryId, UpdateType = UpdateType, RegionName = RegionName, NextToken = NextToken)
   output <- .directoryservice$describe_update_directory_output()
@@ -2810,7 +2850,8 @@ directoryservice_disable_ca_enrollment_policy <- function(DirectoryId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$disable_ca_enrollment_policy_input(DirectoryId = DirectoryId)
   output <- .directoryservice$disable_ca_enrollment_policy_output()
@@ -2857,7 +2898,8 @@ directoryservice_disable_client_authentication <- function(DirectoryId, Type) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$disable_client_authentication_input(DirectoryId = DirectoryId, Type = Type)
   output <- .directoryservice$disable_client_authentication_output()
@@ -2902,7 +2944,8 @@ directoryservice_disable_directory_data_access <- function(DirectoryId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$disable_directory_data_access_input(DirectoryId = DirectoryId)
   output <- .directoryservice$disable_directory_data_access_output()
@@ -2948,7 +2991,8 @@ directoryservice_disable_ldaps <- function(DirectoryId, Type) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$disable_ldaps_input(DirectoryId = DirectoryId, Type = Type)
   output <- .directoryservice$disable_ldaps_output()
@@ -2994,7 +3038,8 @@ directoryservice_disable_radius <- function(DirectoryId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$disable_radius_input(DirectoryId = DirectoryId)
   output <- .directoryservice$disable_radius_output()
@@ -3044,7 +3089,8 @@ directoryservice_disable_sso <- function(DirectoryId, UserName = NULL, Password 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$disable_sso_input(DirectoryId = DirectoryId, UserName = UserName, Password = Password)
   output <- .directoryservice$disable_sso_output()
@@ -3096,7 +3142,8 @@ directoryservice_enable_ca_enrollment_policy <- function(DirectoryId, PcaConnect
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$enable_ca_enrollment_policy_input(DirectoryId = DirectoryId, PcaConnectorArn = PcaConnectorArn)
   output <- .directoryservice$enable_ca_enrollment_policy_output()
@@ -3143,7 +3190,8 @@ directoryservice_enable_client_authentication <- function(DirectoryId, Type) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$enable_client_authentication_input(DirectoryId = DirectoryId, Type = Type)
   output <- .directoryservice$enable_client_authentication_output()
@@ -3188,7 +3236,8 @@ directoryservice_enable_directory_data_access <- function(DirectoryId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$enable_directory_data_access_input(DirectoryId = DirectoryId)
   output <- .directoryservice$enable_directory_data_access_output()
@@ -3235,7 +3284,8 @@ directoryservice_enable_ldaps <- function(DirectoryId, Type) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$enable_ldaps_input(DirectoryId = DirectoryId, Type = Type)
   output <- .directoryservice$enable_ldaps_output()
@@ -3297,7 +3347,8 @@ directoryservice_enable_radius <- function(DirectoryId, RadiusSettings) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$enable_radius_input(DirectoryId = DirectoryId, RadiusSettings = RadiusSettings)
   output <- .directoryservice$enable_radius_output()
@@ -3347,7 +3398,8 @@ directoryservice_enable_sso <- function(DirectoryId, UserName = NULL, Password =
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$enable_sso_input(DirectoryId = DirectoryId, UserName = UserName, Password = Password)
   output <- .directoryservice$enable_sso_output()
@@ -3404,7 +3456,8 @@ directoryservice_get_directory_limits <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$get_directory_limits_input()
   output <- .directoryservice$get_directory_limits_output()
@@ -3457,7 +3510,8 @@ directoryservice_get_snapshot_limits <- function(DirectoryId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$get_snapshot_limits_input(DirectoryId = DirectoryId)
   output <- .directoryservice$get_snapshot_limits_output()
@@ -3529,7 +3583,8 @@ directoryservice_list_ad_assessments <- function(DirectoryId = NULL, NextToken =
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Assessments"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$list_ad_assessments_input(DirectoryId = DirectoryId, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$list_ad_assessments_output()
@@ -3594,7 +3649,8 @@ directoryservice_list_certificates <- function(DirectoryId, NextToken = NULL, Li
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "CertificatesInfo"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$list_certificates_input(DirectoryId = DirectoryId, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$list_certificates_output()
@@ -3660,7 +3716,8 @@ directoryservice_list_ip_routes <- function(DirectoryId, NextToken = NULL, Limit
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "IpRoutesInfo"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$list_ip_routes_input(DirectoryId = DirectoryId, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$list_ip_routes_output()
@@ -3722,7 +3779,8 @@ directoryservice_list_log_subscriptions <- function(DirectoryId = NULL, NextToke
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "LogSubscriptions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$list_log_subscriptions_input(DirectoryId = DirectoryId, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$list_log_subscriptions_output()
@@ -3790,7 +3848,8 @@ directoryservice_list_schema_extensions <- function(DirectoryId, NextToken = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "SchemaExtensionsInfo"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$list_schema_extensions_input(DirectoryId = DirectoryId, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$list_schema_extensions_output()
@@ -3849,7 +3908,8 @@ directoryservice_list_tags_for_resource <- function(ResourceId, NextToken = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Tags"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$list_tags_for_resource_input(ResourceId = ResourceId, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$list_tags_for_resource_output()
@@ -3908,7 +3968,8 @@ directoryservice_register_certificate <- function(DirectoryId, CertificateData, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$register_certificate_input(DirectoryId = DirectoryId, CertificateData = CertificateData, Type = Type, ClientCertAuthSettings = ClientCertAuthSettings)
   output <- .directoryservice$register_certificate_output()
@@ -3954,7 +4015,8 @@ directoryservice_register_event_topic <- function(DirectoryId, TopicName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$register_event_topic_input(DirectoryId = DirectoryId, TopicName = TopicName)
   output <- .directoryservice$register_event_topic_output()
@@ -4004,7 +4066,8 @@ directoryservice_reject_shared_directory <- function(SharedDirectoryId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$reject_shared_directory_input(SharedDirectoryId = SharedDirectoryId)
   output <- .directoryservice$reject_shared_directory_output()
@@ -4056,7 +4119,8 @@ directoryservice_remove_ip_routes <- function(DirectoryId, CidrIps = NULL, CidrI
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$remove_ip_routes_input(DirectoryId = DirectoryId, CidrIps = CidrIps, CidrIpv6s = CidrIpv6s)
   output <- .directoryservice$remove_ip_routes_output()
@@ -4101,7 +4165,8 @@ directoryservice_remove_region <- function(DirectoryId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$remove_region_input(DirectoryId = DirectoryId)
   output <- .directoryservice$remove_region_output()
@@ -4149,7 +4214,8 @@ directoryservice_remove_tags_from_resource <- function(ResourceId, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$remove_tags_from_resource_input(ResourceId = ResourceId, TagKeys = TagKeys)
   output <- .directoryservice$remove_tags_from_resource_output()
@@ -4204,7 +4270,8 @@ directoryservice_reset_user_password <- function(DirectoryId, UserName, NewPassw
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$reset_user_password_input(DirectoryId = DirectoryId, UserName = UserName, NewPassword = NewPassword)
   output <- .directoryservice$reset_user_password_output()
@@ -4252,7 +4319,8 @@ directoryservice_restore_from_snapshot <- function(SnapshotId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$restore_from_snapshot_input(SnapshotId = SnapshotId)
   output <- .directoryservice$restore_from_snapshot_output()
@@ -4319,7 +4387,8 @@ directoryservice_share_directory <- function(DirectoryId, ShareNotes = NULL, Sha
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$share_directory_input(DirectoryId = DirectoryId, ShareNotes = ShareNotes, ShareTarget = ShareTarget, ShareMethod = ShareMethod)
   output <- .directoryservice$share_directory_output()
@@ -4397,7 +4466,8 @@ directoryservice_start_ad_assessment <- function(AssessmentConfiguration = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$start_ad_assessment_input(AssessmentConfiguration = AssessmentConfiguration, DirectoryId = DirectoryId)
   output <- .directoryservice$start_ad_assessment_output()
@@ -4453,7 +4523,8 @@ directoryservice_start_schema_extension <- function(DirectoryId, CreateSnapshotB
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$start_schema_extension_input(DirectoryId = DirectoryId, CreateSnapshotBeforeSchemaExtension = CreateSnapshotBeforeSchemaExtension, LdifContent = LdifContent, Description = Description)
   output <- .directoryservice$start_schema_extension_output()
@@ -4508,7 +4579,8 @@ directoryservice_unshare_directory <- function(DirectoryId, UnshareTarget) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$unshare_directory_input(DirectoryId = DirectoryId, UnshareTarget = UnshareTarget)
   output <- .directoryservice$unshare_directory_output()
@@ -4564,7 +4636,8 @@ directoryservice_update_conditional_forwarder <- function(DirectoryId, RemoteDom
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$update_conditional_forwarder_input(DirectoryId = DirectoryId, RemoteDomainName = RemoteDomainName, DnsIpAddrs = DnsIpAddrs, DnsIpv6Addrs = DnsIpv6Addrs)
   output <- .directoryservice$update_conditional_forwarder_output()
@@ -4629,7 +4702,8 @@ directoryservice_update_directory_setup <- function(DirectoryId, UpdateType, OSU
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$update_directory_setup_input(DirectoryId = DirectoryId, UpdateType = UpdateType, OSUpdateSettings = OSUpdateSettings, DirectorySizeUpdateSettings = DirectorySizeUpdateSettings, NetworkUpdateSettings = NetworkUpdateSettings, CreateSnapshotBeforeUpdate = CreateSnapshotBeforeUpdate)
   output <- .directoryservice$update_directory_setup_output()
@@ -4703,7 +4777,8 @@ directoryservice_update_hybrid_ad <- function(DirectoryId, HybridAdministratorAc
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$update_hybrid_ad_input(DirectoryId = DirectoryId, HybridAdministratorAccountUpdate = HybridAdministratorAccountUpdate, SelfManagedInstancesSettings = SelfManagedInstancesSettings)
   output <- .directoryservice$update_hybrid_ad_output()
@@ -4750,7 +4825,8 @@ directoryservice_update_number_of_domain_controllers <- function(DirectoryId, De
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$update_number_of_domain_controllers_input(DirectoryId = DirectoryId, DesiredNumber = DesiredNumber)
   output <- .directoryservice$update_number_of_domain_controllers_output()
@@ -4811,7 +4887,8 @@ directoryservice_update_radius <- function(DirectoryId, RadiusSettings) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$update_radius_input(DirectoryId = DirectoryId, RadiusSettings = RadiusSettings)
   output <- .directoryservice$update_radius_output()
@@ -4867,7 +4944,8 @@ directoryservice_update_settings <- function(DirectoryId, Settings) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$update_settings_input(DirectoryId = DirectoryId, Settings = Settings)
   output <- .directoryservice$update_settings_output()
@@ -4920,7 +4998,8 @@ directoryservice_update_trust <- function(TrustId, SelectiveAuth = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$update_trust_input(TrustId = TrustId, SelectiveAuth = SelectiveAuth)
   output <- .directoryservice$update_trust_output()
@@ -4972,7 +5051,8 @@ directoryservice_verify_trust <- function(TrustId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directoryservice$verify_trust_input(TrustId = TrustId)
   output <- .directoryservice$verify_trust_output()

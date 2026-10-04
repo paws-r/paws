@@ -104,6 +104,7 @@ NULL
 #'  \link[=bedrockagent_create_knowledge_base]{create_knowledge_base} \tab Creates a knowledge base\cr
 #'  \link[=bedrockagent_create_prompt]{create_prompt} \tab Creates a prompt in your prompt library that you can add to a flow\cr
 #'  \link[=bedrockagent_create_prompt_version]{create_prompt_version} \tab Creates a static snapshot of your prompt that can be deployed to production\cr
+#'  \link[=bedrockagent_create_vpc_configuration]{create_vpc_configuration} \tab Creates a VPC configuration that lets a knowledge base connect to a resource in your private VPC\cr
 #'  \link[=bedrockagent_delete_agent]{delete_agent} \tab Deletes an agent\cr
 #'  \link[=bedrockagent_delete_agent_action_group]{delete_agent_action_group} \tab Deletes an action group in an agent\cr
 #'  \link[=bedrockagent_delete_agent_alias]{delete_agent_alias} \tab Deletes an alias of an agent\cr
@@ -116,6 +117,7 @@ NULL
 #'  \link[=bedrockagent_delete_knowledge_base_documents]{delete_knowledge_base_documents} \tab Deletes documents from a data source and syncs the changes to the knowledge base that is connected to it\cr
 #'  \link[=bedrockagent_delete_prompt]{delete_prompt} \tab Deletes a prompt or a version of it, depending on whether you include the promptVersion field or not\cr
 #'  \link[=bedrockagent_delete_resource_policy]{delete_resource_policy} \tab Removes the resource policy associated with a knowledge base\cr
+#'  \link[=bedrockagent_delete_vpc_configuration]{delete_vpc_configuration} \tab Deletes a VPC configuration\cr
 #'  \link[=bedrockagent_disassociate_agent_collaborator]{disassociate_agent_collaborator} \tab Disassociates an agent collaborator\cr
 #'  \link[=bedrockagent_disassociate_agent_knowledge_base]{disassociate_agent_knowledge_base} \tab Disassociates a knowledge base from an agent\cr
 #'  \link[=bedrockagent_get_agent]{get_agent} \tab Gets information about an agent\cr
@@ -133,6 +135,7 @@ NULL
 #'  \link[=bedrockagent_get_knowledge_base_documents]{get_knowledge_base_documents} \tab Retrieves specific documents from a data source that is connected to a knowledge base\cr
 #'  \link[=bedrockagent_get_prompt]{get_prompt} \tab Retrieves information about the working draft (DRAFT version) of a prompt or a version of it, depending on whether you include the promptVersion field or not\cr
 #'  \link[=bedrockagent_get_resource_policy]{get_resource_policy} \tab Retrieves the resource policy associated with a knowledge base\cr
+#'  \link[=bedrockagent_get_vpc_configuration]{get_vpc_configuration} \tab Returns the details and current status of a single VPC configuration\cr
 #'  \link[=bedrockagent_ingest_knowledge_base_documents]{ingest_knowledge_base_documents} \tab Ingests documents directly into the knowledge base that is connected to the data source\cr
 #'  \link[=bedrockagent_list_agent_action_groups]{list_agent_action_groups} \tab Lists the action groups for an agent and information about each one\cr
 #'  \link[=bedrockagent_list_agent_aliases]{list_agent_aliases} \tab Lists the aliases of an agent and information about each one\cr
@@ -149,6 +152,7 @@ NULL
 #'  \link[=bedrockagent_list_knowledge_bases]{list_knowledge_bases} \tab Lists the knowledge bases in an account\cr
 #'  \link[=bedrockagent_list_prompts]{list_prompts} \tab Returns either information about the working draft (DRAFT version) of each prompt in an account, or information about of all versions of a prompt, depending on whether you include the promptIdentifier field or not\cr
 #'  \link[=bedrockagent_list_tags_for_resource]{list_tags_for_resource} \tab List all the tags for the resource you specify\cr
+#'  \link[=bedrockagent_list_vpc_configurations]{list_vpc_configurations} \tab Returns a paginated list of the VPC configurations for a knowledge base\cr
 #'  \link[=bedrockagent_prepare_agent]{prepare_agent} \tab Creates a DRAFT version of the agent that can be used for internal testing\cr
 #'  \link[=bedrockagent_prepare_flow]{prepare_flow} \tab Prepares the DRAFT version of a flow so that it can be invoked\cr
 #'  \link[=bedrockagent_put_resource_policy]{put_resource_policy} \tab Associates a resource policy with a knowledge base\cr

@@ -23,7 +23,8 @@ frauddetector_batch_create_variable <- function(variableEntries, tags = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$batch_create_variable_input(variableEntries = variableEntries, tags = tags)
   output <- .frauddetector$batch_create_variable_output()
@@ -54,7 +55,8 @@ frauddetector_batch_get_variable <- function(names) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$batch_get_variable_input(names = names)
   output <- .frauddetector$batch_get_variable_output()
@@ -87,7 +89,8 @@ frauddetector_cancel_batch_import_job <- function(jobId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$cancel_batch_import_job_input(jobId = jobId)
   output <- .frauddetector$cancel_batch_import_job_output()
@@ -118,7 +121,8 @@ frauddetector_cancel_batch_prediction_job <- function(jobId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$cancel_batch_prediction_job_input(jobId = jobId)
   output <- .frauddetector$cancel_batch_prediction_job_output()
@@ -156,7 +160,8 @@ frauddetector_create_batch_import_job <- function(jobId, inputPath, outputPath, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$create_batch_import_job_input(jobId = jobId, inputPath = inputPath, outputPath = outputPath, eventTypeName = eventTypeName, iamRoleArn = iamRoleArn, tags = tags)
   output <- .frauddetector$create_batch_import_job_output()
@@ -196,7 +201,8 @@ frauddetector_create_batch_prediction_job <- function(jobId, inputPath, outputPa
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$create_batch_prediction_job_input(jobId = jobId, inputPath = inputPath, outputPath = outputPath, eventTypeName = eventTypeName, detectorName = detectorName, detectorVersion = detectorVersion, iamRoleArn = iamRoleArn, tags = tags)
   output <- .frauddetector$create_batch_prediction_job_output()
@@ -241,7 +247,8 @@ frauddetector_create_detector_version <- function(detectorId, description = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$create_detector_version_input(detectorId = detectorId, description = description, externalModelEndpoints = externalModelEndpoints, rules = rules, modelVersions = modelVersions, ruleExecutionMode = ruleExecutionMode, tags = tags)
   output <- .frauddetector$create_detector_version_output()
@@ -276,7 +283,8 @@ frauddetector_create_list <- function(name, elements = NULL, variableType = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$create_list_input(name = name, elements = elements, variableType = variableType, description = description, tags = tags)
   output <- .frauddetector$create_list_output()
@@ -311,7 +319,8 @@ frauddetector_create_model <- function(modelId, modelType, description = NULL, e
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$create_model_input(modelId = modelId, modelType = modelType, description = description, eventTypeName = eventTypeName, tags = tags)
   output <- .frauddetector$create_model_output()
@@ -349,7 +358,8 @@ frauddetector_create_model_version <- function(modelId, modelType, trainingDataS
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$create_model_version_input(modelId = modelId, modelType = modelType, trainingDataSource = trainingDataSource, trainingDataSchema = trainingDataSchema, externalEventsDetail = externalEventsDetail, ingestedEventsDetail = ingestedEventsDetail, tags = tags)
   output <- .frauddetector$create_model_version_output()
@@ -386,7 +396,8 @@ frauddetector_create_rule <- function(ruleId, detectorId, description = NULL, ex
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$create_rule_input(ruleId = ruleId, detectorId = detectorId, description = description, expression = expression, language = language, outcomes = outcomes, tags = tags)
   output <- .frauddetector$create_rule_output()
@@ -425,7 +436,8 @@ frauddetector_create_variable <- function(name, dataType, dataSource, defaultVal
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$create_variable_input(name = name, dataType = dataType, dataSource = dataSource, defaultValue = defaultValue, description = description, variableType = variableType, tags = tags)
   output <- .frauddetector$create_variable_output()
@@ -456,7 +468,8 @@ frauddetector_delete_batch_import_job <- function(jobId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$delete_batch_import_job_input(jobId = jobId)
   output <- .frauddetector$delete_batch_import_job_output()
@@ -487,7 +500,8 @@ frauddetector_delete_batch_prediction_job <- function(jobId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$delete_batch_prediction_job_input(jobId = jobId)
   output <- .frauddetector$delete_batch_prediction_job_output()
@@ -518,7 +532,8 @@ frauddetector_delete_detector <- function(detectorId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$delete_detector_input(detectorId = detectorId)
   output <- .frauddetector$delete_detector_output()
@@ -550,7 +565,8 @@ frauddetector_delete_detector_version <- function(detectorId, detectorVersionId)
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$delete_detector_version_input(detectorId = detectorId, detectorVersionId = detectorVersionId)
   output <- .frauddetector$delete_detector_version_output()
@@ -581,7 +597,8 @@ frauddetector_delete_entity_type <- function(name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$delete_entity_type_input(name = name)
   output <- .frauddetector$delete_entity_type_output()
@@ -614,7 +631,8 @@ frauddetector_delete_event <- function(eventId, eventTypeName, deleteAuditHistor
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$delete_event_input(eventId = eventId, eventTypeName = eventTypeName, deleteAuditHistory = deleteAuditHistory)
   output <- .frauddetector$delete_event_output()
@@ -645,7 +663,8 @@ frauddetector_delete_event_type <- function(name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$delete_event_type_input(name = name)
   output <- .frauddetector$delete_event_type_output()
@@ -676,7 +695,8 @@ frauddetector_delete_events_by_event_type <- function(eventTypeName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$delete_events_by_event_type_input(eventTypeName = eventTypeName)
   output <- .frauddetector$delete_events_by_event_type_output()
@@ -707,7 +727,8 @@ frauddetector_delete_external_model <- function(modelEndpoint) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$delete_external_model_input(modelEndpoint = modelEndpoint)
   output <- .frauddetector$delete_external_model_output()
@@ -738,7 +759,8 @@ frauddetector_delete_label <- function(name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$delete_label_input(name = name)
   output <- .frauddetector$delete_label_output()
@@ -769,7 +791,8 @@ frauddetector_delete_list <- function(name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$delete_list_input(name = name)
   output <- .frauddetector$delete_list_output()
@@ -801,7 +824,8 @@ frauddetector_delete_model <- function(modelId, modelType) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$delete_model_input(modelId = modelId, modelType = modelType)
   output <- .frauddetector$delete_model_output()
@@ -834,7 +858,8 @@ frauddetector_delete_model_version <- function(modelId, modelType, modelVersionN
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$delete_model_version_input(modelId = modelId, modelType = modelType, modelVersionNumber = modelVersionNumber)
   output <- .frauddetector$delete_model_version_output()
@@ -865,7 +890,8 @@ frauddetector_delete_outcome <- function(name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$delete_outcome_input(name = name)
   output <- .frauddetector$delete_outcome_output()
@@ -896,7 +922,8 @@ frauddetector_delete_rule <- function(rule) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$delete_rule_input(rule = rule)
   output <- .frauddetector$delete_rule_output()
@@ -927,7 +954,8 @@ frauddetector_delete_variable <- function(name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$delete_variable_input(name = name)
   output <- .frauddetector$delete_variable_output()
@@ -960,7 +988,8 @@ frauddetector_describe_detector <- function(detectorId, nextToken = NULL, maxRes
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$describe_detector_input(detectorId = detectorId, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$describe_detector_output()
@@ -996,7 +1025,8 @@ frauddetector_describe_model_versions <- function(modelId = NULL, modelVersionNu
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$describe_model_versions_input(modelId = modelId, modelVersionNumber = modelVersionNumber, modelType = modelType, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$describe_model_versions_output()
@@ -1029,7 +1059,8 @@ frauddetector_get_batch_import_jobs <- function(jobId = NULL, maxResults = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$get_batch_import_jobs_input(jobId = jobId, maxResults = maxResults, nextToken = nextToken)
   output <- .frauddetector$get_batch_import_jobs_output()
@@ -1062,7 +1093,8 @@ frauddetector_get_batch_prediction_jobs <- function(jobId = NULL, maxResults = N
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$get_batch_prediction_jobs_input(jobId = jobId, maxResults = maxResults, nextToken = nextToken)
   output <- .frauddetector$get_batch_prediction_jobs_output()
@@ -1093,7 +1125,8 @@ frauddetector_get_delete_events_by_event_type_status <- function(eventTypeName) 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$get_delete_events_by_event_type_status_input(eventTypeName = eventTypeName)
   output <- .frauddetector$get_delete_events_by_event_type_status_output()
@@ -1125,7 +1158,8 @@ frauddetector_get_detector_version <- function(detectorId, detectorVersionId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$get_detector_version_input(detectorId = detectorId, detectorVersionId = detectorVersionId)
   output <- .frauddetector$get_detector_version_output()
@@ -1158,7 +1192,8 @@ frauddetector_get_detectors <- function(detectorId = NULL, nextToken = NULL, max
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$get_detectors_input(detectorId = detectorId, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_detectors_output()
@@ -1191,7 +1226,8 @@ frauddetector_get_entity_types <- function(name = NULL, nextToken = NULL, maxRes
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$get_entity_types_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_entity_types_output()
@@ -1223,7 +1259,8 @@ frauddetector_get_event <- function(eventId, eventTypeName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$get_event_input(eventId = eventId, eventTypeName = eventTypeName)
   output <- .frauddetector$get_event_output()
@@ -1273,7 +1310,8 @@ frauddetector_get_event_prediction <- function(detectorId, detectorVersionId = N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$get_event_prediction_input(detectorId = detectorId, detectorVersionId = detectorVersionId, eventId = eventId, eventTypeName = eventTypeName, entities = entities, eventTimestamp = eventTimestamp, eventVariables = eventVariables, externalModelEndpointDataBlobs = externalModelEndpointDataBlobs)
   output <- .frauddetector$get_event_prediction_output()
@@ -1312,7 +1350,8 @@ frauddetector_get_event_prediction_metadata <- function(eventId, eventTypeName, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$get_event_prediction_metadata_input(eventId = eventId, eventTypeName = eventTypeName, detectorId = detectorId, detectorVersionId = detectorVersionId, predictionTimestamp = predictionTimestamp)
   output <- .frauddetector$get_event_prediction_metadata_output()
@@ -1345,7 +1384,8 @@ frauddetector_get_event_types <- function(name = NULL, nextToken = NULL, maxResu
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$get_event_types_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_event_types_output()
@@ -1379,7 +1419,8 @@ frauddetector_get_external_models <- function(modelEndpoint = NULL, nextToken = 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$get_external_models_input(modelEndpoint = modelEndpoint, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_external_models_output()
@@ -1411,7 +1452,8 @@ frauddetector_get_kms_encryption_key <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$get_kms_encryption_key_input()
   output <- .frauddetector$get_kms_encryption_key_output()
@@ -1444,7 +1486,8 @@ frauddetector_get_labels <- function(name = NULL, nextToken = NULL, maxResults =
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$get_labels_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_labels_output()
@@ -1477,7 +1520,8 @@ frauddetector_get_list_elements <- function(name, nextToken = NULL, maxResults =
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$get_list_elements_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_list_elements_output()
@@ -1511,7 +1555,8 @@ frauddetector_get_lists_metadata <- function(name = NULL, nextToken = NULL, maxR
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$get_lists_metadata_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_lists_metadata_output()
@@ -1544,7 +1589,8 @@ frauddetector_get_model_version <- function(modelId, modelType, modelVersionNumb
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$get_model_version_input(modelId = modelId, modelType = modelType, modelVersionNumber = modelVersionNumber)
   output <- .frauddetector$get_model_version_output()
@@ -1578,7 +1624,8 @@ frauddetector_get_models <- function(modelId = NULL, modelType = NULL, nextToken
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$get_models_input(modelId = modelId, modelType = modelType, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_models_output()
@@ -1611,7 +1658,8 @@ frauddetector_get_outcomes <- function(name = NULL, nextToken = NULL, maxResults
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$get_outcomes_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_outcomes_output()
@@ -1647,7 +1695,8 @@ frauddetector_get_rules <- function(ruleId = NULL, detectorId, ruleVersion = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$get_rules_input(ruleId = ruleId, detectorId = detectorId, ruleVersion = ruleVersion, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_rules_output()
@@ -1680,7 +1729,8 @@ frauddetector_get_variables <- function(name = NULL, nextToken = NULL, maxResult
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$get_variables_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_variables_output()
@@ -1717,7 +1767,8 @@ frauddetector_list_event_predictions <- function(eventId = NULL, eventType = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$list_event_predictions_input(eventId = eventId, eventType = eventType, detectorId = detectorId, detectorVersionId = detectorVersionId, predictionTimeRange = predictionTimeRange, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$list_event_predictions_output()
@@ -1750,7 +1801,8 @@ frauddetector_list_tags_for_resource <- function(resourceARN, nextToken = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$list_tags_for_resource_input(resourceARN = resourceARN, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$list_tags_for_resource_output()
@@ -1784,7 +1836,8 @@ frauddetector_put_detector <- function(detectorId, description = NULL, eventType
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$put_detector_input(detectorId = detectorId, description = description, eventTypeName = eventTypeName, tags = tags)
   output <- .frauddetector$put_detector_output()
@@ -1817,7 +1870,8 @@ frauddetector_put_entity_type <- function(name, description = NULL, tags = NULL)
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$put_entity_type_input(name = name, description = description, tags = tags)
   output <- .frauddetector$put_entity_type_output()
@@ -1855,7 +1909,8 @@ frauddetector_put_event_type <- function(name, description = NULL, eventVariable
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$put_event_type_input(name = name, description = description, eventVariables = eventVariables, labels = labels, entityTypes = entityTypes, eventIngestion = eventIngestion, tags = tags, eventOrchestration = eventOrchestration)
   output <- .frauddetector$put_event_type_output()
@@ -1892,7 +1947,8 @@ frauddetector_put_external_model <- function(modelEndpoint, modelSource, invokeM
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$put_external_model_input(modelEndpoint = modelEndpoint, modelSource = modelSource, invokeModelEndpointRoleArn = invokeModelEndpointRoleArn, inputConfiguration = inputConfiguration, outputConfiguration = outputConfiguration, modelEndpointStatus = modelEndpointStatus, tags = tags)
   output <- .frauddetector$put_external_model_output()
@@ -1926,7 +1982,8 @@ frauddetector_put_kms_encryption_key <- function(kmsEncryptionKeyArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$put_kms_encryption_key_input(kmsEncryptionKeyArn = kmsEncryptionKeyArn)
   output <- .frauddetector$put_kms_encryption_key_output()
@@ -1959,7 +2016,8 @@ frauddetector_put_label <- function(name, description = NULL, tags = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$put_label_input(name = name, description = description, tags = tags)
   output <- .frauddetector$put_label_output()
@@ -1992,7 +2050,8 @@ frauddetector_put_outcome <- function(name, description = NULL, tags = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$put_outcome_input(name = name, description = description, tags = tags)
   output <- .frauddetector$put_outcome_output()
@@ -2030,7 +2089,8 @@ frauddetector_send_event <- function(eventId, eventTypeName, eventTimestamp, eve
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$send_event_input(eventId = eventId, eventTypeName = eventTypeName, eventTimestamp = eventTimestamp, eventVariables = eventVariables, assignedLabel = assignedLabel, labelTimestamp = labelTimestamp, entities = entities)
   output <- .frauddetector$send_event_output()
@@ -2062,7 +2122,8 @@ frauddetector_tag_resource <- function(resourceARN, tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$tag_resource_input(resourceARN = resourceARN, tags = tags)
   output <- .frauddetector$tag_resource_output()
@@ -2094,7 +2155,8 @@ frauddetector_untag_resource <- function(resourceARN, tagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$untag_resource_input(resourceARN = resourceARN, tagKeys = tagKeys)
   output <- .frauddetector$untag_resource_output()
@@ -2137,7 +2199,8 @@ frauddetector_update_detector_version <- function(detectorId, detectorVersionId,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$update_detector_version_input(detectorId = detectorId, detectorVersionId = detectorVersionId, externalModelEndpoints = externalModelEndpoints, rules = rules, description = description, modelVersions = modelVersions, ruleExecutionMode = ruleExecutionMode)
   output <- .frauddetector$update_detector_version_output()
@@ -2170,7 +2233,8 @@ frauddetector_update_detector_version_metadata <- function(detectorId, detectorV
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$update_detector_version_metadata_input(detectorId = detectorId, detectorVersionId = detectorVersionId, description = description)
   output <- .frauddetector$update_detector_version_metadata_output()
@@ -2205,7 +2269,8 @@ frauddetector_update_detector_version_status <- function(detectorId, detectorVer
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$update_detector_version_status_input(detectorId = detectorId, detectorVersionId = detectorVersionId, status = status)
   output <- .frauddetector$update_detector_version_status_output()
@@ -2239,7 +2304,8 @@ frauddetector_update_event_label <- function(eventId, eventTypeName, assignedLab
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$update_event_label_input(eventId = eventId, eventTypeName = eventTypeName, assignedLabel = assignedLabel, labelTimestamp = labelTimestamp)
   output <- .frauddetector$update_event_label_output()
@@ -2284,7 +2350,8 @@ frauddetector_update_list <- function(name, elements = NULL, description = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$update_list_input(name = name, elements = elements, description = description, updateMode = updateMode, variableType = variableType)
   output <- .frauddetector$update_list_output()
@@ -2317,7 +2384,8 @@ frauddetector_update_model <- function(modelId, modelType, description = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$update_model_input(modelId = modelId, modelType = modelType, description = description)
   output <- .frauddetector$update_model_output()
@@ -2353,7 +2421,8 @@ frauddetector_update_model_version <- function(modelId, modelType, majorVersionN
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$update_model_version_input(modelId = modelId, modelType = modelType, majorVersionNumber = majorVersionNumber, externalEventsDetail = externalEventsDetail, ingestedEventsDetail = ingestedEventsDetail, tags = tags)
   output <- .frauddetector$update_model_version_output()
@@ -2387,7 +2456,8 @@ frauddetector_update_model_version_status <- function(modelId, modelType, modelV
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$update_model_version_status_input(modelId = modelId, modelType = modelType, modelVersionNumber = modelVersionNumber, status = status)
   output <- .frauddetector$update_model_version_status_output()
@@ -2419,7 +2489,8 @@ frauddetector_update_rule_metadata <- function(rule, description) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$update_rule_metadata_input(rule = rule, description = description)
   output <- .frauddetector$update_rule_metadata_output()
@@ -2455,7 +2526,8 @@ frauddetector_update_rule_version <- function(rule, description = NULL, expressi
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$update_rule_version_input(rule = rule, description = description, expression = expression, language = language, outcomes = outcomes, tags = tags)
   output <- .frauddetector$update_rule_version_output()
@@ -2489,7 +2561,8 @@ frauddetector_update_variable <- function(name, defaultValue = NULL, description
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .frauddetector$update_variable_input(name = name, defaultValue = defaultValue, description = description, variableType = variableType)
   output <- .frauddetector$update_variable_output()

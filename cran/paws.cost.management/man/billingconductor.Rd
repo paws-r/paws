@@ -111,6 +111,7 @@ This documentation shows how you can configure Billing Conductor by using its AP
 \link[=billingconductor_disassociate_accounts]{disassociate_accounts} \tab Removes the specified list of account IDs from the given billing group\cr
 \link[=billingconductor_disassociate_pricing_rules]{disassociate_pricing_rules} \tab Disassociates a list of pricing rules from a pricing plan\cr
 \link[=billingconductor_get_billing_group_cost_report]{get_billing_group_cost_report} \tab Retrieves the margin summary report, which includes the Amazon Web Services cost and charged amount (pro forma cost) by Amazon Web Services service for a specific billing group\cr
+\link[=billingconductor_get_billing_transfer_preference]{get_billing_transfer_preference} \tab Retrieves the auto billing group creation preference for a billing transfer\cr
 \link[=billingconductor_list_account_associations]{list_account_associations} \tab This is a paginated call to list linked accounts that are linked to the payer account for the specified time period\cr
 \link[=billingconductor_list_billing_group_cost_reports]{list_billing_group_cost_reports} \tab A paginated call to retrieve a summary report of actual Amazon Web Services charges and the calculated Amazon Web Services charges based on the associated pricing plan of a billing group\cr
 \link[=billingconductor_list_billing_groups]{list_billing_groups} \tab A paginated call to retrieve a list of billing groups for the given billing period\cr
@@ -125,6 +126,7 @@ This documentation shows how you can configure Billing Conductor by using its AP
 \link[=billingconductor_tag_resource]{tag_resource} \tab Associates the specified tags to a resource with the specified resourceArn\cr
 \link[=billingconductor_untag_resource]{untag_resource} \tab Deletes specified tags from a resource\cr
 \link[=billingconductor_update_billing_group]{update_billing_group} \tab This updates an existing billing group\cr
+\link[=billingconductor_update_billing_transfer_preference]{update_billing_transfer_preference} \tab Sets the auto billing group creation preference for a billing transfer\cr
 \link[=billingconductor_update_custom_line_item]{update_custom_line_item} \tab Update an existing custom line item in the current or previous billing period\cr
 \link[=billingconductor_update_pricing_plan]{update_pricing_plan} \tab This updates an existing pricing plan\cr
 \link[=billingconductor_update_pricing_rule]{update_pricing_rule} \tab Updates an existing pricing rule

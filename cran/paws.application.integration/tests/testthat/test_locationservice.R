@@ -1,4 +1,4 @@
-svc <- paws.application.integration::locationservice()
+svc <- paws::locationservice()
 
 test_that("list_geofence_collections", {
   skip_on_cran()

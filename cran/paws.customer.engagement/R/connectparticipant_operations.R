@@ -23,7 +23,8 @@ connectparticipant_cancel_participant_authentication <- function(SessionId, Conn
     http_path = "/participant/cancel-authentication",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectparticipant$cancel_participant_authentication_input(SessionId = SessionId, ConnectionToken = ConnectionToken)
   output <- .connectparticipant$cancel_participant_authentication_output()
@@ -57,7 +58,8 @@ connectparticipant_complete_attachment_upload <- function(AttachmentIds, ClientT
     http_path = "/participant/complete-attachment-upload",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectparticipant$complete_attachment_upload_input(AttachmentIds = AttachmentIds, ClientToken = ClientToken, ConnectionToken = ConnectionToken)
   output <- .connectparticipant$complete_attachment_upload_output()
@@ -92,7 +94,8 @@ connectparticipant_create_participant_connection <- function(Type = NULL, Partic
     http_path = "/participant/connection",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectparticipant$create_participant_connection_input(Type = Type, ParticipantToken = ParticipantToken, ConnectParticipant = ConnectParticipant)
   output <- .connectparticipant$create_participant_connection_output()
@@ -124,7 +127,8 @@ connectparticipant_describe_view <- function(ViewToken, ConnectionToken) {
     http_path = "/participant/views/{ViewToken}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectparticipant$describe_view_input(ViewToken = ViewToken, ConnectionToken = ConnectionToken)
   output <- .connectparticipant$describe_view_output()
@@ -156,7 +160,8 @@ connectparticipant_disconnect_participant <- function(ClientToken = NULL, Connec
     http_path = "/participant/disconnect",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectparticipant$disconnect_participant_input(ClientToken = ClientToken, ConnectionToken = ConnectionToken)
   output <- .connectparticipant$disconnect_participant_output()
@@ -189,7 +194,8 @@ connectparticipant_get_attachment <- function(AttachmentId, ConnectionToken, Url
     http_path = "/participant/attachment",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectparticipant$get_attachment_input(AttachmentId = AttachmentId, ConnectionToken = ConnectionToken, UrlExpiryInSeconds = UrlExpiryInSeconds)
   output <- .connectparticipant$get_attachment_output()
@@ -223,7 +229,8 @@ connectparticipant_get_authentication_url <- function(SessionId, RedirectUri, Co
     http_path = "/participant/authentication-url",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectparticipant$get_authentication_url_input(SessionId = SessionId, RedirectUri = RedirectUri, ConnectionToken = ConnectionToken)
   output <- .connectparticipant$get_authentication_url_output()
@@ -261,7 +268,8 @@ connectparticipant_get_transcript <- function(ContactId = NULL, MaxResults = NUL
     http_path = "/participant/transcript",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectparticipant$get_transcript_input(ContactId = ContactId, MaxResults = MaxResults, NextToken = NextToken, ScanDirection = ScanDirection, SortOrder = SortOrder, StartPosition = StartPosition, ConnectionToken = ConnectionToken)
   output <- .connectparticipant$get_transcript_output()
@@ -305,7 +313,8 @@ connectparticipant_send_event <- function(ContentType, Content = NULL, ClientTok
     http_path = "/participant/event",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectparticipant$send_event_input(ContentType = ContentType, Content = Content, ClientToken = ClientToken, ConnectionToken = ConnectionToken)
   output <- .connectparticipant$send_event_output()
@@ -349,7 +358,8 @@ connectparticipant_send_message <- function(ContentType, Content, ClientToken = 
     http_path = "/participant/message",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectparticipant$send_message_input(ContentType = ContentType, Content = Content, ClientToken = ClientToken, ConnectionToken = ConnectionToken)
   output <- .connectparticipant$send_message_output()
@@ -385,7 +395,8 @@ connectparticipant_start_attachment_upload <- function(ContentType, AttachmentSi
     http_path = "/participant/start-attachment-upload",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectparticipant$start_attachment_upload_input(ContentType = ContentType, AttachmentSizeInBytes = AttachmentSizeInBytes, AttachmentName = AttachmentName, ClientToken = ClientToken, ConnectionToken = ConnectionToken)
   output <- .connectparticipant$start_attachment_upload_output()

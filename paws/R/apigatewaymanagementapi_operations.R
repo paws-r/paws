@@ -35,7 +35,8 @@ apigatewaymanagementapi_delete_connection <- function(ConnectionId) {
     http_path = "/@connections/{connectionId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .apigatewaymanagementapi$delete_connection_input(ConnectionId = ConnectionId)
   output <- .apigatewaymanagementapi$delete_connection_output()
@@ -93,7 +94,8 @@ apigatewaymanagementapi_get_connection <- function(ConnectionId) {
     http_path = "/@connections/{connectionId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .apigatewaymanagementapi$get_connection_input(ConnectionId = ConnectionId)
   output <- .apigatewaymanagementapi$get_connection_output()
@@ -139,7 +141,8 @@ apigatewaymanagementapi_post_to_connection <- function(Data, ConnectionId) {
     http_path = "/@connections/{connectionId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .apigatewaymanagementapi$post_to_connection_input(Data = Data, ConnectionId = ConnectionId)
   output <- .apigatewaymanagementapi$post_to_connection_output()

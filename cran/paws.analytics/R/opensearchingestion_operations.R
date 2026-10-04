@@ -31,7 +31,8 @@ opensearchingestion_create_pipeline <- function(PipelineName, MinUnits, MaxUnits
     http_path = "/2022-01-01/osis/createPipeline",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchingestion$create_pipeline_input(PipelineName = PipelineName, MinUnits = MinUnits, MaxUnits = MaxUnits, PipelineConfigurationBody = PipelineConfigurationBody, LogPublishingOptions = LogPublishingOptions, VpcOptions = VpcOptions, BufferOptions = BufferOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, Tags = Tags, PipelineRoleArn = PipelineRoleArn)
   output <- .opensearchingestion$create_pipeline_output()
@@ -63,7 +64,8 @@ opensearchingestion_create_pipeline_endpoint <- function(PipelineArn, VpcOptions
     http_path = "/2022-01-01/osis/createPipelineEndpoint",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchingestion$create_pipeline_endpoint_input(PipelineArn = PipelineArn, VpcOptions = VpcOptions)
   output <- .opensearchingestion$create_pipeline_endpoint_output()
@@ -94,7 +96,8 @@ opensearchingestion_delete_pipeline <- function(PipelineName) {
     http_path = "/2022-01-01/osis/deletePipeline/{PipelineName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchingestion$delete_pipeline_input(PipelineName = PipelineName)
   output <- .opensearchingestion$delete_pipeline_output()
@@ -125,7 +128,8 @@ opensearchingestion_delete_pipeline_endpoint <- function(EndpointId) {
     http_path = "/2022-01-01/osis/deletePipelineEndpoint/{EndpointId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchingestion$delete_pipeline_endpoint_input(EndpointId = EndpointId)
   output <- .opensearchingestion$delete_pipeline_endpoint_output()
@@ -156,7 +160,8 @@ opensearchingestion_delete_resource_policy <- function(ResourceArn) {
     http_path = "/2022-01-01/osis/resourcePolicy/{ResourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchingestion$delete_resource_policy_input(ResourceArn = ResourceArn)
   output <- .opensearchingestion$delete_resource_policy_output()
@@ -187,7 +192,8 @@ opensearchingestion_get_pipeline <- function(PipelineName) {
     http_path = "/2022-01-01/osis/getPipeline/{PipelineName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchingestion$get_pipeline_input(PipelineName = PipelineName)
   output <- .opensearchingestion$get_pipeline_output()
@@ -220,7 +226,8 @@ opensearchingestion_get_pipeline_blueprint <- function(BlueprintName, Format = N
     http_path = "/2022-01-01/osis/getPipelineBlueprint/{BlueprintName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchingestion$get_pipeline_blueprint_input(BlueprintName = BlueprintName, Format = Format)
   output <- .opensearchingestion$get_pipeline_blueprint_output()
@@ -252,7 +259,8 @@ opensearchingestion_get_pipeline_change_progress <- function(PipelineName) {
     http_path = "/2022-01-01/osis/getPipelineChangeProgress/{PipelineName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchingestion$get_pipeline_change_progress_input(PipelineName = PipelineName)
   output <- .opensearchingestion$get_pipeline_change_progress_output()
@@ -284,7 +292,8 @@ opensearchingestion_get_resource_policy <- function(ResourceArn) {
     http_path = "/2022-01-01/osis/resourcePolicy/{ResourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchingestion$get_resource_policy_input(ResourceArn = ResourceArn)
   output <- .opensearchingestion$get_resource_policy_output()
@@ -315,7 +324,8 @@ opensearchingestion_list_pipeline_blueprints <- function() {
     http_path = "/2022-01-01/osis/listPipelineBlueprints",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchingestion$list_pipeline_blueprints_input()
   output <- .opensearchingestion$list_pipeline_blueprints_output()
@@ -347,7 +357,8 @@ opensearchingestion_list_pipeline_endpoint_connections <- function(MaxResults = 
     http_path = "/2022-01-01/osis/listPipelineEndpointConnections",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PipelineEndpointConnections"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchingestion$list_pipeline_endpoint_connections_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .opensearchingestion$list_pipeline_endpoint_connections_output()
@@ -379,7 +390,8 @@ opensearchingestion_list_pipeline_endpoints <- function(MaxResults = NULL, NextT
     http_path = "/2022-01-01/osis/listPipelineEndpoints",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PipelineEndpoints"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchingestion$list_pipeline_endpoints_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .opensearchingestion$list_pipeline_endpoints_output()
@@ -412,7 +424,8 @@ opensearchingestion_list_pipelines <- function(MaxResults = NULL, NextToken = NU
     http_path = "/2022-01-01/osis/listPipelines",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchingestion$list_pipelines_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .opensearchingestion$list_pipelines_output()
@@ -443,7 +456,8 @@ opensearchingestion_list_tags_for_resource <- function(Arn) {
     http_path = "/2022-01-01/osis/listTagsForResource/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchingestion$list_tags_for_resource_input(Arn = Arn)
   output <- .opensearchingestion$list_tags_for_resource_output()
@@ -475,7 +489,8 @@ opensearchingestion_put_resource_policy <- function(ResourceArn, Policy) {
     http_path = "/2022-01-01/osis/resourcePolicy/{ResourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchingestion$put_resource_policy_input(ResourceArn = ResourceArn, Policy = Policy)
   output <- .opensearchingestion$put_resource_policy_output()
@@ -507,7 +522,8 @@ opensearchingestion_revoke_pipeline_endpoint_connections <- function(PipelineArn
     http_path = "/2022-01-01/osis/revokePipelineEndpointConnections",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchingestion$revoke_pipeline_endpoint_connections_input(PipelineArn = PipelineArn, EndpointIds = EndpointIds)
   output <- .opensearchingestion$revoke_pipeline_endpoint_connections_output()
@@ -538,7 +554,8 @@ opensearchingestion_start_pipeline <- function(PipelineName) {
     http_path = "/2022-01-01/osis/startPipeline/{PipelineName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchingestion$start_pipeline_input(PipelineName = PipelineName)
   output <- .opensearchingestion$start_pipeline_output()
@@ -569,7 +586,8 @@ opensearchingestion_stop_pipeline <- function(PipelineName) {
     http_path = "/2022-01-01/osis/stopPipeline/{PipelineName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchingestion$stop_pipeline_input(PipelineName = PipelineName)
   output <- .opensearchingestion$stop_pipeline_output()
@@ -601,7 +619,8 @@ opensearchingestion_tag_resource <- function(Arn, Tags) {
     http_path = "/2022-01-01/osis/tagResource/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchingestion$tag_resource_input(Arn = Arn, Tags = Tags)
   output <- .opensearchingestion$tag_resource_output()
@@ -633,7 +652,8 @@ opensearchingestion_untag_resource <- function(Arn, TagKeys) {
     http_path = "/2022-01-01/osis/untagResource/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchingestion$untag_resource_input(Arn = Arn, TagKeys = TagKeys)
   output <- .opensearchingestion$untag_resource_output()
@@ -671,7 +691,8 @@ opensearchingestion_update_pipeline <- function(PipelineName, MinUnits = NULL, M
     http_path = "/2022-01-01/osis/updatePipeline/{PipelineName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchingestion$update_pipeline_input(PipelineName = PipelineName, MinUnits = MinUnits, MaxUnits = MaxUnits, PipelineConfigurationBody = PipelineConfigurationBody, LogPublishingOptions = LogPublishingOptions, BufferOptions = BufferOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, PipelineRoleArn = PipelineRoleArn)
   output <- .opensearchingestion$update_pipeline_output()
@@ -703,7 +724,8 @@ opensearchingestion_validate_pipeline <- function(PipelineConfigurationBody) {
     http_path = "/2022-01-01/osis/validatePipeline",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchingestion$validate_pipeline_input(PipelineConfigurationBody = PipelineConfigurationBody)
   output <- .opensearchingestion$validate_pipeline_output()

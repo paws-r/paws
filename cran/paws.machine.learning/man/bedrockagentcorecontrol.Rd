@@ -231,6 +231,7 @@ Welcome to the Amazon Bedrock AgentCore Control plane API reference. Control pla
 \link[=bedrockagentcorecontrol_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags associated with the specified resource\cr
 \link[=bedrockagentcorecontrol_list_workload_identities]{list_workload_identities} \tab Lists all workload identities in your account\cr
 \link[=bedrockagentcorecontrol_put_resource_policy]{put_resource_policy} \tab Creates or updates a resource-based policy for a resource with the specified resourceArn\cr
+\link[=bedrockagentcorecontrol_rotate_payment_connector_credentials]{rotate_payment_connector_credentials} \tab Replaces the service-managed credentials of a payment connector with newly issued credentials\cr
 \link[=bedrockagentcorecontrol_set_token_vault_cmk]{set_token_vault_cmk} \tab Sets the customer master key (CMK) for a token vault\cr
 \link[=bedrockagentcorecontrol_start_policy_generation]{start_policy_generation} \tab Initiates the AI-powered generation of Dogwood policies from natural language descriptions within the AgentCore Policy system\cr
 \link[=bedrockagentcorecontrol_submit_registry_record_for_approval]{submit_registry_record_for_approval} \tab Submits a registry record for approval\cr

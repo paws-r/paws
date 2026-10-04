@@ -1,4 +1,4 @@
-svc <- paws.developer.tools::devopsguru()
+svc <- paws::devopsguru()
 
 test_that("describe_account_health", {
   skip_on_cran()

@@ -40,7 +40,8 @@ costexplorer_create_anomaly_monitor <- function(AnomalyMonitor, ResourceTags = N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$create_anomaly_monitor_input(AnomalyMonitor = AnomalyMonitor, ResourceTags = ResourceTags)
   output <- .costexplorer$create_anomaly_monitor_output()
@@ -88,7 +89,8 @@ costexplorer_create_anomaly_subscription <- function(AnomalySubscription, Resour
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$create_anomaly_subscription_input(AnomalySubscription = AnomalySubscription, ResourceTags = ResourceTags)
   output <- .costexplorer$create_anomaly_subscription_output()
@@ -141,7 +143,8 @@ costexplorer_create_cost_category_definition <- function(Name, EffectiveStart = 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$create_cost_category_definition_input(Name = Name, EffectiveStart = EffectiveStart, RuleVersion = RuleVersion, Rules = Rules, DefaultValue = DefaultValue, SplitChargeRules = SplitChargeRules, ResourceTags = ResourceTags)
   output <- .costexplorer$create_cost_category_definition_output()
@@ -172,7 +175,8 @@ costexplorer_delete_anomaly_monitor <- function(MonitorArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$delete_anomaly_monitor_input(MonitorArn = MonitorArn)
   output <- .costexplorer$delete_anomaly_monitor_output()
@@ -203,7 +207,8 @@ costexplorer_delete_anomaly_subscription <- function(SubscriptionArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$delete_anomaly_subscription_input(SubscriptionArn = SubscriptionArn)
   output <- .costexplorer$delete_anomaly_subscription_output()
@@ -234,7 +239,8 @@ costexplorer_delete_cost_category_definition <- function(CostCategoryArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$delete_cost_category_definition_input(CostCategoryArn = CostCategoryArn)
   output <- .costexplorer$delete_cost_category_definition_output()
@@ -267,7 +273,8 @@ costexplorer_describe_cost_category_definition <- function(CostCategoryArn, Effe
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$describe_cost_category_definition_input(CostCategoryArn = CostCategoryArn, EffectiveOn = EffectiveOn)
   output <- .costexplorer$describe_cost_category_definition_output()
@@ -304,7 +311,8 @@ costexplorer_get_anomalies <- function(MonitorArn = NULL, DateInterval, Feedback
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextPageToken", output_token = "NextPageToken", limit_key = "MaxResults", result_key = "Anomalies"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$get_anomalies_input(MonitorArn = MonitorArn, DateInterval = DateInterval, Feedback = Feedback, TotalImpact = TotalImpact, NextPageToken = NextPageToken, MaxResults = MaxResults)
   output <- .costexplorer$get_anomalies_output()
@@ -337,7 +345,8 @@ costexplorer_get_anomaly_monitors <- function(MonitorArnList = NULL, NextPageTok
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextPageToken", output_token = "NextPageToken", limit_key = "MaxResults", result_key = "AnomalyMonitors"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$get_anomaly_monitors_input(MonitorArnList = MonitorArnList, NextPageToken = NextPageToken, MaxResults = MaxResults)
   output <- .costexplorer$get_anomaly_monitors_output()
@@ -371,7 +380,8 @@ costexplorer_get_anomaly_subscriptions <- function(SubscriptionArnList = NULL, M
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextPageToken", output_token = "NextPageToken", limit_key = "MaxResults", result_key = "AnomalySubscriptions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$get_anomaly_subscriptions_input(SubscriptionArnList = SubscriptionArnList, MonitorArn = MonitorArn, NextPageToken = NextPageToken, MaxResults = MaxResults)
   output <- .costexplorer$get_anomaly_subscriptions_output()
@@ -405,7 +415,8 @@ costexplorer_get_approximate_usage_records <- function(Granularity, Services = N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$get_approximate_usage_records_input(Granularity = Granularity, Services = Services, ApproximationDimension = ApproximationDimension)
   output <- .costexplorer$get_approximate_usage_records_output()
@@ -436,7 +447,8 @@ costexplorer_get_commitment_purchase_analysis <- function(AnalysisId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$get_commitment_purchase_analysis_input(AnalysisId = AnalysisId)
   output <- .costexplorer$get_commitment_purchase_analysis_output()
@@ -487,7 +499,8 @@ costexplorer_get_cost_and_usage <- function(TimePeriod, Granularity, Filter = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$get_cost_and_usage_input(TimePeriod = TimePeriod, Granularity = Granularity, Filter = Filter, Metrics = Metrics, GroupBy = GroupBy, BillingViewArn = BillingViewArn, NextPageToken = NextPageToken)
   output <- .costexplorer$get_cost_and_usage_output()
@@ -570,7 +583,8 @@ costexplorer_get_cost_and_usage_comparisons <- function(BillingViewArn = NULL, B
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextPageToken", output_token = "NextPageToken", limit_key = "MaxResults", result_key = "CostAndUsageComparisons"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$get_cost_and_usage_comparisons_input(BillingViewArn = BillingViewArn, BaselineTimePeriod = BaselineTimePeriod, ComparisonTimePeriod = ComparisonTimePeriod, MetricForComparison = MetricForComparison, Filter = Filter, GroupBy = GroupBy, MaxResults = MaxResults, NextPageToken = NextPageToken)
   output <- .costexplorer$get_cost_and_usage_comparisons_output()
@@ -619,7 +633,8 @@ costexplorer_get_cost_and_usage_with_resources <- function(TimePeriod, Granulari
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$get_cost_and_usage_with_resources_input(TimePeriod = TimePeriod, Granularity = Granularity, Filter = Filter, Metrics = Metrics, GroupBy = GroupBy, BillingViewArn = BillingViewArn, NextPageToken = NextPageToken)
   output <- .costexplorer$get_cost_and_usage_with_resources_output()
@@ -727,7 +742,8 @@ costexplorer_get_cost_categories <- function(SearchString = NULL, TimePeriod, Co
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$get_cost_categories_input(SearchString = SearchString, TimePeriod = TimePeriod, CostCategoryName = CostCategoryName, Filter = Filter, SortBy = SortBy, BillingViewArn = BillingViewArn, MaxResults = MaxResults, NextPageToken = NextPageToken)
   output <- .costexplorer$get_cost_categories_output()
@@ -811,7 +827,8 @@ costexplorer_get_cost_comparison_drivers <- function(BillingViewArn = NULL, Base
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextPageToken", output_token = "NextPageToken", limit_key = "MaxResults", result_key = "CostComparisonDrivers"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$get_cost_comparison_drivers_input(BillingViewArn = BillingViewArn, BaselineTimePeriod = BaselineTimePeriod, ComparisonTimePeriod = ComparisonTimePeriod, MetricForComparison = MetricForComparison, Filter = Filter, GroupBy = GroupBy, MaxResults = MaxResults, NextPageToken = NextPageToken)
   output <- .costexplorer$get_cost_comparison_drivers_output()
@@ -907,7 +924,8 @@ costexplorer_get_cost_forecast <- function(TimePeriod, Metric, Granularity, Filt
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$get_cost_forecast_input(TimePeriod = TimePeriod, Metric = Metric, Granularity = Granularity, Filter = Filter, BillingViewArn = BillingViewArn, PredictionIntervalLevel = PredictionIntervalLevel)
   output <- .costexplorer$get_cost_forecast_output()
@@ -1105,7 +1123,8 @@ costexplorer_get_dimension_values <- function(SearchString = NULL, TimePeriod, D
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$get_dimension_values_input(SearchString = SearchString, TimePeriod = TimePeriod, Dimension = Dimension, Context = Context, Filter = Filter, SortBy = SortBy, BillingViewArn = BillingViewArn, MaxResults = MaxResults, NextPageToken = NextPageToken)
   output <- .costexplorer$get_dimension_values_output()
@@ -1228,7 +1247,8 @@ costexplorer_get_reservation_coverage <- function(TimePeriod, GroupBy = NULL, Gr
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$get_reservation_coverage_input(TimePeriod = TimePeriod, GroupBy = GroupBy, Granularity = Granularity, Filter = Filter, Metrics = Metrics, NextPageToken = NextPageToken, SortBy = SortBy, MaxResults = MaxResults)
   output <- .costexplorer$get_reservation_coverage_output()
@@ -1312,7 +1332,8 @@ costexplorer_get_reservation_purchase_recommendation <- function(AccountId = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextPageToken", output_token = "NextPageToken", limit_key = "PageSize", result_key = "Recommendations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$get_reservation_purchase_recommendation_input(AccountId = AccountId, Service = Service, Filter = Filter, AccountScope = AccountScope, LookbackPeriodInDays = LookbackPeriodInDays, TermInYears = TermInYears, PaymentOption = PaymentOption, ServiceSpecification = ServiceSpecification, PageSize = PageSize, NextPageToken = NextPageToken)
   output <- .costexplorer$get_reservation_purchase_recommendation_output()
@@ -1415,7 +1436,8 @@ costexplorer_get_reservation_utilization <- function(TimePeriod, GroupBy = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$get_reservation_utilization_input(TimePeriod = TimePeriod, GroupBy = GroupBy, Granularity = Granularity, Filter = Filter, SortBy = SortBy, NextPageToken = NextPageToken, MaxResults = MaxResults)
   output <- .costexplorer$get_reservation_utilization_output()
@@ -1495,7 +1517,8 @@ costexplorer_get_rightsizing_recommendation <- function(Filter = NULL, Configura
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextPageToken", output_token = "NextPageToken", limit_key = "PageSize", result_key = "RightsizingRecommendations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$get_rightsizing_recommendation_input(Filter = Filter, Configuration = Configuration, Service = Service, PageSize = PageSize, NextPageToken = NextPageToken)
   output <- .costexplorer$get_rightsizing_recommendation_output()
@@ -1526,7 +1549,8 @@ costexplorer_get_savings_plan_purchase_recommendation_details <- function(Recomm
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$get_savings_plan_purchase_recommendation_details_input(RecommendationDetailId = RecommendationDetailId)
   output <- .costexplorer$get_savings_plan_purchase_recommendation_details_output()
@@ -1596,7 +1620,8 @@ costexplorer_get_savings_plans_coverage <- function(TimePeriod, GroupBy = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$get_savings_plans_coverage_input(TimePeriod = TimePeriod, GroupBy = GroupBy, Granularity = Granularity, Filter = Filter, Metrics = Metrics, NextToken = NextToken, MaxResults = MaxResults, SortBy = SortBy)
   output <- .costexplorer$get_savings_plans_coverage_output()
@@ -1636,7 +1661,8 @@ costexplorer_get_savings_plans_purchase_recommendation <- function(SavingsPlansT
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$get_savings_plans_purchase_recommendation_input(SavingsPlansType = SavingsPlansType, TermInYears = TermInYears, PaymentOption = PaymentOption, AccountScope = AccountScope, NextPageToken = NextPageToken, PageSize = PageSize, LookbackPeriodInDays = LookbackPeriodInDays, Filter = Filter)
   output <- .costexplorer$get_savings_plans_purchase_recommendation_output()
@@ -1701,7 +1727,8 @@ costexplorer_get_savings_plans_utilization <- function(TimePeriod, Granularity =
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$get_savings_plans_utilization_input(TimePeriod = TimePeriod, Granularity = Granularity, Filter = Filter, SortBy = SortBy)
   output <- .costexplorer$get_savings_plans_utilization_output()
@@ -1768,7 +1795,8 @@ costexplorer_get_savings_plans_utilization_details <- function(TimePeriod, Filte
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$get_savings_plans_utilization_details_input(TimePeriod = TimePeriod, Filter = Filter, DataType = DataType, NextToken = NextToken, MaxResults = MaxResults, SortBy = SortBy)
   output <- .costexplorer$get_savings_plans_utilization_details_output()
@@ -1872,7 +1900,8 @@ costexplorer_get_tags <- function(SearchString = NULL, TimePeriod, TagKey = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$get_tags_input(SearchString = SearchString, TimePeriod = TimePeriod, TagKey = TagKey, Filter = Filter, SortBy = SortBy, BillingViewArn = BillingViewArn, MaxResults = MaxResults, NextPageToken = NextPageToken)
   output <- .costexplorer$get_tags_output()
@@ -1964,7 +1993,8 @@ costexplorer_get_usage_forecast <- function(TimePeriod, Metric, Granularity, Fil
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$get_usage_forecast_input(TimePeriod = TimePeriod, Metric = Metric, Granularity = Granularity, Filter = Filter, BillingViewArn = BillingViewArn, PredictionIntervalLevel = PredictionIntervalLevel)
   output <- .costexplorer$get_usage_forecast_output()
@@ -1998,7 +2028,8 @@ costexplorer_list_commitment_purchase_analyses <- function(AnalysisStatus = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextPageToken", output_token = "NextPageToken", limit_key = "PageSize", result_key = "AnalysisSummaryList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$list_commitment_purchase_analyses_input(AnalysisStatus = AnalysisStatus, NextPageToken = NextPageToken, PageSize = PageSize, AnalysisIds = AnalysisIds)
   output <- .costexplorer$list_commitment_purchase_analyses_output()
@@ -2031,7 +2062,8 @@ costexplorer_list_cost_allocation_tag_backfill_history <- function(NextToken = N
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$list_cost_allocation_tag_backfill_history_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .costexplorer$list_cost_allocation_tag_backfill_history_output()
@@ -2066,7 +2098,8 @@ costexplorer_list_cost_allocation_tags <- function(Status = NULL, TagKeys = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$list_cost_allocation_tags_input(Status = Status, TagKeys = TagKeys, Type = Type, NextToken = NextToken, MaxResults = MaxResults)
   output <- .costexplorer$list_cost_allocation_tags_output()
@@ -2101,7 +2134,8 @@ costexplorer_list_cost_category_definitions <- function(EffectiveOn = NULL, Next
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$list_cost_category_definitions_input(EffectiveOn = EffectiveOn, NextToken = NextToken, MaxResults = MaxResults, SupportedResourceTypes = SupportedResourceTypes)
   output <- .costexplorer$list_cost_category_definitions_output()
@@ -2135,7 +2169,8 @@ costexplorer_list_cost_category_resource_associations <- function(CostCategoryAr
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CostCategoryResourceAssociations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$list_cost_category_resource_associations_input(CostCategoryArn = CostCategoryArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .costexplorer$list_cost_category_resource_associations_output()
@@ -2170,7 +2205,8 @@ costexplorer_list_savings_plans_purchase_recommendation_generation <- function(G
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextPageToken", output_token = "NextPageToken", limit_key = "PageSize", result_key = "GenerationSummaryList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$list_savings_plans_purchase_recommendation_generation_input(GenerationStatus = GenerationStatus, RecommendationIds = RecommendationIds, PageSize = PageSize, NextPageToken = NextPageToken)
   output <- .costexplorer$list_savings_plans_purchase_recommendation_generation_output()
@@ -2202,7 +2238,8 @@ costexplorer_list_tags_for_resource <- function(ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .costexplorer$list_tags_for_resource_output()
@@ -2234,7 +2271,8 @@ costexplorer_provide_anomaly_feedback <- function(AnomalyId, Feedback) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$provide_anomaly_feedback_input(AnomalyId = AnomalyId, Feedback = Feedback)
   output <- .costexplorer$provide_anomaly_feedback_output()
@@ -2266,7 +2304,8 @@ costexplorer_start_commitment_purchase_analysis <- function(CommitmentPurchaseAn
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$start_commitment_purchase_analysis_input(CommitmentPurchaseAnalysisConfiguration = CommitmentPurchaseAnalysisConfiguration)
   output <- .costexplorer$start_commitment_purchase_analysis_output()
@@ -2297,7 +2336,8 @@ costexplorer_start_cost_allocation_tag_backfill <- function(BackfillFrom) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$start_cost_allocation_tag_backfill_input(BackfillFrom = BackfillFrom)
   output <- .costexplorer$start_cost_allocation_tag_backfill_output()
@@ -2328,7 +2368,8 @@ costexplorer_start_savings_plans_purchase_recommendation_generation <- function(
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$start_savings_plans_purchase_recommendation_generation_input()
   output <- .costexplorer$start_savings_plans_purchase_recommendation_generation_output()
@@ -2377,7 +2418,8 @@ costexplorer_tag_resource <- function(ResourceArn, ResourceTags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$tag_resource_input(ResourceArn = ResourceArn, ResourceTags = ResourceTags)
   output <- .costexplorer$tag_resource_output()
@@ -2409,7 +2451,8 @@ costexplorer_untag_resource <- function(ResourceArn, ResourceTagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$untag_resource_input(ResourceArn = ResourceArn, ResourceTagKeys = ResourceTagKeys)
   output <- .costexplorer$untag_resource_output()
@@ -2441,7 +2484,8 @@ costexplorer_update_anomaly_monitor <- function(MonitorArn, MonitorName = NULL) 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$update_anomaly_monitor_input(MonitorArn = MonitorArn, MonitorName = MonitorName)
   output <- .costexplorer$update_anomaly_monitor_output()
@@ -2496,7 +2540,8 @@ costexplorer_update_anomaly_subscription <- function(SubscriptionArn, Threshold 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$update_anomaly_subscription_input(SubscriptionArn = SubscriptionArn, Threshold = Threshold, Frequency = Frequency, MonitorArnList = MonitorArnList, Subscribers = Subscribers, SubscriptionName = SubscriptionName, ThresholdExpression = ThresholdExpression)
   output <- .costexplorer$update_anomaly_subscription_output()
@@ -2528,7 +2573,8 @@ costexplorer_update_cost_allocation_tags_status <- function(CostAllocationTagsSt
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$update_cost_allocation_tags_status_input(CostAllocationTagsStatus = CostAllocationTagsStatus)
   output <- .costexplorer$update_cost_allocation_tags_status_output()
@@ -2564,7 +2610,8 @@ costexplorer_update_cost_category_definition <- function(CostCategoryArn, Effect
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .costexplorer$update_cost_category_definition_input(CostCategoryArn = CostCategoryArn, EffectiveStart = EffectiveStart, RuleVersion = RuleVersion, Rules = Rules, DefaultValue = DefaultValue, SplitChargeRules = SplitChargeRules)
   output <- .costexplorer$update_cost_category_definition_output()

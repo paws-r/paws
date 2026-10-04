@@ -5,7 +5,18 @@
 \title{Enables enrichment and PromQL access for CloudWatch vended metrics for
 supported Amazon Web Services resources in the account}
 \usage{
-cloudwatch_start_o_tel_enrichment()
+cloudwatch_start_o_tel_enrichment(IncludeFilters = NULL, ExcludeFilters = NULL)
+}
+\arguments{
+\item{IncludeFilters}{The metric namespaces, and the metric names, to enrich. If this parameter is omitted, every namespace that Amazon CloudWatch supports for enrichment is in scope.
+
+A maximum of 100 filters is allowed across \code{IncludeFilters} and \code{ExcludeFilters} combined.}
+
+\item{ExcludeFilters}{The metric namespaces, and the metric names, to leave unenriched. If this parameter is omitted, nothing is excluded.
+
+Amazon CloudWatch applies \code{ExcludeFilters} after \code{IncludeFilters}, so a metric that both parameters match is not enriched.
+
+A maximum of 100 filters is allowed across \code{IncludeFilters} and \code{ExcludeFilters} combined.}
 }
 \description{
 Enables enrichment and PromQL access for CloudWatch vended metrics for \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/UsingResourceTagsForTelemetry.html}{supported Amazon Web Services resources} in the account. Once enabled, metrics that contain a resource identifier dimension (for example, EC2 \code{CPUUtilization} with an \code{InstanceId} dimension) are enriched with resource ARN and resource tag labels and become queryable using PromQL.

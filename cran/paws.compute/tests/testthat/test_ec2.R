@@ -140,6 +140,16 @@ test_that("describe_capacity_reservation_cancellation_quotes", {
   expect_error(svc$describe_capacity_reservation_cancellation_quotes(MaxResults = 20), NA)
 })
 
+test_that("describe_capacity_reservation_date_change_quotes", {
+  skip_on_cran()
+  expect_error(svc$describe_capacity_reservation_date_change_quotes(), NA)
+})
+
+test_that("describe_capacity_reservation_date_change_quotes", {
+  skip_on_cran()
+  expect_error(svc$describe_capacity_reservation_date_change_quotes(MaxResults = 20), NA)
+})
+
 test_that("describe_capacity_reservation_fleets", {
   skip_on_cran()
   expect_error(svc$describe_capacity_reservation_fleets(), NA)

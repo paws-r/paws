@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Associates a FirewallRuleGroup with a VPC, to provide DNS filtering for the VPC.
 #' 
-#' If the rule group contains any rule configured with the `PartnerThreatProtection` rule type, the calling account must hold an active AWS Marketplace subscription to the named partner. If the subscription is missing, the association request is rejected.
+#' If the rule group contains any rule configured with the `PartnerThreatProtection` rule type, the calling account must hold an active Amazon Web Services Marketplace subscription to the named partner. If the subscription is missing, the association request is rejected.
 #'
 #' @usage
 #' route53resolver_associate_firewall_rule_group(CreatorRequestId,
@@ -79,7 +79,8 @@ route53resolver_associate_firewall_rule_group <- function(CreatorRequestId, Fire
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$associate_firewall_rule_group_input(CreatorRequestId = CreatorRequestId, FirewallRuleGroupId = FirewallRuleGroupId, VpcId = VpcId, Priority = Priority, Name = Name, MutationProtection = MutationProtection, Tags = Tags)
   output <- .route53resolver$associate_firewall_rule_group_output()
@@ -163,7 +164,8 @@ route53resolver_associate_resolver_endpoint_ip_address <- function(ResolverEndpo
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$associate_resolver_endpoint_ip_address_input(ResolverEndpointId = ResolverEndpointId, IpAddress = IpAddress)
   output <- .route53resolver$associate_resolver_endpoint_ip_address_output()
@@ -229,7 +231,8 @@ route53resolver_associate_resolver_query_log_config <- function(ResolverQueryLog
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$associate_resolver_query_log_config_input(ResolverQueryLogConfigId = ResolverQueryLogConfigId, ResourceId = ResourceId)
   output <- .route53resolver$associate_resolver_query_log_config_output()
@@ -291,7 +294,8 @@ route53resolver_associate_resolver_rule <- function(ResolverRuleId, Name = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$associate_resolver_rule_input(ResolverRuleId = ResolverRuleId, Name = Name, VPCId = VPCId)
   output <- .route53resolver$associate_resolver_rule_output()
@@ -446,7 +450,8 @@ route53resolver_batch_create_firewall_rule <- function(CreateFirewallRuleEntries
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$batch_create_firewall_rule_input(CreateFirewallRuleEntries = CreateFirewallRuleEntries)
   output <- .route53resolver$batch_create_firewall_rule_output()
@@ -551,7 +556,8 @@ route53resolver_batch_delete_firewall_rule <- function(DeleteFirewallRuleEntries
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$batch_delete_firewall_rule_input(DeleteFirewallRuleEntries = DeleteFirewallRuleEntries)
   output <- .route53resolver$batch_delete_firewall_rule_output()
@@ -706,7 +712,8 @@ route53resolver_batch_update_firewall_rule <- function(UpdateFirewallRuleEntries
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$batch_update_firewall_rule_input(UpdateFirewallRuleEntries = UpdateFirewallRuleEntries)
   output <- .route53resolver$batch_update_firewall_rule_output()
@@ -778,7 +785,8 @@ route53resolver_create_firewall_domain_list <- function(CreatorRequestId, Name, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$create_firewall_domain_list_input(CreatorRequestId = CreatorRequestId, Name = Name, Tags = Tags)
   output <- .route53resolver$create_firewall_domain_list_output()
@@ -795,11 +803,11 @@ route53resolver_create_firewall_domain_list <- function(CreatorRequestId, Name, 
 #' @description
 #' Creates a single DNS Firewall rule in the specified rule group. The rule can use any one of the following match sources, and the chosen source must be supplied through the matching request field — they are mutually exclusive:
 #' 
-#' -   `FirewallDomainListId` — match a customer-managed or AWS-managed domain list.
+#' -   `FirewallDomainListId` — match a customer-managed or Amazon Web Services-managed domain list.
 #' 
 #' -   `DnsThreatProtection` — match a built-in DNS Firewall Advanced threat detector (`DGA`, `DNS_TUNNELING`, or `DICTIONARY_DGA`).
 #' 
-#' -   `FirewallRuleType` — match one of the rule-type variants returned by [`list_firewall_rule_types`][route53resolver_list_firewall_rule_types]: `FirewallAdvancedContentCategory`, `FirewallAdvancedThreatCategory`, `DnsThreatProtection`, or `PartnerThreatProtection`. The `PartnerThreatProtection` variant requires an active AWS Marketplace subscription to the named partner product.
+#' -   `FirewallRuleType` — match one of the rule-type variants returned by [`list_firewall_rule_types`][route53resolver_list_firewall_rule_types]: `FirewallAdvancedContentCategory`, `FirewallAdvancedThreatCategory`, `DnsThreatProtection`, or `PartnerThreatProtection`. The `PartnerThreatProtection` variant requires an active Amazon Web Services Marketplace subscription to the named partner product.
 #' 
 #' For rules that require asynchronous provisioning (today, the `PartnerThreatProtection` rule type), the rule's `Status` begins at `CREATING` and transitions to `COMPLETE` once the rule is provisioned and the marketplace entitlement is verified. If provisioning fails, `Status` becomes `CREATION_FAILED` and `StatusMessage` contains a human-readable reason; the rule is then immutable and must be removed with [`delete_firewall_rule`][route53resolver_delete_firewall_rule].
 #'
@@ -892,13 +900,13 @@ route53resolver_create_firewall_domain_list <- function(CreatorRequestId, Name, 
 #' -   `HIGH`: Detects only the most well corroborated threats with a low rate of false positives.
 #' @param FirewallRuleType The rule type configuration for the firewall rule. This is a tagged union — set exactly one of its members. This setting is mutually exclusive with the top-level `FirewallDomainListId` and `DnsThreatProtection` fields. Use one of:
 #' 
-#' -   `FirewallAdvancedContentCategory` — match an AWS-managed content category (for example, `VIOLENCE_AND_HATE_SPEECH`).
+#' -   `FirewallAdvancedContentCategory` — match an Amazon Web Services-managed content category (for example, `VIOLENCE_AND_HATE_SPEECH`).
 #' 
-#' -   `FirewallAdvancedThreatCategory` — match an AWS-managed advanced threat category (for example, `PHISHING`).
+#' -   `FirewallAdvancedThreatCategory` — match an Amazon Web Services-managed advanced threat category (for example, `PHISHING`).
 #' 
 #' -   `DnsThreatProtection` — match a built-in DNS Firewall Advanced threat detector (`DGA`, `DNS_TUNNELING`, or `DICTIONARY_DGA`).
 #' 
-#' -   `PartnerThreatProtection` — match a third-party threat feed delivered through AWS Marketplace. The selected partner must be an active subscription on the calling account.
+#' -   `PartnerThreatProtection` — match a third-party threat feed delivered through Amazon Web Services Marketplace. The selected partner must be an active subscription on the calling account.
 #' 
 #' To enumerate the values supported in your account, call [`list_firewall_rule_types`][route53resolver_list_firewall_rule_types].
 #'
@@ -992,7 +1000,8 @@ route53resolver_create_firewall_rule <- function(CreatorRequestId, FirewallRuleG
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$create_firewall_rule_input(CreatorRequestId = CreatorRequestId, FirewallRuleGroupId = FirewallRuleGroupId, FirewallDomainListId = FirewallDomainListId, Priority = Priority, Action = Action, BlockResponse = BlockResponse, BlockOverrideDomain = BlockOverrideDomain, BlockOverrideDnsType = BlockOverrideDnsType, BlockOverrideTtl = BlockOverrideTtl, Name = Name, FirewallDomainRedirectionAction = FirewallDomainRedirectionAction, Qtype = Qtype, DnsThreatProtection = DnsThreatProtection, ConfidenceThreshold = ConfidenceThreshold, FirewallRuleType = FirewallRuleType)
   output <- .route53resolver$create_firewall_rule_output()
@@ -1063,7 +1072,8 @@ route53resolver_create_firewall_rule_group <- function(CreatorRequestId, Name, T
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$create_firewall_rule_group_input(CreatorRequestId = CreatorRequestId, Name = Name, Tags = Tags)
   output <- .route53resolver$create_firewall_rule_group_output()
@@ -1079,6 +1089,8 @@ route53resolver_create_firewall_rule_group <- function(CreatorRequestId, Name, T
 #'
 #' @description
 #' Creates a Route 53 Resolver on an Outpost.
+#' 
+#' This operation applies to first-generation Outposts only. On second-generation Outposts, Resolver is enabled by default and managed automatically by Amazon Web Services, so you don't need to create it.
 #'
 #' @usage
 #' route53resolver_create_outpost_resolver(CreatorRequestId, Name,
@@ -1142,7 +1154,8 @@ route53resolver_create_outpost_resolver <- function(CreatorRequestId, Name, Inst
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$create_outpost_resolver_input(CreatorRequestId = CreatorRequestId, Name = Name, InstanceCount = InstanceCount, PreferredInstanceType = PreferredInstanceType, OutpostArn = OutpostArn, Tags = Tags)
   output <- .route53resolver$create_outpost_resolver_output()
@@ -1185,7 +1198,13 @@ route53resolver_create_outpost_resolver <- function(CreatorRequestId, Name, Inst
 #' @param IpAddresses &#91;required&#93; The subnets and IP addresses in your VPC that DNS queries originate from (for outbound endpoints) or that you forward DNS queries to (for inbound endpoints). The subnet ID uniquely identifies a VPC.
 #' 
 #' Even though the minimum is 1, Route 53 requires that you create at least two.
+#' 
+#' We recommend using [VPC Resolver on Outposts](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/outpost-resolver-getting-started.html) to create endpoints on Outposts Racks.
+#' 
+#' Outposts subnets with [Local Network Interface (LNI)](https://docs.aws.amazon.com/outposts/latest/server-userguide/local-network-interface.html) enabled are not compatible with Route 53 Resolver endpoints. If you enable LNI on a subnet that contains Route 53 Resolver endpoint elastic network interfaces (ENIs), those ENIs will stop functioning. For more information, see [Subnet compatibility for Resolver endpoints](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/best-practices-resolver.html#best-practices-resolver-subnet-compatibility) in the *Amazon Route 53 Developer Guide*.
 #' @param OutpostArn The Amazon Resource Name (ARN) of the Outpost. If you specify this, you must also specify a value for the `PreferredInstanceType`.
+#' 
+#' Resolver endpoints on Outposts are supported on first-generation Outposts only. Inbound and outbound Resolver endpoints aren't supported on second-generation Outposts.
 #' @param PreferredInstanceType The instance type. If you specify this, you must also specify a value for the `OutpostArn`.
 #' @param Tags A list of the tag keys and values that you want to associate with the endpoint.
 #' @param ResolverEndpointType For the endpoint type you can choose either IPv4, IPv6, or dual-stack. A dual-stack endpoint means that it will resolve via both IPv4 and IPv6. This endpoint type is applied to all IP addresses.
@@ -1307,7 +1326,8 @@ route53resolver_create_resolver_endpoint <- function(CreatorRequestId, Name = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$create_resolver_endpoint_input(CreatorRequestId = CreatorRequestId, Name = Name, SecurityGroupIds = SecurityGroupIds, Direction = Direction, IpAddresses = IpAddresses, OutpostArn = OutpostArn, PreferredInstanceType = PreferredInstanceType, Tags = Tags, ResolverEndpointType = ResolverEndpointType, Protocols = Protocols, RniEnhancedMetricsEnabled = RniEnhancedMetricsEnabled, TargetNameServerMetricsEnabled = TargetNameServerMetricsEnabled, Dns64Enabled = Dns64Enabled, Ipv6InternetAccessEnabled = Ipv6InternetAccessEnabled)
   output <- .route53resolver$create_resolver_endpoint_output()
@@ -1400,7 +1420,8 @@ route53resolver_create_resolver_query_log_config <- function(Name, DestinationAr
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$create_resolver_query_log_config_input(Name = Name, DestinationArn = DestinationArn, CreatorRequestId = CreatorRequestId, Tags = Tags)
   output <- .route53resolver$create_resolver_query_log_config_output()
@@ -1516,7 +1537,8 @@ route53resolver_create_resolver_rule <- function(CreatorRequestId, Name = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$create_resolver_rule_input(CreatorRequestId = CreatorRequestId, Name = Name, RuleType = RuleType, DomainName = DomainName, TargetIps = TargetIps, ResolverEndpointId = ResolverEndpointId, Tags = Tags, DelegationRecord = DelegationRecord)
   output <- .route53resolver$create_resolver_rule_output()
@@ -1578,7 +1600,8 @@ route53resolver_delete_firewall_domain_list <- function(FirewallDomainListId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$delete_firewall_domain_list_input(FirewallDomainListId = FirewallDomainListId)
   output <- .route53resolver$delete_firewall_domain_list_output()
@@ -1699,7 +1722,8 @@ route53resolver_delete_firewall_rule <- function(FirewallRuleGroupId, FirewallDo
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$delete_firewall_rule_input(FirewallRuleGroupId = FirewallRuleGroupId, FirewallDomainListId = FirewallDomainListId, FirewallThreatProtectionId = FirewallThreatProtectionId, Qtype = Qtype)
   output <- .route53resolver$delete_firewall_rule_output()
@@ -1760,7 +1784,8 @@ route53resolver_delete_firewall_rule_group <- function(FirewallRuleGroupId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$delete_firewall_rule_group_input(FirewallRuleGroupId = FirewallRuleGroupId)
   output <- .route53resolver$delete_firewall_rule_group_output()
@@ -1776,6 +1801,8 @@ route53resolver_delete_firewall_rule_group <- function(FirewallRuleGroupId) {
 #'
 #' @description
 #' Deletes a Resolver on the Outpost.
+#' 
+#' This operation applies to first-generation Outposts only. On second-generation Outposts, Resolver is managed automatically by Amazon Web Services and can't be deleted directly. To opt out of Resolver on second-generation Outposts, contact Amazon Web Services Support.
 #'
 #' @usage
 #' route53resolver_delete_outpost_resolver(Id)
@@ -1821,7 +1848,8 @@ route53resolver_delete_outpost_resolver <- function(Id) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$delete_outpost_resolver_input(Id = Id)
   output <- .route53resolver$delete_outpost_resolver_output()
@@ -1899,7 +1927,8 @@ route53resolver_delete_resolver_endpoint <- function(ResolverEndpointId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$delete_resolver_endpoint_input(ResolverEndpointId = ResolverEndpointId)
   output <- .route53resolver$delete_resolver_endpoint_output()
@@ -1964,7 +1993,8 @@ route53resolver_delete_resolver_query_log_config <- function(ResolverQueryLogCon
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$delete_resolver_query_log_config_input(ResolverQueryLogConfigId = ResolverQueryLogConfigId)
   output <- .route53resolver$delete_resolver_query_log_config_output()
@@ -2037,7 +2067,8 @@ route53resolver_delete_resolver_rule <- function(ResolverRuleId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$delete_resolver_rule_input(ResolverRuleId = ResolverRuleId)
   output <- .route53resolver$delete_resolver_rule_output()
@@ -2102,7 +2133,8 @@ route53resolver_disassociate_firewall_rule_group <- function(FirewallRuleGroupAs
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$disassociate_firewall_rule_group_input(FirewallRuleGroupAssociationId = FirewallRuleGroupAssociationId)
   output <- .route53resolver$disassociate_firewall_rule_group_output()
@@ -2186,7 +2218,8 @@ route53resolver_disassociate_resolver_endpoint_ip_address <- function(ResolverEn
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$disassociate_resolver_endpoint_ip_address_input(ResolverEndpointId = ResolverEndpointId, IpAddress = IpAddress)
   output <- .route53resolver$disassociate_resolver_endpoint_ip_address_output()
@@ -2252,7 +2285,8 @@ route53resolver_disassociate_resolver_query_log_config <- function(ResolverQuery
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$disassociate_resolver_query_log_config_input(ResolverQueryLogConfigId = ResolverQueryLogConfigId, ResourceId = ResourceId)
   output <- .route53resolver$disassociate_resolver_query_log_config_output()
@@ -2313,7 +2347,8 @@ route53resolver_disassociate_resolver_rule <- function(VPCId, ResolverRuleId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$disassociate_resolver_rule_input(VPCId = VPCId, ResolverRuleId = ResolverRuleId)
   output <- .route53resolver$disassociate_resolver_rule_output()
@@ -2368,7 +2403,8 @@ route53resolver_get_firewall_config <- function(ResourceId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$get_firewall_config_input(ResourceId = ResourceId)
   output <- .route53resolver$get_firewall_config_output()
@@ -2430,7 +2466,8 @@ route53resolver_get_firewall_domain_list <- function(FirewallDomainListId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$get_firewall_domain_list_input(FirewallDomainListId = FirewallDomainListId)
   output <- .route53resolver$get_firewall_domain_list_output()
@@ -2491,7 +2528,8 @@ route53resolver_get_firewall_rule_group <- function(FirewallRuleGroupId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$get_firewall_rule_group_input(FirewallRuleGroupId = FirewallRuleGroupId)
   output <- .route53resolver$get_firewall_rule_group_output()
@@ -2556,7 +2594,8 @@ route53resolver_get_firewall_rule_group_association <- function(FirewallRuleGrou
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$get_firewall_rule_group_association_input(FirewallRuleGroupAssociationId = FirewallRuleGroupAssociationId)
   output <- .route53resolver$get_firewall_rule_group_association_output()
@@ -2606,7 +2645,8 @@ route53resolver_get_firewall_rule_group_policy <- function(Arn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$get_firewall_rule_group_policy_input(Arn = Arn)
   output <- .route53resolver$get_firewall_rule_group_policy_output()
@@ -2668,7 +2708,8 @@ route53resolver_get_outpost_resolver <- function(Id) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$get_outpost_resolver_input(Id = Id)
   output <- .route53resolver$get_outpost_resolver_output()
@@ -2723,7 +2764,8 @@ route53resolver_get_resolver_config <- function(ResourceId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$get_resolver_config_input(ResourceId = ResourceId)
   output <- .route53resolver$get_resolver_config_output()
@@ -2777,7 +2819,8 @@ route53resolver_get_resolver_dnssec_config <- function(ResourceId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$get_resolver_dnssec_config_input(ResourceId = ResourceId)
   output <- .route53resolver$get_resolver_dnssec_config_output()
@@ -2853,7 +2896,8 @@ route53resolver_get_resolver_endpoint <- function(ResolverEndpointId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$get_resolver_endpoint_input(ResolverEndpointId = ResolverEndpointId)
   output <- .route53resolver$get_resolver_endpoint_output()
@@ -2915,7 +2959,8 @@ route53resolver_get_resolver_query_log_config <- function(ResolverQueryLogConfig
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$get_resolver_query_log_config_input(ResolverQueryLogConfigId = ResolverQueryLogConfigId)
   output <- .route53resolver$get_resolver_query_log_config_output()
@@ -2974,7 +3019,8 @@ route53resolver_get_resolver_query_log_config_association <- function(ResolverQu
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$get_resolver_query_log_config_association_input(ResolverQueryLogConfigAssociationId = ResolverQueryLogConfigAssociationId)
   output <- .route53resolver$get_resolver_query_log_config_association_output()
@@ -3023,7 +3069,8 @@ route53resolver_get_resolver_query_log_config_policy <- function(Arn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$get_resolver_query_log_config_policy_input(Arn = Arn)
   output <- .route53resolver$get_resolver_query_log_config_policy_output()
@@ -3098,7 +3145,8 @@ route53resolver_get_resolver_rule <- function(ResolverRuleId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$get_resolver_rule_input(ResolverRuleId = ResolverRuleId)
   output <- .route53resolver$get_resolver_rule_output()
@@ -3155,7 +3203,8 @@ route53resolver_get_resolver_rule_association <- function(ResolverRuleAssociatio
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$get_resolver_rule_association_input(ResolverRuleAssociationId = ResolverRuleAssociationId)
   output <- .route53resolver$get_resolver_rule_association_output()
@@ -3204,7 +3253,8 @@ route53resolver_get_resolver_rule_policy <- function(Arn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$get_resolver_rule_policy_input(Arn = Arn)
   output <- .route53resolver$get_resolver_rule_policy_output()
@@ -3272,7 +3322,8 @@ route53resolver_import_firewall_domains <- function(FirewallDomainListId, Operat
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$import_firewall_domains_input(FirewallDomainListId = FirewallDomainListId, Operation = Operation, DomainFileUrl = DomainFileUrl)
   output <- .route53resolver$import_firewall_domains_output()
@@ -3337,7 +3388,8 @@ route53resolver_list_firewall_configs <- function(MaxResults = NULL, NextToken =
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FirewallConfigs"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$list_firewall_configs_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_firewall_configs_output()
@@ -3405,7 +3457,8 @@ route53resolver_list_firewall_domain_lists <- function(MaxResults = NULL, NextTo
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FirewallDomainLists"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$list_firewall_domain_lists_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_firewall_domain_lists_output()
@@ -3469,7 +3522,8 @@ route53resolver_list_firewall_domains <- function(FirewallDomainListId, MaxResul
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Domains"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$list_firewall_domains_input(FirewallDomainListId = FirewallDomainListId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_firewall_domains_output()
@@ -3552,7 +3606,8 @@ route53resolver_list_firewall_rule_group_associations <- function(FirewallRuleGr
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FirewallRuleGroupAssociations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$list_firewall_rule_group_associations_input(FirewallRuleGroupId = FirewallRuleGroupId, VpcId = VpcId, Priority = Priority, Status = Status, MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_firewall_rule_group_associations_output()
@@ -3620,7 +3675,8 @@ route53resolver_list_firewall_rule_groups <- function(MaxResults = NULL, NextTok
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FirewallRuleGroups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$list_firewall_rule_groups_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_firewall_rule_groups_output()
@@ -3638,7 +3694,7 @@ route53resolver_list_firewall_rule_groups <- function(MaxResults = NULL, NextTok
 #' @description
 #' Retrieves the rule-type variants that can be used in the `FirewallRuleType` field of [`create_firewall_rule`][route53resolver_create_firewall_rule] and [`update_firewall_rule`][route53resolver_update_firewall_rule]. Each returned FirewallRuleTypeDefinition identifies one variant + value combination — for example, `FirewallAdvancedContentCategory` + `VIOLENCE_AND_HATE_SPEECH`, or `PartnerThreatProtection` + a partner-managed feed.
 #' 
-#' The supported `RuleType` filter values are `FirewallAdvancedContentCategory`, `FirewallAdvancedThreatCategory`, `DnsThreatProtection`, and `PartnerThreatProtection`. When a returned definition's variant requires an external subscription (currently only `PartnerThreatProtection`), the response also includes a SubscriptionInfo identifying the AWS Marketplace product that backs it; absence of `SubscriptionInfo` means the variant is fully managed by AWS and requires no separate subscription.
+#' The supported `RuleType` filter values are `FirewallAdvancedContentCategory`, `FirewallAdvancedThreatCategory`, `DnsThreatProtection`, and `PartnerThreatProtection`. When a returned definition's variant requires an external subscription (currently only `PartnerThreatProtection`), the response also includes a SubscriptionInfo identifying the Amazon Web Services Marketplace product that backs it; absence of `SubscriptionInfo` means the variant is fully managed by Amazon Web Services and requires no separate subscription.
 #'
 #' @usage
 #' route53resolver_list_firewall_rule_types(RuleType, MaxResults,
@@ -3689,7 +3745,8 @@ route53resolver_list_firewall_rule_types <- function(RuleType = NULL, MaxResults
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FirewallRuleTypes"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$list_firewall_rule_types_input(RuleType = RuleType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_firewall_rule_types_output()
@@ -3804,7 +3861,8 @@ route53resolver_list_firewall_rules <- function(FirewallRuleGroupId, Priority = 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FirewallRules"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$list_firewall_rules_input(FirewallRuleGroupId = FirewallRuleGroupId, Priority = Priority, Action = Action, MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_firewall_rules_output()
@@ -3874,7 +3932,8 @@ route53resolver_list_outpost_resolvers <- function(OutpostArn = NULL, MaxResults
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "OutpostResolvers"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$list_outpost_resolvers_input(OutpostArn = OutpostArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_outpost_resolvers_output()
@@ -3937,7 +3996,8 @@ route53resolver_list_resolver_configs <- function(MaxResults = NULL, NextToken =
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverConfigs"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$list_resolver_configs_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_resolver_configs_output()
@@ -4011,7 +4071,8 @@ route53resolver_list_resolver_dnssec_configs <- function(MaxResults = NULL, Next
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverDnssecConfigs"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$list_resolver_dnssec_configs_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .route53resolver$list_resolver_dnssec_configs_output()
@@ -4080,7 +4141,8 @@ route53resolver_list_resolver_endpoint_ip_addresses <- function(ResolverEndpoint
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "IpAddresses"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$list_resolver_endpoint_ip_addresses_input(ResolverEndpointId = ResolverEndpointId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_resolver_endpoint_ip_addresses_output()
@@ -4174,7 +4236,8 @@ route53resolver_list_resolver_endpoints <- function(MaxResults = NULL, NextToken
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverEndpoints"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$list_resolver_endpoints_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .route53resolver$list_resolver_endpoints_output()
@@ -4293,7 +4356,8 @@ route53resolver_list_resolver_query_log_config_associations <- function(MaxResul
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverQueryLogConfigAssociations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$list_resolver_query_log_config_associations_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, SortBy = SortBy, SortOrder = SortOrder)
   output <- .route53resolver$list_resolver_query_log_config_associations_output()
@@ -4416,7 +4480,8 @@ route53resolver_list_resolver_query_log_configs <- function(MaxResults = NULL, N
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverQueryLogConfigs"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$list_resolver_query_log_configs_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, SortBy = SortBy, SortOrder = SortOrder)
   output <- .route53resolver$list_resolver_query_log_configs_output()
@@ -4493,7 +4558,8 @@ route53resolver_list_resolver_rule_associations <- function(MaxResults = NULL, N
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverRuleAssociations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$list_resolver_rule_associations_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .route53resolver$list_resolver_rule_associations_output()
@@ -4586,7 +4652,8 @@ route53resolver_list_resolver_rules <- function(MaxResults = NULL, NextToken = N
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverRules"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$list_resolver_rules_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .route53resolver$list_resolver_rules_output()
@@ -4648,7 +4715,8 @@ route53resolver_list_tags_for_resource <- function(ResourceArn, MaxResults = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Tags"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$list_tags_for_resource_input(ResourceArn = ResourceArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_tags_for_resource_output()
@@ -4701,7 +4769,8 @@ route53resolver_put_firewall_rule_group_policy <- function(Arn, FirewallRuleGrou
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$put_firewall_rule_group_policy_input(Arn = Arn, FirewallRuleGroupPolicy = FirewallRuleGroupPolicy)
   output <- .route53resolver$put_firewall_rule_group_policy_output()
@@ -4764,7 +4833,8 @@ route53resolver_put_resolver_query_log_config_policy <- function(Arn, ResolverQu
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$put_resolver_query_log_config_policy_input(Arn = Arn, ResolverQueryLogConfigPolicy = ResolverQueryLogConfigPolicy)
   output <- .route53resolver$put_resolver_query_log_config_policy_output()
@@ -4830,7 +4900,8 @@ route53resolver_put_resolver_rule_policy <- function(Arn, ResolverRulePolicy) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$put_resolver_rule_policy_input(Arn = Arn, ResolverRulePolicy = ResolverRulePolicy)
   output <- .route53resolver$put_resolver_rule_policy_output()
@@ -4893,7 +4964,8 @@ route53resolver_tag_resource <- function(ResourceArn, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .route53resolver$tag_resource_output()
@@ -4953,7 +5025,8 @@ route53resolver_untag_resource <- function(ResourceArn, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .route53resolver$untag_resource_output()
@@ -5016,7 +5089,8 @@ route53resolver_update_firewall_config <- function(ResourceId, FirewallFailOpen)
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$update_firewall_config_input(ResourceId = ResourceId, FirewallFailOpen = FirewallFailOpen)
   output <- .route53resolver$update_firewall_config_output()
@@ -5091,7 +5165,8 @@ route53resolver_update_firewall_domains <- function(FirewallDomainListId, Operat
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$update_firewall_domains_input(FirewallDomainListId = FirewallDomainListId, Operation = Operation, Domains = Domains)
   output <- .route53resolver$update_firewall_domains_output()
@@ -5191,13 +5266,13 @@ route53resolver_update_firewall_domains <- function(FirewallDomainListId, Operat
 #' -   `HIGH`: Detects only the most well corroborated threats with a low rate of false positives.
 #' @param FirewallRuleType The rule type configuration for the firewall rule. This is a tagged union — set exactly one of its members. This setting is mutually exclusive with the top-level `FirewallDomainListId` and `DnsThreatProtection` fields. Use one of:
 #' 
-#' -   `FirewallAdvancedContentCategory` — match an AWS-managed content category (for example, `VIOLENCE_AND_HATE_SPEECH`).
+#' -   `FirewallAdvancedContentCategory` — match an Amazon Web Services-managed content category (for example, `VIOLENCE_AND_HATE_SPEECH`).
 #' 
-#' -   `FirewallAdvancedThreatCategory` — match an AWS-managed advanced threat category (for example, `PHISHING`).
+#' -   `FirewallAdvancedThreatCategory` — match an Amazon Web Services-managed advanced threat category (for example, `PHISHING`).
 #' 
 #' -   `DnsThreatProtection` — match a built-in DNS Firewall Advanced threat detector (`DGA`, `DNS_TUNNELING`, or `DICTIONARY_DGA`).
 #' 
-#' -   `PartnerThreatProtection` — match a third-party threat feed delivered through AWS Marketplace. The selected partner must be an active subscription on the calling account.
+#' -   `PartnerThreatProtection` — match a third-party threat feed delivered through Amazon Web Services Marketplace. The selected partner must be an active subscription on the calling account.
 #' 
 #' To enumerate the values supported in your account, call [`list_firewall_rule_types`][route53resolver_list_firewall_rule_types].
 #'
@@ -5291,7 +5366,8 @@ route53resolver_update_firewall_rule <- function(FirewallRuleGroupId, FirewallDo
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$update_firewall_rule_input(FirewallRuleGroupId = FirewallRuleGroupId, FirewallDomainListId = FirewallDomainListId, FirewallThreatProtectionId = FirewallThreatProtectionId, Priority = Priority, Action = Action, BlockResponse = BlockResponse, BlockOverrideDomain = BlockOverrideDomain, BlockOverrideDnsType = BlockOverrideDnsType, BlockOverrideTtl = BlockOverrideTtl, Name = Name, FirewallDomainRedirectionAction = FirewallDomainRedirectionAction, Qtype = Qtype, DnsThreatProtection = DnsThreatProtection, ConfidenceThreshold = ConfidenceThreshold, FirewallRuleType = FirewallRuleType)
   output <- .route53resolver$update_firewall_rule_output()
@@ -5363,7 +5439,8 @@ route53resolver_update_firewall_rule_group_association <- function(FirewallRuleG
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$update_firewall_rule_group_association_input(FirewallRuleGroupAssociationId = FirewallRuleGroupAssociationId, Priority = Priority, MutationProtection = MutationProtection, Name = Name)
   output <- .route53resolver$update_firewall_rule_group_association_output()
@@ -5380,6 +5457,8 @@ route53resolver_update_firewall_rule_group_association <- function(FirewallRuleG
 #'
 #' @description
 #' You can use [`update_outpost_resolver`][route53resolver_update_outpost_resolver] to update the instance count, type, or name of a Resolver on an Outpost.
+#' 
+#' This operation applies to first-generation Outposts only. On second-generation Outposts, Resolver is managed automatically by Amazon Web Services and can't be updated directly.
 #'
 #' @usage
 #' route53resolver_update_outpost_resolver(Id, Name, InstanceCount,
@@ -5432,7 +5511,8 @@ route53resolver_update_outpost_resolver <- function(Id, Name = NULL, InstanceCou
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$update_outpost_resolver_input(Id = Id, Name = Name, InstanceCount = InstanceCount, PreferredInstanceType = PreferredInstanceType)
   output <- .route53resolver$update_outpost_resolver_output()
@@ -5494,7 +5574,8 @@ route53resolver_update_resolver_config <- function(ResourceId, AutodefinedRevers
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$update_resolver_config_input(ResourceId = ResourceId, AutodefinedReverseFlag = AutodefinedReverseFlag)
   output <- .route53resolver$update_resolver_config_output()
@@ -5550,7 +5631,8 @@ route53resolver_update_resolver_dnssec_config <- function(ResourceId, Validation
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$update_resolver_dnssec_config_input(ResourceId = ResourceId, Validation = Validation)
   output <- .route53resolver$update_resolver_dnssec_config_output()
@@ -5687,7 +5769,8 @@ route53resolver_update_resolver_endpoint <- function(ResolverEndpointId, Name = 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$update_resolver_endpoint_input(ResolverEndpointId = ResolverEndpointId, Name = Name, ResolverEndpointType = ResolverEndpointType, UpdateIpAddresses = UpdateIpAddresses, Protocols = Protocols, RniEnhancedMetricsEnabled = RniEnhancedMetricsEnabled, TargetNameServerMetricsEnabled = TargetNameServerMetricsEnabled, Dns64Enabled = Dns64Enabled, Ipv6InternetAccessEnabled = Ipv6InternetAccessEnabled)
   output <- .route53resolver$update_resolver_endpoint_output()
@@ -5774,7 +5857,8 @@ route53resolver_update_resolver_rule <- function(ResolverRuleId, Config) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53resolver$update_resolver_rule_input(ResolverRuleId = ResolverRuleId, Config = Config)
   output <- .route53resolver$update_resolver_rule_output()

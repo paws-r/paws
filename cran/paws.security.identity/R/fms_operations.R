@@ -22,7 +22,8 @@ fms_associate_admin_account <- function(AdminAccount) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$associate_admin_account_input(AdminAccount = AdminAccount)
   output <- .fms$associate_admin_account_output()
@@ -54,7 +55,8 @@ fms_associate_third_party_firewall <- function(ThirdPartyFirewall) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$associate_third_party_firewall_input(ThirdPartyFirewall = ThirdPartyFirewall)
   output <- .fms$associate_third_party_firewall_output()
@@ -86,7 +88,8 @@ fms_batch_associate_resource <- function(ResourceSetIdentifier, Items) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$batch_associate_resource_input(ResourceSetIdentifier = ResourceSetIdentifier, Items = Items)
   output <- .fms$batch_associate_resource_output()
@@ -118,7 +121,8 @@ fms_batch_disassociate_resource <- function(ResourceSetIdentifier, Items) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$batch_disassociate_resource_input(ResourceSetIdentifier = ResourceSetIdentifier, Items = Items)
   output <- .fms$batch_disassociate_resource_output()
@@ -149,7 +153,8 @@ fms_delete_apps_list <- function(ListId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$delete_apps_list_input(ListId = ListId)
   output <- .fms$delete_apps_list_output()
@@ -182,7 +187,8 @@ fms_delete_notification_channel <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$delete_notification_channel_input()
   output <- .fms$delete_notification_channel_output()
@@ -232,7 +238,8 @@ fms_delete_policy <- function(PolicyId, DeleteAllPolicyResources = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$delete_policy_input(PolicyId = PolicyId, DeleteAllPolicyResources = DeleteAllPolicyResources)
   output <- .fms$delete_policy_output()
@@ -263,7 +270,8 @@ fms_delete_protocols_list <- function(ListId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$delete_protocols_list_input(ListId = ListId)
   output <- .fms$delete_protocols_list_output()
@@ -294,7 +302,8 @@ fms_delete_resource_set <- function(Identifier) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$delete_resource_set_input(Identifier = Identifier)
   output <- .fms$delete_resource_set_output()
@@ -325,7 +334,8 @@ fms_disassociate_admin_account <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$disassociate_admin_account_input()
   output <- .fms$disassociate_admin_account_output()
@@ -357,7 +367,8 @@ fms_disassociate_third_party_firewall <- function(ThirdPartyFirewall) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$disassociate_third_party_firewall_input(ThirdPartyFirewall = ThirdPartyFirewall)
   output <- .fms$disassociate_third_party_firewall_output()
@@ -389,7 +400,8 @@ fms_get_admin_account <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$get_admin_account_input()
   output <- .fms$get_admin_account_output()
@@ -420,7 +432,8 @@ fms_get_admin_scope <- function(AdminAccount) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$get_admin_scope_input(AdminAccount = AdminAccount)
   output <- .fms$get_admin_scope_output()
@@ -453,7 +466,8 @@ fms_get_apps_list <- function(ListId, DefaultList = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$get_apps_list_input(ListId = ListId, DefaultList = DefaultList)
   output <- .fms$get_apps_list_output()
@@ -486,7 +500,8 @@ fms_get_compliance_detail <- function(PolicyId, MemberAccount) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$get_compliance_detail_input(PolicyId = PolicyId, MemberAccount = MemberAccount)
   output <- .fms$get_compliance_detail_output()
@@ -518,7 +533,8 @@ fms_get_notification_channel <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$get_notification_channel_input()
   output <- .fms$get_notification_channel_output()
@@ -549,7 +565,8 @@ fms_get_policy <- function(PolicyId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$get_policy_input(PolicyId = PolicyId)
   output <- .fms$get_policy_output()
@@ -586,7 +603,8 @@ fms_get_protection_status <- function(PolicyId, MemberAccountId = NULL, StartTim
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$get_protection_status_input(PolicyId = PolicyId, MemberAccountId = MemberAccountId, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, MaxResults = MaxResults)
   output <- .fms$get_protection_status_output()
@@ -618,7 +636,8 @@ fms_get_protocols_list <- function(ListId, DefaultList = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$get_protocols_list_input(ListId = ListId, DefaultList = DefaultList)
   output <- .fms$get_protocols_list_output()
@@ -649,7 +668,8 @@ fms_get_resource_set <- function(Identifier) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$get_resource_set_input(Identifier = Identifier)
   output <- .fms$get_resource_set_output()
@@ -681,7 +701,8 @@ fms_get_third_party_firewall_association_status <- function(ThirdPartyFirewall) 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$get_third_party_firewall_association_status_input(ThirdPartyFirewall = ThirdPartyFirewall)
   output <- .fms$get_third_party_firewall_association_status_output()
@@ -730,7 +751,8 @@ fms_get_violation_details <- function(PolicyId, MemberAccount, ResourceId, Resou
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$get_violation_details_input(PolicyId = PolicyId, MemberAccount = MemberAccount, ResourceId = ResourceId, ResourceType = ResourceType)
   output <- .fms$get_violation_details_output()
@@ -764,7 +786,8 @@ fms_list_admin_accounts_for_organization <- function(NextToken = NULL, MaxResult
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AdminAccounts"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$list_admin_accounts_for_organization_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .fms$list_admin_accounts_for_organization_output()
@@ -797,7 +820,8 @@ fms_list_admins_managing_account <- function(NextToken = NULL, MaxResults = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AdminAccounts"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$list_admins_managing_account_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .fms$list_admins_managing_account_output()
@@ -832,7 +856,8 @@ fms_list_apps_lists <- function(DefaultLists = NULL, NextToken = NULL, MaxResult
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AppsLists"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$list_apps_lists_input(DefaultLists = DefaultLists, NextToken = NextToken, MaxResults = MaxResults)
   output <- .fms$list_apps_lists_output()
@@ -865,7 +890,8 @@ fms_list_compliance_status <- function(PolicyId, NextToken = NULL, MaxResults = 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PolicyComplianceStatusList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$list_compliance_status_input(PolicyId = PolicyId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .fms$list_compliance_status_output()
@@ -900,7 +926,8 @@ fms_list_discovered_resources <- function(MemberAccountIds, ResourceType, MaxRes
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$list_discovered_resources_input(MemberAccountIds = MemberAccountIds, ResourceType = ResourceType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .fms$list_discovered_resources_output()
@@ -933,7 +960,8 @@ fms_list_member_accounts <- function(NextToken = NULL, MaxResults = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "MemberAccounts"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$list_member_accounts_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .fms$list_member_accounts_output()
@@ -965,7 +993,8 @@ fms_list_policies <- function(NextToken = NULL, MaxResults = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PolicyList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$list_policies_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .fms$list_policies_output()
@@ -1000,7 +1029,8 @@ fms_list_protocols_lists <- function(DefaultLists = NULL, NextToken = NULL, MaxR
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ProtocolsLists"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$list_protocols_lists_input(DefaultLists = DefaultLists, NextToken = NextToken, MaxResults = MaxResults)
   output <- .fms$list_protocols_lists_output()
@@ -1034,7 +1064,8 @@ fms_list_resource_set_resources <- function(Identifier, MaxResults = NULL, NextT
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$list_resource_set_resources_input(Identifier = Identifier, MaxResults = MaxResults, NextToken = NextToken)
   output <- .fms$list_resource_set_resources_output()
@@ -1066,7 +1097,8 @@ fms_list_resource_sets <- function(NextToken = NULL, MaxResults = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$list_resource_sets_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .fms$list_resource_sets_output()
@@ -1098,7 +1130,8 @@ fms_list_tags_for_resource <- function(ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .fms$list_tags_for_resource_output()
@@ -1134,7 +1167,8 @@ fms_list_third_party_firewall_firewall_policies <- function(ThirdPartyFirewall, 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ThirdPartyFirewallFirewallPolicies"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$list_third_party_firewall_firewall_policies_input(ThirdPartyFirewall = ThirdPartyFirewall, NextToken = NextToken, MaxResults = MaxResults)
   output <- .fms$list_third_party_firewall_firewall_policies_output()
@@ -1166,7 +1200,8 @@ fms_put_admin_account <- function(AdminAccount, AdminScope = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$put_admin_account_input(AdminAccount = AdminAccount, AdminScope = AdminScope)
   output <- .fms$put_admin_account_output()
@@ -1198,7 +1233,8 @@ fms_put_apps_list <- function(AppsList, TagList = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$put_apps_list_input(AppsList = AppsList, TagList = TagList)
   output <- .fms$put_apps_list_output()
@@ -1231,7 +1267,8 @@ fms_put_notification_channel <- function(SnsTopicArn, SnsRoleName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$put_notification_channel_input(SnsTopicArn = SnsTopicArn, SnsRoleName = SnsRoleName)
   output <- .fms$put_notification_channel_output()
@@ -1263,7 +1300,8 @@ fms_put_policy <- function(Policy, TagList = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$put_policy_input(Policy = Policy, TagList = TagList)
   output <- .fms$put_policy_output()
@@ -1295,7 +1333,8 @@ fms_put_protocols_list <- function(ProtocolsList, TagList = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$put_protocols_list_input(ProtocolsList = ProtocolsList, TagList = TagList)
   output <- .fms$put_protocols_list_output()
@@ -1327,7 +1366,8 @@ fms_put_resource_set <- function(ResourceSet, TagList = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$put_resource_set_input(ResourceSet = ResourceSet, TagList = TagList)
   output <- .fms$put_resource_set_output()
@@ -1359,7 +1399,8 @@ fms_tag_resource <- function(ResourceArn, TagList) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$tag_resource_input(ResourceArn = ResourceArn, TagList = TagList)
   output <- .fms$tag_resource_output()
@@ -1391,7 +1432,8 @@ fms_untag_resource <- function(ResourceArn, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fms$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .fms$untag_resource_output()

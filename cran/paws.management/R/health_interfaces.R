@@ -122,6 +122,16 @@ NULL
   return(populate(args, .health_shapes[["describe_health_service_status_for_organization_output"]]))
 }
 
+.health$describe_service_lifecycle_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .health_shapes[["describe_service_lifecycle_input"]]))
+}
+
+.health$describe_service_lifecycle_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .health_shapes[["describe_service_lifecycle_output"]]))
+}
+
 .health$disable_health_service_access_for_organization_input <- function(...) {
   list()
 }

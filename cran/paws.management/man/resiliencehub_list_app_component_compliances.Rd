@@ -11,7 +11,7 @@ resiliencehub_list_app_component_compliances(
 )
 }
 \arguments{
-\item{assessmentArn}{[required] Amazon Resource Name (ARN) of the assessment. The format for this ARN is: arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app-assessment/\code{app-id}. For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} in the \emph{Amazon Web Services General Reference} guide.}
+\item{assessmentArn}{[required] Amazon Resource Name (ARN) of the assessment. The format for this ARN is: arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app-assessment/\code{app-id}. For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Names (ARNs)} in the \emph{Amazon Web Services General Reference} guide.}
 
 \item{maxResults}{Maximum number of results to include in the response. If more results exist than the specified \code{MaxResults} value, a token is included in the response so that the remaining results can be retrieved.}
 

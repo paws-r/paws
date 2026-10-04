@@ -1,4 +1,4 @@
-svc <- paws.management::ssmsap()
+svc <- paws::ssmsap()
 
 test_that("list_applications", {
   skip_on_cran()

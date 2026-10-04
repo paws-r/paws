@@ -7,7 +7,7 @@
 imagebuilder_get_component(componentBuildVersionArn)
 }
 \arguments{
-\item{componentBuildVersionArn}{[required] The Amazon Resource Name (ARN) of the component that you want to get. Regex requires the suffix \verb{/\\\\d+$}.}
+\item{componentBuildVersionArn}{[required] The Amazon Resource Name (ARN) of the component that you want to get. You can specify a build version ARN, or a component version ARN. The version can use the \code{x} wildcard in trailing positions, for example \verb{1.0.x} or \verb{1.x.x}. Version ARNs resolve to the latest available matching component build version.}
 }
 \description{
 Retrieves a component object.

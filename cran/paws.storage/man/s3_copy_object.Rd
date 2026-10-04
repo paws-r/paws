@@ -180,13 +180,13 @@ If both the \verb{x-amz-copy-source-if-match} and \verb{x-amz-copy-source-if-unm
 
 Expects the ETag value as a string.
 
-For more information about conditional requests, see \href{https://datatracker.ietf.org/doc/html/rfc7232}{RFC 7232}.}
+For more information about conditional requests, see \href{https://www.rfc-editor.org/info/rfc7232/}{RFC 7232}.}
 
 \item{IfNoneMatch}{Copies the object only if the object key name at the destination does not already exist in the bucket specified. Otherwise, Amazon S3 returns a \verb{412 Precondition Failed} error. If a concurrent operation occurs during the upload S3 returns a \verb{409 ConditionalRequestConflict} response. On a 409 failure you should retry the upload.
 
 Expects the '*' (asterisk) character.
 
-For more information about conditional requests, see \href{https://datatracker.ietf.org/doc/html/rfc7232}{RFC 7232}.}
+For more information about conditional requests, see \href{https://www.rfc-editor.org/info/rfc7232/}{RFC 7232}.}
 
 \item{Key}{[required] The key of the destination object.}
 

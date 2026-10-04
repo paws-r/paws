@@ -59,7 +59,8 @@ kendraranking_create_rescore_execution_plan <- function(Name, Description = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendraranking$create_rescore_execution_plan_input(Name = Name, Description = Description, CapacityUnits = CapacityUnits, Tags = Tags, ClientToken = ClientToken)
   output <- .kendraranking$create_rescore_execution_plan_output()
@@ -103,7 +104,8 @@ kendraranking_delete_rescore_execution_plan <- function(Id) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendraranking$delete_rescore_execution_plan_input(Id = Id)
   output <- .kendraranking$delete_rescore_execution_plan_output()
@@ -166,7 +168,8 @@ kendraranking_describe_rescore_execution_plan <- function(Id) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendraranking$describe_rescore_execution_plan_input(Id = Id)
   output <- .kendraranking$describe_rescore_execution_plan_output()
@@ -230,7 +233,8 @@ kendraranking_list_rescore_execution_plans <- function(NextToken = NULL, MaxResu
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendraranking$list_rescore_execution_plans_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendraranking$list_rescore_execution_plans_output()
@@ -284,7 +288,8 @@ kendraranking_list_tags_for_resource <- function(ResourceARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendraranking$list_tags_for_resource_input(ResourceARN = ResourceARN)
   output <- .kendraranking$list_tags_for_resource_output()
@@ -358,7 +363,8 @@ kendraranking_rescore <- function(RescoreExecutionPlanId, SearchQuery, Documents
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendraranking$rescore_input(RescoreExecutionPlanId = RescoreExecutionPlanId, SearchQuery = SearchQuery, Documents = Documents)
   output <- .kendraranking$rescore_output()
@@ -409,7 +415,8 @@ kendraranking_tag_resource <- function(ResourceARN, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendraranking$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .kendraranking$tag_resource_output()
@@ -457,7 +464,8 @@ kendraranking_untag_resource <- function(ResourceARN, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendraranking$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .kendraranking$untag_resource_output()
@@ -510,7 +518,8 @@ kendraranking_update_rescore_execution_plan <- function(Id, Name = NULL, Descrip
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendraranking$update_rescore_execution_plan_input(Id = Id, Name = Name, Description = Description, CapacityUnits = CapacityUnits)
   output <- .kendraranking$update_rescore_execution_plan_output()

@@ -16,7 +16,8 @@ rds_create_blue_green_deployment(
   TargetIops = NULL,
   TargetStorageType = NULL,
   TargetAllocatedStorage = NULL,
-  TargetStorageThroughput = NULL
+  TargetStorageThroughput = NULL,
+  TargetResourceConfigurations = NULL
 )
 }
 \arguments{
@@ -70,6 +71,17 @@ This setting doesn't apply to Amazon Aurora blue/green deployments.}
 This setting applies only to the \code{gp3} storage type.
 
 This setting doesn't apply to Amazon Aurora blue/green deployments.}
+
+\item{TargetResourceConfigurations}{Specifies resource-level configuration overrides for the green environment.
+
+Each entry identifies a resource in the blue environment by its Amazon Resource Name (ARN). It defines the desired configuration for the corresponding resource in the green environment. Any resource that you don't include in this parameter retains the same configuration as its counterpart in the blue environment.
+
+Use this parameter when one or more resources in the green environment require a different configuration than what they have in the blue environment.
+
+Constraints:
+\itemize{
+\item You can't specify the same \code{SourceArn} in more than one entry.
+}}
 }
 \description{
 Creates a blue/green deployment.

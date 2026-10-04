@@ -37,7 +37,8 @@ redshiftdataapiservice_batch_execute_statement <- function(Sqls, ClusterIdentifi
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .redshiftdataapiservice$batch_execute_statement_input(Sqls = Sqls, ClusterIdentifier = ClusterIdentifier, SecretArn = SecretArn, DbUser = DbUser, Database = Database, WithEvent = WithEvent, StatementName = StatementName, Parameters = Parameters, WorkgroupName = WorkgroupName, ClientToken = ClientToken, ResultFormat = ResultFormat, SessionKeepAliveSeconds = SessionKeepAliveSeconds, SessionId = SessionId, ExecutionMode = ExecutionMode, WaitTimeSeconds = WaitTimeSeconds)
   output <- .redshiftdataapiservice$batch_execute_statement_output()
@@ -68,7 +69,8 @@ redshiftdataapiservice_cancel_statement <- function(Id) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .redshiftdataapiservice$cancel_statement_input(Id = Id)
   output <- .redshiftdataapiservice$cancel_statement_output()
@@ -101,7 +103,8 @@ redshiftdataapiservice_describe_statement <- function(Id, WaitTimeSeconds = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .redshiftdataapiservice$describe_statement_input(Id = Id, WaitTimeSeconds = WaitTimeSeconds)
   output <- .redshiftdataapiservice$describe_statement_output()
@@ -142,7 +145,8 @@ redshiftdataapiservice_describe_table <- function(ClusterIdentifier = NULL, Secr
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ColumnList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .redshiftdataapiservice$describe_table_input(ClusterIdentifier = ClusterIdentifier, SecretArn = SecretArn, DbUser = DbUser, Database = Database, ConnectedDatabase = ConnectedDatabase, Schema = Schema, Table = Table, NextToken = NextToken, MaxResults = MaxResults, WorkgroupName = WorkgroupName)
   output <- .redshiftdataapiservice$describe_table_output()
@@ -187,7 +191,8 @@ redshiftdataapiservice_execute_statement <- function(Sql, ClusterIdentifier = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .redshiftdataapiservice$execute_statement_input(Sql = Sql, ClusterIdentifier = ClusterIdentifier, SecretArn = SecretArn, DbUser = DbUser, Database = Database, WithEvent = WithEvent, StatementName = StatementName, Parameters = Parameters, WorkgroupName = WorkgroupName, ClientToken = ClientToken, ResultFormat = ResultFormat, SessionKeepAliveSeconds = SessionKeepAliveSeconds, SessionId = SessionId, WaitTimeSeconds = WaitTimeSeconds)
   output <- .redshiftdataapiservice$execute_statement_output()
@@ -220,7 +225,8 @@ redshiftdataapiservice_get_statement_result <- function(Id, NextToken = NULL, Wa
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Records"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .redshiftdataapiservice$get_statement_result_input(Id = Id, NextToken = NextToken, WaitTimeSeconds = WaitTimeSeconds)
   output <- .redshiftdataapiservice$get_statement_result_output()
@@ -253,7 +259,8 @@ redshiftdataapiservice_get_statement_result_v2 <- function(Id, NextToken = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Records"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .redshiftdataapiservice$get_statement_result_v2_input(Id = Id, NextToken = NextToken, WaitTimeSeconds = WaitTimeSeconds)
   output <- .redshiftdataapiservice$get_statement_result_v2_output()
@@ -273,7 +280,7 @@ redshiftdataapiservice_get_statement_result_v2 <- function(Id, NextToken = NULL,
 #' See [https://www.paws-r-sdk.com/docs/redshiftdataapiservice_list_databases/](https://www.paws-r-sdk.com/docs/redshiftdataapiservice_list_databases/) for full documentation.
 #'
 #' @param ClusterIdentifier The cluster identifier. This parameter is required when connecting to a cluster and authenticating using either Secrets Manager or temporary credentials.
-#' @param Database &#91;required&#93; The name of the database. This parameter is required when authenticating using either Secrets Manager or temporary credentials.
+#' @param Database The name of the database. This parameter is required when authenticating using either Secrets Manager or temporary credentials.
 #' @param SecretArn The name or ARN of the secret that enables access to the database. This parameter is required when authenticating using Secrets Manager.
 #' @param DbUser The database user name. This parameter is required when connecting to a cluster as a database user and authenticating using temporary credentials.
 #' @param NextToken A value that indicates the starting point for the next set of response records in a subsequent request. If a value is returned in a response, you can retrieve the next set of records by providing this returned NextToken value in the next NextToken parameter and retrying the command. If the NextToken field is empty, all response records have been retrieved for the request.
@@ -283,14 +290,15 @@ redshiftdataapiservice_get_statement_result_v2 <- function(Id, NextToken = NULL,
 #' @keywords internal
 #'
 #' @rdname redshiftdataapiservice_list_databases
-redshiftdataapiservice_list_databases <- function(ClusterIdentifier = NULL, Database, SecretArn = NULL, DbUser = NULL, NextToken = NULL, MaxResults = NULL, WorkgroupName = NULL) {
+redshiftdataapiservice_list_databases <- function(ClusterIdentifier = NULL, Database = NULL, SecretArn = NULL, DbUser = NULL, NextToken = NULL, MaxResults = NULL, WorkgroupName = NULL) {
   op <- new_operation(
     name = "ListDatabases",
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Databases"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .redshiftdataapiservice$list_databases_input(ClusterIdentifier = ClusterIdentifier, Database = Database, SecretArn = SecretArn, DbUser = DbUser, NextToken = NextToken, MaxResults = MaxResults, WorkgroupName = WorkgroupName)
   output <- .redshiftdataapiservice$list_databases_output()
@@ -329,7 +337,8 @@ redshiftdataapiservice_list_schemas <- function(ClusterIdentifier = NULL, Secret
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Schemas"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .redshiftdataapiservice$list_schemas_input(ClusterIdentifier = ClusterIdentifier, SecretArn = SecretArn, DbUser = DbUser, Database = Database, ConnectedDatabase = ConnectedDatabase, SchemaPattern = SchemaPattern, NextToken = NextToken, MaxResults = MaxResults, WorkgroupName = WorkgroupName)
   output <- .redshiftdataapiservice$list_schemas_output()
@@ -373,7 +382,8 @@ redshiftdataapiservice_list_sessions <- function(NextToken = NULL, MaxResults = 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Sessions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .redshiftdataapiservice$list_sessions_input(NextToken = NextToken, MaxResults = MaxResults, SessionId = SessionId, Status = Status, RoleLevel = RoleLevel, ClusterIdentifier = ClusterIdentifier, WorkgroupName = WorkgroupName, Database = Database)
   output <- .redshiftdataapiservice$list_sessions_output()
@@ -425,7 +435,8 @@ redshiftdataapiservice_list_statements <- function(NextToken = NULL, MaxResults 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Statements"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .redshiftdataapiservice$list_statements_input(NextToken = NextToken, MaxResults = MaxResults, StatementName = StatementName, Status = Status, RoleLevel = RoleLevel, Database = Database, ClusterIdentifier = ClusterIdentifier, WorkgroupName = WorkgroupName)
   output <- .redshiftdataapiservice$list_statements_output()
@@ -465,7 +476,8 @@ redshiftdataapiservice_list_tables <- function(ClusterIdentifier = NULL, SecretA
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Tables"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .redshiftdataapiservice$list_tables_input(ClusterIdentifier = ClusterIdentifier, SecretArn = SecretArn, DbUser = DbUser, Database = Database, ConnectedDatabase = ConnectedDatabase, SchemaPattern = SchemaPattern, TablePattern = TablePattern, NextToken = NextToken, MaxResults = MaxResults, WorkgroupName = WorkgroupName)
   output <- .redshiftdataapiservice$list_tables_output()

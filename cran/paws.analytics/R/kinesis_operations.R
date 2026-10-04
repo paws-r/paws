@@ -25,7 +25,8 @@ kinesis_add_tags_to_stream <- function(StreamName = NULL, Tags, StreamARN = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$add_tags_to_stream_input(StreamName = StreamName, Tags = Tags, StreamARN = StreamARN, StreamId = StreamId)
   output <- .kinesis$add_tags_to_stream_output()
@@ -48,8 +49,8 @@ kinesis_add_tags_to_stream <- function(StreamName = NULL, Tags, StreamARN = NULL
 #' @param ChannelName &#91;required&#93; The name of the channel. The name is unique within your Amazon Web Services account and Amazon Web Services Region.
 #' @param ServiceExecutionRoleARN &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that Amazon Kinesis Data Streams assumes to write records to the destination.
 #' @param StreamConfigurationList &#91;required&#93; The source stream configuration for the channel. Currently, one stream is supported per channel.
-#' @param S3DestinationConfiguration The configuration for delivery to a general purpose Amazon S3 bucket. You must specify either `S3DestinationConfiguration` or `S3TablesDestinationConfiguration`, but not both.
-#' @param S3TablesDestinationConfiguration The configuration for delivery to streaming tables on Apache Iceberg in Amazon S3 Tables. You must specify either `S3DestinationConfiguration` or `S3TablesDestinationConfiguration`, but not both.
+#' @param S3DestinationConfiguration The configuration for delivery to a general purpose Amazon S3 bucket. Specify this parameter when `S3TablesDestinationConfiguration` is not specified.
+#' @param S3TablesDestinationConfiguration The configuration for delivery to streaming tables on Apache Iceberg in Amazon S3 Tables. Specify this parameter when `S3DestinationConfiguration` is not specified.
 #' @param EncryptionConfiguration The server-side encryption configuration that uses an Amazon Web Services KMS key to encrypt data delivered to the destination.
 #' @param Tags A set of key-value pairs to assign to the channel. A tag consists of a required key and an optional value.
 #' @param LoggingConfiguration The Amazon CloudWatch Logs configuration for the channel.
@@ -64,7 +65,8 @@ kinesis_create_channel <- function(ChannelName, ServiceExecutionRoleARN, StreamC
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$create_channel_input(ChannelName = ChannelName, ServiceExecutionRoleARN = ServiceExecutionRoleARN, StreamConfigurationList = StreamConfigurationList, S3DestinationConfiguration = S3DestinationConfiguration, S3TablesDestinationConfiguration = S3TablesDestinationConfiguration, EncryptionConfiguration = EncryptionConfiguration, Tags = Tags, LoggingConfiguration = LoggingConfiguration)
   output <- .kinesis$create_channel_output()
@@ -89,20 +91,28 @@ kinesis_create_channel <- function(ChannelName, ServiceExecutionRoleARN, StreamC
 #' @param Tags A set of up to 50 key-value pairs to use to create the tags. A tag consists of a required key and an optional value.
 #' @param WarmThroughputMiBps The target warm throughput in MB/s that the stream should be scaled to handle. This represents the throughput capacity that will be immediately available for write operations.
 #' @param MaxRecordSizeInKiB The maximum record size of a single record in kibibyte (KiB) that you can write to, and read from a stream.
+#' @param RecordDistributionStrategy The record distribution strategy for the stream, which determines how Amazon Kinesis Data Streams distributes records across shards. Specify one of the following values:
+#' 
+#' -   `AUTO` – Amazon Kinesis Data Streams distributes records evenly across shards and ignores any partition key and `ExplicitHashKey` that producers supply. Use this value for stateless workloads that do not require partition-key ordering.
+#' 
+#' -   `USER_PARTITION_KEY` – Producers must supply a partition key, which Amazon Kinesis Data Streams uses to determine shard placement. This is the default.
+#' 
+#' The record distribution strategy is only supported for streams that use the on-demand capacity mode. If you do not specify this parameter, the stream uses `USER_PARTITION_KEY`.
 #'
 #' @keywords internal
 #'
 #' @rdname kinesis_create_stream
-kinesis_create_stream <- function(StreamName, ShardCount = NULL, StreamModeDetails = NULL, Tags = NULL, WarmThroughputMiBps = NULL, MaxRecordSizeInKiB = NULL) {
+kinesis_create_stream <- function(StreamName, ShardCount = NULL, StreamModeDetails = NULL, Tags = NULL, WarmThroughputMiBps = NULL, MaxRecordSizeInKiB = NULL, RecordDistributionStrategy = NULL) {
   op <- new_operation(
     name = "CreateStream",
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
-  input <- .kinesis$create_stream_input(StreamName = StreamName, ShardCount = ShardCount, StreamModeDetails = StreamModeDetails, Tags = Tags, WarmThroughputMiBps = WarmThroughputMiBps, MaxRecordSizeInKiB = MaxRecordSizeInKiB)
+  input <- .kinesis$create_stream_input(StreamName = StreamName, ShardCount = ShardCount, StreamModeDetails = StreamModeDetails, Tags = Tags, WarmThroughputMiBps = WarmThroughputMiBps, MaxRecordSizeInKiB = MaxRecordSizeInKiB, RecordDistributionStrategy = RecordDistributionStrategy)
   output <- .kinesis$create_stream_output()
   config <- get_config()
   svc <- .kinesis$service(config, op)
@@ -136,7 +146,8 @@ kinesis_decrease_stream_retention_period <- function(StreamName = NULL, Retentio
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$decrease_stream_retention_period_input(StreamName = StreamName, RetentionPeriodHours = RetentionPeriodHours, StreamARN = StreamARN, StreamId = StreamId)
   output <- .kinesis$decrease_stream_retention_period_output()
@@ -167,7 +178,8 @@ kinesis_delete_channel <- function(ChannelARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$delete_channel_input(ChannelARN = ChannelARN)
   output <- .kinesis$delete_channel_output()
@@ -199,7 +211,8 @@ kinesis_delete_resource_policy <- function(ResourceARN, StreamId = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$delete_resource_policy_input(ResourceARN = ResourceARN, StreamId = StreamId)
   output <- .kinesis$delete_resource_policy_output()
@@ -233,7 +246,8 @@ kinesis_delete_stream <- function(StreamName = NULL, EnforceConsumerDeletion = N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$delete_stream_input(StreamName = StreamName, EnforceConsumerDeletion = EnforceConsumerDeletion, StreamARN = StreamARN, StreamId = StreamId)
   output <- .kinesis$delete_stream_output()
@@ -267,7 +281,8 @@ kinesis_deregister_stream_consumer <- function(StreamARN = NULL, ConsumerName = 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$deregister_stream_consumer_input(StreamARN = StreamARN, ConsumerName = ConsumerName, ConsumerARN = ConsumerARN, StreamId = StreamId)
   output <- .kinesis$deregister_stream_consumer_output()
@@ -298,7 +313,8 @@ kinesis_describe_account_settings <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$describe_account_settings_input()
   output <- .kinesis$describe_account_settings_output()
@@ -330,7 +346,8 @@ kinesis_describe_channel <- function(ChannelARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$describe_channel_input(ChannelARN = ChannelARN)
   output <- .kinesis$describe_channel_output()
@@ -361,7 +378,8 @@ kinesis_describe_limits <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$describe_limits_input()
   output <- .kinesis$describe_limits_output()
@@ -400,7 +418,8 @@ kinesis_describe_stream <- function(StreamName = NULL, Limit = NULL, ExclusiveSt
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "ExclusiveStartShardId", limit_key = "Limit", more_results = "StreamDescription.HasMoreShards", output_token = "StreamDescription.Shards[-1].ShardId", result_key = "StreamDescription.Shards", non_aggregate_keys = list( "StreamDescription.StreamARN", "StreamDescription.StreamName", "StreamDescription.StreamStatus", "StreamDescription.RetentionPeriodHours", "StreamDescription.EnhancedMonitoring", "StreamDescription.EncryptionType", "StreamDescription.KeyId", "StreamDescription.StreamCreationTimestamp")),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$describe_stream_input(StreamName = StreamName, Limit = Limit, ExclusiveStartShardId = ExclusiveStartShardId, StreamARN = StreamARN, StreamId = StreamId)
   output <- .kinesis$describe_stream_output()
@@ -435,7 +454,8 @@ kinesis_describe_stream_consumer <- function(StreamARN = NULL, ConsumerName = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$describe_stream_consumer_input(StreamARN = StreamARN, ConsumerName = ConsumerName, ConsumerARN = ConsumerARN, StreamId = StreamId)
   output <- .kinesis$describe_stream_consumer_output()
@@ -469,7 +489,8 @@ kinesis_describe_stream_summary <- function(StreamName = NULL, StreamARN = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$describe_stream_summary_input(StreamName = StreamName, StreamARN = StreamARN, StreamId = StreamId)
   output <- .kinesis$describe_stream_summary_output()
@@ -523,7 +544,8 @@ kinesis_disable_enhanced_monitoring <- function(StreamName = NULL, ShardLevelMet
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$disable_enhanced_monitoring_input(StreamName = StreamName, ShardLevelMetrics = ShardLevelMetrics, StreamARN = StreamARN, StreamId = StreamId)
   output <- .kinesis$disable_enhanced_monitoring_output()
@@ -577,7 +599,8 @@ kinesis_enable_enhanced_monitoring <- function(StreamName = NULL, ShardLevelMetr
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$enable_enhanced_monitoring_input(StreamName = StreamName, ShardLevelMetrics = ShardLevelMetrics, StreamARN = StreamARN, StreamId = StreamId)
   output <- .kinesis$enable_enhanced_monitoring_output()
@@ -612,7 +635,8 @@ kinesis_get_records <- function(ShardIterator, Limit = NULL, StreamARN = NULL, S
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$get_records_input(ShardIterator = ShardIterator, Limit = Limit, StreamARN = StreamARN, StreamId = StreamId, DryRun = DryRun)
   output <- .kinesis$get_records_output()
@@ -644,7 +668,8 @@ kinesis_get_resource_policy <- function(ResourceARN, StreamId = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$get_resource_policy_input(ResourceARN = ResourceARN, StreamId = StreamId)
   output <- .kinesis$get_resource_policy_output()
@@ -694,7 +719,8 @@ kinesis_get_shard_iterator <- function(StreamName = NULL, ShardId, ShardIterator
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$get_shard_iterator_input(StreamName = StreamName, ShardId = ShardId, ShardIteratorType = ShardIteratorType, StartingSequenceNumber = StartingSequenceNumber, Timestamp = Timestamp, StreamARN = StreamARN, StreamId = StreamId, DryRun = DryRun)
   output <- .kinesis$get_shard_iterator_output()
@@ -730,7 +756,8 @@ kinesis_increase_stream_retention_period <- function(StreamName = NULL, Retentio
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$increase_stream_retention_period_input(StreamName = StreamName, RetentionPeriodHours = RetentionPeriodHours, StreamARN = StreamARN, StreamId = StreamId)
   output <- .kinesis$increase_stream_retention_period_output()
@@ -751,7 +778,7 @@ kinesis_increase_stream_retention_period <- function(StreamName = NULL, Retentio
 #'
 #' @param StreamFilter Filters the results to channels associated with the specified streams.
 #' @param MaxResults The maximum number of channels to return in a single call. The default value is 100. If you specify a value greater than 100, at most 100 results are returned.
-#' @param NextToken The pagination token returned by a previous call. Specify this token to retrieve the next page of results. This value is `null` when there are no more results to return.
+#' @param NextToken The pagination token returned by a previous call. Specify this token to retrieve the next page of results.
 #'
 #' @keywords internal
 #'
@@ -763,7 +790,8 @@ kinesis_list_channels <- function(StreamFilter = NULL, MaxResults = NULL, NextTo
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ChannelSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$list_channels_input(StreamFilter = StreamFilter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .kinesis$list_channels_output()
@@ -823,7 +851,8 @@ kinesis_list_shards <- function(StreamName = NULL, NextToken = NULL, ExclusiveSt
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Shards"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$list_shards_input(StreamName = StreamName, NextToken = NextToken, ExclusiveStartShardId = ExclusiveStartShardId, MaxResults = MaxResults, StreamCreationTimestamp = StreamCreationTimestamp, ShardFilter = ShardFilter, StreamARN = StreamARN, StreamId = StreamId)
   output <- .kinesis$list_shards_output()
@@ -867,7 +896,8 @@ kinesis_list_stream_consumers <- function(StreamARN, NextToken = NULL, MaxResult
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Consumers"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$list_stream_consumers_input(StreamARN = StreamARN, NextToken = NextToken, MaxResults = MaxResults, StreamCreationTimestamp = StreamCreationTimestamp, StreamId = StreamId)
   output <- .kinesis$list_stream_consumers_output()
@@ -900,7 +930,8 @@ kinesis_list_streams <- function(Limit = NULL, ExclusiveStartStreamName = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "Limit", more_results = "HasMoreStreams", output_token = "NextToken", result_key = list("StreamNames", "StreamSummaries")),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$list_streams_input(Limit = Limit, ExclusiveStartStreamName = ExclusiveStartStreamName, NextToken = NextToken)
   output <- .kinesis$list_streams_output()
@@ -932,7 +963,8 @@ kinesis_list_tags_for_resource <- function(ResourceARN, StreamId = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$list_tags_for_resource_input(ResourceARN = ResourceARN, StreamId = StreamId)
   output <- .kinesis$list_tags_for_resource_output()
@@ -967,7 +999,8 @@ kinesis_list_tags_for_stream <- function(StreamName = NULL, ExclusiveStartTagKey
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$list_tags_for_stream_input(StreamName = StreamName, ExclusiveStartTagKey = ExclusiveStartTagKey, Limit = Limit, StreamARN = StreamARN, StreamId = StreamId)
   output <- .kinesis$list_tags_for_stream_output()
@@ -1004,7 +1037,8 @@ kinesis_merge_shards <- function(StreamName = NULL, ShardToMerge, AdjacentShardT
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$merge_shards_input(StreamName = StreamName, ShardToMerge = ShardToMerge, AdjacentShardToMerge = AdjacentShardToMerge, StreamARN = StreamARN, StreamId = StreamId)
   output <- .kinesis$merge_shards_output()
@@ -1025,7 +1059,9 @@ kinesis_merge_shards <- function(StreamName = NULL, ShardToMerge, AdjacentShardT
 #'
 #' @param StreamName The name of the stream to put the data record into.
 #' @param Data &#91;required&#93; The data blob to put into the record, which is base64-encoded when the blob is serialized. When the data blob (the payload before base64-encoding) is added to the partition key size, the total size must not exceed the maximum record size (10 MiB).
-#' @param PartitionKey &#91;required&#93; Determines which shard in the stream the data record is assigned to. Partition keys are Unicode strings with a maximum length limit of 256 characters for each key. Amazon Kinesis Data Streams uses the partition key as input to a hash function that maps the partition key and associated data to a specific shard. Specifically, an MD5 hash function is used to map partition keys to 128-bit integer values and to map associated data records to shards. As a result of this hashing mechanism, all data records with the same partition key map to the same shard within the stream.
+#' @param PartitionKey Determines which shard in the stream the data record is assigned to. Partition keys are Unicode strings with a maximum length limit of 256 characters for each key. Amazon Kinesis Data Streams uses the partition key as input to a hash function that maps the partition key and associated data to a specific shard. Specifically, an MD5 hash function is used to map partition keys to 128-bit integer values and to map associated data records to shards. As a result of this hashing mechanism, all data records with the same partition key map to the same shard within the stream.
+#' 
+#' If the stream uses the `USER_PARTITION_KEY` record distribution strategy (the default), a partition key is required. If the stream uses the `AUTO` record distribution strategy, the partition key is optional and any value you provide is ignored, along with any `ExplicitHashKey` you provide. In that case, Amazon Kinesis Data Streams distributes the record across shards using service-managed algorithms. For more information, see [`update_stream_record_distribution_strategy`][kinesis_update_stream_record_distribution_strategy].
 #' @param ExplicitHashKey The hash value used to explicitly determine the shard the data record is assigned to by overriding the partition key hash.
 #' @param SequenceNumberForOrdering Guarantees strictly increasing sequence numbers, for puts from the same client and to the same partition key. Usage: set the `SequenceNumberForOrdering` of record *n* to the sequence number of record *n-1* (as returned in the result when putting record *n-1*). If this parameter is not set, records are coarsely ordered based on arrival time.
 #' @param StreamARN The ARN of the stream.
@@ -1035,14 +1071,15 @@ kinesis_merge_shards <- function(StreamName = NULL, ShardToMerge, AdjacentShardT
 #' @keywords internal
 #'
 #' @rdname kinesis_put_record
-kinesis_put_record <- function(StreamName = NULL, Data, PartitionKey, ExplicitHashKey = NULL, SequenceNumberForOrdering = NULL, StreamARN = NULL, StreamId = NULL, DryRun = NULL) {
+kinesis_put_record <- function(StreamName = NULL, Data, PartitionKey = NULL, ExplicitHashKey = NULL, SequenceNumberForOrdering = NULL, StreamARN = NULL, StreamId = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "PutRecord",
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$put_record_input(StreamName = StreamName, Data = Data, PartitionKey = PartitionKey, ExplicitHashKey = ExplicitHashKey, SequenceNumberForOrdering = SequenceNumberForOrdering, StreamARN = StreamARN, StreamId = StreamId, DryRun = DryRun)
   output <- .kinesis$put_record_output()
@@ -1078,7 +1115,8 @@ kinesis_put_records <- function(Records, StreamName = NULL, StreamARN = NULL, St
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$put_records_input(Records = Records, StreamName = StreamName, StreamARN = StreamARN, StreamId = StreamId, DryRun = DryRun)
   output <- .kinesis$put_records_output()
@@ -1111,7 +1149,8 @@ kinesis_put_resource_policy <- function(ResourceARN, StreamId = NULL, Policy) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$put_resource_policy_input(ResourceARN = ResourceARN, StreamId = StreamId, Policy = Policy)
   output <- .kinesis$put_resource_policy_output()
@@ -1145,7 +1184,8 @@ kinesis_register_stream_consumer <- function(StreamARN, ConsumerName, StreamId =
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$register_stream_consumer_input(StreamARN = StreamARN, ConsumerName = ConsumerName, StreamId = StreamId, Tags = Tags)
   output <- .kinesis$register_stream_consumer_output()
@@ -1179,7 +1219,8 @@ kinesis_remove_tags_from_stream <- function(StreamName = NULL, TagKeys, StreamAR
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$remove_tags_from_stream_input(StreamName = StreamName, TagKeys = TagKeys, StreamARN = StreamARN, StreamId = StreamId)
   output <- .kinesis$remove_tags_from_stream_output()
@@ -1215,7 +1256,8 @@ kinesis_split_shard <- function(StreamName = NULL, ShardToSplit, NewStartingHash
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$split_shard_input(StreamName = StreamName, ShardToSplit = ShardToSplit, NewStartingHashKey = NewStartingHashKey, StreamARN = StreamARN, StreamId = StreamId)
   output <- .kinesis$split_shard_output()
@@ -1261,7 +1303,8 @@ kinesis_start_stream_encryption <- function(StreamName = NULL, EncryptionType, K
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$start_stream_encryption_input(StreamName = StreamName, EncryptionType = EncryptionType, KeyId = KeyId, StreamARN = StreamARN, StreamId = StreamId)
   output <- .kinesis$start_stream_encryption_output()
@@ -1306,7 +1349,8 @@ kinesis_stop_stream_encryption <- function(StreamName = NULL, EncryptionType, Ke
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$stop_stream_encryption_input(StreamName = StreamName, EncryptionType = EncryptionType, KeyId = KeyId, StreamARN = StreamARN, StreamId = StreamId)
   output <- .kinesis$stop_stream_encryption_output()
@@ -1343,7 +1387,8 @@ kinesis_subscribe_to_shard <- function(ConsumerARN, StreamId = NULL, ShardId, St
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = TRUE
+    stream_api = TRUE,
+    http_checksum = NULL
   )
   input <- .kinesis$subscribe_to_shard_input(ConsumerARN = ConsumerARN, StreamId = StreamId, ShardId = ShardId, StartingPosition = StartingPosition, DryRun = DryRun)
   output <- .kinesis$subscribe_to_shard_output()
@@ -1378,7 +1423,8 @@ kinesis_tag_resource <- function(Tags, ResourceARN, StreamId = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$tag_resource_input(Tags = Tags, ResourceARN = ResourceARN, StreamId = StreamId)
   output <- .kinesis$tag_resource_output()
@@ -1411,7 +1457,8 @@ kinesis_untag_resource <- function(TagKeys, ResourceARN, StreamId = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$untag_resource_input(TagKeys = TagKeys, ResourceARN = ResourceARN, StreamId = StreamId)
   output <- .kinesis$untag_resource_output()
@@ -1442,7 +1489,8 @@ kinesis_update_account_settings <- function(MinimumThroughputBillingCommitment) 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$update_account_settings_input(MinimumThroughputBillingCommitment = MinimumThroughputBillingCommitment)
   output <- .kinesis$update_account_settings_output()
@@ -1463,8 +1511,8 @@ kinesis_update_account_settings <- function(MinimumThroughputBillingCommitment) 
 #' See [https://www.paws-r-sdk.com/docs/kinesis_update_channel/](https://www.paws-r-sdk.com/docs/kinesis_update_channel/) for full documentation.
 #'
 #' @param ChannelARN &#91;required&#93; The Amazon Resource Name (ARN) of the channel to update.
-#' @param S3DestinationConfiguration The updated configuration for a general purpose Amazon S3 destination. Only `DataFreshnessInSeconds` can be updated.
-#' @param S3TablesDestinationConfiguration The updated configuration for a streaming table destination. Only `DataFreshnessInSeconds` can be updated.
+#' @param S3DestinationConfiguration The updated configuration for a general purpose Amazon S3 destination. Specify this parameter when the channel delivers to a general purpose Amazon S3 bucket. Only `DataFreshnessInSeconds` can be updated.
+#' @param S3TablesDestinationConfiguration The updated configuration for a streaming table destination. Specify this parameter when the channel delivers to streaming tables on Apache Iceberg in Amazon S3 Tables. Only `DataFreshnessInSeconds` can be updated.
 #' @param LoggingConfiguration The updated Amazon CloudWatch Logs configuration for the channel.
 #'
 #' @keywords internal
@@ -1477,7 +1525,8 @@ kinesis_update_channel <- function(ChannelARN, S3DestinationConfiguration = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$update_channel_input(ChannelARN = ChannelARN, S3DestinationConfiguration = S3DestinationConfiguration, S3TablesDestinationConfiguration = S3TablesDestinationConfiguration, LoggingConfiguration = LoggingConfiguration)
   output <- .kinesis$update_channel_output()
@@ -1511,7 +1560,8 @@ kinesis_update_max_record_size <- function(StreamARN = NULL, StreamId = NULL, Ma
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$update_max_record_size_input(StreamARN = StreamARN, StreamId = StreamId, MaxRecordSizeInKiB = MaxRecordSizeInKiB)
   output <- .kinesis$update_max_record_size_output()
@@ -1555,7 +1605,8 @@ kinesis_update_shard_count <- function(StreamName = NULL, TargetShardCount, Scal
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$update_shard_count_input(StreamName = StreamName, TargetShardCount = TargetShardCount, ScalingType = ScalingType, StreamARN = StreamARN, StreamId = StreamId)
   output <- .kinesis$update_shard_count_output()
@@ -1589,7 +1640,8 @@ kinesis_update_stream_mode <- function(StreamARN, StreamId = NULL, StreamModeDet
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$update_stream_mode_input(StreamARN = StreamARN, StreamId = StreamId, StreamModeDetails = StreamModeDetails, WarmThroughputMiBps = WarmThroughputMiBps)
   output <- .kinesis$update_stream_mode_output()
@@ -1600,6 +1652,45 @@ kinesis_update_stream_mode <- function(StreamARN, StreamId = NULL, StreamModeDet
   return(response)
 }
 .kinesis$operations$update_stream_mode <- kinesis_update_stream_mode
+
+#' Updates the record distribution strategy for the specified Amazon
+#' Kinesis Data Streams on-demand data stream
+#'
+#' @description
+#' Updates the record distribution strategy for the specified Amazon Kinesis Data Streams on-demand data stream. The record distribution strategy determines how Amazon Kinesis Data Streams distributes records across the shards in a stream.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kinesis_update_stream_record_distribution_strategy/](https://www.paws-r-sdk.com/docs/kinesis_update_stream_record_distribution_strategy/) for full documentation.
+#'
+#' @param StreamARN &#91;required&#93; The Amazon Resource Name (ARN) of the stream to update.
+#' @param StreamId Not Implemented. Reserved for future use.
+#' @param RecordDistributionStrategy &#91;required&#93; The record distribution strategy to apply to the stream. Specify one of the following values:
+#' 
+#' -   `AUTO` – Amazon Kinesis Data Streams distributes records evenly across shards and ignores any partition key and `ExplicitHashKey` that producers supply.
+#' 
+#' -   `USER_PARTITION_KEY` – Producers must supply a partition key, which Amazon Kinesis Data Streams uses to determine shard placement. This is the default.
+#'
+#' @keywords internal
+#'
+#' @rdname kinesis_update_stream_record_distribution_strategy
+kinesis_update_stream_record_distribution_strategy <- function(StreamARN, StreamId = NULL, RecordDistributionStrategy) {
+  op <- new_operation(
+    name = "UpdateStreamRecordDistributionStrategy",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .kinesis$update_stream_record_distribution_strategy_input(StreamARN = StreamARN, StreamId = StreamId, RecordDistributionStrategy = RecordDistributionStrategy)
+  output <- .kinesis$update_stream_record_distribution_strategy_output()
+  config <- get_config()
+  svc <- .kinesis$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kinesis$operations$update_stream_record_distribution_strategy <- kinesis_update_stream_record_distribution_strategy
 
 #' Updates the warm throughput configuration for the specified Amazon
 #' Kinesis Data Streams on-demand data stream
@@ -1624,7 +1715,8 @@ kinesis_update_stream_warm_throughput <- function(StreamARN = NULL, StreamName =
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesis$update_stream_warm_throughput_input(StreamARN = StreamARN, StreamName = StreamName, StreamId = StreamId, WarmThroughputMiBps = WarmThroughputMiBps)
   output <- .kinesis$update_stream_warm_throughput_output()

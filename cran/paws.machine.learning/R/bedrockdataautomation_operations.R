@@ -25,7 +25,8 @@ bedrockdataautomation_copy_blueprint_stage <- function(blueprintArn, sourceStage
     http_path = "/blueprints/{blueprintArn}/copy-stage",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockdataautomation$copy_blueprint_stage_input(blueprintArn = blueprintArn, sourceStage = sourceStage, targetStage = targetStage, clientToken = clientToken)
   output <- .bedrockdataautomation$copy_blueprint_stage_output()
@@ -62,7 +63,8 @@ bedrockdataautomation_create_blueprint <- function(blueprintName, type, blueprin
     http_path = "/blueprints/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockdataautomation$create_blueprint_input(blueprintName = blueprintName, type = type, blueprintStage = blueprintStage, schema = schema, clientToken = clientToken, encryptionConfiguration = encryptionConfiguration, tags = tags)
   output <- .bedrockdataautomation$create_blueprint_output()
@@ -95,7 +97,8 @@ bedrockdataautomation_create_blueprint_version <- function(blueprintArn, clientT
     http_path = "/blueprints/{blueprintArn}/versions/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockdataautomation$create_blueprint_version_input(blueprintArn = blueprintArn, clientToken = clientToken)
   output <- .bedrockdataautomation$create_blueprint_version_output()
@@ -130,7 +133,8 @@ bedrockdataautomation_create_data_automation_library <- function(libraryName, li
     http_path = "/data-automation-libraries/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockdataautomation$create_data_automation_library_input(libraryName = libraryName, libraryDescription = libraryDescription, clientToken = clientToken, encryptionConfiguration = encryptionConfiguration, tags = tags)
   output <- .bedrockdataautomation$create_data_automation_library_output()
@@ -171,7 +175,8 @@ bedrockdataautomation_create_data_automation_project <- function(projectName, pr
     http_path = "/data-automation-projects/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockdataautomation$create_data_automation_project_input(projectName = projectName, projectDescription = projectDescription, projectStage = projectStage, projectType = projectType, standardOutputConfiguration = standardOutputConfiguration, customOutputConfiguration = customOutputConfiguration, overrideConfiguration = overrideConfiguration, dataAutomationLibraryConfiguration = dataAutomationLibraryConfiguration, clientToken = clientToken, encryptionConfiguration = encryptionConfiguration, tags = tags)
   output <- .bedrockdataautomation$create_data_automation_project_output()
@@ -203,7 +208,8 @@ bedrockdataautomation_delete_blueprint <- function(blueprintArn, blueprintVersio
     http_path = "/blueprints/{blueprintArn}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockdataautomation$delete_blueprint_input(blueprintArn = blueprintArn, blueprintVersion = blueprintVersion)
   output <- .bedrockdataautomation$delete_blueprint_output()
@@ -234,7 +240,8 @@ bedrockdataautomation_delete_data_automation_library <- function(libraryArn) {
     http_path = "/data-automation-libraries/{libraryArn}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockdataautomation$delete_data_automation_library_input(libraryArn = libraryArn)
   output <- .bedrockdataautomation$delete_data_automation_library_output()
@@ -265,7 +272,8 @@ bedrockdataautomation_delete_data_automation_project <- function(projectArn) {
     http_path = "/data-automation-projects/{projectArn}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockdataautomation$delete_data_automation_project_input(projectArn = projectArn)
   output <- .bedrockdataautomation$delete_data_automation_project_output()
@@ -298,7 +306,8 @@ bedrockdataautomation_get_blueprint <- function(blueprintArn, blueprintVersion =
     http_path = "/blueprints/{blueprintArn}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockdataautomation$get_blueprint_input(blueprintArn = blueprintArn, blueprintVersion = blueprintVersion, blueprintStage = blueprintStage)
   output <- .bedrockdataautomation$get_blueprint_output()
@@ -329,7 +338,8 @@ bedrockdataautomation_get_blueprint_optimization_status <- function(invocationAr
     http_path = "/getBlueprintOptimizationStatus/{invocationArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockdataautomation$get_blueprint_optimization_status_input(invocationArn = invocationArn)
   output <- .bedrockdataautomation$get_blueprint_optimization_status_output()
@@ -360,7 +370,8 @@ bedrockdataautomation_get_data_automation_library <- function(libraryArn) {
     http_path = "/data-automation-libraries/{libraryArn}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockdataautomation$get_data_automation_library_input(libraryArn = libraryArn)
   output <- .bedrockdataautomation$get_data_automation_library_output()
@@ -393,7 +404,8 @@ bedrockdataautomation_get_data_automation_library_entity <- function(libraryArn,
     http_path = "/data-automation-libraries/{libraryArn}/entityType/{entityType}/entities/{entityId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockdataautomation$get_data_automation_library_entity_input(libraryArn = libraryArn, entityType = entityType, entityId = entityId)
   output <- .bedrockdataautomation$get_data_automation_library_entity_output()
@@ -425,7 +437,8 @@ bedrockdataautomation_get_data_automation_library_ingestion_job <- function(libr
     http_path = "/data-automation-libraries/{libraryArn}/library-ingestion-jobs/{jobArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockdataautomation$get_data_automation_library_ingestion_job_input(libraryArn = libraryArn, jobArn = jobArn)
   output <- .bedrockdataautomation$get_data_automation_library_ingestion_job_output()
@@ -457,7 +470,8 @@ bedrockdataautomation_get_data_automation_project <- function(projectArn, projec
     http_path = "/data-automation-projects/{projectArn}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockdataautomation$get_data_automation_project_input(projectArn = projectArn, projectStage = projectStage)
   output <- .bedrockdataautomation$get_data_automation_project_output()
@@ -493,7 +507,8 @@ bedrockdataautomation_invoke_blueprint_optimization_async <- function(blueprint,
     http_path = "/invokeBlueprintOptimizationAsync",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockdataautomation$invoke_blueprint_optimization_async_input(blueprint = blueprint, samples = samples, outputConfiguration = outputConfiguration, dataAutomationProfileArn = dataAutomationProfileArn, encryptionConfiguration = encryptionConfiguration, tags = tags)
   output <- .bedrockdataautomation$invoke_blueprint_optimization_async_output()
@@ -531,7 +546,8 @@ bedrockdataautomation_invoke_data_automation_library_ingestion_job <- function(l
     http_path = "/data-automation-libraries/{libraryArn}/library-ingestion-jobs/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockdataautomation$invoke_data_automation_library_ingestion_job_input(libraryArn = libraryArn, clientToken = clientToken, inputConfiguration = inputConfiguration, entityType = entityType, operationType = operationType, outputConfiguration = outputConfiguration, notificationConfiguration = notificationConfiguration, tags = tags)
   output <- .bedrockdataautomation$invoke_data_automation_library_ingestion_job_output()
@@ -567,7 +583,8 @@ bedrockdataautomation_list_blueprints <- function(blueprintArn = NULL, resourceO
     http_path = "/blueprints/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "blueprints"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockdataautomation$list_blueprints_input(blueprintArn = blueprintArn, resourceOwner = resourceOwner, blueprintStageFilter = blueprintStageFilter, maxResults = maxResults, nextToken = nextToken, projectFilter = projectFilter)
   output <- .bedrockdataautomation$list_blueprints_output()
@@ -600,7 +617,8 @@ bedrockdataautomation_list_data_automation_libraries <- function(maxResults = NU
     http_path = "/data-automation-libraries/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "libraries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockdataautomation$list_data_automation_libraries_input(maxResults = maxResults, nextToken = nextToken, projectFilter = projectFilter)
   output <- .bedrockdataautomation$list_data_automation_libraries_output()
@@ -634,7 +652,8 @@ bedrockdataautomation_list_data_automation_library_entities <- function(libraryA
     http_path = "/data-automation-libraries/{libraryArn}/entityType/{entityType}/entities/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "entities"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockdataautomation$list_data_automation_library_entities_input(libraryArn = libraryArn, entityType = entityType, maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockdataautomation$list_data_automation_library_entities_output()
@@ -667,7 +686,8 @@ bedrockdataautomation_list_data_automation_library_ingestion_jobs <- function(li
     http_path = "/data-automation-libraries/{libraryArn}/library-ingestion-jobs/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobs"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockdataautomation$list_data_automation_library_ingestion_jobs_input(libraryArn = libraryArn, maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockdataautomation$list_data_automation_library_ingestion_jobs_output()
@@ -703,7 +723,8 @@ bedrockdataautomation_list_data_automation_projects <- function(maxResults = NUL
     http_path = "/data-automation-projects/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "projects"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockdataautomation$list_data_automation_projects_input(maxResults = maxResults, nextToken = nextToken, projectStageFilter = projectStageFilter, blueprintFilter = blueprintFilter, resourceOwner = resourceOwner, libraryFilter = libraryFilter)
   output <- .bedrockdataautomation$list_data_automation_projects_output()
@@ -734,7 +755,8 @@ bedrockdataautomation_list_tags_for_resource <- function(resourceARN) {
     http_path = "/listTagsForResource",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockdataautomation$list_tags_for_resource_input(resourceARN = resourceARN)
   output <- .bedrockdataautomation$list_tags_for_resource_output()
@@ -766,7 +788,8 @@ bedrockdataautomation_tag_resource <- function(resourceARN, tags) {
     http_path = "/tagResource",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockdataautomation$tag_resource_input(resourceARN = resourceARN, tags = tags)
   output <- .bedrockdataautomation$tag_resource_output()
@@ -798,7 +821,8 @@ bedrockdataautomation_untag_resource <- function(resourceARN, tagKeys) {
     http_path = "/untagResource",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockdataautomation$untag_resource_input(resourceARN = resourceARN, tagKeys = tagKeys)
   output <- .bedrockdataautomation$untag_resource_output()
@@ -832,7 +856,8 @@ bedrockdataautomation_update_blueprint <- function(blueprintArn, schema, bluepri
     http_path = "/blueprints/{blueprintArn}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockdataautomation$update_blueprint_input(blueprintArn = blueprintArn, schema = schema, blueprintStage = blueprintStage, encryptionConfiguration = encryptionConfiguration)
   output <- .bedrockdataautomation$update_blueprint_output()
@@ -865,7 +890,8 @@ bedrockdataautomation_update_data_automation_library <- function(libraryArn, lib
     http_path = "/data-automation-libraries/{libraryArn}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockdataautomation$update_data_automation_library_input(libraryArn = libraryArn, libraryDescription = libraryDescription, clientToken = clientToken)
   output <- .bedrockdataautomation$update_data_automation_library_output()
@@ -903,7 +929,8 @@ bedrockdataautomation_update_data_automation_project <- function(projectArn, pro
     http_path = "/data-automation-projects/{projectArn}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockdataautomation$update_data_automation_project_input(projectArn = projectArn, projectStage = projectStage, projectDescription = projectDescription, standardOutputConfiguration = standardOutputConfiguration, customOutputConfiguration = customOutputConfiguration, overrideConfiguration = overrideConfiguration, dataAutomationLibraryConfiguration = dataAutomationLibraryConfiguration, encryptionConfiguration = encryptionConfiguration)
   output <- .bedrockdataautomation$update_data_automation_project_output()

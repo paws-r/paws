@@ -59,7 +59,8 @@ athena_batch_get_named_query <- function(NamedQueryIds) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$batch_get_named_query_input(NamedQueryIds = NamedQueryIds)
   output <- .athena$batch_get_named_query_output()
@@ -131,7 +132,8 @@ athena_batch_get_prepared_statement <- function(PreparedStatementNames, WorkGrou
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$batch_get_prepared_statement_input(PreparedStatementNames = PreparedStatementNames, WorkGroup = WorkGroup)
   output <- .athena$batch_get_prepared_statement_output()
@@ -268,7 +270,8 @@ athena_batch_get_query_execution <- function(QueryExecutionIds) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$batch_get_query_execution_input(QueryExecutionIds = QueryExecutionIds)
   output <- .athena$batch_get_query_execution_output()
@@ -312,7 +315,8 @@ athena_cancel_capacity_reservation <- function(Name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$cancel_capacity_reservation_input(Name = Name)
   output <- .athena$cancel_capacity_reservation_output()
@@ -366,7 +370,8 @@ athena_create_capacity_reservation <- function(TargetDpus, Name, Tags = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$create_capacity_reservation_input(TargetDpus = TargetDpus, Name = Name, Tags = Tags)
   output <- .athena$create_capacity_reservation_output()
@@ -489,7 +494,8 @@ athena_create_data_catalog <- function(Name, Type, Description = NULL, Parameter
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$create_data_catalog_input(Name = Name, Type = Type, Description = Description, Parameters = Parameters, Tags = Tags)
   output <- .athena$create_data_catalog_output()
@@ -551,7 +557,8 @@ athena_create_named_query <- function(Name, Description = NULL, Database, QueryS
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$create_named_query_input(Name = Name, Description = Description, Database = Database, QueryString = QueryString, ClientRequestToken = ClientRequestToken, WorkGroup = WorkGroup)
   output <- .athena$create_named_query_output()
@@ -607,7 +614,8 @@ athena_create_notebook <- function(WorkGroup, Name, ClientRequestToken = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$create_notebook_input(WorkGroup = WorkGroup, Name = Name, ClientRequestToken = ClientRequestToken)
   output <- .athena$create_notebook_output()
@@ -658,7 +666,8 @@ athena_create_prepared_statement <- function(StatementName, WorkGroup, QueryStat
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$create_prepared_statement_input(StatementName = StatementName, WorkGroup = WorkGroup, QueryStatement = QueryStatement, Description = Description)
   output <- .athena$create_prepared_statement_output()
@@ -710,7 +719,8 @@ athena_create_presigned_notebook_url <- function(SessionId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$create_presigned_notebook_url_input(SessionId = SessionId)
   output <- .athena$create_presigned_notebook_url_output()
@@ -846,7 +856,8 @@ athena_create_work_group <- function(Name, Configuration = NULL, Description = N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$create_work_group_input(Name = Name, Configuration = Configuration, Description = Description, Tags = Tags)
   output <- .athena$create_work_group_output()
@@ -890,7 +901,8 @@ athena_delete_capacity_reservation <- function(Name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$delete_capacity_reservation_input(Name = Name)
   output <- .athena$delete_capacity_reservation_output()
@@ -951,7 +963,8 @@ athena_delete_data_catalog <- function(Name, DeleteCatalogOnly = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$delete_data_catalog_input(Name = Name, DeleteCatalogOnly = DeleteCatalogOnly)
   output <- .athena$delete_data_catalog_output()
@@ -996,7 +1009,8 @@ athena_delete_named_query <- function(NamedQueryId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$delete_named_query_input(NamedQueryId = NamedQueryId)
   output <- .athena$delete_named_query_output()
@@ -1040,7 +1054,8 @@ athena_delete_notebook <- function(NotebookId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$delete_notebook_input(NotebookId = NotebookId)
   output <- .athena$delete_notebook_output()
@@ -1087,7 +1102,8 @@ athena_delete_prepared_statement <- function(StatementName, WorkGroup) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$delete_prepared_statement_input(StatementName = StatementName, WorkGroup = WorkGroup)
   output <- .athena$delete_prepared_statement_output()
@@ -1133,7 +1149,8 @@ athena_delete_work_group <- function(WorkGroup, RecursiveDeleteOption = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$delete_work_group_input(WorkGroup = WorkGroup, RecursiveDeleteOption = RecursiveDeleteOption)
   output <- .athena$delete_work_group_output()
@@ -1194,7 +1211,8 @@ athena_export_notebook <- function(NotebookId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$export_notebook_input(NotebookId = NotebookId)
   output <- .athena$export_notebook_output()
@@ -1266,7 +1284,8 @@ athena_get_calculation_execution <- function(CalculationExecutionId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$get_calculation_execution_input(CalculationExecutionId = CalculationExecutionId)
   output <- .athena$get_calculation_execution_output()
@@ -1315,7 +1334,8 @@ athena_get_calculation_execution_code <- function(CalculationExecutionId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$get_calculation_execution_code_input(CalculationExecutionId = CalculationExecutionId)
   output <- .athena$get_calculation_execution_code_output()
@@ -1377,7 +1397,8 @@ athena_get_calculation_execution_status <- function(CalculationExecutionId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$get_calculation_execution_status_input(CalculationExecutionId = CalculationExecutionId)
   output <- .athena$get_calculation_execution_status_output()
@@ -1436,7 +1457,8 @@ athena_get_capacity_assignment_configuration <- function(CapacityReservationName
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$get_capacity_assignment_configuration_input(CapacityReservationName = CapacityReservationName)
   output <- .athena$get_capacity_assignment_configuration_output()
@@ -1507,7 +1529,8 @@ athena_get_capacity_reservation <- function(Name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$get_capacity_reservation_input(Name = Name)
   output <- .athena$get_capacity_reservation_output()
@@ -1568,7 +1591,8 @@ athena_get_data_catalog <- function(Name, WorkGroup = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$get_data_catalog_input(Name = Name, WorkGroup = WorkGroup)
   output <- .athena$get_data_catalog_output()
@@ -1627,7 +1651,8 @@ athena_get_database <- function(CatalogName, DatabaseName, WorkGroup = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$get_database_input(CatalogName = CatalogName, DatabaseName = DatabaseName, WorkGroup = WorkGroup)
   output <- .athena$get_database_output()
@@ -1683,7 +1708,8 @@ athena_get_named_query <- function(NamedQueryId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$get_named_query_input(NamedQueryId = NamedQueryId)
   output <- .athena$get_named_query_output()
@@ -1743,7 +1769,8 @@ athena_get_notebook_metadata <- function(NotebookId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$get_notebook_metadata_input(NotebookId = NotebookId)
   output <- .athena$get_notebook_metadata_output()
@@ -1803,7 +1830,8 @@ athena_get_prepared_statement <- function(StatementName, WorkGroup) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$get_prepared_statement_input(StatementName = StatementName, WorkGroup = WorkGroup)
   output <- .athena$get_prepared_statement_output()
@@ -1928,7 +1956,8 @@ athena_get_query_execution <- function(QueryExecutionId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$get_query_execution_input(QueryExecutionId = QueryExecutionId)
   output <- .athena$get_query_execution_output()
@@ -2017,7 +2046,8 @@ athena_get_query_results <- function(QueryExecutionId, NextToken = NULL, MaxResu
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResultSet.Rows", non_aggregate_keys = list( "ResultSet.ResultSetMetadata", "UpdateCount")),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$get_query_results_input(QueryExecutionId = QueryExecutionId, NextToken = NextToken, MaxResults = MaxResults, QueryResultType = QueryResultType)
   output <- .athena$get_query_results_output()
@@ -2104,7 +2134,8 @@ athena_get_query_runtime_statistics <- function(QueryExecutionId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$get_query_runtime_statistics_input(QueryExecutionId = QueryExecutionId)
   output <- .athena$get_query_runtime_statistics_output()
@@ -2153,7 +2184,8 @@ athena_get_resource_dashboard <- function(ResourceARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$get_resource_dashboard_input(ResourceARN = ResourceARN)
   output <- .athena$get_resource_dashboard_output()
@@ -2276,7 +2308,8 @@ athena_get_session <- function(SessionId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$get_session_input(SessionId = SessionId)
   output <- .athena$get_session_output()
@@ -2330,7 +2363,8 @@ athena_get_session_endpoint <- function(SessionId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$get_session_endpoint_input(SessionId = SessionId)
   output <- .athena$get_session_endpoint_output()
@@ -2395,7 +2429,8 @@ athena_get_session_status <- function(SessionId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$get_session_status_input(SessionId = SessionId)
   output <- .athena$get_session_status_output()
@@ -2477,7 +2512,8 @@ athena_get_table_metadata <- function(CatalogName, DatabaseName, TableName, Work
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$get_table_metadata_input(CatalogName = CatalogName, DatabaseName = DatabaseName, TableName = TableName, WorkGroup = WorkGroup)
   output <- .athena$get_table_metadata_output()
@@ -2616,7 +2652,8 @@ athena_get_work_group <- function(WorkGroup) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$get_work_group_input(WorkGroup = WorkGroup)
   output <- .athena$get_work_group_output()
@@ -2678,7 +2715,8 @@ athena_import_notebook <- function(WorkGroup, Name, Payload = NULL, Type, Notebo
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$import_notebook_input(WorkGroup = WorkGroup, Name = Name, Payload = Payload, Type = Type, NotebookS3LocationUri = NotebookS3LocationUri, ClientRequestToken = ClientRequestToken)
   output <- .athena$import_notebook_output()
@@ -2738,7 +2776,8 @@ athena_list_application_dpu_sizes <- function(MaxResults = NULL, NextToken = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$list_application_dpu_sizes_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .athena$list_application_dpu_sizes_output()
@@ -2827,7 +2866,8 @@ athena_list_calculation_executions <- function(SessionId, StateFilter = NULL, Ma
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$list_calculation_executions_input(SessionId = SessionId, StateFilter = StateFilter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .athena$list_calculation_executions_output()
@@ -2902,7 +2942,8 @@ athena_list_capacity_reservations <- function(NextToken = NULL, MaxResults = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$list_capacity_reservations_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .athena$list_capacity_reservations_output()
@@ -2966,7 +3007,8 @@ athena_list_data_catalogs <- function(NextToken = NULL, MaxResults = NULL, WorkG
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DataCatalogsSummary"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$list_data_catalogs_input(NextToken = NextToken, MaxResults = MaxResults, WorkGroup = WorkGroup)
   output <- .athena$list_data_catalogs_output()
@@ -3030,7 +3072,8 @@ athena_list_databases <- function(CatalogName, NextToken = NULL, MaxResults = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DatabaseList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$list_databases_input(CatalogName = CatalogName, NextToken = NextToken, MaxResults = MaxResults, WorkGroup = WorkGroup)
   output <- .athena$list_databases_output()
@@ -3088,7 +3131,8 @@ athena_list_engine_versions <- function(NextToken = NULL, MaxResults = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$list_engine_versions_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .athena$list_engine_versions_output()
@@ -3167,7 +3211,8 @@ athena_list_executors <- function(SessionId, ExecutorStateFilter = NULL, MaxResu
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$list_executors_input(SessionId = SessionId, ExecutorStateFilter = ExecutorStateFilter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .athena$list_executors_output()
@@ -3224,7 +3269,8 @@ athena_list_named_queries <- function(NextToken = NULL, MaxResults = NULL, WorkG
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "NamedQueryIds"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$list_named_queries_input(NextToken = NextToken, MaxResults = MaxResults, WorkGroup = WorkGroup)
   output <- .athena$list_named_queries_output()
@@ -3296,7 +3342,8 @@ athena_list_notebook_metadata <- function(Filters = NULL, NextToken = NULL, MaxR
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$list_notebook_metadata_input(Filters = Filters, NextToken = NextToken, MaxResults = MaxResults, WorkGroup = WorkGroup)
   output <- .athena$list_notebook_metadata_output()
@@ -3359,7 +3406,8 @@ athena_list_notebook_sessions <- function(NotebookId, MaxResults = NULL, NextTok
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$list_notebook_sessions_input(NotebookId = NotebookId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .athena$list_notebook_sessions_output()
@@ -3420,7 +3468,8 @@ athena_list_prepared_statements <- function(WorkGroup, NextToken = NULL, MaxResu
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$list_prepared_statements_input(WorkGroup = WorkGroup, NextToken = NextToken, MaxResults = MaxResults)
   output <- .athena$list_prepared_statements_output()
@@ -3477,7 +3526,8 @@ athena_list_query_executions <- function(NextToken = NULL, MaxResults = NULL, Wo
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "QueryExecutionIds"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$list_query_executions_input(NextToken = NextToken, MaxResults = MaxResults, WorkGroup = WorkGroup)
   output <- .athena$list_query_executions_output()
@@ -3576,7 +3626,8 @@ athena_list_sessions <- function(WorkGroup, StateFilter = NULL, MaxResults = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$list_sessions_input(WorkGroup = WorkGroup, StateFilter = StateFilter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .athena$list_sessions_output()
@@ -3665,7 +3716,8 @@ athena_list_table_metadata <- function(CatalogName, DatabaseName, Expression = N
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TableMetadataList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$list_table_metadata_input(CatalogName = CatalogName, DatabaseName = DatabaseName, Expression = Expression, NextToken = NextToken, MaxResults = MaxResults, WorkGroup = WorkGroup)
   output <- .athena$list_table_metadata_output()
@@ -3724,7 +3776,8 @@ athena_list_tags_for_resource <- function(ResourceARN, NextToken = NULL, MaxResu
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Tags"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$list_tags_for_resource_input(ResourceARN = ResourceARN, NextToken = NextToken, MaxResults = MaxResults)
   output <- .athena$list_tags_for_resource_output()
@@ -3790,7 +3843,8 @@ athena_list_work_groups <- function(NextToken = NULL, MaxResults = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$list_work_groups_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .athena$list_work_groups_output()
@@ -3844,7 +3898,8 @@ athena_put_capacity_assignment_configuration <- function(CapacityReservationName
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$put_capacity_assignment_configuration_input(CapacityReservationName = CapacityReservationName, CapacityAssignments = CapacityAssignments)
   output <- .athena$put_capacity_assignment_configuration_output()
@@ -3909,7 +3964,8 @@ athena_start_calculation_execution <- function(SessionId, Description = NULL, Ca
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$start_calculation_execution_input(SessionId = SessionId, Description = Description, CalculationConfiguration = CalculationConfiguration, CodeBlock = CodeBlock, ClientRequestToken = ClientRequestToken)
   output <- .athena$start_calculation_execution_output()
@@ -4016,7 +4072,8 @@ athena_start_query_execution <- function(QueryString, ClientRequestToken = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$start_query_execution_input(QueryString = QueryString, ClientRequestToken = ClientRequestToken, QueryExecutionContext = QueryExecutionContext, ResultConfiguration = ResultConfiguration, WorkGroup = WorkGroup, ExecutionParameters = ExecutionParameters, ResultReuseConfiguration = ResultReuseConfiguration, EngineConfiguration = EngineConfiguration)
   output <- .athena$start_query_execution_output()
@@ -4132,7 +4189,8 @@ athena_start_session <- function(Description = NULL, WorkGroup, EngineConfigurat
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$start_session_input(Description = Description, WorkGroup = WorkGroup, EngineConfiguration = EngineConfiguration, ExecutionRole = ExecutionRole, MonitoringConfiguration = MonitoringConfiguration, NotebookVersion = NotebookVersion, SessionIdleTimeoutInMinutes = SessionIdleTimeoutInMinutes, ClientRequestToken = ClientRequestToken, Tags = Tags, CopyWorkGroupTags = CopyWorkGroupTags)
   output <- .athena$start_session_output()
@@ -4183,7 +4241,8 @@ athena_stop_calculation_execution <- function(CalculationExecutionId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$stop_calculation_execution_input(CalculationExecutionId = CalculationExecutionId)
   output <- .athena$stop_calculation_execution_output()
@@ -4227,7 +4286,8 @@ athena_stop_query_execution <- function(QueryExecutionId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$stop_query_execution_input(QueryExecutionId = QueryExecutionId)
   output <- .athena$stop_query_execution_output()
@@ -4278,7 +4338,8 @@ athena_tag_resource <- function(ResourceARN, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .athena$tag_resource_output()
@@ -4327,7 +4388,8 @@ athena_terminate_session <- function(SessionId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$terminate_session_input(SessionId = SessionId)
   output <- .athena$terminate_session_output()
@@ -4375,7 +4437,8 @@ athena_untag_resource <- function(ResourceARN, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .athena$untag_resource_output()
@@ -4422,7 +4485,8 @@ athena_update_capacity_reservation <- function(TargetDpus, Name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$update_capacity_reservation_input(TargetDpus = TargetDpus, Name = Name)
   output <- .athena$update_capacity_reservation_output()
@@ -4488,7 +4552,8 @@ athena_update_data_catalog <- function(Name, Type, Description = NULL, Parameter
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$update_data_catalog_input(Name = Name, Type = Type, Description = Description, Parameters = Parameters)
   output <- .athena$update_data_catalog_output()
@@ -4538,7 +4603,8 @@ athena_update_named_query <- function(NamedQueryId, Name, Description = NULL, Qu
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$update_named_query_input(NamedQueryId = NamedQueryId, Name = Name, Description = Description, QueryString = QueryString)
   output <- .athena$update_named_query_output()
@@ -4593,7 +4659,8 @@ athena_update_notebook <- function(NotebookId, Payload, Type, SessionId = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$update_notebook_input(NotebookId = NotebookId, Payload = Payload, Type = Type, SessionId = SessionId, ClientRequestToken = ClientRequestToken)
   output <- .athena$update_notebook_output()
@@ -4643,7 +4710,8 @@ athena_update_notebook_metadata <- function(NotebookId, ClientRequestToken = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$update_notebook_metadata_input(NotebookId = NotebookId, ClientRequestToken = ClientRequestToken, Name = Name)
   output <- .athena$update_notebook_metadata_output()
@@ -4694,7 +4762,8 @@ athena_update_prepared_statement <- function(StatementName, WorkGroup, QueryStat
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$update_prepared_statement_input(StatementName = StatementName, WorkGroup = WorkGroup, QueryStatement = QueryStatement, Description = Description)
   output <- .athena$update_prepared_statement_output()
@@ -4829,7 +4898,8 @@ athena_update_work_group <- function(WorkGroup, Description = NULL, Configuratio
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .athena$update_work_group_input(WorkGroup = WorkGroup, Description = Description, ConfigurationUpdates = ConfigurationUpdates, State = State)
   output <- .athena$update_work_group_output()

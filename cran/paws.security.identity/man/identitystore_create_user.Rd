@@ -27,7 +27,9 @@ identitystore_create_user(
 )
 }
 \arguments{
-\item{IdentityStoreId}{[required] The globally unique identifier for the identity store.}
+\item{IdentityStoreId}{[required] The globally unique identifier for the identity store.
+
+You can specify the identity store by ID or by Amazon Resource Name (ARN). For example, identity store ID \code{d-1234567890} or identity store ARN \verb{arn:aws:identitystore::111122223333:identitystore/d-1234567890}.}
 
 \item{UserName}{A unique string used to identify the user. The length limit is 128 characters. This value can consist of letters, accented characters, symbols, numbers, and punctuation. This value is specified at the time the user is created and stored as an attribute of the user object in the identity store. \code{Administrator} and \code{AWSAdministrators} are reserved names and can't be used for users or groups.}
 

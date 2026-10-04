@@ -26,7 +26,7 @@ ram_create_resource_share(
 You can include the following values:
 \itemize{
 \item An Amazon Web Services account ID, for example: \code{123456789012}
-\item An \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)} of an organization in Organizations, for example: \verb{organizations::123456789012:organization/o-exampleorgid}
+\item An \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Name (ARN)} of an organization in Organizations, for example: \verb{organizations::123456789012:organization/o-exampleorgid}
 \item An ARN of an organizational unit (OU) in Organizations, for example: \verb{organizations::123456789012:ou/o-exampleorgid/ou-examplerootid-exampleouid123}
 \item An ARN of an IAM role, for example: \verb{iam::123456789012:role/rolename}
 \item An ARN of an IAM user, for example: \verb{iam::123456789012user/username}
@@ -45,14 +45,14 @@ If you don't provide this value, then Amazon Web Services generates a random one
 
 If you retry the operation with the same \code{ClientToken}, but with different parameters, the retry fails with an \code{IdempotentParameterMismatch} error.}
 
-\item{permissionArns}{Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} of the RAM permission to associate with the resource share. If you do not specify an ARN for the permission, RAM automatically attaches the default version of the permission for each resource type. You can associate only one permission with each resource type included in the resource share.}
+\item{permissionArns}{Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Names (ARNs)} of the RAM permission to associate with the resource share. If you do not specify an ARN for the permission, RAM automatically attaches the default version of the permission for each resource type. You can associate only one permission with each resource type included in the resource share.}
 
 \item{sources}{Specifies source constraints (accounts, ARNs, organization IDs, or organization paths) that limit when service principals can access resources in this resource share. When a service principal attempts to access a shared resource, validation is performed to ensure the request originates from one of the specified sources. This helps prevent confused deputy attacks by applying constraints on where service principals can access resources from.}
 
 \item{resourceShareConfiguration}{Specifies the configuration of this resource share.}
 }
 \description{
-Creates a resource share. You can provide a list of the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} for the resources that you want to share, a list of principals you want to share the resources with, the permissions to grant those principals, and optionally source constraints to enhance security for service principal sharing.
+Creates a resource share. You can provide a list of the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Names (ARNs)} for the resources that you want to share, a list of principals you want to share the resources with, the permissions to grant those principals, and optionally source constraints to enhance security for service principal sharing.
 
 See \url{https://www.paws-r-sdk.com/docs/ram_create_resource_share/} for full documentation.
 }

@@ -42,7 +42,8 @@ neptunedata_cancel_gremlin_query <- function(queryId) {
     http_path = "/gremlin/status/{queryId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$cancel_gremlin_query_input(queryId = queryId)
   output <- .neptunedata$cancel_gremlin_query_output()
@@ -93,7 +94,8 @@ neptunedata_cancel_loader_job <- function(loadId) {
     http_path = "/loader/{loadId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$cancel_loader_job_input(loadId = loadId)
   output <- .neptunedata$cancel_loader_job_output()
@@ -148,7 +150,8 @@ neptunedata_cancel_ml_data_processing_job <- function(id, neptuneIamRoleArn = NU
     http_path = "/ml/dataprocessing/{id}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$cancel_ml_data_processing_job_input(id = id, neptuneIamRoleArn = neptuneIamRoleArn, clean = clean)
   output <- .neptunedata$cancel_ml_data_processing_job_output()
@@ -203,7 +206,8 @@ neptunedata_cancel_ml_model_training_job <- function(id, neptuneIamRoleArn = NUL
     http_path = "/ml/modeltraining/{id}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$cancel_ml_model_training_job_input(id = id, neptuneIamRoleArn = neptuneIamRoleArn, clean = clean)
   output <- .neptunedata$cancel_ml_model_training_job_output()
@@ -258,7 +262,8 @@ neptunedata_cancel_ml_model_transform_job <- function(id, neptuneIamRoleArn = NU
     http_path = "/ml/modeltransform/{id}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$cancel_ml_model_transform_job_input(id = id, neptuneIamRoleArn = neptuneIamRoleArn, clean = clean)
   output <- .neptunedata$cancel_ml_model_transform_job_output()
@@ -312,7 +317,8 @@ neptunedata_cancel_open_cypher_query <- function(queryId, silent = NULL) {
     http_path = "/opencypher/status/{queryId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$cancel_open_cypher_query_input(queryId = queryId, silent = silent)
   output <- .neptunedata$cancel_open_cypher_query_output()
@@ -384,7 +390,8 @@ neptunedata_create_ml_endpoint <- function(id = NULL, mlModelTrainingJobId = NUL
     http_path = "/ml/endpoints",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$create_ml_endpoint_input(id = id, mlModelTrainingJobId = mlModelTrainingJobId, mlModelTransformJobId = mlModelTransformJobId, update = update, neptuneIamRoleArn = neptuneIamRoleArn, modelName = modelName, instanceType = instanceType, instanceCount = instanceCount, volumeEncryptionKMSKey = volumeEncryptionKMSKey)
   output <- .neptunedata$create_ml_endpoint_output()
@@ -439,7 +446,8 @@ neptunedata_delete_ml_endpoint <- function(id, neptuneIamRoleArn = NULL, clean =
     http_path = "/ml/endpoints/{id}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$delete_ml_endpoint_input(id = id, neptuneIamRoleArn = neptuneIamRoleArn, clean = clean)
   output <- .neptunedata$delete_ml_endpoint_output()
@@ -490,7 +498,8 @@ neptunedata_delete_propertygraph_statistics <- function() {
     http_path = "/propertygraph/statistics",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$delete_propertygraph_statistics_input()
   output <- .neptunedata$delete_propertygraph_statistics_output()
@@ -541,7 +550,8 @@ neptunedata_delete_sparql_statistics <- function() {
     http_path = "/sparql/statistics",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$delete_sparql_statistics_input()
   output <- .neptunedata$delete_sparql_statistics_output()
@@ -604,7 +614,8 @@ neptunedata_execute_fast_reset <- function(action, token = NULL) {
     http_path = "/system",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$execute_fast_reset_input(action = action, token = token)
   output <- .neptunedata$execute_fast_reset_output()
@@ -667,7 +678,8 @@ neptunedata_execute_gremlin_explain_query <- function(gremlinQuery) {
     http_path = "/gremlin/explain",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$execute_gremlin_explain_query_input(gremlinQuery = gremlinQuery)
   output <- .neptunedata$execute_gremlin_explain_query_output()
@@ -731,7 +743,8 @@ neptunedata_execute_gremlin_profile_query <- function(gremlinQuery, results = NU
     http_path = "/gremlin/profile",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$execute_gremlin_profile_query_input(gremlinQuery = gremlinQuery, results = results, chop = chop, serializer = serializer, indexOps = indexOps)
   output <- .neptunedata$execute_gremlin_profile_query_output()
@@ -799,7 +812,8 @@ neptunedata_execute_gremlin_query <- function(gremlinQuery, serializer = NULL) {
     http_path = "/gremlin",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$execute_gremlin_query_input(gremlinQuery = gremlinQuery, serializer = serializer)
   output <- .neptunedata$execute_gremlin_query_output()
@@ -857,7 +871,8 @@ neptunedata_execute_open_cypher_explain_query <- function(openCypherQuery, param
     http_path = "/opencypher/explain",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$execute_open_cypher_explain_query_input(openCypherQuery = openCypherQuery, parameters = parameters, explainMode = explainMode)
   output <- .neptunedata$execute_open_cypher_explain_query_output()
@@ -922,7 +937,8 @@ neptunedata_execute_open_cypher_query <- function(openCypherQuery, parameters = 
     http_path = "/opencypher",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$execute_open_cypher_query_input(openCypherQuery = openCypherQuery, parameters = parameters)
   output <- .neptunedata$execute_open_cypher_query_output()
@@ -992,7 +1008,8 @@ neptunedata_get_engine_status <- function() {
     http_path = "/status",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$get_engine_status_input()
   output <- .neptunedata$get_engine_status_output()
@@ -1052,7 +1069,8 @@ neptunedata_get_gremlin_query_status <- function(queryId) {
     http_path = "/gremlin/status/{queryId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$get_gremlin_query_status_input(queryId = queryId)
   output <- .neptunedata$get_gremlin_query_status_output()
@@ -1117,7 +1135,8 @@ neptunedata_get_loader_job_status <- function(loadId, details = NULL, errors = N
     http_path = "/loader/{loadId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$get_loader_job_status_input(loadId = loadId, details = details, errors = errors, page = page, errorsPerPage = errorsPerPage)
   output <- .neptunedata$get_loader_job_status_output()
@@ -1179,7 +1198,8 @@ neptunedata_get_ml_data_processing_job <- function(id, neptuneIamRoleArn = NULL)
     http_path = "/ml/dataprocessing/{id}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$get_ml_data_processing_job_input(id = id, neptuneIamRoleArn = neptuneIamRoleArn)
   output <- .neptunedata$get_ml_data_processing_job_output()
@@ -1245,7 +1265,8 @@ neptunedata_get_ml_endpoint <- function(id, neptuneIamRoleArn = NULL) {
     http_path = "/ml/endpoints/{id}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$get_ml_endpoint_input(id = id, neptuneIamRoleArn = neptuneIamRoleArn)
   output <- .neptunedata$get_ml_endpoint_output()
@@ -1329,7 +1350,8 @@ neptunedata_get_ml_model_training_job <- function(id, neptuneIamRoleArn = NULL) 
     http_path = "/ml/modeltraining/{id}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$get_ml_model_training_job_input(id = id, neptuneIamRoleArn = neptuneIamRoleArn)
   output <- .neptunedata$get_ml_model_training_job_output()
@@ -1405,7 +1427,8 @@ neptunedata_get_ml_model_transform_job <- function(id, neptuneIamRoleArn = NULL)
     http_path = "/ml/modeltransform/{id}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$get_ml_model_transform_job_input(id = id, neptuneIamRoleArn = neptuneIamRoleArn)
   output <- .neptunedata$get_ml_model_transform_job_output()
@@ -1465,7 +1488,8 @@ neptunedata_get_open_cypher_query_status <- function(queryId) {
     http_path = "/opencypher/status/{queryId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$get_open_cypher_query_status_input(queryId = queryId)
   output <- .neptunedata$get_open_cypher_query_status_output()
@@ -1525,7 +1549,8 @@ neptunedata_get_propertygraph_statistics <- function() {
     http_path = "/propertygraph/statistics",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$get_propertygraph_statistics_input()
   output <- .neptunedata$get_propertygraph_statistics_output()
@@ -1634,7 +1659,8 @@ neptunedata_get_propertygraph_stream <- function(limit = NULL, iteratorType = NU
     http_path = "/propertygraph/stream",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$get_propertygraph_stream_input(limit = limit, iteratorType = iteratorType, commitNum = commitNum, opNum = opNum, encoding = encoding)
   output <- .neptunedata$get_propertygraph_stream_output()
@@ -1736,7 +1762,8 @@ neptunedata_get_propertygraph_summary <- function(mode = NULL) {
     http_path = "/propertygraph/statistics/summary",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$get_propertygraph_summary_input(mode = mode)
   output <- .neptunedata$get_propertygraph_summary_output()
@@ -1815,7 +1842,8 @@ neptunedata_get_rdf_graph_summary <- function(mode = NULL) {
     http_path = "/rdf/statistics/summary",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$get_rdf_graph_summary_input(mode = mode)
   output <- .neptunedata$get_rdf_graph_summary_output()
@@ -1873,7 +1901,8 @@ neptunedata_get_sparql_statistics <- function() {
     http_path = "/sparql/statistics",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$get_sparql_statistics_input()
   output <- .neptunedata$get_sparql_statistics_output()
@@ -1969,7 +1998,8 @@ neptunedata_get_sparql_stream <- function(limit = NULL, iteratorType = NULL, com
     http_path = "/sparql/stream",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$get_sparql_stream_input(limit = limit, iteratorType = iteratorType, commitNum = commitNum, opNum = opNum, encoding = encoding)
   output <- .neptunedata$get_sparql_stream_output()
@@ -2035,7 +2065,8 @@ neptunedata_list_gremlin_queries <- function(includeWaiting = NULL) {
     http_path = "/gremlin/status",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$list_gremlin_queries_input(includeWaiting = includeWaiting)
   output <- .neptunedata$list_gremlin_queries_output()
@@ -2093,7 +2124,8 @@ neptunedata_list_loader_jobs <- function(limit = NULL, includeQueuedLoads = NULL
     http_path = "/loader",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$list_loader_jobs_input(limit = limit, includeQueuedLoads = includeQueuedLoads)
   output <- .neptunedata$list_loader_jobs_output()
@@ -2148,7 +2180,8 @@ neptunedata_list_ml_data_processing_jobs <- function(maxItems = NULL, neptuneIam
     http_path = "/ml/dataprocessing",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$list_ml_data_processing_jobs_input(maxItems = maxItems, neptuneIamRoleArn = neptuneIamRoleArn)
   output <- .neptunedata$list_ml_data_processing_jobs_output()
@@ -2203,7 +2236,8 @@ neptunedata_list_ml_endpoints <- function(maxItems = NULL, neptuneIamRoleArn = N
     http_path = "/ml/endpoints",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$list_ml_endpoints_input(maxItems = maxItems, neptuneIamRoleArn = neptuneIamRoleArn)
   output <- .neptunedata$list_ml_endpoints_output()
@@ -2258,7 +2292,8 @@ neptunedata_list_ml_model_training_jobs <- function(maxItems = NULL, neptuneIamR
     http_path = "/ml/modeltraining",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$list_ml_model_training_jobs_input(maxItems = maxItems, neptuneIamRoleArn = neptuneIamRoleArn)
   output <- .neptunedata$list_ml_model_training_jobs_output()
@@ -2313,7 +2348,8 @@ neptunedata_list_ml_model_transform_jobs <- function(maxItems = NULL, neptuneIam
     http_path = "/ml/modeltransform",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$list_ml_model_transform_jobs_input(maxItems = maxItems, neptuneIamRoleArn = neptuneIamRoleArn)
   output <- .neptunedata$list_ml_model_transform_jobs_output()
@@ -2379,7 +2415,8 @@ neptunedata_list_open_cypher_queries <- function(includeWaiting = NULL) {
     http_path = "/opencypher/status",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$list_open_cypher_queries_input(includeWaiting = includeWaiting)
   output <- .neptunedata$list_open_cypher_queries_output()
@@ -2433,7 +2470,8 @@ neptunedata_manage_propertygraph_statistics <- function(mode = NULL) {
     http_path = "/propertygraph/statistics",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$manage_propertygraph_statistics_input(mode = mode)
   output <- .neptunedata$manage_propertygraph_statistics_output()
@@ -2487,7 +2525,8 @@ neptunedata_manage_sparql_statistics <- function(mode = NULL) {
     http_path = "/sparql/statistics",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$manage_sparql_statistics_input(mode = mode)
   output <- .neptunedata$manage_sparql_statistics_output()
@@ -2689,7 +2728,8 @@ neptunedata_start_loader_job <- function(source, format, s3BucketRegion, iamRole
     http_path = "/loader",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$start_loader_job_input(source = source, format = format, s3BucketRegion = s3BucketRegion, iamRoleArn = iamRoleArn, mode = mode, failOnError = failOnError, parallelism = parallelism, parserConfiguration = parserConfiguration, updateSingleCardinalityProperties = updateSingleCardinalityProperties, queueRequest = queueRequest, dependencies = dependencies, userProvidedEdgeIds = userProvidedEdgeIds, edgeOnlyLoad = edgeOnlyLoad)
   output <- .neptunedata$start_loader_job_output()
@@ -2780,7 +2820,8 @@ neptunedata_start_ml_data_processing_job <- function(id = NULL, previousDataProc
     http_path = "/ml/dataprocessing",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$start_ml_data_processing_job_input(id = id, previousDataProcessingJobId = previousDataProcessingJobId, inputDataS3Location = inputDataS3Location, processedDataS3Location = processedDataS3Location, sagemakerIamRoleArn = sagemakerIamRoleArn, neptuneIamRoleArn = neptuneIamRoleArn, processingInstanceType = processingInstanceType, processingInstanceVolumeSizeInGB = processingInstanceVolumeSizeInGB, processingTimeOutInSeconds = processingTimeOutInSeconds, modelType = modelType, configFileName = configFileName, subnets = subnets, securityGroupIds = securityGroupIds, volumeEncryptionKMSKey = volumeEncryptionKMSKey, s3OutputEncryptionKMSKey = s3OutputEncryptionKMSKey)
   output <- .neptunedata$start_ml_data_processing_job_output()
@@ -2881,7 +2922,8 @@ neptunedata_start_ml_model_training_job <- function(id = NULL, previousModelTrai
     http_path = "/ml/modeltraining",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$start_ml_model_training_job_input(id = id, previousModelTrainingJobId = previousModelTrainingJobId, dataProcessingJobId = dataProcessingJobId, trainModelS3Location = trainModelS3Location, sagemakerIamRoleArn = sagemakerIamRoleArn, neptuneIamRoleArn = neptuneIamRoleArn, baseProcessingInstanceType = baseProcessingInstanceType, trainingInstanceType = trainingInstanceType, trainingInstanceVolumeSizeInGB = trainingInstanceVolumeSizeInGB, trainingTimeOutInSeconds = trainingTimeOutInSeconds, maxHPONumberOfTrainingJobs = maxHPONumberOfTrainingJobs, maxHPOParallelTrainingJobs = maxHPOParallelTrainingJobs, subnets = subnets, securityGroupIds = securityGroupIds, volumeEncryptionKMSKey = volumeEncryptionKMSKey, s3OutputEncryptionKMSKey = s3OutputEncryptionKMSKey, enableManagedSpotTraining = enableManagedSpotTraining, customModelTrainingParameters = customModelTrainingParameters)
   output <- .neptunedata$start_ml_model_training_job_output()
@@ -2972,7 +3014,8 @@ neptunedata_start_ml_model_transform_job <- function(id = NULL, dataProcessingJo
     http_path = "/ml/modeltransform",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptunedata$start_ml_model_transform_job_input(id = id, dataProcessingJobId = dataProcessingJobId, mlModelTrainingJobId = mlModelTrainingJobId, trainingJobName = trainingJobName, modelTransformOutputS3Location = modelTransformOutputS3Location, sagemakerIamRoleArn = sagemakerIamRoleArn, neptuneIamRoleArn = neptuneIamRoleArn, customModelTransformParameters = customModelTransformParameters, baseProcessingInstanceType = baseProcessingInstanceType, baseProcessingInstanceVolumeSizeInGB = baseProcessingInstanceVolumeSizeInGB, subnets = subnets, securityGroupIds = securityGroupIds, volumeEncryptionKMSKey = volumeEncryptionKMSKey, s3OutputEncryptionKMSKey = s3OutputEncryptionKMSKey)
   output <- .neptunedata$start_ml_model_transform_job_output()

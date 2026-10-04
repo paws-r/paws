@@ -1,4 +1,4 @@
-svc <- paws.compute::computeoptimizer()
+svc <- paws::computeoptimizer()
 
 test_that("describe_recommendation_export_jobs", {
   skip_on_cran()

@@ -22,7 +22,8 @@ sagemakermetrics_batch_get_metrics <- function(MetricQueries) {
     http_path = "/BatchGetMetrics",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sagemakermetrics$batch_get_metrics_input(MetricQueries = MetricQueries)
   output <- .sagemakermetrics$batch_get_metrics_output()
@@ -54,7 +55,8 @@ sagemakermetrics_batch_put_metrics <- function(TrialComponentName, MetricData) {
     http_path = "/BatchPutMetrics",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sagemakermetrics$batch_put_metrics_input(TrialComponentName = TrialComponentName, MetricData = MetricData)
   output <- .sagemakermetrics$batch_put_metrics_output()

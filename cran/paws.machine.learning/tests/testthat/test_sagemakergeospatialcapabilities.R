@@ -1,4 +1,4 @@
-svc <- paws.machine.learning::sagemakergeospatialcapabilities()
+svc <- paws::sagemakergeospatialcapabilities()
 
 test_that("list_earth_observation_jobs", {
   skip_on_cran()

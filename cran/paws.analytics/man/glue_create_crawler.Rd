@@ -20,7 +20,8 @@ glue_create_crawler(
   LakeFormationConfiguration = NULL,
   Configuration = NULL,
   CrawlerSecurityConfiguration = NULL,
-  Tags = NULL
+  Tags = NULL,
+  CatalogId = NULL
 )
 }
 \arguments{
@@ -53,6 +54,8 @@ glue_create_crawler(
 \item{CrawlerSecurityConfiguration}{The name of the \code{SecurityConfiguration} structure to be used by this crawler.}
 
 \item{Tags}{The tags to use with this crawler request. You may use tags to limit access to the crawler. For more information about tags in Glue, see \href{https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html}{Amazon Web Services Tags in Glue} in the developer guide.}
+
+\item{CatalogId}{The ID of the Data Catalog in which to store the crawler's output. If none is supplied, the Amazon Web Services account ID is used by default.}
 }
 \description{
 Creates a new crawler with specified targets, role, configuration, and optional schedule. At least one crawl target must be specified, in the \code{s3Targets} field, the \code{jdbcTargets} field, or the \code{DynamoDBTargets} field.

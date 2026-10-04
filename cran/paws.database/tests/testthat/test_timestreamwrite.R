@@ -1,4 +1,4 @@
-svc <- paws.database::timestreamwrite()
+svc <- paws::timestreamwrite()
 
 test_that("describe_endpoints", {
   skip_on_cran()

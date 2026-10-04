@@ -20,7 +20,8 @@ docdb_restore_db_cluster_from_snapshot(
   DBClusterParameterGroupName = NULL,
   ServerlessV2ScalingConfiguration = NULL,
   StorageType = NULL,
-  NetworkType = NULL
+  NetworkType = NULL,
+  CopyTagsToSnapshot = NULL
 )
 }
 \arguments{
@@ -107,6 +108,8 @@ The network type is determined by the \code{DBSubnetGroup} specified for the clu
 For more information, see \href{https://docs.aws.amazon.com/documentdb/latest/devguide/vpc-clusters.html}{DocumentDB clusters in a VPC} in the Amazon DocumentDB Developer Guide.
 
 Valid Values: \code{IPV4} | \code{DUAL}}
+
+\item{CopyTagsToSnapshot}{Specifies whether to copy all tags from the restored DB cluster to snapshots of the restored DB cluster. The default is not to copy them.}
 }
 \description{
 Creates a new cluster from a snapshot or cluster snapshot.

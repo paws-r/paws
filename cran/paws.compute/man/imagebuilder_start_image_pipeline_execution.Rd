@@ -13,12 +13,12 @@ imagebuilder_start_image_pipeline_execution(
 \arguments{
 \item{imagePipelineArn}{[required] The Amazon Resource Name (ARN) of the image pipeline that you want to manually invoke.}
 
-\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
+\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
 
 \item{tags}{The tags for Image Builder to apply to the image resource that's created when pipeline execution starts.}
 }
 \description{
-Manually triggers a pipeline to create an image.
+Manually triggers a pipeline to create an image. You can start a build this way whether the pipeline is enabled or disabled. The response returns as soon as Image Builder creates the new image resource and queues the build. Use the returned \code{imageBuildVersionArn} with \code{\link[=imagebuilder_get_image]{get_image}} to track build progress.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_start_image_pipeline_execution/} for full documentation.
 }

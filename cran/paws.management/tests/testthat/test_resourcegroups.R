@@ -1,4 +1,4 @@
-svc <- paws.management::resourcegroups()
+svc <- paws::resourcegroups()
 
 test_that("list_group_resources", {
   skip_on_cran()

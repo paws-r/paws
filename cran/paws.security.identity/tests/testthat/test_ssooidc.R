@@ -1,3 +1,3 @@
-svc <- paws.security.identity::ssooidc()
+svc <- paws::ssooidc()
 
 

@@ -9,6 +9,7 @@ cloudwatchlogs_put_delivery_destination(
   outputFormat = NULL,
   deliveryDestinationConfiguration = NULL,
   deliveryDestinationType = NULL,
+  roleArn = NULL,
   tags = NULL
 )
 }
@@ -30,6 +31,8 @@ cloudwatchlogs_put_delivery_destination(
 }
 
 The delivery destination type determines the format and configuration options available for log delivery.}
+
+\item{roleArn}{The ARN of an IAM role in your account that CloudWatch Logs assumes to deliver to this delivery destination. The trust policy of the role must allow CloudWatch Logs to assume it. This parameter is supported only for X-Ray trace delivery destinations.}
 
 \item{tags}{An optional list of key-value pairs to associate with the resource.
 

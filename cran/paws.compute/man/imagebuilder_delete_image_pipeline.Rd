@@ -10,7 +10,7 @@ imagebuilder_delete_image_pipeline(imagePipelineArn)
 \item{imagePipelineArn}{[required] The Amazon Resource Name (ARN) of the image pipeline to delete.}
 }
 \description{
-Deletes an image pipeline.
+Deletes an image pipeline. Images that the pipeline created aren't deleted - remove those separately with \code{\link[=imagebuilder_delete_image]{delete_image}}. You can delete a pipeline while a build that it started is still running. The build continues independently.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_delete_image_pipeline/} for full documentation.
 }

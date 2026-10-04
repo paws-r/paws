@@ -12,6 +12,8 @@ NULL
 #' identitystore_create_group(IdentityStoreId, DisplayName, Description)
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
+#' 
+#' You can specify the identity store by ID or by Amazon Resource Name (ARN). For example, identity store ID `d-1234567890` or identity store ARN `arn:aws:identitystore::111122223333:identitystore/d-1234567890`.
 #' @param DisplayName A string containing the name of the group. This value is commonly displayed when the group is referenced. `Administrator` and `AWSAdministrators` are reserved names and can't be used for users or groups.
 #' @param Description A string containing the description of the group.
 #'
@@ -19,8 +21,10 @@ NULL
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   IdentityStoreId = "string",
 #'   GroupId = "string",
-#'   IdentityStoreId = "string"
+#'   GroupArn = "string",
+#'   Revision = "string"
 #' )
 #' ```
 #'
@@ -45,7 +49,8 @@ identitystore_create_group <- function(IdentityStoreId, DisplayName = NULL, Desc
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .identitystore$create_group_input(IdentityStoreId = IdentityStoreId, DisplayName = DisplayName, Description = Description)
   output <- .identitystore$create_group_output()
@@ -67,15 +72,20 @@ identitystore_create_group <- function(IdentityStoreId, DisplayName = NULL, Desc
 #'   MemberId)
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
+#' 
+#' You can specify the identity store by ID or by Amazon Resource Name (ARN). For example, identity store ID `d-1234567890` or identity store ARN `arn:aws:identitystore::111122223333:identitystore/d-1234567890`.
 #' @param GroupId &#91;required&#93; The identifier for a group in the identity store.
+#' 
+#' You can specify the group by ID or by Amazon Resource Name (ARN). For example, group ID `a1b2c3d4-5678-90ab-cdef-EXAMPLE22222` or group ARN `arn:aws:identitystore:::group/a1b2c3d4-5678-90ab-cdef-EXAMPLE22222`.
 #' @param MemberId &#91;required&#93; An object that contains the identifier of a group member. Setting the `UserID` field to the specific identifier for a user indicates that the user is a member of the group.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   IdentityStoreId = "string",
 #'   MembershipId = "string",
-#'   IdentityStoreId = "string"
+#'   MembershipArn = "string"
 #' )
 #' ```
 #'
@@ -102,7 +112,8 @@ identitystore_create_group_membership <- function(IdentityStoreId, GroupId, Memb
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .identitystore$create_group_membership_input(IdentityStoreId = IdentityStoreId, GroupId = GroupId, MemberId = MemberId)
   output <- .identitystore$create_group_membership_output()
@@ -126,6 +137,8 @@ identitystore_create_group_membership <- function(IdentityStoreId, GroupId, Memb
 #'   Extensions)
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
+#' 
+#' You can specify the identity store by ID or by Amazon Resource Name (ARN). For example, identity store ID `d-1234567890` or identity store ARN `arn:aws:identitystore::111122223333:identitystore/d-1234567890`.
 #' @param UserName A unique string used to identify the user. The length limit is 128 characters. This value can consist of letters, accented characters, symbols, numbers, and punctuation. This value is specified at the time the user is created and stored as an attribute of the user object in the identity store. `Administrator` and `AWSAdministrators` are reserved names and can't be used for users or groups.
 #' @param Name An object containing the name of the user. When used in IAM Identity Center, this parameter is required.
 #' @param DisplayName A string containing the name of the user. This value is typically formatted for display when the user is referenced. For example, "John Doe." When used in IAM Identity Center, this parameter is required.
@@ -150,7 +163,9 @@ identitystore_create_group_membership <- function(IdentityStoreId, GroupId, Memb
 #' ```
 #' list(
 #'   IdentityStoreId = "string",
-#'   UserId = "string"
+#'   UserId = "string",
+#'   UserArn = "string",
+#'   Revision = "string"
 #' )
 #' ```
 #'
@@ -236,7 +251,8 @@ identitystore_create_user <- function(IdentityStoreId, UserName = NULL, Name = N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .identitystore$create_user_input(IdentityStoreId = IdentityStoreId, UserName = UserName, Name = Name, DisplayName = DisplayName, NickName = NickName, ProfileUrl = ProfileUrl, Emails = Emails, Addresses = Addresses, PhoneNumbers = PhoneNumbers, UserType = UserType, Title = Title, PreferredLanguage = PreferredLanguage, Locale = Locale, Timezone = Timezone, Photos = Photos, Website = Website, Birthdate = Birthdate, Roles = Roles, Extensions = Extensions)
   output <- .identitystore$create_user_output()
@@ -254,10 +270,15 @@ identitystore_create_user <- function(IdentityStoreId, UserName = NULL, Name = N
 #' Delete a group within an identity store given `GroupId`.
 #'
 #' @usage
-#' identitystore_delete_group(IdentityStoreId, GroupId)
+#' identitystore_delete_group(IdentityStoreId, GroupId, Revision)
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
+#' 
+#' You can specify the identity store by ID or by Amazon Resource Name (ARN). For example, identity store ID `d-1234567890` or identity store ARN `arn:aws:identitystore::111122223333:identitystore/d-1234567890`.
 #' @param GroupId &#91;required&#93; The identifier for a group in the identity store.
+#' 
+#' You can specify the group by ID or by Amazon Resource Name (ARN). For example, group ID `a1b2c3d4-5678-90ab-cdef-EXAMPLE22222` or group ARN `arn:aws:identitystore:::group/a1b2c3d4-5678-90ab-cdef-EXAMPLE22222`.
+#' @param Revision The expected current revision of the group. When you provide this value, the group is deleted only if it matches the current revision of the group in the identity store. If the value doesn't match, the operation fails with a `ConflictException`. If you don't provide this value, the group is deleted regardless of its current revision.
 #'
 #' @return
 #' An empty list.
@@ -266,7 +287,8 @@ identitystore_create_user <- function(IdentityStoreId, UserName = NULL, Name = N
 #' ```
 #' svc$delete_group(
 #'   IdentityStoreId = "string",
-#'   GroupId = "string"
+#'   GroupId = "string",
+#'   Revision = "string"
 #' )
 #' ```
 #'
@@ -275,16 +297,17 @@ identitystore_create_user <- function(IdentityStoreId, UserName = NULL, Name = N
 #' @rdname identitystore_delete_group
 #'
 #' @aliases identitystore_delete_group
-identitystore_delete_group <- function(IdentityStoreId, GroupId) {
+identitystore_delete_group <- function(IdentityStoreId, GroupId, Revision = NULL) {
   op <- new_operation(
     name = "DeleteGroup",
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
-  input <- .identitystore$delete_group_input(IdentityStoreId = IdentityStoreId, GroupId = GroupId)
+  input <- .identitystore$delete_group_input(IdentityStoreId = IdentityStoreId, GroupId = GroupId, Revision = Revision)
   output <- .identitystore$delete_group_output()
   config <- get_config()
   svc <- .identitystore$service(config, op)
@@ -303,7 +326,11 @@ identitystore_delete_group <- function(IdentityStoreId, GroupId) {
 #' identitystore_delete_group_membership(IdentityStoreId, MembershipId)
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
+#' 
+#' You can specify the identity store by ID or by Amazon Resource Name (ARN). For example, identity store ID `d-1234567890` or identity store ARN `arn:aws:identitystore::111122223333:identitystore/d-1234567890`.
 #' @param MembershipId &#91;required&#93; The identifier for a `GroupMembership` in an identity store.
+#' 
+#' You can specify the group membership by ID or by Amazon Resource Name (ARN). For example, membership ID `a1b2c3d4-5678-90ab-cdef-EXAMPLE33333` or membership ARN `arn:aws:identitystore:::membership/a1b2c3d4-5678-90ab-cdef-EXAMPLE33333`.
 #'
 #' @return
 #' An empty list.
@@ -328,7 +355,8 @@ identitystore_delete_group_membership <- function(IdentityStoreId, MembershipId)
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .identitystore$delete_group_membership_input(IdentityStoreId = IdentityStoreId, MembershipId = MembershipId)
   output <- .identitystore$delete_group_membership_output()
@@ -346,10 +374,15 @@ identitystore_delete_group_membership <- function(IdentityStoreId, MembershipId)
 #' Deletes a user within an identity store given `UserId`.
 #'
 #' @usage
-#' identitystore_delete_user(IdentityStoreId, UserId)
+#' identitystore_delete_user(IdentityStoreId, UserId, Revision)
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
+#' 
+#' You can specify the identity store by ID or by Amazon Resource Name (ARN). For example, identity store ID `d-1234567890` or identity store ARN `arn:aws:identitystore::111122223333:identitystore/d-1234567890`.
 #' @param UserId &#91;required&#93; The identifier for a user in the identity store.
+#' 
+#' You can specify the user by ID or by Amazon Resource Name (ARN). For example, user ID `a1b2c3d4-5678-90ab-cdef-EXAMPLE11111` or user ARN `arn:aws:identitystore:::user/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111`.
+#' @param Revision The expected current revision of the user. When you provide this value, the user is deleted only if it matches the current revision of the user in the identity store. If the value doesn't match, the operation fails with a `ConflictException`. If you don't provide this value, the user is deleted regardless of its current revision.
 #'
 #' @return
 #' An empty list.
@@ -358,7 +391,8 @@ identitystore_delete_group_membership <- function(IdentityStoreId, MembershipId)
 #' ```
 #' svc$delete_user(
 #'   IdentityStoreId = "string",
-#'   UserId = "string"
+#'   UserId = "string",
+#'   Revision = "string"
 #' )
 #' ```
 #'
@@ -367,16 +401,17 @@ identitystore_delete_group_membership <- function(IdentityStoreId, MembershipId)
 #' @rdname identitystore_delete_user
 #'
 #' @aliases identitystore_delete_user
-identitystore_delete_user <- function(IdentityStoreId, UserId) {
+identitystore_delete_user <- function(IdentityStoreId, UserId, Revision = NULL) {
   op <- new_operation(
     name = "DeleteUser",
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
-  input <- .identitystore$delete_user_input(IdentityStoreId = IdentityStoreId, UserId = UserId)
+  input <- .identitystore$delete_user_input(IdentityStoreId = IdentityStoreId, UserId = UserId, Revision = Revision)
   output <- .identitystore$delete_user_output()
   config <- get_config()
   svc <- .identitystore$service(config, op)
@@ -398,13 +433,20 @@ identitystore_delete_user <- function(IdentityStoreId, UserId) {
 #' identitystore_describe_group(IdentityStoreId, GroupId)
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store, such as `d-1234567890`. In this example, `d-` is a fixed prefix, and `1234567890` is a randomly generated string that contains numbers and lower case letters. This value is generated at the time that a new identity store is created.
+#' 
+#' You can specify the identity store by ID or by Amazon Resource Name (ARN). For example, identity store ID `d-1234567890` or identity store ARN `arn:aws:identitystore::111122223333:identitystore/d-1234567890`.
 #' @param GroupId &#91;required&#93; The identifier for a group in the identity store.
+#' 
+#' You can specify the group by ID or by Amazon Resource Name (ARN). For example, group ID `a1b2c3d4-5678-90ab-cdef-EXAMPLE22222` or group ARN `arn:aws:identitystore:::group/a1b2c3d4-5678-90ab-cdef-EXAMPLE22222`.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   IdentityStoreId = "string",
 #'   GroupId = "string",
+#'   GroupArn = "string",
+#'   Revision = "string",
 #'   DisplayName = "string",
 #'   ExternalIds = list(
 #'     list(
@@ -420,8 +462,7 @@ identitystore_delete_user <- function(IdentityStoreId, UserId) {
 #'     "2015-01-01"
 #'   ),
 #'   CreatedBy = "string",
-#'   UpdatedBy = "string",
-#'   IdentityStoreId = "string"
+#'   UpdatedBy = "string"
 #' )
 #' ```
 #'
@@ -445,7 +486,8 @@ identitystore_describe_group <- function(IdentityStoreId, GroupId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .identitystore$describe_group_input(IdentityStoreId = IdentityStoreId, GroupId = GroupId)
   output <- .identitystore$describe_group_output()
@@ -469,7 +511,11 @@ identitystore_describe_group <- function(IdentityStoreId, GroupId) {
 #' identitystore_describe_group_membership(IdentityStoreId, MembershipId)
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
+#' 
+#' You can specify the identity store by ID or by Amazon Resource Name (ARN). For example, identity store ID `d-1234567890` or identity store ARN `arn:aws:identitystore::111122223333:identitystore/d-1234567890`.
 #' @param MembershipId &#91;required&#93; The identifier for a `GroupMembership` in an identity store.
+#' 
+#' You can specify the group membership by ID or by Amazon Resource Name (ARN). For example, membership ID `a1b2c3d4-5678-90ab-cdef-EXAMPLE33333` or membership ARN `arn:aws:identitystore:::membership/a1b2c3d4-5678-90ab-cdef-EXAMPLE33333`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -477,6 +523,7 @@ identitystore_describe_group <- function(IdentityStoreId, GroupId) {
 #' list(
 #'   IdentityStoreId = "string",
 #'   MembershipId = "string",
+#'   MembershipArn = "string",
 #'   GroupId = "string",
 #'   MemberId = list(
 #'     UserId = "string"
@@ -512,7 +559,8 @@ identitystore_describe_group_membership <- function(IdentityStoreId, MembershipI
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .identitystore$describe_group_membership_input(IdentityStoreId = IdentityStoreId, MembershipId = MembershipId)
   output <- .identitystore$describe_group_membership_output()
@@ -523,6 +571,72 @@ identitystore_describe_group_membership <- function(IdentityStoreId, MembershipI
   return(response)
 }
 .identitystore$operations$describe_group_membership <- identitystore_describe_group_membership
+
+#' Retrieves details about the specified identity store, including its
+#' Amazon Resource Name (ARN) and network configuration
+#'
+#' @description
+#' Retrieves details about the specified identity store, including its Amazon Resource Name (ARN) and network configuration.
+#'
+#' @usage
+#' identitystore_describe_identity_store(IdentityStoreId)
+#'
+#' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
+#' 
+#' You can specify the identity store by ID or by Amazon Resource Name (ARN). For example, identity store ID `d-1234567890` or identity store ARN `arn:aws:identitystore::111122223333:identitystore/d-1234567890`.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityStoreId = "string",
+#'   IdentityStoreArn = "string",
+#'   NetworkConfiguration = list(
+#'     VpceAccessRequired = TRUE|FALSE,
+#'     ApiRestrictSourceVpcs = list(
+#'       "string"
+#'     ),
+#'     ApiAllowSourceIps = list(
+#'       "string"
+#'     ),
+#'     ScimAllowSourceIps = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_identity_store(
+#'   IdentityStoreId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname identitystore_describe_identity_store
+#'
+#' @aliases identitystore_describe_identity_store
+identitystore_describe_identity_store <- function(IdentityStoreId) {
+  op <- new_operation(
+    name = "DescribeIdentityStore",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .identitystore$describe_identity_store_input(IdentityStoreId = IdentityStoreId)
+  output <- .identitystore$describe_identity_store_output()
+  config <- get_config()
+  svc <- .identitystore$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.identitystore$operations$describe_identity_store <- identitystore_describe_identity_store
 
 #' Retrieves the user metadata and attributes from the UserId in an
 #' identity store
@@ -536,7 +650,11 @@ identitystore_describe_group_membership <- function(IdentityStoreId, MembershipI
 #' identitystore_describe_user(IdentityStoreId, UserId, Extensions)
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store, such as `d-1234567890`. In this example, `d-` is a fixed prefix, and `1234567890` is a randomly generated string that contains numbers and lower case letters. This value is generated at the time that a new identity store is created.
+#' 
+#' You can specify the identity store by ID or by Amazon Resource Name (ARN). For example, identity store ID `d-1234567890` or identity store ARN `arn:aws:identitystore::111122223333:identitystore/d-1234567890`.
 #' @param UserId &#91;required&#93; The identifier for a user in the identity store.
+#' 
+#' You can specify the user by ID or by Amazon Resource Name (ARN). For example, user ID `a1b2c3d4-5678-90ab-cdef-EXAMPLE11111` or user ARN `arn:aws:identitystore:::user/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111`.
 #' @param Extensions A collection of extension names indicating what extensions the service should retrieve alongside other user attributes. `aws:identitystore:enterprise` is the only supported extension name.
 #'
 #' @return
@@ -545,6 +663,8 @@ identitystore_describe_group_membership <- function(IdentityStoreId, MembershipI
 #' list(
 #'   IdentityStoreId = "string",
 #'   UserId = "string",
+#'   UserArn = "string",
+#'   Revision = "string",
 #'   UserName = "string",
 #'   ExternalIds = list(
 #'     list(
@@ -649,7 +769,8 @@ identitystore_describe_user <- function(IdentityStoreId, UserId, Extensions = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .identitystore$describe_user_input(IdentityStoreId = IdentityStoreId, UserId = UserId, Extensions = Extensions)
   output <- .identitystore$describe_user_output()
@@ -672,14 +793,17 @@ identitystore_describe_user <- function(IdentityStoreId, UserId, Extensions = NU
 #' identitystore_get_group_id(IdentityStoreId, AlternateIdentifier)
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
+#' 
+#' You can specify the identity store by ID or by Amazon Resource Name (ARN). For example, identity store ID `d-1234567890` or identity store ARN `arn:aws:identitystore::111122223333:identitystore/d-1234567890`.
 #' @param AlternateIdentifier &#91;required&#93; A unique identifier for a user or group that is not the primary identifier. This value can be an identifier from an external identity provider (IdP) that is associated with the user, the group, or a unique attribute. For the unique attribute, the only valid path is ` displayName`.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   IdentityStoreId = "string",
 #'   GroupId = "string",
-#'   IdentityStoreId = "string"
+#'   GroupArn = "string"
 #' )
 #' ```
 #'
@@ -712,7 +836,8 @@ identitystore_get_group_id <- function(IdentityStoreId, AlternateIdentifier) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .identitystore$get_group_id_input(IdentityStoreId = IdentityStoreId, AlternateIdentifier = AlternateIdentifier)
   output <- .identitystore$get_group_id_output()
@@ -736,15 +861,20 @@ identitystore_get_group_id <- function(IdentityStoreId, AlternateIdentifier) {
 #'   MemberId)
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
+#' 
+#' You can specify the identity store by ID or by Amazon Resource Name (ARN). For example, identity store ID `d-1234567890` or identity store ARN `arn:aws:identitystore::111122223333:identitystore/d-1234567890`.
 #' @param GroupId &#91;required&#93; The identifier for a group in the identity store.
+#' 
+#' You can specify the group by ID or by Amazon Resource Name (ARN). For example, group ID `a1b2c3d4-5678-90ab-cdef-EXAMPLE22222` or group ARN `arn:aws:identitystore:::group/a1b2c3d4-5678-90ab-cdef-EXAMPLE22222`.
 #' @param MemberId &#91;required&#93; An object that contains the identifier of a group member. Setting the `UserID` field to the specific identifier for a user indicates that the user is a member of the group.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   IdentityStoreId = "string",
 #'   MembershipId = "string",
-#'   IdentityStoreId = "string"
+#'   MembershipArn = "string"
 #' )
 #' ```
 #'
@@ -771,7 +901,8 @@ identitystore_get_group_membership_id <- function(IdentityStoreId, GroupId, Memb
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .identitystore$get_group_membership_id_input(IdentityStoreId = IdentityStoreId, GroupId = GroupId, MemberId = MemberId)
   output <- .identitystore$get_group_membership_id_output()
@@ -794,6 +925,8 @@ identitystore_get_group_membership_id <- function(IdentityStoreId, GroupId, Memb
 #' identitystore_get_user_id(IdentityStoreId, AlternateIdentifier)
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
+#' 
+#' You can specify the identity store by ID or by Amazon Resource Name (ARN). For example, identity store ID `d-1234567890` or identity store ARN `arn:aws:identitystore::111122223333:identitystore/d-1234567890`.
 #' @param AlternateIdentifier &#91;required&#93; A unique identifier for a user or group that is not the primary identifier. This value can be an identifier from an external identity provider (IdP) that is associated with the user, the group, or a unique attribute. For the unique attribute, the only valid paths are ` userName` and `emails.value`.
 #'
 #' @return
@@ -801,7 +934,8 @@ identitystore_get_group_membership_id <- function(IdentityStoreId, GroupId, Memb
 #' ```
 #' list(
 #'   IdentityStoreId = "string",
-#'   UserId = "string"
+#'   UserId = "string",
+#'   UserArn = "string"
 #' )
 #' ```
 #'
@@ -834,7 +968,8 @@ identitystore_get_user_id <- function(IdentityStoreId, AlternateIdentifier) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .identitystore$get_user_id_input(IdentityStoreId = IdentityStoreId, AlternateIdentifier = AlternateIdentifier)
   output <- .identitystore$get_user_id_output()
@@ -858,8 +993,12 @@ identitystore_get_user_id <- function(IdentityStoreId, AlternateIdentifier) {
 #' identitystore_is_member_in_groups(IdentityStoreId, MemberId, GroupIds)
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
+#' 
+#' You can specify the identity store by ID or by Amazon Resource Name (ARN). For example, identity store ID `d-1234567890` or identity store ARN `arn:aws:identitystore::111122223333:identitystore/d-1234567890`.
 #' @param MemberId &#91;required&#93; An object containing the identifier of a group member.
 #' @param GroupIds &#91;required&#93; A list of identifiers for groups in the identity store.
+#' 
+#' You can specify each group by ID or by Amazon Resource Name (ARN). For example, group ID `a1b2c3d4-5678-90ab-cdef-EXAMPLE22222` or group ARN `arn:aws:identitystore:::group/a1b2c3d4-5678-90ab-cdef-EXAMPLE22222`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -902,7 +1041,8 @@ identitystore_is_member_in_groups <- function(IdentityStoreId, MemberId, GroupId
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .identitystore$is_member_in_groups_input(IdentityStoreId = IdentityStoreId, MemberId = MemberId, GroupIds = GroupIds)
   output <- .identitystore$is_member_in_groups_output()
@@ -928,9 +1068,13 @@ identitystore_is_member_in_groups <- function(IdentityStoreId, MemberId, GroupId
 #'   MaxResults, NextToken)
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
+#' 
+#' You can specify the identity store by ID or by Amazon Resource Name (ARN). For example, identity store ID `d-1234567890` or identity store ARN `arn:aws:identitystore::111122223333:identitystore/d-1234567890`.
 #' @param GroupId &#91;required&#93; The identifier for a group in the identity store.
+#' 
+#' You can specify the group by ID or by Amazon Resource Name (ARN). For example, group ID `a1b2c3d4-5678-90ab-cdef-EXAMPLE22222` or group ARN `arn:aws:identitystore:::group/a1b2c3d4-5678-90ab-cdef-EXAMPLE22222`.
 #' @param MaxResults The maximum number of results to be returned per request. This parameter is used in all ` List` requests to specify how many results to return in one page.
-#' @param NextToken The pagination token used for the [`list_users`][identitystore_list_users], [`list_groups`][identitystore_list_groups] and [`list_group_memberships`][identitystore_list_group_memberships] API operations. This value is generated by the identity store service. It is returned in the API response if the total results are more than the size of one page. This token is also returned when it is used in the API request to search for the next page.
+#' @param NextToken The pagination token used for the [`list_users`][identitystore_list_users], [`list_groups`][identitystore_list_groups] and [`list_group_memberships`][identitystore_list_group_memberships] API operations. This value is generated by the identity store service. It is returned in the API response if the total results are more than the size of one page. This token is also returned when it is used in the API request to retrieve the next page of results.
 #'
 #' @return
 #' A list with the following syntax:
@@ -940,6 +1084,7 @@ identitystore_is_member_in_groups <- function(IdentityStoreId, MemberId, GroupId
 #'     list(
 #'       IdentityStoreId = "string",
 #'       MembershipId = "string",
+#'       MembershipArn = "string",
 #'       GroupId = "string",
 #'       MemberId = list(
 #'         UserId = "string"
@@ -980,7 +1125,8 @@ identitystore_list_group_memberships <- function(IdentityStoreId, GroupId, MaxRe
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "GroupMemberships"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .identitystore$list_group_memberships_input(IdentityStoreId = IdentityStoreId, GroupId = GroupId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .identitystore$list_group_memberships_output()
@@ -1006,9 +1152,11 @@ identitystore_list_group_memberships <- function(IdentityStoreId, GroupId, MaxRe
 #'   MemberId, MaxResults, NextToken)
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
+#' 
+#' You can specify the identity store by ID or by Amazon Resource Name (ARN). For example, identity store ID `d-1234567890` or identity store ARN `arn:aws:identitystore::111122223333:identitystore/d-1234567890`.
 #' @param MemberId &#91;required&#93; An object that contains the identifier of a group member. Setting the `UserID` field to the specific identifier for a user indicates that the user is a member of the group.
-#' @param MaxResults The maximum number of results to be returned per request. This parameter is used in the [`list_users`][identitystore_list_users] and [`list_groups`][identitystore_list_groups] requests to specify how many results to return in one page. The length limit is 50 characters.
-#' @param NextToken The pagination token used for the [`list_users`][identitystore_list_users], [`list_groups`][identitystore_list_groups], and [`list_group_memberships`][identitystore_list_group_memberships] API operations. This value is generated by the identity store service. It is returned in the API response if the total results are more than the size of one page. This token is also returned when it is used in the API request to search for the next page.
+#' @param MaxResults The maximum number of results to be returned per request. This parameter is used in all `List` requests to specify how many results to return in one page.
+#' @param NextToken The pagination token used for the [`list_users`][identitystore_list_users], [`list_groups`][identitystore_list_groups], and [`list_group_memberships`][identitystore_list_group_memberships] API operations. This value is generated by the identity store service. It is returned in the API response if the total results are more than the size of one page. This token is also returned when it is used in the API request to retrieve the next page of results.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1018,6 +1166,7 @@ identitystore_list_group_memberships <- function(IdentityStoreId, GroupId, MaxRe
 #'     list(
 #'       IdentityStoreId = "string",
 #'       MembershipId = "string",
+#'       MembershipArn = "string",
 #'       GroupId = "string",
 #'       MemberId = list(
 #'         UserId = "string"
@@ -1060,7 +1209,8 @@ identitystore_list_group_memberships_for_member <- function(IdentityStoreId, Mem
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "GroupMemberships"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .identitystore$list_group_memberships_for_member_input(IdentityStoreId = IdentityStoreId, MemberId = MemberId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .identitystore$list_group_memberships_for_member_output()
@@ -1084,8 +1234,10 @@ identitystore_list_group_memberships_for_member <- function(IdentityStoreId, Mem
 #'   Filters)
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store, such as `d-1234567890`. In this example, `d-` is a fixed prefix, and `1234567890` is a randomly generated string that contains numbers and lower case letters. This value is generated at the time that a new identity store is created.
-#' @param MaxResults The maximum number of results to be returned per request. This parameter is used in the [`list_users`][identitystore_list_users] and [`list_groups`][identitystore_list_groups] requests to specify how many results to return in one page. The length limit is 50 characters.
-#' @param NextToken The pagination token used for the [`list_users`][identitystore_list_users] and [`list_groups`][identitystore_list_groups] API operations. This value is generated by the identity store service. It is returned in the API response if the total results are more than the size of one page. This token is also returned when it is used in the API request to search for the next page.
+#' 
+#' You can specify the identity store by ID or by Amazon Resource Name (ARN). For example, identity store ID `d-1234567890` or identity store ARN `arn:aws:identitystore::111122223333:identitystore/d-1234567890`.
+#' @param MaxResults The maximum number of results to be returned per request. This parameter is used in all `List` requests to specify how many results to return in one page.
+#' @param NextToken The pagination token used for the [`list_users`][identitystore_list_users] and [`list_groups`][identitystore_list_groups] API operations. This value is generated by the identity store service. It is returned in the API response if the total results are more than the size of one page. This token is also returned when it is used in the API request to retrieve the next page of results.
 #' @param Filters A list of `Filter` objects, which is used in the [`list_users`][identitystore_list_users] and [`list_groups`][identitystore_list_groups] requests.
 #'
 #' @return
@@ -1094,7 +1246,10 @@ identitystore_list_group_memberships_for_member <- function(IdentityStoreId, Mem
 #' list(
 #'   Groups = list(
 #'     list(
+#'       IdentityStoreId = "string",
 #'       GroupId = "string",
+#'       GroupArn = "string",
+#'       Revision = "string",
 #'       DisplayName = "string",
 #'       ExternalIds = list(
 #'         list(
@@ -1110,8 +1265,7 @@ identitystore_list_group_memberships_for_member <- function(IdentityStoreId, Mem
 #'         "2015-01-01"
 #'       ),
 #'       CreatedBy = "string",
-#'       UpdatedBy = "string",
-#'       IdentityStoreId = "string"
+#'       UpdatedBy = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1145,7 +1299,8 @@ identitystore_list_groups <- function(IdentityStoreId, MaxResults = NULL, NextTo
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Groups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .identitystore$list_groups_input(IdentityStoreId = IdentityStoreId, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .identitystore$list_groups_output()
@@ -1156,6 +1311,66 @@ identitystore_list_groups <- function(IdentityStoreId, MaxResults = NULL, NextTo
   return(response)
 }
 .identitystore$operations$list_groups <- identitystore_list_groups
+
+#' Lists the identity stores that you have access to
+#'
+#' @description
+#' Lists the identity stores that you have access to. This operation returns only the identity store ID and Amazon Resource Name (ARN) of each identity store. To obtain additional information about an identity store, call [`describe_identity_store`][identitystore_describe_identity_store].
+#' 
+#' This operation returns results in paginated form. Use the `NextToken` parameter to retrieve additional pages of results.
+#'
+#' @usage
+#' identitystore_list_identity_stores(MaxResults, NextToken)
+#'
+#' @param MaxResults The maximum number of results to return per request. This parameter is used in all ` List` operations to specify how many results to return on one page. If you don't specify a value, the operation uses a default page size.
+#' @param NextToken The pagination token used for the [`list_identity_stores`][identitystore_list_identity_stores] API operation. This value is generated by the identity store service. It is returned in the API response if the total results are more than the size of one page. This token is also returned when it is used in the API request to retrieve the next page of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityStores = list(
+#'     list(
+#'       IdentityStoreId = "string",
+#'       IdentityStoreArn = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_identity_stores(
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname identitystore_list_identity_stores
+#'
+#' @aliases identitystore_list_identity_stores
+identitystore_list_identity_stores <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListIdentityStores",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "IdentityStores"),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .identitystore$list_identity_stores_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .identitystore$list_identity_stores_output()
+  config <- get_config()
+  svc <- .identitystore$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.identitystore$operations$list_identity_stores <- identitystore_list_identity_stores
 
 #' Lists all users in the identity store
 #'
@@ -1169,9 +1384,11 @@ identitystore_list_groups <- function(IdentityStoreId, MaxResults = NULL, NextTo
 #'   NextToken, Filters)
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store, such as `d-1234567890`. In this example, `d-` is a fixed prefix, and `1234567890` is a randomly generated string that contains numbers and lower case letters. This value is generated at the time that a new identity store is created.
+#' 
+#' You can specify the identity store by ID or by Amazon Resource Name (ARN). For example, identity store ID `d-1234567890` or identity store ARN `arn:aws:identitystore::111122223333:identitystore/d-1234567890`.
 #' @param Extensions A collection of extension names indicating what extensions the service should retrieve alongside other user attributes. `aws:identitystore:enterprise` is the only supported extension name.
-#' @param MaxResults The maximum number of results to be returned per request. This parameter is used in the [`list_users`][identitystore_list_users] and [`list_groups`][identitystore_list_groups] requests to specify how many results to return in one page. The length limit is 50 characters.
-#' @param NextToken The pagination token used for the [`list_users`][identitystore_list_users] and [`list_groups`][identitystore_list_groups] API operations. This value is generated by the identity store service. It is returned in the API response if the total results are more than the size of one page. This token is also returned when it is used in the API request to search for the next page.
+#' @param MaxResults The maximum number of results to be returned per request. This parameter is used in all `List` requests to specify how many results to return in one page.
+#' @param NextToken The pagination token used for the [`list_users`][identitystore_list_users] and [`list_groups`][identitystore_list_groups] API operations. This value is generated by the identity store service. It is returned in the API response if the total results are more than the size of one page. This token is also returned when it is used in the API request to retrieve the next page of results.
 #' @param Filters A list of `Filter` objects, which is used in the [`list_users`][identitystore_list_users] and [`list_groups`][identitystore_list_groups] requests.
 #'
 #' @return
@@ -1182,6 +1399,8 @@ identitystore_list_groups <- function(IdentityStoreId, MaxResults = NULL, NextTo
 #'     list(
 #'       IdentityStoreId = "string",
 #'       UserId = "string",
+#'       UserArn = "string",
+#'       Revision = "string",
 #'       UserName = "string",
 #'       ExternalIds = list(
 #'         list(
@@ -1296,7 +1515,8 @@ identitystore_list_users <- function(IdentityStoreId, Extensions = NULL, MaxResu
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Users"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .identitystore$list_users_input(IdentityStoreId = IdentityStoreId, Extensions = Extensions, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .identitystore$list_users_output()
@@ -1315,14 +1535,28 @@ identitystore_list_users <- function(IdentityStoreId, Extensions = NULL, MaxResu
 #' Updates the specified group metadata and attributes in the specified identity store.
 #'
 #' @usage
-#' identitystore_update_group(IdentityStoreId, GroupId, Operations)
+#' identitystore_update_group(IdentityStoreId, GroupId, Operations,
+#'   Revision)
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
+#' 
+#' You can specify the identity store by ID or by Amazon Resource Name (ARN). For example, identity store ID `d-1234567890` or identity store ARN `arn:aws:identitystore::111122223333:identitystore/d-1234567890`.
 #' @param GroupId &#91;required&#93; The identifier for a group in the identity store.
+#' 
+#' You can specify the group by ID or by Amazon Resource Name (ARN). For example, group ID `a1b2c3d4-5678-90ab-cdef-EXAMPLE22222` or group ARN `arn:aws:identitystore:::group/a1b2c3d4-5678-90ab-cdef-EXAMPLE22222`.
 #' @param Operations &#91;required&#93; A list of `AttributeOperation` objects to apply to the requested group. These operations might add, replace, or remove an attribute. For more information on the attributes that can be added, replaced, or removed, see [Group](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html).
+#' @param Revision The expected current revision of the group. When you provide this value, the update is applied only if it matches the current revision of the group in the identity store, which prevents you from overwriting concurrent changes. If the value doesn't match, the operation fails with a `ConflictException`. If you don't provide this value, the update is applied unconditionally.
 #'
 #' @return
-#' An empty list.
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityStoreId = "string",
+#'   GroupId = "string",
+#'   GroupArn = "string",
+#'   Revision = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1334,7 +1568,8 @@ identitystore_list_users <- function(IdentityStoreId, Extensions = NULL, MaxResu
 #'       AttributePath = "string",
 #'       AttributeValue = list()
 #'     )
-#'   )
+#'   ),
+#'   Revision = "string"
 #' )
 #' ```
 #'
@@ -1343,16 +1578,17 @@ identitystore_list_users <- function(IdentityStoreId, Extensions = NULL, MaxResu
 #' @rdname identitystore_update_group
 #'
 #' @aliases identitystore_update_group
-identitystore_update_group <- function(IdentityStoreId, GroupId, Operations) {
+identitystore_update_group <- function(IdentityStoreId, GroupId, Operations, Revision = NULL) {
   op <- new_operation(
     name = "UpdateGroup",
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
-  input <- .identitystore$update_group_input(IdentityStoreId = IdentityStoreId, GroupId = GroupId, Operations = Operations)
+  input <- .identitystore$update_group_input(IdentityStoreId = IdentityStoreId, GroupId = GroupId, Operations = Operations, Revision = Revision)
   output <- .identitystore$update_group_output()
   config <- get_config()
   svc <- .identitystore$service(config, op)
@@ -1362,6 +1598,76 @@ identitystore_update_group <- function(IdentityStoreId, GroupId, Operations) {
 }
 .identitystore$operations$update_group <- identitystore_update_group
 
+#' Updates the configuration of the specified identity store, including its
+#' network configuration
+#'
+#' @description
+#' Updates the configuration of the specified identity store, including its network configuration.
+#'
+#' @usage
+#' identitystore_update_identity_store(IdentityStoreId,
+#'   NetworkConfiguration)
+#'
+#' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
+#' 
+#' You can specify the identity store by ID or by Amazon Resource Name (ARN). For example, identity store ID `d-1234567890` or identity store ARN `arn:aws:identitystore::111122223333:identitystore/d-1234567890`.
+#' @param NetworkConfiguration The network configuration to apply to the identity store. This controls whether access through a virtual private cloud (VPC) endpoint is required and the source VPCs and IP addresses that are allowed to access the identity store.
+#' 
+#' When you provide `NetworkConfiguration` in a request, the service performs a full replacement of the identity store's current network configuration with the values you specify. Any values that you omit are cleared. To preserve or change the allowed source VPCs or IP address ranges, include the complete set of values that you want in the request. To clear a list, omit it; an empty list is not accepted.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityStoreId = "string",
+#'   IdentityStoreArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_identity_store(
+#'   IdentityStoreId = "string",
+#'   NetworkConfiguration = list(
+#'     VpceAccessRequired = TRUE|FALSE,
+#'     ApiRestrictSourceVpcs = list(
+#'       "string"
+#'     ),
+#'     ApiAllowSourceIps = list(
+#'       "string"
+#'     ),
+#'     ScimAllowSourceIps = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname identitystore_update_identity_store
+#'
+#' @aliases identitystore_update_identity_store
+identitystore_update_identity_store <- function(IdentityStoreId, NetworkConfiguration = NULL) {
+  op <- new_operation(
+    name = "UpdateIdentityStore",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .identitystore$update_identity_store_input(IdentityStoreId = IdentityStoreId, NetworkConfiguration = NetworkConfiguration)
+  output <- .identitystore$update_identity_store_output()
+  config <- get_config()
+  svc <- .identitystore$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.identitystore$operations$update_identity_store <- identitystore_update_identity_store
+
 #' Updates the specified user metadata and attributes in the specified
 #' identity store
 #'
@@ -1369,14 +1675,27 @@ identitystore_update_group <- function(IdentityStoreId, GroupId, Operations) {
 #' Updates the specified user metadata and attributes in the specified identity store.
 #'
 #' @usage
-#' identitystore_update_user(IdentityStoreId, UserId, Operations)
+#' identitystore_update_user(IdentityStoreId, UserId, Operations, Revision)
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
+#' 
+#' You can specify the identity store by ID or by Amazon Resource Name (ARN). For example, identity store ID `d-1234567890` or identity store ARN `arn:aws:identitystore::111122223333:identitystore/d-1234567890`.
 #' @param UserId &#91;required&#93; The identifier for a user in the identity store.
+#' 
+#' You can specify the user by ID or by Amazon Resource Name (ARN). For example, user ID `a1b2c3d4-5678-90ab-cdef-EXAMPLE11111` or user ARN `arn:aws:identitystore:::user/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111`.
 #' @param Operations &#91;required&#93; A list of `AttributeOperation` objects to apply to the requested user. These operations might add, replace, or remove an attribute. For more information on the attributes that can be added, replaced, or removed, see [User](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html).
+#' @param Revision The expected current revision of the user. When you provide this value, the update is applied only if it matches the current revision of the user in the identity store, which prevents you from overwriting concurrent changes. If the value doesn't match, the operation fails with a `ConflictException`. If you don't provide this value, the update is applied unconditionally.
 #'
 #' @return
-#' An empty list.
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IdentityStoreId = "string",
+#'   UserId = "string",
+#'   UserArn = "string",
+#'   Revision = "string"
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
@@ -1388,7 +1707,8 @@ identitystore_update_group <- function(IdentityStoreId, GroupId, Operations) {
 #'       AttributePath = "string",
 #'       AttributeValue = list()
 #'     )
-#'   )
+#'   ),
+#'   Revision = "string"
 #' )
 #' ```
 #'
@@ -1397,16 +1717,17 @@ identitystore_update_group <- function(IdentityStoreId, GroupId, Operations) {
 #' @rdname identitystore_update_user
 #'
 #' @aliases identitystore_update_user
-identitystore_update_user <- function(IdentityStoreId, UserId, Operations) {
+identitystore_update_user <- function(IdentityStoreId, UserId, Operations, Revision = NULL) {
   op <- new_operation(
     name = "UpdateUser",
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
-  input <- .identitystore$update_user_input(IdentityStoreId = IdentityStoreId, UserId = UserId, Operations = Operations)
+  input <- .identitystore$update_user_input(IdentityStoreId = IdentityStoreId, UserId = UserId, Operations = Operations, Revision = Revision)
   output <- .identitystore$update_user_output()
   config <- get_config()
   svc <- .identitystore$service(config, op)

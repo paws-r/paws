@@ -10,7 +10,7 @@ imagebuilder_delete_container_recipe(containerRecipeArn)
 \item{containerRecipeArn}{[required] The Amazon Resource Name (ARN) of the container recipe to delete.}
 }
 \description{
-Deletes a container recipe.
+Deletes a container recipe. The request fails with \code{ResourceDependencyException} if the recipe is shared with other accounts, or if an image pipeline references it.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_delete_container_recipe/} for full documentation.
 }

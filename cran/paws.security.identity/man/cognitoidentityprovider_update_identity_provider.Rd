@@ -10,7 +10,8 @@ cognitoidentityprovider_update_identity_provider(
   ProviderName,
   ProviderDetails = NULL,
   AttributeMapping = NULL,
-  IdpIdentifiers = NULL
+  IdpIdentifiers = NULL,
+  AcrMapping = NULL
 )
 }
 \arguments{
@@ -65,6 +66,10 @@ Describe response: \verb{"ProviderDetails": \{ "api_version": "v17.0", "attribut
 \item{AttributeMapping}{A mapping of IdP attributes to standard and custom user pool attributes. Specify a user pool attribute as the key of the key-value pair, and the IdP attribute claim name as the value.}
 
 \item{IdpIdentifiers}{An array of IdP identifiers, for example \verb{"IdPIdentifiers": [ "MyIdP", "MyIdP2" ]}. Identifiers are friendly names that you can pass in the \code{idp_identifier} query parameter of requests to the \href{https://docs.aws.amazon.com/cognito/latest/developerguide/authorization-endpoint.html}{Authorize endpoint} to silently redirect to sign-in with the associated IdP. Identifiers in a domain format also enable the use of \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-managing-saml-idp-naming.html}{email-address matching with SAML providers}.}
+
+\item{AcrMapping}{A mapping between the authentication context class reference (ACR) levels of your user pool and the ACR values of the external OpenID Connect (OIDC) identity provider (IdP). This mapping has the same behavior as it does when you create an identity provider. Only OIDC IdPs support ACR mapping.
+
+Setting \code{AcrMapping} is available in all feature plans. It isn't restricted to the Essentials or Plus feature plan.}
 }
 \description{
 Modifies the configuration and trust relationship between a third-party identity provider (IdP) and a user pool. Amazon Cognito accepts sign-in with third-party identity providers through managed login and OIDC relying-party libraries. For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-identity-federation.html}{Third-party IdP sign-in}.

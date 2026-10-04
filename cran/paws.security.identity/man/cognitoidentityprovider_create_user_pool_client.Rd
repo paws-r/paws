@@ -107,7 +107,7 @@ A redirect URI must meet the following requirements:
 \item Not include a fragment component.
 }
 
-See \href{https://datatracker.ietf.org/doc/html/rfc6749#section-3.1.2}{OAuth 2.0 - Redirection Endpoint}.
+See \href{https://www.rfc-editor.org/info/rfc6749/#section-3.1.2}{OAuth 2.0 - Redirection Endpoint}.
 
 Amazon Cognito requires HTTPS over HTTP except for callback URLs to \verb{http://localhost}, \verb{http://127.0.0.1} and \verb{http://[::1]}. These callback URLs are for testing purposes only. You can specify custom TCP ports for your callback URLs.
 

@@ -5,14 +5,20 @@
 \title{Updates the specified user metadata and attributes in the specified
 identity store}
 \usage{
-identitystore_update_user(IdentityStoreId, UserId, Operations)
+identitystore_update_user(IdentityStoreId, UserId, Operations, Revision = NULL)
 }
 \arguments{
-\item{IdentityStoreId}{[required] The globally unique identifier for the identity store.}
+\item{IdentityStoreId}{[required] The globally unique identifier for the identity store.
 
-\item{UserId}{[required] The identifier for a user in the identity store.}
+You can specify the identity store by ID or by Amazon Resource Name (ARN). For example, identity store ID \code{d-1234567890} or identity store ARN \verb{arn:aws:identitystore::111122223333:identitystore/d-1234567890}.}
+
+\item{UserId}{[required] The identifier for a user in the identity store.
+
+You can specify the user by ID or by Amazon Resource Name (ARN). For example, user ID \verb{a1b2c3d4-5678-90ab-cdef-EXAMPLE11111} or user ARN \verb{arn:aws:identitystore:::user/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111}.}
 
 \item{Operations}{[required] A list of \code{AttributeOperation} objects to apply to the requested user. These operations might add, replace, or remove an attribute. For more information on the attributes that can be added, replaced, or removed, see \href{https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html}{User}.}
+
+\item{Revision}{The expected current revision of the user. When you provide this value, the update is applied only if it matches the current revision of the user in the identity store, which prevents you from overwriting concurrent changes. If the value doesn't match, the operation fails with a \code{ConflictException}. If you don't provide this value, the update is applied unconditionally.}
 }
 \description{
 Updates the specified user metadata and attributes in the specified identity store.

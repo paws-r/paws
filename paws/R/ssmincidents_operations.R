@@ -83,7 +83,8 @@ ssmincidents_batch_get_incident_findings <- function(findingIds, incidentRecordA
     http_path = "/batchGetIncidentFindings",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ssmincidents$batch_get_incident_findings_input(findingIds = findingIds, incidentRecordArn = incidentRecordArn)
   output <- .ssmincidents$batch_get_incident_findings_output()
@@ -143,7 +144,8 @@ ssmincidents_create_replication_set <- function(clientToken = NULL, regions, tag
     http_path = "/createReplicationSet",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ssmincidents$create_replication_set_input(clientToken = clientToken, regions = regions, tags = tags)
   output <- .ssmincidents$create_replication_set_output()
@@ -260,7 +262,8 @@ ssmincidents_create_response_plan <- function(actions = NULL, chatChannel = NULL
     http_path = "/createResponsePlan",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ssmincidents$create_response_plan_input(actions = actions, chatChannel = chatChannel, clientToken = clientToken, displayName = displayName, engagements = engagements, incidentTemplate = incidentTemplate, integrations = integrations, name = name, tags = tags)
   output <- .ssmincidents$create_response_plan_output()
@@ -331,7 +334,8 @@ ssmincidents_create_timeline_event <- function(clientToken = NULL, eventData, ev
     http_path = "/createTimelineEvent",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ssmincidents$create_timeline_event_input(clientToken = clientToken, eventData = eventData, eventReferences = eventReferences, eventTime = eventTime, eventType = eventType, incidentRecordArn = incidentRecordArn)
   output <- .ssmincidents$create_timeline_event_output()
@@ -375,7 +379,8 @@ ssmincidents_delete_incident_record <- function(arn) {
     http_path = "/deleteIncidentRecord",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ssmincidents$delete_incident_record_input(arn = arn)
   output <- .ssmincidents$delete_incident_record_output()
@@ -419,7 +424,8 @@ ssmincidents_delete_replication_set <- function(arn) {
     http_path = "/deleteReplicationSet",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ssmincidents$delete_replication_set_input(arn = arn)
   output <- .ssmincidents$delete_replication_set_output()
@@ -466,7 +472,8 @@ ssmincidents_delete_resource_policy <- function(policyId, resourceArn) {
     http_path = "/deleteResourcePolicy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ssmincidents$delete_resource_policy_input(policyId = policyId, resourceArn = resourceArn)
   output <- .ssmincidents$delete_resource_policy_output()
@@ -510,7 +517,8 @@ ssmincidents_delete_response_plan <- function(arn) {
     http_path = "/deleteResponsePlan",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ssmincidents$delete_response_plan_input(arn = arn)
   output <- .ssmincidents$delete_response_plan_output()
@@ -556,7 +564,8 @@ ssmincidents_delete_timeline_event <- function(eventId, incidentRecordArn) {
     http_path = "/deleteTimelineEvent",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ssmincidents$delete_timeline_event_input(eventId = eventId, incidentRecordArn = incidentRecordArn)
   output <- .ssmincidents$delete_timeline_event_output()
@@ -644,7 +653,8 @@ ssmincidents_get_incident_record <- function(arn) {
     http_path = "/getIncidentRecord",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ssmincidents$get_incident_record_input(arn = arn)
   output <- .ssmincidents$get_incident_record_output()
@@ -715,7 +725,8 @@ ssmincidents_get_replication_set <- function(arn) {
     http_path = "/getReplicationSet",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ssmincidents$get_replication_set_input(arn = arn)
   output <- .ssmincidents$get_replication_set_output()
@@ -775,7 +786,8 @@ ssmincidents_get_resource_policies <- function(maxResults = NULL, nextToken = NU
     http_path = "/getResourcePolicies",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "resourcePolicies"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ssmincidents$get_resource_policies_input(maxResults = maxResults, nextToken = nextToken, resourceArn = resourceArn)
   output <- .ssmincidents$get_resource_policies_output()
@@ -880,7 +892,8 @@ ssmincidents_get_response_plan <- function(arn) {
     http_path = "/getResponsePlan",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ssmincidents$get_response_plan_input(arn = arn)
   output <- .ssmincidents$get_response_plan_output()
@@ -948,7 +961,8 @@ ssmincidents_get_timeline_event <- function(eventId, incidentRecordArn) {
     http_path = "/getTimelineEvent",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ssmincidents$get_timeline_event_input(eventId = eventId, incidentRecordArn = incidentRecordArn)
   output <- .ssmincidents$get_timeline_event_output()
@@ -1011,7 +1025,8 @@ ssmincidents_list_incident_findings <- function(incidentRecordArn, maxResults = 
     http_path = "/listIncidentFindings",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findings"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ssmincidents$list_incident_findings_input(incidentRecordArn = incidentRecordArn, maxResults = maxResults, nextToken = nextToken)
   output <- .ssmincidents$list_incident_findings_output()
@@ -1120,7 +1135,8 @@ ssmincidents_list_incident_records <- function(filters = NULL, maxResults = NULL
     http_path = "/listIncidentRecords",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "incidentRecordSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ssmincidents$list_incident_records_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .ssmincidents$list_incident_records_output()
@@ -1193,7 +1209,8 @@ ssmincidents_list_related_items <- function(incidentRecordArn, maxResults = NULL
     http_path = "/listRelatedItems",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "relatedItems"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ssmincidents$list_related_items_input(incidentRecordArn = incidentRecordArn, maxResults = maxResults, nextToken = nextToken)
   output <- .ssmincidents$list_related_items_output()
@@ -1247,7 +1264,8 @@ ssmincidents_list_replication_sets <- function(maxResults = NULL, nextToken = NU
     http_path = "/listReplicationSets",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "replicationSetArns"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ssmincidents$list_replication_sets_input(maxResults = maxResults, nextToken = nextToken)
   output <- .ssmincidents$list_replication_sets_output()
@@ -1305,7 +1323,8 @@ ssmincidents_list_response_plans <- function(maxResults = NULL, nextToken = NULL
     http_path = "/listResponsePlans",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "responsePlanSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ssmincidents$list_response_plans_input(maxResults = maxResults, nextToken = nextToken)
   output <- .ssmincidents$list_response_plans_output()
@@ -1357,7 +1376,8 @@ ssmincidents_list_tags_for_resource <- function(resourceArn) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ssmincidents$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .ssmincidents$list_tags_for_resource_output()
@@ -1470,7 +1490,8 @@ ssmincidents_list_timeline_events <- function(filters = NULL, incidentRecordArn,
     http_path = "/listTimelineEvents",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "eventSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ssmincidents$list_timeline_events_input(filters = filters, incidentRecordArn = incidentRecordArn, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
   output <- .ssmincidents$list_timeline_events_output()
@@ -1521,7 +1542,8 @@ ssmincidents_put_resource_policy <- function(policy, resourceArn) {
     http_path = "/putResourcePolicy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ssmincidents$put_resource_policy_input(policy = policy, resourceArn = resourceArn)
   output <- .ssmincidents$put_resource_policy_output()
@@ -1619,7 +1641,8 @@ ssmincidents_start_incident <- function(clientToken = NULL, impact = NULL, relat
     http_path = "/startIncident",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ssmincidents$start_incident_input(clientToken = clientToken, impact = impact, relatedItems = relatedItems, responsePlanArn = responsePlanArn, title = title, triggerDetails = triggerDetails)
   output <- .ssmincidents$start_incident_output()
@@ -1667,7 +1690,8 @@ ssmincidents_tag_resource <- function(resourceArn, tags) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ssmincidents$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .ssmincidents$tag_resource_output()
@@ -1715,7 +1739,8 @@ ssmincidents_untag_resource <- function(resourceArn, tagKeys) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ssmincidents$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .ssmincidents$untag_resource_output()
@@ -1765,7 +1790,8 @@ ssmincidents_update_deletion_protection <- function(arn, clientToken = NULL, del
     http_path = "/updateDeletionProtection",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ssmincidents$update_deletion_protection_input(arn = arn, clientToken = clientToken, deletionProtected = deletionProtected)
   output <- .ssmincidents$update_deletion_protection_output()
@@ -1847,7 +1873,8 @@ ssmincidents_update_incident_record <- function(arn, chatChannel = NULL, clientT
     http_path = "/updateIncidentRecord",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ssmincidents$update_incident_record_input(arn = arn, chatChannel = chatChannel, clientToken = clientToken, impact = impact, notificationTargets = notificationTargets, status = status, summary = summary, title = title)
   output <- .ssmincidents$update_incident_record_output()
@@ -1928,7 +1955,8 @@ ssmincidents_update_related_items <- function(clientToken = NULL, incidentRecord
     http_path = "/updateRelatedItems",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ssmincidents$update_related_items_input(clientToken = clientToken, incidentRecordArn = incidentRecordArn, relatedItemsUpdate = relatedItemsUpdate)
   output <- .ssmincidents$update_related_items_output()
@@ -1986,7 +2014,8 @@ ssmincidents_update_replication_set <- function(actions, arn, clientToken = NULL
     http_path = "/updateReplicationSet",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ssmincidents$update_replication_set_input(actions = actions, arn = arn, clientToken = clientToken)
   output <- .ssmincidents$update_replication_set_output()
@@ -2114,7 +2143,8 @@ ssmincidents_update_response_plan <- function(actions = NULL, arn, chatChannel =
     http_path = "/updateResponsePlan",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ssmincidents$update_response_plan_input(actions = actions, arn = arn, chatChannel = chatChannel, clientToken = clientToken, displayName = displayName, engagements = engagements, incidentTemplateDedupeString = incidentTemplateDedupeString, incidentTemplateImpact = incidentTemplateImpact, incidentTemplateNotificationTargets = incidentTemplateNotificationTargets, incidentTemplateSummary = incidentTemplateSummary, incidentTemplateTags = incidentTemplateTags, incidentTemplateTitle = incidentTemplateTitle, integrations = integrations)
   output <- .ssmincidents$update_response_plan_output()
@@ -2180,7 +2210,8 @@ ssmincidents_update_timeline_event <- function(clientToken = NULL, eventData = N
     http_path = "/updateTimelineEvent",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ssmincidents$update_timeline_event_input(clientToken = clientToken, eventData = eventData, eventId = eventId, eventReferences = eventReferences, eventTime = eventTime, eventType = eventType, incidentRecordArn = incidentRecordArn)
   output <- .ssmincidents$update_timeline_event_output()

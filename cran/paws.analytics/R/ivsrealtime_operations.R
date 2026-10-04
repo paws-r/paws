@@ -24,7 +24,8 @@ ivsrealtime_create_encoder_configuration <- function(name = NULL, video = NULL, 
     http_path = "/CreateEncoderConfiguration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$create_encoder_configuration_input(name = name, video = video, tags = tags)
   output <- .ivsrealtime$create_encoder_configuration_output()
@@ -63,7 +64,8 @@ ivsrealtime_create_ingest_configuration <- function(name = NULL, stageArn = NULL
     http_path = "/CreateIngestConfiguration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$create_ingest_configuration_input(name = name, stageArn = stageArn, userId = userId, attributes = attributes, ingestProtocol = ingestProtocol, insecureIngest = insecureIngest, redundantIngest = redundantIngest, tags = tags)
   output <- .ivsrealtime$create_ingest_configuration_output()
@@ -98,7 +100,8 @@ ivsrealtime_create_participant_token <- function(stageArn, duration = NULL, user
     http_path = "/CreateParticipantToken",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$create_participant_token_input(stageArn = stageArn, duration = duration, userId = userId, attributes = attributes, capabilities = capabilities)
   output <- .ivsrealtime$create_participant_token_output()
@@ -132,7 +135,8 @@ ivsrealtime_create_stage <- function(name = NULL, participantTokenConfigurations
     http_path = "/CreateStage",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$create_stage_input(name = name, participantTokenConfigurations = participantTokenConfigurations, tags = tags, autoParticipantRecordingConfiguration = autoParticipantRecordingConfiguration)
   output <- .ivsrealtime$create_stage_output()
@@ -166,7 +170,8 @@ ivsrealtime_create_storage_configuration <- function(name = NULL, s3, tags = NUL
     http_path = "/CreateStorageConfiguration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$create_storage_configuration_input(name = name, s3 = s3, tags = tags)
   output <- .ivsrealtime$create_storage_configuration_output()
@@ -197,7 +202,8 @@ ivsrealtime_delete_encoder_configuration <- function(arn) {
     http_path = "/DeleteEncoderConfiguration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$delete_encoder_configuration_input(arn = arn)
   output <- .ivsrealtime$delete_encoder_configuration_output()
@@ -230,7 +236,8 @@ ivsrealtime_delete_ingest_configuration <- function(arn, force = NULL) {
     http_path = "/DeleteIngestConfiguration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$delete_ingest_configuration_input(arn = arn, force = force)
   output <- .ivsrealtime$delete_ingest_configuration_output()
@@ -261,7 +268,8 @@ ivsrealtime_delete_public_key <- function(arn) {
     http_path = "/DeletePublicKey",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$delete_public_key_input(arn = arn)
   output <- .ivsrealtime$delete_public_key_output()
@@ -293,7 +301,8 @@ ivsrealtime_delete_stage <- function(arn) {
     http_path = "/DeleteStage",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$delete_stage_input(arn = arn)
   output <- .ivsrealtime$delete_stage_output()
@@ -324,7 +333,8 @@ ivsrealtime_delete_storage_configuration <- function(arn) {
     http_path = "/DeleteStorageConfiguration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$delete_storage_configuration_input(arn = arn)
   output <- .ivsrealtime$delete_storage_configuration_output()
@@ -357,7 +367,8 @@ ivsrealtime_disconnect_participant <- function(stageArn, participantId, reason =
     http_path = "/DisconnectParticipant",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$disconnect_participant_input(stageArn = stageArn, participantId = participantId, reason = reason)
   output <- .ivsrealtime$disconnect_participant_output()
@@ -388,7 +399,8 @@ ivsrealtime_get_composition <- function(arn) {
     http_path = "/GetComposition",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$get_composition_input(arn = arn)
   output <- .ivsrealtime$get_composition_output()
@@ -419,7 +431,8 @@ ivsrealtime_get_encoder_configuration <- function(arn) {
     http_path = "/GetEncoderConfiguration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$get_encoder_configuration_input(arn = arn)
   output <- .ivsrealtime$get_encoder_configuration_output()
@@ -450,7 +463,8 @@ ivsrealtime_get_ingest_configuration <- function(arn) {
     http_path = "/GetIngestConfiguration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$get_ingest_configuration_input(arn = arn)
   output <- .ivsrealtime$get_ingest_configuration_output()
@@ -483,7 +497,8 @@ ivsrealtime_get_participant <- function(stageArn, sessionId, participantId) {
     http_path = "/GetParticipant",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$get_participant_input(stageArn = stageArn, sessionId = sessionId, participantId = participantId)
   output <- .ivsrealtime$get_participant_output()
@@ -514,7 +529,8 @@ ivsrealtime_get_public_key <- function(arn) {
     http_path = "/GetPublicKey",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$get_public_key_input(arn = arn)
   output <- .ivsrealtime$get_public_key_output()
@@ -545,7 +561,8 @@ ivsrealtime_get_stage <- function(arn) {
     http_path = "/GetStage",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$get_stage_input(arn = arn)
   output <- .ivsrealtime$get_stage_output()
@@ -577,7 +594,8 @@ ivsrealtime_get_stage_session <- function(stageArn, sessionId) {
     http_path = "/GetStageSession",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$get_stage_session_input(stageArn = stageArn, sessionId = sessionId)
   output <- .ivsrealtime$get_stage_session_output()
@@ -608,7 +626,8 @@ ivsrealtime_get_storage_configuration <- function(arn) {
     http_path = "/GetStorageConfiguration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$get_storage_configuration_input(arn = arn)
   output <- .ivsrealtime$get_storage_configuration_output()
@@ -641,7 +660,8 @@ ivsrealtime_import_public_key <- function(publicKeyMaterial, name = NULL, tags =
     http_path = "/ImportPublicKey",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$import_public_key_input(publicKeyMaterial = publicKeyMaterial, name = name, tags = tags)
   output <- .ivsrealtime$import_public_key_output()
@@ -676,7 +696,8 @@ ivsrealtime_list_compositions <- function(filterByStageArn = NULL, filterByEncod
     http_path = "/ListCompositions",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$list_compositions_input(filterByStageArn = filterByStageArn, filterByEncoderConfigurationArn = filterByEncoderConfigurationArn, nextToken = nextToken, maxResults = maxResults)
   output <- .ivsrealtime$list_compositions_output()
@@ -709,7 +730,8 @@ ivsrealtime_list_encoder_configurations <- function(nextToken = NULL, maxResults
     http_path = "/ListEncoderConfigurations",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$list_encoder_configurations_input(nextToken = nextToken, maxResults = maxResults)
   output <- .ivsrealtime$list_encoder_configurations_output()
@@ -744,7 +766,8 @@ ivsrealtime_list_ingest_configurations <- function(filterByStageArn = NULL, filt
     http_path = "/ListIngestConfigurations",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "ingestConfigurations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$list_ingest_configurations_input(filterByStageArn = filterByStageArn, filterByState = filterByState, nextToken = nextToken, maxResults = maxResults)
   output <- .ivsrealtime$list_ingest_configurations_output()
@@ -780,7 +803,8 @@ ivsrealtime_list_participant_events <- function(stageArn, sessionId, participant
     http_path = "/ListParticipantEvents",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$list_participant_events_input(stageArn = stageArn, sessionId = sessionId, participantId = participantId, nextToken = nextToken, maxResults = maxResults)
   output <- .ivsrealtime$list_participant_events_output()
@@ -814,7 +838,8 @@ ivsrealtime_list_participant_replicas <- function(sourceStageArn, participantId,
     http_path = "/ListParticipantReplicas",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "replicas"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$list_participant_replicas_input(sourceStageArn = sourceStageArn, participantId = participantId, nextToken = nextToken, maxResults = maxResults)
   output <- .ivsrealtime$list_participant_replicas_output()
@@ -852,7 +877,8 @@ ivsrealtime_list_participants <- function(stageArn, sessionId, filterByUserId = 
     http_path = "/ListParticipants",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$list_participants_input(stageArn = stageArn, sessionId = sessionId, filterByUserId = filterByUserId, filterByPublished = filterByPublished, filterByState = filterByState, nextToken = nextToken, maxResults = maxResults, filterByRecordingState = filterByRecordingState)
   output <- .ivsrealtime$list_participants_output()
@@ -885,7 +911,8 @@ ivsrealtime_list_public_keys <- function(nextToken = NULL, maxResults = NULL) {
     http_path = "/ListPublicKeys",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "publicKeys"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$list_public_keys_input(nextToken = nextToken, maxResults = maxResults)
   output <- .ivsrealtime$list_public_keys_output()
@@ -918,7 +945,8 @@ ivsrealtime_list_stage_sessions <- function(stageArn, nextToken = NULL, maxResul
     http_path = "/ListStageSessions",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$list_stage_sessions_input(stageArn = stageArn, nextToken = nextToken, maxResults = maxResults)
   output <- .ivsrealtime$list_stage_sessions_output()
@@ -951,7 +979,8 @@ ivsrealtime_list_stages <- function(nextToken = NULL, maxResults = NULL) {
     http_path = "/ListStages",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$list_stages_input(nextToken = nextToken, maxResults = maxResults)
   output <- .ivsrealtime$list_stages_output()
@@ -984,7 +1013,8 @@ ivsrealtime_list_storage_configurations <- function(nextToken = NULL, maxResults
     http_path = "/ListStorageConfigurations",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$list_storage_configurations_input(nextToken = nextToken, maxResults = maxResults)
   output <- .ivsrealtime$list_storage_configurations_output()
@@ -1015,7 +1045,8 @@ ivsrealtime_list_tags_for_resource <- function(resourceArn) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .ivsrealtime$list_tags_for_resource_output()
@@ -1051,7 +1082,8 @@ ivsrealtime_start_composition <- function(stageArn, idempotencyToken = NULL, lay
     http_path = "/StartComposition",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$start_composition_input(stageArn = stageArn, idempotencyToken = idempotencyToken, layout = layout, destinations = destinations, tags = tags)
   output <- .ivsrealtime$start_composition_output()
@@ -1089,7 +1121,8 @@ ivsrealtime_start_participant_replication <- function(sourceStageArn, destinatio
     http_path = "/StartParticipantReplication",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$start_participant_replication_input(sourceStageArn = sourceStageArn, destinationStageArn = destinationStageArn, participantId = participantId, reconnectWindowSeconds = reconnectWindowSeconds, attributes = attributes)
   output <- .ivsrealtime$start_participant_replication_output()
@@ -1120,7 +1153,8 @@ ivsrealtime_stop_composition <- function(arn) {
     http_path = "/StopComposition",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$stop_composition_input(arn = arn)
   output <- .ivsrealtime$stop_composition_output()
@@ -1153,7 +1187,8 @@ ivsrealtime_stop_participant_replication <- function(sourceStageArn, destination
     http_path = "/StopParticipantReplication",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$stop_participant_replication_input(sourceStageArn = sourceStageArn, destinationStageArn = destinationStageArn, participantId = participantId)
   output <- .ivsrealtime$stop_participant_replication_output()
@@ -1185,7 +1220,8 @@ ivsrealtime_tag_resource <- function(resourceArn, tags) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .ivsrealtime$tag_resource_output()
@@ -1217,7 +1253,8 @@ ivsrealtime_untag_resource <- function(resourceArn, tagKeys) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .ivsrealtime$untag_resource_output()
@@ -1250,7 +1287,8 @@ ivsrealtime_update_ingest_configuration <- function(arn, stageArn = NULL, redund
     http_path = "/UpdateIngestConfiguration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$update_ingest_configuration_input(arn = arn, stageArn = stageArn, redundantIngest = redundantIngest)
   output <- .ivsrealtime$update_ingest_configuration_output()
@@ -1283,7 +1321,8 @@ ivsrealtime_update_stage <- function(arn, name = NULL, autoParticipantRecordingC
     http_path = "/UpdateStage",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivsrealtime$update_stage_input(arn = arn, name = name, autoParticipantRecordingConfiguration = autoParticipantRecordingConfiguration)
   output <- .ivsrealtime$update_stage_output()

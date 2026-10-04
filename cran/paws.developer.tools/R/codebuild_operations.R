@@ -22,7 +22,8 @@ codebuild_batch_delete_builds <- function(ids) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$batch_delete_builds_input(ids = ids)
   output <- .codebuild$batch_delete_builds_output()
@@ -53,7 +54,8 @@ codebuild_batch_get_build_batches <- function(ids) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$batch_get_build_batches_input(ids = ids)
   output <- .codebuild$batch_get_build_batches_output()
@@ -84,7 +86,8 @@ codebuild_batch_get_builds <- function(ids) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$batch_get_builds_input(ids = ids)
   output <- .codebuild$batch_get_builds_output()
@@ -116,7 +119,8 @@ codebuild_batch_get_command_executions <- function(sandboxId, commandExecutionId
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$batch_get_command_executions_input(sandboxId = sandboxId, commandExecutionIds = commandExecutionIds)
   output <- .codebuild$batch_get_command_executions_output()
@@ -147,7 +151,8 @@ codebuild_batch_get_fleets <- function(names) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$batch_get_fleets_input(names = names)
   output <- .codebuild$batch_get_fleets_output()
@@ -178,7 +183,8 @@ codebuild_batch_get_projects <- function(names) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$batch_get_projects_input(names = names)
   output <- .codebuild$batch_get_projects_output()
@@ -209,7 +215,8 @@ codebuild_batch_get_report_groups <- function(reportGroupArns) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$batch_get_report_groups_input(reportGroupArns = reportGroupArns)
   output <- .codebuild$batch_get_report_groups_output()
@@ -240,7 +247,8 @@ codebuild_batch_get_reports <- function(reportArns) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$batch_get_reports_input(reportArns = reportArns)
   output <- .codebuild$batch_get_reports_output()
@@ -271,7 +279,8 @@ codebuild_batch_get_sandboxes <- function(ids) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$batch_get_sandboxes_input(ids = ids)
   output <- .codebuild$batch_get_sandboxes_output()
@@ -387,7 +396,8 @@ codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeT
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$create_fleet_input(name = name, baseCapacity = baseCapacity, environmentType = environmentType, computeType = computeType, computeConfiguration = computeConfiguration, scalingConfiguration = scalingConfiguration, overflowBehavior = overflowBehavior, vpcConfig = vpcConfig, proxyConfiguration = proxyConfiguration, imageId = imageId, fleetServiceRole = fleetServiceRole, tags = tags)
   output <- .codebuild$create_fleet_output()
@@ -463,7 +473,8 @@ codebuild_create_project <- function(name, description = NULL, source, secondary
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$create_project_input(name = name, description = description, source = source, secondarySources = secondarySources, sourceVersion = sourceVersion, secondarySourceVersions = secondarySourceVersions, artifacts = artifacts, secondaryArtifacts = secondaryArtifacts, cache = cache, environment = environment, serviceRole = serviceRole, timeoutInMinutes = timeoutInMinutes, queuedTimeoutInMinutes = queuedTimeoutInMinutes, encryptionKey = encryptionKey, tags = tags, vpcConfig = vpcConfig, badgeEnabled = badgeEnabled, logsConfig = logsConfig, fileSystemLocations = fileSystemLocations, buildBatchConfig = buildBatchConfig, concurrentBuildLimit = concurrentBuildLimit, autoRetryLimit = autoRetryLimit)
   output <- .codebuild$create_project_output()
@@ -499,7 +510,8 @@ codebuild_create_report_group <- function(name, type, exportConfig, tags = NULL)
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$create_report_group_input(name = name, type = type, exportConfig = exportConfig, tags = tags)
   output <- .codebuild$create_report_group_output()
@@ -549,7 +561,8 @@ codebuild_create_webhook <- function(projectName, branchFilter = NULL, filterGro
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$create_webhook_input(projectName = projectName, branchFilter = branchFilter, filterGroups = filterGroups, buildType = buildType, manualCreation = manualCreation, scopeConfiguration = scopeConfiguration, pullRequestBuildPolicy = pullRequestBuildPolicy)
   output <- .codebuild$create_webhook_output()
@@ -580,7 +593,8 @@ codebuild_delete_build_batch <- function(id) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$delete_build_batch_input(id = id)
   output <- .codebuild$delete_build_batch_output()
@@ -611,7 +625,8 @@ codebuild_delete_fleet <- function(arn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$delete_fleet_input(arn = arn)
   output <- .codebuild$delete_fleet_output()
@@ -642,7 +657,8 @@ codebuild_delete_project <- function(name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$delete_project_input(name = name)
   output <- .codebuild$delete_project_output()
@@ -673,7 +689,8 @@ codebuild_delete_report <- function(arn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$delete_report_input(arn = arn)
   output <- .codebuild$delete_report_output()
@@ -707,7 +724,8 @@ codebuild_delete_report_group <- function(arn, deleteReports = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$delete_report_group_input(arn = arn, deleteReports = deleteReports)
   output <- .codebuild$delete_report_group_output()
@@ -738,7 +756,8 @@ codebuild_delete_resource_policy <- function(resourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$delete_resource_policy_input(resourceArn = resourceArn)
   output <- .codebuild$delete_resource_policy_output()
@@ -770,7 +789,8 @@ codebuild_delete_source_credentials <- function(arn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$delete_source_credentials_input(arn = arn)
   output <- .codebuild$delete_source_credentials_output()
@@ -803,7 +823,8 @@ codebuild_delete_webhook <- function(projectName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$delete_webhook_input(projectName = projectName)
   output <- .codebuild$delete_webhook_output()
@@ -848,7 +869,8 @@ codebuild_describe_code_coverages <- function(reportArn, nextToken = NULL, maxRe
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "codeCoverages"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$describe_code_coverages_input(reportArn = reportArn, nextToken = nextToken, maxResults = maxResults, sortOrder = sortOrder, sortBy = sortBy, minLineCoveragePercentage = minLineCoveragePercentage, maxLineCoveragePercentage = maxLineCoveragePercentage)
   output <- .codebuild$describe_code_coverages_output()
@@ -882,7 +904,8 @@ codebuild_describe_test_cases <- function(reportArn, nextToken = NULL, maxResult
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "testCases"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$describe_test_cases_input(reportArn = reportArn, nextToken = nextToken, maxResults = maxResults, filter = filter)
   output <- .codebuild$describe_test_cases_output()
@@ -958,7 +981,8 @@ codebuild_get_report_group_trend <- function(reportGroupArn, numOfReports = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$get_report_group_trend_input(reportGroupArn = reportGroupArn, numOfReports = numOfReports, trendField = trendField)
   output <- .codebuild$get_report_group_trend_output()
@@ -989,7 +1013,8 @@ codebuild_get_resource_policy <- function(resourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$get_resource_policy_input(resourceArn = resourceArn)
   output <- .codebuild$get_resource_policy_output()
@@ -1026,7 +1051,8 @@ codebuild_import_source_credentials <- function(username = NULL, token, serverTy
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$import_source_credentials_input(username = username, token = token, serverType = serverType, authType = authType, shouldOverwrite = shouldOverwrite)
   output <- .codebuild$import_source_credentials_output()
@@ -1057,7 +1083,8 @@ codebuild_invalidate_project_cache <- function(projectName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$invalidate_project_cache_input(projectName = projectName)
   output <- .codebuild$invalidate_project_cache_output()
@@ -1095,7 +1122,8 @@ codebuild_list_build_batches <- function(filter = NULL, maxResults = NULL, sortO
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "ids"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$list_build_batches_input(filter = filter, maxResults = maxResults, sortOrder = sortOrder, nextToken = nextToken)
   output <- .codebuild$list_build_batches_output()
@@ -1134,7 +1162,8 @@ codebuild_list_build_batches_for_project <- function(projectName = NULL, filter 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "ids"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$list_build_batches_for_project_input(projectName = projectName, filter = filter, maxResults = maxResults, sortOrder = sortOrder, nextToken = nextToken)
   output <- .codebuild$list_build_batches_for_project_output()
@@ -1170,7 +1199,8 @@ codebuild_list_builds <- function(sortOrder = NULL, nextToken = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(output_token = "nextToken", input_token = "nextToken", result_key = "ids"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$list_builds_input(sortOrder = sortOrder, nextToken = nextToken)
   output <- .codebuild$list_builds_output()
@@ -1212,7 +1242,8 @@ codebuild_list_builds_for_project <- function(projectName, sortOrder = NULL, nex
     http_path = "/",
     host_prefix = "",
     paginator = list(output_token = "nextToken", input_token = "nextToken", result_key = "ids"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$list_builds_for_project_input(projectName = projectName, sortOrder = sortOrder, nextToken = nextToken)
   output <- .codebuild$list_builds_for_project_output()
@@ -1246,7 +1277,8 @@ codebuild_list_command_executions_for_sandbox <- function(sandboxId, maxResults 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "commandExecutions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$list_command_executions_for_sandbox_input(sandboxId = sandboxId, maxResults = maxResults, sortOrder = sortOrder, nextToken = nextToken)
   output <- .codebuild$list_command_executions_for_sandbox_output()
@@ -1277,7 +1309,8 @@ codebuild_list_curated_environment_images <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$list_curated_environment_images_input()
   output <- .codebuild$list_curated_environment_images_output()
@@ -1326,7 +1359,8 @@ codebuild_list_fleets <- function(nextToken = NULL, maxResults = NULL, sortOrder
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$list_fleets_input(nextToken = nextToken, maxResults = maxResults, sortOrder = sortOrder, sortBy = sortBy)
   output <- .codebuild$list_fleets_output()
@@ -1374,7 +1408,8 @@ codebuild_list_projects <- function(sortBy = NULL, sortOrder = NULL, nextToken =
     http_path = "/",
     host_prefix = "",
     paginator = list(output_token = "nextToken", input_token = "nextToken", result_key = "projects"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$list_projects_input(sortBy = sortBy, sortOrder = sortOrder, nextToken = nextToken)
   output <- .codebuild$list_projects_output()
@@ -1415,7 +1450,8 @@ codebuild_list_report_groups <- function(sortOrder = NULL, sortBy = NULL, nextTo
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "reportGroups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$list_report_groups_input(sortOrder = sortOrder, sortBy = sortBy, nextToken = nextToken, maxResults = maxResults)
   output <- .codebuild$list_report_groups_output()
@@ -1454,7 +1490,8 @@ codebuild_list_reports <- function(sortOrder = NULL, nextToken = NULL, maxResult
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "reports"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$list_reports_input(sortOrder = sortOrder, nextToken = nextToken, maxResults = maxResults, filter = filter)
   output <- .codebuild$list_reports_output()
@@ -1489,7 +1526,8 @@ codebuild_list_reports_for_report_group <- function(reportGroupArn, nextToken = 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "reports"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$list_reports_for_report_group_input(reportGroupArn = reportGroupArn, nextToken = nextToken, sortOrder = sortOrder, maxResults = maxResults, filter = filter)
   output <- .codebuild$list_reports_for_report_group_output()
@@ -1522,7 +1560,8 @@ codebuild_list_sandboxes <- function(maxResults = NULL, sortOrder = NULL, nextTo
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "ids"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$list_sandboxes_input(maxResults = maxResults, sortOrder = sortOrder, nextToken = nextToken)
   output <- .codebuild$list_sandboxes_output()
@@ -1556,7 +1595,8 @@ codebuild_list_sandboxes_for_project <- function(projectName, maxResults = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "ids"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$list_sandboxes_for_project_input(projectName = projectName, maxResults = maxResults, sortOrder = sortOrder, nextToken = nextToken)
   output <- .codebuild$list_sandboxes_for_project_output()
@@ -1599,7 +1639,8 @@ codebuild_list_shared_projects <- function(sortBy = NULL, sortOrder = NULL, maxR
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "projects"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$list_shared_projects_input(sortBy = sortBy, sortOrder = sortOrder, maxResults = maxResults, nextToken = nextToken)
   output <- .codebuild$list_shared_projects_output()
@@ -1642,7 +1683,8 @@ codebuild_list_shared_report_groups <- function(sortOrder = NULL, sortBy = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "reportGroups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$list_shared_report_groups_input(sortOrder = sortOrder, sortBy = sortBy, nextToken = nextToken, maxResults = maxResults)
   output <- .codebuild$list_shared_report_groups_output()
@@ -1673,7 +1715,8 @@ codebuild_list_source_credentials <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$list_source_credentials_input()
   output <- .codebuild$list_source_credentials_output()
@@ -1705,7 +1748,8 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$put_resource_policy_input(policy = policy, resourceArn = resourceArn)
   output <- .codebuild$put_resource_policy_output()
@@ -1737,7 +1781,8 @@ codebuild_retry_build <- function(id = NULL, idempotencyToken = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$retry_build_input(id = id, idempotencyToken = idempotencyToken)
   output <- .codebuild$retry_build_output()
@@ -1770,7 +1815,8 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$retry_build_batch_input(id = id, idempotencyToken = idempotencyToken, retryType = retryType)
   output <- .codebuild$retry_build_batch_output()
@@ -1880,7 +1926,8 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$start_build_input(projectName = projectName, secondarySourcesOverride = secondarySourcesOverride, secondarySourcesVersionOverride = secondarySourcesVersionOverride, sourceVersion = sourceVersion, artifactsOverride = artifactsOverride, secondaryArtifactsOverride = secondaryArtifactsOverride, environmentVariablesOverride = environmentVariablesOverride, sourceTypeOverride = sourceTypeOverride, sourceLocationOverride = sourceLocationOverride, sourceAuthOverride = sourceAuthOverride, gitCloneDepthOverride = gitCloneDepthOverride, gitSubmodulesConfigOverride = gitSubmodulesConfigOverride, buildspecOverride = buildspecOverride, insecureSslOverride = insecureSslOverride, reportBuildStatusOverride = reportBuildStatusOverride, buildStatusConfigOverride = buildStatusConfigOverride, environmentTypeOverride = environmentTypeOverride, imageOverride = imageOverride, computeTypeOverride = computeTypeOverride, certificateOverride = certificateOverride, cacheOverride = cacheOverride, serviceRoleOverride = serviceRoleOverride, privilegedModeOverride = privilegedModeOverride, timeoutInMinutesOverride = timeoutInMinutesOverride, queuedTimeoutInMinutesOverride = queuedTimeoutInMinutesOverride, encryptionKeyOverride = encryptionKeyOverride, idempotencyToken = idempotencyToken, logsConfigOverride = logsConfigOverride, registryCredentialOverride = registryCredentialOverride, imagePullCredentialsTypeOverride = imagePullCredentialsTypeOverride, debugSessionEnabled = debugSessionEnabled, fleetOverride = fleetOverride, autoRetryLimitOverride = autoRetryLimitOverride, hostKernelOverride = hostKernelOverride)
   output <- .codebuild$start_build_output()
@@ -1979,7 +2026,8 @@ codebuild_start_build_batch <- function(projectName, secondarySourcesOverride = 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$start_build_batch_input(projectName = projectName, secondarySourcesOverride = secondarySourcesOverride, secondarySourcesVersionOverride = secondarySourcesVersionOverride, sourceVersion = sourceVersion, artifactsOverride = artifactsOverride, secondaryArtifactsOverride = secondaryArtifactsOverride, environmentVariablesOverride = environmentVariablesOverride, sourceTypeOverride = sourceTypeOverride, sourceLocationOverride = sourceLocationOverride, sourceAuthOverride = sourceAuthOverride, gitCloneDepthOverride = gitCloneDepthOverride, gitSubmodulesConfigOverride = gitSubmodulesConfigOverride, buildspecOverride = buildspecOverride, insecureSslOverride = insecureSslOverride, reportBuildBatchStatusOverride = reportBuildBatchStatusOverride, environmentTypeOverride = environmentTypeOverride, imageOverride = imageOverride, computeTypeOverride = computeTypeOverride, certificateOverride = certificateOverride, cacheOverride = cacheOverride, serviceRoleOverride = serviceRoleOverride, privilegedModeOverride = privilegedModeOverride, buildTimeoutInMinutesOverride = buildTimeoutInMinutesOverride, queuedTimeoutInMinutesOverride = queuedTimeoutInMinutesOverride, encryptionKeyOverride = encryptionKeyOverride, idempotencyToken = idempotencyToken, logsConfigOverride = logsConfigOverride, registryCredentialOverride = registryCredentialOverride, imagePullCredentialsTypeOverride = imagePullCredentialsTypeOverride, buildBatchConfigOverride = buildBatchConfigOverride, debugSessionEnabled = debugSessionEnabled)
   output <- .codebuild$start_build_batch_output()
@@ -2012,7 +2060,8 @@ codebuild_start_command_execution <- function(sandboxId, command, type = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$start_command_execution_input(sandboxId = sandboxId, command = command, type = type)
   output <- .codebuild$start_command_execution_output()
@@ -2044,7 +2093,8 @@ codebuild_start_sandbox <- function(projectName = NULL, idempotencyToken = NULL)
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$start_sandbox_input(projectName = projectName, idempotencyToken = idempotencyToken)
   output <- .codebuild$start_sandbox_output()
@@ -2075,7 +2125,8 @@ codebuild_start_sandbox_connection <- function(sandboxId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$start_sandbox_connection_input(sandboxId = sandboxId)
   output <- .codebuild$start_sandbox_connection_output()
@@ -2106,7 +2157,8 @@ codebuild_stop_build <- function(id) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$stop_build_input(id = id)
   output <- .codebuild$stop_build_output()
@@ -2137,7 +2189,8 @@ codebuild_stop_build_batch <- function(id) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$stop_build_batch_input(id = id)
   output <- .codebuild$stop_build_batch_output()
@@ -2168,7 +2221,8 @@ codebuild_stop_sandbox <- function(id) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$stop_sandbox_input(id = id)
   output <- .codebuild$stop_sandbox_output()
@@ -2284,7 +2338,8 @@ codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$update_fleet_input(arn = arn, baseCapacity = baseCapacity, environmentType = environmentType, computeType = computeType, computeConfiguration = computeConfiguration, scalingConfiguration = scalingConfiguration, overflowBehavior = overflowBehavior, vpcConfig = vpcConfig, proxyConfiguration = proxyConfiguration, imageId = imageId, fleetServiceRole = fleetServiceRole, tags = tags)
   output <- .codebuild$update_fleet_output()
@@ -2362,7 +2417,8 @@ codebuild_update_project <- function(name, description = NULL, source = NULL, se
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$update_project_input(name = name, description = description, source = source, secondarySources = secondarySources, sourceVersion = sourceVersion, secondarySourceVersions = secondarySourceVersions, artifacts = artifacts, secondaryArtifacts = secondaryArtifacts, cache = cache, environment = environment, serviceRole = serviceRole, timeoutInMinutes = timeoutInMinutes, queuedTimeoutInMinutes = queuedTimeoutInMinutes, encryptionKey = encryptionKey, tags = tags, vpcConfig = vpcConfig, badgeEnabled = badgeEnabled, logsConfig = logsConfig, fileSystemLocations = fileSystemLocations, buildBatchConfig = buildBatchConfig, concurrentBuildLimit = concurrentBuildLimit, autoRetryLimit = autoRetryLimit)
   output <- .codebuild$update_project_output()
@@ -2403,7 +2459,8 @@ codebuild_update_project_visibility <- function(projectArn, projectVisibility, r
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$update_project_visibility_input(projectArn = projectArn, projectVisibility = projectVisibility, resourceAccessRole = resourceAccessRole)
   output <- .codebuild$update_project_visibility_output()
@@ -2442,7 +2499,8 @@ codebuild_update_report_group <- function(arn, exportConfig = NULL, tags = NULL)
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$update_report_group_input(arn = arn, exportConfig = exportConfig, tags = tags)
   output <- .codebuild$update_report_group_output()
@@ -2482,7 +2540,8 @@ codebuild_update_webhook <- function(projectName, branchFilter = NULL, rotateSec
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codebuild$update_webhook_input(projectName = projectName, branchFilter = branchFilter, rotateSecret = rotateSecret, filterGroups = filterGroups, buildType = buildType, pullRequestBuildPolicy = pullRequestBuildPolicy)
   output <- .codebuild$update_webhook_output()

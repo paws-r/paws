@@ -2,8 +2,8 @@
 % Please edit documentation in R/rekognition_operations.R
 \name{rekognition_create_stream_processor}
 \alias{rekognition_create_stream_processor}
-\title{Creates an Amazon Rekognition stream processor that you can use to
-detect and recognize faces or to detect labels in a streaming video}
+\title{Service availability notice: Streaming Video and Bulk Image Analysis is
+no longer available to new customers}
 \usage{
 rekognition_create_stream_processor(
   Input,
@@ -40,7 +40,7 @@ rekognition_create_stream_processor(
 \item{DataSharingPreference}{Shows whether you are sharing data with Rekognition to improve model performance. You can choose this option at the account level or on a per-stream basis. Note that if you opt out at the account level this setting is ignored on individual streams.}
 }
 \description{
-Creates an Amazon Rekognition stream processor that you can use to detect and recognize faces or to detect labels in a streaming video.
+Service availability notice: Streaming Video and Bulk Image Analysis is no longer available to new customers. For more information, see \href{https://docs.aws.amazon.com/rekognition/latest/dg/rekognition-availability-changes.html}{Rekognition feature availability changes}.
 
 See \url{https://www.paws-r-sdk.com/docs/rekognition_create_stream_processor/} for full documentation.
 }

@@ -37,7 +37,7 @@ AND any 3 of the following password complexity rules required by Active Director
 \item Numbers and upper case and special characters (?=.\emph{\\d)(?=.}[A-Z])(?=.*[^A-Za-z0-9\\s])
 }
 
-For additional information about how Active Directory passwords are enforced, see \href{https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements}{Password must meet complexity requirements} on the Microsoft website.}
+For additional information about how Active Directory passwords are enforced, see \href{https://learn.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements}{Password must meet complexity requirements} on the Microsoft website.}
 
 \item{Description}{A description for the directory.}
 

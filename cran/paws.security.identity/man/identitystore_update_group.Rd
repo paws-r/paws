@@ -5,14 +5,25 @@
 \title{Updates the specified group metadata and attributes in the specified
 identity store}
 \usage{
-identitystore_update_group(IdentityStoreId, GroupId, Operations)
+identitystore_update_group(
+  IdentityStoreId,
+  GroupId,
+  Operations,
+  Revision = NULL
+)
 }
 \arguments{
-\item{IdentityStoreId}{[required] The globally unique identifier for the identity store.}
+\item{IdentityStoreId}{[required] The globally unique identifier for the identity store.
 
-\item{GroupId}{[required] The identifier for a group in the identity store.}
+You can specify the identity store by ID or by Amazon Resource Name (ARN). For example, identity store ID \code{d-1234567890} or identity store ARN \verb{arn:aws:identitystore::111122223333:identitystore/d-1234567890}.}
+
+\item{GroupId}{[required] The identifier for a group in the identity store.
+
+You can specify the group by ID or by Amazon Resource Name (ARN). For example, group ID \verb{a1b2c3d4-5678-90ab-cdef-EXAMPLE22222} or group ARN \verb{arn:aws:identitystore:::group/a1b2c3d4-5678-90ab-cdef-EXAMPLE22222}.}
 
 \item{Operations}{[required] A list of \code{AttributeOperation} objects to apply to the requested group. These operations might add, replace, or remove an attribute. For more information on the attributes that can be added, replaced, or removed, see \href{https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html}{Group}.}
+
+\item{Revision}{The expected current revision of the group. When you provide this value, the update is applied only if it matches the current revision of the group in the identity store, which prevents you from overwriting concurrent changes. If the value doesn't match, the operation fails with a \code{ConflictException}. If you don't provide this value, the update is applied unconditionally.}
 }
 \description{
 Updates the specified group metadata and attributes in the specified identity store.

@@ -30,7 +30,8 @@ keyspaces_create_keyspace <- function(keyspaceName, tags = NULL, replicationSpec
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .keyspaces$create_keyspace_input(keyspaceName = keyspaceName, tags = tags, replicationSpecification = replicationSpecification)
   output <- .keyspaces$create_keyspace_output()
@@ -153,7 +154,8 @@ keyspaces_create_table <- function(keyspaceName, tableName, schemaDefinition, co
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .keyspaces$create_table_input(keyspaceName = keyspaceName, tableName = tableName, schemaDefinition = schemaDefinition, comment = comment, capacitySpecification = capacitySpecification, encryptionSpecification = encryptionSpecification, pointInTimeRecovery = pointInTimeRecovery, ttl = ttl, defaultTimeToLive = defaultTimeToLive, tags = tags, clientSideTimestamps = clientSideTimestamps, autoScalingSpecification = autoScalingSpecification, replicaSpecifications = replicaSpecifications, cdcSpecification = cdcSpecification, warmThroughputSpecification = warmThroughputSpecification)
   output <- .keyspaces$create_table_output()
@@ -193,7 +195,8 @@ keyspaces_create_type <- function(keyspaceName, typeName, fieldDefinitions) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .keyspaces$create_type_input(keyspaceName = keyspaceName, typeName = typeName, fieldDefinitions = fieldDefinitions)
   output <- .keyspaces$create_type_output()
@@ -224,7 +227,8 @@ keyspaces_delete_keyspace <- function(keyspaceName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .keyspaces$delete_keyspace_input(keyspaceName = keyspaceName)
   output <- .keyspaces$delete_keyspace_output()
@@ -256,7 +260,8 @@ keyspaces_delete_table <- function(keyspaceName, tableName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .keyspaces$delete_table_input(keyspaceName = keyspaceName, tableName = tableName)
   output <- .keyspaces$delete_table_output()
@@ -288,7 +293,8 @@ keyspaces_delete_type <- function(keyspaceName, typeName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .keyspaces$delete_type_input(keyspaceName = keyspaceName, typeName = typeName)
   output <- .keyspaces$delete_type_output()
@@ -322,7 +328,8 @@ keyspaces_get_keyspace <- function(keyspaceName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .keyspaces$get_keyspace_input(keyspaceName = keyspaceName)
   output <- .keyspaces$get_keyspace_output()
@@ -355,7 +362,8 @@ keyspaces_get_table <- function(keyspaceName, tableName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .keyspaces$get_table_input(keyspaceName = keyspaceName, tableName = tableName)
   output <- .keyspaces$get_table_output()
@@ -388,7 +396,8 @@ keyspaces_get_table_auto_scaling_settings <- function(keyspaceName, tableName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .keyspaces$get_table_auto_scaling_settings_input(keyspaceName = keyspaceName, tableName = tableName)
   output <- .keyspaces$get_table_auto_scaling_settings_output()
@@ -423,7 +432,8 @@ keyspaces_get_type <- function(keyspaceName, typeName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .keyspaces$get_type_input(keyspaceName = keyspaceName, typeName = typeName)
   output <- .keyspaces$get_type_output()
@@ -455,7 +465,8 @@ keyspaces_list_keyspaces <- function(nextToken = NULL, maxResults = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "keyspaces"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .keyspaces$list_keyspaces_input(nextToken = nextToken, maxResults = maxResults)
   output <- .keyspaces$list_keyspaces_output()
@@ -489,7 +500,8 @@ keyspaces_list_tables <- function(nextToken = NULL, maxResults = NULL, keyspaceN
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "tables"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .keyspaces$list_tables_input(nextToken = nextToken, maxResults = maxResults, keyspaceName = keyspaceName)
   output <- .keyspaces$list_tables_output()
@@ -523,7 +535,8 @@ keyspaces_list_tags_for_resource <- function(resourceArn, nextToken = NULL, maxR
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "tags"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .keyspaces$list_tags_for_resource_input(resourceArn = resourceArn, nextToken = nextToken, maxResults = maxResults)
   output <- .keyspaces$list_tags_for_resource_output()
@@ -556,7 +569,8 @@ keyspaces_list_types <- function(nextToken = NULL, maxResults = NULL, keyspaceNa
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "types"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .keyspaces$list_types_input(nextToken = nextToken, maxResults = maxResults, keyspaceName = keyspaceName)
   output <- .keyspaces$list_types_output()
@@ -626,7 +640,8 @@ keyspaces_restore_table <- function(sourceKeyspaceName, sourceTableName, targetK
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .keyspaces$restore_table_input(sourceKeyspaceName = sourceKeyspaceName, sourceTableName = sourceTableName, targetKeyspaceName = targetKeyspaceName, targetTableName = targetTableName, restoreTimestamp = restoreTimestamp, capacitySpecificationOverride = capacitySpecificationOverride, encryptionSpecificationOverride = encryptionSpecificationOverride, pointInTimeRecoveryOverride = pointInTimeRecoveryOverride, tagsOverride = tagsOverride, autoScalingSpecification = autoScalingSpecification, replicaSpecifications = replicaSpecifications)
   output <- .keyspaces$restore_table_output()
@@ -658,7 +673,8 @@ keyspaces_tag_resource <- function(resourceArn, tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .keyspaces$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .keyspaces$tag_resource_output()
@@ -690,7 +706,8 @@ keyspaces_untag_resource <- function(resourceArn, tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .keyspaces$untag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .keyspaces$untag_resource_output()
@@ -729,7 +746,8 @@ keyspaces_update_keyspace <- function(keyspaceName, replicationSpecification, cl
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .keyspaces$update_keyspace_input(keyspaceName = keyspaceName, replicationSpecification = replicationSpecification, clientSideTimestamps = clientSideTimestamps)
   output <- .keyspaces$update_keyspace_output()
@@ -820,7 +838,8 @@ keyspaces_update_table <- function(keyspaceName, tableName, addColumns = NULL, c
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .keyspaces$update_table_input(keyspaceName = keyspaceName, tableName = tableName, addColumns = addColumns, capacitySpecification = capacitySpecification, encryptionSpecification = encryptionSpecification, pointInTimeRecovery = pointInTimeRecovery, ttl = ttl, defaultTimeToLive = defaultTimeToLive, clientSideTimestamps = clientSideTimestamps, autoScalingSpecification = autoScalingSpecification, replicaSpecifications = replicaSpecifications, cdcSpecification = cdcSpecification, warmThroughputSpecification = warmThroughputSpecification)
   output <- .keyspaces$update_table_output()

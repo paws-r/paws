@@ -44,7 +44,8 @@ locationservice_associate_tracker_consumer <- function(TrackerName, ConsumerArn)
     http_path = "/tracking/v0/trackers/{TrackerName}/consumers",
     host_prefix = "cp.tracking.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$associate_tracker_consumer_input(TrackerName = TrackerName, ConsumerArn = ConsumerArn)
   output <- .locationservice$associate_tracker_consumer_output()
@@ -109,7 +110,8 @@ locationservice_batch_delete_device_position_history <- function(TrackerName, De
     http_path = "/tracking/v0/trackers/{TrackerName}/delete-positions",
     host_prefix = "tracking.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$batch_delete_device_position_history_input(TrackerName = TrackerName, DeviceIds = DeviceIds)
   output <- .locationservice$batch_delete_device_position_history_output()
@@ -172,7 +174,8 @@ locationservice_batch_delete_geofence <- function(CollectionName, GeofenceIds) {
     http_path = "/geofencing/v0/collections/{CollectionName}/delete-geofences",
     host_prefix = "geofencing.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$batch_delete_geofence_input(CollectionName = CollectionName, GeofenceIds = GeofenceIds)
   output <- .locationservice$batch_delete_geofence_output()
@@ -264,7 +267,8 @@ locationservice_batch_evaluate_geofences <- function(CollectionName, DevicePosit
     http_path = "/geofencing/v0/collections/{CollectionName}/positions",
     host_prefix = "geofencing.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$batch_evaluate_geofences_input(CollectionName = CollectionName, DevicePositionUpdates = DevicePositionUpdates)
   output <- .locationservice$batch_evaluate_geofences_output()
@@ -347,7 +351,8 @@ locationservice_batch_get_device_position <- function(TrackerName, DeviceIds) {
     http_path = "/tracking/v0/trackers/{TrackerName}/get-positions",
     host_prefix = "tracking.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$batch_get_device_position_input(TrackerName = TrackerName, DeviceIds = DeviceIds)
   output <- .locationservice$batch_get_device_position_output()
@@ -451,7 +456,8 @@ locationservice_batch_put_geofence <- function(CollectionName, Entries) {
     http_path = "/geofencing/v0/collections/{CollectionName}/put-geofences",
     host_prefix = "geofencing.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$batch_put_geofence_input(CollectionName = CollectionName, Entries = Entries)
   output <- .locationservice$batch_put_geofence_output()
@@ -536,7 +542,8 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
     http_path = "/tracking/v0/trackers/{TrackerName}/positions",
     host_prefix = "tracking.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$batch_update_device_position_input(TrackerName = TrackerName, Updates = Updates)
   output <- .locationservice$batch_update_device_position_output()
@@ -758,7 +765,8 @@ locationservice_calculate_route <- function(CalculatorName, DeparturePosition, D
     http_path = "/routes/v0/calculators/{CalculatorName}/calculate/route",
     host_prefix = "routes.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$calculate_route_input(CalculatorName = CalculatorName, DeparturePosition = DeparturePosition, DestinationPosition = DestinationPosition, WaypointPositions = WaypointPositions, TravelMode = TravelMode, DepartureTime = DepartureTime, DepartNow = DepartNow, DistanceUnit = DistanceUnit, IncludeLegGeometry = IncludeLegGeometry, CarModeOptions = CarModeOptions, TruckModeOptions = TruckModeOptions, ArrivalTime = ArrivalTime, OptimizeFor = OptimizeFor, Key = Key)
   output <- .locationservice$calculate_route_output()
@@ -946,7 +954,8 @@ locationservice_calculate_route_matrix <- function(CalculatorName, DeparturePosi
     http_path = "/routes/v0/calculators/{CalculatorName}/calculate/route-matrix",
     host_prefix = "routes.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$calculate_route_matrix_input(CalculatorName = CalculatorName, DeparturePositions = DeparturePositions, DestinationPositions = DestinationPositions, TravelMode = TravelMode, DepartureTime = DepartureTime, DepartNow = DepartNow, DistanceUnit = DistanceUnit, CarModeOptions = CarModeOptions, TruckModeOptions = TruckModeOptions, Key = Key)
   output <- .locationservice$calculate_route_matrix_output()
@@ -999,7 +1008,8 @@ locationservice_cancel_job <- function(JobId) {
     http_path = "/metadata/v0/jobs/cancel-job",
     host_prefix = "metadata.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$cancel_job_input(JobId = JobId)
   output <- .locationservice$cancel_job_output()
@@ -1089,7 +1099,8 @@ locationservice_create_geofence_collection <- function(CollectionName, PricingPl
     http_path = "/geofencing/v0/collections",
     host_prefix = "cp.geofencing.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$create_geofence_collection_input(CollectionName = CollectionName, PricingPlan = PricingPlan, PricingPlanDataSource = PricingPlanDataSource, Description = Description, Tags = Tags, KmsKeyId = KmsKeyId)
   output <- .locationservice$create_geofence_collection_output()
@@ -1207,7 +1218,8 @@ locationservice_create_key <- function(KeyName, Restrictions, Description = NULL
     http_path = "/metadata/v0/keys",
     host_prefix = "cp.metadata.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$create_key_input(KeyName = KeyName, Restrictions = Restrictions, Description = Description, ExpireTime = ExpireTime, NoExpiry = NoExpiry, Tags = Tags)
   output <- .locationservice$create_key_output()
@@ -1315,7 +1327,8 @@ locationservice_create_map <- function(MapName, Configuration, PricingPlan = NUL
     http_path = "/maps/v0/maps",
     host_prefix = "cp.maps.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$create_map_input(MapName = MapName, Configuration = Configuration, PricingPlan = PricingPlan, Description = Description, Tags = Tags)
   output <- .locationservice$create_map_output()
@@ -1435,7 +1448,8 @@ locationservice_create_place_index <- function(IndexName, DataSource, PricingPla
     http_path = "/places/v0/indexes",
     host_prefix = "cp.places.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$create_place_index_input(IndexName = IndexName, DataSource = DataSource, PricingPlan = PricingPlan, Description = Description, DataSourceConfiguration = DataSourceConfiguration, Tags = Tags)
   output <- .locationservice$create_place_index_output()
@@ -1555,7 +1569,8 @@ locationservice_create_route_calculator <- function(CalculatorName, DataSource, 
     http_path = "/routes/v0/calculators",
     host_prefix = "cp.routes.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$create_route_calculator_input(CalculatorName = CalculatorName, DataSource = DataSource, PricingPlan = PricingPlan, Description = Description, Tags = Tags)
   output <- .locationservice$create_route_calculator_output()
@@ -1671,7 +1686,8 @@ locationservice_create_tracker <- function(TrackerName, PricingPlan = NULL, KmsK
     http_path = "/tracking/v0/trackers",
     host_prefix = "cp.tracking.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$create_tracker_input(TrackerName = TrackerName, PricingPlan = PricingPlan, KmsKeyId = KmsKeyId, PricingPlanDataSource = PricingPlanDataSource, Description = Description, Tags = Tags, PositionFiltering = PositionFiltering, EventBridgeEnabled = EventBridgeEnabled, KmsKeyEnableGeospatialQueries = KmsKeyEnableGeospatialQueries)
   output <- .locationservice$create_tracker_output()
@@ -1717,7 +1733,8 @@ locationservice_delete_geofence_collection <- function(CollectionName) {
     http_path = "/geofencing/v0/collections/{CollectionName}",
     host_prefix = "cp.geofencing.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$delete_geofence_collection_input(CollectionName = CollectionName)
   output <- .locationservice$delete_geofence_collection_output()
@@ -1771,7 +1788,8 @@ locationservice_delete_key <- function(KeyName, ForceDelete = NULL) {
     http_path = "/metadata/v0/keys/{KeyName}",
     host_prefix = "cp.metadata.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$delete_key_input(KeyName = KeyName, ForceDelete = ForceDelete)
   output <- .locationservice$delete_key_output()
@@ -1829,7 +1847,8 @@ locationservice_delete_map <- function(MapName) {
     http_path = "/maps/v0/maps/{MapName}",
     host_prefix = "cp.maps.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$delete_map_input(MapName = MapName)
   output <- .locationservice$delete_map_output()
@@ -1887,7 +1906,8 @@ locationservice_delete_place_index <- function(IndexName) {
     http_path = "/places/v0/indexes/{IndexName}",
     host_prefix = "cp.places.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$delete_place_index_input(IndexName = IndexName)
   output <- .locationservice$delete_place_index_output()
@@ -1945,7 +1965,8 @@ locationservice_delete_route_calculator <- function(CalculatorName) {
     http_path = "/routes/v0/calculators/{CalculatorName}",
     host_prefix = "cp.routes.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$delete_route_calculator_input(CalculatorName = CalculatorName)
   output <- .locationservice$delete_route_calculator_output()
@@ -1991,7 +2012,8 @@ locationservice_delete_tracker <- function(TrackerName) {
     http_path = "/tracking/v0/trackers/{TrackerName}",
     host_prefix = "cp.tracking.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$delete_tracker_input(TrackerName = TrackerName)
   output <- .locationservice$delete_tracker_output()
@@ -2055,7 +2077,8 @@ locationservice_describe_geofence_collection <- function(CollectionName) {
     http_path = "/geofencing/v0/collections/{CollectionName}",
     host_prefix = "cp.geofencing.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$describe_geofence_collection_input(CollectionName = CollectionName)
   output <- .locationservice$describe_geofence_collection_output()
@@ -2143,7 +2166,8 @@ locationservice_describe_key <- function(KeyName) {
     http_path = "/metadata/v0/keys/{KeyName}",
     host_prefix = "cp.metadata.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$describe_key_input(KeyName = KeyName)
   output <- .locationservice$describe_key_output()
@@ -2224,7 +2248,8 @@ locationservice_describe_map <- function(MapName) {
     http_path = "/maps/v0/maps/{MapName}",
     host_prefix = "cp.maps.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$describe_map_input(MapName = MapName)
   output <- .locationservice$describe_map_output()
@@ -2301,7 +2326,8 @@ locationservice_describe_place_index <- function(IndexName) {
     http_path = "/places/v0/indexes/{IndexName}",
     host_prefix = "cp.places.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$describe_place_index_input(IndexName = IndexName)
   output <- .locationservice$describe_place_index_output()
@@ -2375,7 +2401,8 @@ locationservice_describe_route_calculator <- function(CalculatorName) {
     http_path = "/routes/v0/calculators/{CalculatorName}",
     host_prefix = "cp.routes.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$describe_route_calculator_input(CalculatorName = CalculatorName)
   output <- .locationservice$describe_route_calculator_output()
@@ -2441,7 +2468,8 @@ locationservice_describe_tracker <- function(TrackerName) {
     http_path = "/tracking/v0/trackers/{TrackerName}",
     host_prefix = "cp.tracking.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$describe_tracker_input(TrackerName = TrackerName)
   output <- .locationservice$describe_tracker_output()
@@ -2492,7 +2520,8 @@ locationservice_disassociate_tracker_consumer <- function(TrackerName, ConsumerA
     http_path = "/tracking/v0/trackers/{TrackerName}/consumers/{ConsumerArn}",
     host_prefix = "cp.tracking.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$disassociate_tracker_consumer_input(TrackerName = TrackerName, ConsumerArn = ConsumerArn)
   output <- .locationservice$disassociate_tracker_consumer_output()
@@ -2594,7 +2623,8 @@ locationservice_forecast_geofence_events <- function(CollectionName, DeviceState
     http_path = "/geofencing/v0/collections/{CollectionName}/forecast-geofence-events",
     host_prefix = "geofencing.",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ForecastedEvents"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$forecast_geofence_events_input(CollectionName = CollectionName, DeviceState = DeviceState, TimeHorizonMinutes = TimeHorizonMinutes, DistanceUnit = DistanceUnit, SpeedUnit = SpeedUnit, NextToken = NextToken, MaxResults = MaxResults)
   output <- .locationservice$forecast_geofence_events_output()
@@ -2662,7 +2692,8 @@ locationservice_get_device_position <- function(TrackerName, DeviceId) {
     http_path = "/tracking/v0/trackers/{TrackerName}/devices/{DeviceId}/positions/latest",
     host_prefix = "tracking.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$get_device_position_input(TrackerName = TrackerName, DeviceId = DeviceId)
   output <- .locationservice$get_device_position_output()
@@ -2761,7 +2792,8 @@ locationservice_get_device_position_history <- function(TrackerName, DeviceId, N
     http_path = "/tracking/v0/trackers/{TrackerName}/devices/{DeviceId}/list-positions",
     host_prefix = "tracking.",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "DevicePositions", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$get_device_position_history_input(TrackerName = TrackerName, DeviceId = DeviceId, NextToken = NextToken, StartTimeInclusive = StartTimeInclusive, EndTimeExclusive = EndTimeExclusive, MaxResults = MaxResults)
   output <- .locationservice$get_device_position_history_output()
@@ -2849,7 +2881,8 @@ locationservice_get_geofence <- function(CollectionName, GeofenceId) {
     http_path = "/geofencing/v0/collections/{CollectionName}/geofences/{GeofenceId}",
     host_prefix = "geofencing.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$get_geofence_input(CollectionName = CollectionName, GeofenceId = GeofenceId)
   output <- .locationservice$get_geofence_output()
@@ -2940,7 +2973,8 @@ locationservice_get_job <- function(JobId) {
     http_path = "/metadata/v0/jobs/{JobId}",
     host_prefix = "metadata.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$get_job_input(JobId = JobId)
   output <- .locationservice$get_job_output()
@@ -3038,7 +3072,8 @@ locationservice_get_map_glyphs <- function(MapName, FontStack, FontUnicodeRange,
     http_path = "/maps/v0/maps/{MapName}/glyphs/{FontStack}/{FontUnicodeRange}",
     host_prefix = "maps.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$get_map_glyphs_input(MapName = MapName, FontStack = FontStack, FontUnicodeRange = FontUnicodeRange, Key = Key)
   output <- .locationservice$get_map_glyphs_output()
@@ -3115,7 +3150,8 @@ locationservice_get_map_sprites <- function(MapName, FileName, Key = NULL) {
     http_path = "/maps/v0/maps/{MapName}/sprites/{FileName}",
     host_prefix = "maps.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$get_map_sprites_input(MapName = MapName, FileName = FileName, Key = Key)
   output <- .locationservice$get_map_sprites_output()
@@ -3182,7 +3218,8 @@ locationservice_get_map_style_descriptor <- function(MapName, Key = NULL) {
     http_path = "/maps/v0/maps/{MapName}/style-descriptor",
     host_prefix = "maps.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$get_map_style_descriptor_input(MapName = MapName, Key = Key)
   output <- .locationservice$get_map_style_descriptor_output()
@@ -3255,7 +3292,8 @@ locationservice_get_map_tile <- function(MapName, Z, X, Y, Key = NULL) {
     http_path = "/maps/v0/maps/{MapName}/tiles/{Z}/{X}/{Y}",
     host_prefix = "maps.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$get_map_tile_input(MapName = MapName, Z = Z, X = X, Y = Y, Key = Key)
   output <- .locationservice$get_map_tile_output()
@@ -3369,7 +3407,8 @@ locationservice_get_place <- function(IndexName, PlaceId, Language = NULL, Key =
     http_path = "/places/v0/indexes/{IndexName}/places/{PlaceId}",
     host_prefix = "places.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$get_place_input(IndexName = IndexName, PlaceId = PlaceId, Language = Language, Key = Key)
   output <- .locationservice$get_place_output()
@@ -3454,7 +3493,8 @@ locationservice_list_device_positions <- function(TrackerName, MaxResults = NULL
     http_path = "/tracking/v0/trackers/{TrackerName}/list-positions",
     host_prefix = "tracking.",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Entries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$list_device_positions_input(TrackerName = TrackerName, MaxResults = MaxResults, NextToken = NextToken, FilterGeometry = FilterGeometry)
   output <- .locationservice$list_device_positions_output()
@@ -3523,7 +3563,8 @@ locationservice_list_geofence_collections <- function(MaxResults = NULL, NextTok
     http_path = "/geofencing/v0/list-collections",
     host_prefix = "cp.geofencing.",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Entries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$list_geofence_collections_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .locationservice$list_geofence_collections_output()
@@ -3620,7 +3661,8 @@ locationservice_list_geofences <- function(CollectionName, NextToken = NULL, Max
     http_path = "/geofencing/v0/collections/{CollectionName}/list-geofences",
     host_prefix = "geofencing.",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Entries", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$list_geofences_input(CollectionName = CollectionName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .locationservice$list_geofences_output()
@@ -3718,7 +3760,8 @@ locationservice_list_jobs <- function(Filter = NULL, MaxResults = NULL, NextToke
     http_path = "/metadata/v0/jobs/list-jobs",
     host_prefix = "metadata.",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Entries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$list_jobs_input(Filter = Filter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .locationservice$list_jobs_output()
@@ -3816,7 +3859,8 @@ locationservice_list_keys <- function(MaxResults = NULL, NextToken = NULL, Filte
     http_path = "/metadata/v0/list-keys",
     host_prefix = "cp.metadata.",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Entries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$list_keys_input(MaxResults = MaxResults, NextToken = NextToken, Filter = Filter)
   output <- .locationservice$list_keys_output()
@@ -3897,7 +3941,8 @@ locationservice_list_maps <- function(MaxResults = NULL, NextToken = NULL) {
     http_path = "/maps/v0/list-maps",
     host_prefix = "cp.maps.",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Entries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$list_maps_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .locationservice$list_maps_output()
@@ -3978,7 +4023,8 @@ locationservice_list_place_indexes <- function(MaxResults = NULL, NextToken = NU
     http_path = "/places/v0/list-indexes",
     host_prefix = "cp.places.",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Entries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$list_place_indexes_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .locationservice$list_place_indexes_output()
@@ -4059,7 +4105,8 @@ locationservice_list_route_calculators <- function(MaxResults = NULL, NextToken 
     http_path = "/routes/v0/list-calculators",
     host_prefix = "cp.routes.",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Entries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$list_route_calculators_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .locationservice$list_route_calculators_output()
@@ -4113,7 +4160,8 @@ locationservice_list_tags_for_resource <- function(ResourceArn) {
     http_path = "/tags/{ResourceArn}",
     host_prefix = "cp.metadata.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .locationservice$list_tags_for_resource_output()
@@ -4175,7 +4223,8 @@ locationservice_list_tracker_consumers <- function(TrackerName, MaxResults = NUL
     http_path = "/tracking/v0/trackers/{TrackerName}/list-consumers",
     host_prefix = "cp.tracking.",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ConsumerArns"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$list_tracker_consumers_input(TrackerName = TrackerName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .locationservice$list_tracker_consumers_output()
@@ -4244,7 +4293,8 @@ locationservice_list_trackers <- function(MaxResults = NULL, NextToken = NULL) {
     http_path = "/tracking/v0/list-trackers",
     host_prefix = "cp.tracking.",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Entries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$list_trackers_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .locationservice$list_trackers_output()
@@ -4338,7 +4388,8 @@ locationservice_put_geofence <- function(CollectionName, GeofenceId, Geometry, G
     http_path = "/geofencing/v0/collections/{CollectionName}/geofences/{GeofenceId}",
     host_prefix = "geofencing.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$put_geofence_input(CollectionName = CollectionName, GeofenceId = GeofenceId, Geometry = Geometry, GeofenceProperties = GeofenceProperties)
   output <- .locationservice$put_geofence_output()
@@ -4465,7 +4516,8 @@ locationservice_search_place_index_for_position <- function(IndexName, Position,
     http_path = "/places/v0/indexes/{IndexName}/search/position",
     host_prefix = "places.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$search_place_index_for_position_input(IndexName = IndexName, Position = Position, MaxResults = MaxResults, Language = Language, Key = Key)
   output <- .locationservice$search_place_index_for_position_output()
@@ -4609,7 +4661,8 @@ locationservice_search_place_index_for_suggestions <- function(IndexName, Text, 
     http_path = "/places/v0/indexes/{IndexName}/search/suggestions",
     host_prefix = "places.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$search_place_index_for_suggestions_input(IndexName = IndexName, Text = Text, BiasPosition = BiasPosition, FilterBBox = FilterBBox, FilterCountries = FilterCountries, MaxResults = MaxResults, Language = Language, FilterCategories = FilterCategories, Key = Key)
   output <- .locationservice$search_place_index_for_suggestions_output()
@@ -4783,7 +4836,8 @@ locationservice_search_place_index_for_text <- function(IndexName, Text, BiasPos
     http_path = "/places/v0/indexes/{IndexName}/search/text",
     host_prefix = "places.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$search_place_index_for_text_input(IndexName = IndexName, Text = Text, BiasPosition = BiasPosition, FilterBBox = FilterBBox, FilterCountries = FilterCountries, MaxResults = MaxResults, Language = Language, FilterCategories = FilterCategories, Key = Key)
   output <- .locationservice$search_place_index_for_text_output()
@@ -4874,7 +4928,8 @@ locationservice_start_job <- function(ClientToken = NULL, Action, ActionOptions 
     http_path = "/metadata/v0/jobs",
     host_prefix = "metadata.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$start_job_input(ClientToken = ClientToken, Action = Action, ActionOptions = ActionOptions, ExecutionRoleArn = ExecutionRoleArn, InputOptions = InputOptions, Name = Name, OutputOptions = OutputOptions, Tags = Tags)
   output <- .locationservice$start_job_output()
@@ -4947,7 +5002,8 @@ locationservice_tag_resource <- function(ResourceArn, Tags) {
     http_path = "/tags/{ResourceArn}",
     host_prefix = "cp.metadata.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .locationservice$tag_resource_output()
@@ -4997,7 +5053,8 @@ locationservice_untag_resource <- function(ResourceArn, TagKeys) {
     http_path = "/tags/{ResourceArn}",
     host_prefix = "cp.metadata.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .locationservice$untag_resource_output()
@@ -5057,7 +5114,8 @@ locationservice_update_geofence_collection <- function(CollectionName, PricingPl
     http_path = "/geofencing/v0/collections/{CollectionName}",
     host_prefix = "cp.geofencing.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$update_geofence_collection_input(CollectionName = CollectionName, PricingPlan = PricingPlan, PricingPlanDataSource = PricingPlanDataSource, Description = Description)
   output <- .locationservice$update_geofence_collection_output()
@@ -5150,7 +5208,8 @@ locationservice_update_key <- function(KeyName, Description = NULL, ExpireTime =
     http_path = "/metadata/v0/keys/{KeyName}",
     host_prefix = "cp.metadata.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$update_key_input(KeyName = KeyName, Description = Description, ExpireTime = ExpireTime, NoExpiry = NoExpiry, ForceUpdate = ForceUpdate, Restrictions = Restrictions)
   output <- .locationservice$update_key_output()
@@ -5227,7 +5286,8 @@ locationservice_update_map <- function(MapName, PricingPlan = NULL, Description 
     http_path = "/maps/v0/maps/{MapName}",
     host_prefix = "cp.maps.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$update_map_input(MapName = MapName, PricingPlan = PricingPlan, Description = Description, ConfigurationUpdate = ConfigurationUpdate)
   output <- .locationservice$update_map_output()
@@ -5301,7 +5361,8 @@ locationservice_update_place_index <- function(IndexName, PricingPlan = NULL, De
     http_path = "/places/v0/indexes/{IndexName}",
     host_prefix = "cp.places.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$update_place_index_input(IndexName = IndexName, PricingPlan = PricingPlan, Description = Description, DataSourceConfiguration = DataSourceConfiguration)
   output <- .locationservice$update_place_index_output()
@@ -5371,7 +5432,8 @@ locationservice_update_route_calculator <- function(CalculatorName, PricingPlan 
     http_path = "/routes/v0/calculators/{CalculatorName}",
     host_prefix = "cp.routes.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$update_route_calculator_input(CalculatorName = CalculatorName, PricingPlan = PricingPlan, Description = Description)
   output <- .locationservice$update_route_calculator_output()
@@ -5450,7 +5512,8 @@ locationservice_update_tracker <- function(TrackerName, PricingPlan = NULL, Pric
     http_path = "/tracking/v0/trackers/{TrackerName}",
     host_prefix = "cp.tracking.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$update_tracker_input(TrackerName = TrackerName, PricingPlan = PricingPlan, PricingPlanDataSource = PricingPlanDataSource, Description = Description, PositionFiltering = PositionFiltering, EventBridgeEnabled = EventBridgeEnabled, KmsKeyEnableGeospatialQueries = KmsKeyEnableGeospatialQueries)
   output <- .locationservice$update_tracker_output()
@@ -5572,7 +5635,8 @@ locationservice_verify_device_position <- function(TrackerName, DeviceState, Dis
     http_path = "/tracking/v0/trackers/{TrackerName}/positions/verify",
     host_prefix = "tracking.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .locationservice$verify_device_position_input(TrackerName = TrackerName, DeviceState = DeviceState, DistanceUnit = DistanceUnit)
   output <- .locationservice$verify_device_position_output()

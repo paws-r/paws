@@ -196,6 +196,7 @@ The following throttling limits apply to Security Hub CSPM API operations.
 \link[paws.security.identity:securityhub_get_master_account]{get_master_account} \tab This method is deprecated\cr
 \link[paws.security.identity:securityhub_get_members]{get_members} \tab Returns the details for the Security Hub CSPM member accounts for the specified account IDs\cr
 \link[paws.security.identity:securityhub_get_recommended_policy_v2]{get_recommended_policy_v2} \tab Retrieves the recommended policy to remediate a Security Hub finding\cr
+\link[paws.security.identity:securityhub_get_remediations_v2]{get_remediations_v2} \tab Retrieves remediation targets for the account, or for all member accounts if the caller is the delegated administrator\cr
 \link[paws.security.identity:securityhub_get_resources_statistics_v2]{get_resources_statistics_v2} \tab Retrieves statistical information about Amazon Web Services resources and their associated security findings\cr
 \link[paws.security.identity:securityhub_get_resources_trends_v2]{get_resources_trends_v2} \tab Returns resource trend data based on the specified criteria\cr
 \link[paws.security.identity:securityhub_get_resources_v2]{get_resources_v2} \tab Returns a list of resources\cr
@@ -209,6 +210,7 @@ The following throttling limits apply to Security Hub CSPM API operations.
 \link[paws.security.identity:securityhub_list_connectors]{list_connectors} \tab Lists the CSPM connectors and their metadata for the calling account\cr
 \link[paws.security.identity:securityhub_list_connectors_v2]{list_connectors_v2} \tab Grants permission to retrieve a list of connectorsV2 and their metadata for the calling account\cr
 \link[paws.security.identity:securityhub_list_enabled_products_for_import]{list_enabled_products_for_import} \tab Lists all findings-generating solutions (products) that you are subscribed to receive findings from in Security Hub CSPM\cr
+\link[paws.security.identity:securityhub_list_exposures_by_remediation_v2]{list_exposures_by_remediation_v2} \tab Retrieves the exposure findings tied to a specific remediation target\cr
 \link[paws.security.identity:securityhub_list_finding_aggregators]{list_finding_aggregators} \tab If cross-Region aggregation is enabled, then ListFindingAggregators returns the Amazon Resource Name (ARN) of the finding aggregator\cr
 \link[paws.security.identity:securityhub_list_free_trial_statuses_v2]{list_free_trial_statuses_v2} \tab Lists the free trial status of Security Hub features\cr
 \link[paws.security.identity:securityhub_list_invitations]{list_invitations} \tab We recommend using Organizations instead of Security Hub CSPM invitations to manage your member accounts\cr

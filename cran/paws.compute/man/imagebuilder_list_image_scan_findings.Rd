@@ -13,10 +13,10 @@ imagebuilder_list_image_scan_findings(
 \arguments{
 \item{filters}{An array of name value pairs that you can use to filter your results. You can use the following filters to streamline results:
 \itemize{
-\item \code{imageBuildVersionArn}
-\item \code{imagePipelineArn}
-\item \code{vulnerabilityId}
-\item \code{severity}
+\item \code{imageBuildVersionArn} – Filters findings by the image build version that was scanned.
+\item \code{imagePipelineArn} – Filters findings by the pipeline that created the scanned image.
+\item \code{vulnerabilityId} – Filters findings by vulnerability ID, for example a CVE ID.
+\item \code{severity} – Filters findings by severity level.
 }
 
 If you don't request a filter, then all findings in your account are listed.}
@@ -26,7 +26,7 @@ If you don't request a filter, then all findings in your account are listed.}
 \item{nextToken}{A token to specify where to start paginating. Use the \code{nextToken} value from a previously truncated response.}
 }
 \description{
-Returns a list of image scan findings for your account.
+Returns a list of image scan findings for your account. Amazon Inspector generates the findings when it scans images that have scanning enabled.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_list_image_scan_findings/} for full documentation.
 }

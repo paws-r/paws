@@ -47,7 +47,7 @@ The following list describes restrictions on \code{StartTime} and \code{EndTime}
 
 The following are valid filter keys for a \code{\link[=connect_get_metric_data_v2]{get_metric_data_v2}} request:
 
-\code{AGENT} | \code{AI_AGENT} | \code{AI_AGENT_ID} | \code{AI_AGENT_NAME} | \code{AI_AGENT_TYPE} | \code{AI_PROMPT} | \code{AI_PROMPT_ID} | \code{AI_PROMPT_NAME} | \code{AI_PROMPT_TYPE} | \code{AI_TOOL_ID} | \code{AI_TOOL_NAME} | \code{AI_TOOL_TYPE} | \code{AI_USE_CASE} | \code{AGENT_HIERARCHY_LEVEL_ONE} | \code{AGENT_HIERARCHY_LEVEL_TWO} | \code{AGENT_HIERARCHY_LEVEL_THREE} | \code{AGENT_HIERARCHY_LEVEL_FOUR} | \code{AGENT_HIERARCHY_LEVEL_FIVE} | \code{ANSWERING_MACHINE_DETECTION_STATUS} | \code{BOT_ALIAS} | \code{BOT_ID} | \code{BOT_INTENT_NAME} | \code{BOT_LOCALE} | \code{BOT_VERSION} | \code{BROWSER_NAME} | \code{CAMPAIGN} | \code{CAMPAIGN_DELIVERY_EVENT_TYPE} | \code{CAMPAIGN_EXCLUDED_EVENT_TYPE} | \code{CASE_STATUS} | \code{CASE_TEMPLATE_ARN} | \code{CHANNEL} | \code{contact/segmentAttributes/connect:Subtype} | \code{contact/segmentAttributes/connect:ValidationTestType} | \code{DEVICE_MODEL} | \code{DEVICE_TYPE} | \code{DISCONNECT_REASON} | \code{EVALUATION_FORM} | \code{EVALUATION_QUESTION} | \code{EVALUATION_SECTION} | \code{EVALUATION_SOURCE} | \code{EVALUATOR_ID} | \code{FEATURE} | \code{FLOW_ACTION_ID} | \code{FLOW_TYPE} | \code{FLOWS_MODULE_RESOURCE_ID} | \code{FLOWS_NEXT_RESOURCE_ID} | `FLOWS_NEXT
+\code{AGENT} | \code{AI_AGENT} | \code{AI_AGENT_ID} | \code{AI_AGENT_NAME} | \code{AI_AGENT_NAME_VERSION} | \code{AI_AGENT_TYPE} | \code{AI_PROMPT} | \code{AI_PROMPT_ID} | \code{AI_PROMPT_NAME} | \code{AI_PROMPT_TYPE} | \code{AI_TOOL_ID} | \code{AI_TOOL_NAME} | \code{AI_TOOL_TYPE} | \code{AI_USE_CASE} | \code{AGENT_HIERARCHY_LEVEL_ONE} | \code{AGENT_HIERARCHY_LEVEL_TWO} | \code{AGENT_HIERARCHY_LEVEL_THREE} | \code{AGENT_HIERARCHY_LEVEL_FOUR} | \code{AGENT_HIERARCHY_LEVEL_FIVE} | \code{ANSWERING_MACHINE_DETECTION_STATUS} | \code{BOT_ALIAS} | \code{BOT_ID} | \code{BOT_INTENT_NAME} | \code{BOT_LOCALE} | \code{BOT_VERSION} | \code{BROWSER_NAME} | \code{CAMPAIGN} | \code{CAMPAIGN_DELIVERY_EVENT_TYPE} | \code{CAMPAIGN_EXCLUDED_EVENT_TYPE} | \code{CASE_STATUS} | \code{CASE_TEMPLATE_ARN} | \code{CHANNEL} | \code{contact/segmentAttributes/connect:Subtype} | \code{contact/segmentAttributes/connect:ValidationTestType} | \code{DEVICE_MODEL} | \code{DEVICE_TYPE} | \code{DISCONNECT_REASON} | \code{EVALUATION_FORM} | \code{EVALUATION_QUESTION} | \code{EVALUATION_SECTION} | \code{EVALUATION_SOURCE} | \code{EVALUATOR_ID} | \code{FEATURE} | \code{FLOW_ACTION_ID} | \code{FLOW_TYPE} | \code{FLOWS_MODULE_RESOURCE_ID} | `FLOWS_NEXT_
 
 The following filter keys correspond to Connect Customer resources and are used for authorizing requests. A \code{\link[=connect_get_metric_data_v2]{get_metric_data_v2}} request requires at least one of these filters:
 
@@ -77,7 +77,7 @@ If no grouping is specified, a summary of all metrics is returned.
 
 Valid grouping keys: \code{AGENT} | \code{AI_AGENT} | \code{AI_AGENT_ID} | \code{AI_AGENT_NAME} | \code{AI_AGENT_NAME_VERSION} | \code{AI_AGENT_TYPE} | \code{AI_PROMPT} | \code{AI_PROMPT_ID} | \code{AI_PROMPT_NAME} | \code{AI_PROMPT_NAME_VERSION} | \code{AI_PROMPT_TYPE} | \code{AI_TOOL_ID} | \code{AI_TOOL_NAME} | \code{AI_TOOL_TYPE} | \code{AI_USE_CASE} | \code{AGENT_HIERARCHY_LEVEL_ONE} | \code{AGENT_HIERARCHY_LEVEL_TWO} | \code{AGENT_HIERARCHY_LEVEL_THREE} | \code{AGENT_HIERARCHY_LEVEL_FOUR} | \code{AGENT_HIERARCHY_LEVEL_FIVE} | \code{ANSWERING_MACHINE_DETECTION_STATUS} | \code{BOT_ID} | \code{BOT_ALIAS} | \code{BOT_VERSION} | \code{BOT_LOCALE} | \code{BOT_INTENT_NAME} | \code{BROWSER_NAME} | \code{CAMPAIGN} | \code{CAMPAIGN_DELIVERY_EVENT_TYPE} | \code{CAMPAIGN_EXCLUDED_EVENT_TYPE} | \code{CAMPAIGN_EXECUTION_TIMESTAMP} | \code{CASE_TEMPLATE_ARN} | \code{CASE_STATUS} | \code{CHANNEL} | \code{contact/segmentAttributes/connect:Subtype} | \code{DEVICE_MODEL} | \code{DEVICE_TYPE} | \code{DISCONNECT_REASON} | \code{EVALUATION_FORM} | \code{EVALUATION_SECTION} | \code{EVALUATION_QUESTION} | \code{EVALUATION_SOURCE} | \code{EVALUATOR_ID} | \code{FLOWS_RESOURCE_ID} | \code{FLOWS_MODULE_RESOURCE_ID} | `FLOW_ACTIO
 
-\code{AI_AGENT_NAME_VERSION}, \code{AI_PROMPT_NAME_VERSION}, and \code{KNOWLEDGE_ARTICLE_NAME} are valid groupings but not valid filters.
+\code{AI_PROMPT_NAME_VERSION} and \code{KNOWLEDGE_ARTICLE_NAME} are valid groupings but not valid filters.
 
 API, SCHEDULE, and EVENT are the only valid filterValues for TEST_CASE_INVOCATION_METHOD.
 
@@ -359,7 +359,7 @@ Feature is a valid filter but not a valid grouping.
 
 Unit: Count
 
-Valid groupings and filters: AI Agent, AI Agent Name, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile
+Valid groupings and filters: AI Agent, AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#active-ai-agents}{Active AI Agents}
 
@@ -367,7 +367,7 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-def
 
 Unit: Percent
 
-Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile
+Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#ai-handoff-rate}{AI Handoff Rate}
 
@@ -375,7 +375,7 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-def
 
 Unit: Count
 
-Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile
+Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#ai-handoffs}{AI Handoff Count}
 
@@ -383,57 +383,47 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-def
 
 Unit: Count
 
-Valid groupings and filters: AI Agent, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile
+Valid groupings and filters: AI Agent, AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#ai-agent-invocation-success}{AI Agent Invocation Success}
-
-AI Agent Name Version is not a valid filter but a valid grouping.
 
 \strong{AI_AGENT_INVOCATION_SUCCESS_RATE}
 
 Unit: Percent
 
-Valid groupings and filters: AI Agent, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile
+Valid groupings and filters: AI Agent, AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#ai-agent-invocation-success-rate}{AI Agent Invocation Success Rate}
-
-AI Agent Name Version is not a valid filter but a valid grouping.
 
 \strong{AI_AGENT_INVOCATIONS}
 
 Unit: Count
 
-Valid groupings and filters: AI Agent, AI Agent Name, AI Agent Type, AI Agent Name Version, AI Use Case, Channel, Queue, Routing Profile
+Valid groupings and filters: AI Agent, AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#ai-agent-invocations}{AI Agent Invocation Count}
-
-AI Agent Name Version is not a valid filter but a valid grouping.
 
 \strong{AI_AGENT_RESPONSE_HELPFUL}
 
 Unit: Count
 
-Valid groupings and filters: AI Agent, AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile
+Valid groupings and filters: AI Agent, AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#ai-agent-response-helpful}{AI Agent Response Helpful}
-
-AI Agent Name Version is not a valid filter but a valid grouping.
 
 \strong{AI_AGENT_RESPONSE_NOT_HELPFUL}
 
 Unit: Count
 
-Valid groupings and filters: AI Agent, AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile
+Valid groupings and filters: AI Agent, AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#ai-agent-response-not-helpful}{AI Agent Response Not Helpful}
-
-AI Agent Name Version is not a valid filter but a valid grouping.
 
 \strong{AI_RESPONSE_COMPLETION_RATE}
 
 Unit: Percent
 
-Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile
+Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#ai-response-completion-rate}{AI Response Completion Rate}
 
@@ -441,7 +431,7 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-def
 
 Unit: Count
 
-Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile
+Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#ai-involved-contacts}{AI Involved Contacts}
 
@@ -449,77 +439,63 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-def
 
 Unit: Count
 
-Valid groupings and filters: AI Agent, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Prompt, AI Prompt ID, AI Prompt Name, AI Prompt Type, AI Use Case, Channel, Queue, Routing Profile
+Valid groupings and filters: AI Agent, AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Prompt, AI Prompt ID, AI Prompt Name, AI Prompt Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#ai-prompt-invocation-success}{AI Prompt Invocation Success}
-
-AI Agent Name Version is not a valid filter but a valid grouping.
 
 \strong{AI_PROMPT_INVOCATION_SUCCESS_RATE}
 
 Unit: Percent
 
-Valid groupings and filters: AI Agent, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Prompt, AI Prompt ID, AI Prompt Name, AI Prompt Type, AI Use Case, Channel, Queue, Routing Profile
+Valid groupings and filters: AI Agent, AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Prompt, AI Prompt ID, AI Prompt Name, AI Prompt Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#ai-prompt-invocation-success-rate}{AI Prompt Invocation Success Rate}
-
-AI Agent Name Version is not a valid filter but a valid grouping.
 
 \strong{AI_PROMPT_INVOCATIONS}
 
 Unit: Count
 
-Valid groupings and filters: AI Agent, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Prompt, AI Prompt ID, AI Prompt Name, AI Prompt Type, AI Use Case, Channel, Queue, Routing Profile
+Valid groupings and filters: AI Agent, AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Prompt, AI Prompt ID, AI Prompt Name, AI Prompt Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#ai-prompt-invocations}{AI Prompt Invocations}
-
-AI Agent Name Version is not a valid filter but a valid grouping.
 
 \strong{AI_TOOL_INVOCATION_SUCCESS}
 
 Unit: Count
 
-Valid groupings and filters: AI Agent, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Tool ID, AI Tool Name, AI Tool Type, AI Use Case, Channel, Queue, Routing Profile
+Valid groupings and filters: AI Agent, AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Tool ID, AI Tool Name, AI Tool Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#ai-tool-invocation-success}{AI Tool Invocation Success}
-
-AI Agent Name Version is not a valid filter but a valid grouping.
 
 \strong{AI_TOOL_INVOCATION_SUCCESS_RATE}
 
 Unit: Percent
 
-Valid groupings and filters: AI Agent, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Tool ID, AI Tool Name, AI Tool Type, AI Use Case, Channel, Queue, Routing Profile
+Valid groupings and filters: AI Agent, AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Tool ID, AI Tool Name, AI Tool Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#ai-tool-invocation-success-rate}{AI Tool Invocation Success Rate}
-
-AI Agent Name Version is not a valid filter but a valid grouping.
 
 \strong{AI_TOOL_INVOCATIONS}
 
 Unit: Count
 
-Valid groupings and filters: AI Agent, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Tool ID, AI Tool Name, AI Tool Type, AI Use Case, Channel, Queue, Routing Profile
+Valid groupings and filters: AI Agent, AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Tool ID, AI Tool Name, AI Tool Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#ai-tool-invocations}{AI Tool Invocations}
-
-AI Agent Name Version is not a valid filter but a valid grouping.
 
 \strong{AVG_AI_AGENT_CONVERSATION_TURNS}
 
 Unit: Count
 
-Valid groupings and filters: AI Agent, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile
+Valid groupings and filters: AI Agent, AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-ai-agent-conversation-turns}{Average AI Agent Conversation Turns}
-
-AI Agent Name Version is not a valid filter but a valid grouping.
 
 \strong{AVG_AI_CONVERSATION_TURNS}
 
 Unit: Count
 
-Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile
+Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-ai-conversation-turns}{Average AI Conversation Turns}
 
@@ -527,41 +503,33 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-def
 
 Unit: Milliseconds
 
-Valid groupings and filters: AI Agent, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Prompt, AI Prompt ID, AI Prompt Name, AI Prompt Type, AI Use Case, Channel, Queue, Routing Profile
+Valid groupings and filters: AI Agent, AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Prompt, AI Prompt ID, AI Prompt Name, AI Prompt Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-ai-prompt-invocation-latency}{Average AI Prompt Invocation Latency}
-
-AI Agent Name Version is not a valid filter but a valid grouping.
 
 \strong{AVG_AI_TOOL_INVOCATION_LATENCY}
 
 Unit: Milliseconds
 
-Valid groupings and filters: AI Agent, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Tool ID, AI Tool Name, AI Tool Type, AI Use Case, Channel, Queue, Routing Profile
+Valid groupings and filters: AI Agent, AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Tool ID, AI Tool Name, AI Tool Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-ai-tool-invocation-latency}{Average AI Tool Invocation Latency}
-
-AI Agent Name Version is not a valid filter but a valid grouping.
 
 \strong{AI_TOOL_PARAMETER_ACCURACY}
 
 Unit: Double
 
-Valid groupings and filters: AI Agent, AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Tool ID, AI Tool Name, AI Tool Type, AI Use Case, Channel, Queue, Routing Profile
+Valid groupings and filters: AI Agent, AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Tool ID, AI Tool Name, AI Tool Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#ai-tool-parameter-accuracy}{AI Tool Parameter Accuracy}
-
-AI Agent Name Version is not a valid filter but a valid grouping.
 
 \strong{AI_TOOL_SELECTION_ACCURACY}
 
 Unit: Double
 
-Valid groupings and filters: AI Agent, AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Tool ID, AI Tool Name, AI Tool Type, AI Use Case, Channel, Queue, Routing Profile
+Valid groupings and filters: AI Agent, AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Tool ID, AI Tool Name, AI Tool Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#ai-tool-selection-accuracy}{AI Tool Selection Accuracy}
-
-AI Agent Name Version is not a valid filter but a valid grouping.
 
 \strong{AI_TOOL_UTILIZATION_ACCURACY}
 
@@ -571,13 +539,11 @@ Valid groupings and filters: AI Agent, AI Agent ID, AI Agent Name, AI Agent Name
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#ai-tool-utilization-accuracy}{AI Tool Utilization Accuracy}
 
-AI Agent Name Version is not a valid filter but a valid grouping.
-
 \strong{COMPLETENESS_SCORE}
 
 Unit: Double
 
-Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
+Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#completeness-score}{Completeness Score}
 
@@ -585,7 +551,7 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-def
 
 Unit: Double
 
-Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
+Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#faithfulness-score}{Faithfulness Score}
 
@@ -593,7 +559,7 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-def
 
 Unit: Double
 
-Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
+Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#goal-success-rate}{Goal Success Rate}
 
@@ -601,7 +567,7 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-def
 
 Unit: Count
 
-Valid groupings and filters: AI Agent, AI Agent Name, AI Agent Type, AI Use Case, Channel, Knowledge Base Name, Queue, Routing Profile
+Valid groupings and filters: AI Agent, AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Use Case, Channel, Knowledge Base Name, Queue, Routing Profile, Session ID
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#knowledge-content-references}{Knowledge Content References}
 
@@ -609,7 +575,7 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-def
 
 Unit: Percent
 
-Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile
+Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#proactive-intents-engagement-rate}{Proactive Intent Engagement Rate}
 
@@ -617,7 +583,7 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-def
 
 Unit: Percent
 
-Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile
+Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#proactive-intents-response-rate}{Proactive Intent Response Rate}
 
@@ -625,7 +591,7 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-def
 
 Unit: Count
 
-Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile
+Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#proactive-intents-answered}{Proactive Intents Answered}
 
@@ -633,7 +599,7 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-def
 
 Unit: Count
 
-Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile
+Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#proactive-intents-detected}{Proactive Intents Detected}
 
@@ -641,7 +607,7 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-def
 
 Unit: Count
 
-Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile
+Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#proactive-intents-engaged}{Proactive Intents Engaged}
 
@@ -1336,6 +1302,50 @@ Unit: Count
 Valid groupings and filters: Campaign, Channel, contact/segmentAttributes/connect:Subtype, Campaign Execution Timestamp
 
 UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#recipients-interacted}{Recipients interacted}
+
+\strong{AI_AGENT_COLLABORATORS}
+
+Unit: Count
+
+Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#ai-agent-collaborators}{AI Agent Collaborators}
+
+\strong{AI_AGENT_COLLABORATION_INVOCATIONS}
+
+Unit: Count
+
+Valid groupings and filters: AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#ai-agent-collaboration-invocations}{AI Agent Collaboration Invocations}
+
+\strong{AI_AGENT_SELECTION_ACCURACY}
+
+Unit: Double
+
+Valid groupings and filters: AI Agent, AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#ai-agent-selection-accuracy}{AI Agent Selection Accuracy}
+
+This metric is available as part of Connect Customer AI.
+
+\strong{AVG_AI_AGENT_INVOCATION_LATENCY}
+
+Unit: Milliseconds
+
+Valid groupings and filters: AI Agent, AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#average-ai-agent-invocation-latency}{Average AI Agent Invocation Latency}
+
+\strong{CONTEXT_FIDELITY_SCORE}
+
+Unit: Double
+
+Valid groupings and filters: AI Agent, AI Agent ID, AI Agent Name, AI Agent Name Version, AI Agent Type, AI Use Case, Channel, Queue, Routing Profile, Session ID
+
+UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html#context-fidelity-score}{Context Fidelity Score}
+
+This metric is available as part of Connect Customer AI.
 
 \strong{RECIPIENTS_TARGETED}
 

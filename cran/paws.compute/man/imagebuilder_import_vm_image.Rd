@@ -2,9 +2,8 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_import_vm_image}
 \alias{imagebuilder_import_vm_image}
-\title{When you export your virtual machine (VM) from its virtualization
-environment, that process creates a set of one or more disk container
-files that act as snapshots of your VM’s environment, settings, and data}
+\title{Creates an Image Builder image resource from an Amazon EC2 VM import
+task}
 \usage{
 imagebuilder_import_vm_image(
   name,
@@ -19,7 +18,7 @@ imagebuilder_import_vm_image(
 )
 }
 \arguments{
-\item{name}{[required] The name of the base image that is created by the import process.}
+\item{name}{[required] The name of the base image that is created by the import process. Image Builder generates the image ARN from a normalized form of the name, so names that differ only in case, spaces, or underscores count as the same name. If an image with the same name and semantic version already exists in your account in the same Amazon Web Services Region, the import creates a new build version for it.}
 
 \item{semanticVersion}{[required] The semantic version to attach to the base image that was created during the import process. This version follows the semantic version syntax.
 
@@ -35,16 +34,16 @@ The semantic version has four nodes: \<major\>.\<minor\>.\<patch\>/\<build\>. Yo
 
 \item{osVersion}{The operating system version for the imported VM.}
 
-\item{vmImportTaskId}{[required] The \code{importTaskId} (API) or \code{ImportTaskId} (CLI) from the Amazon EC2 VM import process. Image Builder retrieves information from the import process to pull in the AMI that is created from the VM source as the base image for your recipe.}
+\item{vmImportTaskId}{[required] The \code{importTaskId} (API) or \code{ImportTaskId} (CLI) from the Amazon EC2 VM import process. The import task doesn't need to be complete when you call ImportVmImage - Image Builder monitors the task and finishes creating the image when the task completes.}
 
-\item{loggingConfiguration}{The logging configuration for the image build process.}
+\item{loggingConfiguration}{The CloudWatch Logs log group where Image Builder sends the import logs. For ImportVmImage, the log group name must be within the \verb{/aws/imagebuilder/} namespace.}
 
 \item{tags}{Tags that are attached to the import resources.}
 
-\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
+\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
 }
 \description{
-When you export your virtual machine (VM) from its virtualization environment, that process creates a set of one or more disk container files that act as snapshots of your VM’s environment, settings, and data. The Amazon EC2 API \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportImage.html}{ImportImage} action uses those files to import your VM and create an AMI. To import using the CLI command, see \href{https://docs.aws.amazon.com/cli/latest/reference/ec2/import-image.html}{import-image}
+Creates an Image Builder image resource from an Amazon EC2 VM import task. The response returns as soon as Image Builder creates the image resource in the \code{PENDING} state. Image Builder then monitors the import task asynchronously. When the task completes, Image Builder records the AMI that it produced as the new image's output resource and marks the image \code{AVAILABLE}. You can then use the imported image as the base image for your recipes.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_import_vm_image/} for full documentation.
 }

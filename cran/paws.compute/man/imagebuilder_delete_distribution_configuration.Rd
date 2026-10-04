@@ -10,7 +10,7 @@ imagebuilder_delete_distribution_configuration(distributionConfigurationArn)
 \item{distributionConfigurationArn}{[required] The Amazon Resource Name (ARN) of the distribution configuration to delete.}
 }
 \description{
-Deletes a distribution configuration.
+Deletes a distribution configuration. You can't delete a configuration that an image pipeline still references. The request fails with \code{ResourceDependencyException}. Update or delete the referencing pipelines first.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_delete_distribution_configuration/} for full documentation.
 }

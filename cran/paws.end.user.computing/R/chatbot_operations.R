@@ -24,7 +24,8 @@ chatbot_associate_to_configuration <- function(Resource, ChatConfiguration) {
     http_path = "/associate-to-configuration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .chatbot$associate_to_configuration_input(Resource = Resource, ChatConfiguration = ChatConfiguration)
   output <- .chatbot$associate_to_configuration_output()
@@ -65,7 +66,8 @@ chatbot_create_chime_webhook_configuration <- function(WebhookDescription, Webho
     http_path = "/create-chime-webhook-configuration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .chatbot$create_chime_webhook_configuration_input(WebhookDescription = WebhookDescription, WebhookUrl = WebhookUrl, SnsTopicArns = SnsTopicArns, IamRoleArn = IamRoleArn, ConfigurationName = ConfigurationName, LoggingLevel = LoggingLevel, Tags = Tags)
   output <- .chatbot$create_chime_webhook_configuration_output()
@@ -104,7 +106,8 @@ chatbot_create_custom_action <- function(Definition, AliasName = NULL, Attachmen
     http_path = "/create-custom-action",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .chatbot$create_custom_action_input(Definition = Definition, AliasName = AliasName, Attachments = Attachments, Tags = Tags, ClientToken = ClientToken, ActionName = ActionName)
   output <- .chatbot$create_custom_action_output()
@@ -150,7 +153,8 @@ chatbot_create_microsoft_teams_channel_configuration <- function(ChannelId, Chan
     http_path = "/create-ms-teams-channel-configuration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .chatbot$create_microsoft_teams_channel_configuration_input(ChannelId = ChannelId, ChannelName = ChannelName, TeamId = TeamId, TeamName = TeamName, TenantId = TenantId, SnsTopicArns = SnsTopicArns, IamRoleArn = IamRoleArn, ConfigurationName = ConfigurationName, LoggingLevel = LoggingLevel, GuardrailPolicyArns = GuardrailPolicyArns, UserAuthorizationRequired = UserAuthorizationRequired, Tags = Tags)
   output <- .chatbot$create_microsoft_teams_channel_configuration_output()
@@ -194,7 +198,8 @@ chatbot_create_slack_channel_configuration <- function(SlackTeamId, SlackChannel
     http_path = "/create-slack-channel-configuration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .chatbot$create_slack_channel_configuration_input(SlackTeamId = SlackTeamId, SlackChannelId = SlackChannelId, SlackChannelName = SlackChannelName, SnsTopicArns = SnsTopicArns, IamRoleArn = IamRoleArn, ConfigurationName = ConfigurationName, LoggingLevel = LoggingLevel, GuardrailPolicyArns = GuardrailPolicyArns, UserAuthorizationRequired = UserAuthorizationRequired, Tags = Tags)
   output <- .chatbot$create_slack_channel_configuration_output()
@@ -225,7 +230,8 @@ chatbot_delete_chime_webhook_configuration <- function(ChatConfigurationArn) {
     http_path = "/delete-chime-webhook-configuration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .chatbot$delete_chime_webhook_configuration_input(ChatConfigurationArn = ChatConfigurationArn)
   output <- .chatbot$delete_chime_webhook_configuration_output()
@@ -256,7 +262,8 @@ chatbot_delete_custom_action <- function(CustomActionArn) {
     http_path = "/delete-custom-action",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .chatbot$delete_custom_action_input(CustomActionArn = CustomActionArn)
   output <- .chatbot$delete_custom_action_output()
@@ -287,7 +294,8 @@ chatbot_delete_microsoft_teams_channel_configuration <- function(ChatConfigurati
     http_path = "/delete-ms-teams-channel-configuration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .chatbot$delete_microsoft_teams_channel_configuration_input(ChatConfigurationArn = ChatConfigurationArn)
   output <- .chatbot$delete_microsoft_teams_channel_configuration_output()
@@ -321,7 +329,8 @@ chatbot_delete_microsoft_teams_configured_team <- function(TeamId) {
     http_path = "/delete-ms-teams-configured-teams",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .chatbot$delete_microsoft_teams_configured_team_input(TeamId = TeamId)
   output <- .chatbot$delete_microsoft_teams_configured_team_output()
@@ -353,7 +362,8 @@ chatbot_delete_microsoft_teams_user_identity <- function(ChatConfigurationArn, U
     http_path = "/delete-ms-teams-user-identity",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .chatbot$delete_microsoft_teams_user_identity_input(ChatConfigurationArn = ChatConfigurationArn, UserId = UserId)
   output <- .chatbot$delete_microsoft_teams_user_identity_output()
@@ -384,7 +394,8 @@ chatbot_delete_slack_channel_configuration <- function(ChatConfigurationArn) {
     http_path = "/delete-slack-channel-configuration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .chatbot$delete_slack_channel_configuration_input(ChatConfigurationArn = ChatConfigurationArn)
   output <- .chatbot$delete_slack_channel_configuration_output()
@@ -417,7 +428,8 @@ chatbot_delete_slack_user_identity <- function(ChatConfigurationArn, SlackTeamId
     http_path = "/delete-slack-user-identity",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .chatbot$delete_slack_user_identity_input(ChatConfigurationArn = ChatConfigurationArn, SlackTeamId = SlackTeamId, SlackUserId = SlackUserId)
   output <- .chatbot$delete_slack_user_identity_output()
@@ -449,7 +461,8 @@ chatbot_delete_slack_workspace_authorization <- function(SlackTeamId) {
     http_path = "/delete-slack-workspace-authorization",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .chatbot$delete_slack_workspace_authorization_input(SlackTeamId = SlackTeamId)
   output <- .chatbot$delete_slack_workspace_authorization_output()
@@ -483,7 +496,8 @@ chatbot_describe_chime_webhook_configurations <- function(MaxResults = NULL, Nex
     http_path = "/describe-chime-webhook-configurations",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "WebhookConfigurations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .chatbot$describe_chime_webhook_configurations_input(MaxResults = MaxResults, NextToken = NextToken, ChatConfigurationArn = ChatConfigurationArn)
   output <- .chatbot$describe_chime_webhook_configurations_output()
@@ -517,7 +531,8 @@ chatbot_describe_slack_channel_configurations <- function(MaxResults = NULL, Nex
     http_path = "/describe-slack-channel-configurations",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "SlackChannelConfigurations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .chatbot$describe_slack_channel_configurations_input(MaxResults = MaxResults, NextToken = NextToken, ChatConfigurationArn = ChatConfigurationArn)
   output <- .chatbot$describe_slack_channel_configurations_output()
@@ -550,7 +565,8 @@ chatbot_describe_slack_user_identities <- function(ChatConfigurationArn = NULL, 
     http_path = "/describe-slack-user-identities",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "SlackUserIdentities"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .chatbot$describe_slack_user_identities_input(ChatConfigurationArn = ChatConfigurationArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .chatbot$describe_slack_user_identities_output()
@@ -583,7 +599,8 @@ chatbot_describe_slack_workspaces <- function(MaxResults = NULL, NextToken = NUL
     http_path = "/describe-slack-workspaces",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "SlackWorkspaces"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .chatbot$describe_slack_workspaces_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .chatbot$describe_slack_workspaces_output()
@@ -616,7 +633,8 @@ chatbot_disassociate_from_configuration <- function(Resource, ChatConfiguration)
     http_path = "/disassociate-from-configuration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .chatbot$disassociate_from_configuration_input(Resource = Resource, ChatConfiguration = ChatConfiguration)
   output <- .chatbot$disassociate_from_configuration_output()
@@ -647,7 +665,8 @@ chatbot_get_account_preferences <- function() {
     http_path = "/get-account-preferences",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .chatbot$get_account_preferences_input()
   output <- .chatbot$get_account_preferences_output()
@@ -678,7 +697,8 @@ chatbot_get_custom_action <- function(CustomActionArn) {
     http_path = "/get-custom-action",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .chatbot$get_custom_action_input(CustomActionArn = CustomActionArn)
   output <- .chatbot$get_custom_action_output()
@@ -709,7 +729,8 @@ chatbot_get_microsoft_teams_channel_configuration <- function(ChatConfigurationA
     http_path = "/get-ms-teams-channel-configuration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .chatbot$get_microsoft_teams_channel_configuration_input(ChatConfigurationArn = ChatConfigurationArn)
   output <- .chatbot$get_microsoft_teams_channel_configuration_output()
@@ -742,7 +763,8 @@ chatbot_list_associations <- function(ChatConfiguration, MaxResults = NULL, Next
     http_path = "/list-associations",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Associations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .chatbot$list_associations_input(ChatConfiguration = ChatConfiguration, MaxResults = MaxResults, NextToken = NextToken)
   output <- .chatbot$list_associations_output()
@@ -774,7 +796,8 @@ chatbot_list_custom_actions <- function(MaxResults = NULL, NextToken = NULL) {
     http_path = "/list-custom-actions",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CustomActions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .chatbot$list_custom_actions_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .chatbot$list_custom_actions_output()
@@ -810,7 +833,8 @@ chatbot_list_microsoft_teams_channel_configurations <- function(MaxResults = NUL
     http_path = "/list-ms-teams-channel-configurations",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TeamChannelConfigurations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .chatbot$list_microsoft_teams_channel_configurations_input(MaxResults = MaxResults, NextToken = NextToken, TeamId = TeamId)
   output <- .chatbot$list_microsoft_teams_channel_configurations_output()
@@ -842,7 +866,8 @@ chatbot_list_microsoft_teams_configured_teams <- function(MaxResults = NULL, Nex
     http_path = "/list-ms-teams-configured-teams",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ConfiguredTeams"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .chatbot$list_microsoft_teams_configured_teams_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .chatbot$list_microsoft_teams_configured_teams_output()
@@ -875,7 +900,8 @@ chatbot_list_microsoft_teams_user_identities <- function(ChatConfigurationArn = 
     http_path = "/list-ms-teams-user-identities",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TeamsUserIdentities"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .chatbot$list_microsoft_teams_user_identities_input(ChatConfigurationArn = ChatConfigurationArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .chatbot$list_microsoft_teams_user_identities_output()
@@ -907,7 +933,8 @@ chatbot_list_tags_for_resource <- function(ResourceARN) {
     http_path = "/list-tags-for-resource",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .chatbot$list_tags_for_resource_input(ResourceARN = ResourceARN)
   output <- .chatbot$list_tags_for_resource_output()
@@ -940,7 +967,8 @@ chatbot_tag_resource <- function(ResourceARN, Tags) {
     http_path = "/tag-resource",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .chatbot$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .chatbot$tag_resource_output()
@@ -973,7 +1001,8 @@ chatbot_untag_resource <- function(ResourceARN, TagKeys) {
     http_path = "/untag-resource",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .chatbot$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .chatbot$untag_resource_output()
@@ -1007,7 +1036,8 @@ chatbot_update_account_preferences <- function(UserAuthorizationRequired = NULL,
     http_path = "/update-account-preferences",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .chatbot$update_account_preferences_input(UserAuthorizationRequired = UserAuthorizationRequired, TrainingDataCollectionEnabled = TrainingDataCollectionEnabled)
   output <- .chatbot$update_account_preferences_output()
@@ -1047,7 +1077,8 @@ chatbot_update_chime_webhook_configuration <- function(ChatConfigurationArn, Web
     http_path = "/update-chime-webhook-configuration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .chatbot$update_chime_webhook_configuration_input(ChatConfigurationArn = ChatConfigurationArn, WebhookDescription = WebhookDescription, WebhookUrl = WebhookUrl, SnsTopicArns = SnsTopicArns, IamRoleArn = IamRoleArn, LoggingLevel = LoggingLevel)
   output <- .chatbot$update_chime_webhook_configuration_output()
@@ -1081,7 +1112,8 @@ chatbot_update_custom_action <- function(CustomActionArn, Definition, AliasName 
     http_path = "/update-custom-action",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .chatbot$update_custom_action_input(CustomActionArn = CustomActionArn, Definition = Definition, AliasName = AliasName, Attachments = Attachments)
   output <- .chatbot$update_custom_action_output()
@@ -1121,7 +1153,8 @@ chatbot_update_microsoft_teams_channel_configuration <- function(ChatConfigurati
     http_path = "/update-ms-teams-channel-configuration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .chatbot$update_microsoft_teams_channel_configuration_input(ChatConfigurationArn = ChatConfigurationArn, ChannelId = ChannelId, ChannelName = ChannelName, SnsTopicArns = SnsTopicArns, IamRoleArn = IamRoleArn, LoggingLevel = LoggingLevel, GuardrailPolicyArns = GuardrailPolicyArns, UserAuthorizationRequired = UserAuthorizationRequired)
   output <- .chatbot$update_microsoft_teams_channel_configuration_output()
@@ -1163,7 +1196,8 @@ chatbot_update_slack_channel_configuration <- function(ChatConfigurationArn, Sla
     http_path = "/update-slack-channel-configuration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .chatbot$update_slack_channel_configuration_input(ChatConfigurationArn = ChatConfigurationArn, SlackChannelId = SlackChannelId, SlackChannelName = SlackChannelName, SnsTopicArns = SnsTopicArns, IamRoleArn = IamRoleArn, LoggingLevel = LoggingLevel, GuardrailPolicyArns = GuardrailPolicyArns, UserAuthorizationRequired = UserAuthorizationRequired)
   output <- .chatbot$update_slack_channel_configuration_output()

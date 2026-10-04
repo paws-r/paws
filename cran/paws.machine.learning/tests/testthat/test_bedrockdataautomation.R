@@ -1,4 +1,4 @@
-svc <- paws.machine.learning::bedrockdataautomation()
+svc <- paws::bedrockdataautomation()
 
 test_that("list_blueprints", {
   skip_on_cran()

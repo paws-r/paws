@@ -105,6 +105,9 @@ The Billing API provides the following endpoint:
 \link[=billing_get_enterprise_support_contract_details]{get_enterprise_support_contract_details} \tab Returns Enterprise Support contract details\cr
 \link[=billing_get_resource_policy]{get_resource_policy} \tab Returns the resource-based policy document attached to the resource in JSON format\cr
 \link[=billing_list_billing_views]{list_billing_views} \tab Lists the billing views available for a given time period\cr
+\link[=billing_list_billing_view_segments]{list_billing_view_segments} \tab Lists the segments of a billing view over a given time period\cr
+\link[=billing_list_business_support_account_charges]{list_business_support_account_charges} \tab Returns Business Support charges broken down at the linked account level for a given billing month\cr
+\link[=billing_list_business_support_subscription_history]{list_business_support_subscription_history} \tab Returns the history of Business Support subscription contracts across accounts\cr
 \link[=billing_list_enterprise_support_linked_account_charges]{list_enterprise_support_linked_account_charges} \tab Returns Support-eligible spend broken down at linked account level\cr
 \link[=billing_list_source_views_for_billing_view]{list_source_views_for_billing_view} \tab Lists the source views (managed Amazon Web Services billing views) associated with the billing view\cr
 \link[=billing_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags associated with the billing view resource\cr

@@ -37,6 +37,7 @@ The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a target ID st
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_bedrock.html}{BEDROCK_POLICY}
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_s3.html}{S3_POLICY}
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_network_security_director.html}{NETWORK_SECURITY_DIRECTOR_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_guardduty.html}{GUARDDUTY_POLICY}
 }}
 
 \item{NextToken}{The parameter for receiving additional results if you receive a \code{NextToken} response in a previous request. A \code{NextToken} response indicates that more output is available. Set this parameter to the value of the previous call's \code{NextToken} response to indicate where the output should continue from.}

@@ -14,9 +14,9 @@ billing_list_enterprise_support_linked_account_charges(
 \arguments{
 \item{billingMonth}{[required] The billing month in YYYY-MM format. This must be a month in the past.}
 
-\item{accountId}{An optional linked account ID to filter results to a specific account.}
+\item{accountId}{The linked account ID to filter results to a specific account. If you don't specify a value, the response includes charges for all linked accounts.}
 
-\item{maxResults}{The maximum number of results to return per page.}
+\item{maxResults}{The maximum number of results to return per page. Default is 100.}
 
 \item{nextToken}{The pagination token for the next page of results.}
 }

@@ -11,7 +11,7 @@ connect_update_notification_content(InstanceId, NotificationId, Content)
 
 \item{NotificationId}{[required] The unique identifier for the notification to update.}
 
-\item{Content}{[required] The updated localized content of the notification. A map of locale codes and values. Maximum 500 characters per locale.}
+\item{Content}{[required] The updated localized content of the notification. A map of locale codes and values. Maximum 500 visible characters per locale.}
 }
 \description{
 Updates the localized content of an existing notification. This operation applies to all users for whom the notification was sent.

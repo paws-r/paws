@@ -22,7 +22,8 @@ licensemanager_accept_grant <- function(GrantArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$accept_grant_input(GrantArn = GrantArn)
   output <- .licensemanager$accept_grant_output()
@@ -54,7 +55,8 @@ licensemanager_check_in_license <- function(LicenseConsumptionToken, Beneficiary
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$check_in_license_input(LicenseConsumptionToken = LicenseConsumptionToken, Beneficiary = Beneficiary)
   output <- .licensemanager$check_in_license_output()
@@ -75,7 +77,7 @@ licensemanager_check_in_license <- function(LicenseConsumptionToken, Beneficiary
 #'
 #' @param LicenseArn &#91;required&#93; Amazon Resource Name (ARN) of the license. The license must use the borrow consumption configuration.
 #' @param Entitlements &#91;required&#93; License entitlements. Partial checkouts are not supported.
-#' @param DigitalSignatureMethod &#91;required&#93; Digital signature method. The possible value is JSON Web Signature (JWS) algorithm PS384. For more information, see [RFC 7518 Digital Signature with RSASSA-PSS](https://datatracker.ietf.org/doc/html/rfc7518#section-3.5).
+#' @param DigitalSignatureMethod &#91;required&#93; Digital signature method. The possible value is JSON Web Signature (JWS) algorithm PS384. For more information, see [RFC 7518 Digital Signature with RSASSA-PSS](https://www.rfc-editor.org/info/rfc7518/#section-3.5).
 #' @param NodeId Node ID.
 #' @param CheckoutMetadata Information about constraints.
 #' @param ClientToken &#91;required&#93; Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
@@ -90,7 +92,8 @@ licensemanager_checkout_borrow_license <- function(LicenseArn, Entitlements, Dig
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$checkout_borrow_license_input(LicenseArn = LicenseArn, Entitlements = Entitlements, DigitalSignatureMethod = DigitalSignatureMethod, NodeId = NodeId, CheckoutMetadata = CheckoutMetadata, ClientToken = ClientToken)
   output <- .licensemanager$checkout_borrow_license_output()
@@ -127,7 +130,8 @@ licensemanager_checkout_license <- function(ProductSKU, CheckoutType, KeyFingerp
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$checkout_license_input(ProductSKU = ProductSKU, CheckoutType = CheckoutType, KeyFingerprint = KeyFingerprint, Entitlements = Entitlements, ClientToken = ClientToken, Beneficiary = Beneficiary, NodeId = NodeId)
   output <- .licensemanager$checkout_license_output()
@@ -172,7 +176,8 @@ licensemanager_create_grant <- function(ClientToken, GrantName, LicenseArn, Prin
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$create_grant_input(ClientToken = ClientToken, GrantName = GrantName, LicenseArn = LicenseArn, Principals = Principals, HomeRegion = HomeRegion, AllowedOperations = AllowedOperations, Tags = Tags)
   output <- .licensemanager$create_grant_output()
@@ -210,7 +215,8 @@ licensemanager_create_grant_version <- function(ClientToken, GrantArn, GrantName
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$create_grant_version_input(ClientToken = ClientToken, GrantArn = GrantArn, GrantName = GrantName, AllowedOperations = AllowedOperations, Status = Status, StatusReason = StatusReason, SourceVersion = SourceVersion, Options = Options)
   output <- .licensemanager$create_grant_version_output()
@@ -252,7 +258,8 @@ licensemanager_create_license <- function(LicenseName, ProductName, ProductSKU, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$create_license_input(LicenseName = LicenseName, ProductName = ProductName, ProductSKU = ProductSKU, Issuer = Issuer, HomeRegion = HomeRegion, Validity = Validity, Entitlements = Entitlements, Beneficiary = Beneficiary, ConsumptionConfiguration = ConsumptionConfiguration, LicenseMetadata = LicenseMetadata, ClientToken = ClientToken, Tags = Tags)
   output <- .licensemanager$create_license_output()
@@ -289,7 +296,8 @@ licensemanager_create_license_asset_group <- function(Name, Description = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$create_license_asset_group_input(Name = Name, Description = Description, LicenseAssetGroupConfigurations = LicenseAssetGroupConfigurations, AssociatedLicenseAssetRulesetARNs = AssociatedLicenseAssetRulesetARNs, Properties = Properties, Tags = Tags, ClientToken = ClientToken)
   output <- .licensemanager$create_license_asset_group_output()
@@ -324,7 +332,8 @@ licensemanager_create_license_asset_ruleset <- function(Name, Description = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$create_license_asset_ruleset_input(Name = Name, Description = Description, Rules = Rules, Tags = Tags, ClientToken = ClientToken)
   output <- .licensemanager$create_license_asset_ruleset_output()
@@ -374,7 +383,8 @@ licensemanager_create_license_configuration <- function(Name, Description = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$create_license_configuration_input(Name = Name, Description = Description, LicenseCountingType = LicenseCountingType, LicenseCount = LicenseCount, LicenseCountHardLimit = LicenseCountHardLimit, LicenseRules = LicenseRules, Tags = Tags, DisassociateWhenNotFound = DisassociateWhenNotFound, ProductInformationList = ProductInformationList, LicenseExpiry = LicenseExpiry)
   output <- .licensemanager$create_license_configuration_output()
@@ -407,7 +417,8 @@ licensemanager_create_license_conversion_task_for_resource <- function(ResourceA
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$create_license_conversion_task_for_resource_input(ResourceArn = ResourceArn, SourceLicenseContext = SourceLicenseContext, DestinationLicenseContext = DestinationLicenseContext)
   output <- .licensemanager$create_license_conversion_task_for_resource_output()
@@ -448,7 +459,8 @@ licensemanager_create_license_manager_report_generator <- function(ReportGenerat
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$create_license_manager_report_generator_input(ReportGeneratorName = ReportGeneratorName, Type = Type, ReportContext = ReportContext, ReportFrequency = ReportFrequency, ClientToken = ClientToken, Description = Description, Tags = Tags)
   output <- .licensemanager$create_license_manager_report_generator_output()
@@ -491,7 +503,8 @@ licensemanager_create_license_version <- function(LicenseArn, LicenseName, Produ
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$create_license_version_input(LicenseArn = LicenseArn, LicenseName = LicenseName, ProductName = ProductName, Issuer = Issuer, HomeRegion = HomeRegion, Validity = Validity, LicenseMetadata = LicenseMetadata, Entitlements = Entitlements, ConsumptionConfiguration = ConsumptionConfiguration, Status = Status, ClientToken = ClientToken, SourceVersion = SourceVersion, ResetUsage = ResetUsage)
   output <- .licensemanager$create_license_version_output()
@@ -526,7 +539,8 @@ licensemanager_create_token <- function(LicenseArn, RoleArns = NULL, ExpirationI
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$create_token_input(LicenseArn = LicenseArn, RoleArns = RoleArns, ExpirationInDays = ExpirationInDays, TokenProperties = TokenProperties, ClientToken = ClientToken)
   output <- .licensemanager$create_token_output()
@@ -559,7 +573,8 @@ licensemanager_delete_grant <- function(GrantArn, StatusReason = NULL, Version) 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$delete_grant_input(GrantArn = GrantArn, StatusReason = StatusReason, Version = Version)
   output <- .licensemanager$delete_grant_output()
@@ -591,7 +606,8 @@ licensemanager_delete_license <- function(LicenseArn, SourceVersion) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$delete_license_input(LicenseArn = LicenseArn, SourceVersion = SourceVersion)
   output <- .licensemanager$delete_license_output()
@@ -622,7 +638,8 @@ licensemanager_delete_license_asset_group <- function(LicenseAssetGroupArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$delete_license_asset_group_input(LicenseAssetGroupArn = LicenseAssetGroupArn)
   output <- .licensemanager$delete_license_asset_group_output()
@@ -653,7 +670,8 @@ licensemanager_delete_license_asset_ruleset <- function(LicenseAssetRulesetArn) 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$delete_license_asset_ruleset_input(LicenseAssetRulesetArn = LicenseAssetRulesetArn)
   output <- .licensemanager$delete_license_asset_ruleset_output()
@@ -684,7 +702,8 @@ licensemanager_delete_license_configuration <- function(LicenseConfigurationArn)
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$delete_license_configuration_input(LicenseConfigurationArn = LicenseConfigurationArn)
   output <- .licensemanager$delete_license_configuration_output()
@@ -715,7 +734,8 @@ licensemanager_delete_license_manager_report_generator <- function(LicenseManage
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$delete_license_manager_report_generator_input(LicenseManagerReportGeneratorArn = LicenseManagerReportGeneratorArn)
   output <- .licensemanager$delete_license_manager_report_generator_output()
@@ -746,7 +766,8 @@ licensemanager_delete_token <- function(TokenId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$delete_token_input(TokenId = TokenId)
   output <- .licensemanager$delete_token_output()
@@ -778,7 +799,8 @@ licensemanager_extend_license_consumption <- function(LicenseConsumptionToken, D
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$extend_license_consumption_input(LicenseConsumptionToken = LicenseConsumptionToken, DryRun = DryRun)
   output <- .licensemanager$extend_license_consumption_output()
@@ -810,7 +832,8 @@ licensemanager_get_access_token <- function(Token, TokenProperties = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$get_access_token_input(Token = Token, TokenProperties = TokenProperties)
   output <- .licensemanager$get_access_token_output()
@@ -842,7 +865,8 @@ licensemanager_get_grant <- function(GrantArn, Version = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$get_grant_input(GrantArn = GrantArn, Version = Version)
   output <- .licensemanager$get_grant_output()
@@ -874,7 +898,8 @@ licensemanager_get_license <- function(LicenseArn, Version = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$get_license_input(LicenseArn = LicenseArn, Version = Version)
   output <- .licensemanager$get_license_output()
@@ -905,7 +930,8 @@ licensemanager_get_license_asset_group <- function(LicenseAssetGroupArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$get_license_asset_group_input(LicenseAssetGroupArn = LicenseAssetGroupArn)
   output <- .licensemanager$get_license_asset_group_output()
@@ -936,7 +962,8 @@ licensemanager_get_license_asset_ruleset <- function(LicenseAssetRulesetArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$get_license_asset_ruleset_input(LicenseAssetRulesetArn = LicenseAssetRulesetArn)
   output <- .licensemanager$get_license_asset_ruleset_output()
@@ -967,7 +994,8 @@ licensemanager_get_license_configuration <- function(LicenseConfigurationArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$get_license_configuration_input(LicenseConfigurationArn = LicenseConfigurationArn)
   output <- .licensemanager$get_license_configuration_output()
@@ -998,7 +1026,8 @@ licensemanager_get_license_conversion_task <- function(LicenseConversionTaskId) 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$get_license_conversion_task_input(LicenseConversionTaskId = LicenseConversionTaskId)
   output <- .licensemanager$get_license_conversion_task_output()
@@ -1029,7 +1058,8 @@ licensemanager_get_license_manager_report_generator <- function(LicenseManagerRe
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$get_license_manager_report_generator_input(LicenseManagerReportGeneratorArn = LicenseManagerReportGeneratorArn)
   output <- .licensemanager$get_license_manager_report_generator_output()
@@ -1060,7 +1090,8 @@ licensemanager_get_license_usage <- function(LicenseArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$get_license_usage_input(LicenseArn = LicenseArn)
   output <- .licensemanager$get_license_usage_output()
@@ -1091,7 +1122,8 @@ licensemanager_get_service_settings <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$get_service_settings_input()
   output <- .licensemanager$get_service_settings_output()
@@ -1125,7 +1157,8 @@ licensemanager_list_assets_for_license_asset_group <- function(LicenseAssetGroup
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$list_assets_for_license_asset_group_input(LicenseAssetGroupArn = LicenseAssetGroupArn, AssetType = AssetType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .licensemanager$list_assets_for_license_asset_group_output()
@@ -1158,7 +1191,8 @@ licensemanager_list_associations_for_license_configuration <- function(LicenseCo
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LicenseConfigurationAssociations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$list_associations_for_license_configuration_input(LicenseConfigurationArn = LicenseConfigurationArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .licensemanager$list_associations_for_license_configuration_output()
@@ -1202,7 +1236,8 @@ licensemanager_list_distributed_grants <- function(GrantArns = NULL, Filters = N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$list_distributed_grants_input(GrantArns = GrantArns, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .licensemanager$list_distributed_grants_output()
@@ -1235,7 +1270,8 @@ licensemanager_list_failures_for_license_configuration_operations <- function(Li
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$list_failures_for_license_configuration_operations_input(LicenseConfigurationArn = LicenseConfigurationArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .licensemanager$list_failures_for_license_configuration_operations_output()
@@ -1270,7 +1306,8 @@ licensemanager_list_license_asset_groups <- function(Filters = NULL, MaxResults 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$list_license_asset_groups_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .licensemanager$list_license_asset_groups_output()
@@ -1306,7 +1343,8 @@ licensemanager_list_license_asset_rulesets <- function(Filters = NULL, ShowAWSMa
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$list_license_asset_rulesets_input(Filters = Filters, ShowAWSManagedLicenseAssetRulesets = ShowAWSManagedLicenseAssetRulesets, MaxResults = MaxResults, NextToken = NextToken)
   output <- .licensemanager$list_license_asset_rulesets_output()
@@ -1346,7 +1384,8 @@ licensemanager_list_license_configurations <- function(LicenseConfigurationArns 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LicenseConfigurations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$list_license_configurations_input(LicenseConfigurationArns = LicenseConfigurationArns, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .licensemanager$list_license_configurations_output()
@@ -1380,7 +1419,8 @@ licensemanager_list_license_configurations_for_organization <- function(LicenseC
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$list_license_configurations_for_organization_input(LicenseConfigurationArns = LicenseConfigurationArns, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .licensemanager$list_license_configurations_for_organization_output()
@@ -1413,7 +1453,8 @@ licensemanager_list_license_conversion_tasks <- function(NextToken = NULL, MaxRe
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$list_license_conversion_tasks_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .licensemanager$list_license_conversion_tasks_output()
@@ -1448,7 +1489,8 @@ licensemanager_list_license_manager_report_generators <- function(Filters = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$list_license_manager_report_generators_input(Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .licensemanager$list_license_manager_report_generators_output()
@@ -1481,7 +1523,8 @@ licensemanager_list_license_specifications_for_resource <- function(ResourceArn,
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LicenseSpecifications"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$list_license_specifications_for_resource_input(ResourceArn = ResourceArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .licensemanager$list_license_specifications_for_resource_output()
@@ -1514,7 +1557,8 @@ licensemanager_list_license_versions <- function(LicenseArn, NextToken = NULL, M
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$list_license_versions_input(LicenseArn = LicenseArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .licensemanager$list_license_versions_output()
@@ -1556,7 +1600,8 @@ licensemanager_list_licenses <- function(LicenseArns = NULL, Filters = NULL, Nex
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$list_licenses_input(LicenseArns = LicenseArns, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .licensemanager$list_licenses_output()
@@ -1600,7 +1645,8 @@ licensemanager_list_received_grants <- function(GrantArns = NULL, Filters = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$list_received_grants_input(GrantArns = GrantArns, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .licensemanager$list_received_grants_output()
@@ -1638,7 +1684,8 @@ licensemanager_list_received_grants_for_organization <- function(LicenseArn, Fil
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$list_received_grants_for_organization_input(LicenseArn = LicenseArn, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .licensemanager$list_received_grants_for_organization_output()
@@ -1682,7 +1729,8 @@ licensemanager_list_received_licenses <- function(LicenseArns = NULL, Filters = 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$list_received_licenses_input(LicenseArns = LicenseArns, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .licensemanager$list_received_licenses_output()
@@ -1719,7 +1767,8 @@ licensemanager_list_received_licenses_for_organization <- function(Filters = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$list_received_licenses_for_organization_input(Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .licensemanager$list_received_licenses_for_organization_output()
@@ -1764,7 +1813,8 @@ licensemanager_list_resource_inventory <- function(MaxResults = NULL, NextToken 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ResourceInventoryList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$list_resource_inventory_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .licensemanager$list_resource_inventory_output()
@@ -1795,7 +1845,8 @@ licensemanager_list_tags_for_resource <- function(ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .licensemanager$list_tags_for_resource_output()
@@ -1831,7 +1882,8 @@ licensemanager_list_tokens <- function(TokenIds = NULL, Filters = NULL, NextToke
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$list_tokens_input(TokenIds = TokenIds, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .licensemanager$list_tokens_output()
@@ -1872,7 +1924,8 @@ licensemanager_list_usage_for_license_configuration <- function(LicenseConfigura
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LicenseConfigurationUsageList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$list_usage_for_license_configuration_input(LicenseConfigurationArn = LicenseConfigurationArn, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .licensemanager$list_usage_for_license_configuration_output()
@@ -1903,7 +1956,8 @@ licensemanager_reject_grant <- function(GrantArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$reject_grant_input(GrantArn = GrantArn)
   output <- .licensemanager$reject_grant_output()
@@ -1943,7 +1997,8 @@ licensemanager_tag_resource <- function(ResourceArn, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .licensemanager$tag_resource_output()
@@ -1975,7 +2030,8 @@ licensemanager_untag_resource <- function(ResourceArn, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .licensemanager$untag_resource_output()
@@ -2013,7 +2069,8 @@ licensemanager_update_license_asset_group <- function(Name = NULL, Description =
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$update_license_asset_group_input(Name = Name, Description = Description, LicenseAssetGroupConfigurations = LicenseAssetGroupConfigurations, AssociatedLicenseAssetRulesetARNs = AssociatedLicenseAssetRulesetARNs, Properties = Properties, LicenseAssetGroupArn = LicenseAssetGroupArn, Status = Status, ClientToken = ClientToken)
   output <- .licensemanager$update_license_asset_group_output()
@@ -2048,7 +2105,8 @@ licensemanager_update_license_asset_ruleset <- function(Name = NULL, Description
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$update_license_asset_ruleset_input(Name = Name, Description = Description, Rules = Rules, LicenseAssetRulesetArn = LicenseAssetRulesetArn, ClientToken = ClientToken)
   output <- .licensemanager$update_license_asset_ruleset_output()
@@ -2088,7 +2146,8 @@ licensemanager_update_license_configuration <- function(LicenseConfigurationArn,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$update_license_configuration_input(LicenseConfigurationArn = LicenseConfigurationArn, LicenseConfigurationStatus = LicenseConfigurationStatus, LicenseRules = LicenseRules, LicenseCount = LicenseCount, LicenseCountHardLimit = LicenseCountHardLimit, Name = Name, Description = Description, ProductInformationList = ProductInformationList, DisassociateWhenNotFound = DisassociateWhenNotFound, LicenseExpiry = LicenseExpiry)
   output <- .licensemanager$update_license_configuration_output()
@@ -2129,7 +2188,8 @@ licensemanager_update_license_manager_report_generator <- function(LicenseManage
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$update_license_manager_report_generator_input(LicenseManagerReportGeneratorArn = LicenseManagerReportGeneratorArn, ReportGeneratorName = ReportGeneratorName, Type = Type, ReportContext = ReportContext, ReportFrequency = ReportFrequency, ClientToken = ClientToken, Description = Description)
   output <- .licensemanager$update_license_manager_report_generator_output()
@@ -2163,7 +2223,8 @@ licensemanager_update_license_specifications_for_resource <- function(ResourceAr
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$update_license_specifications_for_resource_input(ResourceArn = ResourceArn, AddLicenseSpecifications = AddLicenseSpecifications, RemoveLicenseSpecifications = RemoveLicenseSpecifications)
   output <- .licensemanager$update_license_specifications_for_resource_output()
@@ -2198,7 +2259,8 @@ licensemanager_update_service_settings <- function(S3BucketArn = NULL, SnsTopicA
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanager$update_service_settings_input(S3BucketArn = S3BucketArn, SnsTopicArn = SnsTopicArn, OrganizationConfiguration = OrganizationConfiguration, EnableCrossAccountsDiscovery = EnableCrossAccountsDiscovery, EnabledDiscoverySourceRegions = EnabledDiscoverySourceRegions)
   output <- .licensemanager$update_service_settings_output()

@@ -21,7 +21,7 @@ imagebuilder_create_component(
 )
 }
 \arguments{
-\item{name}{[required] The name of the component.}
+\item{name}{[required] The name of the component. Image Builder generates the component ARN from a normalized form of the name, so names that differ only in case, spaces, or underscores count as the same name. If a component with the same name and semantic version already exists in your account in the same Amazon Web Services Region, the request creates a new build version for it. If the content is also identical to the latest build version, the request fails because the component already exists.}
 
 \item{semanticVersion}{[required] The semantic version of the component. This version follows the semantic version syntax.
 
@@ -41,17 +41,17 @@ The semantic version has four nodes: \<major\>.\<minor\>.\<patch\>/\<build\>. Yo
 
 \item{data}{Component \code{data} contains inline YAML document content for the component. Alternatively, you can specify the \code{uri} of a YAML document file stored in Amazon S3. However, you cannot specify both properties.}
 
-\item{uri}{The \code{uri} of a YAML component document file. This must be an S3 URL (\verb{s3://bucket/key}), and you must have permission to access the S3 bucket it points to. If you use Amazon S3, you can specify component content up to your service quota.
+\item{uri}{The \code{uri} of a YAML component document file. This must be an S3 URL (\verb{s3://bucket/key}), and you must have permission to access the S3 bucket it points to. If you use Amazon S3, you can specify component content up to your service quota for component size, which is 64 KB by default.
 
 Alternatively, you can specify the YAML document inline, using the component \code{data} property. You cannot specify both properties.}
 
-\item{kmsKeyId}{The Amazon Resource Name (ARN) that uniquely identifies the KMS key used to encrypt this component. This can be either the Key ARN or the Alias ARN. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN}{Key identifiers (KeyId)} in the \emph{Key Management Service Developer Guide}.}
+\item{kmsKeyId}{The Amazon Resource Name (ARN) that uniquely identifies the KMS key used to encrypt this component. This can be either the Key ARN or the Alias ARN. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN}{Key identifiers (KeyId)} in the \emph{Key Management Service Developer Guide}. If you don't specify a key, Image Builder encrypts the component data with a KMS key that Image Builder owns.}
 
 \item{tags}{The tags that apply to the component.}
 
-\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
+\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
 
-\item{dryRun}{Validates the required permissions and request parameters without making the request. If validation succeeds, the operation returns a \code{DryRunOperationException} error response.}
+\item{dryRun}{Validates the required permissions and request parameters without performing the operation. If validation succeeds, the operation returns a \code{DryRunOperationException} error response.}
 }
 \description{
 Creates a new component that can be used to build, validate, test, and assess your image. The component is based on a YAML document that you specify using exactly one of the following methods:

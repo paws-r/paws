@@ -1,4 +1,4 @@
-svc <- paws.networking::vpclattice()
+svc <- paws::vpclattice()
 
 test_that("list_domain_verifications", {
   skip_on_cran()

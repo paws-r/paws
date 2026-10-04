@@ -23,7 +23,8 @@ backupgateway_associate_gateway_to_server <- function(GatewayArn, ServerArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .backupgateway$associate_gateway_to_server_input(GatewayArn = GatewayArn, ServerArn = ServerArn)
   output <- .backupgateway$associate_gateway_to_server_output()
@@ -57,7 +58,8 @@ backupgateway_create_gateway <- function(ActivationKey, GatewayDisplayName, Gate
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .backupgateway$create_gateway_input(ActivationKey = ActivationKey, GatewayDisplayName = GatewayDisplayName, GatewayType = GatewayType, Tags = Tags)
   output <- .backupgateway$create_gateway_output()
@@ -88,7 +90,8 @@ backupgateway_delete_gateway <- function(GatewayArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .backupgateway$delete_gateway_input(GatewayArn = GatewayArn)
   output <- .backupgateway$delete_gateway_output()
@@ -119,7 +122,8 @@ backupgateway_delete_hypervisor <- function(HypervisorArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .backupgateway$delete_hypervisor_input(HypervisorArn = HypervisorArn)
   output <- .backupgateway$delete_hypervisor_output()
@@ -150,7 +154,8 @@ backupgateway_disassociate_gateway_from_server <- function(GatewayArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .backupgateway$disassociate_gateway_from_server_input(GatewayArn = GatewayArn)
   output <- .backupgateway$disassociate_gateway_from_server_output()
@@ -181,7 +186,8 @@ backupgateway_get_bandwidth_rate_limit_schedule <- function(GatewayArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .backupgateway$get_bandwidth_rate_limit_schedule_input(GatewayArn = GatewayArn)
   output <- .backupgateway$get_bandwidth_rate_limit_schedule_output()
@@ -213,7 +219,8 @@ backupgateway_get_gateway <- function(GatewayArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .backupgateway$get_gateway_input(GatewayArn = GatewayArn)
   output <- .backupgateway$get_gateway_output()
@@ -245,7 +252,8 @@ backupgateway_get_hypervisor <- function(HypervisorArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .backupgateway$get_hypervisor_input(HypervisorArn = HypervisorArn)
   output <- .backupgateway$get_hypervisor_output()
@@ -276,7 +284,8 @@ backupgateway_get_hypervisor_property_mappings <- function(HypervisorArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .backupgateway$get_hypervisor_property_mappings_input(HypervisorArn = HypervisorArn)
   output <- .backupgateway$get_hypervisor_property_mappings_output()
@@ -308,7 +317,8 @@ backupgateway_get_virtual_machine <- function(ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .backupgateway$get_virtual_machine_input(ResourceArn = ResourceArn)
   output <- .backupgateway$get_virtual_machine_output()
@@ -344,7 +354,8 @@ backupgateway_import_hypervisor_configuration <- function(Name, Host, Username =
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .backupgateway$import_hypervisor_configuration_input(Name = Name, Host = Host, Username = Username, Password = Password, KmsKeyArn = KmsKeyArn, Tags = Tags)
   output <- .backupgateway$import_hypervisor_configuration_output()
@@ -377,7 +388,8 @@ backupgateway_list_gateways <- function(MaxResults = NULL, NextToken = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Gateways"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .backupgateway$list_gateways_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .backupgateway$list_gateways_output()
@@ -409,7 +421,8 @@ backupgateway_list_hypervisors <- function(MaxResults = NULL, NextToken = NULL) 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Hypervisors"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .backupgateway$list_hypervisors_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .backupgateway$list_hypervisors_output()
@@ -441,7 +454,8 @@ backupgateway_list_tags_for_resource <- function(ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .backupgateway$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .backupgateway$list_tags_for_resource_output()
@@ -474,7 +488,8 @@ backupgateway_list_virtual_machines <- function(HypervisorArn = NULL, MaxResults
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "VirtualMachines"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .backupgateway$list_virtual_machines_input(HypervisorArn = HypervisorArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .backupgateway$list_virtual_machines_output()
@@ -507,7 +522,8 @@ backupgateway_put_bandwidth_rate_limit_schedule <- function(GatewayArn, Bandwidt
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .backupgateway$put_bandwidth_rate_limit_schedule_input(GatewayArn = GatewayArn, BandwidthRateLimitIntervals = BandwidthRateLimitIntervals)
   output <- .backupgateway$put_bandwidth_rate_limit_schedule_output()
@@ -540,7 +556,8 @@ backupgateway_put_hypervisor_property_mappings <- function(HypervisorArn, Vmware
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .backupgateway$put_hypervisor_property_mappings_input(HypervisorArn = HypervisorArn, VmwareToAwsTagMappings = VmwareToAwsTagMappings, IamRoleArn = IamRoleArn)
   output <- .backupgateway$put_hypervisor_property_mappings_output()
@@ -577,7 +594,8 @@ backupgateway_put_maintenance_start_time <- function(GatewayArn, HourOfDay, Minu
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .backupgateway$put_maintenance_start_time_input(GatewayArn = GatewayArn, HourOfDay = HourOfDay, MinuteOfHour = MinuteOfHour, DayOfWeek = DayOfWeek, DayOfMonth = DayOfMonth)
   output <- .backupgateway$put_maintenance_start_time_output()
@@ -609,7 +627,8 @@ backupgateway_start_virtual_machines_metadata_sync <- function(HypervisorArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .backupgateway$start_virtual_machines_metadata_sync_input(HypervisorArn = HypervisorArn)
   output <- .backupgateway$start_virtual_machines_metadata_sync_output()
@@ -641,7 +660,8 @@ backupgateway_tag_resource <- function(ResourceARN, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .backupgateway$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .backupgateway$tag_resource_output()
@@ -676,7 +696,8 @@ backupgateway_test_hypervisor_configuration <- function(GatewayArn, Host, Userna
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .backupgateway$test_hypervisor_configuration_input(GatewayArn = GatewayArn, Host = Host, Username = Username, Password = Password)
   output <- .backupgateway$test_hypervisor_configuration_output()
@@ -708,7 +729,8 @@ backupgateway_untag_resource <- function(ResourceARN, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .backupgateway$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .backupgateway$untag_resource_output()
@@ -740,7 +762,8 @@ backupgateway_update_gateway_information <- function(GatewayArn, GatewayDisplayN
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .backupgateway$update_gateway_information_input(GatewayArn = GatewayArn, GatewayDisplayName = GatewayDisplayName)
   output <- .backupgateway$update_gateway_information_output()
@@ -771,7 +794,8 @@ backupgateway_update_gateway_software_now <- function(GatewayArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .backupgateway$update_gateway_software_now_input(GatewayArn = GatewayArn)
   output <- .backupgateway$update_gateway_software_now_output()
@@ -808,7 +832,8 @@ backupgateway_update_hypervisor <- function(HypervisorArn, Host = NULL, Username
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .backupgateway$update_hypervisor_input(HypervisorArn = HypervisorArn, Host = Host, Username = Username, Password = Password, Name = Name, LogGroupArn = LogGroupArn)
   output <- .backupgateway$update_hypervisor_output()

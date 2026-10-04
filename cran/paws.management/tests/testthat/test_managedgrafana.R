@@ -1,4 +1,4 @@
-svc <- paws.management::managedgrafana()
+svc <- paws::managedgrafana()
 
 test_that("list_versions", {
   skip_on_cran()

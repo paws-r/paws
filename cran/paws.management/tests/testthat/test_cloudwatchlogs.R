@@ -1,4 +1,4 @@
-svc <- paws.management::cloudwatchlogs()
+svc <- paws::cloudwatchlogs()
 
 test_that("describe_configuration_templates", {
   skip_on_cran()

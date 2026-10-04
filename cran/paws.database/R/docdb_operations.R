@@ -31,7 +31,8 @@ docdb_add_source_identifier_to_subscription <- function(SubscriptionName, Source
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$add_source_identifier_to_subscription_input(SubscriptionName = SubscriptionName, SourceIdentifier = SourceIdentifier)
   output <- .docdb$add_source_identifier_to_subscription_output()
@@ -63,7 +64,8 @@ docdb_add_tags_to_resource <- function(ResourceName, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$add_tags_to_resource_input(ResourceName = ResourceName, Tags = Tags)
   output <- .docdb$add_tags_to_resource_output()
@@ -107,7 +109,8 @@ docdb_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyActi
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$apply_pending_maintenance_action_input(ResourceIdentifier = ResourceIdentifier, ApplyAction = ApplyAction, OptInType = OptInType)
   output <- .docdb$apply_pending_maintenance_action_output()
@@ -161,7 +164,8 @@ docdb_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupI
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$copy_db_cluster_parameter_group_input(SourceDBClusterParameterGroupIdentifier = SourceDBClusterParameterGroupIdentifier, TargetDBClusterParameterGroupIdentifier = TargetDBClusterParameterGroupIdentifier, TargetDBClusterParameterGroupDescription = TargetDBClusterParameterGroupDescription, Tags = Tags)
   output <- .docdb$copy_db_cluster_parameter_group_output()
@@ -235,7 +239,8 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$copy_db_cluster_snapshot_input(SourceDBClusterSnapshotIdentifier = SourceDBClusterSnapshotIdentifier, TargetDBClusterSnapshotIdentifier = TargetDBClusterSnapshotIdentifier, KmsKeyId = KmsKeyId, PreSignedUrl = PreSignedUrl, CopyTags = CopyTags, Tags = Tags)
   output <- .docdb$copy_db_cluster_snapshot_output()
@@ -361,20 +366,22 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #' For more information, see [DocumentDB clusters in a VPC](https://docs.aws.amazon.com/documentdb/latest/devguide/vpc-clusters.html) in the Amazon DocumentDB Developer Guide.
 #' 
 #' Valid Values: `IPV4` | `DUAL`
+#' @param CopyTagsToSnapshot Specifies whether to copy all tags from the DB cluster to snapshots of the DB cluster. The default is not to copy them.
 #'
 #' @keywords internal
 #'
 #' @rdname docdb_create_db_cluster
-docdb_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPeriod = NULL, DBClusterIdentifier, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, DBSubnetGroupName = NULL, Engine, EngineVersion = NULL, Port = NULL, MasterUsername = NULL, MasterUserPassword = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, Tags = NULL, StorageEncrypted = NULL, KmsKeyId = NULL, PreSignedUrl = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL, GlobalClusterIdentifier = NULL, StorageType = NULL, ServerlessV2ScalingConfiguration = NULL, ManageMasterUserPassword = NULL, MasterUserSecretKmsKeyId = NULL, NetworkType = NULL) {
+docdb_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPeriod = NULL, DBClusterIdentifier, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, DBSubnetGroupName = NULL, Engine, EngineVersion = NULL, Port = NULL, MasterUsername = NULL, MasterUserPassword = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, Tags = NULL, StorageEncrypted = NULL, KmsKeyId = NULL, PreSignedUrl = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL, GlobalClusterIdentifier = NULL, StorageType = NULL, ServerlessV2ScalingConfiguration = NULL, ManageMasterUserPassword = NULL, MasterUserSecretKmsKeyId = NULL, NetworkType = NULL, CopyTagsToSnapshot = NULL) {
   op <- new_operation(
     name = "CreateDBCluster",
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
-  input <- .docdb$create_db_cluster_input(AvailabilityZones = AvailabilityZones, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterIdentifier = DBClusterIdentifier, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, DBSubnetGroupName = DBSubnetGroupName, Engine = Engine, EngineVersion = EngineVersion, Port = Port, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Tags = Tags, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, PreSignedUrl = PreSignedUrl, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection, GlobalClusterIdentifier = GlobalClusterIdentifier, StorageType = StorageType, ServerlessV2ScalingConfiguration = ServerlessV2ScalingConfiguration, ManageMasterUserPassword = ManageMasterUserPassword, MasterUserSecretKmsKeyId = MasterUserSecretKmsKeyId, NetworkType = NetworkType)
+  input <- .docdb$create_db_cluster_input(AvailabilityZones = AvailabilityZones, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterIdentifier = DBClusterIdentifier, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, DBSubnetGroupName = DBSubnetGroupName, Engine = Engine, EngineVersion = EngineVersion, Port = Port, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Tags = Tags, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, PreSignedUrl = PreSignedUrl, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection, GlobalClusterIdentifier = GlobalClusterIdentifier, StorageType = StorageType, ServerlessV2ScalingConfiguration = ServerlessV2ScalingConfiguration, ManageMasterUserPassword = ManageMasterUserPassword, MasterUserSecretKmsKeyId = MasterUserSecretKmsKeyId, NetworkType = NetworkType, CopyTagsToSnapshot = CopyTagsToSnapshot)
   output <- .docdb$create_db_cluster_output()
   config <- get_config()
   svc <- .docdb$service(config, op)
@@ -412,7 +419,8 @@ docdb_create_db_cluster_parameter_group <- function(DBClusterParameterGroupName,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$create_db_cluster_parameter_group_input(DBClusterParameterGroupName = DBClusterParameterGroupName, DBParameterGroupFamily = DBParameterGroupFamily, Description = Description, Tags = Tags)
   output <- .docdb$create_db_cluster_parameter_group_output()
@@ -461,7 +469,8 @@ docdb_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBClus
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$create_db_cluster_snapshot_input(DBClusterSnapshotIdentifier = DBClusterSnapshotIdentifier, DBClusterIdentifier = DBClusterIdentifier, Tags = Tags)
   output <- .docdb$create_db_cluster_snapshot_output()
@@ -540,7 +549,8 @@ docdb_create_db_instance <- function(DBInstanceIdentifier, DBInstanceClass, Engi
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$create_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, DBInstanceClass = DBInstanceClass, Engine = Engine, AvailabilityZone = AvailabilityZone, PreferredMaintenanceWindow = PreferredMaintenanceWindow, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, Tags = Tags, DBClusterIdentifier = DBClusterIdentifier, CopyTagsToSnapshot = CopyTagsToSnapshot, PromotionTier = PromotionTier, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, CACertificateIdentifier = CACertificateIdentifier)
   output <- .docdb$create_db_instance_output()
@@ -578,7 +588,8 @@ docdb_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescrip
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$create_db_subnet_group_input(DBSubnetGroupName = DBSubnetGroupName, DBSubnetGroupDescription = DBSubnetGroupDescription, SubnetIds = SubnetIds, Tags = Tags)
   output <- .docdb$create_db_subnet_group_output()
@@ -631,7 +642,8 @@ docdb_create_event_subscription <- function(SubscriptionName, SnsTopicArn, Sourc
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$create_event_subscription_input(SubscriptionName = SubscriptionName, SnsTopicArn = SnsTopicArn, SourceType = SourceType, EventCategories = EventCategories, SourceIds = SourceIds, Enabled = Enabled, Tags = Tags)
   output <- .docdb$create_event_subscription_output()
@@ -669,7 +681,8 @@ docdb_create_global_cluster <- function(GlobalClusterIdentifier, SourceDBCluster
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$create_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, SourceDBClusterIdentifier = SourceDBClusterIdentifier, Engine = Engine, EngineVersion = EngineVersion, DeletionProtection = DeletionProtection, DatabaseName = DatabaseName, StorageEncrypted = StorageEncrypted)
   output <- .docdb$create_global_cluster_output()
@@ -720,7 +733,8 @@ docdb_delete_db_cluster <- function(DBClusterIdentifier, SkipFinalSnapshot = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$delete_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, SkipFinalSnapshot = SkipFinalSnapshot, FinalDBSnapshotIdentifier = FinalDBSnapshotIdentifier)
   output <- .docdb$delete_db_cluster_output()
@@ -759,7 +773,8 @@ docdb_delete_db_cluster_parameter_group <- function(DBClusterParameterGroupName)
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$delete_db_cluster_parameter_group_input(DBClusterParameterGroupName = DBClusterParameterGroupName)
   output <- .docdb$delete_db_cluster_parameter_group_output()
@@ -792,7 +807,8 @@ docdb_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$delete_db_cluster_snapshot_input(DBClusterSnapshotIdentifier = DBClusterSnapshotIdentifier)
   output <- .docdb$delete_db_cluster_snapshot_output()
@@ -827,7 +843,8 @@ docdb_delete_db_instance <- function(DBInstanceIdentifier) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$delete_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier)
   output <- .docdb$delete_db_instance_output()
@@ -866,7 +883,8 @@ docdb_delete_db_subnet_group <- function(DBSubnetGroupName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$delete_db_subnet_group_input(DBSubnetGroupName = DBSubnetGroupName)
   output <- .docdb$delete_db_subnet_group_output()
@@ -897,7 +915,8 @@ docdb_delete_event_subscription <- function(SubscriptionName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$delete_event_subscription_input(SubscriptionName = SubscriptionName)
   output <- .docdb$delete_event_subscription_output()
@@ -928,7 +947,8 @@ docdb_delete_global_cluster <- function(GlobalClusterIdentifier) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$delete_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier)
   output <- .docdb$delete_global_cluster_output()
@@ -975,7 +995,8 @@ docdb_describe_certificates <- function(CertificateIdentifier = NULL, Filters = 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Certificates"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$describe_certificates_input(CertificateIdentifier = CertificateIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_certificates_output()
@@ -1017,7 +1038,8 @@ docdb_describe_db_cluster_parameter_groups <- function(DBClusterParameterGroupNa
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBClusterParameterGroups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$describe_db_cluster_parameter_groups_input(DBClusterParameterGroupName = DBClusterParameterGroupName, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_db_cluster_parameter_groups_output()
@@ -1061,7 +1083,8 @@ docdb_describe_db_cluster_parameters <- function(DBClusterParameterGroupName, So
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Parameters"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$describe_db_cluster_parameters_input(DBClusterParameterGroupName = DBClusterParameterGroupName, Source = Source, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_db_cluster_parameters_output()
@@ -1093,7 +1116,8 @@ docdb_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdent
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$describe_db_cluster_snapshot_attributes_input(DBClusterSnapshotIdentifier = DBClusterSnapshotIdentifier)
   output <- .docdb$describe_db_cluster_snapshot_attributes_output()
@@ -1157,7 +1181,8 @@ docdb_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DBCl
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBClusterSnapshots"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$describe_db_cluster_snapshots_input(DBClusterIdentifier = DBClusterIdentifier, DBClusterSnapshotIdentifier = DBClusterSnapshotIdentifier, SnapshotType = SnapshotType, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker, IncludeShared = IncludeShared, IncludePublic = IncludePublic)
   output <- .docdb$describe_db_cluster_snapshots_output()
@@ -1203,7 +1228,8 @@ docdb_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBClusters"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$describe_db_clusters_input(DBClusterIdentifier = DBClusterIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_db_clusters_output()
@@ -1252,7 +1278,8 @@ docdb_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBEngineVersions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$describe_db_engine_versions_input(Engine = Engine, EngineVersion = EngineVersion, DBParameterGroupFamily = DBParameterGroupFamily, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker, DefaultOnly = DefaultOnly, ListSupportedCharacterSets = ListSupportedCharacterSets, ListSupportedTimezones = ListSupportedTimezones)
   output <- .docdb$describe_db_engine_versions_output()
@@ -1300,7 +1327,8 @@ docdb_describe_db_instances <- function(DBInstanceIdentifier = NULL, Filters = N
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBInstances"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$describe_db_instances_input(DBInstanceIdentifier = DBInstanceIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_db_instances_output()
@@ -1338,7 +1366,8 @@ docdb_describe_db_subnet_groups <- function(DBSubnetGroupName = NULL, Filters = 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBSubnetGroups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$describe_db_subnet_groups_input(DBSubnetGroupName = DBSubnetGroupName, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_db_subnet_groups_output()
@@ -1377,7 +1406,8 @@ docdb_describe_engine_default_cluster_parameters <- function(DBParameterGroupFam
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$describe_engine_default_cluster_parameters_input(DBParameterGroupFamily = DBParameterGroupFamily, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_engine_default_cluster_parameters_output()
@@ -1412,7 +1442,8 @@ docdb_describe_event_categories <- function(SourceType = NULL, Filters = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$describe_event_categories_input(SourceType = SourceType, Filters = Filters)
   output <- .docdb$describe_event_categories_output()
@@ -1450,7 +1481,8 @@ docdb_describe_event_subscriptions <- function(SubscriptionName = NULL, Filters 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "EventSubscriptionsList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$describe_event_subscriptions_input(SubscriptionName = SubscriptionName, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_event_subscriptions_output()
@@ -1514,7 +1546,8 @@ docdb_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, St
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Events"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$describe_events_input(SourceIdentifier = SourceIdentifier, SourceType = SourceType, StartTime = StartTime, EndTime = EndTime, Duration = Duration, EventCategories = EventCategories, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_events_output()
@@ -1550,7 +1583,8 @@ docdb_describe_global_clusters <- function(GlobalClusterIdentifier = NULL, Filte
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "GlobalClusters"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$describe_global_clusters_input(GlobalClusterIdentifier = GlobalClusterIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_global_clusters_output()
@@ -1592,7 +1626,8 @@ docdb_describe_orderable_db_instance_options <- function(Engine, EngineVersion =
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "OrderableDBInstanceOptions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$describe_orderable_db_instance_options_input(Engine = Engine, EngineVersion = EngineVersion, DBInstanceClass = DBInstanceClass, LicenseModel = LicenseModel, Vpc = Vpc, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_orderable_db_instance_options_output()
@@ -1637,7 +1672,8 @@ docdb_describe_pending_maintenance_actions <- function(ResourceIdentifier = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "PendingMaintenanceActions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$describe_pending_maintenance_actions_input(ResourceIdentifier = ResourceIdentifier, Filters = Filters, Marker = Marker, MaxRecords = MaxRecords)
   output <- .docdb$describe_pending_maintenance_actions_output()
@@ -1675,7 +1711,8 @@ docdb_failover_db_cluster <- function(DBClusterIdentifier = NULL, TargetDBInstan
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$failover_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, TargetDBInstanceIdentifier = TargetDBInstanceIdentifier)
   output <- .docdb$failover_db_cluster_output()
@@ -1736,7 +1773,8 @@ docdb_failover_global_cluster <- function(GlobalClusterIdentifier, TargetDbClust
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$failover_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, TargetDbClusterIdentifier = TargetDbClusterIdentifier, AllowDataLoss = AllowDataLoss, Switchover = Switchover)
   output <- .docdb$failover_global_cluster_output()
@@ -1768,7 +1806,8 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$list_tags_for_resource_input(ResourceName = ResourceName, Filters = Filters)
   output <- .docdb$list_tags_for_resource_output()
@@ -1903,20 +1942,22 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' For more information, see [DocumentDB clusters in a VPC](https://docs.aws.amazon.com/documentdb/latest/devguide/vpc-clusters.html) in the Amazon DocumentDB Developer Guide.
 #' 
 #' Valid Values: `IPV4` | `DUAL`
+#' @param CopyTagsToSnapshot Specifies whether to copy all tags from the DB cluster to snapshots of the DB cluster. The default is not to copy them.
 #'
 #' @keywords internal
 #'
 #' @rdname docdb_modify_db_cluster
-docdb_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier = NULL, ApplyImmediately = NULL, BackupRetentionPeriod = NULL, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, Port = NULL, MasterUserPassword = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, CloudwatchLogsExportConfiguration = NULL, EngineVersion = NULL, AllowMajorVersionUpgrade = NULL, DeletionProtection = NULL, StorageType = NULL, ServerlessV2ScalingConfiguration = NULL, ManageMasterUserPassword = NULL, MasterUserSecretKmsKeyId = NULL, RotateMasterUserPassword = NULL, NetworkType = NULL) {
+docdb_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier = NULL, ApplyImmediately = NULL, BackupRetentionPeriod = NULL, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, Port = NULL, MasterUserPassword = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, CloudwatchLogsExportConfiguration = NULL, EngineVersion = NULL, AllowMajorVersionUpgrade = NULL, DeletionProtection = NULL, StorageType = NULL, ServerlessV2ScalingConfiguration = NULL, ManageMasterUserPassword = NULL, MasterUserSecretKmsKeyId = NULL, RotateMasterUserPassword = NULL, NetworkType = NULL, CopyTagsToSnapshot = NULL) {
   op <- new_operation(
     name = "ModifyDBCluster",
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
-  input <- .docdb$modify_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, NewDBClusterIdentifier = NewDBClusterIdentifier, ApplyImmediately = ApplyImmediately, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Port = Port, MasterUserPassword = MasterUserPassword, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, CloudwatchLogsExportConfiguration = CloudwatchLogsExportConfiguration, EngineVersion = EngineVersion, AllowMajorVersionUpgrade = AllowMajorVersionUpgrade, DeletionProtection = DeletionProtection, StorageType = StorageType, ServerlessV2ScalingConfiguration = ServerlessV2ScalingConfiguration, ManageMasterUserPassword = ManageMasterUserPassword, MasterUserSecretKmsKeyId = MasterUserSecretKmsKeyId, RotateMasterUserPassword = RotateMasterUserPassword, NetworkType = NetworkType)
+  input <- .docdb$modify_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, NewDBClusterIdentifier = NewDBClusterIdentifier, ApplyImmediately = ApplyImmediately, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Port = Port, MasterUserPassword = MasterUserPassword, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, CloudwatchLogsExportConfiguration = CloudwatchLogsExportConfiguration, EngineVersion = EngineVersion, AllowMajorVersionUpgrade = AllowMajorVersionUpgrade, DeletionProtection = DeletionProtection, StorageType = StorageType, ServerlessV2ScalingConfiguration = ServerlessV2ScalingConfiguration, ManageMasterUserPassword = ManageMasterUserPassword, MasterUserSecretKmsKeyId = MasterUserSecretKmsKeyId, RotateMasterUserPassword = RotateMasterUserPassword, NetworkType = NetworkType, CopyTagsToSnapshot = CopyTagsToSnapshot)
   output <- .docdb$modify_db_cluster_output()
   config <- get_config()
   svc <- .docdb$service(config, op)
@@ -1946,7 +1987,8 @@ docdb_modify_db_cluster_parameter_group <- function(DBClusterParameterGroupName,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$modify_db_cluster_parameter_group_input(DBClusterParameterGroupName = DBClusterParameterGroupName, Parameters = Parameters)
   output <- .docdb$modify_db_cluster_parameter_group_output()
@@ -1987,7 +2029,8 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$modify_db_cluster_snapshot_attribute_input(DBClusterSnapshotIdentifier = DBClusterSnapshotIdentifier, AttributeName = AttributeName, ValuesToAdd = ValuesToAdd, ValuesToRemove = ValuesToRemove)
   output <- .docdb$modify_db_cluster_snapshot_attribute_output()
@@ -2073,7 +2116,8 @@ docdb_modify_db_instance <- function(DBInstanceIdentifier, DBInstanceClass = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$modify_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, DBInstanceClass = DBInstanceClass, ApplyImmediately = ApplyImmediately, PreferredMaintenanceWindow = PreferredMaintenanceWindow, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, NewDBInstanceIdentifier = NewDBInstanceIdentifier, CACertificateIdentifier = CACertificateIdentifier, CopyTagsToSnapshot = CopyTagsToSnapshot, PromotionTier = PromotionTier, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, CertificateRotationRestart = CertificateRotationRestart)
   output <- .docdb$modify_db_instance_output()
@@ -2110,7 +2154,8 @@ docdb_modify_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescrip
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$modify_db_subnet_group_input(DBSubnetGroupName = DBSubnetGroupName, DBSubnetGroupDescription = DBSubnetGroupDescription, SubnetIds = SubnetIds)
   output <- .docdb$modify_db_subnet_group_output()
@@ -2147,7 +2192,8 @@ docdb_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$modify_event_subscription_input(SubscriptionName = SubscriptionName, SnsTopicArn = SnsTopicArn, SourceType = SourceType, EventCategories = EventCategories, Enabled = Enabled)
   output <- .docdb$modify_event_subscription_output()
@@ -2192,7 +2238,8 @@ docdb_modify_global_cluster <- function(GlobalClusterIdentifier, NewGlobalCluste
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$modify_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, NewGlobalClusterIdentifier = NewGlobalClusterIdentifier, DeletionProtection = DeletionProtection)
   output <- .docdb$modify_global_cluster_output()
@@ -2230,7 +2277,8 @@ docdb_reboot_db_instance <- function(DBInstanceIdentifier, ForceFailover = NULL)
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$reboot_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, ForceFailover = ForceFailover)
   output <- .docdb$reboot_db_instance_output()
@@ -2262,7 +2310,8 @@ docdb_remove_from_global_cluster <- function(GlobalClusterIdentifier, DbClusterI
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$remove_from_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, DbClusterIdentifier = DbClusterIdentifier)
   output <- .docdb$remove_from_global_cluster_output()
@@ -2295,7 +2344,8 @@ docdb_remove_source_identifier_from_subscription <- function(SubscriptionName, S
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$remove_source_identifier_from_subscription_input(SubscriptionName = SubscriptionName, SourceIdentifier = SourceIdentifier)
   output <- .docdb$remove_source_identifier_from_subscription_output()
@@ -2327,7 +2377,8 @@ docdb_remove_tags_from_resource <- function(ResourceName, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$remove_tags_from_resource_input(ResourceName = ResourceName, TagKeys = TagKeys)
   output <- .docdb$remove_tags_from_resource_output()
@@ -2361,7 +2412,8 @@ docdb_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$reset_db_cluster_parameter_group_input(DBClusterParameterGroupName = DBClusterParameterGroupName, ResetAllParameters = ResetAllParameters, Parameters = Parameters)
   output <- .docdb$reset_db_cluster_parameter_group_output()
@@ -2448,20 +2500,22 @@ docdb_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, 
 #' For more information, see [DocumentDB clusters in a VPC](https://docs.aws.amazon.com/documentdb/latest/devguide/vpc-clusters.html) in the Amazon DocumentDB Developer Guide.
 #' 
 #' Valid Values: `IPV4` | `DUAL`
+#' @param CopyTagsToSnapshot Specifies whether to copy all tags from the restored DB cluster to snapshots of the restored DB cluster. The default is not to copy them.
 #'
 #' @keywords internal
 #'
 #' @rdname docdb_restore_db_cluster_from_snapshot
-docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClusterIdentifier, SnapshotIdentifier, Engine, EngineVersion = NULL, Port = NULL, DBSubnetGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL, DBClusterParameterGroupName = NULL, ServerlessV2ScalingConfiguration = NULL, StorageType = NULL, NetworkType = NULL) {
+docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClusterIdentifier, SnapshotIdentifier, Engine, EngineVersion = NULL, Port = NULL, DBSubnetGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL, DBClusterParameterGroupName = NULL, ServerlessV2ScalingConfiguration = NULL, StorageType = NULL, NetworkType = NULL, CopyTagsToSnapshot = NULL) {
   op <- new_operation(
     name = "RestoreDBClusterFromSnapshot",
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
-  input <- .docdb$restore_db_cluster_from_snapshot_input(AvailabilityZones = AvailabilityZones, DBClusterIdentifier = DBClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, Engine = Engine, EngineVersion = EngineVersion, Port = Port, DBSubnetGroupName = DBSubnetGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection, DBClusterParameterGroupName = DBClusterParameterGroupName, ServerlessV2ScalingConfiguration = ServerlessV2ScalingConfiguration, StorageType = StorageType, NetworkType = NetworkType)
+  input <- .docdb$restore_db_cluster_from_snapshot_input(AvailabilityZones = AvailabilityZones, DBClusterIdentifier = DBClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, Engine = Engine, EngineVersion = EngineVersion, Port = Port, DBSubnetGroupName = DBSubnetGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection, DBClusterParameterGroupName = DBClusterParameterGroupName, ServerlessV2ScalingConfiguration = ServerlessV2ScalingConfiguration, StorageType = StorageType, NetworkType = NetworkType, CopyTagsToSnapshot = CopyTagsToSnapshot)
   output <- .docdb$restore_db_cluster_from_snapshot_output()
   config <- get_config()
   svc <- .docdb$service(config, op)
@@ -2563,20 +2617,22 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
 #' For more information, see [DocumentDB clusters in a VPC](https://docs.aws.amazon.com/documentdb/latest/devguide/vpc-clusters.html) in the Amazon DocumentDB Developer Guide.
 #' 
 #' Valid Values: `IPV4` | `DUAL`
+#' @param CopyTagsToSnapshot Specifies whether to copy all tags from the restored DB cluster to snapshots of the restored DB cluster. The default is not to copy them.
 #'
 #' @keywords internal
 #'
 #' @rdname docdb_restore_db_cluster_to_point_in_time
-docdb_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, RestoreType = NULL, SourceDBClusterIdentifier, RestoreToTime = NULL, UseLatestRestorableTime = NULL, Port = NULL, DBSubnetGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL, ServerlessV2ScalingConfiguration = NULL, StorageType = NULL, NetworkType = NULL) {
+docdb_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, RestoreType = NULL, SourceDBClusterIdentifier, RestoreToTime = NULL, UseLatestRestorableTime = NULL, Port = NULL, DBSubnetGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL, ServerlessV2ScalingConfiguration = NULL, StorageType = NULL, NetworkType = NULL, CopyTagsToSnapshot = NULL) {
   op <- new_operation(
     name = "RestoreDBClusterToPointInTime",
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
-  input <- .docdb$restore_db_cluster_to_point_in_time_input(DBClusterIdentifier = DBClusterIdentifier, RestoreType = RestoreType, SourceDBClusterIdentifier = SourceDBClusterIdentifier, RestoreToTime = RestoreToTime, UseLatestRestorableTime = UseLatestRestorableTime, Port = Port, DBSubnetGroupName = DBSubnetGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection, ServerlessV2ScalingConfiguration = ServerlessV2ScalingConfiguration, StorageType = StorageType, NetworkType = NetworkType)
+  input <- .docdb$restore_db_cluster_to_point_in_time_input(DBClusterIdentifier = DBClusterIdentifier, RestoreType = RestoreType, SourceDBClusterIdentifier = SourceDBClusterIdentifier, RestoreToTime = RestoreToTime, UseLatestRestorableTime = UseLatestRestorableTime, Port = Port, DBSubnetGroupName = DBSubnetGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection, ServerlessV2ScalingConfiguration = ServerlessV2ScalingConfiguration, StorageType = StorageType, NetworkType = NetworkType, CopyTagsToSnapshot = CopyTagsToSnapshot)
   output <- .docdb$restore_db_cluster_to_point_in_time_output()
   config <- get_config()
   svc <- .docdb$service(config, op)
@@ -2605,7 +2661,8 @@ docdb_start_db_cluster <- function(DBClusterIdentifier) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$start_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier)
   output <- .docdb$start_db_cluster_output()
@@ -2636,7 +2693,8 @@ docdb_stop_db_cluster <- function(DBClusterIdentifier) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$stop_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier)
   output <- .docdb$stop_db_cluster_output()
@@ -2685,7 +2743,8 @@ docdb_switchover_global_cluster <- function(GlobalClusterIdentifier, TargetDbClu
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdb$switchover_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, TargetDbClusterIdentifier = TargetDbClusterIdentifier)
   output <- .docdb$switchover_global_cluster_output()

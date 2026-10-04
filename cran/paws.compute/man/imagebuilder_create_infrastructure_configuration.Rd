@@ -24,39 +24,43 @@ imagebuilder_create_infrastructure_configuration(
 )
 }
 \arguments{
-\item{name}{[required] The name of the infrastructure configuration.}
+\item{name}{[required] The name of the infrastructure configuration. Infrastructure configuration names must be unique to your account in each Amazon Web Services Region. Image Builder generates the infrastructure configuration ARN from a normalized form of the name, so names that differ only in case, spaces, or underscores count as the same name.}
 
 \item{description}{The description of the infrastructure configuration.}
 
-\item{instanceTypes}{The instance types of the infrastructure configuration. You can specify one or more instance types to use for this build. Image Builder picks one of these instance types based on availability.}
+\item{instanceTypes}{The instance types of the infrastructure configuration. You can specify one or more instance types to use for this build. Image Builder picks one of these instance types based on availability. If you don't specify instance types, Image Builder selects compatible instance types automatically. If you specify a Dedicated Host, Image Builder uses only instance types that the host supports.}
 
-\item{instanceProfileName}{[required] The instance profile to associate with the instance used to customize your Amazon EC2 AMI.}
+\item{instanceProfileName}{[required] The instance profile to associate with the instance used to customize your Amazon EC2 AMI. The instance profile must exist in your account.}
 
 \item{securityGroupIds}{The security group IDs to associate with the instance used to customize your Amazon EC2 AMI.}
 
-\item{subnetId}{The subnet ID in which to place the instance used to customize your Amazon EC2 AMI.}
+\item{subnetId}{The subnet ID in which to place the instance used to customize your Amazon EC2 AMI. If you specify \code{subnetId}, you must also specify one or more security group IDs in \code{securityGroupIds}. Otherwise, the request fails.}
 
-\item{logging}{The logging configuration of the infrastructure configuration.}
+\item{logging}{The logging configuration of the infrastructure configuration. When you configure S3 logs, Image Builder writes logs from the build and test process to the specified bucket under the key prefix.}
 
 \item{keyPair}{The key pair of the infrastructure configuration. You can use this to log on to and debug the instance used to create your image.}
 
 \item{terminateInstanceOnFailure}{Specifies whether to terminate the instance on failure. Set to false if you want Image Builder to retain the instance used to configure your AMI if the build or test phase of your workflow fails. Defaults to \code{true}.}
 
-\item{snsTopicArn}{The Amazon Resource Name (ARN) of the SNS topic to which Image Builder sends image build event notifications.
+\item{snsTopicArn}{The Amazon Resource Name (ARN) of the SNS topic to which Image Builder sends image build event notifications. Specify a standard topic. Image Builder doesn't support FIFO topics. Image Builder validates the topic when you create or update the configuration. You must have permission to publish to the topic.
 
-EC2 Image Builder is unable to send notifications to SNS topics that are encrypted using keys from other accounts. The key that is used to encrypt the SNS topic must reside in the account that the Image Builder service runs under.}
+EC2 Image Builder can't send notifications to SNS topics that are encrypted using keys from other accounts. If your SNS topic is encrypted, the key must be owned by the same account that owns your Image Builder resources.}
 
-\item{resourceTags}{The metadata tags to assign to the Amazon EC2 instance that Image Builder launches during the build process. Tags are formatted as key value pairs.}
+\item{resourceTags}{The metadata tags to assign to the Amazon EC2 instance that Image Builder launches during the build process. Tags are formatted as key value pairs. Tag keys can't begin with \verb{aws:} or match one of the following reserved keys: \code{CreatedBy}, \code{Ec2ImageBuilderArn}, \code{Name}, or \code{Tags}.}
 
-\item{instanceMetadataOptions}{The instance metadata options that you can set for the HTTP requests that pipeline builds use to launch EC2 build and test instances.}
+\item{instanceMetadataOptions}{The instance metadata service (IMDS) settings that Image Builder applies to the EC2 build and test instances it launches during image creation. If you don't set these options, the EC2 launch defaults for the instance apply. For more information about instance metadata options, see one of the following links:
+\itemize{
+\item \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html}{Configure the instance metadata options} in the \emph{Amazon EC2 User Guide} for Linux instances.
+\item \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html}{Configure the instance metadata options} in the \emph{Amazon EC2 Windows Guide} for Windows instances.
+}}
 
 \item{tags}{The metadata tags to assign to the infrastructure configuration resource that Image Builder creates as output. Tags are formatted as key value pairs.}
 
-\item{placement}{The instance placement settings that define where the instances that are launched from your image run.}
+\item{placement}{The instance placement settings that define where the build and test instances that Image Builder launches during image creation run. These settings don't affect instances that you launch from the output image.}
 
-\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
+\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
 
-\item{dryRun}{Validates the required permissions and request parameters without making the request. If validation succeeds, the operation returns a \code{DryRunOperationException} error response.}
+\item{dryRun}{Validates the required permissions and request parameters without performing the operation. If validation succeeds, the operation returns a \code{DryRunOperationException} error response.}
 }
 \description{
 Creates a new infrastructure configuration. An infrastructure configuration defines the environment in which your image will be built and tested.

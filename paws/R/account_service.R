@@ -105,7 +105,9 @@ NULL
 #'  \link[=account_put_account_name]{put_account_name} \tab Updates the account name of the specified account\cr
 #'  \link[=account_put_alternate_contact]{put_alternate_contact} \tab Modifies the specified alternate contact attached to an Amazon Web Services account\cr
 #'  \link[=account_put_contact_information]{put_contact_information} \tab Updates the primary contact information of an Amazon Web Services account\cr
-#'  \link[=account_start_primary_email_update]{start_primary_email_update} \tab Starts the process to update the primary email address for the specified account
+#'  \link[=account_send_phone_number_verification]{send_phone_number_verification} \tab Sends a one-time passcode to the phone number in the primary contact information of an Amazon Web Services account\cr
+#'  \link[=account_start_primary_email_update]{start_primary_email_update} \tab Starts the process to update the primary email address for the specified account\cr
+#'  \link[=account_verify_phone_number]{verify_phone_number} \tab Verifies the phone number in the primary contact information of an Amazon Web Services account by submitting the one-time passcode that SendPhoneNumberVerification sent to that phone number
 #' }
 #'
 #' @return

@@ -23,9 +23,9 @@ kinesis_create_channel(
 
 \item{StreamConfigurationList}{[required] The source stream configuration for the channel. Currently, one stream is supported per channel.}
 
-\item{S3DestinationConfiguration}{The configuration for delivery to a general purpose Amazon S3 bucket. You must specify either \code{S3DestinationConfiguration} or \code{S3TablesDestinationConfiguration}, but not both.}
+\item{S3DestinationConfiguration}{The configuration for delivery to a general purpose Amazon S3 bucket. Specify this parameter when \code{S3TablesDestinationConfiguration} is not specified.}
 
-\item{S3TablesDestinationConfiguration}{The configuration for delivery to streaming tables on Apache Iceberg in Amazon S3 Tables. You must specify either \code{S3DestinationConfiguration} or \code{S3TablesDestinationConfiguration}, but not both.}
+\item{S3TablesDestinationConfiguration}{The configuration for delivery to streaming tables on Apache Iceberg in Amazon S3 Tables. Specify this parameter when \code{S3DestinationConfiguration} is not specified.}
 
 \item{EncryptionConfiguration}{The server-side encryption configuration that uses an Amazon Web Services KMS key to encrypt data delivered to the destination.}
 

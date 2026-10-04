@@ -19,7 +19,9 @@ connect_update_instance_attribute(
 
 Only allowlisted customers can consume USE_CUSTOM_TTS_VOICES. To access this feature, contact Amazon Web Services Support for allowlisting.
 
-If you set the attribute type as \code{MESSAGE_STREAMING}, you need to update the Lex bot alias resource based policy to include the \code{lex:RecognizeMessageAsync} action for the connect instance ARN resource.}
+If you set the attribute type as \code{MESSAGE_STREAMING}, you need to update the Lex bot alias resource based policy to include the \code{lex:RecognizeMessageAsync} action for the connect instance ARN resource.
+
+If you set the attribute type \code{AUTO_MUTE_AGENT_ON_HOLD} to \code{true}, the system automatically mutes agents while they're on hold and unmutes them when they resume the contact. Agents can't change their mute state while on hold.}
 
 \item{Value}{[required] The value for the attribute. Maximum character limit is 100.}
 

@@ -176,7 +176,8 @@ forecastservice_create_auto_predictor <- function(PredictorName, ForecastHorizon
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$create_auto_predictor_input(PredictorName = PredictorName, ForecastHorizon = ForecastHorizon, ForecastTypes = ForecastTypes, ForecastDimensions = ForecastDimensions, ForecastFrequency = ForecastFrequency, DataConfig = DataConfig, EncryptionConfig = EncryptionConfig, ReferencePredictorArn = ReferencePredictorArn, OptimizationMetric = OptimizationMetric, ExplainPredictor = ExplainPredictor, Tags = Tags, MonitorConfig = MonitorConfig, TimeAlignmentBoundary = TimeAlignmentBoundary)
   output <- .forecastservice$create_auto_predictor_output()
@@ -301,7 +302,8 @@ forecastservice_create_dataset <- function(DatasetName, Domain, DatasetType, Dat
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$create_dataset_input(DatasetName = DatasetName, Domain = Domain, DatasetType = DatasetType, DataFrequency = DataFrequency, Schema = Schema, EncryptionConfig = EncryptionConfig, Tags = Tags)
   output <- .forecastservice$create_dataset_output()
@@ -388,7 +390,8 @@ forecastservice_create_dataset_group <- function(DatasetGroupName, Domain, Datas
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$create_dataset_group_input(DatasetGroupName = DatasetGroupName, Domain = Domain, DatasetArns = DatasetArns, Tags = Tags)
   output <- .forecastservice$create_dataset_group_output()
@@ -512,7 +515,8 @@ forecastservice_create_dataset_import_job <- function(DatasetImportJobName, Data
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$create_dataset_import_job_input(DatasetImportJobName = DatasetImportJobName, DatasetArn = DatasetArn, DataSource = DataSource, TimestampFormat = TimestampFormat, TimeZone = TimeZone, UseGeolocationForTimeZone = UseGeolocationForTimeZone, GeolocationFormat = GeolocationFormat, Tags = Tags, Format = Format, ImportMode = ImportMode)
   output <- .forecastservice$create_dataset_import_job_output()
@@ -677,7 +681,8 @@ forecastservice_create_explainability <- function(ExplainabilityName, ResourceAr
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$create_explainability_input(ExplainabilityName = ExplainabilityName, ResourceArn = ResourceArn, ExplainabilityConfig = ExplainabilityConfig, DataSource = DataSource, Schema = Schema, EnableVisualization = EnableVisualization, StartDateTime = StartDateTime, EndDateTime = EndDateTime, Tags = Tags)
   output <- .forecastservice$create_explainability_output()
@@ -765,7 +770,8 @@ forecastservice_create_explainability_export <- function(ExplainabilityExportNam
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$create_explainability_export_input(ExplainabilityExportName = ExplainabilityExportName, ExplainabilityArn = ExplainabilityArn, Destination = Destination, Tags = Tags, Format = Format)
   output <- .forecastservice$create_explainability_export_output()
@@ -888,7 +894,8 @@ forecastservice_create_forecast <- function(ForecastName, PredictorArn, Forecast
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$create_forecast_input(ForecastName = ForecastName, PredictorArn = PredictorArn, ForecastTypes = ForecastTypes, Tags = Tags, TimeSeriesSelector = TimeSeriesSelector)
   output <- .forecastservice$create_forecast_output()
@@ -988,7 +995,8 @@ forecastservice_create_forecast_export_job <- function(ForecastExportJobName, Fo
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$create_forecast_export_job_input(ForecastExportJobName = ForecastExportJobName, ForecastArn = ForecastArn, Destination = Destination, Tags = Tags, Format = Format)
   output <- .forecastservice$create_forecast_export_job_output()
@@ -1046,7 +1054,8 @@ forecastservice_create_monitor <- function(MonitorName, ResourceArn, Tags = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$create_monitor_input(MonitorName = MonitorName, ResourceArn = ResourceArn, Tags = Tags)
   output <- .forecastservice$create_monitor_output()
@@ -1284,7 +1293,8 @@ forecastservice_create_predictor <- function(PredictorName, AlgorithmArn = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$create_predictor_input(PredictorName = PredictorName, AlgorithmArn = AlgorithmArn, ForecastHorizon = ForecastHorizon, ForecastTypes = ForecastTypes, PerformAutoML = PerformAutoML, AutoMLOverrideStrategy = AutoMLOverrideStrategy, PerformHPO = PerformHPO, TrainingParameters = TrainingParameters, EvaluationParameters = EvaluationParameters, HPOConfig = HPOConfig, InputDataConfig = InputDataConfig, FeaturizationConfig = FeaturizationConfig, EncryptionConfig = EncryptionConfig, Tags = Tags, OptimizationMetric = OptimizationMetric)
   output <- .forecastservice$create_predictor_output()
@@ -1378,7 +1388,8 @@ forecastservice_create_predictor_backtest_export_job <- function(PredictorBackte
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$create_predictor_backtest_export_job_input(PredictorBacktestExportJobName = PredictorBacktestExportJobName, PredictorArn = PredictorArn, Destination = Destination, Tags = Tags, Format = Format)
   output <- .forecastservice$create_predictor_backtest_export_job_output()
@@ -1476,7 +1487,8 @@ forecastservice_create_what_if_analysis <- function(WhatIfAnalysisName, Forecast
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$create_what_if_analysis_input(WhatIfAnalysisName = WhatIfAnalysisName, ForecastArn = ForecastArn, TimeSeriesSelector = TimeSeriesSelector, Tags = Tags)
   output <- .forecastservice$create_what_if_analysis_output()
@@ -1578,7 +1590,8 @@ forecastservice_create_what_if_forecast <- function(WhatIfForecastName, WhatIfAn
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$create_what_if_forecast_input(WhatIfForecastName = WhatIfForecastName, WhatIfAnalysisArn = WhatIfAnalysisArn, TimeSeriesTransformations = TimeSeriesTransformations, TimeSeriesReplacementsDataSource = TimeSeriesReplacementsDataSource, Tags = Tags)
   output <- .forecastservice$create_what_if_forecast_output()
@@ -1664,7 +1677,8 @@ forecastservice_create_what_if_forecast_export <- function(WhatIfForecastExportN
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$create_what_if_forecast_export_input(WhatIfForecastExportName = WhatIfForecastExportName, WhatIfForecastArns = WhatIfForecastArns, Destination = Destination, Tags = Tags, Format = Format)
   output <- .forecastservice$create_what_if_forecast_export_output()
@@ -1711,7 +1725,8 @@ forecastservice_delete_dataset <- function(DatasetArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$delete_dataset_input(DatasetArn = DatasetArn)
   output <- .forecastservice$delete_dataset_output()
@@ -1757,7 +1772,8 @@ forecastservice_delete_dataset_group <- function(DatasetGroupArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$delete_dataset_group_input(DatasetGroupArn = DatasetGroupArn)
   output <- .forecastservice$delete_dataset_group_output()
@@ -1802,7 +1818,8 @@ forecastservice_delete_dataset_import_job <- function(DatasetImportJobArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$delete_dataset_import_job_input(DatasetImportJobArn = DatasetImportJobArn)
   output <- .forecastservice$delete_dataset_import_job_output()
@@ -1848,7 +1865,8 @@ forecastservice_delete_explainability <- function(ExplainabilityArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$delete_explainability_input(ExplainabilityArn = ExplainabilityArn)
   output <- .forecastservice$delete_explainability_output()
@@ -1892,7 +1910,8 @@ forecastservice_delete_explainability_export <- function(ExplainabilityExportArn
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$delete_explainability_export_input(ExplainabilityExportArn = ExplainabilityExportArn)
   output <- .forecastservice$delete_explainability_export_output()
@@ -1938,7 +1957,8 @@ forecastservice_delete_forecast <- function(ForecastArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$delete_forecast_input(ForecastArn = ForecastArn)
   output <- .forecastservice$delete_forecast_output()
@@ -1983,7 +2003,8 @@ forecastservice_delete_forecast_export_job <- function(ForecastExportJobArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$delete_forecast_export_job_input(ForecastExportJobArn = ForecastExportJobArn)
   output <- .forecastservice$delete_forecast_export_job_output()
@@ -2027,7 +2048,8 @@ forecastservice_delete_monitor <- function(MonitorArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$delete_monitor_input(MonitorArn = MonitorArn)
   output <- .forecastservice$delete_monitor_output()
@@ -2072,7 +2094,8 @@ forecastservice_delete_predictor <- function(PredictorArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$delete_predictor_input(PredictorArn = PredictorArn)
   output <- .forecastservice$delete_predictor_output()
@@ -2117,7 +2140,8 @@ forecastservice_delete_predictor_backtest_export_job <- function(PredictorBackte
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$delete_predictor_backtest_export_job_input(PredictorBacktestExportJobArn = PredictorBacktestExportJobArn)
   output <- .forecastservice$delete_predictor_backtest_export_job_output()
@@ -2175,7 +2199,8 @@ forecastservice_delete_resource_tree <- function(ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$delete_resource_tree_input(ResourceArn = ResourceArn)
   output <- .forecastservice$delete_resource_tree_output()
@@ -2222,7 +2247,8 @@ forecastservice_delete_what_if_analysis <- function(WhatIfAnalysisArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$delete_what_if_analysis_input(WhatIfAnalysisArn = WhatIfAnalysisArn)
   output <- .forecastservice$delete_what_if_analysis_output()
@@ -2269,7 +2295,8 @@ forecastservice_delete_what_if_forecast <- function(WhatIfForecastArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$delete_what_if_forecast_input(WhatIfForecastArn = WhatIfForecastArn)
   output <- .forecastservice$delete_what_if_forecast_output()
@@ -2314,7 +2341,8 @@ forecastservice_delete_what_if_forecast_export <- function(WhatIfForecastExportA
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$delete_what_if_forecast_export_input(WhatIfForecastExportArn = WhatIfForecastExportArn)
   output <- .forecastservice$delete_what_if_forecast_export_output()
@@ -2428,7 +2456,8 @@ forecastservice_describe_auto_predictor <- function(PredictorArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$describe_auto_predictor_input(PredictorArn = PredictorArn)
   output <- .forecastservice$describe_auto_predictor_output()
@@ -2509,7 +2538,8 @@ forecastservice_describe_dataset <- function(DatasetArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$describe_dataset_input(DatasetArn = DatasetArn)
   output <- .forecastservice$describe_dataset_output()
@@ -2580,7 +2610,8 @@ forecastservice_describe_dataset_group <- function(DatasetGroupArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$describe_dataset_group_input(DatasetGroupArn = DatasetGroupArn)
   output <- .forecastservice$describe_dataset_group_output()
@@ -2685,7 +2716,8 @@ forecastservice_describe_dataset_import_job <- function(DatasetImportJobArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$describe_dataset_import_job_input(DatasetImportJobArn = DatasetImportJobArn)
   output <- .forecastservice$describe_dataset_import_job_output()
@@ -2768,7 +2800,8 @@ forecastservice_describe_explainability <- function(ExplainabilityArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$describe_explainability_input(ExplainabilityArn = ExplainabilityArn)
   output <- .forecastservice$describe_explainability_output()
@@ -2836,7 +2869,8 @@ forecastservice_describe_explainability_export <- function(ExplainabilityExportA
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$describe_explainability_export_input(ExplainabilityExportArn = ExplainabilityExportArn)
   output <- .forecastservice$describe_explainability_export_output()
@@ -2932,7 +2966,8 @@ forecastservice_describe_forecast <- function(ForecastArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$describe_forecast_input(ForecastArn = ForecastArn)
   output <- .forecastservice$describe_forecast_output()
@@ -3010,7 +3045,8 @@ forecastservice_describe_forecast_export_job <- function(ForecastExportJobArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$describe_forecast_export_job_input(ForecastExportJobArn = ForecastExportJobArn)
   output <- .forecastservice$describe_forecast_export_job_output()
@@ -3098,7 +3134,8 @@ forecastservice_describe_monitor <- function(MonitorArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$describe_monitor_input(MonitorArn = MonitorArn)
   output <- .forecastservice$describe_monitor_output()
@@ -3276,7 +3313,8 @@ forecastservice_describe_predictor <- function(PredictorArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$describe_predictor_input(PredictorArn = PredictorArn)
   output <- .forecastservice$describe_predictor_output()
@@ -3355,7 +3393,8 @@ forecastservice_describe_predictor_backtest_export_job <- function(PredictorBack
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$describe_predictor_backtest_export_job_input(PredictorBacktestExportJobArn = PredictorBacktestExportJobArn)
   output <- .forecastservice$describe_predictor_backtest_export_job_output()
@@ -3446,7 +3485,8 @@ forecastservice_describe_what_if_analysis <- function(WhatIfAnalysisArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$describe_what_if_analysis_input(WhatIfAnalysisArn = WhatIfAnalysisArn)
   output <- .forecastservice$describe_what_if_analysis_output()
@@ -3553,7 +3593,8 @@ forecastservice_describe_what_if_forecast <- function(WhatIfForecastArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$describe_what_if_forecast_input(WhatIfForecastArn = WhatIfForecastArn)
   output <- .forecastservice$describe_what_if_forecast_output()
@@ -3635,7 +3676,8 @@ forecastservice_describe_what_if_forecast_export <- function(WhatIfForecastExpor
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$describe_what_if_forecast_export_input(WhatIfForecastExportArn = WhatIfForecastExportArn)
   output <- .forecastservice$describe_what_if_forecast_export_output()
@@ -3729,7 +3771,8 @@ forecastservice_get_accuracy_metrics <- function(PredictorArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$get_accuracy_metrics_input(PredictorArn = PredictorArn)
   output <- .forecastservice$get_accuracy_metrics_output()
@@ -3793,7 +3836,8 @@ forecastservice_list_dataset_groups <- function(NextToken = NULL, MaxResults = N
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DatasetGroups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$list_dataset_groups_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .forecastservice$list_dataset_groups_output()
@@ -3887,7 +3931,8 @@ forecastservice_list_dataset_import_jobs <- function(NextToken = NULL, MaxResult
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DatasetImportJobs"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$list_dataset_import_jobs_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_dataset_import_jobs_output()
@@ -3952,7 +3997,8 @@ forecastservice_list_datasets <- function(NextToken = NULL, MaxResults = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Datasets"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$list_datasets_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .forecastservice$list_datasets_output()
@@ -4041,7 +4087,8 @@ forecastservice_list_explainabilities <- function(NextToken = NULL, MaxResults =
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Explainabilities"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$list_explainabilities_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_explainabilities_output()
@@ -4133,7 +4180,8 @@ forecastservice_list_explainability_exports <- function(NextToken = NULL, MaxRes
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ExplainabilityExports"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$list_explainability_exports_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_explainability_exports_output()
@@ -4227,7 +4275,8 @@ forecastservice_list_forecast_export_jobs <- function(NextToken = NULL, MaxResul
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ForecastExportJobs"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$list_forecast_export_jobs_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_forecast_export_jobs_output()
@@ -4315,7 +4364,8 @@ forecastservice_list_forecasts <- function(NextToken = NULL, MaxResults = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Forecasts"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$list_forecasts_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_forecasts_output()
@@ -4427,7 +4477,8 @@ forecastservice_list_monitor_evaluations <- function(NextToken = NULL, MaxResult
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PredictorMonitorEvaluations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$list_monitor_evaluations_input(NextToken = NextToken, MaxResults = MaxResults, MonitorArn = MonitorArn, Filters = Filters)
   output <- .forecastservice$list_monitor_evaluations_output()
@@ -4513,7 +4564,8 @@ forecastservice_list_monitors <- function(NextToken = NULL, MaxResults = NULL, F
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Monitors"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$list_monitors_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_monitors_output()
@@ -4605,7 +4657,8 @@ forecastservice_list_predictor_backtest_export_jobs <- function(NextToken = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PredictorBacktestExportJobs"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$list_predictor_backtest_export_jobs_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_predictor_backtest_export_jobs_output()
@@ -4699,7 +4752,8 @@ forecastservice_list_predictors <- function(NextToken = NULL, MaxResults = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Predictors"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$list_predictors_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_predictors_output()
@@ -4753,7 +4807,8 @@ forecastservice_list_tags_for_resource <- function(ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .forecastservice$list_tags_for_resource_output()
@@ -4840,7 +4895,8 @@ forecastservice_list_what_if_analyses <- function(NextToken = NULL, MaxResults =
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "WhatIfAnalyses"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$list_what_if_analyses_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_what_if_analyses_output()
@@ -4937,7 +4993,8 @@ forecastservice_list_what_if_forecast_exports <- function(NextToken = NULL, MaxR
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "WhatIfForecastExports"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$list_what_if_forecast_exports_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_what_if_forecast_exports_output()
@@ -5024,7 +5081,8 @@ forecastservice_list_what_if_forecasts <- function(NextToken = NULL, MaxResults 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "WhatIfForecasts"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$list_what_if_forecasts_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_what_if_forecasts_output()
@@ -5068,7 +5126,8 @@ forecastservice_resume_resource <- function(ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$resume_resource_input(ResourceArn = ResourceArn)
   output <- .forecastservice$resume_resource_output()
@@ -5130,7 +5189,8 @@ forecastservice_stop_resource <- function(ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$stop_resource_input(ResourceArn = ResourceArn)
   output <- .forecastservice$stop_resource_output()
@@ -5198,7 +5258,8 @@ forecastservice_tag_resource <- function(ResourceArn, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .forecastservice$tag_resource_output()
@@ -5246,7 +5307,8 @@ forecastservice_untag_resource <- function(ResourceArn, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .forecastservice$untag_resource_output()
@@ -5296,7 +5358,8 @@ forecastservice_update_dataset_group <- function(DatasetGroupArn, DatasetArns) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .forecastservice$update_dataset_group_input(DatasetGroupArn = DatasetGroupArn, DatasetArns = DatasetArns)
   output <- .forecastservice$update_dataset_group_output()

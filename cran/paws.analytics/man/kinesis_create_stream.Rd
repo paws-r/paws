@@ -10,7 +10,8 @@ kinesis_create_stream(
   StreamModeDetails = NULL,
   Tags = NULL,
   WarmThroughputMiBps = NULL,
-  MaxRecordSizeInKiB = NULL
+  MaxRecordSizeInKiB = NULL,
+  RecordDistributionStrategy = NULL
 )
 }
 \arguments{
@@ -25,6 +26,14 @@ kinesis_create_stream(
 \item{WarmThroughputMiBps}{The target warm throughput in MB/s that the stream should be scaled to handle. This represents the throughput capacity that will be immediately available for write operations.}
 
 \item{MaxRecordSizeInKiB}{The maximum record size of a single record in kibibyte (KiB) that you can write to, and read from a stream.}
+
+\item{RecordDistributionStrategy}{The record distribution strategy for the stream, which determines how Amazon Kinesis Data Streams distributes records across shards. Specify one of the following values:
+\itemize{
+\item \code{AUTO} – Amazon Kinesis Data Streams distributes records evenly across shards and ignores any partition key and \code{ExplicitHashKey} that producers supply. Use this value for stateless workloads that do not require partition-key ordering.
+\item \code{USER_PARTITION_KEY} – Producers must supply a partition key, which Amazon Kinesis Data Streams uses to determine shard placement. This is the default.
+}
+
+The record distribution strategy is only supported for streams that use the on-demand capacity mode. If you do not specify this parameter, the stream uses \code{USER_PARTITION_KEY}.}
 }
 \description{
 Creates a Kinesis data stream. A stream captures and transports data records that are continuously emitted from different data sources or \emph{producers}. Scale-out within a stream is explicitly supported by means of shards, which are uniquely identified groups of data records in a stream.

@@ -122,7 +122,8 @@ paymentcryptographycontrolplane_add_key_replication_regions <- function(KeyIdent
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .paymentcryptographycontrolplane$add_key_replication_regions_input(KeyIdentifier = KeyIdentifier, ReplicationRegions = ReplicationRegions)
   output <- .paymentcryptographycontrolplane$add_key_replication_regions_output()
@@ -198,7 +199,8 @@ paymentcryptographycontrolplane_associate_mpa_team <- function(Action, MpaTeamAr
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .paymentcryptographycontrolplane$associate_mpa_team_input(Action = Action, MpaTeamArn = MpaTeamArn, RequesterComment = RequesterComment)
   output <- .paymentcryptographycontrolplane$associate_mpa_team_output()
@@ -271,7 +273,8 @@ paymentcryptographycontrolplane_create_alias <- function(AliasName, KeyArn = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .paymentcryptographycontrolplane$create_alias_input(AliasName = AliasName, KeyArn = KeyArn)
   output <- .paymentcryptographycontrolplane$create_alias_output()
@@ -447,7 +450,8 @@ paymentcryptographycontrolplane_create_key <- function(KeyAttributes, KeyCheckVa
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .paymentcryptographycontrolplane$create_key_input(KeyAttributes = KeyAttributes, KeyCheckValueAlgorithm = KeyCheckValueAlgorithm, Exportable = Exportable, Enabled = Enabled, Tags = Tags, DeriveKeyUsage = DeriveKeyUsage, ReplicationRegions = ReplicationRegions)
   output <- .paymentcryptographycontrolplane$create_key_output()
@@ -505,7 +509,8 @@ paymentcryptographycontrolplane_delete_alias <- function(AliasName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .paymentcryptographycontrolplane$delete_alias_input(AliasName = AliasName)
   output <- .paymentcryptographycontrolplane$delete_alias_output()
@@ -629,7 +634,8 @@ paymentcryptographycontrolplane_delete_key <- function(KeyIdentifier, DeleteKeyI
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .paymentcryptographycontrolplane$delete_key_input(KeyIdentifier = KeyIdentifier, DeleteKeyInDays = DeleteKeyInDays)
   output <- .paymentcryptographycontrolplane$delete_key_output()
@@ -682,7 +688,8 @@ paymentcryptographycontrolplane_delete_resource_policy <- function(ResourceArn) 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .paymentcryptographycontrolplane$delete_resource_policy_input(ResourceArn = ResourceArn)
   output <- .paymentcryptographycontrolplane$delete_resource_policy_output()
@@ -752,7 +759,8 @@ paymentcryptographycontrolplane_disable_default_key_replication_regions <- funct
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .paymentcryptographycontrolplane$disable_default_key_replication_regions_input(ReplicationRegions = ReplicationRegions)
   output <- .paymentcryptographycontrolplane$disable_default_key_replication_regions_output()
@@ -827,7 +835,8 @@ paymentcryptographycontrolplane_disassociate_mpa_team <- function(Action, Reques
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .paymentcryptographycontrolplane$disassociate_mpa_team_input(Action = Action, RequesterComment = RequesterComment)
   output <- .paymentcryptographycontrolplane$disassociate_mpa_team_output()
@@ -897,7 +906,8 @@ paymentcryptographycontrolplane_enable_default_key_replication_regions <- functi
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .paymentcryptographycontrolplane$enable_default_key_replication_regions_input(ReplicationRegions = ReplicationRegions)
   output <- .paymentcryptographycontrolplane$enable_default_key_replication_regions_output()
@@ -1137,7 +1147,8 @@ paymentcryptographycontrolplane_export_key <- function(KeyMaterial, ExportKeyIde
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .paymentcryptographycontrolplane$export_key_input(KeyMaterial = KeyMaterial, ExportKeyIdentifier = ExportKeyIdentifier, ExportAttributes = ExportAttributes)
   output <- .paymentcryptographycontrolplane$export_key_output()
@@ -1202,7 +1213,8 @@ paymentcryptographycontrolplane_get_alias <- function(AliasName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .paymentcryptographycontrolplane$get_alias_input(AliasName = AliasName)
   output <- .paymentcryptographycontrolplane$get_alias_output()
@@ -1264,7 +1276,8 @@ paymentcryptographycontrolplane_get_certificate_signing_request <- function(KeyI
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .paymentcryptographycontrolplane$get_certificate_signing_request_input(KeyIdentifier = KeyIdentifier, SigningAlgorithm = SigningAlgorithm, CertificateSubject = CertificateSubject)
   output <- .paymentcryptographycontrolplane$get_certificate_signing_request_output()
@@ -1324,7 +1337,8 @@ paymentcryptographycontrolplane_get_default_key_replication_regions <- function(
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .paymentcryptographycontrolplane$get_default_key_replication_regions_input()
   output <- .paymentcryptographycontrolplane$get_default_key_replication_regions_output()
@@ -1442,7 +1456,8 @@ paymentcryptographycontrolplane_get_key <- function(KeyIdentifier) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .paymentcryptographycontrolplane$get_key_input(KeyIdentifier = KeyIdentifier)
   output <- .paymentcryptographycontrolplane$get_key_output()
@@ -1512,7 +1527,8 @@ paymentcryptographycontrolplane_get_mpa_team_association <- function(Action) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .paymentcryptographycontrolplane$get_mpa_team_association_input(Action = Action)
   output <- .paymentcryptographycontrolplane$get_mpa_team_association_output()
@@ -1585,7 +1601,8 @@ paymentcryptographycontrolplane_get_parameters_for_export <- function(KeyMateria
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .paymentcryptographycontrolplane$get_parameters_for_export_input(KeyMaterialType = KeyMaterialType, SigningKeyAlgorithm = SigningKeyAlgorithm, ReuseLastGeneratedToken = ReuseLastGeneratedToken)
   output <- .paymentcryptographycontrolplane$get_parameters_for_export_output()
@@ -1664,7 +1681,8 @@ paymentcryptographycontrolplane_get_parameters_for_import <- function(KeyMateria
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .paymentcryptographycontrolplane$get_parameters_for_import_input(KeyMaterialType = KeyMaterialType, WrappingKeyAlgorithm = WrappingKeyAlgorithm, ReuseLastGeneratedToken = ReuseLastGeneratedToken)
   output <- .paymentcryptographycontrolplane$get_parameters_for_import_output()
@@ -1720,7 +1738,8 @@ paymentcryptographycontrolplane_get_public_key_certificate <- function(KeyIdenti
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .paymentcryptographycontrolplane$get_public_key_certificate_input(KeyIdentifier = KeyIdentifier)
   output <- .paymentcryptographycontrolplane$get_public_key_certificate_output()
@@ -1779,7 +1798,8 @@ paymentcryptographycontrolplane_get_resource_policy <- function(ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .paymentcryptographycontrolplane$get_resource_policy_input(ResourceArn = ResourceArn)
   output <- .paymentcryptographycontrolplane$get_resource_policy_output()
@@ -2117,7 +2137,8 @@ paymentcryptographycontrolplane_import_key <- function(KeyMaterial, KeyCheckValu
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .paymentcryptographycontrolplane$import_key_input(KeyMaterial = KeyMaterial, KeyCheckValueAlgorithm = KeyCheckValueAlgorithm, Enabled = Enabled, Tags = Tags, ReplicationRegions = ReplicationRegions, RequesterComment = RequesterComment)
   output <- .paymentcryptographycontrolplane$import_key_output()
@@ -2194,7 +2215,8 @@ paymentcryptographycontrolplane_list_aliases <- function(KeyArn = NULL, NextToke
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Aliases"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .paymentcryptographycontrolplane$list_aliases_input(KeyArn = KeyArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .paymentcryptographycontrolplane$list_aliases_output()
@@ -2290,7 +2312,8 @@ paymentcryptographycontrolplane_list_keys <- function(KeyState = NULL, NextToken
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Keys"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .paymentcryptographycontrolplane$list_keys_input(KeyState = KeyState, NextToken = NextToken, MaxResults = MaxResults)
   output <- .paymentcryptographycontrolplane$list_keys_output()
@@ -2362,7 +2385,8 @@ paymentcryptographycontrolplane_list_tags_for_resource <- function(ResourceArn, 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Tags"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .paymentcryptographycontrolplane$list_tags_for_resource_input(ResourceArn = ResourceArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .paymentcryptographycontrolplane$list_tags_for_resource_output()
@@ -2427,7 +2451,8 @@ paymentcryptographycontrolplane_put_resource_policy <- function(ResourceArn, Pol
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .paymentcryptographycontrolplane$put_resource_policy_input(ResourceArn = ResourceArn, Policy = Policy)
   output <- .paymentcryptographycontrolplane$put_resource_policy_output()
@@ -2556,7 +2581,8 @@ paymentcryptographycontrolplane_remove_key_replication_regions <- function(KeyId
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .paymentcryptographycontrolplane$remove_key_replication_regions_input(KeyIdentifier = KeyIdentifier, ReplicationRegions = ReplicationRegions)
   output <- .paymentcryptographycontrolplane$remove_key_replication_regions_output()
@@ -2674,7 +2700,8 @@ paymentcryptographycontrolplane_restore_key <- function(KeyIdentifier) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .paymentcryptographycontrolplane$restore_key_input(KeyIdentifier = KeyIdentifier)
   output <- .paymentcryptographycontrolplane$restore_key_output()
@@ -2788,7 +2815,8 @@ paymentcryptographycontrolplane_start_key_usage <- function(KeyIdentifier) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .paymentcryptographycontrolplane$start_key_usage_input(KeyIdentifier = KeyIdentifier)
   output <- .paymentcryptographycontrolplane$start_key_usage_output()
@@ -2905,7 +2933,8 @@ paymentcryptographycontrolplane_stop_key_usage <- function(KeyIdentifier) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .paymentcryptographycontrolplane$stop_key_usage_input(KeyIdentifier = KeyIdentifier)
   output <- .paymentcryptographycontrolplane$stop_key_usage_output()
@@ -2974,7 +3003,8 @@ paymentcryptographycontrolplane_tag_resource <- function(ResourceArn, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .paymentcryptographycontrolplane$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .paymentcryptographycontrolplane$tag_resource_output()
@@ -3034,7 +3064,8 @@ paymentcryptographycontrolplane_untag_resource <- function(ResourceArn, TagKeys)
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .paymentcryptographycontrolplane$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .paymentcryptographycontrolplane$untag_resource_output()
@@ -3101,7 +3132,8 @@ paymentcryptographycontrolplane_update_alias <- function(AliasName, KeyArn = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .paymentcryptographycontrolplane$update_alias_input(AliasName = AliasName, KeyArn = KeyArn)
   output <- .paymentcryptographycontrolplane$update_alias_output()

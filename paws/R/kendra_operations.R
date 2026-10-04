@@ -55,7 +55,8 @@ kendra_associate_entities_to_experience <- function(Id, IndexId, EntityList) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$associate_entities_to_experience_input(Id = Id, IndexId = IndexId, EntityList = EntityList)
   output <- .kendra$associate_entities_to_experience_output()
@@ -119,7 +120,8 @@ kendra_associate_personas_to_entities <- function(Id, IndexId, Personas) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$associate_personas_to_entities_input(Id = Id, IndexId = IndexId, Personas = Personas)
   output <- .kendra$associate_personas_to_entities_output()
@@ -189,7 +191,8 @@ kendra_batch_delete_document <- function(IndexId, DocumentIdList, DataSourceSync
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$batch_delete_document_input(IndexId = IndexId, DocumentIdList = DocumentIdList, DataSourceSyncJobMetricTarget = DataSourceSyncJobMetricTarget)
   output <- .kendra$batch_delete_document_output()
@@ -248,7 +251,8 @@ kendra_batch_delete_featured_results_set <- function(IndexId, FeaturedResultsSet
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$batch_delete_featured_results_set_input(IndexId = IndexId, FeaturedResultsSetIds = FeaturedResultsSetIds)
   output <- .kendra$batch_delete_featured_results_set_output()
@@ -338,7 +342,8 @@ kendra_batch_get_document_status <- function(IndexId, DocumentInfoList) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$batch_get_document_status_input(IndexId = IndexId, DocumentInfoList = DocumentInfoList)
   output <- .kendra$batch_get_document_status_output()
@@ -535,7 +540,8 @@ kendra_batch_put_document <- function(IndexId, RoleArn = NULL, Documents, Custom
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$batch_put_document_input(IndexId = IndexId, RoleArn = RoleArn, Documents = Documents, CustomDocumentEnrichmentConfiguration = CustomDocumentEnrichmentConfiguration)
   output <- .kendra$batch_put_document_output()
@@ -583,7 +589,8 @@ kendra_clear_query_suggestions <- function(IndexId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$clear_query_suggestions_input(IndexId = IndexId)
   output <- .kendra$clear_query_suggestions_output()
@@ -667,7 +674,8 @@ kendra_create_access_control_configuration <- function(IndexId, Name, Descriptio
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$create_access_control_configuration_input(IndexId = IndexId, Name = Name, Description = Description, AccessControlList = AccessControlList, HierarchicalAccessControlList = HierarchicalAccessControlList, ClientToken = ClientToken)
   output <- .kendra$create_access_control_configuration_output()
@@ -1634,7 +1642,8 @@ kendra_create_data_source <- function(Name, IndexId, Type, Configuration = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$create_data_source_input(Name = Name, IndexId = IndexId, Type = Type, Configuration = Configuration, VpcConfiguration = VpcConfiguration, Description = Description, Schedule = Schedule, RoleArn = RoleArn, Tags = Tags, ClientToken = ClientToken, LanguageCode = LanguageCode, CustomDocumentEnrichmentConfiguration = CustomDocumentEnrichmentConfiguration)
   output <- .kendra$create_data_source_output()
@@ -1707,7 +1716,8 @@ kendra_create_experience <- function(Name, IndexId, RoleArn = NULL, Configuratio
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$create_experience_input(Name = Name, IndexId = IndexId, RoleArn = RoleArn, Configuration = Configuration, Description = Description, ClientToken = ClientToken)
   output <- .kendra$create_experience_output()
@@ -1792,7 +1802,8 @@ kendra_create_faq <- function(IndexId, Name, Description = NULL, S3Path, RoleArn
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$create_faq_input(IndexId = IndexId, Name = Name, Description = Description, S3Path = S3Path, RoleArn = RoleArn, Tags = Tags, FileFormat = FileFormat, ClientToken = ClientToken, LanguageCode = LanguageCode)
   output <- .kendra$create_faq_output()
@@ -1885,7 +1896,8 @@ kendra_create_featured_results_set <- function(IndexId, FeaturedResultsSetName, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$create_featured_results_set_input(IndexId = IndexId, FeaturedResultsSetName = FeaturedResultsSetName, Description = Description, ClientToken = ClientToken, Status = Status, QueryTexts = QueryTexts, FeaturedDocuments = FeaturedDocuments, Tags = Tags)
   output <- .kendra$create_featured_results_set_output()
@@ -2002,7 +2014,8 @@ kendra_create_index <- function(Name, Edition = NULL, RoleArn, ServerSideEncrypt
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$create_index_input(Name = Name, Edition = Edition, RoleArn = RoleArn, ServerSideEncryptionConfiguration = ServerSideEncryptionConfiguration, Description = Description, ClientToken = ClientToken, Tags = Tags, UserTokenConfigurations = UserTokenConfigurations, UserContextPolicy = UserContextPolicy, UserGroupResolutionConfiguration = UserGroupResolutionConfiguration)
   output <- .kendra$create_index_output()
@@ -2090,7 +2103,8 @@ kendra_create_query_suggestions_block_list <- function(IndexId, Name, Descriptio
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$create_query_suggestions_block_list_input(IndexId = IndexId, Name = Name, Description = Description, SourceS3Path = SourceS3Path, ClientToken = ClientToken, RoleArn = RoleArn, Tags = Tags)
   output <- .kendra$create_query_suggestions_block_list_output()
@@ -2162,7 +2176,8 @@ kendra_create_thesaurus <- function(IndexId, Name, Description = NULL, RoleArn, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$create_thesaurus_input(IndexId = IndexId, Name = Name, Description = Description, RoleArn = RoleArn, Tags = Tags, SourceS3Path = SourceS3Path, ClientToken = ClientToken)
   output <- .kendra$create_thesaurus_output()
@@ -2209,7 +2224,8 @@ kendra_delete_access_control_configuration <- function(IndexId, Id) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$delete_access_control_configuration_input(IndexId = IndexId, Id = Id)
   output <- .kendra$delete_access_control_configuration_output()
@@ -2257,7 +2273,8 @@ kendra_delete_data_source <- function(Id, IndexId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$delete_data_source_input(Id = Id, IndexId = IndexId)
   output <- .kendra$delete_data_source_output()
@@ -2303,7 +2320,8 @@ kendra_delete_experience <- function(Id, IndexId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$delete_experience_input(Id = Id, IndexId = IndexId)
   output <- .kendra$delete_experience_output()
@@ -2349,7 +2367,8 @@ kendra_delete_faq <- function(Id, IndexId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$delete_faq_input(Id = Id, IndexId = IndexId)
   output <- .kendra$delete_faq_output()
@@ -2393,7 +2412,8 @@ kendra_delete_index <- function(Id) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$delete_index_input(Id = Id)
   output <- .kendra$delete_index_output()
@@ -2457,7 +2477,8 @@ kendra_delete_principal_mapping <- function(IndexId, DataSourceId = NULL, GroupI
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$delete_principal_mapping_input(IndexId = IndexId, DataSourceId = DataSourceId, GroupId = GroupId, OrderingId = OrderingId)
   output <- .kendra$delete_principal_mapping_output()
@@ -2507,7 +2528,8 @@ kendra_delete_query_suggestions_block_list <- function(IndexId, Id) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$delete_query_suggestions_block_list_input(IndexId = IndexId, Id = Id)
   output <- .kendra$delete_query_suggestions_block_list_output()
@@ -2553,7 +2575,8 @@ kendra_delete_thesaurus <- function(Id, IndexId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$delete_thesaurus_input(Id = Id, IndexId = IndexId)
   output <- .kendra$delete_thesaurus_output()
@@ -2627,7 +2650,8 @@ kendra_describe_access_control_configuration <- function(IndexId, Id) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$describe_access_control_configuration_input(IndexId = IndexId, Id = Id)
   output <- .kendra$describe_access_control_configuration_output()
@@ -3564,7 +3588,8 @@ kendra_describe_data_source <- function(Id, IndexId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$describe_data_source_input(Id = Id, IndexId = IndexId)
   output <- .kendra$describe_data_source_output()
@@ -3648,7 +3673,8 @@ kendra_describe_experience <- function(Id, IndexId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$describe_experience_input(Id = Id, IndexId = IndexId)
   output <- .kendra$describe_experience_output()
@@ -3717,7 +3743,8 @@ kendra_describe_faq <- function(Id, IndexId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$describe_faq_input(Id = Id, IndexId = IndexId)
   output <- .kendra$describe_faq_output()
@@ -3788,7 +3815,8 @@ kendra_describe_featured_results_set <- function(IndexId, FeaturedResultsSetId) 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$describe_featured_results_set_input(IndexId = IndexId, FeaturedResultsSetId = FeaturedResultsSetId)
   output <- .kendra$describe_featured_results_set_output()
@@ -3907,7 +3935,8 @@ kendra_describe_index <- function(Id) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$describe_index_input(Id = Id)
   output <- .kendra$describe_index_output()
@@ -3978,7 +4007,8 @@ kendra_describe_principal_mapping <- function(IndexId, DataSourceId = NULL, Grou
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$describe_principal_mapping_input(IndexId = IndexId, DataSourceId = DataSourceId, GroupId = GroupId)
   output <- .kendra$describe_principal_mapping_output()
@@ -4052,7 +4082,8 @@ kendra_describe_query_suggestions_block_list <- function(IndexId, Id) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$describe_query_suggestions_block_list_input(IndexId = IndexId, Id = Id)
   output <- .kendra$describe_query_suggestions_block_list_output()
@@ -4126,7 +4157,8 @@ kendra_describe_query_suggestions_config <- function(IndexId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$describe_query_suggestions_config_input(IndexId = IndexId)
   output <- .kendra$describe_query_suggestions_config_output()
@@ -4196,7 +4228,8 @@ kendra_describe_thesaurus <- function(Id, IndexId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$describe_thesaurus_input(Id = Id, IndexId = IndexId)
   output <- .kendra$describe_thesaurus_output()
@@ -4260,7 +4293,8 @@ kendra_disassociate_entities_from_experience <- function(Id, IndexId, EntityList
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$disassociate_entities_from_experience_input(Id = Id, IndexId = IndexId, EntityList = EntityList)
   output <- .kendra$disassociate_entities_from_experience_output()
@@ -4321,7 +4355,8 @@ kendra_disassociate_personas_from_entities <- function(Id, IndexId, EntityIds) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$disassociate_personas_from_entities_input(Id = Id, IndexId = IndexId, EntityIds = EntityIds)
   output <- .kendra$disassociate_personas_from_entities_output()
@@ -4550,7 +4585,8 @@ kendra_get_query_suggestions <- function(IndexId, QueryText, MaxSuggestionsCount
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$get_query_suggestions_input(IndexId = IndexId, QueryText = QueryText, MaxSuggestionsCount = MaxSuggestionsCount, SuggestionTypes = SuggestionTypes, AttributeSuggestionsConfig = AttributeSuggestionsConfig)
   output <- .kendra$get_query_suggestions_output()
@@ -4638,7 +4674,8 @@ kendra_get_snapshots <- function(IndexId, Interval, MetricType, NextToken = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$get_snapshots_input(IndexId = IndexId, Interval = Interval, MetricType = MetricType, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$get_snapshots_output()
@@ -4697,7 +4734,8 @@ kendra_list_access_control_configurations <- function(IndexId, NextToken = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$list_access_control_configurations_input(IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_access_control_configurations_output()
@@ -4786,7 +4824,8 @@ kendra_list_data_source_sync_jobs <- function(Id, IndexId, NextToken = NULL, Max
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$list_data_source_sync_jobs_input(Id = Id, IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults, StartTimeFilter = StartTimeFilter, StatusFilter = StatusFilter)
   output <- .kendra$list_data_source_sync_jobs_output()
@@ -4854,7 +4893,8 @@ kendra_list_data_sources <- function(IndexId, NextToken = NULL, MaxResults = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$list_data_sources_input(IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_data_sources_output()
@@ -4922,7 +4962,8 @@ kendra_list_entity_personas <- function(Id, IndexId, NextToken = NULL, MaxResult
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$list_entity_personas_input(Id = Id, IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_entity_personas_output()
@@ -4989,7 +5030,8 @@ kendra_list_experience_entities <- function(Id, IndexId, NextToken = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$list_experience_entities_input(Id = Id, IndexId = IndexId, NextToken = NextToken)
   output <- .kendra$list_experience_entities_output()
@@ -5058,7 +5100,8 @@ kendra_list_experiences <- function(IndexId, NextToken = NULL, MaxResults = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$list_experiences_input(IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_experiences_output()
@@ -5126,7 +5169,8 @@ kendra_list_faqs <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$list_faqs_input(IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_faqs_output()
@@ -5188,7 +5232,8 @@ kendra_list_featured_results_sets <- function(IndexId, NextToken = NULL, MaxResu
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$list_featured_results_sets_input(IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_featured_results_sets_output()
@@ -5255,7 +5300,8 @@ kendra_list_groups_older_than_ordering_id <- function(IndexId, DataSourceId = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$list_groups_older_than_ordering_id_input(IndexId = IndexId, DataSourceId = DataSourceId, OrderingId = OrderingId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_groups_older_than_ordering_id_output()
@@ -5320,7 +5366,8 @@ kendra_list_indices <- function(NextToken = NULL, MaxResults = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$list_indices_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_indices_output()
@@ -5394,7 +5441,8 @@ kendra_list_query_suggestions_block_lists <- function(IndexId, NextToken = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$list_query_suggestions_block_lists_input(IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_query_suggestions_block_lists_output()
@@ -5448,7 +5496,8 @@ kendra_list_tags_for_resource <- function(ResourceARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$list_tags_for_resource_input(ResourceARN = ResourceARN)
   output <- .kendra$list_tags_for_resource_output()
@@ -5514,7 +5563,8 @@ kendra_list_thesauri <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$list_thesauri_input(IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_thesauri_output()
@@ -5604,7 +5654,8 @@ kendra_put_principal_mapping <- function(IndexId, DataSourceId = NULL, GroupId, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$put_principal_mapping_input(IndexId = IndexId, DataSourceId = DataSourceId, GroupId = GroupId, GroupMembers = GroupMembers, OrderingId = OrderingId, RoleArn = RoleArn)
   output <- .kendra$put_principal_mapping_output()
@@ -6121,7 +6172,8 @@ kendra_query <- function(IndexId, QueryText = NULL, AttributeFilter = NULL, Face
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$query_input(IndexId = IndexId, QueryText = QueryText, AttributeFilter = AttributeFilter, Facets = Facets, RequestedDocumentAttributes = RequestedDocumentAttributes, QueryResultTypeFilter = QueryResultTypeFilter, DocumentRelevanceOverrideConfigurations = DocumentRelevanceOverrideConfigurations, PageNumber = PageNumber, PageSize = PageSize, SortingConfiguration = SortingConfiguration, SortingConfigurations = SortingConfigurations, UserContext = UserContext, VisitorId = VisitorId, SpellCorrectionConfiguration = SpellCorrectionConfiguration, CollapseConfiguration = CollapseConfiguration)
   output <- .kendra$query_output()
@@ -6367,7 +6419,8 @@ kendra_retrieve <- function(IndexId, QueryText, AttributeFilter = NULL, Requeste
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$retrieve_input(IndexId = IndexId, QueryText = QueryText, AttributeFilter = AttributeFilter, RequestedDocumentAttributes = RequestedDocumentAttributes, DocumentRelevanceOverrideConfigurations = DocumentRelevanceOverrideConfigurations, PageNumber = PageNumber, PageSize = PageSize, UserContext = UserContext)
   output <- .kendra$retrieve_output()
@@ -6420,7 +6473,8 @@ kendra_start_data_source_sync_job <- function(Id, IndexId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$start_data_source_sync_job_input(Id = Id, IndexId = IndexId)
   output <- .kendra$start_data_source_sync_job_output()
@@ -6466,7 +6520,8 @@ kendra_stop_data_source_sync_job <- function(Id, IndexId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$stop_data_source_sync_job_input(Id = Id, IndexId = IndexId)
   output <- .kendra$stop_data_source_sync_job_output()
@@ -6532,7 +6587,8 @@ kendra_submit_feedback <- function(IndexId, QueryId, ClickFeedbackItems = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$submit_feedback_input(IndexId = IndexId, QueryId = QueryId, ClickFeedbackItems = ClickFeedbackItems, RelevanceFeedbackItems = RelevanceFeedbackItems)
   output <- .kendra$submit_feedback_output()
@@ -6584,7 +6640,8 @@ kendra_tag_resource <- function(ResourceARN, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .kendra$tag_resource_output()
@@ -6632,7 +6689,8 @@ kendra_untag_resource <- function(ResourceARN, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .kendra$untag_resource_output()
@@ -6711,7 +6769,8 @@ kendra_update_access_control_configuration <- function(IndexId, Id, Name = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$update_access_control_configuration_input(IndexId = IndexId, Id = Id, Name = Name, Description = Description, AccessControlList = AccessControlList, HierarchicalAccessControlList = HierarchicalAccessControlList)
   output <- .kendra$update_access_control_configuration_output()
@@ -7645,7 +7704,8 @@ kendra_update_data_source <- function(Id, Name = NULL, IndexId, Configuration = 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$update_data_source_input(Id = Id, Name = Name, IndexId = IndexId, Configuration = Configuration, VpcConfiguration = VpcConfiguration, Description = Description, Schedule = Schedule, RoleArn = RoleArn, LanguageCode = LanguageCode, CustomDocumentEnrichmentConfiguration = CustomDocumentEnrichmentConfiguration)
   output <- .kendra$update_data_source_output()
@@ -7713,7 +7773,8 @@ kendra_update_experience <- function(Id, Name = NULL, IndexId, RoleArn = NULL, C
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$update_experience_input(Id = Id, Name = Name, IndexId = IndexId, RoleArn = RoleArn, Configuration = Configuration, Description = Description)
   output <- .kendra$update_experience_output()
@@ -7797,7 +7858,8 @@ kendra_update_featured_results_set <- function(IndexId, FeaturedResultsSetId, Fe
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$update_featured_results_set_input(IndexId = IndexId, FeaturedResultsSetId = FeaturedResultsSetId, FeaturedResultsSetName = FeaturedResultsSetName, Description = Description, Status = Status, QueryTexts = QueryTexts, FeaturedDocuments = FeaturedDocuments)
   output <- .kendra$update_featured_results_set_output()
@@ -7909,7 +7971,8 @@ kendra_update_index <- function(Id, Name = NULL, RoleArn = NULL, Description = N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$update_index_input(Id = Id, Name = Name, RoleArn = RoleArn, Description = Description, DocumentMetadataConfigurationUpdates = DocumentMetadataConfigurationUpdates, CapacityUnits = CapacityUnits, UserTokenConfigurations = UserTokenConfigurations, UserContextPolicy = UserContextPolicy, UserGroupResolutionConfiguration = UserGroupResolutionConfiguration)
   output <- .kendra$update_index_output()
@@ -7979,7 +8042,8 @@ kendra_update_query_suggestions_block_list <- function(IndexId, Id, Name = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$update_query_suggestions_block_list_input(IndexId = IndexId, Id = Id, Name = Name, Description = Description, SourceS3Path = SourceS3Path, RoleArn = RoleArn)
   output <- .kendra$update_query_suggestions_block_list_output()
@@ -8078,7 +8142,8 @@ kendra_update_query_suggestions_config <- function(IndexId, Mode = NULL, QueryLo
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$update_query_suggestions_config_input(IndexId = IndexId, Mode = Mode, QueryLogLookBackWindowInDays = QueryLogLookBackWindowInDays, IncludeQueriesWithoutUserInformation = IncludeQueriesWithoutUserInformation, MinimumNumberOfQueryingUsers = MinimumNumberOfQueryingUsers, MinimumQueryCount = MinimumQueryCount, AttributeSuggestionsConfig = AttributeSuggestionsConfig)
   output <- .kendra$update_query_suggestions_config_output()
@@ -8136,7 +8201,8 @@ kendra_update_thesaurus <- function(Id, Name = NULL, IndexId, Description = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kendra$update_thesaurus_input(Id = Id, Name = Name, IndexId = IndexId, Description = Description, RoleArn = RoleArn, SourceS3Path = SourceS3Path)
   output <- .kendra$update_thesaurus_output()

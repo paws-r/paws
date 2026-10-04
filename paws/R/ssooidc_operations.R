@@ -72,7 +72,8 @@ ssooidc_create_token <- function(clientId, clientSecret, grantType, deviceCode =
     http_path = "/token",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ssooidc$create_token_input(clientId = clientId, clientSecret = clientSecret, grantType = grantType, deviceCode = deviceCode, code = code, refreshToken = refreshToken, scope = scope, redirectUri = redirectUri, codeVerifier = codeVerifier)
   output <- .ssooidc$create_token_output()
@@ -176,7 +177,8 @@ ssooidc_create_token_with_iam <- function(clientId, grantType, code = NULL, refr
     http_path = "/token?aws_iam=t",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ssooidc$create_token_with_iam_input(clientId = clientId, grantType = grantType, code = code, refreshToken = refreshToken, assertion = assertion, scope = scope, redirectUri = redirectUri, subjectToken = subjectToken, subjectTokenType = subjectTokenType, requestedTokenType = requestedTokenType, codeVerifier = codeVerifier)
   output <- .ssooidc$create_token_with_iam_output()
@@ -255,7 +257,8 @@ ssooidc_register_client <- function(clientName, clientType, scopes = NULL, redir
     http_path = "/client/register",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ssooidc$register_client_input(clientName = clientName, clientType = clientType, scopes = scopes, redirectUris = redirectUris, grantTypes = grantTypes, issuerUrl = issuerUrl, entitledApplicationArn = entitledApplicationArn)
   output <- .ssooidc$register_client_output()
@@ -314,7 +317,8 @@ ssooidc_start_device_authorization <- function(clientId, clientSecret, startUrl)
     http_path = "/device_authorization",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ssooidc$start_device_authorization_input(clientId = clientId, clientSecret = clientSecret, startUrl = startUrl)
   output <- .ssooidc$start_device_authorization_output()

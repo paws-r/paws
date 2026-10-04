@@ -40,7 +40,8 @@ workmailmessageflow_get_raw_message_content <- function(messageId) {
     http_path = "/messages/{messageId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmailmessageflow$get_raw_message_content_input(messageId = messageId)
   output <- .workmailmessageflow$get_raw_message_content_output()
@@ -96,7 +97,8 @@ workmailmessageflow_put_raw_message_content <- function(messageId, content) {
     http_path = "/messages/{messageId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmailmessageflow$put_raw_message_content_input(messageId = messageId, content = content)
   output <- .workmailmessageflow$put_raw_message_content_output()

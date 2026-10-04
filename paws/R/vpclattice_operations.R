@@ -141,7 +141,8 @@ vpclattice_batch_update_rule <- function(serviceIdentifier, listenerIdentifier, 
     http_path = "/services/{serviceIdentifier}/listeners/{listenerIdentifier}/rules",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$batch_update_rule_input(serviceIdentifier = serviceIdentifier, listenerIdentifier = listenerIdentifier, rules = rules)
   output <- .vpclattice$batch_update_rule_output()
@@ -207,7 +208,8 @@ vpclattice_create_access_log_subscription <- function(clientToken = NULL, resour
     http_path = "/accesslogsubscriptions",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$create_access_log_subscription_input(clientToken = clientToken, resourceIdentifier = resourceIdentifier, destinationArn = destinationArn, serviceNetworkLogType = serviceNetworkLogType, tags = tags)
   output <- .vpclattice$create_access_log_subscription_output()
@@ -302,7 +304,8 @@ vpclattice_create_listener <- function(serviceIdentifier, name, protocol, port =
     http_path = "/services/{serviceIdentifier}/listeners",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$create_listener_input(serviceIdentifier = serviceIdentifier, name = name, protocol = protocol, port = port, defaultAction = defaultAction, clientToken = clientToken, tags = tags)
   output <- .vpclattice$create_listener_output()
@@ -453,7 +456,8 @@ vpclattice_create_resource_configuration <- function(name, type, portRanges = NU
     http_path = "/resourceconfigurations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$create_resource_configuration_input(name = name, type = type, portRanges = portRanges, protocol = protocol, resourceGatewayIdentifier = resourceGatewayIdentifier, resourceConfigurationGroupIdentifier = resourceConfigurationGroupIdentifier, resourceConfigurationDefinition = resourceConfigurationDefinition, allowAssociationToShareableServiceNetwork = allowAssociationToShareableServiceNetwork, customDomainName = customDomainName, groupDomain = groupDomain, domainVerificationIdentifier = domainVerificationIdentifier, clientToken = clientToken, tags = tags)
   output <- .vpclattice$create_resource_configuration_output()
@@ -552,7 +556,8 @@ vpclattice_create_resource_gateway <- function(clientToken = NULL, name, vpcIden
     http_path = "/resourcegateways",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$create_resource_gateway_input(clientToken = clientToken, name = name, vpcIdentifier = vpcIdentifier, subnetIds = subnetIds, securityGroupIds = securityGroupIds, ipAddressType = ipAddressType, ipv4AddressesPerEni = ipv4AddressesPerEni, resourceConfigDnsResolution = resourceConfigDnsResolution, tags = tags)
   output <- .vpclattice$create_resource_gateway_output()
@@ -691,7 +696,8 @@ vpclattice_create_rule <- function(serviceIdentifier, listenerIdentifier, name, 
     http_path = "/services/{serviceIdentifier}/listeners/{listenerIdentifier}/rules",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$create_rule_input(serviceIdentifier = serviceIdentifier, listenerIdentifier = listenerIdentifier, name = name, match = match, priority = priority, action = action, clientToken = clientToken, tags = tags)
   output <- .vpclattice$create_rule_output()
@@ -772,7 +778,8 @@ vpclattice_create_service <- function(clientToken = NULL, name, tags = NULL, cus
     http_path = "/services",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$create_service_input(clientToken = clientToken, name = name, tags = tags, customDomainName = customDomainName, certificateArn = certificateArn, authType = authType, idleTimeoutSeconds = idleTimeoutSeconds)
   output <- .vpclattice$create_service_output()
@@ -846,7 +853,8 @@ vpclattice_create_service_network <- function(clientToken = NULL, name, authType
     http_path = "/servicenetworks",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$create_service_network_input(clientToken = clientToken, name = name, authType = authType, tags = tags, sharingConfig = sharingConfig)
   output <- .vpclattice$create_service_network_output()
@@ -912,7 +920,8 @@ vpclattice_create_service_network_resource_association <- function(clientToken =
     http_path = "/servicenetworkresourceassociations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$create_service_network_resource_association_input(clientToken = clientToken, resourceConfigurationIdentifier = resourceConfigurationIdentifier, serviceNetworkIdentifier = serviceNetworkIdentifier, privateDnsEnabled = privateDnsEnabled, tags = tags)
   output <- .vpclattice$create_service_network_resource_association_output()
@@ -984,7 +993,8 @@ vpclattice_create_service_network_service_association <- function(clientToken = 
     http_path = "/servicenetworkserviceassociations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$create_service_network_service_association_input(clientToken = clientToken, serviceIdentifier = serviceIdentifier, serviceNetworkIdentifier = serviceNetworkIdentifier, tags = tags)
   output <- .vpclattice$create_service_network_service_association_output()
@@ -1075,7 +1085,8 @@ vpclattice_create_service_network_vpc_association <- function(clientToken = NULL
     http_path = "/servicenetworkvpcassociations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$create_service_network_vpc_association_input(clientToken = clientToken, serviceNetworkIdentifier = serviceNetworkIdentifier, vpcIdentifier = vpcIdentifier, privateDnsEnabled = privateDnsEnabled, securityGroupIds = securityGroupIds, tags = tags, dnsOptions = dnsOptions)
   output <- .vpclattice$create_service_network_vpc_association_output()
@@ -1183,7 +1194,8 @@ vpclattice_create_target_group <- function(name, type, config = NULL, clientToke
     http_path = "/targetgroups",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$create_target_group_input(name = name, type = type, config = config, clientToken = clientToken, tags = tags)
   output <- .vpclattice$create_target_group_output()
@@ -1228,7 +1240,8 @@ vpclattice_delete_access_log_subscription <- function(accessLogSubscriptionIdent
     http_path = "/accesslogsubscriptions/{accessLogSubscriptionIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$delete_access_log_subscription_input(accessLogSubscriptionIdentifier = accessLogSubscriptionIdentifier)
   output <- .vpclattice$delete_access_log_subscription_output()
@@ -1272,7 +1285,8 @@ vpclattice_delete_auth_policy <- function(resourceIdentifier) {
     http_path = "/authpolicy/{resourceIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$delete_auth_policy_input(resourceIdentifier = resourceIdentifier)
   output <- .vpclattice$delete_auth_policy_output()
@@ -1316,7 +1330,8 @@ vpclattice_delete_domain_verification <- function(domainVerificationIdentifier) 
     http_path = "/domainverifications/{domainVerificationIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$delete_domain_verification_input(domainVerificationIdentifier = domainVerificationIdentifier)
   output <- .vpclattice$delete_domain_verification_output()
@@ -1362,7 +1377,8 @@ vpclattice_delete_listener <- function(serviceIdentifier, listenerIdentifier) {
     http_path = "/services/{serviceIdentifier}/listeners/{listenerIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$delete_listener_input(serviceIdentifier = serviceIdentifier, listenerIdentifier = listenerIdentifier)
   output <- .vpclattice$delete_listener_output()
@@ -1407,7 +1423,8 @@ vpclattice_delete_resource_configuration <- function(resourceConfigurationIdenti
     http_path = "/resourceconfigurations/{resourceConfigurationIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$delete_resource_configuration_input(resourceConfigurationIdentifier = resourceConfigurationIdentifier)
   output <- .vpclattice$delete_resource_configuration_output()
@@ -1461,7 +1478,8 @@ vpclattice_delete_resource_endpoint_association <- function(resourceEndpointAsso
     http_path = "/resourceendpointassociations/{resourceEndpointAssociationIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$delete_resource_endpoint_association_input(resourceEndpointAssociationIdentifier = resourceEndpointAssociationIdentifier)
   output <- .vpclattice$delete_resource_endpoint_association_output()
@@ -1513,7 +1531,8 @@ vpclattice_delete_resource_gateway <- function(resourceGatewayIdentifier) {
     http_path = "/resourcegateways/{resourceGatewayIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$delete_resource_gateway_input(resourceGatewayIdentifier = resourceGatewayIdentifier)
   output <- .vpclattice$delete_resource_gateway_output()
@@ -1557,7 +1576,8 @@ vpclattice_delete_resource_policy <- function(resourceArn) {
     http_path = "/resourcepolicy/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$delete_resource_policy_input(resourceArn = resourceArn)
   output <- .vpclattice$delete_resource_policy_output()
@@ -1608,7 +1628,8 @@ vpclattice_delete_rule <- function(serviceIdentifier, listenerIdentifier, ruleId
     http_path = "/services/{serviceIdentifier}/listeners/{listenerIdentifier}/rules/{ruleIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$delete_rule_input(serviceIdentifier = serviceIdentifier, listenerIdentifier = listenerIdentifier, ruleIdentifier = ruleIdentifier)
   output <- .vpclattice$delete_rule_output()
@@ -1660,7 +1681,8 @@ vpclattice_delete_service <- function(serviceIdentifier) {
     http_path = "/services/{serviceIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$delete_service_input(serviceIdentifier = serviceIdentifier)
   output <- .vpclattice$delete_service_output()
@@ -1704,7 +1726,8 @@ vpclattice_delete_service_network <- function(serviceNetworkIdentifier) {
     http_path = "/servicenetworks/{serviceNetworkIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$delete_service_network_input(serviceNetworkIdentifier = serviceNetworkIdentifier)
   output <- .vpclattice$delete_service_network_output()
@@ -1757,7 +1780,8 @@ vpclattice_delete_service_network_resource_association <- function(serviceNetwor
     http_path = "/servicenetworkresourceassociations/{serviceNetworkResourceAssociationIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$delete_service_network_resource_association_input(serviceNetworkResourceAssociationIdentifier = serviceNetworkResourceAssociationIdentifier)
   output <- .vpclattice$delete_service_network_resource_association_output()
@@ -1809,7 +1833,8 @@ vpclattice_delete_service_network_service_association <- function(serviceNetwork
     http_path = "/servicenetworkserviceassociations/{serviceNetworkServiceAssociationIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$delete_service_network_service_association_input(serviceNetworkServiceAssociationIdentifier = serviceNetworkServiceAssociationIdentifier)
   output <- .vpclattice$delete_service_network_service_association_output()
@@ -1861,7 +1886,8 @@ vpclattice_delete_service_network_vpc_association <- function(serviceNetworkVpcA
     http_path = "/servicenetworkvpcassociations/{serviceNetworkVpcAssociationIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$delete_service_network_vpc_association_input(serviceNetworkVpcAssociationIdentifier = serviceNetworkVpcAssociationIdentifier)
   output <- .vpclattice$delete_service_network_vpc_association_output()
@@ -1912,7 +1938,8 @@ vpclattice_delete_target_group <- function(targetGroupIdentifier) {
     http_path = "/targetgroups/{targetGroupIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$delete_target_group_input(targetGroupIdentifier = targetGroupIdentifier)
   output <- .vpclattice$delete_target_group_output()
@@ -1981,7 +2008,8 @@ vpclattice_deregister_targets <- function(targetGroupIdentifier, targets) {
     http_path = "/targetgroups/{targetGroupIdentifier}/deregistertargets",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$deregister_targets_input(targetGroupIdentifier = targetGroupIdentifier, targets = targets)
   output <- .vpclattice$deregister_targets_output()
@@ -2041,7 +2069,8 @@ vpclattice_get_access_log_subscription <- function(accessLogSubscriptionIdentifi
     http_path = "/accesslogsubscriptions/{accessLogSubscriptionIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$get_access_log_subscription_input(accessLogSubscriptionIdentifier = accessLogSubscriptionIdentifier)
   output <- .vpclattice$get_access_log_subscription_output()
@@ -2098,7 +2127,8 @@ vpclattice_get_auth_policy <- function(resourceIdentifier) {
     http_path = "/authpolicy/{resourceIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$get_auth_policy_input(resourceIdentifier = resourceIdentifier)
   output <- .vpclattice$get_auth_policy_output()
@@ -2163,7 +2193,8 @@ vpclattice_get_domain_verification <- function(domainVerificationIdentifier) {
     http_path = "/domainverifications/{domainVerificationIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$get_domain_verification_input(domainVerificationIdentifier = domainVerificationIdentifier)
   output <- .vpclattice$get_domain_verification_output()
@@ -2240,7 +2271,8 @@ vpclattice_get_listener <- function(serviceIdentifier, listenerIdentifier) {
     http_path = "/services/{serviceIdentifier}/listeners/{listenerIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$get_listener_input(serviceIdentifier = serviceIdentifier, listenerIdentifier = listenerIdentifier)
   output <- .vpclattice$get_listener_output()
@@ -2330,7 +2362,8 @@ vpclattice_get_resource_configuration <- function(resourceConfigurationIdentifie
     http_path = "/resourceconfigurations/{resourceConfigurationIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$get_resource_configuration_input(resourceConfigurationIdentifier = resourceConfigurationIdentifier)
   output <- .vpclattice$get_resource_configuration_output()
@@ -2400,7 +2433,8 @@ vpclattice_get_resource_gateway <- function(resourceGatewayIdentifier) {
     http_path = "/resourcegateways/{resourceGatewayIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$get_resource_gateway_input(resourceGatewayIdentifier = resourceGatewayIdentifier)
   output <- .vpclattice$get_resource_gateway_output()
@@ -2449,7 +2483,8 @@ vpclattice_get_resource_policy <- function(resourceArn) {
     http_path = "/resourcepolicy/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$get_resource_policy_input(resourceArn = resourceArn)
   output <- .vpclattice$get_resource_policy_output()
@@ -2549,7 +2584,8 @@ vpclattice_get_rule <- function(serviceIdentifier, listenerIdentifier, ruleIdent
     http_path = "/services/{serviceIdentifier}/listeners/{listenerIdentifier}/rules/{ruleIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$get_rule_input(serviceIdentifier = serviceIdentifier, listenerIdentifier = listenerIdentifier, ruleIdentifier = ruleIdentifier)
   output <- .vpclattice$get_rule_output()
@@ -2617,7 +2653,8 @@ vpclattice_get_service <- function(serviceIdentifier) {
     http_path = "/services/{serviceIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$get_service_input(serviceIdentifier = serviceIdentifier)
   output <- .vpclattice$get_service_output()
@@ -2680,7 +2717,8 @@ vpclattice_get_service_network <- function(serviceNetworkIdentifier) {
     http_path = "/servicenetworks/{serviceNetworkIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$get_service_network_input(serviceNetworkIdentifier = serviceNetworkIdentifier)
   output <- .vpclattice$get_service_network_output()
@@ -2759,7 +2797,8 @@ vpclattice_get_service_network_resource_association <- function(serviceNetworkRe
     http_path = "/servicenetworkresourceassociations/{serviceNetworkResourceAssociationIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$get_service_network_resource_association_input(serviceNetworkResourceAssociationIdentifier = serviceNetworkResourceAssociationIdentifier)
   output <- .vpclattice$get_service_network_resource_association_output()
@@ -2829,7 +2868,8 @@ vpclattice_get_service_network_service_association <- function(serviceNetworkSer
     http_path = "/servicenetworkserviceassociations/{serviceNetworkServiceAssociationIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$get_service_network_service_association_input(serviceNetworkServiceAssociationIdentifier = serviceNetworkServiceAssociationIdentifier)
   output <- .vpclattice$get_service_network_service_association_output()
@@ -2905,7 +2945,8 @@ vpclattice_get_service_network_vpc_association <- function(serviceNetworkVpcAsso
     http_path = "/servicenetworkvpcassociations/{serviceNetworkVpcAssociationIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$get_service_network_vpc_association_input(serviceNetworkVpcAssociationIdentifier = serviceNetworkVpcAssociationIdentifier)
   output <- .vpclattice$get_service_network_vpc_association_output()
@@ -2991,7 +3032,8 @@ vpclattice_get_target_group <- function(targetGroupIdentifier) {
     http_path = "/targetgroups/{targetGroupIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$get_target_group_input(targetGroupIdentifier = targetGroupIdentifier)
   output <- .vpclattice$get_target_group_output()
@@ -3062,7 +3104,8 @@ vpclattice_list_access_log_subscriptions <- function(resourceIdentifier, maxResu
     http_path = "/accesslogsubscriptions",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$list_access_log_subscriptions_input(resourceIdentifier = resourceIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .vpclattice$list_access_log_subscriptions_output()
@@ -3134,7 +3177,8 @@ vpclattice_list_domain_verifications <- function(maxResults = NULL, nextToken = 
     http_path = "/domainverifications",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$list_domain_verifications_input(maxResults = maxResults, nextToken = nextToken)
   output <- .vpclattice$list_domain_verifications_output()
@@ -3202,7 +3246,8 @@ vpclattice_list_listeners <- function(serviceIdentifier, maxResults = NULL, next
     http_path = "/services/{serviceIdentifier}/listeners",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$list_listeners_input(serviceIdentifier = serviceIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .vpclattice$list_listeners_output()
@@ -3282,7 +3327,8 @@ vpclattice_list_resource_configurations <- function(resourceGatewayIdentifier = 
     http_path = "/resourceconfigurations",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$list_resource_configurations_input(resourceGatewayIdentifier = resourceGatewayIdentifier, resourceConfigurationGroupIdentifier = resourceConfigurationGroupIdentifier, domainVerificationIdentifier = domainVerificationIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .vpclattice$list_resource_configurations_output()
@@ -3364,7 +3410,8 @@ vpclattice_list_resource_endpoint_associations <- function(resourceConfiguration
     http_path = "/resourceendpointassociations",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$list_resource_endpoint_associations_input(resourceConfigurationIdentifier = resourceConfigurationIdentifier, resourceEndpointAssociationIdentifier = resourceEndpointAssociationIdentifier, vpcEndpointId = vpcEndpointId, vpcEndpointOwner = vpcEndpointOwner, maxResults = maxResults, nextToken = nextToken)
   output <- .vpclattice$list_resource_endpoint_associations_output()
@@ -3439,7 +3486,8 @@ vpclattice_list_resource_gateways <- function(maxResults = NULL, nextToken = NUL
     http_path = "/resourcegateways",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$list_resource_gateways_input(maxResults = maxResults, nextToken = nextToken)
   output <- .vpclattice$list_resource_gateways_output()
@@ -3510,7 +3558,8 @@ vpclattice_list_rules <- function(serviceIdentifier, listenerIdentifier, maxResu
     http_path = "/services/{serviceIdentifier}/listeners/{listenerIdentifier}/rules",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$list_rules_input(serviceIdentifier = serviceIdentifier, listenerIdentifier = listenerIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .vpclattice$list_rules_output()
@@ -3600,7 +3649,8 @@ vpclattice_list_service_network_resource_associations <- function(serviceNetwork
     http_path = "/servicenetworkresourceassociations",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$list_service_network_resource_associations_input(serviceNetworkIdentifier = serviceNetworkIdentifier, resourceConfigurationIdentifier = resourceConfigurationIdentifier, maxResults = maxResults, nextToken = nextToken, includeChildren = includeChildren)
   output <- .vpclattice$list_service_network_resource_associations_output()
@@ -3680,7 +3730,8 @@ vpclattice_list_service_network_service_associations <- function(serviceNetworkI
     http_path = "/servicenetworkserviceassociations",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$list_service_network_service_associations_input(serviceNetworkIdentifier = serviceNetworkIdentifier, serviceIdentifier = serviceIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .vpclattice$list_service_network_service_associations_output()
@@ -3761,7 +3812,8 @@ vpclattice_list_service_network_vpc_associations <- function(serviceNetworkIdent
     http_path = "/servicenetworkvpcassociations",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$list_service_network_vpc_associations_input(serviceNetworkIdentifier = serviceNetworkIdentifier, vpcIdentifier = vpcIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .vpclattice$list_service_network_vpc_associations_output()
@@ -3828,7 +3880,8 @@ vpclattice_list_service_network_vpc_endpoint_associations <- function(serviceNet
     http_path = "/servicenetworkvpcendpointassociations",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$list_service_network_vpc_endpoint_associations_input(serviceNetworkIdentifier = serviceNetworkIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .vpclattice$list_service_network_vpc_endpoint_associations_output()
@@ -3895,7 +3948,8 @@ vpclattice_list_service_networks <- function(maxResults = NULL, nextToken = NULL
     http_path = "/servicenetworks",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$list_service_networks_input(maxResults = maxResults, nextToken = nextToken)
   output <- .vpclattice$list_service_networks_output()
@@ -3966,7 +4020,8 @@ vpclattice_list_services <- function(maxResults = NULL, nextToken = NULL) {
     http_path = "/services",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$list_services_input(maxResults = maxResults, nextToken = nextToken)
   output <- .vpclattice$list_services_output()
@@ -4017,7 +4072,8 @@ vpclattice_list_tags_for_resource <- function(resourceArn) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .vpclattice$list_tags_for_resource_output()
@@ -4096,7 +4152,8 @@ vpclattice_list_target_groups <- function(maxResults = NULL, nextToken = NULL, v
     http_path = "/targetgroups",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$list_target_groups_input(maxResults = maxResults, nextToken = nextToken, vpcIdentifier = vpcIdentifier, targetGroupType = targetGroupType)
   output <- .vpclattice$list_target_groups_output()
@@ -4165,7 +4222,8 @@ vpclattice_list_targets <- function(targetGroupIdentifier, maxResults = NULL, ne
     http_path = "/targetgroups/{targetGroupIdentifier}/listtargets",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$list_targets_input(targetGroupIdentifier = targetGroupIdentifier, maxResults = maxResults, nextToken = nextToken, targets = targets)
   output <- .vpclattice$list_targets_output()
@@ -4219,7 +4277,8 @@ vpclattice_put_auth_policy <- function(resourceIdentifier, policy) {
     http_path = "/authpolicy/{resourceIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$put_auth_policy_input(resourceIdentifier = resourceIdentifier, policy = policy)
   output <- .vpclattice$put_auth_policy_output()
@@ -4266,7 +4325,8 @@ vpclattice_put_resource_policy <- function(resourceArn, policy) {
     http_path = "/resourcepolicy/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$put_resource_policy_input(resourceArn = resourceArn, policy = policy)
   output <- .vpclattice$put_resource_policy_output()
@@ -4335,7 +4395,8 @@ vpclattice_register_targets <- function(targetGroupIdentifier, targets) {
     http_path = "/targetgroups/{targetGroupIdentifier}/registertargets",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$register_targets_input(targetGroupIdentifier = targetGroupIdentifier, targets = targets)
   output <- .vpclattice$register_targets_output()
@@ -4397,7 +4458,8 @@ vpclattice_start_domain_verification <- function(clientToken = NULL, domainName,
     http_path = "/domainverifications",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$start_domain_verification_input(clientToken = clientToken, domainName = domainName, tags = tags)
   output <- .vpclattice$start_domain_verification_output()
@@ -4445,7 +4507,8 @@ vpclattice_tag_resource <- function(resourceArn, tags) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .vpclattice$tag_resource_output()
@@ -4493,7 +4556,8 @@ vpclattice_untag_resource <- function(resourceArn, tagKeys) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .vpclattice$untag_resource_output()
@@ -4549,7 +4613,8 @@ vpclattice_update_access_log_subscription <- function(accessLogSubscriptionIdent
     http_path = "/accesslogsubscriptions/{accessLogSubscriptionIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$update_access_log_subscription_input(accessLogSubscriptionIdentifier = accessLogSubscriptionIdentifier, destinationArn = destinationArn)
   output <- .vpclattice$update_access_log_subscription_output()
@@ -4634,7 +4699,8 @@ vpclattice_update_listener <- function(serviceIdentifier, listenerIdentifier, de
     http_path = "/services/{serviceIdentifier}/listeners/{listenerIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$update_listener_input(serviceIdentifier = serviceIdentifier, listenerIdentifier = listenerIdentifier, defaultAction = defaultAction)
   output <- .vpclattice$update_listener_output()
@@ -4743,7 +4809,8 @@ vpclattice_update_resource_configuration <- function(resourceConfigurationIdenti
     http_path = "/resourceconfigurations/{resourceConfigurationIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$update_resource_configuration_input(resourceConfigurationIdentifier = resourceConfigurationIdentifier, resourceConfigurationDefinition = resourceConfigurationDefinition, allowAssociationToShareableServiceNetwork = allowAssociationToShareableServiceNetwork, portRanges = portRanges)
   output <- .vpclattice$update_resource_configuration_output()
@@ -4808,7 +4875,8 @@ vpclattice_update_resource_gateway <- function(resourceGatewayIdentifier, securi
     http_path = "/resourcegateways/{resourceGatewayIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$update_resource_gateway_input(resourceGatewayIdentifier = resourceGatewayIdentifier, securityGroupIds = securityGroupIds)
   output <- .vpclattice$update_resource_gateway_output()
@@ -4942,7 +5010,8 @@ vpclattice_update_rule <- function(serviceIdentifier, listenerIdentifier, ruleId
     http_path = "/services/{serviceIdentifier}/listeners/{listenerIdentifier}/rules/{ruleIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$update_rule_input(serviceIdentifier = serviceIdentifier, listenerIdentifier = listenerIdentifier, ruleIdentifier = ruleIdentifier, match = match, priority = priority, action = action)
   output <- .vpclattice$update_rule_output()
@@ -5008,7 +5077,8 @@ vpclattice_update_service <- function(serviceIdentifier, certificateArn = NULL, 
     http_path = "/services/{serviceIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$update_service_input(serviceIdentifier = serviceIdentifier, certificateArn = certificateArn, authType = authType, idleTimeoutSeconds = idleTimeoutSeconds)
   output <- .vpclattice$update_service_output()
@@ -5066,7 +5136,8 @@ vpclattice_update_service_network <- function(serviceNetworkIdentifier, authType
     http_path = "/servicenetworks/{serviceNetworkIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$update_service_network_input(serviceNetworkIdentifier = serviceNetworkIdentifier, authType = authType)
   output <- .vpclattice$update_service_network_output()
@@ -5143,7 +5214,8 @@ vpclattice_update_service_network_vpc_association <- function(serviceNetworkVpcA
     http_path = "/servicenetworkvpcassociations/{serviceNetworkVpcAssociationIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$update_service_network_vpc_association_input(serviceNetworkVpcAssociationIdentifier = serviceNetworkVpcAssociationIdentifier, securityGroupIds = securityGroupIds, privateDnsEnabled = privateDnsEnabled, dnsOptions = dnsOptions)
   output <- .vpclattice$update_service_network_vpc_association_output()
@@ -5233,7 +5305,8 @@ vpclattice_update_target_group <- function(targetGroupIdentifier, healthCheck) {
     http_path = "/targetgroups/{targetGroupIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .vpclattice$update_target_group_input(targetGroupIdentifier = targetGroupIdentifier, healthCheck = healthCheck)
   output <- .vpclattice$update_target_group_output()

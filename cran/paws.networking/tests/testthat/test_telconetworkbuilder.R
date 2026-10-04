@@ -1,4 +1,4 @@
-svc <- paws.networking::telconetworkbuilder()
+svc <- paws::telconetworkbuilder()
 
 test_that("list_sol_function_instances", {
   skip_on_cran()

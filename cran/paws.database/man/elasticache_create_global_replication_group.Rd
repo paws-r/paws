@@ -8,7 +8,8 @@ cross-region replication}
 elasticache_create_global_replication_group(
   GlobalReplicationGroupIdSuffix,
   GlobalReplicationGroupDescription = NULL,
-  PrimaryReplicationGroupId
+  PrimaryReplicationGroupId,
+  Tags = NULL
 )
 }
 \arguments{
@@ -19,6 +20,8 @@ For a full list of Amazon Regions and their respective Global datastore iD prefi
 \item{GlobalReplicationGroupDescription}{Provides details of the Global datastore}
 
 \item{PrimaryReplicationGroupId}{[required] The name of the primary cluster that accepts writes and will replicate updates to the secondary cluster. This value is stored as a lowercase string.}
+
+\item{Tags}{A list of tags to be added to this resource. A tag is a key-value pair. A tag key must be accompanied by a tag value, although null is accepted.}
 }
 \description{
 Global Datastore offers fully managed, fast, reliable and secure cross-region replication. Using Global Datastore with Valkey or Redis OSS, you can create cross-region read replica clusters for ElastiCache to enable low-latency reads and disaster recovery across regions. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Redis-Global-Datastore.html}{Replication Across Regions Using Global Datastore}.

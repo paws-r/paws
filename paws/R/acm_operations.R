@@ -21,7 +21,7 @@ NULL
 #' 
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
-#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
+#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series).
 #' @param Tags &#91;required&#93; The key-value pair that defines the tag. The tag value is optional.
 #'
 #' @return
@@ -52,7 +52,8 @@ acm_add_tags_to_certificate <- function(CertificateArn, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$add_tags_to_certificate_input(CertificateArn = CertificateArn, Tags = Tags)
   output <- .acm$add_tags_to_certificate_output()
@@ -124,7 +125,8 @@ acm_create_acme_domain_validation <- function(IdempotencyToken = NULL, AcmeEndpo
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$create_acme_domain_validation_input(IdempotencyToken = IdempotencyToken, AcmeEndpointArn = AcmeEndpointArn, DomainName = DomainName, PrevalidationOptions = PrevalidationOptions, Tags = Tags)
   output <- .acm$create_acme_domain_validation_output()
@@ -201,7 +203,8 @@ acm_create_acme_endpoint <- function(IdempotencyToken = NULL, AuthorizationBehav
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$create_acme_endpoint_input(IdempotencyToken = IdempotencyToken, AuthorizationBehavior = AuthorizationBehavior, Contact = Contact, CertificateAuthority = CertificateAuthority, Tags = Tags, CertificateTags = CertificateTags)
   output <- .acm$create_acme_endpoint_output()
@@ -286,7 +289,8 @@ acm_create_acme_external_account_binding <- function(IdempotencyToken = NULL, Ac
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$create_acme_external_account_binding_input(IdempotencyToken = IdempotencyToken, AcmeEndpointArn = AcmeEndpointArn, RoleArn = RoleArn, Expiration = Expiration, Tags = Tags)
   output <- .acm$create_acme_external_account_binding_output()
@@ -330,7 +334,8 @@ acm_delete_acme_domain_validation <- function(AcmeDomainValidationArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$delete_acme_domain_validation_input(AcmeDomainValidationArn = AcmeDomainValidationArn)
   output <- .acm$delete_acme_domain_validation_output()
@@ -374,7 +379,8 @@ acm_delete_acme_endpoint <- function(AcmeEndpointArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$delete_acme_endpoint_input(AcmeEndpointArn = AcmeEndpointArn)
   output <- .acm$delete_acme_endpoint_output()
@@ -418,7 +424,8 @@ acm_delete_acme_external_account_binding <- function(AcmeExternalAccountBindingA
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$delete_acme_external_account_binding_input(AcmeExternalAccountBindingArn = AcmeExternalAccountBindingArn)
   output <- .acm$delete_acme_external_account_binding_output()
@@ -450,7 +457,7 @@ acm_delete_acme_external_account_binding <- function(AcmeExternalAccountBindingA
 #' 
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
-#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
+#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series).
 #'
 #' @return
 #' An empty list.
@@ -474,7 +481,8 @@ acm_delete_certificate <- function(CertificateArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$delete_certificate_input(CertificateArn = CertificateArn)
   output <- .acm$delete_certificate_output()
@@ -538,7 +546,8 @@ acm_describe_acme_account <- function(AcmeEndpointArn, AccountUrl) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$describe_acme_account_input(AcmeEndpointArn = AcmeEndpointArn, AccountUrl = AccountUrl)
   output <- .acm$describe_acme_account_output()
@@ -620,7 +629,8 @@ acm_describe_acme_domain_validation <- function(AcmeDomainValidationArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$describe_acme_domain_validation_input(AcmeDomainValidationArn = AcmeDomainValidationArn)
   output <- .acm$describe_acme_domain_validation_output()
@@ -697,7 +707,8 @@ acm_describe_acme_endpoint <- function(AcmeEndpointArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$describe_acme_endpoint_input(AcmeEndpointArn = AcmeEndpointArn)
   output <- .acm$describe_acme_endpoint_output()
@@ -767,7 +778,8 @@ acm_describe_acme_external_account_binding <- function(AcmeExternalAccountBindin
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$describe_acme_external_account_binding_input(AcmeExternalAccountBindingArn = AcmeExternalAccountBindingArn)
   output <- .acm$describe_acme_external_account_binding_output()
@@ -793,7 +805,7 @@ acm_describe_acme_external_account_binding <- function(AcmeExternalAccountBindin
 #' 
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
-#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
+#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series).
 #'
 #' @return
 #' A list with the following syntax:
@@ -941,7 +953,8 @@ acm_describe_certificate <- function(CertificateArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$describe_certificate_input(CertificateArn = CertificateArn)
   output <- .acm$describe_certificate_output()
@@ -1007,7 +1020,8 @@ acm_export_certificate <- function(CertificateArn, Passphrase) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$export_certificate_input(CertificateArn = CertificateArn, Passphrase = Passphrase)
   output <- .acm$export_certificate_output()
@@ -1054,7 +1068,8 @@ acm_get_account_configuration <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$get_account_configuration_input()
   output <- .acm$get_account_configuration_output()
@@ -1106,7 +1121,8 @@ acm_get_acme_external_account_binding_credentials <- function(AcmeExternalAccoun
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$get_acme_external_account_binding_credentials_input(AcmeExternalAccountBindingArn = AcmeExternalAccountBindingArn)
   output <- .acm$get_acme_external_account_binding_credentials_output()
@@ -1130,7 +1146,7 @@ acm_get_acme_external_account_binding_credentials <- function(AcmeExternalAccoun
 #' 
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
-#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
+#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series).
 #'
 #' @return
 #' A list with the following syntax:
@@ -1160,7 +1176,8 @@ acm_get_certificate <- function(CertificateArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$get_certificate_input(CertificateArn = CertificateArn)
   output <- .acm$get_certificate_output()
@@ -1204,13 +1221,13 @@ acm_get_certificate <- function(CertificateArn) {
 #' 
 #' -   The cryptographic algorithm of an imported certificate must match the algorithm of the signing CA. For example, if the signing CA key type is RSA, then the certificate key type must also be RSA.
 #' 
-#' This operation returns the [Amazon Resource Name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) of the imported certificate.
+#' This operation returns the [Amazon Resource Name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) of the imported certificate.
 #'
 #' @usage
 #' acm_import_certificate(CertificateArn, Certificate, PrivateKey,
 #'   CertificateChain, Tags)
 #'
-#' @param CertificateArn The [Amazon Resource Name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) of an imported certificate to replace. To import a new certificate, omit this field.
+#' @param CertificateArn The [Amazon Resource Name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) of an imported certificate to replace. To import a new certificate, omit this field.
 #' @param Certificate &#91;required&#93; The certificate to import.
 #' @param PrivateKey &#91;required&#93; The private key that matches the public key in the certificate.
 #' @param CertificateChain The PEM encoded certificate chain.
@@ -1254,7 +1271,8 @@ acm_import_certificate <- function(CertificateArn = NULL, Certificate, PrivateKe
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$import_certificate_input(CertificateArn = CertificateArn, Certificate = Certificate, PrivateKey = PrivateKey, CertificateChain = CertificateChain, Tags = Tags)
   output <- .acm$import_certificate_output()
@@ -1322,7 +1340,8 @@ acm_list_acme_accounts <- function(NextToken = NULL, MaxResults = NULL, AcmeEndp
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AcmeAccounts"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$list_acme_accounts_input(NextToken = NextToken, MaxResults = MaxResults, AcmeEndpointArn = AcmeEndpointArn)
   output <- .acm$list_acme_accounts_output()
@@ -1409,7 +1428,8 @@ acm_list_acme_domain_validations <- function(NextToken = NULL, MaxResults = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AcmeDomainValidations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$list_acme_domain_validations_input(NextToken = NextToken, MaxResults = MaxResults, AcmeEndpointArn = AcmeEndpointArn)
   output <- .acm$list_acme_domain_validations_output()
@@ -1489,7 +1509,8 @@ acm_list_acme_endpoints <- function(NextToken = NULL, MaxResults = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AcmeEndpoints"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$list_acme_endpoints_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .acm$list_acme_endpoints_output()
@@ -1566,7 +1587,8 @@ acm_list_acme_external_account_bindings <- function(NextToken = NULL, MaxResults
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ExternalAccountBindings"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$list_acme_external_account_bindings_input(NextToken = NextToken, MaxResults = MaxResults, AcmeEndpointArn = AcmeEndpointArn)
   output <- .acm$list_acme_external_account_bindings_output()
@@ -1663,7 +1685,8 @@ acm_list_certificate_domain_validations <- function(CertificateArn, NextToken = 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxItems", result_key = "DomainValidationSummaryList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$list_certificate_domain_validations_input(CertificateArn = CertificateArn, NextToken = NextToken, MaxItems = MaxItems)
   output <- .acm$list_certificate_domain_validations_output()
@@ -1786,7 +1809,8 @@ acm_list_certificates <- function(CertificateStatuses = NULL, CertificateKeyPair
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxItems", result_key = "CertificateSummaryList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$list_certificates_input(CertificateStatuses = CertificateStatuses, CertificateKeyPairOrigins = CertificateKeyPairOrigins, Includes = Includes, NextToken = NextToken, MaxItems = MaxItems, SortBy = SortBy, SortOrder = SortOrder)
   output <- .acm$list_certificates_output()
@@ -1812,7 +1836,7 @@ acm_list_certificates <- function(CertificateStatuses = NULL, CertificateKeyPair
 #' 
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
-#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
+#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series).
 #'
 #' @return
 #' A list with the following syntax:
@@ -1846,7 +1870,8 @@ acm_list_tags_for_certificate <- function(CertificateArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$list_tags_for_certificate_input(CertificateArn = CertificateArn)
   output <- .acm$list_tags_for_certificate_output()
@@ -1904,7 +1929,8 @@ acm_list_tags_for_resource <- function(ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .acm$list_tags_for_resource_output()
@@ -1954,7 +1980,8 @@ acm_put_account_configuration <- function(ExpiryEvents = NULL, IdempotencyToken)
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$put_account_configuration_input(ExpiryEvents = ExpiryEvents, IdempotencyToken = IdempotencyToken)
   output <- .acm$put_account_configuration_output()
@@ -1982,7 +2009,7 @@ acm_put_account_configuration <- function(ExpiryEvents = NULL, IdempotencyToken)
 #' 
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
-#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
+#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series).
 #' @param Tags &#91;required&#93; The key-value pair that defines the tag to remove.
 #'
 #' @return
@@ -2013,7 +2040,8 @@ acm_remove_tags_from_certificate <- function(CertificateArn, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$remove_tags_from_certificate_input(CertificateArn = CertificateArn, Tags = Tags)
   output <- .acm$remove_tags_from_certificate_output()
@@ -2037,7 +2065,7 @@ acm_remove_tags_from_certificate <- function(CertificateArn, Tags) {
 #' 
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
-#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
+#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series).
 #'
 #' @return
 #' An empty list.
@@ -2061,7 +2089,8 @@ acm_renew_certificate <- function(CertificateArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$renew_certificate_input(CertificateArn = CertificateArn)
   output <- .acm$renew_certificate_output()
@@ -2183,7 +2212,8 @@ acm_request_certificate <- function(DomainName, ValidationMethod = NULL, Subject
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$request_certificate_input(DomainName = DomainName, ValidationMethod = ValidationMethod, SubjectAlternativeNames = SubjectAlternativeNames, IdempotencyToken = IdempotencyToken, DomainValidationOptions = DomainValidationOptions, Options = Options, CertificateAuthorityArn = CertificateAuthorityArn, Tags = Tags, KeyAlgorithm = KeyAlgorithm, ManagedBy = ManagedBy)
   output <- .acm$request_certificate_output()
@@ -2243,7 +2273,8 @@ acm_resend_validation_email <- function(CertificateArn, Domain, ValidationDomain
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$resend_validation_email_input(CertificateArn = CertificateArn, Domain = Domain, ValidationDomain = ValidationDomain)
   output <- .acm$resend_validation_email_output()
@@ -2290,7 +2321,8 @@ acm_revoke_acme_account <- function(AcmeEndpointArn, AccountUrl) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$revoke_acme_account_input(AcmeEndpointArn = AcmeEndpointArn, AccountUrl = AccountUrl)
   output <- .acm$revoke_acme_account_output()
@@ -2335,7 +2367,8 @@ acm_revoke_acme_external_account_binding <- function(AcmeExternalAccountBindingA
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$revoke_acme_external_account_binding_input(AcmeExternalAccountBindingArn = AcmeExternalAccountBindingArn)
   output <- .acm$revoke_acme_external_account_binding_output()
@@ -2390,7 +2423,8 @@ acm_revoke_certificate <- function(CertificateArn, RevocationReason) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$revoke_certificate_input(CertificateArn = CertificateArn, RevocationReason = RevocationReason)
   output <- .acm$revoke_certificate_output()
@@ -2643,7 +2677,8 @@ acm_search_certificates <- function(FilterStatement = NULL, MaxResults = NULL, N
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Results"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$search_certificates_input(FilterStatement = FilterStatement, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
   output <- .acm$search_certificates_output()
@@ -2698,7 +2733,8 @@ acm_tag_resource <- function(ResourceArn, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .acm$tag_resource_output()
@@ -2750,7 +2786,8 @@ acm_untag_resource <- function(ResourceArn, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .acm$untag_resource_output()
@@ -2806,7 +2843,8 @@ acm_update_acme_domain_validation <- function(AcmeDomainValidationArn, Prevalida
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$update_acme_domain_validation_input(AcmeDomainValidationArn = AcmeDomainValidationArn, PrevalidationOptions = PrevalidationOptions)
   output <- .acm$update_acme_domain_validation_output()
@@ -2863,7 +2901,8 @@ acm_update_acme_endpoint <- function(AcmeEndpointArn, AuthorizationBehavior = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$update_acme_endpoint_input(AcmeEndpointArn = AcmeEndpointArn, AuthorizationBehavior = AuthorizationBehavior, Contact = Contact, CertificateAuthority = CertificateAuthority)
   output <- .acm$update_acme_endpoint_output()
@@ -2915,7 +2954,8 @@ acm_update_certificate_options <- function(CertificateArn, Options) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .acm$update_certificate_options_input(CertificateArn = CertificateArn, Options = Options)
   output <- .acm$update_certificate_options_output()

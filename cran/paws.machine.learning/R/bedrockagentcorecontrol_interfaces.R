@@ -1373,6 +1373,16 @@ NULL
   return(populate(args, .bedrockagentcorecontrol_shapes[["put_resource_policy_output"]]))
 }
 
+.bedrockagentcorecontrol$rotate_payment_connector_credentials_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .bedrockagentcorecontrol_shapes[["rotate_payment_connector_credentials_input"]]))
+}
+
+.bedrockagentcorecontrol$rotate_payment_connector_credentials_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .bedrockagentcorecontrol_shapes[["rotate_payment_connector_credentials_output"]]))
+}
+
 .bedrockagentcorecontrol$set_token_vault_cmk_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   return(populate(args, .bedrockagentcorecontrol_shapes[["set_token_vault_cmk_input"]]))

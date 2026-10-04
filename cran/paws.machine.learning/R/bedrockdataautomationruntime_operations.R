@@ -22,7 +22,8 @@ bedrockdataautomationruntime_get_data_automation_status <- function(invocationAr
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockdataautomationruntime$get_data_automation_status_input(invocationArn = invocationArn)
   output <- .bedrockdataautomationruntime$get_data_automation_status_output()
@@ -58,7 +59,8 @@ bedrockdataautomationruntime_invoke_data_automation <- function(inputConfigurati
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockdataautomationruntime$invoke_data_automation_input(inputConfiguration = inputConfiguration, dataAutomationConfiguration = dataAutomationConfiguration, blueprints = blueprints, dataAutomationProfileArn = dataAutomationProfileArn, encryptionConfiguration = encryptionConfiguration, outputConfiguration = outputConfiguration)
   output <- .bedrockdataautomationruntime$invoke_data_automation_output()
@@ -97,7 +99,8 @@ bedrockdataautomationruntime_invoke_data_automation_async <- function(clientToke
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockdataautomationruntime$invoke_data_automation_async_input(clientToken = clientToken, inputConfiguration = inputConfiguration, outputConfiguration = outputConfiguration, dataAutomationConfiguration = dataAutomationConfiguration, encryptionConfiguration = encryptionConfiguration, notificationConfiguration = notificationConfiguration, blueprints = blueprints, dataAutomationProfileArn = dataAutomationProfileArn, tags = tags)
   output <- .bedrockdataautomationruntime$invoke_data_automation_async_output()
@@ -128,7 +131,8 @@ bedrockdataautomationruntime_list_tags_for_resource <- function(resourceARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockdataautomationruntime$list_tags_for_resource_input(resourceARN = resourceARN)
   output <- .bedrockdataautomationruntime$list_tags_for_resource_output()
@@ -160,7 +164,8 @@ bedrockdataautomationruntime_tag_resource <- function(resourceARN, tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockdataautomationruntime$tag_resource_input(resourceARN = resourceARN, tags = tags)
   output <- .bedrockdataautomationruntime$tag_resource_output()
@@ -192,7 +197,8 @@ bedrockdataautomationruntime_untag_resource <- function(resourceARN, tagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockdataautomationruntime$untag_resource_input(resourceARN = resourceARN, tagKeys = tagKeys)
   output <- .bedrockdataautomationruntime$untag_resource_output()

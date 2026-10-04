@@ -45,7 +45,8 @@ billingconductor_associate_accounts <- function(Arn, AccountIds) {
     http_path = "/associate-accounts",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billingconductor$associate_accounts_input(Arn = Arn, AccountIds = AccountIds)
   output <- .billingconductor$associate_accounts_output()
@@ -98,7 +99,8 @@ billingconductor_associate_pricing_rules <- function(Arn, PricingRuleArns) {
     http_path = "/associate-pricing-rules",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billingconductor$associate_pricing_rules_input(Arn = Arn, PricingRuleArns = PricingRuleArns)
   output <- .billingconductor$associate_pricing_rules_output()
@@ -174,7 +176,8 @@ billingconductor_batch_associate_resources_to_custom_line_item <- function(Targe
     http_path = "/batch-associate-resources-to-custom-line-item",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billingconductor$batch_associate_resources_to_custom_line_item_input(TargetArn = TargetArn, ResourceArns = ResourceArns, BillingPeriodRange = BillingPeriodRange)
   output <- .billingconductor$batch_associate_resources_to_custom_line_item_output()
@@ -250,7 +253,8 @@ billingconductor_batch_disassociate_resources_from_custom_line_item <- function(
     http_path = "/batch-disassociate-resources-from-custom-line-item",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billingconductor$batch_disassociate_resources_from_custom_line_item_input(TargetArn = TargetArn, ResourceArns = ResourceArns, BillingPeriodRange = BillingPeriodRange)
   output <- .billingconductor$batch_disassociate_resources_from_custom_line_item_output()
@@ -325,7 +329,8 @@ billingconductor_create_billing_group <- function(ClientToken = NULL, Name, Acco
     http_path = "/create-billing-group",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billingconductor$create_billing_group_input(ClientToken = ClientToken, Name = Name, AccountGrouping = AccountGrouping, ComputationPreference = ComputationPreference, PrimaryAccountId = PrimaryAccountId, Description = Description, Tags = Tags)
   output <- .billingconductor$create_billing_group_output()
@@ -426,7 +431,8 @@ billingconductor_create_custom_line_item <- function(ClientToken = NULL, Name, D
     http_path = "/create-custom-line-item",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billingconductor$create_custom_line_item_input(ClientToken = ClientToken, Name = Name, Description = Description, BillingGroupArn = BillingGroupArn, BillingPeriodRange = BillingPeriodRange, Tags = Tags, ChargeDetails = ChargeDetails, AccountId = AccountId, ComputationRule = ComputationRule, PresentationDetails = PresentationDetails)
   output <- .billingconductor$create_custom_line_item_output()
@@ -489,7 +495,8 @@ billingconductor_create_pricing_plan <- function(ClientToken = NULL, Name, Descr
     http_path = "/create-pricing-plan",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billingconductor$create_pricing_plan_input(ClientToken = ClientToken, Name = Name, Description = Description, PricingRuleArns = PricingRuleArns, Tags = Tags)
   output <- .billingconductor$create_pricing_plan_output()
@@ -580,7 +587,8 @@ billingconductor_create_pricing_rule <- function(ClientToken = NULL, Name, Descr
     http_path = "/create-pricing-rule",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billingconductor$create_pricing_rule_input(ClientToken = ClientToken, Name = Name, Description = Description, Scope = Scope, Type = Type, ModifierPercentage = ModifierPercentage, Service = Service, Tags = Tags, BillingEntity = BillingEntity, Tiering = Tiering, UsageType = UsageType, Operation = Operation)
   output <- .billingconductor$create_pricing_rule_output()
@@ -629,7 +637,8 @@ billingconductor_delete_billing_group <- function(Arn) {
     http_path = "/delete-billing-group",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billingconductor$delete_billing_group_input(Arn = Arn)
   output <- .billingconductor$delete_billing_group_output()
@@ -684,7 +693,8 @@ billingconductor_delete_custom_line_item <- function(Arn, BillingPeriodRange = N
     http_path = "/delete-custom-line-item",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billingconductor$delete_custom_line_item_input(Arn = Arn, BillingPeriodRange = BillingPeriodRange)
   output <- .billingconductor$delete_custom_line_item_output()
@@ -733,7 +743,8 @@ billingconductor_delete_pricing_plan <- function(Arn) {
     http_path = "/delete-pricing-plan",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billingconductor$delete_pricing_plan_input(Arn = Arn)
   output <- .billingconductor$delete_pricing_plan_output()
@@ -783,7 +794,8 @@ billingconductor_delete_pricing_rule <- function(Arn) {
     http_path = "/delete-pricing-rule",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billingconductor$delete_pricing_rule_input(Arn = Arn)
   output <- .billingconductor$delete_pricing_rule_output()
@@ -836,7 +848,8 @@ billingconductor_disassociate_accounts <- function(Arn, AccountIds) {
     http_path = "/disassociate-accounts",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billingconductor$disassociate_accounts_input(Arn = Arn, AccountIds = AccountIds)
   output <- .billingconductor$disassociate_accounts_output()
@@ -889,7 +902,8 @@ billingconductor_disassociate_pricing_rules <- function(Arn, PricingRuleArns) {
     http_path = "/disassociate-pricing-rules",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billingconductor$disassociate_pricing_rules_input(Arn = Arn, PricingRuleArns = PricingRuleArns)
   output <- .billingconductor$disassociate_pricing_rules_output()
@@ -970,7 +984,8 @@ billingconductor_get_billing_group_cost_report <- function(Arn, BillingPeriodRan
     http_path = "/get-billing-group-cost-report",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billingconductor$get_billing_group_cost_report_input(Arn = Arn, BillingPeriodRange = BillingPeriodRange, GroupBy = GroupBy, MaxResults = MaxResults, NextToken = NextToken)
   output <- .billingconductor$get_billing_group_cost_report_output()
@@ -981,6 +996,63 @@ billingconductor_get_billing_group_cost_report <- function(Arn, BillingPeriodRan
   return(response)
 }
 .billingconductor$operations$get_billing_group_cost_report <- billingconductor_get_billing_group_cost_report
+
+#' Retrieves the auto billing group creation preference for a billing
+#' transfer
+#'
+#' @description
+#' Retrieves the auto billing group creation preference for a billing transfer.
+#'
+#' @usage
+#' billingconductor_get_billing_transfer_preference(
+#'   ResponsibilityTransferArn)
+#'
+#' @param ResponsibilityTransferArn &#91;required&#93; The Amazon Resource Name (ARN) of the billing transfer whose preference you want to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResponsibilityTransferArn = "string",
+#'   AutoBillingTransferBillingGroupCreation = list(
+#'     Enabled = TRUE|FALSE,
+#'     PricingPlanArn = "string"
+#'   ),
+#'   LastModifiedTime = 123
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_billing_transfer_preference(
+#'   ResponsibilityTransferArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname billingconductor_get_billing_transfer_preference
+#'
+#' @aliases billingconductor_get_billing_transfer_preference
+billingconductor_get_billing_transfer_preference <- function(ResponsibilityTransferArn) {
+  op <- new_operation(
+    name = "GetBillingTransferPreference",
+    http_method = "POST",
+    http_path = "/get-billing-transfer-preference",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .billingconductor$get_billing_transfer_preference_input(ResponsibilityTransferArn = ResponsibilityTransferArn)
+  output <- .billingconductor$get_billing_transfer_preference_output()
+  config <- get_config()
+  svc <- .billingconductor$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.billingconductor$operations$get_billing_transfer_preference <- billingconductor_get_billing_transfer_preference
 
 #' This is a paginated call to list linked accounts that are linked to the
 #' payer account for the specified time period
@@ -1045,7 +1117,8 @@ billingconductor_list_account_associations <- function(BillingPeriod = NULL, Fil
     http_path = "/list-account-associations",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "LinkedAccounts"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billingconductor$list_account_associations_input(BillingPeriod = BillingPeriod, Filters = Filters, NextToken = NextToken)
   output <- .billingconductor$list_account_associations_output()
@@ -1117,7 +1190,8 @@ billingconductor_list_billing_group_cost_reports <- function(BillingPeriod = NUL
     http_path = "/list-billing-group-cost-reports",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "BillingGroupCostReports"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billingconductor$list_billing_group_cost_reports_input(BillingPeriod = BillingPeriod, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .billingconductor$list_billing_group_cost_reports_output()
@@ -1219,7 +1293,8 @@ billingconductor_list_billing_groups <- function(BillingPeriod = NULL, MaxResult
     http_path = "/list-billing-groups",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "BillingGroups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billingconductor$list_billing_groups_input(BillingPeriod = BillingPeriod, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .billingconductor$list_billing_groups_output()
@@ -1322,7 +1397,8 @@ billingconductor_list_custom_line_item_versions <- function(Arn, MaxResults = NU
     http_path = "/list-custom-line-item-versions",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CustomLineItemVersions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billingconductor$list_custom_line_item_versions_input(Arn = Arn, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .billingconductor$list_custom_line_item_versions_output()
@@ -1431,7 +1507,8 @@ billingconductor_list_custom_line_items <- function(BillingPeriod = NULL, MaxRes
     http_path = "/list-custom-line-items",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CustomLineItems"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billingconductor$list_custom_line_items_input(BillingPeriod = BillingPeriod, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .billingconductor$list_custom_line_items_output()
@@ -1502,7 +1579,8 @@ billingconductor_list_pricing_plans <- function(BillingPeriod = NULL, Filters = 
     http_path = "/list-pricing-plans",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", non_aggregate_keys = list( "BillingPeriod"), output_token = "NextToken", result_key = "PricingPlans"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billingconductor$list_pricing_plans_input(BillingPeriod = BillingPeriod, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .billingconductor$list_pricing_plans_output()
@@ -1563,7 +1641,8 @@ billingconductor_list_pricing_plans_associated_with_pricing_rule <- function(Bil
     http_path = "/list-pricing-plans-associated-with-pricing-rule",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", non_aggregate_keys = list( "BillingPeriod", "PricingRuleArn"), output_token = "NextToken", result_key = "PricingPlanArns"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billingconductor$list_pricing_plans_associated_with_pricing_rule_input(BillingPeriod = BillingPeriod, PricingRuleArn = PricingRuleArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .billingconductor$list_pricing_plans_associated_with_pricing_rule_output()
@@ -1654,7 +1733,8 @@ billingconductor_list_pricing_rules <- function(BillingPeriod = NULL, Filters = 
     http_path = "/list-pricing-rules",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", non_aggregate_keys = list( "BillingPeriod"), output_token = "NextToken", result_key = "PricingRules"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billingconductor$list_pricing_rules_input(BillingPeriod = BillingPeriod, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .billingconductor$list_pricing_rules_output()
@@ -1715,7 +1795,8 @@ billingconductor_list_pricing_rules_associated_to_pricing_plan <- function(Billi
     http_path = "/list-pricing-rules-associated-to-pricing-plan",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", non_aggregate_keys = list( "BillingPeriod", "PricingPlanArn"), output_token = "NextToken", result_key = "PricingRuleArns"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billingconductor$list_pricing_rules_associated_to_pricing_plan_input(BillingPeriod = BillingPeriod, PricingPlanArn = PricingPlanArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .billingconductor$list_pricing_rules_associated_to_pricing_plan_output()
@@ -1783,7 +1864,8 @@ billingconductor_list_resources_associated_to_custom_line_item <- function(Billi
     http_path = "/list-resources-associated-to-custom-line-item",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", non_aggregate_keys = list( "Arn"), output_token = "NextToken", result_key = "AssociatedResources"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billingconductor$list_resources_associated_to_custom_line_item_input(BillingPeriod = BillingPeriod, Arn = Arn, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .billingconductor$list_resources_associated_to_custom_line_item_output()
@@ -1834,7 +1916,8 @@ billingconductor_list_tags_for_resource <- function(ResourceArn) {
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billingconductor$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .billingconductor$list_tags_for_resource_output()
@@ -1883,7 +1966,8 @@ billingconductor_tag_resource <- function(ResourceArn, Tags) {
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billingconductor$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .billingconductor$tag_resource_output()
@@ -1931,7 +2015,8 @@ billingconductor_untag_resource <- function(ResourceArn, TagKeys) {
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billingconductor$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .billingconductor$untag_resource_output()
@@ -2008,7 +2093,8 @@ billingconductor_update_billing_group <- function(Arn, Name = NULL, Status = NUL
     http_path = "/update-billing-group",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billingconductor$update_billing_group_input(Arn = Arn, Name = Name, Status = Status, ComputationPreference = ComputationPreference, Description = Description, AccountGrouping = AccountGrouping)
   output <- .billingconductor$update_billing_group_output()
@@ -2019,6 +2105,71 @@ billingconductor_update_billing_group <- function(Arn, Name = NULL, Status = NUL
   return(response)
 }
 .billingconductor$operations$update_billing_group <- billingconductor_update_billing_group
+
+#' Sets the auto billing group creation preference for a billing transfer
+#'
+#' @description
+#' Sets the auto billing group creation preference for a billing transfer. When the preference is enabled, Billing Conductor automatically creates an indirect billing transfer billing group in your account, with the pricing plan that you specify, for each account that transfers its bill to the bill source account of this billing transfer. The preference applies only to billing groups that are created after you enable it.
+#' 
+#' Enabling the preference requires the `iam:CreateServiceLinkedRole` permission. While a pricing plan is specified in an enabled preference, you can't delete that pricing plan.
+#'
+#' @usage
+#' billingconductor_update_billing_transfer_preference(ClientToken,
+#'   ResponsibilityTransferArn, AutoBillingTransferBillingGroupCreation)
+#'
+#' @param ClientToken A unique, case-sensitive identifier that you specify to ensure idempotency of the request. Idempotency ensures that an API request completes no more than one time. With an idempotent request, if the original request completes successfully, any subsequent retries complete successfully without performing any further actions.
+#' @param ResponsibilityTransferArn &#91;required&#93; The Amazon Resource Name (ARN) of the billing transfer whose preference you want to set.
+#' @param AutoBillingTransferBillingGroupCreation &#91;required&#93; The auto billing group creation preference to set for the billing transfer.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResponsibilityTransferArn = "string",
+#'   AutoBillingTransferBillingGroupCreation = list(
+#'     Enabled = TRUE|FALSE,
+#'     PricingPlanArn = "string"
+#'   ),
+#'   LastModifiedTime = 123
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_billing_transfer_preference(
+#'   ClientToken = "string",
+#'   ResponsibilityTransferArn = "string",
+#'   AutoBillingTransferBillingGroupCreation = list(
+#'     Enabled = TRUE|FALSE,
+#'     PricingPlanArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname billingconductor_update_billing_transfer_preference
+#'
+#' @aliases billingconductor_update_billing_transfer_preference
+billingconductor_update_billing_transfer_preference <- function(ClientToken = NULL, ResponsibilityTransferArn, AutoBillingTransferBillingGroupCreation) {
+  op <- new_operation(
+    name = "UpdateBillingTransferPreference",
+    http_method = "PUT",
+    http_path = "/update-billing-transfer-preference",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .billingconductor$update_billing_transfer_preference_input(ClientToken = ClientToken, ResponsibilityTransferArn = ResponsibilityTransferArn, AutoBillingTransferBillingGroupCreation = AutoBillingTransferBillingGroupCreation)
+  output <- .billingconductor$update_billing_transfer_preference_output()
+  config <- get_config()
+  svc <- .billingconductor$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.billingconductor$operations$update_billing_transfer_preference <- billingconductor_update_billing_transfer_preference
 
 #' Update an existing custom line item in the current or previous billing
 #' period
@@ -2115,7 +2266,8 @@ billingconductor_update_custom_line_item <- function(Arn, Name = NULL, Descripti
     http_path = "/update-custom-line-item",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billingconductor$update_custom_line_item_input(Arn = Arn, Name = Name, Description = Description, ChargeDetails = ChargeDetails, BillingPeriodRange = BillingPeriodRange)
   output <- .billingconductor$update_custom_line_item_output()
@@ -2172,7 +2324,8 @@ billingconductor_update_pricing_plan <- function(Arn, Name = NULL, Description =
     http_path = "/update-pricing-plan",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billingconductor$update_pricing_plan_input(Arn = Arn, Name = Name, Description = Description)
   output <- .billingconductor$update_pricing_plan_output()
@@ -2266,7 +2419,8 @@ billingconductor_update_pricing_rule <- function(Arn, Name = NULL, Description =
     http_path = "/update-pricing-rule",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billingconductor$update_pricing_rule_input(Arn = Arn, Name = Name, Description = Description, Type = Type, ModifierPercentage = ModifierPercentage, Tiering = Tiering)
   output <- .billingconductor$update_pricing_rule_output()

@@ -1,3 +1,3 @@
-svc <- paws.cost.management::costandusagereportservice()
+svc <- paws::costandusagereportservice()
 
 

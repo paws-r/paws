@@ -2,7 +2,8 @@
 % Please edit documentation in R/rekognition_operations.R
 \name{rekognition_list_media_analysis_jobs}
 \alias{rekognition_list_media_analysis_jobs}
-\title{Returns a list of media analysis jobs}
+\title{Service availability notice: Streaming Video and Bulk Image Analysis is
+no longer available to new customers}
 \usage{
 rekognition_list_media_analysis_jobs(NextToken = NULL, MaxResults = NULL)
 }
@@ -12,7 +13,7 @@ rekognition_list_media_analysis_jobs(NextToken = NULL, MaxResults = NULL)
 \item{MaxResults}{The maximum number of results to return per paginated call. The largest value user can specify is 100. If user specifies a value greater than 100, an \code{InvalidParameterException} error occurs. The default value is 100.}
 }
 \description{
-Returns a list of media analysis jobs. Results are sorted by \code{CreationTimestamp} in descending order.
+Service availability notice: Streaming Video and Bulk Image Analysis is no longer available to new customers. For more information, see \href{https://docs.aws.amazon.com/rekognition/latest/dg/rekognition-availability-changes.html}{Rekognition feature availability changes}.
 
 See \url{https://www.paws-r-sdk.com/docs/rekognition_list_media_analysis_jobs/} for full documentation.
 }

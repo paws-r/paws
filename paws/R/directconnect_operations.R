@@ -80,7 +80,8 @@ directconnect_accept_direct_connect_gateway_association_proposal <- function(dir
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$accept_direct_connect_gateway_association_proposal_input(directConnectGatewayId = directConnectGatewayId, proposalId = proposalId, associatedGatewayOwnerAccount = associatedGatewayOwnerAccount, overrideAllowedPrefixesToDirectConnectGateway = overrideAllowedPrefixesToDirectConnectGateway)
   output <- .directconnect$accept_direct_connect_gateway_association_proposal_output()
@@ -191,7 +192,8 @@ directconnect_allocate_connection_on_interconnect <- function(bandwidth, connect
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$allocate_connection_on_interconnect_input(bandwidth = bandwidth, connectionName = connectionName, ownerAccount = ownerAccount, interconnectId = interconnectId, vlan = vlan)
   output <- .directconnect$allocate_connection_on_interconnect_output()
@@ -308,7 +310,8 @@ directconnect_allocate_hosted_connection <- function(connectionId, ownerAccount,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$allocate_hosted_connection_input(connectionId = connectionId, ownerAccount = ownerAccount, bandwidth = bandwidth, connectionName = connectionName, vlan = vlan, tags = tags)
   output <- .directconnect$allocate_hosted_connection_output()
@@ -434,7 +437,8 @@ directconnect_allocate_private_virtual_interface <- function(connectionId, owner
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$allocate_private_virtual_interface_input(connectionId = connectionId, ownerAccount = ownerAccount, newPrivateVirtualInterfaceAllocation = newPrivateVirtualInterfaceAllocation)
   output <- .directconnect$allocate_private_virtual_interface_output()
@@ -568,7 +572,8 @@ directconnect_allocate_public_virtual_interface <- function(connectionId, ownerA
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$allocate_public_virtual_interface_input(connectionId = connectionId, ownerAccount = ownerAccount, newPublicVirtualInterfaceAllocation = newPublicVirtualInterfaceAllocation)
   output <- .directconnect$allocate_public_virtual_interface_output()
@@ -698,7 +703,8 @@ directconnect_allocate_transit_virtual_interface <- function(connectionId, owner
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$allocate_transit_virtual_interface_input(connectionId = connectionId, ownerAccount = ownerAccount, newTransitVirtualInterfaceAllocation = newTransitVirtualInterfaceAllocation)
   output <- .directconnect$allocate_transit_virtual_interface_output()
@@ -800,7 +806,8 @@ directconnect_associate_connection_with_lag <- function(connectionId, lagId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$associate_connection_with_lag_input(connectionId = connectionId, lagId = lagId)
   output <- .directconnect$associate_connection_with_lag_output()
@@ -862,7 +869,8 @@ directconnect_associate_connections_to_resiliency_group <- function(connectionId
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$associate_connections_to_resiliency_group_input(connectionIdentifiers = connectionIdentifiers, resiliencyGroupId = resiliencyGroupId, clientToken = clientToken)
   output <- .directconnect$associate_connections_to_resiliency_group_output()
@@ -964,7 +972,8 @@ directconnect_associate_hosted_connection <- function(connectionId, parentConnec
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$associate_hosted_connection_input(connectionId = connectionId, parentConnectionId = parentConnectionId)
   output <- .directconnect$associate_hosted_connection_output()
@@ -1050,7 +1059,8 @@ directconnect_associate_mac_sec_key <- function(connectionId, secretARN = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$associate_mac_sec_key_input(connectionId = connectionId, secretARN = secretARN, ckn = ckn, cak = cak)
   output <- .directconnect$associate_mac_sec_key_output()
@@ -1159,7 +1169,8 @@ directconnect_associate_virtual_interface <- function(virtualInterfaceId, connec
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$associate_virtual_interface_input(virtualInterfaceId = virtualInterfaceId, connectionId = connectionId)
   output <- .directconnect$associate_virtual_interface_output()
@@ -1211,7 +1222,8 @@ directconnect_confirm_connection <- function(connectionId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$confirm_connection_input(connectionId = connectionId)
   output <- .directconnect$confirm_connection_output()
@@ -1261,7 +1273,8 @@ directconnect_confirm_customer_agreement <- function(agreementName = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$confirm_customer_agreement_input(agreementName = agreementName)
   output <- .directconnect$confirm_customer_agreement_output()
@@ -1318,7 +1331,8 @@ directconnect_confirm_private_virtual_interface <- function(virtualInterfaceId, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$confirm_private_virtual_interface_input(virtualInterfaceId = virtualInterfaceId, virtualGatewayId = virtualGatewayId, directConnectGatewayId = directConnectGatewayId)
   output <- .directconnect$confirm_private_virtual_interface_output()
@@ -1370,7 +1384,8 @@ directconnect_confirm_public_virtual_interface <- function(virtualInterfaceId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$confirm_public_virtual_interface_input(virtualInterfaceId = virtualInterfaceId)
   output <- .directconnect$confirm_public_virtual_interface_output()
@@ -1425,7 +1440,8 @@ directconnect_confirm_transit_virtual_interface <- function(virtualInterfaceId, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$confirm_transit_virtual_interface_input(virtualInterfaceId = virtualInterfaceId, directConnectGatewayId = directConnectGatewayId)
   output <- .directconnect$confirm_transit_virtual_interface_output()
@@ -1547,7 +1563,8 @@ directconnect_create_bgp_peer <- function(virtualInterfaceId = NULL, newBGPPeer 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$create_bgp_peer_input(virtualInterfaceId = virtualInterfaceId, newBGPPeer = newBGPPeer)
   output <- .directconnect$create_bgp_peer_output()
@@ -1672,7 +1689,8 @@ directconnect_create_connection <- function(location, bandwidth, connectionName,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$create_connection_input(location = location, bandwidth = bandwidth, connectionName = connectionName, lagId = lagId, tags = tags, providerName = providerName, requestMACSec = requestMACSec, billingMode = billingMode)
   output <- .directconnect$create_connection_output()
@@ -1747,7 +1765,8 @@ directconnect_create_direct_connect_gateway <- function(directConnectGatewayName
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$create_direct_connect_gateway_input(directConnectGatewayName = directConnectGatewayName, tags = tags, amazonSideAsn = amazonSideAsn)
   output <- .directconnect$create_direct_connect_gateway_output()
@@ -1838,7 +1857,8 @@ directconnect_create_direct_connect_gateway_association <- function(directConnec
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$create_direct_connect_gateway_association_input(directConnectGatewayId = directConnectGatewayId, gatewayId = gatewayId, addAllowedPrefixesToDirectConnectGateway = addAllowedPrefixesToDirectConnectGateway, virtualGatewayId = virtualGatewayId)
   output <- .directconnect$create_direct_connect_gateway_association_output()
@@ -1930,7 +1950,8 @@ directconnect_create_direct_connect_gateway_association_proposal <- function(dir
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$create_direct_connect_gateway_association_proposal_input(directConnectGatewayId = directConnectGatewayId, directConnectGatewayOwnerAccount = directConnectGatewayOwnerAccount, gatewayId = gatewayId, addAllowedPrefixesToDirectConnectGateway = addAllowedPrefixesToDirectConnectGateway, removeAllowedPrefixesToDirectConnectGateway = removeAllowedPrefixesToDirectConnectGateway)
   output <- .directconnect$create_direct_connect_gateway_association_proposal_output()
@@ -2038,7 +2059,8 @@ directconnect_create_interconnect <- function(interconnectName, bandwidth, locat
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$create_interconnect_input(interconnectName = interconnectName, bandwidth = bandwidth, location = location, lagId = lagId, tags = tags, providerName = providerName, requestMACSec = requestMACSec)
   output <- .directconnect$create_interconnect_output()
@@ -2223,7 +2245,8 @@ directconnect_create_lag <- function(numberOfConnections, location, connectionsB
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$create_lag_input(numberOfConnections = numberOfConnections, location = location, connectionsBandwidth = connectionsBandwidth, lagName = lagName, connectionId = connectionId, tags = tags, childConnectionTags = childConnectionTags, providerName = providerName, requestMACSec = requestMACSec, billingMode = billingMode)
   output <- .directconnect$create_lag_output()
@@ -2351,7 +2374,8 @@ directconnect_create_private_virtual_interface <- function(connectionId, newPriv
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$create_private_virtual_interface_input(connectionId = connectionId, newPrivateVirtualInterface = newPrivateVirtualInterface)
   output <- .directconnect$create_private_virtual_interface_output()
@@ -2478,7 +2502,8 @@ directconnect_create_public_virtual_interface <- function(connectionId, newPubli
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$create_public_virtual_interface_input(connectionId = connectionId, newPublicVirtualInterface = newPublicVirtualInterface)
   output <- .directconnect$create_public_virtual_interface_output()
@@ -2552,7 +2577,8 @@ directconnect_create_resiliency_group <- function(resiliencyGroupName, intendedR
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$create_resiliency_group_input(resiliencyGroupName = resiliencyGroupName, intendedResiliencyModel = intendedResiliencyModel, clientToken = clientToken, tags = tags)
   output <- .directconnect$create_resiliency_group_output()
@@ -2683,7 +2709,8 @@ directconnect_create_transit_virtual_interface <- function(connectionId, newTran
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$create_transit_virtual_interface_input(connectionId = connectionId, newTransitVirtualInterface = newTransitVirtualInterface)
   output <- .directconnect$create_transit_virtual_interface_output()
@@ -2818,7 +2845,8 @@ directconnect_delete_bgp_peer <- function(virtualInterfaceId = NULL, asn = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$delete_bgp_peer_input(virtualInterfaceId = virtualInterfaceId, asn = asn, asnLong = asnLong, customerAddress = customerAddress, bgpPeerId = bgpPeerId)
   output <- .directconnect$delete_bgp_peer_output()
@@ -2916,7 +2944,8 @@ directconnect_delete_connection <- function(connectionId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$delete_connection_input(connectionId = connectionId)
   output <- .directconnect$delete_connection_output()
@@ -2979,7 +3008,8 @@ directconnect_delete_direct_connect_gateway <- function(directConnectGatewayId) 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$delete_direct_connect_gateway_input(directConnectGatewayId = directConnectGatewayId)
   output <- .directconnect$delete_direct_connect_gateway_output()
@@ -3061,7 +3091,8 @@ directconnect_delete_direct_connect_gateway_association <- function(associationI
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$delete_direct_connect_gateway_association_input(associationId = associationId, directConnectGatewayId = directConnectGatewayId, virtualGatewayId = virtualGatewayId)
   output <- .directconnect$delete_direct_connect_gateway_association_output()
@@ -3133,7 +3164,8 @@ directconnect_delete_direct_connect_gateway_association_proposal <- function(pro
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$delete_direct_connect_gateway_association_proposal_input(proposalId = proposalId)
   output <- .directconnect$delete_direct_connect_gateway_association_proposal_output()
@@ -3184,7 +3216,8 @@ directconnect_delete_interconnect <- function(interconnectId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$delete_interconnect_input(interconnectId = interconnectId)
   output <- .directconnect$delete_interconnect_output()
@@ -3327,7 +3360,8 @@ directconnect_delete_lag <- function(lagId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$delete_lag_input(lagId = lagId)
   output <- .directconnect$delete_lag_output()
@@ -3389,7 +3423,8 @@ directconnect_delete_resiliency_group <- function(resiliencyGroupId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$delete_resiliency_group_input(resiliencyGroupId = resiliencyGroupId)
   output <- .directconnect$delete_resiliency_group_output()
@@ -3438,7 +3473,8 @@ directconnect_delete_virtual_interface <- function(virtualInterfaceId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$delete_virtual_interface_input(virtualInterfaceId = virtualInterfaceId)
   output <- .directconnect$delete_virtual_interface_output()
@@ -3499,7 +3535,8 @@ directconnect_describe_connection_loa <- function(connectionId, providerName = N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$describe_connection_loa_input(connectionId = connectionId, providerName = providerName, loaContentType = loaContentType)
   output <- .directconnect$describe_connection_loa_output()
@@ -3606,7 +3643,8 @@ directconnect_describe_connections <- function(connectionId = NULL, maxResults =
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$describe_connections_input(connectionId = connectionId, maxResults = maxResults, nextToken = nextToken)
   output <- .directconnect$describe_connections_output()
@@ -3711,7 +3749,8 @@ directconnect_describe_connections_on_interconnect <- function(interconnectId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$describe_connections_on_interconnect_input(interconnectId = interconnectId)
   output <- .directconnect$describe_connections_on_interconnect_output()
@@ -3763,7 +3802,8 @@ directconnect_describe_customer_metadata <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$describe_customer_metadata_input()
   output <- .directconnect$describe_customer_metadata_output()
@@ -3849,7 +3889,8 @@ directconnect_describe_direct_connect_gateway_association_proposals <- function(
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$describe_direct_connect_gateway_association_proposals_input(directConnectGatewayId = directConnectGatewayId, proposalId = proposalId, associatedGatewayId = associatedGatewayId, maxResults = maxResults, nextToken = nextToken)
   output <- .directconnect$describe_direct_connect_gateway_association_proposals_output()
@@ -3969,7 +4010,8 @@ directconnect_describe_direct_connect_gateway_associations <- function(associati
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "directConnectGatewayAssociations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$describe_direct_connect_gateway_associations_input(associationId = associationId, associatedGatewayId = associatedGatewayId, directConnectGatewayId = directConnectGatewayId, maxResults = maxResults, nextToken = nextToken, virtualGatewayId = virtualGatewayId)
   output <- .directconnect$describe_direct_connect_gateway_associations_output()
@@ -4039,7 +4081,8 @@ directconnect_describe_direct_connect_gateway_attachments <- function(directConn
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "directConnectGatewayAttachments"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$describe_direct_connect_gateway_attachments_input(directConnectGatewayId = directConnectGatewayId, virtualInterfaceId = virtualInterfaceId, maxResults = maxResults, nextToken = nextToken)
   output <- .directconnect$describe_direct_connect_gateway_attachments_output()
@@ -4113,7 +4156,8 @@ directconnect_describe_direct_connect_gateways <- function(directConnectGatewayI
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "directConnectGateways"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$describe_direct_connect_gateways_input(directConnectGatewayId = directConnectGatewayId, maxResults = maxResults, nextToken = nextToken)
   output <- .directconnect$describe_direct_connect_gateways_output()
@@ -4224,7 +4268,8 @@ directconnect_describe_hosted_connections <- function(connectionId, maxResults =
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$describe_hosted_connections_input(connectionId = connectionId, maxResults = maxResults, nextToken = nextToken)
   output <- .directconnect$describe_hosted_connections_output()
@@ -4285,7 +4330,8 @@ directconnect_describe_interconnect_loa <- function(interconnectId, providerName
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$describe_interconnect_loa_input(interconnectId = interconnectId, providerName = providerName, loaContentType = loaContentType)
   output <- .directconnect$describe_interconnect_loa_output()
@@ -4379,7 +4425,8 @@ directconnect_describe_interconnects <- function(interconnectId = NULL, maxResul
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$describe_interconnects_input(interconnectId = interconnectId, maxResults = maxResults, nextToken = nextToken)
   output <- .directconnect$describe_interconnects_output()
@@ -4533,7 +4580,8 @@ directconnect_describe_lags <- function(lagId = NULL, maxResults = NULL, nextTok
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$describe_lags_input(lagId = lagId, maxResults = maxResults, nextToken = nextToken)
   output <- .directconnect$describe_lags_output()
@@ -4590,7 +4638,8 @@ directconnect_describe_loa <- function(connectionId, providerName = NULL, loaCon
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$describe_loa_input(connectionId = connectionId, providerName = providerName, loaContentType = loaContentType)
   output <- .directconnect$describe_loa_output()
@@ -4661,7 +4710,8 @@ directconnect_describe_locations <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$describe_locations_input()
   output <- .directconnect$describe_locations_output()
@@ -4723,7 +4773,8 @@ directconnect_describe_router_configuration <- function(virtualInterfaceId, rout
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$describe_router_configuration_input(virtualInterfaceId = virtualInterfaceId, routerTypeIdentifier = routerTypeIdentifier)
   output <- .directconnect$describe_router_configuration_output()
@@ -4785,7 +4836,8 @@ directconnect_describe_tags <- function(resourceArns) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$describe_tags_input(resourceArns = resourceArns)
   output <- .directconnect$describe_tags_output()
@@ -4838,7 +4890,8 @@ directconnect_describe_virtual_gateways <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$describe_virtual_gateways_input()
   output <- .directconnect$describe_virtual_gateways_output()
@@ -4959,7 +5012,8 @@ directconnect_describe_virtual_interfaces <- function(connectionId = NULL, virtu
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$describe_virtual_interfaces_input(connectionId = connectionId, virtualInterfaceId = virtualInterfaceId, maxResults = maxResults, nextToken = nextToken)
   output <- .directconnect$describe_virtual_interfaces_output()
@@ -5059,7 +5113,8 @@ directconnect_disassociate_connection_from_lag <- function(connectionId, lagId) 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$disassociate_connection_from_lag_input(connectionId = connectionId, lagId = lagId)
   output <- .directconnect$disassociate_connection_from_lag_output()
@@ -5122,7 +5177,8 @@ directconnect_disassociate_connections_from_resiliency_group <- function(connect
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$disassociate_connections_from_resiliency_group_input(connectionIdentifiers = connectionIdentifiers, resiliencyGroupId = resiliencyGroupId, clientToken = clientToken)
   output <- .directconnect$disassociate_connections_from_resiliency_group_output()
@@ -5186,7 +5242,8 @@ directconnect_disassociate_mac_sec_key <- function(connectionId, secretARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$disassociate_mac_sec_key_input(connectionId = connectionId, secretARN = secretARN)
   output <- .directconnect$disassociate_mac_sec_key_output()
@@ -5248,7 +5305,8 @@ directconnect_get_resiliency_group <- function(resiliencyGroupId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$get_resiliency_group_input(resiliencyGroupId = resiliencyGroupId)
   output <- .directconnect$get_resiliency_group_output()
@@ -5311,7 +5369,8 @@ directconnect_list_resiliency_group_associations <- function(resiliencyGroupId, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$list_resiliency_group_associations_input(resiliencyGroupId = resiliencyGroupId, maxResults = maxResults, nextToken = nextToken)
   output <- .directconnect$list_resiliency_group_associations_output()
@@ -5375,7 +5434,8 @@ directconnect_list_resiliency_groups <- function(maxResults = NULL, nextToken = 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$list_resiliency_groups_input(maxResults = maxResults, nextToken = nextToken)
   output <- .directconnect$list_resiliency_groups_output()
@@ -5474,7 +5534,8 @@ directconnect_list_virtual_interface_routes <- function(virtualInterfaceId = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$list_virtual_interface_routes_input(virtualInterfaceId = virtualInterfaceId, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .directconnect$list_virtual_interface_routes_output()
@@ -5556,7 +5617,8 @@ directconnect_list_virtual_interface_test_history <- function(testId = NULL, vir
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$list_virtual_interface_test_history_input(testId = testId, virtualInterfaceId = virtualInterfaceId, bgpPeers = bgpPeers, status = status, maxResults = maxResults, nextToken = nextToken)
   output <- .directconnect$list_virtual_interface_test_history_output()
@@ -5639,7 +5701,8 @@ directconnect_start_bgp_failover_test <- function(virtualInterfaceId, bgpPeers =
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$start_bgp_failover_test_input(virtualInterfaceId = virtualInterfaceId, bgpPeers = bgpPeers, testDurationInMinutes = testDurationInMinutes)
   output <- .directconnect$start_bgp_failover_test_output()
@@ -5703,7 +5766,8 @@ directconnect_stop_bgp_failover_test <- function(virtualInterfaceId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$stop_bgp_failover_test_input(virtualInterfaceId = virtualInterfaceId)
   output <- .directconnect$stop_bgp_failover_test_output()
@@ -5756,7 +5820,8 @@ directconnect_tag_resource <- function(resourceArn, tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .directconnect$tag_resource_output()
@@ -5804,7 +5869,8 @@ directconnect_untag_resource <- function(resourceArn, tagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .directconnect$untag_resource_output()
@@ -5915,7 +5981,8 @@ directconnect_update_connection <- function(connectionId, connectionName = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$update_connection_input(connectionId = connectionId, connectionName = connectionName, encryptionMode = encryptionMode)
   output <- .directconnect$update_connection_output()
@@ -6021,7 +6088,8 @@ directconnect_update_connections_billing_mode <- function(connectionIds, billing
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$update_connections_billing_mode_input(connectionIds = connectionIds, billingMode = billingMode)
   output <- .directconnect$update_connections_billing_mode_output()
@@ -6087,7 +6155,8 @@ directconnect_update_direct_connect_gateway <- function(directConnectGatewayId, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$update_direct_connect_gateway_input(directConnectGatewayId = directConnectGatewayId, newDirectConnectGatewayName = newDirectConnectGatewayName)
   output <- .directconnect$update_direct_connect_gateway_output()
@@ -6178,7 +6247,8 @@ directconnect_update_direct_connect_gateway_association <- function(associationI
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$update_direct_connect_gateway_association_input(associationId = associationId, addAllowedPrefixesToDirectConnectGateway = addAllowedPrefixesToDirectConnectGateway, removeAllowedPrefixesToDirectConnectGateway = removeAllowedPrefixesToDirectConnectGateway)
   output <- .directconnect$update_direct_connect_gateway_association_output()
@@ -6343,7 +6413,8 @@ directconnect_update_lag <- function(lagId, lagName = NULL, minimumLinks = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$update_lag_input(lagId = lagId, lagName = lagName, minimumLinks = minimumLinks, encryptionMode = encryptionMode)
   output <- .directconnect$update_lag_output()
@@ -6410,7 +6481,8 @@ directconnect_update_resiliency_group <- function(resiliencyGroupId, resiliencyG
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$update_resiliency_group_input(resiliencyGroupId = resiliencyGroupId, resiliencyGroupName = resiliencyGroupName, clientToken = clientToken)
   output <- .directconnect$update_resiliency_group_output()
@@ -6528,7 +6600,8 @@ directconnect_update_virtual_interface_attributes <- function(virtualInterfaceId
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .directconnect$update_virtual_interface_attributes_input(virtualInterfaceId = virtualInterfaceId, mtu = mtu, enableSiteLink = enableSiteLink, virtualInterfaceName = virtualInterfaceName, prefixPoolAllocatedCountIpv4 = prefixPoolAllocatedCountIpv4, prefixPoolAllocatedCountIpv6 = prefixPoolAllocatedCountIpv6, rateLimit = rateLimit)
   output <- .directconnect$update_virtual_interface_attributes_output()

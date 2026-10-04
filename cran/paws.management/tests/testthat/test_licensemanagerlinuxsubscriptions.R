@@ -1,4 +1,4 @@
-svc <- paws.management::licensemanagerlinuxsubscriptions()
+svc <- paws::licensemanagerlinuxsubscriptions()
 
 test_that("list_linux_subscription_instances", {
   skip_on_cran()

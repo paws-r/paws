@@ -15,7 +15,8 @@ lexmodelsv2_update_bot_locale(
   audioFillerSettings = NULL,
   speechRecognitionSettings = NULL,
   generativeAISettings = NULL,
-  speechDetectionSensitivity = NULL
+  speechDetectionSensitivity = NULL,
+  speakerDiarizationSettings = NULL
 )
 }
 \arguments{
@@ -40,6 +41,8 @@ lexmodelsv2_update_bot_locale(
 \item{generativeAISettings}{Contains settings for generative AI features powered by Amazon Bedrock for your bot locale. Use this object to turn generative AI features on and off. Pricing may differ if you turn a feature on. For more information, see LINK.}
 
 \item{speechDetectionSensitivity}{The new sensitivity level for voice activity detection (VAD) in the bot locale. This setting helps optimize speech recognition accuracy by adjusting how the system responds to background noise during voice interactions.}
+
+\item{speakerDiarizationSettings}{The updated speaker diarization settings to apply to the bot locale. If you omit this field, Amazon Lex keeps the setting currently stored on the bot locale. To turn speaker diarization off, set \code{enabled} to \code{false} explicitly.}
 }
 \description{
 Updates the settings that a bot has for a specific locale.

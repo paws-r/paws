@@ -10,7 +10,7 @@ sns_get_data_protection_policy(ResourceArn)
 \arguments{
 \item{ResourceArn}{[required] The ARN of the topic whose \code{DataProtectionPolicy} you want to get.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} in the Amazon Web Services General Reference.}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Names (ARNs)} in the Amazon Web Services General Reference.}
 }
 \description{
 Amazon SNS message data protection is no longer available to new customers. For more information and guidance on alternatives, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-message-data-protection-availability-change.html}{Amazon SNS message data protection availability change}.

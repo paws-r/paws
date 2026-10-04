@@ -30,7 +30,8 @@ cognitoidentityprovider_create_user_pool(
   AccountRecoverySetting = NULL,
   UserPoolTier = NULL,
   KeyConfiguration = NULL,
-  IssuerConfiguration = NULL
+  IssuerConfiguration = NULL,
+  AcrConfiguration = NULL
 )
 }
 \arguments{
@@ -109,6 +110,12 @@ As a best practice, configure both \code{verified_email} and \code{verified_phon
 \item{KeyConfiguration}{The key configuration for the user pool. Specifies the key type and KMS key ARN for encryption.}
 
 \item{IssuerConfiguration}{The issuer configuration for the user pool. Specifies the issuer type for token generation.}
+
+\item{AcrConfiguration}{The custom names for the authentication context class reference (ACR) levels in your user pool. Amazon Cognito defines four fixed ACR levels that represent increasing authentication assurance. The combination of authentication factors that satisfies each level is fixed and you can't change it. With this configuration, you customize only the URI name that Amazon Cognito reports for each level in the \code{acr} token claim.
+
+You can override a subset of the levels. By default, the levels are named \code{urn:cognito:loa:1} through \code{urn:cognito:loa:4}, and Amazon Cognito applies the default name to any level that you don't specify. Each name must be unique across all four levels, including any default names that apply to levels you don't override. A name can contain any character that is valid in a URL or a URN.
+
+Configuring custom ACR level names requires the Essentials or Plus feature plan. To activate this setting, your user pool must be in the \href{https://docs.aws.amazon.com/cognito/latest/developerguide/feature-plans-features-essentials.html}{Essentials tier} or higher.}
 }
 \description{
 Creates a new Amazon Cognito user pool. This operation sets basic and advanced configuration options.

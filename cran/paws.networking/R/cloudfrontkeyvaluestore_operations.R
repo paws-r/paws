@@ -24,7 +24,8 @@ cloudfrontkeyvaluestore_delete_key <- function(KvsARN, Key, IfMatch) {
     http_path = "/key-value-stores/{KvsARN}/keys/{Key}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudfrontkeyvaluestore$delete_key_input(KvsARN = KvsARN, Key = Key, IfMatch = IfMatch)
   output <- .cloudfrontkeyvaluestore$delete_key_output()
@@ -55,7 +56,8 @@ cloudfrontkeyvaluestore_describe_key_value_store <- function(KvsARN) {
     http_path = "/key-value-stores/{KvsARN}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudfrontkeyvaluestore$describe_key_value_store_input(KvsARN = KvsARN)
   output <- .cloudfrontkeyvaluestore$describe_key_value_store_output()
@@ -87,7 +89,8 @@ cloudfrontkeyvaluestore_get_key <- function(KvsARN, Key) {
     http_path = "/key-value-stores/{KvsARN}/keys/{Key}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudfrontkeyvaluestore$get_key_input(KvsARN = KvsARN, Key = Key)
   output <- .cloudfrontkeyvaluestore$get_key_output()
@@ -120,7 +123,8 @@ cloudfrontkeyvaluestore_list_keys <- function(KvsARN, NextToken = NULL, MaxResul
     http_path = "/key-value-stores/{KvsARN}/keys",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudfrontkeyvaluestore$list_keys_input(KvsARN = KvsARN, NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudfrontkeyvaluestore$list_keys_output()
@@ -154,7 +158,8 @@ cloudfrontkeyvaluestore_put_key <- function(Key, Value, KvsARN, IfMatch) {
     http_path = "/key-value-stores/{KvsARN}/keys/{Key}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudfrontkeyvaluestore$put_key_input(Key = Key, Value = Value, KvsARN = KvsARN, IfMatch = IfMatch)
   output <- .cloudfrontkeyvaluestore$put_key_output()
@@ -189,7 +194,8 @@ cloudfrontkeyvaluestore_update_keys <- function(KvsARN, IfMatch, Puts = NULL, De
     http_path = "/key-value-stores/{KvsARN}/keys",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudfrontkeyvaluestore$update_keys_input(KvsARN = KvsARN, IfMatch = IfMatch, Puts = Puts, Deletes = Deletes)
   output <- .cloudfrontkeyvaluestore$update_keys_output()

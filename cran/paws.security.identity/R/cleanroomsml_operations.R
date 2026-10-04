@@ -26,7 +26,8 @@ cleanroomsml_cancel_trained_model <- function(membershipIdentifier, trainedModel
     http_path = "/memberships/{membershipIdentifier}/trained-models/{trainedModelArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$cancel_trained_model_input(membershipIdentifier = membershipIdentifier, trainedModelArn = trainedModelArn, versionIdentifier = versionIdentifier)
   output <- .cleanroomsml$cancel_trained_model_output()
@@ -58,7 +59,8 @@ cleanroomsml_cancel_trained_model_inference_job <- function(membershipIdentifier
     http_path = "/memberships/{membershipIdentifier}/trained-model-inference-jobs/{trainedModelInferenceJobArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$cancel_trained_model_inference_job_input(membershipIdentifier = membershipIdentifier, trainedModelInferenceJobArn = trainedModelInferenceJobArn)
   output <- .cleanroomsml$cancel_trained_model_inference_job_output()
@@ -111,7 +113,8 @@ cleanroomsml_create_audience_model <- function(trainingDataStartTime = NULL, tra
     http_path = "/audience-model",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$create_audience_model_input(trainingDataStartTime = trainingDataStartTime, trainingDataEndTime = trainingDataEndTime, name = name, trainingDatasetArn = trainingDatasetArn, kmsKeyArn = kmsKeyArn, tags = tags, description = description)
   output <- .cleanroomsml$create_audience_model_output()
@@ -168,7 +171,8 @@ cleanroomsml_create_configured_audience_model <- function(name, audienceModelArn
     http_path = "/configured-audience-model",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$create_configured_audience_model_input(name = name, audienceModelArn = audienceModelArn, outputConfig = outputConfig, description = description, sharedAudienceMetrics = sharedAudienceMetrics, minMatchingSeedSize = minMatchingSeedSize, audienceSizeConfig = audienceSizeConfig, tags = tags, childResourceTagOnCreatePolicy = childResourceTagOnCreatePolicy)
   output <- .cleanroomsml$create_configured_audience_model_output()
@@ -222,7 +226,8 @@ cleanroomsml_create_configured_model_algorithm <- function(name, description = N
     http_path = "/configured-model-algorithms",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$create_configured_model_algorithm_input(name = name, description = description, roleArn = roleArn, trainingContainerConfig = trainingContainerConfig, inferenceContainerConfig = inferenceContainerConfig, tags = tags, kmsKeyArn = kmsKeyArn)
   output <- .cleanroomsml$create_configured_model_algorithm_output()
@@ -275,7 +280,8 @@ cleanroomsml_create_configured_model_algorithm_association <- function(membershi
     http_path = "/memberships/{membershipIdentifier}/configured-model-algorithm-associations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$create_configured_model_algorithm_association_input(membershipIdentifier = membershipIdentifier, configuredModelAlgorithmArn = configuredModelAlgorithmArn, name = name, description = description, privacyConfiguration = privacyConfiguration, tags = tags)
   output <- .cleanroomsml$create_configured_model_algorithm_association_output()
@@ -330,7 +336,8 @@ cleanroomsml_create_ml_input_channel <- function(membershipIdentifier, configure
     http_path = "/memberships/{membershipIdentifier}/ml-input-channels",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$create_ml_input_channel_input(membershipIdentifier = membershipIdentifier, configuredModelAlgorithmAssociations = configuredModelAlgorithmAssociations, inputChannel = inputChannel, name = name, retentionInDays = retentionInDays, description = description, kmsKeyArn = kmsKeyArn, tags = tags, payerConfiguration = payerConfiguration)
   output <- .cleanroomsml$create_ml_input_channel_output()
@@ -403,7 +410,8 @@ cleanroomsml_create_trained_model <- function(membershipIdentifier, name, config
     http_path = "/memberships/{membershipIdentifier}/trained-models",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$create_trained_model_input(membershipIdentifier = membershipIdentifier, name = name, configuredModelAlgorithmAssociationArn = configuredModelAlgorithmAssociationArn, hyperparameters = hyperparameters, environment = environment, resourceConfig = resourceConfig, stoppingCondition = stoppingCondition, incrementalTrainingDataChannels = incrementalTrainingDataChannels, dataChannels = dataChannels, trainingInputMode = trainingInputMode, description = description, kmsKeyArn = kmsKeyArn, tags = tags, mlModelTrainingPayerAccountId = mlModelTrainingPayerAccountId)
   output <- .cleanroomsml$create_trained_model_output()
@@ -456,7 +464,8 @@ cleanroomsml_create_training_dataset <- function(name, roleArn, trainingData, ta
     http_path = "/training-dataset",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$create_training_dataset_input(name = name, roleArn = roleArn, trainingData = trainingData, tags = tags, description = description)
   output <- .cleanroomsml$create_training_dataset_output()
@@ -488,7 +497,8 @@ cleanroomsml_delete_audience_generation_job <- function(audienceGenerationJobArn
     http_path = "/audience-generation-job/{audienceGenerationJobArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$delete_audience_generation_job_input(audienceGenerationJobArn = audienceGenerationJobArn)
   output <- .cleanroomsml$delete_audience_generation_job_output()
@@ -519,7 +529,8 @@ cleanroomsml_delete_audience_model <- function(audienceModelArn) {
     http_path = "/audience-model/{audienceModelArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$delete_audience_model_input(audienceModelArn = audienceModelArn)
   output <- .cleanroomsml$delete_audience_model_output()
@@ -550,7 +561,8 @@ cleanroomsml_delete_configured_audience_model <- function(configuredAudienceMode
     http_path = "/configured-audience-model/{configuredAudienceModelArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$delete_configured_audience_model_input(configuredAudienceModelArn = configuredAudienceModelArn)
   output <- .cleanroomsml$delete_configured_audience_model_output()
@@ -581,7 +593,8 @@ cleanroomsml_delete_configured_audience_model_policy <- function(configuredAudie
     http_path = "/configured-audience-model/{configuredAudienceModelArn}/policy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$delete_configured_audience_model_policy_input(configuredAudienceModelArn = configuredAudienceModelArn)
   output <- .cleanroomsml$delete_configured_audience_model_policy_output()
@@ -612,7 +625,8 @@ cleanroomsml_delete_configured_model_algorithm <- function(configuredModelAlgori
     http_path = "/configured-model-algorithms/{configuredModelAlgorithmArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$delete_configured_model_algorithm_input(configuredModelAlgorithmArn = configuredModelAlgorithmArn)
   output <- .cleanroomsml$delete_configured_model_algorithm_output()
@@ -644,7 +658,8 @@ cleanroomsml_delete_configured_model_algorithm_association <- function(configure
     http_path = "/memberships/{membershipIdentifier}/configured-model-algorithm-associations/{configuredModelAlgorithmAssociationArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$delete_configured_model_algorithm_association_input(configuredModelAlgorithmAssociationArn = configuredModelAlgorithmAssociationArn, membershipIdentifier = membershipIdentifier)
   output <- .cleanroomsml$delete_configured_model_algorithm_association_output()
@@ -675,7 +690,8 @@ cleanroomsml_delete_ml_configuration <- function(membershipIdentifier) {
     http_path = "/memberships/{membershipIdentifier}/ml-configurations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$delete_ml_configuration_input(membershipIdentifier = membershipIdentifier)
   output <- .cleanroomsml$delete_ml_configuration_output()
@@ -707,7 +723,8 @@ cleanroomsml_delete_ml_input_channel_data <- function(mlInputChannelArn, members
     http_path = "/memberships/{membershipIdentifier}/ml-input-channels/{mlInputChannelArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$delete_ml_input_channel_data_input(mlInputChannelArn = mlInputChannelArn, membershipIdentifier = membershipIdentifier)
   output <- .cleanroomsml$delete_ml_input_channel_data_output()
@@ -740,7 +757,8 @@ cleanroomsml_delete_trained_model_output <- function(trainedModelArn, membership
     http_path = "/memberships/{membershipIdentifier}/trained-models/{trainedModelArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$delete_trained_model_output_input(trainedModelArn = trainedModelArn, membershipIdentifier = membershipIdentifier, versionIdentifier = versionIdentifier)
   output <- .cleanroomsml$delete_trained_model_output_output()
@@ -771,7 +789,8 @@ cleanroomsml_delete_training_dataset <- function(trainingDatasetArn) {
     http_path = "/training-dataset/{trainingDatasetArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$delete_training_dataset_input(trainingDatasetArn = trainingDatasetArn)
   output <- .cleanroomsml$delete_training_dataset_output()
@@ -802,7 +821,8 @@ cleanroomsml_get_audience_generation_job <- function(audienceGenerationJobArn) {
     http_path = "/audience-generation-job/{audienceGenerationJobArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$get_audience_generation_job_input(audienceGenerationJobArn = audienceGenerationJobArn)
   output <- .cleanroomsml$get_audience_generation_job_output()
@@ -833,7 +853,8 @@ cleanroomsml_get_audience_model <- function(audienceModelArn) {
     http_path = "/audience-model/{audienceModelArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$get_audience_model_input(audienceModelArn = audienceModelArn)
   output <- .cleanroomsml$get_audience_model_output()
@@ -866,7 +887,8 @@ cleanroomsml_get_collaboration_configured_model_algorithm_association <- functio
     http_path = "/collaborations/{collaborationIdentifier}/configured-model-algorithm-associations/{configuredModelAlgorithmAssociationArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$get_collaboration_configured_model_algorithm_association_input(configuredModelAlgorithmAssociationArn = configuredModelAlgorithmAssociationArn, collaborationIdentifier = collaborationIdentifier)
   output <- .cleanroomsml$get_collaboration_configured_model_algorithm_association_output()
@@ -898,7 +920,8 @@ cleanroomsml_get_collaboration_ml_input_channel <- function(mlInputChannelArn, c
     http_path = "/collaborations/{collaborationIdentifier}/ml-input-channels/{mlInputChannelArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$get_collaboration_ml_input_channel_input(mlInputChannelArn = mlInputChannelArn, collaborationIdentifier = collaborationIdentifier)
   output <- .cleanroomsml$get_collaboration_ml_input_channel_output()
@@ -931,7 +954,8 @@ cleanroomsml_get_collaboration_trained_model <- function(trainedModelArn, collab
     http_path = "/collaborations/{collaborationIdentifier}/trained-models/{trainedModelArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$get_collaboration_trained_model_input(trainedModelArn = trainedModelArn, collaborationIdentifier = collaborationIdentifier, versionIdentifier = versionIdentifier)
   output <- .cleanroomsml$get_collaboration_trained_model_output()
@@ -962,7 +986,8 @@ cleanroomsml_get_configured_audience_model <- function(configuredAudienceModelAr
     http_path = "/configured-audience-model/{configuredAudienceModelArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$get_configured_audience_model_input(configuredAudienceModelArn = configuredAudienceModelArn)
   output <- .cleanroomsml$get_configured_audience_model_output()
@@ -993,7 +1018,8 @@ cleanroomsml_get_configured_audience_model_policy <- function(configuredAudience
     http_path = "/configured-audience-model/{configuredAudienceModelArn}/policy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$get_configured_audience_model_policy_input(configuredAudienceModelArn = configuredAudienceModelArn)
   output <- .cleanroomsml$get_configured_audience_model_policy_output()
@@ -1024,7 +1050,8 @@ cleanroomsml_get_configured_model_algorithm <- function(configuredModelAlgorithm
     http_path = "/configured-model-algorithms/{configuredModelAlgorithmArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$get_configured_model_algorithm_input(configuredModelAlgorithmArn = configuredModelAlgorithmArn)
   output <- .cleanroomsml$get_configured_model_algorithm_output()
@@ -1056,7 +1083,8 @@ cleanroomsml_get_configured_model_algorithm_association <- function(configuredMo
     http_path = "/memberships/{membershipIdentifier}/configured-model-algorithm-associations/{configuredModelAlgorithmAssociationArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$get_configured_model_algorithm_association_input(configuredModelAlgorithmAssociationArn = configuredModelAlgorithmAssociationArn, membershipIdentifier = membershipIdentifier)
   output <- .cleanroomsml$get_configured_model_algorithm_association_output()
@@ -1087,7 +1115,8 @@ cleanroomsml_get_ml_configuration <- function(membershipIdentifier) {
     http_path = "/memberships/{membershipIdentifier}/ml-configurations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$get_ml_configuration_input(membershipIdentifier = membershipIdentifier)
   output <- .cleanroomsml$get_ml_configuration_output()
@@ -1119,7 +1148,8 @@ cleanroomsml_get_ml_input_channel <- function(mlInputChannelArn, membershipIdent
     http_path = "/memberships/{membershipIdentifier}/ml-input-channels/{mlInputChannelArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$get_ml_input_channel_input(mlInputChannelArn = mlInputChannelArn, membershipIdentifier = membershipIdentifier)
   output <- .cleanroomsml$get_ml_input_channel_output()
@@ -1152,7 +1182,8 @@ cleanroomsml_get_trained_model <- function(trainedModelArn, membershipIdentifier
     http_path = "/memberships/{membershipIdentifier}/trained-models/{trainedModelArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$get_trained_model_input(trainedModelArn = trainedModelArn, membershipIdentifier = membershipIdentifier, versionIdentifier = versionIdentifier)
   output <- .cleanroomsml$get_trained_model_output()
@@ -1184,7 +1215,8 @@ cleanroomsml_get_trained_model_inference_job <- function(membershipIdentifier, t
     http_path = "/memberships/{membershipIdentifier}/trained-model-inference-jobs/{trainedModelInferenceJobArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$get_trained_model_inference_job_input(membershipIdentifier = membershipIdentifier, trainedModelInferenceJobArn = trainedModelInferenceJobArn)
   output <- .cleanroomsml$get_trained_model_inference_job_output()
@@ -1215,7 +1247,8 @@ cleanroomsml_get_training_dataset <- function(trainingDatasetArn) {
     http_path = "/training-dataset/{trainingDatasetArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$get_training_dataset_input(trainingDatasetArn = trainingDatasetArn)
   output <- .cleanroomsml$get_training_dataset_output()
@@ -1248,7 +1281,8 @@ cleanroomsml_list_audience_export_jobs <- function(nextToken = NULL, maxResults 
     http_path = "/audience-export-job",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "audienceExportJobs"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$list_audience_export_jobs_input(nextToken = nextToken, maxResults = maxResults, audienceGenerationJobArn = audienceGenerationJobArn)
   output <- .cleanroomsml$list_audience_export_jobs_output()
@@ -1282,7 +1316,8 @@ cleanroomsml_list_audience_generation_jobs <- function(nextToken = NULL, maxResu
     http_path = "/audience-generation-job",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "audienceGenerationJobs"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$list_audience_generation_jobs_input(nextToken = nextToken, maxResults = maxResults, configuredAudienceModelArn = configuredAudienceModelArn, collaborationId = collaborationId)
   output <- .cleanroomsml$list_audience_generation_jobs_output()
@@ -1314,7 +1349,8 @@ cleanroomsml_list_audience_models <- function(nextToken = NULL, maxResults = NUL
     http_path = "/audience-model",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "audienceModels"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$list_audience_models_input(nextToken = nextToken, maxResults = maxResults)
   output <- .cleanroomsml$list_audience_models_output()
@@ -1348,7 +1384,8 @@ cleanroomsml_list_collaboration_configured_model_algorithm_associations <- funct
     http_path = "/collaborations/{collaborationIdentifier}/configured-model-algorithm-associations",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "collaborationConfiguredModelAlgorithmAssociations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$list_collaboration_configured_model_algorithm_associations_input(nextToken = nextToken, maxResults = maxResults, collaborationIdentifier = collaborationIdentifier)
   output <- .cleanroomsml$list_collaboration_configured_model_algorithm_associations_output()
@@ -1381,7 +1418,8 @@ cleanroomsml_list_collaboration_ml_input_channels <- function(nextToken = NULL, 
     http_path = "/collaborations/{collaborationIdentifier}/ml-input-channels",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "collaborationMLInputChannelsList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$list_collaboration_ml_input_channels_input(nextToken = nextToken, maxResults = maxResults, collaborationIdentifier = collaborationIdentifier)
   output <- .cleanroomsml$list_collaboration_ml_input_channels_output()
@@ -1416,7 +1454,8 @@ cleanroomsml_list_collaboration_trained_model_export_jobs <- function(nextToken 
     http_path = "/collaborations/{collaborationIdentifier}/trained-models/{trainedModelArn}/export-jobs",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "collaborationTrainedModelExportJobs"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$list_collaboration_trained_model_export_jobs_input(nextToken = nextToken, maxResults = maxResults, collaborationIdentifier = collaborationIdentifier, trainedModelArn = trainedModelArn, trainedModelVersionIdentifier = trainedModelVersionIdentifier)
   output <- .cleanroomsml$list_collaboration_trained_model_export_jobs_output()
@@ -1452,7 +1491,8 @@ cleanroomsml_list_collaboration_trained_model_inference_jobs <- function(nextTok
     http_path = "/collaborations/{collaborationIdentifier}/trained-model-inference-jobs",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "collaborationTrainedModelInferenceJobs"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$list_collaboration_trained_model_inference_jobs_input(nextToken = nextToken, maxResults = maxResults, collaborationIdentifier = collaborationIdentifier, trainedModelArn = trainedModelArn, trainedModelVersionIdentifier = trainedModelVersionIdentifier)
   output <- .cleanroomsml$list_collaboration_trained_model_inference_jobs_output()
@@ -1485,7 +1525,8 @@ cleanroomsml_list_collaboration_trained_models <- function(nextToken = NULL, max
     http_path = "/collaborations/{collaborationIdentifier}/trained-models",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "collaborationTrainedModels"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$list_collaboration_trained_models_input(nextToken = nextToken, maxResults = maxResults, collaborationIdentifier = collaborationIdentifier)
   output <- .cleanroomsml$list_collaboration_trained_models_output()
@@ -1517,7 +1558,8 @@ cleanroomsml_list_configured_audience_models <- function(nextToken = NULL, maxRe
     http_path = "/configured-audience-model",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "configuredAudienceModels"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$list_configured_audience_models_input(nextToken = nextToken, maxResults = maxResults)
   output <- .cleanroomsml$list_configured_audience_models_output()
@@ -1550,7 +1592,8 @@ cleanroomsml_list_configured_model_algorithm_associations <- function(nextToken 
     http_path = "/memberships/{membershipIdentifier}/configured-model-algorithm-associations",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "configuredModelAlgorithmAssociations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$list_configured_model_algorithm_associations_input(nextToken = nextToken, maxResults = maxResults, membershipIdentifier = membershipIdentifier)
   output <- .cleanroomsml$list_configured_model_algorithm_associations_output()
@@ -1582,7 +1625,8 @@ cleanroomsml_list_configured_model_algorithms <- function(nextToken = NULL, maxR
     http_path = "/configured-model-algorithms",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "configuredModelAlgorithms"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$list_configured_model_algorithms_input(nextToken = nextToken, maxResults = maxResults)
   output <- .cleanroomsml$list_configured_model_algorithms_output()
@@ -1615,7 +1659,8 @@ cleanroomsml_list_ml_input_channels <- function(nextToken = NULL, maxResults = N
     http_path = "/memberships/{membershipIdentifier}/ml-input-channels",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "mlInputChannelsList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$list_ml_input_channels_input(nextToken = nextToken, maxResults = maxResults, membershipIdentifier = membershipIdentifier)
   output <- .cleanroomsml$list_ml_input_channels_output()
@@ -1646,7 +1691,8 @@ cleanroomsml_list_tags_for_resource <- function(resourceArn) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .cleanroomsml$list_tags_for_resource_output()
@@ -1682,7 +1728,8 @@ cleanroomsml_list_trained_model_inference_jobs <- function(nextToken = NULL, max
     http_path = "/memberships/{membershipIdentifier}/trained-model-inference-jobs",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "trainedModelInferenceJobs"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$list_trained_model_inference_jobs_input(nextToken = nextToken, maxResults = maxResults, membershipIdentifier = membershipIdentifier, trainedModelArn = trainedModelArn, trainedModelVersionIdentifier = trainedModelVersionIdentifier)
   output <- .cleanroomsml$list_trained_model_inference_jobs_output()
@@ -1717,7 +1764,8 @@ cleanroomsml_list_trained_model_versions <- function(nextToken = NULL, maxResult
     http_path = "/memberships/{membershipIdentifier}/trained-models/{trainedModelArn}/versions",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "trainedModels"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$list_trained_model_versions_input(nextToken = nextToken, maxResults = maxResults, membershipIdentifier = membershipIdentifier, trainedModelArn = trainedModelArn, status = status)
   output <- .cleanroomsml$list_trained_model_versions_output()
@@ -1750,7 +1798,8 @@ cleanroomsml_list_trained_models <- function(nextToken = NULL, maxResults = NULL
     http_path = "/memberships/{membershipIdentifier}/trained-models",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "trainedModels"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$list_trained_models_input(nextToken = nextToken, maxResults = maxResults, membershipIdentifier = membershipIdentifier)
   output <- .cleanroomsml$list_trained_models_output()
@@ -1782,7 +1831,8 @@ cleanroomsml_list_training_datasets <- function(nextToken = NULL, maxResults = N
     http_path = "/training-dataset",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "trainingDatasets"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$list_training_datasets_input(nextToken = nextToken, maxResults = maxResults)
   output <- .cleanroomsml$list_training_datasets_output()
@@ -1816,7 +1866,8 @@ cleanroomsml_put_configured_audience_model_policy <- function(configuredAudience
     http_path = "/configured-audience-model/{configuredAudienceModelArn}/policy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$put_configured_audience_model_policy_input(configuredAudienceModelArn = configuredAudienceModelArn, configuredAudienceModelPolicy = configuredAudienceModelPolicy, previousPolicyHash = previousPolicyHash, policyExistenceCondition = policyExistenceCondition)
   output <- .cleanroomsml$put_configured_audience_model_policy_output()
@@ -1848,7 +1899,8 @@ cleanroomsml_put_ml_configuration <- function(membershipIdentifier, defaultOutpu
     http_path = "/memberships/{membershipIdentifier}/ml-configurations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$put_ml_configuration_input(membershipIdentifier = membershipIdentifier, defaultOutputLocation = defaultOutputLocation)
   output <- .cleanroomsml$put_ml_configuration_output()
@@ -1883,7 +1935,8 @@ cleanroomsml_start_audience_export_job <- function(name, audienceGenerationJobAr
     http_path = "/audience-export-job",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$start_audience_export_job_input(name = name, audienceGenerationJobArn = audienceGenerationJobArn, audienceSize = audienceSize, description = description)
   output <- .cleanroomsml$start_audience_export_job_output()
@@ -1936,7 +1989,8 @@ cleanroomsml_start_audience_generation_job <- function(name, configuredAudienceM
     http_path = "/audience-generation-job",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$start_audience_generation_job_input(name = name, configuredAudienceModelArn = configuredAudienceModelArn, seedAudience = seedAudience, includeSeedInOutput = includeSeedInOutput, collaborationId = collaborationId, description = description, tags = tags)
   output <- .cleanroomsml$start_audience_generation_job_output()
@@ -1972,7 +2026,8 @@ cleanroomsml_start_trained_model_export_job <- function(name, trainedModelArn, t
     http_path = "/memberships/{membershipIdentifier}/trained-models/{trainedModelArn}/export-jobs",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$start_trained_model_export_job_input(name = name, trainedModelArn = trainedModelArn, trainedModelVersionIdentifier = trainedModelVersionIdentifier, membershipIdentifier = membershipIdentifier, outputConfiguration = outputConfiguration, description = description)
   output <- .cleanroomsml$start_trained_model_export_job_output()
@@ -2032,7 +2087,8 @@ cleanroomsml_start_trained_model_inference_job <- function(membershipIdentifier,
     http_path = "/memberships/{membershipIdentifier}/trained-model-inference-jobs",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$start_trained_model_inference_job_input(membershipIdentifier = membershipIdentifier, name = name, trainedModelArn = trainedModelArn, trainedModelVersionIdentifier = trainedModelVersionIdentifier, configuredModelAlgorithmAssociationArn = configuredModelAlgorithmAssociationArn, resourceConfig = resourceConfig, outputConfiguration = outputConfiguration, dataSource = dataSource, description = description, containerExecutionParameters = containerExecutionParameters, environment = environment, kmsKeyArn = kmsKeyArn, tags = tags, mlModelInferencePayerAccountId = mlModelInferencePayerAccountId)
   output <- .cleanroomsml$start_trained_model_inference_job_output()
@@ -2080,7 +2136,8 @@ cleanroomsml_tag_resource <- function(resourceArn, tags) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .cleanroomsml$tag_resource_output()
@@ -2112,7 +2169,8 @@ cleanroomsml_untag_resource <- function(resourceArn, tagKeys) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .cleanroomsml$untag_resource_output()
@@ -2149,7 +2207,8 @@ cleanroomsml_update_configured_audience_model <- function(configuredAudienceMode
     http_path = "/configured-audience-model/{configuredAudienceModelArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cleanroomsml$update_configured_audience_model_input(configuredAudienceModelArn = configuredAudienceModelArn, outputConfig = outputConfig, audienceModelArn = audienceModelArn, sharedAudienceMetrics = sharedAudienceMetrics, minMatchingSeedSize = minMatchingSeedSize, audienceSizeConfig = audienceSizeConfig, description = description)
   output <- .cleanroomsml$update_configured_audience_model_output()

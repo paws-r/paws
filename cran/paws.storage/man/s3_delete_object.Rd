@@ -52,7 +52,7 @@ This functionality is not supported for directory buckets.}
 
 Expects the ETag value as a string. \code{If-Match} does accept a string value of an '*' (asterisk) character to denote a match of any ETag.
 
-For more information about conditional requests, see \href{https://datatracker.ietf.org/doc/html/rfc7232}{RFC 7232}.}
+For more information about conditional requests, see \href{https://www.rfc-editor.org/info/rfc7232/}{RFC 7232}.}
 
 \item{IfMatchLastModifiedTime}{If present, the object is deleted only if its modification times matches the provided \code{Timestamp}. If the \code{Timestamp} values do not match, the operation returns a \verb{412 Precondition Failed} error. If the \code{Timestamp} matches or if the object doesn’t exist, the operation returns a \verb{204 Success (No Content)} response.
 

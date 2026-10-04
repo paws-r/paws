@@ -11,7 +11,7 @@ ram_create_permission_version(
 )
 }
 \arguments{
-\item{permissionArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)} of the customer managed permission you're creating a new version for.}
+\item{permissionArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Name (ARN)} of the customer managed permission you're creating a new version for.}
 
 \item{policyTemplate}{[required] A string in JSON format string that contains the following elements of a resource-based policy:
 \itemize{

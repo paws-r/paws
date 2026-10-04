@@ -41,7 +41,7 @@ For more information, see \href{https://docs.aws.amazon.com/eventbridge/latest/u
 
 \item{LogConfig}{The logging configuration settings for the event bus.
 
-For more information, see Configuring logs for event buses in the \emph{EventBridge User Guide}.}
+For more information, see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-event-bus-logs.html}{Configuring logs for event buses} in the \emph{EventBridge User Guide}.}
 }
 \description{
 Updates the specified event bus.

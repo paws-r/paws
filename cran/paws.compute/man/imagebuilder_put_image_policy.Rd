@@ -9,10 +9,10 @@ imagebuilder_put_image_policy(imageArn, policy)
 \arguments{
 \item{imageArn}{[required] The Amazon Resource Name (ARN) of the image that this policy should be applied to.}
 
-\item{policy}{[required] The policy to apply.}
+\item{policy}{[required] The resource policy to apply to the image, as a JSON policy document. Image Builder validates the policy with Amazon Web Services RAM before applying it, and rejects invalid policies with \code{InvalidParameterValueException}.}
 }
 \description{
-Applies a policy to an image. To share resources, call the RAM API \href{https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html}{CreateResourceShare}. If you call this API, you must also call the RAM API \href{https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html}{PromoteResourceShareCreatedFromPolicy} so that the resource is visible to all principals with whom the resource is shared.
+Applies a policy to an image. The preferred way to share resources is with the RAM API \href{https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html}{CreateResourceShare}. If you use the PutImagePolicy operation instead, you must also call the RAM API \href{https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html}{PromoteResourceShareCreatedFromPolicy}. Otherwise, the resource isn't visible to the principals that it's shared with.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_put_image_policy/} for full documentation.
 }

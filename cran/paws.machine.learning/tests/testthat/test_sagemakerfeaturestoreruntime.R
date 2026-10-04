@@ -1,3 +1,3 @@
-svc <- paws.machine.learning::sagemakerfeaturestoreruntime()
+svc <- paws::sagemakerfeaturestoreruntime()
 
 

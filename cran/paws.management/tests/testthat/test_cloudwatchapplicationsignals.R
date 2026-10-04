@@ -1,4 +1,4 @@
-svc <- paws.management::cloudwatchapplicationsignals()
+svc <- paws::cloudwatchapplicationsignals()
 
 test_that("list_grouping_attribute_definitions", {
   skip_on_cran()

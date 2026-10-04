@@ -1,4 +1,4 @@
-svc <- paws.compute::ecrpublic()
+svc <- paws::ecrpublic()
 
 test_that("describe_registries", {
   skip_on_cran()

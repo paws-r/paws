@@ -2,7 +2,8 @@
 % Please edit documentation in R/rekognition_operations.R
 \name{rekognition_start_stream_processor}
 \alias{rekognition_start_stream_processor}
-\title{Starts processing a stream processor}
+\title{Service availability notice: Streaming Video and Bulk Image Analysis is
+no longer available to new customers}
 \usage{
 rekognition_start_stream_processor(
   Name,
@@ -22,7 +23,7 @@ This is a required parameter for label detection stream processors and should no
 This is a required parameter for label detection stream processors and should not be used to start a face search stream processor.}
 }
 \description{
-Starts processing a stream processor. You create a stream processor by calling \code{\link[=rekognition_create_stream_processor]{create_stream_processor}}. To tell \code{\link[=rekognition_start_stream_processor]{start_stream_processor}} which stream processor to start, use the value of the \code{Name} field specified in the call to \code{\link[=rekognition_create_stream_processor]{create_stream_processor}}.
+Service availability notice: Streaming Video and Bulk Image Analysis is no longer available to new customers. For more information, see \href{https://docs.aws.amazon.com/rekognition/latest/dg/rekognition-availability-changes.html}{Rekognition feature availability changes}.
 
 See \url{https://www.paws-r-sdk.com/docs/rekognition_start_stream_processor/} for full documentation.
 }

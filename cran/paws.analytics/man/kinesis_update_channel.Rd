@@ -15,9 +15,9 @@ kinesis_update_channel(
 \arguments{
 \item{ChannelARN}{[required] The Amazon Resource Name (ARN) of the channel to update.}
 
-\item{S3DestinationConfiguration}{The updated configuration for a general purpose Amazon S3 destination. Only \code{DataFreshnessInSeconds} can be updated.}
+\item{S3DestinationConfiguration}{The updated configuration for a general purpose Amazon S3 destination. Specify this parameter when the channel delivers to a general purpose Amazon S3 bucket. Only \code{DataFreshnessInSeconds} can be updated.}
 
-\item{S3TablesDestinationConfiguration}{The updated configuration for a streaming table destination. Only \code{DataFreshnessInSeconds} can be updated.}
+\item{S3TablesDestinationConfiguration}{The updated configuration for a streaming table destination. Specify this parameter when the channel delivers to streaming tables on Apache Iceberg in Amazon S3 Tables. Only \code{DataFreshnessInSeconds} can be updated.}
 
 \item{LoggingConfiguration}{The updated Amazon CloudWatch Logs configuration for the channel.}
 }

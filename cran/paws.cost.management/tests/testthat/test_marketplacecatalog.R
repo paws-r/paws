@@ -1,3 +1,3 @@
-svc <- paws.cost.management::marketplacecatalog()
+svc <- paws::marketplacecatalog()
 
 

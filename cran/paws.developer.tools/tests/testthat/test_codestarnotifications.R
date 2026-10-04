@@ -1,4 +1,4 @@
-svc <- paws.developer.tools::codestarnotifications()
+svc <- paws::codestarnotifications()
 
 test_that("list_event_types", {
   skip_on_cran()

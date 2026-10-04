@@ -27,7 +27,8 @@ licensemanagerusersubscriptions_associate_user <- function(Username, InstanceId,
     http_path = "/user/AssociateUser",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanagerusersubscriptions$associate_user_input(Username = Username, InstanceId = InstanceId, IdentityProvider = IdentityProvider, Domain = Domain, Tags = Tags)
   output <- .licensemanagerusersubscriptions$associate_user_output()
@@ -61,7 +62,8 @@ licensemanagerusersubscriptions_create_license_server_endpoint <- function(Ident
     http_path = "/license-server/CreateLicenseServerEndpoint",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanagerusersubscriptions$create_license_server_endpoint_input(IdentityProviderArn = IdentityProviderArn, LicenseServerSettings = LicenseServerSettings, Tags = Tags)
   output <- .licensemanagerusersubscriptions$create_license_server_endpoint_output()
@@ -93,7 +95,8 @@ licensemanagerusersubscriptions_delete_license_server_endpoint <- function(Licen
     http_path = "/license-server/DeleteLicenseServerEndpoint",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanagerusersubscriptions$delete_license_server_endpoint_input(LicenseServerEndpointArn = LicenseServerEndpointArn, ServerType = ServerType)
   output <- .licensemanagerusersubscriptions$delete_license_server_endpoint_output()
@@ -129,7 +132,8 @@ licensemanagerusersubscriptions_deregister_identity_provider <- function(Identit
     http_path = "/identity-provider/DeregisterIdentityProvider",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanagerusersubscriptions$deregister_identity_provider_input(IdentityProvider = IdentityProvider, Product = Product, IdentityProviderArn = IdentityProviderArn)
   output <- .licensemanagerusersubscriptions$deregister_identity_provider_output()
@@ -165,7 +169,8 @@ licensemanagerusersubscriptions_disassociate_user <- function(Username = NULL, I
     http_path = "/user/DisassociateUser",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanagerusersubscriptions$disassociate_user_input(Username = Username, InstanceId = InstanceId, IdentityProvider = IdentityProvider, InstanceUserArn = InstanceUserArn, Domain = Domain)
   output <- .licensemanagerusersubscriptions$disassociate_user_output()
@@ -203,7 +208,8 @@ licensemanagerusersubscriptions_list_identity_providers <- function(MaxResults =
     http_path = "/identity-provider/ListIdentityProviders",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "IdentityProviderSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanagerusersubscriptions$list_identity_providers_input(MaxResults = MaxResults, Filters = Filters, NextToken = NextToken)
   output <- .licensemanagerusersubscriptions$list_identity_providers_output()
@@ -240,7 +246,8 @@ licensemanagerusersubscriptions_list_instances <- function(MaxResults = NULL, Ne
     http_path = "/instance/ListInstances",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "InstanceSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanagerusersubscriptions$list_instances_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .licensemanagerusersubscriptions$list_instances_output()
@@ -275,7 +282,8 @@ licensemanagerusersubscriptions_list_license_server_endpoints <- function(MaxRes
     http_path = "/license-server/ListLicenseServerEndpoints",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "LicenseServerEndpoints"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanagerusersubscriptions$list_license_server_endpoints_input(MaxResults = MaxResults, Filters = Filters, NextToken = NextToken)
   output <- .licensemanagerusersubscriptions$list_license_server_endpoints_output()
@@ -319,7 +327,8 @@ licensemanagerusersubscriptions_list_product_subscriptions <- function(Product =
     http_path = "/user/ListProductSubscriptions",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ProductUserSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanagerusersubscriptions$list_product_subscriptions_input(Product = Product, IdentityProvider = IdentityProvider, MaxResults = MaxResults, Filters = Filters, NextToken = NextToken)
   output <- .licensemanagerusersubscriptions$list_product_subscriptions_output()
@@ -350,7 +359,8 @@ licensemanagerusersubscriptions_list_tags_for_resource <- function(ResourceArn) 
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanagerusersubscriptions$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .licensemanagerusersubscriptions$list_tags_for_resource_output()
@@ -391,7 +401,8 @@ licensemanagerusersubscriptions_list_user_associations <- function(InstanceId, I
     http_path = "/user/ListUserAssociations",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "InstanceUserSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanagerusersubscriptions$list_user_associations_input(InstanceId = InstanceId, IdentityProvider = IdentityProvider, MaxResults = MaxResults, Filters = Filters, NextToken = NextToken)
   output <- .licensemanagerusersubscriptions$list_user_associations_output()
@@ -427,7 +438,8 @@ licensemanagerusersubscriptions_register_identity_provider <- function(IdentityP
     http_path = "/identity-provider/RegisterIdentityProvider",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanagerusersubscriptions$register_identity_provider_input(IdentityProvider = IdentityProvider, Product = Product, Settings = Settings, Tags = Tags)
   output <- .licensemanagerusersubscriptions$register_identity_provider_output()
@@ -465,7 +477,8 @@ licensemanagerusersubscriptions_start_product_subscription <- function(Username,
     http_path = "/user/StartProductSubscription",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanagerusersubscriptions$start_product_subscription_input(Username = Username, IdentityProvider = IdentityProvider, Product = Product, Domain = Domain, Tags = Tags)
   output <- .licensemanagerusersubscriptions$start_product_subscription_output()
@@ -503,7 +516,8 @@ licensemanagerusersubscriptions_stop_product_subscription <- function(Username =
     http_path = "/user/StopProductSubscription",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanagerusersubscriptions$stop_product_subscription_input(Username = Username, IdentityProvider = IdentityProvider, Product = Product, ProductUserArn = ProductUserArn, Domain = Domain)
   output <- .licensemanagerusersubscriptions$stop_product_subscription_output()
@@ -535,7 +549,8 @@ licensemanagerusersubscriptions_tag_resource <- function(ResourceArn, Tags) {
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanagerusersubscriptions$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .licensemanagerusersubscriptions$tag_resource_output()
@@ -567,7 +582,8 @@ licensemanagerusersubscriptions_untag_resource <- function(ResourceArn, TagKeys)
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanagerusersubscriptions$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .licensemanagerusersubscriptions$untag_resource_output()
@@ -610,7 +626,8 @@ licensemanagerusersubscriptions_update_identity_provider_settings <- function(Id
     http_path = "/identity-provider/UpdateIdentityProviderSettings",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .licensemanagerusersubscriptions$update_identity_provider_settings_input(IdentityProvider = IdentityProvider, Product = Product, IdentityProviderArn = IdentityProviderArn, UpdateSettings = UpdateSettings)
   output <- .licensemanagerusersubscriptions$update_identity_provider_settings_output()

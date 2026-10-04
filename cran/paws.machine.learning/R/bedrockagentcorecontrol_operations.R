@@ -24,7 +24,8 @@ bedrockagentcorecontrol_add_dataset_examples <- function(datasetId, clientToken 
     http_path = "/datasets/{datasetId}/examples/add",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$add_dataset_examples_input(datasetId = datasetId, clientToken = clientToken, source = source)
   output <- .bedrockagentcorecontrol$add_dataset_examples_output()
@@ -57,7 +58,8 @@ bedrockagentcorecontrol_batch_put_gateway_rate_limits <- function(gatewayIdentif
     http_path = "/gateways/{gatewayIdentifier}/rate-limits/batch",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$batch_put_gateway_rate_limits_input(gatewayIdentifier = gatewayIdentifier, clientToken = clientToken, rateLimits = rateLimits)
   output <- .bedrockagentcorecontrol$batch_put_gateway_rate_limits_output()
@@ -102,7 +104,8 @@ bedrockagentcorecontrol_create_agent_runtime <- function(agentRuntimeName, agent
     http_path = "/runtimes/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$create_agent_runtime_input(agentRuntimeName = agentRuntimeName, agentRuntimeArtifact = agentRuntimeArtifact, roleArn = roleArn, networkConfiguration = networkConfiguration, clientToken = clientToken, description = description, authorizerConfiguration = authorizerConfiguration, requestHeaderConfiguration = requestHeaderConfiguration, protocolConfiguration = protocolConfiguration, lifecycleConfiguration = lifecycleConfiguration, environmentVariables = environmentVariables, filesystemConfigurations = filesystemConfigurations, capacityProviderConfiguration = capacityProviderConfiguration, tags = tags, platformVersion = platformVersion)
   output <- .bedrockagentcorecontrol$create_agent_runtime_output()
@@ -138,7 +141,8 @@ bedrockagentcorecontrol_create_agent_runtime_endpoint <- function(agentRuntimeId
     http_path = "/runtimes/{agentRuntimeId}/runtime-endpoints/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$create_agent_runtime_endpoint_input(agentRuntimeId = agentRuntimeId, name = name, agentRuntimeVersion = agentRuntimeVersion, description = description, clientToken = clientToken, tags = tags)
   output <- .bedrockagentcorecontrol$create_agent_runtime_endpoint_output()
@@ -173,7 +177,8 @@ bedrockagentcorecontrol_create_api_key_credential_provider <- function(name, api
     http_path = "/identities/CreateApiKeyCredentialProvider",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$create_api_key_credential_provider_input(name = name, apiKey = apiKey, apiKeySecretConfig = apiKeySecretConfig, apiKeySecretSource = apiKeySecretSource, tags = tags)
   output <- .bedrockagentcorecontrol$create_api_key_credential_provider_output()
@@ -214,7 +219,8 @@ bedrockagentcorecontrol_create_browser <- function(name, description = NULL, exe
     http_path = "/browsers",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$create_browser_input(name = name, description = description, executionRoleArn = executionRoleArn, networkConfiguration = networkConfiguration, recording = recording, browserSigning = browserSigning, enterprisePolicies = enterprisePolicies, certificates = certificates, filesystemConfigurations = filesystemConfigurations, clientToken = clientToken, tags = tags)
   output <- .bedrockagentcorecontrol$create_browser_output()
@@ -248,7 +254,8 @@ bedrockagentcorecontrol_create_browser_profile <- function(name, description = N
     http_path = "/browser-profiles",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$create_browser_profile_input(name = name, description = description, clientToken = clientToken, tags = tags)
   output <- .bedrockagentcorecontrol$create_browser_profile_output()
@@ -284,7 +291,8 @@ bedrockagentcorecontrol_create_capacity_provider <- function(name, description =
     http_path = "/capacity-providers",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$create_capacity_provider_input(name = name, description = description, permissionsConfiguration = permissionsConfiguration, clientToken = clientToken, tags = tags, computeConfiguration = computeConfiguration)
   output <- .bedrockagentcorecontrol$create_capacity_provider_output()
@@ -322,7 +330,8 @@ bedrockagentcorecontrol_create_code_interpreter <- function(name, description = 
     http_path = "/code-interpreters",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$create_code_interpreter_input(name = name, description = description, executionRoleArn = executionRoleArn, networkConfiguration = networkConfiguration, certificates = certificates, filesystemConfigurations = filesystemConfigurations, clientToken = clientToken, tags = tags)
   output <- .bedrockagentcorecontrol$create_code_interpreter_output()
@@ -361,7 +370,8 @@ bedrockagentcorecontrol_create_configuration_bundle <- function(clientToken = NU
     http_path = "/configuration-bundles/create",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$create_configuration_bundle_input(clientToken = clientToken, bundleName = bundleName, description = description, components = components, branchName = branchName, commitMessage = commitMessage, createdBy = createdBy, kmsKeyArn = kmsKeyArn, tags = tags)
   output <- .bedrockagentcorecontrol$create_configuration_bundle_output()
@@ -397,7 +407,8 @@ bedrockagentcorecontrol_create_consent_portal <- function(executionRoleArn, idpC
     http_path = "/identities/CreateConsentPortal",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$create_consent_portal_input(executionRoleArn = executionRoleArn, idpConfig = idpConfig, name = name, sources = sources, description = description, tags = tags)
   output <- .bedrockagentcorecontrol$create_consent_portal_output()
@@ -434,7 +445,8 @@ bedrockagentcorecontrol_create_dataset <- function(clientToken = NULL, datasetNa
     http_path = "/datasets",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$create_dataset_input(clientToken = clientToken, datasetName = datasetName, description = description, source = source, schemaType = schemaType, kmsKeyArn = kmsKeyArn, tags = tags)
   output <- .bedrockagentcorecontrol$create_dataset_output()
@@ -466,7 +478,8 @@ bedrockagentcorecontrol_create_dataset_version <- function(datasetId, clientToke
     http_path = "/datasets/{datasetId}/versions",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$create_dataset_version_input(datasetId = datasetId, clientToken = clientToken)
   output <- .bedrockagentcorecontrol$create_dataset_version_output()
@@ -503,7 +516,8 @@ bedrockagentcorecontrol_create_evaluator <- function(clientToken = NULL, evaluat
     http_path = "/evaluators/create",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$create_evaluator_input(clientToken = clientToken, evaluatorName = evaluatorName, description = description, evaluatorConfig = evaluatorConfig, level = level, kmsKeyArn = kmsKeyArn, tags = tags)
   output <- .bedrockagentcorecontrol$create_evaluator_output()
@@ -556,7 +570,8 @@ bedrockagentcorecontrol_create_gateway <- function(name, description = NULL, cli
     http_path = "/gateways/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$create_gateway_input(name = name, description = description, clientToken = clientToken, roleArn = roleArn, protocolType = protocolType, protocolConfiguration = protocolConfiguration, authorizerType = authorizerType, authorizerConfiguration = authorizerConfiguration, kmsKeyArn = kmsKeyArn, interceptorConfigurations = interceptorConfigurations, policyEngineConfiguration = policyEngineConfiguration, exceptionLevel = exceptionLevel, tags = tags)
   output <- .bedrockagentcorecontrol$create_gateway_output()
@@ -592,7 +607,8 @@ bedrockagentcorecontrol_create_gateway_rate_limit <- function(gatewayIdentifier,
     http_path = "/gateways/{gatewayIdentifier}/rate-limits",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$create_gateway_rate_limit_input(gatewayIdentifier = gatewayIdentifier, clientToken = clientToken, rateLimitId = rateLimitId, description = description, dimensionKeys = dimensionKeys, entries = entries)
   output <- .bedrockagentcorecontrol$create_gateway_rate_limit_output()
@@ -628,7 +644,8 @@ bedrockagentcorecontrol_create_gateway_rule <- function(gatewayIdentifier, clien
     http_path = "/gateways/{gatewayIdentifier}/rules",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$create_gateway_rule_input(gatewayIdentifier = gatewayIdentifier, clientToken = clientToken, priority = priority, conditions = conditions, actions = actions, description = description)
   output <- .bedrockagentcorecontrol$create_gateway_rule_output()
@@ -655,20 +672,22 @@ bedrockagentcorecontrol_create_gateway_rule <- function(gatewayIdentifier, clien
 #' @param credentialProviderConfigurations The credential provider configurations for the target. These configurations specify how the gateway authenticates with the target endpoint.
 #' @param metadataConfiguration Optional configuration for HTTP header and query parameter propagation to and from the gateway target.
 #' @param privateEndpoint The private endpoint configuration for the gateway target. Use this to connect the gateway to private resources in your VPC.
+#' @param certificateConfigurations The private certificate authority (CA) configurations for the gateway target. Use this to have the gateway trust a private CA when it establishes TLS connections to the target endpoint. Provide each certificate by reference to an Amazon S3 object or an Amazon Web Services Secrets Manager secret. You can specify only one certificate authority configuration in this list.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagentcorecontrol_create_gateway_target
-bedrockagentcorecontrol_create_gateway_target <- function(gatewayIdentifier, name = NULL, description = NULL, clientToken = NULL, targetConfiguration, credentialProviderConfigurations = NULL, metadataConfiguration = NULL, privateEndpoint = NULL) {
+bedrockagentcorecontrol_create_gateway_target <- function(gatewayIdentifier, name = NULL, description = NULL, clientToken = NULL, targetConfiguration, credentialProviderConfigurations = NULL, metadataConfiguration = NULL, privateEndpoint = NULL, certificateConfigurations = NULL) {
   op <- new_operation(
     name = "CreateGatewayTarget",
     http_method = "POST",
     http_path = "/gateways/{gatewayIdentifier}/targets/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
-  input <- .bedrockagentcorecontrol$create_gateway_target_input(gatewayIdentifier = gatewayIdentifier, name = name, description = description, clientToken = clientToken, targetConfiguration = targetConfiguration, credentialProviderConfigurations = credentialProviderConfigurations, metadataConfiguration = metadataConfiguration, privateEndpoint = privateEndpoint)
+  input <- .bedrockagentcorecontrol$create_gateway_target_input(gatewayIdentifier = gatewayIdentifier, name = name, description = description, clientToken = clientToken, targetConfiguration = targetConfiguration, credentialProviderConfigurations = credentialProviderConfigurations, metadataConfiguration = metadataConfiguration, privateEndpoint = privateEndpoint, certificateConfigurations = certificateConfigurations)
   output <- .bedrockagentcorecontrol$create_gateway_target_output()
   config <- get_config()
   svc <- .bedrockagentcorecontrol$service(config, op)
@@ -699,6 +718,7 @@ bedrockagentcorecontrol_create_gateway_target <- function(gatewayIdentifier, nam
 #' @param allowedTools The tools that the agent is allowed to use. Supports glob patterns such as * for all tools, @@builtin for all built-in tools, or @@serverName/toolName for specific MCP server tools.
 #' @param memory The AgentCore Memory configuration for persisting conversation context across sessions.
 #' @param truncation The truncation configuration for managing conversation context when it exceeds model limits.
+#' @param hooks The lifecycle hooks to run at defined points in the agent loop.
 #' @param maxIterations The maximum number of iterations the agent loop can execute per invocation.
 #' @param maxTokens The maximum total number of output tokens the agent can generate across all model calls within a single invocation.
 #' @param timeoutSeconds The maximum duration in seconds for the agent loop execution per invocation.
@@ -707,16 +727,17 @@ bedrockagentcorecontrol_create_gateway_target <- function(gatewayIdentifier, nam
 #' @keywords internal
 #'
 #' @rdname bedrockagentcorecontrol_create_harness
-bedrockagentcorecontrol_create_harness <- function(harnessName, clientToken = NULL, executionRoleArn, environment = NULL, environmentArtifact = NULL, environmentVariables = NULL, authorizerConfiguration = NULL, model = NULL, systemPrompt = NULL, tools = NULL, skills = NULL, allowedTools = NULL, memory = NULL, truncation = NULL, maxIterations = NULL, maxTokens = NULL, timeoutSeconds = NULL, tags = NULL) {
+bedrockagentcorecontrol_create_harness <- function(harnessName, clientToken = NULL, executionRoleArn, environment = NULL, environmentArtifact = NULL, environmentVariables = NULL, authorizerConfiguration = NULL, model = NULL, systemPrompt = NULL, tools = NULL, skills = NULL, allowedTools = NULL, memory = NULL, truncation = NULL, hooks = NULL, maxIterations = NULL, maxTokens = NULL, timeoutSeconds = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateHarness",
     http_method = "POST",
     http_path = "/harnesses",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
-  input <- .bedrockagentcorecontrol$create_harness_input(harnessName = harnessName, clientToken = clientToken, executionRoleArn = executionRoleArn, environment = environment, environmentArtifact = environmentArtifact, environmentVariables = environmentVariables, authorizerConfiguration = authorizerConfiguration, model = model, systemPrompt = systemPrompt, tools = tools, skills = skills, allowedTools = allowedTools, memory = memory, truncation = truncation, maxIterations = maxIterations, maxTokens = maxTokens, timeoutSeconds = timeoutSeconds, tags = tags)
+  input <- .bedrockagentcorecontrol$create_harness_input(harnessName = harnessName, clientToken = clientToken, executionRoleArn = executionRoleArn, environment = environment, environmentArtifact = environmentArtifact, environmentVariables = environmentVariables, authorizerConfiguration = authorizerConfiguration, model = model, systemPrompt = systemPrompt, tools = tools, skills = skills, allowedTools = allowedTools, memory = memory, truncation = truncation, hooks = hooks, maxIterations = maxIterations, maxTokens = maxTokens, timeoutSeconds = timeoutSeconds, tags = tags)
   output <- .bedrockagentcorecontrol$create_harness_output()
   config <- get_config()
   svc <- .bedrockagentcorecontrol$service(config, op)
@@ -750,7 +771,8 @@ bedrockagentcorecontrol_create_harness_endpoint <- function(harnessId, endpointN
     http_path = "/harnesses/{harnessId}/endpoints",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$create_harness_endpoint_input(harnessId = harnessId, endpointName = endpointName, targetVersion = targetVersion, description = description, clientToken = clientToken, tags = tags)
   output <- .bedrockagentcorecontrol$create_harness_endpoint_output()
@@ -791,7 +813,8 @@ bedrockagentcorecontrol_create_memory <- function(clientToken = NULL, name, desc
     http_path = "/memories/create",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$create_memory_input(clientToken = clientToken, name = name, description = description, encryptionKeyArn = encryptionKeyArn, memoryExecutionRoleArn = memoryExecutionRoleArn, eventExpiryDuration = eventExpiryDuration, memoryStrategies = memoryStrategies, indexedKeys = indexedKeys, namespaceKeys = namespaceKeys, streamDeliveryResources = streamDeliveryResources, tags = tags)
   output <- .bedrockagentcorecontrol$create_memory_output()
@@ -825,7 +848,8 @@ bedrockagentcorecontrol_create_oauth_2_credential_provider <- function(name, cre
     http_path = "/identities/CreateOauth2CredentialProvider",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$create_oauth_2_credential_provider_input(name = name, credentialProviderVendor = credentialProviderVendor, oauth2ProviderConfigInput = oauth2ProviderConfigInput, tags = tags)
   output <- .bedrockagentcorecontrol$create_oauth_2_credential_provider_output()
@@ -868,7 +892,8 @@ bedrockagentcorecontrol_create_online_evaluation_config <- function(clientToken 
     http_path = "/online-evaluation-configs/create",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$create_online_evaluation_config_input(clientToken = clientToken, onlineEvaluationConfigName = onlineEvaluationConfigName, description = description, rule = rule, dataSourceConfig = dataSourceConfig, evaluators = evaluators, insights = insights, clusteringConfig = clusteringConfig, outputConfig = outputConfig, evaluationExecutionRoleArn = evaluationExecutionRoleArn, enableOnCreate = enableOnCreate, tags = tags)
   output <- .bedrockagentcorecontrol$create_online_evaluation_config_output()
@@ -909,7 +934,8 @@ bedrockagentcorecontrol_create_payment_connector <- function(paymentManagerId, n
     http_path = "/payments/managers/{paymentManagerId}/connectors",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$create_payment_connector_input(paymentManagerId = paymentManagerId, name = name, description = description, type = type, credentialProviderConfigurations = credentialProviderConfigurations, provisionMode = provisionMode, clientToken = clientToken)
   output <- .bedrockagentcorecontrol$create_payment_connector_output()
@@ -945,7 +971,8 @@ bedrockagentcorecontrol_create_payment_credential_provider <- function(name, cre
     http_path = "/identities/CreatePaymentCredentialProvider",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$create_payment_credential_provider_input(name = name, credentialProviderVendor = credentialProviderVendor, providerConfigurationInput = providerConfigurationInput, tags = tags)
   output <- .bedrockagentcorecontrol$create_payment_credential_provider_output()
@@ -987,7 +1014,8 @@ bedrockagentcorecontrol_create_payment_manager <- function(name, description = N
     http_path = "/payments/managers",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$create_payment_manager_input(name = name, description = description, authorizerType = authorizerType, authorizerConfiguration = authorizerConfiguration, roleArn = roleArn, clientToken = clientToken, tags = tags, kmsKeyArn = kmsKeyArn)
   output <- .bedrockagentcorecontrol$create_payment_manager_output()
@@ -1024,7 +1052,8 @@ bedrockagentcorecontrol_create_policy <- function(name, definition, description 
     http_path = "/policy-engines/{policyEngineId}/policies",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$create_policy_input(name = name, definition = definition, description = description, validationMode = validationMode, enforcementMode = enforcementMode, policyEngineId = policyEngineId, clientToken = clientToken)
   output <- .bedrockagentcorecontrol$create_policy_output()
@@ -1059,7 +1088,8 @@ bedrockagentcorecontrol_create_policy_engine <- function(name, description = NUL
     http_path = "/policy-engines",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$create_policy_engine_input(name = name, description = description, clientToken = clientToken, encryptionKeyArn = encryptionKeyArn, tags = tags)
   output <- .bedrockagentcorecontrol$create_policy_engine_output()
@@ -1099,7 +1129,8 @@ bedrockagentcorecontrol_create_registry <- function(name, description = NULL, au
     http_path = "/registries",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$create_registry_input(name = name, description = description, authorizerType = authorizerType, authorizerConfiguration = authorizerConfiguration, clientToken = clientToken, approvalConfiguration = approvalConfiguration)
   output <- .bedrockagentcorecontrol$create_registry_output()
@@ -1146,7 +1177,8 @@ bedrockagentcorecontrol_create_registry_record <- function(registryId, name, des
     http_path = "/registries/{registryId}/records",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$create_registry_record_input(registryId = registryId, name = name, description = description, descriptorType = descriptorType, descriptors = descriptors, recordVersion = recordVersion, synchronizationType = synchronizationType, synchronizationConfiguration = synchronizationConfiguration, clientToken = clientToken)
   output <- .bedrockagentcorecontrol$create_registry_record_output()
@@ -1179,7 +1211,8 @@ bedrockagentcorecontrol_create_workload_identity <- function(name, allowedResour
     http_path = "/identities/CreateWorkloadIdentity",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$create_workload_identity_input(name = name, allowedResourceOauth2ReturnUrls = allowedResourceOauth2ReturnUrls, tags = tags)
   output <- .bedrockagentcorecontrol$create_workload_identity_output()
@@ -1213,7 +1246,8 @@ bedrockagentcorecontrol_delete_agent_runtime <- function(agentRuntimeId, agentRu
     http_path = "/runtimes/{agentRuntimeId}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$delete_agent_runtime_input(agentRuntimeId = agentRuntimeId, agentRuntimeVersion = agentRuntimeVersion, clientToken = clientToken)
   output <- .bedrockagentcorecontrol$delete_agent_runtime_output()
@@ -1246,7 +1280,8 @@ bedrockagentcorecontrol_delete_agent_runtime_endpoint <- function(agentRuntimeId
     http_path = "/runtimes/{agentRuntimeId}/runtime-endpoints/{endpointName}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$delete_agent_runtime_endpoint_input(agentRuntimeId = agentRuntimeId, endpointName = endpointName, clientToken = clientToken)
   output <- .bedrockagentcorecontrol$delete_agent_runtime_endpoint_output()
@@ -1277,7 +1312,8 @@ bedrockagentcorecontrol_delete_api_key_credential_provider <- function(name) {
     http_path = "/identities/DeleteApiKeyCredentialProvider",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$delete_api_key_credential_provider_input(name = name)
   output <- .bedrockagentcorecontrol$delete_api_key_credential_provider_output()
@@ -1309,7 +1345,8 @@ bedrockagentcorecontrol_delete_browser <- function(browserId, clientToken = NULL
     http_path = "/browsers/{browserId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$delete_browser_input(browserId = browserId, clientToken = clientToken)
   output <- .bedrockagentcorecontrol$delete_browser_output()
@@ -1341,7 +1378,8 @@ bedrockagentcorecontrol_delete_browser_profile <- function(profileId, clientToke
     http_path = "/browser-profiles/{profileId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$delete_browser_profile_input(profileId = profileId, clientToken = clientToken)
   output <- .bedrockagentcorecontrol$delete_browser_profile_output()
@@ -1373,7 +1411,8 @@ bedrockagentcorecontrol_delete_capacity_provider <- function(capacityProviderId,
     http_path = "/capacity-providers/{capacityProviderId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$delete_capacity_provider_input(capacityProviderId = capacityProviderId, clientToken = clientToken)
   output <- .bedrockagentcorecontrol$delete_capacity_provider_output()
@@ -1405,7 +1444,8 @@ bedrockagentcorecontrol_delete_code_interpreter <- function(codeInterpreterId, c
     http_path = "/code-interpreters/{codeInterpreterId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$delete_code_interpreter_input(codeInterpreterId = codeInterpreterId, clientToken = clientToken)
   output <- .bedrockagentcorecontrol$delete_code_interpreter_output()
@@ -1436,7 +1476,8 @@ bedrockagentcorecontrol_delete_configuration_bundle <- function(bundleId) {
     http_path = "/configuration-bundles/{bundleId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$delete_configuration_bundle_input(bundleId = bundleId)
   output <- .bedrockagentcorecontrol$delete_configuration_bundle_output()
@@ -1467,7 +1508,8 @@ bedrockagentcorecontrol_delete_consent_portal <- function(consentPortalIdentifie
     http_path = "/identities/DeleteConsentPortal",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$delete_consent_portal_input(consentPortalIdentifier = consentPortalIdentifier)
   output <- .bedrockagentcorecontrol$delete_consent_portal_output()
@@ -1499,7 +1541,8 @@ bedrockagentcorecontrol_delete_dataset <- function(datasetId, datasetVersion = N
     http_path = "/datasets/{datasetId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$delete_dataset_input(datasetId = datasetId, datasetVersion = datasetVersion)
   output <- .bedrockagentcorecontrol$delete_dataset_output()
@@ -1532,7 +1575,8 @@ bedrockagentcorecontrol_delete_dataset_examples <- function(datasetId, clientTok
     http_path = "/datasets/{datasetId}/examples/delete",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$delete_dataset_examples_input(datasetId = datasetId, clientToken = clientToken, exampleIds = exampleIds)
   output <- .bedrockagentcorecontrol$delete_dataset_examples_output()
@@ -1563,7 +1607,8 @@ bedrockagentcorecontrol_delete_evaluator <- function(evaluatorId) {
     http_path = "/evaluators/{evaluatorId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$delete_evaluator_input(evaluatorId = evaluatorId)
   output <- .bedrockagentcorecontrol$delete_evaluator_output()
@@ -1594,7 +1639,8 @@ bedrockagentcorecontrol_delete_gateway <- function(gatewayIdentifier) {
     http_path = "/gateways/{gatewayIdentifier}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$delete_gateway_input(gatewayIdentifier = gatewayIdentifier)
   output <- .bedrockagentcorecontrol$delete_gateway_output()
@@ -1626,7 +1672,8 @@ bedrockagentcorecontrol_delete_gateway_rate_limit <- function(gatewayIdentifier,
     http_path = "/gateways/{gatewayIdentifier}/rate-limits/{rateLimitId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$delete_gateway_rate_limit_input(gatewayIdentifier = gatewayIdentifier, rateLimitId = rateLimitId)
   output <- .bedrockagentcorecontrol$delete_gateway_rate_limit_output()
@@ -1658,7 +1705,8 @@ bedrockagentcorecontrol_delete_gateway_rule <- function(gatewayIdentifier, ruleI
     http_path = "/gateways/{gatewayIdentifier}/rules/{ruleId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$delete_gateway_rule_input(gatewayIdentifier = gatewayIdentifier, ruleId = ruleId)
   output <- .bedrockagentcorecontrol$delete_gateway_rule_output()
@@ -1690,7 +1738,8 @@ bedrockagentcorecontrol_delete_gateway_target <- function(gatewayIdentifier, tar
     http_path = "/gateways/{gatewayIdentifier}/targets/{targetId}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$delete_gateway_target_input(gatewayIdentifier = gatewayIdentifier, targetId = targetId)
   output <- .bedrockagentcorecontrol$delete_gateway_target_output()
@@ -1723,7 +1772,8 @@ bedrockagentcorecontrol_delete_harness <- function(harnessId, clientToken = NULL
     http_path = "/harnesses/{harnessId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$delete_harness_input(harnessId = harnessId, clientToken = clientToken, deleteManagedMemory = deleteManagedMemory)
   output <- .bedrockagentcorecontrol$delete_harness_output()
@@ -1756,7 +1806,8 @@ bedrockagentcorecontrol_delete_harness_endpoint <- function(harnessId, endpointN
     http_path = "/harnesses/{harnessId}/endpoints/{endpointName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$delete_harness_endpoint_input(harnessId = harnessId, endpointName = endpointName, clientToken = clientToken)
   output <- .bedrockagentcorecontrol$delete_harness_endpoint_output()
@@ -1788,7 +1839,8 @@ bedrockagentcorecontrol_delete_memory <- function(clientToken = NULL, memoryId) 
     http_path = "/memories/{memoryId}/delete",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$delete_memory_input(clientToken = clientToken, memoryId = memoryId)
   output <- .bedrockagentcorecontrol$delete_memory_output()
@@ -1819,7 +1871,8 @@ bedrockagentcorecontrol_delete_oauth_2_credential_provider <- function(name) {
     http_path = "/identities/DeleteOauth2CredentialProvider",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$delete_oauth_2_credential_provider_input(name = name)
   output <- .bedrockagentcorecontrol$delete_oauth_2_credential_provider_output()
@@ -1851,7 +1904,8 @@ bedrockagentcorecontrol_delete_online_evaluation_config <- function(onlineEvalua
     http_path = "/online-evaluation-configs/{onlineEvaluationConfigId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$delete_online_evaluation_config_input(onlineEvaluationConfigId = onlineEvaluationConfigId)
   output <- .bedrockagentcorecontrol$delete_online_evaluation_config_output()
@@ -1884,7 +1938,8 @@ bedrockagentcorecontrol_delete_payment_connector <- function(paymentManagerId, p
     http_path = "/payments/managers/{paymentManagerId}/connectors/{paymentConnectorId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$delete_payment_connector_input(paymentManagerId = paymentManagerId, paymentConnectorId = paymentConnectorId, clientToken = clientToken)
   output <- .bedrockagentcorecontrol$delete_payment_connector_output()
@@ -1916,7 +1971,8 @@ bedrockagentcorecontrol_delete_payment_credential_provider <- function(name) {
     http_path = "/identities/DeletePaymentCredentialProvider",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$delete_payment_credential_provider_input(name = name)
   output <- .bedrockagentcorecontrol$delete_payment_credential_provider_output()
@@ -1948,7 +2004,8 @@ bedrockagentcorecontrol_delete_payment_manager <- function(paymentManagerId, cli
     http_path = "/payments/managers/{paymentManagerId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$delete_payment_manager_input(paymentManagerId = paymentManagerId, clientToken = clientToken)
   output <- .bedrockagentcorecontrol$delete_payment_manager_output()
@@ -1980,7 +2037,8 @@ bedrockagentcorecontrol_delete_policy <- function(policyEngineId, policyId) {
     http_path = "/policy-engines/{policyEngineId}/policies/{policyId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$delete_policy_input(policyEngineId = policyEngineId, policyId = policyId)
   output <- .bedrockagentcorecontrol$delete_policy_output()
@@ -2011,7 +2069,8 @@ bedrockagentcorecontrol_delete_policy_engine <- function(policyEngineId) {
     http_path = "/policy-engines/{policyEngineId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$delete_policy_engine_input(policyEngineId = policyEngineId)
   output <- .bedrockagentcorecontrol$delete_policy_engine_output()
@@ -2042,7 +2101,8 @@ bedrockagentcorecontrol_delete_registry <- function(registryId) {
     http_path = "/registries/{registryId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$delete_registry_input(registryId = registryId)
   output <- .bedrockagentcorecontrol$delete_registry_output()
@@ -2074,7 +2134,8 @@ bedrockagentcorecontrol_delete_registry_record <- function(registryId, recordId)
     http_path = "/registries/{registryId}/records/{recordId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$delete_registry_record_input(registryId = registryId, recordId = recordId)
   output <- .bedrockagentcorecontrol$delete_registry_record_output()
@@ -2105,7 +2166,8 @@ bedrockagentcorecontrol_delete_resource_policy <- function(resourceArn) {
     http_path = "/resourcepolicy/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$delete_resource_policy_input(resourceArn = resourceArn)
   output <- .bedrockagentcorecontrol$delete_resource_policy_output()
@@ -2136,7 +2198,8 @@ bedrockagentcorecontrol_delete_workload_identity <- function(name) {
     http_path = "/identities/DeleteWorkloadIdentity",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$delete_workload_identity_input(name = name)
   output <- .bedrockagentcorecontrol$delete_workload_identity_output()
@@ -2168,7 +2231,8 @@ bedrockagentcorecontrol_get_agent_runtime <- function(agentRuntimeId, agentRunti
     http_path = "/runtimes/{agentRuntimeId}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$get_agent_runtime_input(agentRuntimeId = agentRuntimeId, agentRuntimeVersion = agentRuntimeVersion)
   output <- .bedrockagentcorecontrol$get_agent_runtime_output()
@@ -2200,7 +2264,8 @@ bedrockagentcorecontrol_get_agent_runtime_endpoint <- function(agentRuntimeId, e
     http_path = "/runtimes/{agentRuntimeId}/runtime-endpoints/{endpointName}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$get_agent_runtime_endpoint_input(agentRuntimeId = agentRuntimeId, endpointName = endpointName)
   output <- .bedrockagentcorecontrol$get_agent_runtime_endpoint_output()
@@ -2231,7 +2296,8 @@ bedrockagentcorecontrol_get_api_key_credential_provider <- function(name) {
     http_path = "/identities/GetApiKeyCredentialProvider",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$get_api_key_credential_provider_input(name = name)
   output <- .bedrockagentcorecontrol$get_api_key_credential_provider_output()
@@ -2262,7 +2328,8 @@ bedrockagentcorecontrol_get_browser <- function(browserId) {
     http_path = "/browsers/{browserId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$get_browser_input(browserId = browserId)
   output <- .bedrockagentcorecontrol$get_browser_output()
@@ -2293,7 +2360,8 @@ bedrockagentcorecontrol_get_browser_profile <- function(profileId) {
     http_path = "/browser-profiles/{profileId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$get_browser_profile_input(profileId = profileId)
   output <- .bedrockagentcorecontrol$get_browser_profile_output()
@@ -2325,7 +2393,8 @@ bedrockagentcorecontrol_get_capacity_provider <- function(capacityProviderId) {
     http_path = "/capacity-providers/{capacityProviderId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$get_capacity_provider_input(capacityProviderId = capacityProviderId)
   output <- .bedrockagentcorecontrol$get_capacity_provider_output()
@@ -2356,7 +2425,8 @@ bedrockagentcorecontrol_get_code_interpreter <- function(codeInterpreterId) {
     http_path = "/code-interpreters/{codeInterpreterId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$get_code_interpreter_input(codeInterpreterId = codeInterpreterId)
   output <- .bedrockagentcorecontrol$get_code_interpreter_output()
@@ -2388,7 +2458,8 @@ bedrockagentcorecontrol_get_configuration_bundle <- function(bundleId, branchNam
     http_path = "/configuration-bundles/{bundleId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$get_configuration_bundle_input(bundleId = bundleId, branchName = branchName)
   output <- .bedrockagentcorecontrol$get_configuration_bundle_output()
@@ -2421,7 +2492,8 @@ bedrockagentcorecontrol_get_configuration_bundle_version <- function(bundleId, v
     http_path = "/configuration-bundles/{bundleId}/versions/{versionId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$get_configuration_bundle_version_input(bundleId = bundleId, versionId = versionId)
   output <- .bedrockagentcorecontrol$get_configuration_bundle_version_output()
@@ -2452,7 +2524,8 @@ bedrockagentcorecontrol_get_consent_portal <- function(consentPortalIdentifier) 
     http_path = "/identities/GetConsentPortal",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$get_consent_portal_input(consentPortalIdentifier = consentPortalIdentifier)
   output <- .bedrockagentcorecontrol$get_consent_portal_output()
@@ -2484,7 +2557,8 @@ bedrockagentcorecontrol_get_dataset <- function(datasetId, datasetVersion = NULL
     http_path = "/datasets/{datasetId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$get_dataset_input(datasetId = datasetId, datasetVersion = datasetVersion)
   output <- .bedrockagentcorecontrol$get_dataset_output()
@@ -2517,7 +2591,8 @@ bedrockagentcorecontrol_get_evaluator <- function(evaluatorId, includedData = NU
     http_path = "/evaluators/{evaluatorId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$get_evaluator_input(evaluatorId = evaluatorId, includedData = includedData)
   output <- .bedrockagentcorecontrol$get_evaluator_output()
@@ -2548,7 +2623,8 @@ bedrockagentcorecontrol_get_gateway <- function(gatewayIdentifier) {
     http_path = "/gateways/{gatewayIdentifier}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$get_gateway_input(gatewayIdentifier = gatewayIdentifier)
   output <- .bedrockagentcorecontrol$get_gateway_output()
@@ -2580,7 +2656,8 @@ bedrockagentcorecontrol_get_gateway_rate_limit <- function(gatewayIdentifier, ra
     http_path = "/gateways/{gatewayIdentifier}/rate-limits/{rateLimitId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$get_gateway_rate_limit_input(gatewayIdentifier = gatewayIdentifier, rateLimitId = rateLimitId)
   output <- .bedrockagentcorecontrol$get_gateway_rate_limit_output()
@@ -2612,7 +2689,8 @@ bedrockagentcorecontrol_get_gateway_rule <- function(gatewayIdentifier, ruleId) 
     http_path = "/gateways/{gatewayIdentifier}/rules/{ruleId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$get_gateway_rule_input(gatewayIdentifier = gatewayIdentifier, ruleId = ruleId)
   output <- .bedrockagentcorecontrol$get_gateway_rule_output()
@@ -2644,7 +2722,8 @@ bedrockagentcorecontrol_get_gateway_target <- function(gatewayIdentifier, target
     http_path = "/gateways/{gatewayIdentifier}/targets/{targetId}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$get_gateway_target_input(gatewayIdentifier = gatewayIdentifier, targetId = targetId)
   output <- .bedrockagentcorecontrol$get_gateway_target_output()
@@ -2676,7 +2755,8 @@ bedrockagentcorecontrol_get_harness <- function(harnessId, harnessVersion = NULL
     http_path = "/harnesses/{harnessId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$get_harness_input(harnessId = harnessId, harnessVersion = harnessVersion)
   output <- .bedrockagentcorecontrol$get_harness_output()
@@ -2708,7 +2788,8 @@ bedrockagentcorecontrol_get_harness_endpoint <- function(harnessId, endpointName
     http_path = "/harnesses/{harnessId}/endpoints/{endpointName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$get_harness_endpoint_input(harnessId = harnessId, endpointName = endpointName)
   output <- .bedrockagentcorecontrol$get_harness_endpoint_output()
@@ -2740,7 +2821,8 @@ bedrockagentcorecontrol_get_memory <- function(memoryId, view = NULL) {
     http_path = "/memories/{memoryId}/details",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$get_memory_input(memoryId = memoryId, view = view)
   output <- .bedrockagentcorecontrol$get_memory_output()
@@ -2771,7 +2853,8 @@ bedrockagentcorecontrol_get_oauth_2_credential_provider <- function(name) {
     http_path = "/identities/GetOauth2CredentialProvider",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$get_oauth_2_credential_provider_input(name = name)
   output <- .bedrockagentcorecontrol$get_oauth_2_credential_provider_output()
@@ -2803,7 +2886,8 @@ bedrockagentcorecontrol_get_online_evaluation_config <- function(onlineEvaluatio
     http_path = "/online-evaluation-configs/{onlineEvaluationConfigId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$get_online_evaluation_config_input(onlineEvaluationConfigId = onlineEvaluationConfigId)
   output <- .bedrockagentcorecontrol$get_online_evaluation_config_output()
@@ -2835,7 +2919,8 @@ bedrockagentcorecontrol_get_payment_connector <- function(paymentManagerId, paym
     http_path = "/payments/managers/{paymentManagerId}/connectors/{paymentConnectorId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$get_payment_connector_input(paymentManagerId = paymentManagerId, paymentConnectorId = paymentConnectorId)
   output <- .bedrockagentcorecontrol$get_payment_connector_output()
@@ -2866,7 +2951,8 @@ bedrockagentcorecontrol_get_payment_credential_provider <- function(name) {
     http_path = "/identities/GetPaymentCredentialProvider",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$get_payment_credential_provider_input(name = name)
   output <- .bedrockagentcorecontrol$get_payment_credential_provider_output()
@@ -2897,7 +2983,8 @@ bedrockagentcorecontrol_get_payment_manager <- function(paymentManagerId) {
     http_path = "/payments/managers/{paymentManagerId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$get_payment_manager_input(paymentManagerId = paymentManagerId)
   output <- .bedrockagentcorecontrol$get_payment_manager_output()
@@ -2930,7 +3017,8 @@ bedrockagentcorecontrol_get_policy <- function(policyEngineId, policyId) {
     http_path = "/policy-engines/{policyEngineId}/policies/{policyId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$get_policy_input(policyEngineId = policyEngineId, policyId = policyId)
   output <- .bedrockagentcorecontrol$get_policy_output()
@@ -2962,7 +3050,8 @@ bedrockagentcorecontrol_get_policy_engine <- function(policyEngineId) {
     http_path = "/policy-engines/{policyEngineId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$get_policy_engine_input(policyEngineId = policyEngineId)
   output <- .bedrockagentcorecontrol$get_policy_engine_output()
@@ -2994,7 +3083,8 @@ bedrockagentcorecontrol_get_policy_engine_summary <- function(policyEngineId) {
     http_path = "/policy-engine-summaries/{policyEngineId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$get_policy_engine_summary_input(policyEngineId = policyEngineId)
   output <- .bedrockagentcorecontrol$get_policy_engine_summary_output()
@@ -3027,7 +3117,8 @@ bedrockagentcorecontrol_get_policy_generation <- function(policyGenerationId, po
     http_path = "/policy-engines/{policyEngineId}/policy-generations/{policyGenerationId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$get_policy_generation_input(policyGenerationId = policyGenerationId, policyEngineId = policyEngineId)
   output <- .bedrockagentcorecontrol$get_policy_generation_output()
@@ -3060,7 +3151,8 @@ bedrockagentcorecontrol_get_policy_generation_summary <- function(policyGenerati
     http_path = "/policy-engines/{policyEngineId}/policy-generation-summaries/{policyGenerationId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$get_policy_generation_summary_input(policyGenerationId = policyGenerationId, policyEngineId = policyEngineId)
   output <- .bedrockagentcorecontrol$get_policy_generation_summary_output()
@@ -3093,7 +3185,8 @@ bedrockagentcorecontrol_get_policy_summary <- function(policyEngineId, policyId)
     http_path = "/policy-engines/{policyEngineId}/policy-summaries/{policyId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$get_policy_summary_input(policyEngineId = policyEngineId, policyId = policyId)
   output <- .bedrockagentcorecontrol$get_policy_summary_output()
@@ -3124,7 +3217,8 @@ bedrockagentcorecontrol_get_registry <- function(registryId) {
     http_path = "/registries/{registryId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$get_registry_input(registryId = registryId)
   output <- .bedrockagentcorecontrol$get_registry_output()
@@ -3156,7 +3250,8 @@ bedrockagentcorecontrol_get_registry_record <- function(registryId, recordId) {
     http_path = "/registries/{registryId}/records/{recordId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$get_registry_record_input(registryId = registryId, recordId = recordId)
   output <- .bedrockagentcorecontrol$get_registry_record_output()
@@ -3187,7 +3282,8 @@ bedrockagentcorecontrol_get_resource_policy <- function(resourceArn) {
     http_path = "/resourcepolicy/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$get_resource_policy_input(resourceArn = resourceArn)
   output <- .bedrockagentcorecontrol$get_resource_policy_output()
@@ -3218,7 +3314,8 @@ bedrockagentcorecontrol_get_token_vault <- function(tokenVaultId = NULL) {
     http_path = "/identities/get-token-vault",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$get_token_vault_input(tokenVaultId = tokenVaultId)
   output <- .bedrockagentcorecontrol$get_token_vault_output()
@@ -3249,7 +3346,8 @@ bedrockagentcorecontrol_get_workload_identity <- function(name) {
     http_path = "/identities/GetWorkloadIdentity",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$get_workload_identity_input(name = name)
   output <- .bedrockagentcorecontrol$get_workload_identity_output()
@@ -3282,7 +3380,8 @@ bedrockagentcorecontrol_list_agent_runtime_endpoints <- function(agentRuntimeId,
     http_path = "/runtimes/{agentRuntimeId}/runtime-endpoints/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "runtimeEndpoints"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_agent_runtime_endpoints_input(agentRuntimeId = agentRuntimeId, maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagentcorecontrol$list_agent_runtime_endpoints_output()
@@ -3315,7 +3414,8 @@ bedrockagentcorecontrol_list_agent_runtime_versions <- function(agentRuntimeId, 
     http_path = "/runtimes/{agentRuntimeId}/versions/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "agentRuntimes"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_agent_runtime_versions_input(agentRuntimeId = agentRuntimeId, maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagentcorecontrol$list_agent_runtime_versions_output()
@@ -3349,7 +3449,8 @@ bedrockagentcorecontrol_list_agent_runtime_versions_by_capacity_provider <- func
     http_path = "/capacity-providers/{capacityProviderId}/runtime-versions",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "agentRuntimes"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_agent_runtime_versions_by_capacity_provider_input(capacityProviderId = capacityProviderId, maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagentcorecontrol$list_agent_runtime_versions_by_capacity_provider_output()
@@ -3381,7 +3482,8 @@ bedrockagentcorecontrol_list_agent_runtimes <- function(maxResults = NULL, nextT
     http_path = "/runtimes/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "agentRuntimes"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_agent_runtimes_input(maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagentcorecontrol$list_agent_runtimes_output()
@@ -3413,7 +3515,8 @@ bedrockagentcorecontrol_list_api_key_credential_providers <- function(nextToken 
     http_path = "/identities/ListApiKeyCredentialProviders",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "credentialProviders"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_api_key_credential_providers_input(nextToken = nextToken, maxResults = maxResults)
   output <- .bedrockagentcorecontrol$list_api_key_credential_providers_output()
@@ -3446,7 +3549,8 @@ bedrockagentcorecontrol_list_browser_profiles <- function(maxResults = NULL, nex
     http_path = "/browser-profiles",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "profileSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_browser_profiles_input(maxResults = maxResults, nextToken = nextToken, name = name)
   output <- .bedrockagentcorecontrol$list_browser_profiles_output()
@@ -3479,7 +3583,8 @@ bedrockagentcorecontrol_list_browsers <- function(maxResults = NULL, nextToken =
     http_path = "/browsers",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "browserSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_browsers_input(maxResults = maxResults, nextToken = nextToken, type = type)
   output <- .bedrockagentcorecontrol$list_browsers_output()
@@ -3512,7 +3617,8 @@ bedrockagentcorecontrol_list_capacity_providers <- function(maxResults = NULL, n
     http_path = "/capacity-providers",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "capacityProviders"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_capacity_providers_input(maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagentcorecontrol$list_capacity_providers_output()
@@ -3545,7 +3651,8 @@ bedrockagentcorecontrol_list_code_interpreters <- function(maxResults = NULL, ne
     http_path = "/code-interpreters",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "codeInterpreterSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_code_interpreters_input(maxResults = maxResults, nextToken = nextToken, type = type)
   output <- .bedrockagentcorecontrol$list_code_interpreters_output()
@@ -3580,7 +3687,8 @@ bedrockagentcorecontrol_list_configuration_bundle_versions <- function(bundleId,
     http_path = "/configuration-bundles/{bundleId}/versions",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "versions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_configuration_bundle_versions_input(bundleId = bundleId, nextToken = nextToken, maxResults = maxResults, filter = filter)
   output <- .bedrockagentcorecontrol$list_configuration_bundle_versions_output()
@@ -3612,7 +3720,8 @@ bedrockagentcorecontrol_list_configuration_bundles <- function(nextToken = NULL,
     http_path = "/configuration-bundles",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "bundles"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_configuration_bundles_input(nextToken = nextToken, maxResults = maxResults)
   output <- .bedrockagentcorecontrol$list_configuration_bundles_output()
@@ -3644,7 +3753,8 @@ bedrockagentcorecontrol_list_consent_portals <- function(maxResults = NULL, next
     http_path = "/identities/ListConsentPortals",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "consentPortals"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_consent_portals_input(maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagentcorecontrol$list_consent_portals_output()
@@ -3678,7 +3788,8 @@ bedrockagentcorecontrol_list_dataset_examples <- function(datasetId, datasetVers
     http_path = "/datasets/{datasetId}/examples",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "examples"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_dataset_examples_input(datasetId = datasetId, datasetVersion = datasetVersion, maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagentcorecontrol$list_dataset_examples_output()
@@ -3712,7 +3823,8 @@ bedrockagentcorecontrol_list_dataset_versions <- function(datasetId, nextToken =
     http_path = "/datasets/{datasetId}/versions",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "versions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_dataset_versions_input(datasetId = datasetId, nextToken = nextToken, maxResults = maxResults)
   output <- .bedrockagentcorecontrol$list_dataset_versions_output()
@@ -3744,7 +3856,8 @@ bedrockagentcorecontrol_list_datasets <- function(nextToken = NULL, maxResults =
     http_path = "/datasets",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "datasets"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_datasets_input(nextToken = nextToken, maxResults = maxResults)
   output <- .bedrockagentcorecontrol$list_datasets_output()
@@ -3777,7 +3890,8 @@ bedrockagentcorecontrol_list_evaluators <- function(nextToken = NULL, maxResults
     http_path = "/evaluators",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "evaluators"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_evaluators_input(nextToken = nextToken, maxResults = maxResults)
   output <- .bedrockagentcorecontrol$list_evaluators_output()
@@ -3810,7 +3924,8 @@ bedrockagentcorecontrol_list_gateway_rate_limits <- function(gatewayIdentifier, 
     http_path = "/gateways/{gatewayIdentifier}/rate-limits",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "rateLimits"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_gateway_rate_limits_input(gatewayIdentifier = gatewayIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagentcorecontrol$list_gateway_rate_limits_output()
@@ -3843,7 +3958,8 @@ bedrockagentcorecontrol_list_gateway_rules <- function(gatewayIdentifier, maxRes
     http_path = "/gateways/{gatewayIdentifier}/rules",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "gatewayRules"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_gateway_rules_input(gatewayIdentifier = gatewayIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagentcorecontrol$list_gateway_rules_output()
@@ -3876,7 +3992,8 @@ bedrockagentcorecontrol_list_gateway_targets <- function(gatewayIdentifier, maxR
     http_path = "/gateways/{gatewayIdentifier}/targets/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_gateway_targets_input(gatewayIdentifier = gatewayIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagentcorecontrol$list_gateway_targets_output()
@@ -3908,7 +4025,8 @@ bedrockagentcorecontrol_list_gateways <- function(maxResults = NULL, nextToken =
     http_path = "/gateways/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_gateways_input(maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagentcorecontrol$list_gateways_output()
@@ -3941,7 +4059,8 @@ bedrockagentcorecontrol_list_harness_endpoints <- function(harnessId, maxResults
     http_path = "/harnesses/{harnessId}/endpoints",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "endpoints"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_harness_endpoints_input(harnessId = harnessId, maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagentcorecontrol$list_harness_endpoints_output()
@@ -3974,7 +4093,8 @@ bedrockagentcorecontrol_list_harness_versions <- function(harnessId, maxResults 
     http_path = "/harnesses/{harnessId}/versions",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "harnessVersions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_harness_versions_input(harnessId = harnessId, maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagentcorecontrol$list_harness_versions_output()
@@ -4006,7 +4126,8 @@ bedrockagentcorecontrol_list_harnesses <- function(maxResults = NULL, nextToken 
     http_path = "/harnesses",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "harnesses"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_harnesses_input(maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagentcorecontrol$list_harnesses_output()
@@ -4039,7 +4160,8 @@ bedrockagentcorecontrol_list_memories <- function(maxResults = NULL, nextToken =
     http_path = "/memories/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "memories"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_memories_input(maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagentcorecontrol$list_memories_output()
@@ -4071,7 +4193,8 @@ bedrockagentcorecontrol_list_oauth_2_credential_providers <- function(nextToken 
     http_path = "/identities/ListOauth2CredentialProviders",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "credentialProviders"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_oauth_2_credential_providers_input(nextToken = nextToken, maxResults = maxResults)
   output <- .bedrockagentcorecontrol$list_oauth_2_credential_providers_output()
@@ -4104,7 +4227,8 @@ bedrockagentcorecontrol_list_online_evaluation_configs <- function(nextToken = N
     http_path = "/online-evaluation-configs",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "onlineEvaluationConfigs"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_online_evaluation_configs_input(nextToken = nextToken, maxResults = maxResults)
   output <- .bedrockagentcorecontrol$list_online_evaluation_configs_output()
@@ -4137,7 +4261,8 @@ bedrockagentcorecontrol_list_payment_connectors <- function(paymentManagerId, ma
     http_path = "/payments/managers/{paymentManagerId}/connectors-list",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "paymentConnectors"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_payment_connectors_input(paymentManagerId = paymentManagerId, maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagentcorecontrol$list_payment_connectors_output()
@@ -4169,7 +4294,8 @@ bedrockagentcorecontrol_list_payment_credential_providers <- function(nextToken 
     http_path = "/identities/ListPaymentCredentialProviders",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "credentialProviders"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_payment_credential_providers_input(nextToken = nextToken, maxResults = maxResults)
   output <- .bedrockagentcorecontrol$list_payment_credential_providers_output()
@@ -4201,7 +4327,8 @@ bedrockagentcorecontrol_list_payment_managers <- function(maxResults = NULL, nex
     http_path = "/payments/managers-list",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "paymentManagers"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_payment_managers_input(maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagentcorecontrol$list_payment_managers_output()
@@ -4235,7 +4362,8 @@ bedrockagentcorecontrol_list_policies <- function(nextToken = NULL, maxResults =
     http_path = "/policy-engines/{policyEngineId}/policies",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "policies"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_policies_input(nextToken = nextToken, maxResults = maxResults, policyEngineId = policyEngineId, targetResourceScope = targetResourceScope)
   output <- .bedrockagentcorecontrol$list_policies_output()
@@ -4268,7 +4396,8 @@ bedrockagentcorecontrol_list_policy_engine_summaries <- function(nextToken = NUL
     http_path = "/policy-engine-summaries",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "policyEngines"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_policy_engine_summaries_input(nextToken = nextToken, maxResults = maxResults)
   output <- .bedrockagentcorecontrol$list_policy_engine_summaries_output()
@@ -4300,7 +4429,8 @@ bedrockagentcorecontrol_list_policy_engines <- function(nextToken = NULL, maxRes
     http_path = "/policy-engines",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "policyEngines"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_policy_engines_input(nextToken = nextToken, maxResults = maxResults)
   output <- .bedrockagentcorecontrol$list_policy_engines_output()
@@ -4335,7 +4465,8 @@ bedrockagentcorecontrol_list_policy_generation_assets <- function(policyGenerati
     http_path = "/policy-engines/{policyEngineId}/policy-generations/{policyGenerationId}/assets",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "policyGenerationAssets"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_policy_generation_assets_input(policyGenerationId = policyGenerationId, policyEngineId = policyEngineId, nextToken = nextToken, maxResults = maxResults)
   output <- .bedrockagentcorecontrol$list_policy_generation_assets_output()
@@ -4369,7 +4500,8 @@ bedrockagentcorecontrol_list_policy_generation_summaries <- function(nextToken =
     http_path = "/policy-engines/{policyEngineId}/policy-generation-summaries",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "policyGenerations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_policy_generation_summaries_input(nextToken = nextToken, maxResults = maxResults, policyEngineId = policyEngineId)
   output <- .bedrockagentcorecontrol$list_policy_generation_summaries_output()
@@ -4403,7 +4535,8 @@ bedrockagentcorecontrol_list_policy_generations <- function(nextToken = NULL, ma
     http_path = "/policy-engines/{policyEngineId}/policy-generations",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "policyGenerations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_policy_generations_input(nextToken = nextToken, maxResults = maxResults, policyEngineId = policyEngineId)
   output <- .bedrockagentcorecontrol$list_policy_generations_output()
@@ -4438,7 +4571,8 @@ bedrockagentcorecontrol_list_policy_summaries <- function(nextToken = NULL, maxR
     http_path = "/policy-engines/{policyEngineId}/policy-summaries",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "policies"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_policy_summaries_input(nextToken = nextToken, maxResults = maxResults, policyEngineId = policyEngineId, targetResourceScope = targetResourceScope)
   output <- .bedrockagentcorecontrol$list_policy_summaries_output()
@@ -4472,7 +4606,8 @@ bedrockagentcorecontrol_list_registries <- function(maxResults = NULL, nextToken
     http_path = "/registries",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "registries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_registries_input(maxResults = maxResults, nextToken = nextToken, status = status, authorizerType = authorizerType)
   output <- .bedrockagentcorecontrol$list_registries_output()
@@ -4508,7 +4643,8 @@ bedrockagentcorecontrol_list_registry_records <- function(registryId, maxResults
     http_path = "/registries/{registryId}/records",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "registryRecords"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_registry_records_input(registryId = registryId, maxResults = maxResults, nextToken = nextToken, name = name, status = status, descriptorType = descriptorType)
   output <- .bedrockagentcorecontrol$list_registry_records_output()
@@ -4539,7 +4675,8 @@ bedrockagentcorecontrol_list_tags_for_resource <- function(resourceArn) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .bedrockagentcorecontrol$list_tags_for_resource_output()
@@ -4571,7 +4708,8 @@ bedrockagentcorecontrol_list_workload_identities <- function(nextToken = NULL, m
     http_path = "/identities/ListWorkloadIdentities",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workloadIdentities"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$list_workload_identities_input(nextToken = nextToken, maxResults = maxResults)
   output <- .bedrockagentcorecontrol$list_workload_identities_output()
@@ -4604,7 +4742,8 @@ bedrockagentcorecontrol_put_resource_policy <- function(resourceArn, policy) {
     http_path = "/resourcepolicy/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$put_resource_policy_input(resourceArn = resourceArn, policy = policy)
   output <- .bedrockagentcorecontrol$put_resource_policy_output()
@@ -4615,6 +4754,42 @@ bedrockagentcorecontrol_put_resource_policy <- function(resourceArn, policy) {
   return(response)
 }
 .bedrockagentcorecontrol$operations$put_resource_policy <- bedrockagentcorecontrol_put_resource_policy
+
+#' Replaces the service-managed credentials of a payment connector with
+#' newly issued credentials
+#'
+#' @description
+#' Replaces the service-managed credentials of a payment connector with newly issued credentials.
+#'
+#' See [https://www.paws-r-sdk.com/docs/bedrockagentcorecontrol_rotate_payment_connector_credentials/](https://www.paws-r-sdk.com/docs/bedrockagentcorecontrol_rotate_payment_connector_credentials/) for full documentation.
+#'
+#' @param paymentManagerId &#91;required&#93; The unique identifier of the parent payment manager.
+#' @param paymentConnectorId &#91;required&#93; The unique identifier of the payment connector whose credentials you want to rotate.
+#' @param credentialsToRotate &#91;required&#93; The credentials to rotate. Specify the member that matches the payment connector's `type`. Each credential that you select is rotated independently.
+#' @param clientToken A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If you don't specify this field, a value is randomly generated for you. If this token matches a previous request, the service ignores the request, but doesn't return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagentcorecontrol_rotate_payment_connector_credentials
+bedrockagentcorecontrol_rotate_payment_connector_credentials <- function(paymentManagerId, paymentConnectorId, credentialsToRotate, clientToken = NULL) {
+  op <- new_operation(
+    name = "RotatePaymentConnectorCredentials",
+    http_method = "POST",
+    http_path = "/payments/managers/{paymentManagerId}/connectors/{paymentConnectorId}/rotate-credentials",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .bedrockagentcorecontrol$rotate_payment_connector_credentials_input(paymentManagerId = paymentManagerId, paymentConnectorId = paymentConnectorId, credentialsToRotate = credentialsToRotate, clientToken = clientToken)
+  output <- .bedrockagentcorecontrol$rotate_payment_connector_credentials_output()
+  config <- get_config()
+  svc <- .bedrockagentcorecontrol$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagentcorecontrol$operations$rotate_payment_connector_credentials <- bedrockagentcorecontrol_rotate_payment_connector_credentials
 
 #' Sets the customer master key (CMK) for a token vault
 #'
@@ -4636,7 +4811,8 @@ bedrockagentcorecontrol_set_token_vault_cmk <- function(tokenVaultId = NULL, kms
     http_path = "/identities/set-token-vault-cmk",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$set_token_vault_cmk_input(tokenVaultId = tokenVaultId, kmsConfiguration = kmsConfiguration)
   output <- .bedrockagentcorecontrol$set_token_vault_cmk_output()
@@ -4672,7 +4848,8 @@ bedrockagentcorecontrol_start_policy_generation <- function(policyEngineId, reso
     http_path = "/policy-engines/{policyEngineId}/policy-generations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$start_policy_generation_input(policyEngineId = policyEngineId, resource = resource, content = content, name = name, clientToken = clientToken)
   output <- .bedrockagentcorecontrol$start_policy_generation_output()
@@ -4704,7 +4881,8 @@ bedrockagentcorecontrol_submit_registry_record_for_approval <- function(registry
     http_path = "/registries/{registryId}/records/{recordId}/submit-for-approval",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$submit_registry_record_for_approval_input(registryId = registryId, recordId = recordId)
   output <- .bedrockagentcorecontrol$submit_registry_record_for_approval_output()
@@ -4737,7 +4915,8 @@ bedrockagentcorecontrol_synchronize_gateway_targets <- function(gatewayIdentifie
     http_path = "/gateways/{gatewayIdentifier}/synchronizeTargets",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$synchronize_gateway_targets_input(gatewayIdentifier = gatewayIdentifier, targetIdList = targetIdList)
   output <- .bedrockagentcorecontrol$synchronize_gateway_targets_output()
@@ -4770,7 +4949,8 @@ bedrockagentcorecontrol_tag_resource <- function(resourceArn, tags) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .bedrockagentcorecontrol$tag_resource_output()
@@ -4802,7 +4982,8 @@ bedrockagentcorecontrol_untag_resource <- function(resourceArn, tagKeys) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .bedrockagentcorecontrol$untag_resource_output()
@@ -4847,7 +5028,8 @@ bedrockagentcorecontrol_update_agent_runtime <- function(agentRuntimeId, agentRu
     http_path = "/runtimes/{agentRuntimeId}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$update_agent_runtime_input(agentRuntimeId = agentRuntimeId, agentRuntimeArtifact = agentRuntimeArtifact, roleArn = roleArn, networkConfiguration = networkConfiguration, description = description, authorizerConfiguration = authorizerConfiguration, requestHeaderConfiguration = requestHeaderConfiguration, protocolConfiguration = protocolConfiguration, lifecycleConfiguration = lifecycleConfiguration, metadataConfiguration = metadataConfiguration, environmentVariables = environmentVariables, filesystemConfigurations = filesystemConfigurations, capacityProviderConfiguration = capacityProviderConfiguration, platformVersion = platformVersion, clientToken = clientToken)
   output <- .bedrockagentcorecontrol$update_agent_runtime_output()
@@ -4882,7 +5064,8 @@ bedrockagentcorecontrol_update_agent_runtime_endpoint <- function(agentRuntimeId
     http_path = "/runtimes/{agentRuntimeId}/runtime-endpoints/{endpointName}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$update_agent_runtime_endpoint_input(agentRuntimeId = agentRuntimeId, endpointName = endpointName, agentRuntimeVersion = agentRuntimeVersion, description = description, clientToken = clientToken)
   output <- .bedrockagentcorecontrol$update_agent_runtime_endpoint_output()
@@ -4916,7 +5099,8 @@ bedrockagentcorecontrol_update_api_key_credential_provider <- function(name, api
     http_path = "/identities/UpdateApiKeyCredentialProvider",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$update_api_key_credential_provider_input(name = name, apiKey = apiKey, apiKeySecretConfig = apiKeySecretConfig, apiKeySecretSource = apiKeySecretSource)
   output <- .bedrockagentcorecontrol$update_api_key_credential_provider_output()
@@ -4949,7 +5133,8 @@ bedrockagentcorecontrol_update_capacity_provider <- function(capacityProviderId,
     http_path = "/capacity-providers/{capacityProviderId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$update_capacity_provider_input(capacityProviderId = capacityProviderId, description = description, clientToken = clientToken)
   output <- .bedrockagentcorecontrol$update_capacity_provider_output()
@@ -4976,21 +5161,22 @@ bedrockagentcorecontrol_update_capacity_provider <- function(capacityProviderId,
 #' @param components The updated component configurations. Creates a new version of the bundle.
 #' @param parentVersionIds &#91;required&#93; A list of parent version identifiers for lineage tracking. Regular commits have a single parent. Merge commits have two parents: the target branch parent and the source branch parent. If the branch already exists, the first parent must be the latest version on that branch.
 #' @param branchName The branch name for this version. If not specified, inherits the parent's branch or defaults to `mainline`.
-#' @param commitMessage A commit message describing the changes in this version.
+#' @param commitMessage &#91;required&#93; A commit message describing the changes in this version.
 #' @param createdBy The source that created this version, including the source name and optional ARN.
 #' @param kmsKeyArn Optional KMS key ARN for encrypting component configurations. If provided, components will be encrypted with this key. If the bundle already has a KMS key, this rotates to the new key.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagentcorecontrol_update_configuration_bundle
-bedrockagentcorecontrol_update_configuration_bundle <- function(clientToken = NULL, bundleId, bundleName = NULL, description = NULL, components = NULL, parentVersionIds, branchName = NULL, commitMessage = NULL, createdBy = NULL, kmsKeyArn = NULL) {
+bedrockagentcorecontrol_update_configuration_bundle <- function(clientToken = NULL, bundleId, bundleName = NULL, description = NULL, components = NULL, parentVersionIds, branchName = NULL, commitMessage, createdBy = NULL, kmsKeyArn = NULL) {
   op <- new_operation(
     name = "UpdateConfigurationBundle",
     http_method = "PUT",
     http_path = "/configuration-bundles/{bundleId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$update_configuration_bundle_input(clientToken = clientToken, bundleId = bundleId, bundleName = bundleName, description = description, components = components, parentVersionIds = parentVersionIds, branchName = branchName, commitMessage = commitMessage, createdBy = createdBy, kmsKeyArn = kmsKeyArn)
   output <- .bedrockagentcorecontrol$update_configuration_bundle_output()
@@ -5024,7 +5210,8 @@ bedrockagentcorecontrol_update_consent_portal <- function(consentPortalIdentifie
     http_path = "/identities/UpdateConsentPortal",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$update_consent_portal_input(consentPortalIdentifier = consentPortalIdentifier, executionRoleArn = executionRoleArn, idpConfig = idpConfig, description = description)
   output <- .bedrockagentcorecontrol$update_consent_portal_output()
@@ -5057,7 +5244,8 @@ bedrockagentcorecontrol_update_dataset <- function(datasetId, clientToken = NULL
     http_path = "/datasets/{datasetId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$update_dataset_input(datasetId = datasetId, clientToken = clientToken, description = description)
   output <- .bedrockagentcorecontrol$update_dataset_output()
@@ -5090,7 +5278,8 @@ bedrockagentcorecontrol_update_dataset_examples <- function(datasetId, clientTok
     http_path = "/datasets/{datasetId}/examples/update",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$update_dataset_examples_input(datasetId = datasetId, clientToken = clientToken, examples = examples)
   output <- .bedrockagentcorecontrol$update_dataset_examples_output()
@@ -5127,7 +5316,8 @@ bedrockagentcorecontrol_update_evaluator <- function(clientToken = NULL, evaluat
     http_path = "/evaluators/{evaluatorId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$update_evaluator_input(clientToken = clientToken, evaluatorId = evaluatorId, description = description, evaluatorConfig = evaluatorConfig, level = level, kmsKeyArn = kmsKeyArn)
   output <- .bedrockagentcorecontrol$update_evaluator_output()
@@ -5175,7 +5365,8 @@ bedrockagentcorecontrol_update_gateway <- function(gatewayIdentifier, name, desc
     http_path = "/gateways/{gatewayIdentifier}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$update_gateway_input(gatewayIdentifier = gatewayIdentifier, name = name, description = description, roleArn = roleArn, protocolType = protocolType, protocolConfiguration = protocolConfiguration, authorizerType = authorizerType, authorizerConfiguration = authorizerConfiguration, kmsKeyArn = kmsKeyArn, customTransformConfiguration = customTransformConfiguration, interceptorConfigurations = interceptorConfigurations, policyEngineConfiguration = policyEngineConfiguration, exceptionLevel = exceptionLevel, wafConfiguration = wafConfiguration)
   output <- .bedrockagentcorecontrol$update_gateway_output()
@@ -5209,7 +5400,8 @@ bedrockagentcorecontrol_update_gateway_rate_limit <- function(gatewayIdentifier,
     http_path = "/gateways/{gatewayIdentifier}/rate-limits/{rateLimitId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$update_gateway_rate_limit_input(gatewayIdentifier = gatewayIdentifier, rateLimitId = rateLimitId, description = description, entries = entries)
   output <- .bedrockagentcorecontrol$update_gateway_rate_limit_output()
@@ -5245,7 +5437,8 @@ bedrockagentcorecontrol_update_gateway_rule <- function(gatewayIdentifier, ruleI
     http_path = "/gateways/{gatewayIdentifier}/rules/{ruleId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$update_gateway_rule_input(gatewayIdentifier = gatewayIdentifier, ruleId = ruleId, priority = priority, conditions = conditions, actions = actions, description = description)
   output <- .bedrockagentcorecontrol$update_gateway_rule_output()
@@ -5272,20 +5465,22 @@ bedrockagentcorecontrol_update_gateway_rule <- function(gatewayIdentifier, ruleI
 #' @param credentialProviderConfigurations The updated credential provider configurations for the gateway target.
 #' @param metadataConfiguration Configuration for HTTP header and query parameter propagation to the gateway target.
 #' @param privateEndpoint The private endpoint configuration for the gateway target. Use this to connect the gateway to private resources in your VPC.
+#' @param certificateConfigurations The private certificate authority (CA) configurations for the gateway target. Use this to have the gateway trust a private CA when it establishes TLS connections to the target endpoint. Provide each certificate by reference to an Amazon S3 object or an Amazon Web Services Secrets Manager secret. You can specify only one certificate authority configuration in this list. To remove a previously configured certificate authority, omit this field on update.
 #'
 #' @keywords internal
 #'
 #' @rdname bedrockagentcorecontrol_update_gateway_target
-bedrockagentcorecontrol_update_gateway_target <- function(gatewayIdentifier, targetId, name = NULL, description = NULL, targetConfiguration, credentialProviderConfigurations = NULL, metadataConfiguration = NULL, privateEndpoint = NULL) {
+bedrockagentcorecontrol_update_gateway_target <- function(gatewayIdentifier, targetId, name = NULL, description = NULL, targetConfiguration, credentialProviderConfigurations = NULL, metadataConfiguration = NULL, privateEndpoint = NULL, certificateConfigurations = NULL) {
   op <- new_operation(
     name = "UpdateGatewayTarget",
     http_method = "PUT",
     http_path = "/gateways/{gatewayIdentifier}/targets/{targetId}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
-  input <- .bedrockagentcorecontrol$update_gateway_target_input(gatewayIdentifier = gatewayIdentifier, targetId = targetId, name = name, description = description, targetConfiguration = targetConfiguration, credentialProviderConfigurations = credentialProviderConfigurations, metadataConfiguration = metadataConfiguration, privateEndpoint = privateEndpoint)
+  input <- .bedrockagentcorecontrol$update_gateway_target_input(gatewayIdentifier = gatewayIdentifier, targetId = targetId, name = name, description = description, targetConfiguration = targetConfiguration, credentialProviderConfigurations = credentialProviderConfigurations, metadataConfiguration = metadataConfiguration, privateEndpoint = privateEndpoint, certificateConfigurations = certificateConfigurations)
   output <- .bedrockagentcorecontrol$update_gateway_target_output()
   config <- get_config()
   svc <- .bedrockagentcorecontrol$service(config, op)
@@ -5316,6 +5511,7 @@ bedrockagentcorecontrol_update_gateway_target <- function(gatewayIdentifier, tar
 #' @param allowedTools The tools that the agent is allowed to use. If specified, this replaces all existing allowed tools. If not specified, the existing value is retained.
 #' @param memory The AgentCore Memory configuration. Use the optionalValue wrapper to set a new value, or set it to null to clear the existing configuration.
 #' @param truncation The truncation configuration for managing conversation context. If not specified, the existing value is retained.
+#' @param hooks The lifecycle hooks to run at defined points in the agent loop. If specified, this replaces all existing hooks. If not specified, the existing hooks are retained.
 #' @param maxIterations The maximum number of iterations the agent loop can execute per invocation. If not specified, the existing value is retained.
 #' @param maxTokens The maximum total number of output tokens the agent can generate across all model calls within a single invocation. If not specified, the existing value is retained.
 #' @param timeoutSeconds The maximum duration in seconds for the agent loop execution per invocation. If not specified, the existing value is retained.
@@ -5323,16 +5519,17 @@ bedrockagentcorecontrol_update_gateway_target <- function(gatewayIdentifier, tar
 #' @keywords internal
 #'
 #' @rdname bedrockagentcorecontrol_update_harness
-bedrockagentcorecontrol_update_harness <- function(harnessId, clientToken = NULL, executionRoleArn = NULL, environment = NULL, environmentArtifact = NULL, environmentVariables = NULL, authorizerConfiguration = NULL, model = NULL, systemPrompt = NULL, tools = NULL, skills = NULL, allowedTools = NULL, memory = NULL, truncation = NULL, maxIterations = NULL, maxTokens = NULL, timeoutSeconds = NULL) {
+bedrockagentcorecontrol_update_harness <- function(harnessId, clientToken = NULL, executionRoleArn = NULL, environment = NULL, environmentArtifact = NULL, environmentVariables = NULL, authorizerConfiguration = NULL, model = NULL, systemPrompt = NULL, tools = NULL, skills = NULL, allowedTools = NULL, memory = NULL, truncation = NULL, hooks = NULL, maxIterations = NULL, maxTokens = NULL, timeoutSeconds = NULL) {
   op <- new_operation(
     name = "UpdateHarness",
     http_method = "PATCH",
     http_path = "/harnesses/{harnessId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
-  input <- .bedrockagentcorecontrol$update_harness_input(harnessId = harnessId, clientToken = clientToken, executionRoleArn = executionRoleArn, environment = environment, environmentArtifact = environmentArtifact, environmentVariables = environmentVariables, authorizerConfiguration = authorizerConfiguration, model = model, systemPrompt = systemPrompt, tools = tools, skills = skills, allowedTools = allowedTools, memory = memory, truncation = truncation, maxIterations = maxIterations, maxTokens = maxTokens, timeoutSeconds = timeoutSeconds)
+  input <- .bedrockagentcorecontrol$update_harness_input(harnessId = harnessId, clientToken = clientToken, executionRoleArn = executionRoleArn, environment = environment, environmentArtifact = environmentArtifact, environmentVariables = environmentVariables, authorizerConfiguration = authorizerConfiguration, model = model, systemPrompt = systemPrompt, tools = tools, skills = skills, allowedTools = allowedTools, memory = memory, truncation = truncation, hooks = hooks, maxIterations = maxIterations, maxTokens = maxTokens, timeoutSeconds = timeoutSeconds)
   output <- .bedrockagentcorecontrol$update_harness_output()
   config <- get_config()
   svc <- .bedrockagentcorecontrol$service(config, op)
@@ -5365,7 +5562,8 @@ bedrockagentcorecontrol_update_harness_endpoint <- function(harnessId, endpointN
     http_path = "/harnesses/{harnessId}/endpoints/{endpointName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$update_harness_endpoint_input(harnessId = harnessId, endpointName = endpointName, targetVersion = targetVersion, description = description, clientToken = clientToken)
   output <- .bedrockagentcorecontrol$update_harness_endpoint_output()
@@ -5404,7 +5602,8 @@ bedrockagentcorecontrol_update_memory <- function(clientToken = NULL, memoryId, 
     http_path = "/memories/{memoryId}/update",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$update_memory_input(clientToken = clientToken, memoryId = memoryId, description = description, eventExpiryDuration = eventExpiryDuration, memoryExecutionRoleArn = memoryExecutionRoleArn, memoryStrategies = memoryStrategies, addIndexedKeys = addIndexedKeys, namespaceKeys = namespaceKeys, streamDeliveryResources = streamDeliveryResources)
   output <- .bedrockagentcorecontrol$update_memory_output()
@@ -5437,7 +5636,8 @@ bedrockagentcorecontrol_update_oauth_2_credential_provider <- function(name, cre
     http_path = "/identities/UpdateOauth2CredentialProvider",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$update_oauth_2_credential_provider_input(name = name, credentialProviderVendor = credentialProviderVendor, oauth2ProviderConfigInput = oauth2ProviderConfigInput)
   output <- .bedrockagentcorecontrol$update_oauth_2_credential_provider_output()
@@ -5479,7 +5679,8 @@ bedrockagentcorecontrol_update_online_evaluation_config <- function(clientToken 
     http_path = "/online-evaluation-configs/{onlineEvaluationConfigId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$update_online_evaluation_config_input(clientToken = clientToken, onlineEvaluationConfigId = onlineEvaluationConfigId, description = description, rule = rule, dataSourceConfig = dataSourceConfig, evaluators = evaluators, insights = insights, clusteringConfig = clusteringConfig, outputConfig = outputConfig, evaluationExecutionRoleArn = evaluationExecutionRoleArn, executionStatus = executionStatus)
   output <- .bedrockagentcorecontrol$update_online_evaluation_config_output()
@@ -5515,7 +5716,8 @@ bedrockagentcorecontrol_update_payment_connector <- function(paymentManagerId, p
     http_path = "/payments/managers/{paymentManagerId}/connectors/{paymentConnectorId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$update_payment_connector_input(paymentManagerId = paymentManagerId, paymentConnectorId = paymentConnectorId, description = description, type = type, credentialProviderConfigurations = credentialProviderConfigurations, clientToken = clientToken)
   output <- .bedrockagentcorecontrol$update_payment_connector_output()
@@ -5549,7 +5751,8 @@ bedrockagentcorecontrol_update_payment_credential_provider <- function(name, cre
     http_path = "/identities/UpdatePaymentCredentialProvider",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$update_payment_credential_provider_input(name = name, credentialProviderVendor = credentialProviderVendor, providerConfigurationInput = providerConfigurationInput)
   output <- .bedrockagentcorecontrol$update_payment_credential_provider_output()
@@ -5586,7 +5789,8 @@ bedrockagentcorecontrol_update_payment_manager <- function(paymentManagerId, des
     http_path = "/payments/managers/{paymentManagerId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$update_payment_manager_input(paymentManagerId = paymentManagerId, description = description, authorizerType = authorizerType, authorizerConfiguration = authorizerConfiguration, roleArn = roleArn, clientToken = clientToken, kmsKeyArn = kmsKeyArn)
   output <- .bedrockagentcorecontrol$update_payment_manager_output()
@@ -5622,7 +5826,8 @@ bedrockagentcorecontrol_update_policy <- function(policyEngineId, policyId, desc
     http_path = "/policy-engines/{policyEngineId}/policies/{policyId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$update_policy_input(policyEngineId = policyEngineId, policyId = policyId, description = description, definition = definition, validationMode = validationMode, enforcementMode = enforcementMode)
   output <- .bedrockagentcorecontrol$update_policy_output()
@@ -5654,7 +5859,8 @@ bedrockagentcorecontrol_update_policy_engine <- function(policyEngineId, descrip
     http_path = "/policy-engines/{policyEngineId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$update_policy_engine_input(policyEngineId = policyEngineId, description = description)
   output <- .bedrockagentcorecontrol$update_policy_engine_output()
@@ -5689,7 +5895,8 @@ bedrockagentcorecontrol_update_registry <- function(registryId, name = NULL, des
     http_path = "/registries/{registryId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$update_registry_input(registryId = registryId, name = name, description = description, authorizerConfiguration = authorizerConfiguration, approvalConfiguration = approvalConfiguration)
   output <- .bedrockagentcorecontrol$update_registry_output()
@@ -5729,7 +5936,8 @@ bedrockagentcorecontrol_update_registry_record <- function(registryId, recordId,
     http_path = "/registries/{registryId}/records/{recordId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$update_registry_record_input(registryId = registryId, recordId = recordId, name = name, description = description, descriptorType = descriptorType, descriptors = descriptors, recordVersion = recordVersion, synchronizationType = synchronizationType, synchronizationConfiguration = synchronizationConfiguration, triggerSynchronization = triggerSynchronization)
   output <- .bedrockagentcorecontrol$update_registry_record_output()
@@ -5763,7 +5971,8 @@ bedrockagentcorecontrol_update_registry_record_status <- function(registryId, re
     http_path = "/registries/{registryId}/records/{recordId}/status",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$update_registry_record_status_input(registryId = registryId, recordId = recordId, status = status, statusReason = statusReason)
   output <- .bedrockagentcorecontrol$update_registry_record_status_output()
@@ -5795,7 +6004,8 @@ bedrockagentcorecontrol_update_workload_identity <- function(name, allowedResour
     http_path = "/identities/UpdateWorkloadIdentity",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcorecontrol$update_workload_identity_input(name = name, allowedResourceOauth2ReturnUrls = allowedResourceOauth2ReturnUrls)
   output <- .bedrockagentcorecontrol$update_workload_identity_output()

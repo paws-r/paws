@@ -24,7 +24,8 @@ route53_activate_key_signing_key <- function(HostedZoneId, Name) {
     http_path = "/2013-04-01/keysigningkey/{HostedZoneId}/{Name}/activate",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$activate_key_signing_key_input(HostedZoneId = HostedZoneId, Name = Name)
   output <- .route53$activate_key_signing_key_output()
@@ -59,7 +60,8 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
     http_path = "/2013-04-01/hostedzone/{Id}/associatevpc",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$associate_vpc_with_hosted_zone_input(HostedZoneId = HostedZoneId, VPC = VPC, Comment = Comment)
   output <- .route53$associate_vpc_with_hosted_zone_output()
@@ -98,7 +100,8 @@ route53_change_cidr_collection <- function(Id, CollectionVersion = NULL, Changes
     http_path = "/2013-04-01/cidrcollection/{CidrCollectionId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$change_cidr_collection_input(Id = Id, CollectionVersion = CollectionVersion, Changes = Changes)
   output <- .route53$change_cidr_collection_output()
@@ -132,7 +135,8 @@ route53_change_resource_record_sets <- function(HostedZoneId, ChangeBatch) {
     http_path = "/2013-04-01/hostedzone/{Id}/rrset/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$change_resource_record_sets_input(HostedZoneId = HostedZoneId, ChangeBatch = ChangeBatch)
   output <- .route53$change_resource_record_sets_output()
@@ -172,7 +176,8 @@ route53_change_tags_for_resource <- function(ResourceType, ResourceId, AddTags =
     http_path = "/2013-04-01/tags/{ResourceType}/{ResourceId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$change_tags_for_resource_input(ResourceType = ResourceType, ResourceId = ResourceId, AddTags = AddTags, RemoveTagKeys = RemoveTagKeys)
   output <- .route53$change_tags_for_resource_output()
@@ -204,7 +209,8 @@ route53_create_cidr_collection <- function(Name, CallerReference) {
     http_path = "/2013-04-01/cidrcollection",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$create_cidr_collection_input(Name = Name, CallerReference = CallerReference)
   output <- .route53$create_cidr_collection_output()
@@ -246,7 +252,8 @@ route53_create_health_check <- function(CallerReference, HealthCheckConfig) {
     http_path = "/2013-04-01/healthcheck",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$create_health_check_input(CallerReference = CallerReference, HealthCheckConfig = HealthCheckConfig)
   output <- .route53$create_health_check_output()
@@ -295,7 +302,8 @@ route53_create_hosted_zone <- function(Name, VPC = NULL, CallerReference, Hosted
     http_path = "/2013-04-01/hostedzone",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$create_hosted_zone_input(Name = Name, VPC = VPC, CallerReference = CallerReference, HostedZoneConfig = HostedZoneConfig, DelegationSetId = DelegationSetId)
   output <- .route53$create_hosted_zone_output()
@@ -360,7 +368,8 @@ route53_create_key_signing_key <- function(CallerReference, HostedZoneId, KeyMan
     http_path = "/2013-04-01/keysigningkey",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$create_key_signing_key_input(CallerReference = CallerReference, HostedZoneId = HostedZoneId, KeyManagementServiceArn = KeyManagementServiceArn, Name = Name, Status = Status)
   output <- .route53$create_key_signing_key_output()
@@ -396,7 +405,8 @@ route53_create_query_logging_config <- function(HostedZoneId, CloudWatchLogsLogG
     http_path = "/2013-04-01/queryloggingconfig",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$create_query_logging_config_input(HostedZoneId = HostedZoneId, CloudWatchLogsLogGroupArn = CloudWatchLogsLogGroupArn)
   output <- .route53$create_query_logging_config_output()
@@ -430,7 +440,8 @@ route53_create_reusable_delegation_set <- function(CallerReference, HostedZoneId
     http_path = "/2013-04-01/delegationset",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$create_reusable_delegation_set_input(CallerReference = CallerReference, HostedZoneId = HostedZoneId)
   output <- .route53$create_reusable_delegation_set_output()
@@ -464,7 +475,8 @@ route53_create_traffic_policy <- function(Name, Document, Comment = NULL) {
     http_path = "/2013-04-01/trafficpolicy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$create_traffic_policy_input(Name = Name, Document = Document, Comment = Comment)
   output <- .route53$create_traffic_policy_output()
@@ -500,7 +512,8 @@ route53_create_traffic_policy_instance <- function(HostedZoneId, Name, TTL, Traf
     http_path = "/2013-04-01/trafficpolicyinstance",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$create_traffic_policy_instance_input(HostedZoneId = HostedZoneId, Name = Name, TTL = TTL, TrafficPolicyId = TrafficPolicyId, TrafficPolicyVersion = TrafficPolicyVersion)
   output <- .route53$create_traffic_policy_instance_output()
@@ -533,7 +546,8 @@ route53_create_traffic_policy_version <- function(Id, Document, Comment = NULL) 
     http_path = "/2013-04-01/trafficpolicy/{Id}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$create_traffic_policy_version_input(Id = Id, Document = Document, Comment = Comment)
   output <- .route53$create_traffic_policy_version_output()
@@ -567,7 +581,8 @@ route53_create_vpc_association_authorization <- function(HostedZoneId, VPC) {
     http_path = "/2013-04-01/hostedzone/{Id}/authorizevpcassociation",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$create_vpc_association_authorization_input(HostedZoneId = HostedZoneId, VPC = VPC)
   output <- .route53$create_vpc_association_authorization_output()
@@ -600,7 +615,8 @@ route53_deactivate_key_signing_key <- function(HostedZoneId, Name) {
     http_path = "/2013-04-01/keysigningkey/{HostedZoneId}/{Name}/deactivate",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$deactivate_key_signing_key_input(HostedZoneId = HostedZoneId, Name = Name)
   output <- .route53$deactivate_key_signing_key_output()
@@ -631,7 +647,8 @@ route53_delete_cidr_collection <- function(Id) {
     http_path = "/2013-04-01/cidrcollection/{CidrCollectionId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$delete_cidr_collection_input(Id = Id)
   output <- .route53$delete_cidr_collection_output()
@@ -662,7 +679,8 @@ route53_delete_health_check <- function(HealthCheckId) {
     http_path = "/2013-04-01/healthcheck/{HealthCheckId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$delete_health_check_input(HealthCheckId = HealthCheckId)
   output <- .route53$delete_health_check_output()
@@ -693,7 +711,8 @@ route53_delete_hosted_zone <- function(Id) {
     http_path = "/2013-04-01/hostedzone/{Id}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$delete_hosted_zone_input(Id = Id)
   output <- .route53$delete_hosted_zone_output()
@@ -725,7 +744,8 @@ route53_delete_key_signing_key <- function(HostedZoneId, Name) {
     http_path = "/2013-04-01/keysigningkey/{HostedZoneId}/{Name}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$delete_key_signing_key_input(HostedZoneId = HostedZoneId, Name = Name)
   output <- .route53$delete_key_signing_key_output()
@@ -756,7 +776,8 @@ route53_delete_query_logging_config <- function(Id) {
     http_path = "/2013-04-01/queryloggingconfig/{Id}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$delete_query_logging_config_input(Id = Id)
   output <- .route53$delete_query_logging_config_output()
@@ -787,7 +808,8 @@ route53_delete_reusable_delegation_set <- function(Id) {
     http_path = "/2013-04-01/delegationset/{Id}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$delete_reusable_delegation_set_input(Id = Id)
   output <- .route53$delete_reusable_delegation_set_output()
@@ -819,7 +841,8 @@ route53_delete_traffic_policy <- function(Id, Version) {
     http_path = "/2013-04-01/trafficpolicy/{Id}/{Version}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$delete_traffic_policy_input(Id = Id, Version = Version)
   output <- .route53$delete_traffic_policy_output()
@@ -853,7 +876,8 @@ route53_delete_traffic_policy_instance <- function(Id) {
     http_path = "/2013-04-01/trafficpolicyinstance/{Id}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$delete_traffic_policy_instance_input(Id = Id)
   output <- .route53$delete_traffic_policy_instance_output()
@@ -887,7 +911,8 @@ route53_delete_vpc_association_authorization <- function(HostedZoneId, VPC) {
     http_path = "/2013-04-01/hostedzone/{Id}/deauthorizevpcassociation",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$delete_vpc_association_authorization_input(HostedZoneId = HostedZoneId, VPC = VPC)
   output <- .route53$delete_vpc_association_authorization_output()
@@ -918,7 +943,8 @@ route53_disable_hosted_zone_dnssec <- function(HostedZoneId) {
     http_path = "/2013-04-01/hostedzone/{Id}/disable-dnssec",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$disable_hosted_zone_dnssec_input(HostedZoneId = HostedZoneId)
   output <- .route53$disable_hosted_zone_dnssec_output()
@@ -952,7 +978,8 @@ route53_disassociate_vpc_from_hosted_zone <- function(HostedZoneId, VPC, Comment
     http_path = "/2013-04-01/hostedzone/{Id}/disassociatevpc",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$disassociate_vpc_from_hosted_zone_input(HostedZoneId = HostedZoneId, VPC = VPC, Comment = Comment)
   output <- .route53$disassociate_vpc_from_hosted_zone_output()
@@ -983,7 +1010,8 @@ route53_enable_hosted_zone_dnssec <- function(HostedZoneId) {
     http_path = "/2013-04-01/hostedzone/{Id}/enable-dnssec",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$enable_hosted_zone_dnssec_input(HostedZoneId = HostedZoneId)
   output <- .route53$enable_hosted_zone_dnssec_output()
@@ -1025,7 +1053,8 @@ route53_get_account_limit <- function(Type) {
     http_path = "/2013-04-01/accountlimit/{Type}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$get_account_limit_input(Type = Type)
   output <- .route53$get_account_limit_output()
@@ -1056,7 +1085,8 @@ route53_get_change <- function(Id) {
     http_path = "/2013-04-01/change/{Id}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$get_change_input(Id = Id)
   output <- .route53$get_change_output()
@@ -1088,7 +1118,8 @@ route53_get_checker_ip_ranges <- function() {
     http_path = "/2013-04-01/checkeripranges",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$get_checker_ip_ranges_input()
   output <- .route53$get_checker_ip_ranges_output()
@@ -1120,7 +1151,8 @@ route53_get_dnssec <- function(HostedZoneId) {
     http_path = "/2013-04-01/hostedzone/{Id}/dnssec",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$get_dnssec_input(HostedZoneId = HostedZoneId)
   output <- .route53$get_dnssec_output()
@@ -1170,7 +1202,8 @@ route53_get_geo_location <- function(ContinentCode = NULL, CountryCode = NULL, S
     http_path = "/2013-04-01/geolocation",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$get_geo_location_input(ContinentCode = ContinentCode, CountryCode = CountryCode, SubdivisionCode = SubdivisionCode)
   output <- .route53$get_geo_location_output()
@@ -1201,7 +1234,8 @@ route53_get_health_check <- function(HealthCheckId) {
     http_path = "/2013-04-01/healthcheck/{HealthCheckId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$get_health_check_input(HealthCheckId = HealthCheckId)
   output <- .route53$get_health_check_output()
@@ -1233,7 +1267,8 @@ route53_get_health_check_count <- function() {
     http_path = "/2013-04-01/healthcheckcount",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$get_health_check_count_input()
   output <- .route53$get_health_check_count_output()
@@ -1266,7 +1301,8 @@ route53_get_health_check_last_failure_reason <- function(HealthCheckId) {
     http_path = "/2013-04-01/healthcheck/{HealthCheckId}/lastfailurereason",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$get_health_check_last_failure_reason_input(HealthCheckId = HealthCheckId)
   output <- .route53$get_health_check_last_failure_reason_output()
@@ -1299,7 +1335,8 @@ route53_get_health_check_status <- function(HealthCheckId) {
     http_path = "/2013-04-01/healthcheck/{HealthCheckId}/status",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$get_health_check_status_input(HealthCheckId = HealthCheckId)
   output <- .route53$get_health_check_status_output()
@@ -1331,7 +1368,8 @@ route53_get_hosted_zone <- function(Id) {
     http_path = "/2013-04-01/hostedzone/{Id}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$get_hosted_zone_input(Id = Id)
   output <- .route53$get_hosted_zone_output()
@@ -1363,7 +1401,8 @@ route53_get_hosted_zone_count <- function() {
     http_path = "/2013-04-01/hostedzonecount",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$get_hosted_zone_count_input()
   output <- .route53$get_hosted_zone_count_output()
@@ -1400,7 +1439,8 @@ route53_get_hosted_zone_limit <- function(Type, HostedZoneId) {
     http_path = "/2013-04-01/hostedzonelimit/{Id}/{Type}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$get_hosted_zone_limit_input(Type = Type, HostedZoneId = HostedZoneId)
   output <- .route53$get_hosted_zone_limit_output()
@@ -1431,7 +1471,8 @@ route53_get_query_logging_config <- function(Id) {
     http_path = "/2013-04-01/queryloggingconfig/{Id}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$get_query_logging_config_input(Id = Id)
   output <- .route53$get_query_logging_config_output()
@@ -1463,7 +1504,8 @@ route53_get_reusable_delegation_set <- function(Id) {
     http_path = "/2013-04-01/delegationset/{Id}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$get_reusable_delegation_set_input(Id = Id)
   output <- .route53$get_reusable_delegation_set_output()
@@ -1496,7 +1538,8 @@ route53_get_reusable_delegation_set_limit <- function(Type, DelegationSetId) {
     http_path = "/2013-04-01/reusabledelegationsetlimit/{Id}/{Type}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$get_reusable_delegation_set_limit_input(Type = Type, DelegationSetId = DelegationSetId)
   output <- .route53$get_reusable_delegation_set_limit_output()
@@ -1528,7 +1571,8 @@ route53_get_traffic_policy <- function(Id, Version) {
     http_path = "/2013-04-01/trafficpolicy/{Id}/{Version}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$get_traffic_policy_input(Id = Id, Version = Version)
   output <- .route53$get_traffic_policy_output()
@@ -1559,7 +1603,8 @@ route53_get_traffic_policy_instance <- function(Id) {
     http_path = "/2013-04-01/trafficpolicyinstance/{Id}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$get_traffic_policy_instance_input(Id = Id)
   output <- .route53$get_traffic_policy_instance_output()
@@ -1591,7 +1636,8 @@ route53_get_traffic_policy_instance_count <- function() {
     http_path = "/2013-04-01/trafficpolicyinstancecount",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$get_traffic_policy_instance_count_input()
   output <- .route53$get_traffic_policy_instance_count_output()
@@ -1625,7 +1671,8 @@ route53_list_cidr_blocks <- function(CollectionId, LocationName = NULL, NextToke
     http_path = "/2013-04-01/cidrcollection/{CidrCollectionId}/cidrblocks",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CidrBlocks"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$list_cidr_blocks_input(CollectionId = CollectionId, LocationName = LocationName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .route53$list_cidr_blocks_output()
@@ -1660,7 +1707,8 @@ route53_list_cidr_collections <- function(NextToken = NULL, MaxResults = NULL) {
     http_path = "/2013-04-01/cidrcollection",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CidrCollections"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$list_cidr_collections_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .route53$list_cidr_collections_output()
@@ -1696,7 +1744,8 @@ route53_list_cidr_locations <- function(CollectionId, NextToken = NULL, MaxResul
     http_path = "/2013-04-01/cidrcollection/{CidrCollectionId}",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CidrLocations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$list_cidr_locations_input(CollectionId = CollectionId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .route53$list_cidr_locations_output()
@@ -1734,7 +1783,8 @@ route53_list_geo_locations <- function(StartContinentCode = NULL, StartCountryCo
     http_path = "/2013-04-01/geolocations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$list_geo_locations_input(StartContinentCode = StartContinentCode, StartCountryCode = StartCountryCode, StartSubdivisionCode = StartSubdivisionCode, MaxItems = MaxItems)
   output <- .route53$list_geo_locations_output()
@@ -1771,7 +1821,8 @@ route53_list_health_checks <- function(Marker = NULL, MaxItems = NULL) {
     http_path = "/2013-04-01/healthcheck",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "NextMarker", more_results = "IsTruncated", limit_key = "MaxItems", result_key = "HealthChecks"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$list_health_checks_input(Marker = Marker, MaxItems = MaxItems)
   output <- .route53$list_health_checks_output()
@@ -1810,7 +1861,8 @@ route53_list_hosted_zones <- function(Marker = NULL, MaxItems = NULL, Delegation
     http_path = "/2013-04-01/hostedzone",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "NextMarker", more_results = "IsTruncated", limit_key = "MaxItems", result_key = "HostedZones"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$list_hosted_zones_input(Marker = Marker, MaxItems = MaxItems, DelegationSetId = DelegationSetId, HostedZoneType = HostedZoneType)
   output <- .route53$list_hosted_zones_output()
@@ -1845,7 +1897,8 @@ route53_list_hosted_zones_by_name <- function(DNSName = NULL, HostedZoneId = NUL
     http_path = "/2013-04-01/hostedzonesbyname",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$list_hosted_zones_by_name_input(DNSName = DNSName, HostedZoneId = HostedZoneId, MaxItems = MaxItems)
   output <- .route53$list_hosted_zones_by_name_output()
@@ -1885,7 +1938,8 @@ route53_list_hosted_zones_by_vpc <- function(VPCId, VPCRegion, MaxItems = NULL, 
     http_path = "/2013-04-01/hostedzonesbyvpc",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$list_hosted_zones_by_vpc_input(VPCId = VPCId, VPCRegion = VPCRegion, MaxItems = MaxItems, NextToken = NextToken)
   output <- .route53$list_hosted_zones_by_vpc_output()
@@ -1928,7 +1982,8 @@ route53_list_query_logging_configs <- function(HostedZoneId = NULL, NextToken = 
     http_path = "/2013-04-01/queryloggingconfig",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "QueryLoggingConfigs"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$list_query_logging_configs_input(HostedZoneId = HostedZoneId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .route53$list_query_logging_configs_output()
@@ -1985,7 +2040,8 @@ route53_list_resource_record_sets <- function(HostedZoneId, StartRecordName = NU
     http_path = "/2013-04-01/hostedzone/{Id}/rrset",
     host_prefix = "",
     paginator = list(more_results = "IsTruncated", limit_key = "MaxItems", result_key = "ResourceRecordSets", input_token = list("StartRecordName", "StartRecordType", "StartRecordIdentifier"), output_token = c("NextRecordName", "NextRecordType", "NextRecordIdentifier")),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$list_resource_record_sets_input(HostedZoneId = HostedZoneId, StartRecordName = StartRecordName, StartRecordType = StartRecordType, StartRecordIdentifier = StartRecordIdentifier, MaxItems = MaxItems)
   output <- .route53$list_resource_record_sets_output()
@@ -2022,7 +2078,8 @@ route53_list_reusable_delegation_sets <- function(Marker = NULL, MaxItems = NULL
     http_path = "/2013-04-01/delegationset",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$list_reusable_delegation_sets_input(Marker = Marker, MaxItems = MaxItems)
   output <- .route53$list_reusable_delegation_sets_output()
@@ -2058,7 +2115,8 @@ route53_list_tags_for_resource <- function(ResourceType, ResourceId) {
     http_path = "/2013-04-01/tags/{ResourceType}/{ResourceId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$list_tags_for_resource_input(ResourceType = ResourceType, ResourceId = ResourceId)
   output <- .route53$list_tags_for_resource_output()
@@ -2094,7 +2152,8 @@ route53_list_tags_for_resources <- function(ResourceType, ResourceIds) {
     http_path = "/2013-04-01/tags/{ResourceType}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$list_tags_for_resources_input(ResourceType = ResourceType, ResourceIds = ResourceIds)
   output <- .route53$list_tags_for_resources_output()
@@ -2129,7 +2188,8 @@ route53_list_traffic_policies <- function(TrafficPolicyIdMarker = NULL, MaxItems
     http_path = "/2013-04-01/trafficpolicies",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$list_traffic_policies_input(TrafficPolicyIdMarker = TrafficPolicyIdMarker, MaxItems = MaxItems)
   output <- .route53$list_traffic_policies_output()
@@ -2170,7 +2230,8 @@ route53_list_traffic_policy_instances <- function(HostedZoneIdMarker = NULL, Tra
     http_path = "/2013-04-01/trafficpolicyinstances",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$list_traffic_policy_instances_input(HostedZoneIdMarker = HostedZoneIdMarker, TrafficPolicyInstanceNameMarker = TrafficPolicyInstanceNameMarker, TrafficPolicyInstanceTypeMarker = TrafficPolicyInstanceTypeMarker, MaxItems = MaxItems)
   output <- .route53$list_traffic_policy_instances_output()
@@ -2209,7 +2270,8 @@ route53_list_traffic_policy_instances_by_hosted_zone <- function(HostedZoneId, T
     http_path = "/2013-04-01/trafficpolicyinstances/hostedzone",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$list_traffic_policy_instances_by_hosted_zone_input(HostedZoneId = HostedZoneId, TrafficPolicyInstanceNameMarker = TrafficPolicyInstanceNameMarker, TrafficPolicyInstanceTypeMarker = TrafficPolicyInstanceTypeMarker, MaxItems = MaxItems)
   output <- .route53$list_traffic_policy_instances_by_hosted_zone_output()
@@ -2258,7 +2320,8 @@ route53_list_traffic_policy_instances_by_policy <- function(TrafficPolicyId, Tra
     http_path = "/2013-04-01/trafficpolicyinstances/trafficpolicy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$list_traffic_policy_instances_by_policy_input(TrafficPolicyId = TrafficPolicyId, TrafficPolicyVersion = TrafficPolicyVersion, HostedZoneIdMarker = HostedZoneIdMarker, TrafficPolicyInstanceNameMarker = TrafficPolicyInstanceNameMarker, TrafficPolicyInstanceTypeMarker = TrafficPolicyInstanceTypeMarker, MaxItems = MaxItems)
   output <- .route53$list_traffic_policy_instances_by_policy_output()
@@ -2294,7 +2357,8 @@ route53_list_traffic_policy_versions <- function(Id, TrafficPolicyVersionMarker 
     http_path = "/2013-04-01/trafficpolicies/{Id}/versions",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$list_traffic_policy_versions_input(Id = Id, TrafficPolicyVersionMarker = TrafficPolicyVersionMarker, MaxItems = MaxItems)
   output <- .route53$list_traffic_policy_versions_output()
@@ -2329,7 +2393,8 @@ route53_list_vpc_association_authorizations <- function(HostedZoneId, NextToken 
     http_path = "/2013-04-01/hostedzone/{Id}/authorizevpcassociation",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", non_aggregate_keys = list( "HostedZoneId"), result_key = list("VPCs")),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$list_vpc_association_authorizations_input(HostedZoneId = HostedZoneId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .route53$list_vpc_association_authorizations_output()
@@ -2372,7 +2437,8 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
     http_path = "/2013-04-01/testdnsanswer",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$test_dns_answer_input(HostedZoneId = HostedZoneId, RecordName = RecordName, RecordType = RecordType, ResolverIP = ResolverIP, EDNS0ClientSubnetIP = EDNS0ClientSubnetIP, EDNS0ClientSubnetMask = EDNS0ClientSubnetMask)
   output <- .route53$test_dns_answer_output()
@@ -2419,11 +2485,11 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #' 
 #' Constraints: Route 53 can't check the health of endpoints for which the IP address is in local, private, non-routable, or multicast ranges. For more information about IP addresses for which you can't create health checks, see the following documents:
 #' 
-#' -   [RFC 5735, Special Use IPv4 Addresses](https://datatracker.ietf.org/doc/html/rfc5735)
+#' -   [RFC 5735, Special Use IPv4 Addresses](https://www.rfc-editor.org/info/rfc5735/)
 #' 
-#' -   [RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address Space](https://datatracker.ietf.org/doc/html/rfc6598)
+#' -   [RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address Space](https://www.rfc-editor.org/info/rfc6598/)
 #' 
-#' -   [RFC 5156, Special-Use IPv6 Addresses](https://datatracker.ietf.org/doc/html/rfc5156)
+#' -   [RFC 5156, Special-Use IPv6 Addresses](https://www.rfc-editor.org/info/rfc5156/)
 #' @param Port The port on the endpoint that you want Amazon Route 53 to perform health checks on.
 #' 
 #' Don't specify a value for `Port` when you specify a value for `Type` of `CLOUDWATCH_METRIC` or `CALCULATED`.
@@ -2519,7 +2585,8 @@ route53_update_health_check <- function(HealthCheckId, HealthCheckVersion = NULL
     http_path = "/2013-04-01/healthcheck/{HealthCheckId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$update_health_check_input(HealthCheckId = HealthCheckId, HealthCheckVersion = HealthCheckVersion, IPAddress = IPAddress, Port = Port, ResourcePath = ResourcePath, FullyQualifiedDomainName = FullyQualifiedDomainName, SearchString = SearchString, FailureThreshold = FailureThreshold, Inverted = Inverted, Disabled = Disabled, HealthThreshold = HealthThreshold, ChildHealthChecks = ChildHealthChecks, EnableSNI = EnableSNI, Regions = Regions, AlarmIdentifier = AlarmIdentifier, InsufficientDataHealthStatus = InsufficientDataHealthStatus, ResetElements = ResetElements)
   output <- .route53$update_health_check_output()
@@ -2551,7 +2618,8 @@ route53_update_hosted_zone_comment <- function(Id, Comment = NULL) {
     http_path = "/2013-04-01/hostedzone/{Id}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$update_hosted_zone_comment_input(Id = Id, Comment = Comment)
   output <- .route53$update_hosted_zone_comment_output()
@@ -2583,7 +2651,8 @@ route53_update_hosted_zone_features <- function(HostedZoneId, EnableAcceleratedR
     http_path = "/2013-04-01/hostedzone/{Id}/features",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$update_hosted_zone_features_input(HostedZoneId = HostedZoneId, EnableAcceleratedRecovery = EnableAcceleratedRecovery)
   output <- .route53$update_hosted_zone_features_output()
@@ -2616,7 +2685,8 @@ route53_update_traffic_policy_comment <- function(Id, Version, Comment) {
     http_path = "/2013-04-01/trafficpolicy/{Id}/{Version}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$update_traffic_policy_comment_input(Id = Id, Version = Version, Comment = Comment)
   output <- .route53$update_traffic_policy_comment_output()
@@ -2652,7 +2722,8 @@ route53_update_traffic_policy_instance <- function(Id, TTL, TrafficPolicyId, Tra
     http_path = "/2013-04-01/trafficpolicyinstance/{Id}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53$update_traffic_policy_instance_input(Id = Id, TTL = TTL, TrafficPolicyId = TrafficPolicyId, TrafficPolicyVersion = TrafficPolicyVersion)
   output <- .route53$update_traffic_policy_instance_output()

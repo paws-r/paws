@@ -26,7 +26,8 @@ support_add_attachments_to_set <- function(attachmentSetId = NULL, attachments, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .support$add_attachments_to_set_input(attachmentSetId = attachmentSetId, attachments = attachments, dryRun = dryRun)
   output <- .support$add_attachments_to_set_output()
@@ -63,7 +64,8 @@ support_add_communication_to_case <- function(caseId = NULL, communicationBody, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .support$add_communication_to_case_input(caseId = caseId, communicationBody = communicationBody, ccEmailAddresses = ccEmailAddresses, attachmentSetId = attachmentSetId, uploadIds = uploadIds, dryRun = dryRun)
   output <- .support$add_communication_to_case_output()
@@ -97,7 +99,8 @@ support_complete_attachment_upload <- function(uploadId, completedUploads, dryRu
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .support$complete_attachment_upload_input(uploadId = uploadId, completedUploads = completedUploads, dryRun = dryRun)
   output <- .support$complete_attachment_upload_output()
@@ -142,7 +145,8 @@ support_create_case <- function(subject, serviceCode = NULL, severityCode = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .support$create_case_input(subject = subject, serviceCode = serviceCode, severityCode = severityCode, categoryCode = categoryCode, communicationBody = communicationBody, ccEmailAddresses = ccEmailAddresses, language = language, issueType = issueType, attachmentSetId = attachmentSetId, uploadIds = uploadIds, dryRun = dryRun)
   output <- .support$create_case_output()
@@ -176,7 +180,8 @@ support_describe_attachment <- function(attachmentId, dryRun = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .support$describe_attachment_input(attachmentId = attachmentId, dryRun = dryRun)
   output <- .support$describe_attachment_output()
@@ -209,7 +214,8 @@ support_describe_attachment_upload_status <- function(uploadId, dryRun = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .support$describe_attachment_upload_status_input(uploadId = uploadId, dryRun = dryRun)
   output <- .support$describe_attachment_upload_status_output()
@@ -249,7 +255,8 @@ support_describe_cases <- function(caseIdList = NULL, displayId = NULL, afterTim
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "cases"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .support$describe_cases_input(caseIdList = caseIdList, displayId = displayId, afterTime = afterTime, beforeTime = beforeTime, includeResolvedCases = includeResolvedCases, nextToken = nextToken, maxResults = maxResults, language = language, includeCommunications = includeCommunications, dryRun = dryRun)
   output <- .support$describe_cases_output()
@@ -285,7 +292,8 @@ support_describe_communications <- function(caseId, beforeTime = NULL, afterTime
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "communications"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .support$describe_communications_input(caseId = caseId, beforeTime = beforeTime, afterTime = afterTime, nextToken = nextToken, maxResults = maxResults, dryRun = dryRun)
   output <- .support$describe_communications_output()
@@ -321,7 +329,8 @@ support_describe_create_case_options <- function(issueType, serviceCode, languag
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .support$describe_create_case_options_input(issueType = issueType, serviceCode = serviceCode, language = language, categoryCode = categoryCode, dryRun = dryRun)
   output <- .support$describe_create_case_options_output()
@@ -355,7 +364,8 @@ support_describe_services <- function(serviceCodeList = NULL, language = NULL, d
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .support$describe_services_input(serviceCodeList = serviceCodeList, language = language, dryRun = dryRun)
   output <- .support$describe_services_output()
@@ -388,7 +398,8 @@ support_describe_severity_levels <- function(language = NULL, dryRun = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .support$describe_severity_levels_input(language = language, dryRun = dryRun)
   output <- .support$describe_severity_levels_output()
@@ -423,7 +434,8 @@ support_describe_supported_languages <- function(issueType, serviceCode, categor
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .support$describe_supported_languages_input(issueType = issueType, serviceCode = serviceCode, categoryCode = categoryCode, dryRun = dryRun)
   output <- .support$describe_supported_languages_output()
@@ -457,7 +469,8 @@ support_describe_trusted_advisor_check_refresh_statuses <- function(checkIds) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .support$describe_trusted_advisor_check_refresh_statuses_input(checkIds = checkIds)
   output <- .support$describe_trusted_advisor_check_refresh_statuses_output()
@@ -514,7 +527,8 @@ support_describe_trusted_advisor_check_result <- function(checkId, language = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .support$describe_trusted_advisor_check_result_input(checkId = checkId, language = language)
   output <- .support$describe_trusted_advisor_check_result_output()
@@ -546,7 +560,8 @@ support_describe_trusted_advisor_check_summaries <- function(checkIds) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .support$describe_trusted_advisor_check_summaries_input(checkIds = checkIds)
   output <- .support$describe_trusted_advisor_check_summaries_output()
@@ -602,7 +617,8 @@ support_describe_trusted_advisor_checks <- function(language) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .support$describe_trusted_advisor_checks_input(language = language)
   output <- .support$describe_trusted_advisor_checks_output()
@@ -635,7 +651,8 @@ support_get_attachment_download_link <- function(attachmentId, dryRun = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .support$get_attachment_download_link_input(attachmentId = attachmentId, dryRun = dryRun)
   output <- .support$get_attachment_download_link_output()
@@ -671,7 +688,8 @@ support_get_attachment_upload_links <- function(fileName, fileSizeBytes = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .support$get_attachment_upload_links_input(fileName = fileName, fileSizeBytes = fileSizeBytes, uploadId = uploadId, uploadRange = uploadRange, dryRun = dryRun)
   output <- .support$get_attachment_upload_links_output()
@@ -704,7 +722,8 @@ support_refresh_trusted_advisor_check <- function(checkId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .support$refresh_trusted_advisor_check_input(checkId = checkId)
   output <- .support$refresh_trusted_advisor_check_output()
@@ -736,7 +755,8 @@ support_resolve_case <- function(caseId = NULL, dryRun = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .support$resolve_case_input(caseId = caseId, dryRun = dryRun)
   output <- .support$resolve_case_output()

@@ -5,9 +5,11 @@
 \title{List all of the configuration sets associated with your account in the
 current region}
 \usage{
-sesv2_list_configuration_sets(NextToken = NULL, PageSize = NULL)
+sesv2_list_configuration_sets(Filter = NULL, NextToken = NULL, PageSize = NULL)
 }
 \arguments{
+\item{Filter}{An object that contains filters to apply when listing configuration sets. You can filter by configuration set name.}
+
 \item{NextToken}{A token returned from a previous call to \code{\link[=sesv2_list_configuration_sets]{list_configuration_sets}} to indicate the position in the list of configuration sets.}
 
 \item{PageSize}{The number of results to show in a single call to \code{\link[=sesv2_list_configuration_sets]{list_configuration_sets}}. If the number of results is larger than the number you specified in this parameter, then the response includes a \code{NextToken} element, which you can use to obtain additional results.}

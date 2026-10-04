@@ -15,7 +15,7 @@ sagemaker_create_compute_quota(
 )
 }
 \arguments{
-\item{Name}{[required] Name to the compute allocation definition.}
+\item{Name}{[required] The name of the compute allocation definition. The name must be unique within the SageMaker AI HyperPod cluster specified by \code{ClusterArn}. You can use the same name in other clusters within a Region or across Regions.}
 
 \item{Description}{Description of the compute allocation definition.}
 

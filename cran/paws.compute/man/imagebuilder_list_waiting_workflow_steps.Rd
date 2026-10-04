@@ -2,8 +2,8 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_list_waiting_workflow_steps}
 \alias{imagebuilder_list_waiting_workflow_steps}
-\title{Retrieves a list of workflow steps that are waiting for action for
-workflows in your Amazon Web Services account}
+\title{Lists the workflow steps in your Amazon Web Services account that have
+paused at a WaitForAction step, and are waiting for you to respond}
 \usage{
 imagebuilder_list_waiting_workflow_steps(maxResults = NULL, nextToken = NULL)
 }
@@ -13,7 +13,7 @@ imagebuilder_list_waiting_workflow_steps(maxResults = NULL, nextToken = NULL)
 \item{nextToken}{A token to specify where to start paginating. Use the \code{nextToken} value from a previously truncated response.}
 }
 \description{
-Retrieves a list of workflow steps that are waiting for action for workflows in your Amazon Web Services account.
+Lists the workflow steps in your Amazon Web Services account that have paused at a \code{WaitForAction} step, and are waiting for you to respond. To send a response, call \code{\link[=imagebuilder_send_workflow_step_action]{send_workflow_step_action}}.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_list_waiting_workflow_steps/} for full documentation.
 }

@@ -50,7 +50,7 @@ If both of the \code{If-Match} and \code{If-Unmodified-Since} headers are presen
 
 Then Amazon S3 returns \verb{200 OK} and the data requested.
 
-For more information about conditional requests, see \href{https://datatracker.ietf.org/doc/html/rfc7232}{RFC 7232}.}
+For more information about conditional requests, see \href{https://www.rfc-editor.org/info/rfc7232/}{RFC 7232}.}
 
 \item{IfModifiedSince}{Return the object only if it has been modified since the specified time; otherwise, return a 304 (not modified) error.
 
@@ -62,7 +62,7 @@ If both of the \code{If-None-Match} and \code{If-Modified-Since} headers are pre
 
 Then Amazon S3 returns the \verb{304 Not Modified} response code.
 
-For more information about conditional requests, see \href{https://datatracker.ietf.org/doc/html/rfc7232}{RFC 7232}.}
+For more information about conditional requests, see \href{https://www.rfc-editor.org/info/rfc7232/}{RFC 7232}.}
 
 \item{IfNoneMatch}{Return the object only if its entity tag (ETag) is different from the one specified; otherwise, return a 304 (not modified) error.
 
@@ -74,7 +74,7 @@ If both of the \code{If-None-Match} and \code{If-Modified-Since} headers are pre
 
 Then Amazon S3 returns the \verb{304 Not Modified} response code.
 
-For more information about conditional requests, see \href{https://datatracker.ietf.org/doc/html/rfc7232}{RFC 7232}.}
+For more information about conditional requests, see \href{https://www.rfc-editor.org/info/rfc7232/}{RFC 7232}.}
 
 \item{IfUnmodifiedSince}{Return the object only if it has not been modified since the specified time; otherwise, return a 412 (precondition failed) error.
 
@@ -86,7 +86,7 @@ If both of the \code{If-Match} and \code{If-Unmodified-Since} headers are presen
 
 Then Amazon S3 returns \verb{200 OK} and the data requested.
 
-For more information about conditional requests, see \href{https://datatracker.ietf.org/doc/html/rfc7232}{RFC 7232}.}
+For more information about conditional requests, see \href{https://www.rfc-editor.org/info/rfc7232/}{RFC 7232}.}
 
 \item{Key}{[required] The object key.}
 

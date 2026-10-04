@@ -9,7 +9,8 @@ datazone_create_environment_blueprint(
   name,
   description = NULL,
   provisioningProperties,
-  userParameters = NULL
+  userParameters = NULL,
+  blueprintCategory = NULL
 )
 }
 \arguments{
@@ -22,6 +23,8 @@ datazone_create_environment_blueprint(
 \item{provisioningProperties}{[required] The provisioning properties of this Amazon DataZone blueprint.}
 
 \item{userParameters}{The user parameters of this Amazon DataZone blueprint.}
+
+\item{blueprintCategory}{The category of the Amazon DataZone blueprint. The only valid value is \code{TOOLING}, which creates a blueprint that provisions the tooling resources of a project.}
 }
 \description{
 Creates a Amazon DataZone blueprint.

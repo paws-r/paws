@@ -2,8 +2,8 @@
 % Please edit documentation in R/rekognition_operations.R
 \name{rekognition_list_stream_processors}
 \alias{rekognition_list_stream_processors}
-\title{Gets a list of stream processors that you have created with
-CreateStreamProcessor}
+\title{Service availability notice: Streaming Video and Bulk Image Analysis is
+no longer available to new customers}
 \usage{
 rekognition_list_stream_processors(NextToken = NULL, MaxResults = NULL)
 }
@@ -13,7 +13,7 @@ rekognition_list_stream_processors(NextToken = NULL, MaxResults = NULL)
 \item{MaxResults}{Maximum number of stream processors you want Amazon Rekognition Video to return in the response. The default is 1000.}
 }
 \description{
-Gets a list of stream processors that you have created with \code{\link[=rekognition_create_stream_processor]{create_stream_processor}}.
+Service availability notice: Streaming Video and Bulk Image Analysis is no longer available to new customers. For more information, see \href{https://docs.aws.amazon.com/rekognition/latest/dg/rekognition-availability-changes.html}{Rekognition feature availability changes}.
 
 See \url{https://www.paws-r-sdk.com/docs/rekognition_list_stream_processors/} for full documentation.
 }

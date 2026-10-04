@@ -50,7 +50,8 @@ sso_get_role_credentials <- function(roleName, accountId, accessToken) {
     http_path = "/federation/credentials",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sso$get_role_credentials_input(roleName = roleName, accountId = accountId, accessToken = accessToken)
   output <- .sso$get_role_credentials_output()
@@ -111,7 +112,8 @@ sso_list_account_roles <- function(nextToken = NULL, maxResults = NULL, accessTo
     http_path = "/assignment/roles",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "roleList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sso$list_account_roles_input(nextToken = nextToken, maxResults = maxResults, accessToken = accessToken, accountId = accountId)
   output <- .sso$list_account_roles_output()
@@ -171,7 +173,8 @@ sso_list_accounts <- function(nextToken = NULL, maxResults = NULL, accessToken) 
     http_path = "/assignment/accounts",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "accountList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sso$list_accounts_input(nextToken = nextToken, maxResults = maxResults, accessToken = accessToken)
   output <- .sso$list_accounts_output()
@@ -221,7 +224,8 @@ sso_logout <- function(accessToken) {
     http_path = "/logout",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sso$logout_input(accessToken = accessToken)
   output <- .sso$logout_output()

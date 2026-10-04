@@ -1,4 +1,4 @@
-svc <- paws.customer.engagement::connectwisdomservice()
+svc <- paws::connectwisdomservice()
 
 test_that("list_assistants", {
   skip_on_cran()

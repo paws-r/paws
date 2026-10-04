@@ -33,7 +33,7 @@ This field is required when you use \code{modelSourceConfig} with an Amazon S3 d
 
 \item{modelTags}{A list of key-value pairs to associate with the custom model resource. You can use these tags to organize and identify your resources.
 
-For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html}{Tagging resources} in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?trkcampaign=podcast_ep46_es}{Amazon Bedrock User Guide}.}
+For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/tagging.html}{Tagging resources} in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Amazon Bedrock User Guide}.}
 
 \item{clientRequestToken}{A unique, case-sensitive identifier to ensure that the API request completes no more than one time. If this token matches a previous request, Amazon Bedrock ignores the request, but does not return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.}
 }

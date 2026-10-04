@@ -57,7 +57,8 @@ elbv2_add_listener_certificates <- function(ListenerArn, Certificates) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$add_listener_certificates_input(ListenerArn = ListenerArn, Certificates = Certificates)
   output <- .elbv2$add_listener_certificates_output()
@@ -132,7 +133,8 @@ elbv2_add_tags <- function(ResourceArns, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$add_tags_input(ResourceArns = ResourceArns, Tags = Tags)
   output <- .elbv2$add_tags_output()
@@ -197,7 +199,8 @@ elbv2_add_trust_store_revocations <- function(TrustStoreArn, RevocationContents 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$add_trust_store_revocations_input(TrustStoreArn = TrustStoreArn, RevocationContents = RevocationContents)
   output <- .elbv2$add_trust_store_revocations_output()
@@ -517,7 +520,8 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol = NULL, Port = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$create_listener_input(LoadBalancerArn = LoadBalancerArn, Protocol = Protocol, Port = Port, SslPolicy = SslPolicy, Certificates = Certificates, DefaultActions = DefaultActions, AlpnPolicy = AlpnPolicy, Tags = Tags, MutualAuthentication = MutualAuthentication)
   output <- .elbv2$create_listener_output()
@@ -718,7 +722,8 @@ elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$create_load_balancer_input(Name = Name, Subnets = Subnets, SubnetMappings = SubnetMappings, SecurityGroups = SecurityGroups, Scheme = Scheme, Tags = Tags, Type = Type, IpAddressType = IpAddressType, CustomerOwnedIpv4Pool = CustomerOwnedIpv4Pool, EnablePrefixForIpv6SourceNat = EnablePrefixForIpv6SourceNat, IpamPools = IpamPools)
   output <- .elbv2$create_load_balancer_output()
@@ -1111,7 +1116,8 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions, Tags =
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$create_rule_input(ListenerArn = ListenerArn, Conditions = Conditions, Priority = Priority, Actions = Actions, Tags = Tags, Transforms = Transforms)
   output <- .elbv2$create_rule_output()
@@ -1270,7 +1276,8 @@ elbv2_create_target_group <- function(Name, Protocol = NULL, ProtocolVersion = N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$create_target_group_input(Name = Name, Protocol = Protocol, ProtocolVersion = ProtocolVersion, Port = Port, VpcId = VpcId, HealthCheckProtocol = HealthCheckProtocol, HealthCheckPort = HealthCheckPort, HealthCheckEnabled = HealthCheckEnabled, HealthCheckPath = HealthCheckPath, HealthCheckIntervalSeconds = HealthCheckIntervalSeconds, HealthCheckTimeoutSeconds = HealthCheckTimeoutSeconds, HealthyThresholdCount = HealthyThresholdCount, UnhealthyThresholdCount = UnhealthyThresholdCount, Matcher = Matcher, TargetType = TargetType, Tags = Tags, IpAddressType = IpAddressType, TargetControlPort = TargetControlPort)
   output <- .elbv2$create_target_group_output()
@@ -1345,7 +1352,8 @@ elbv2_create_trust_store <- function(Name, CaCertificatesBundleS3Bucket, CaCerti
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$create_trust_store_input(Name = Name, CaCertificatesBundleS3Bucket = CaCertificatesBundleS3Bucket, CaCertificatesBundleS3Key = CaCertificatesBundleS3Key, CaCertificatesBundleS3ObjectVersion = CaCertificatesBundleS3ObjectVersion, Tags = Tags)
   output <- .elbv2$create_trust_store_output()
@@ -1399,7 +1407,8 @@ elbv2_delete_listener <- function(ListenerArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$delete_listener_input(ListenerArn = ListenerArn)
   output <- .elbv2$delete_listener_output()
@@ -1456,7 +1465,8 @@ elbv2_delete_load_balancer <- function(LoadBalancerArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$delete_load_balancer_input(LoadBalancerArn = LoadBalancerArn)
   output <- .elbv2$delete_load_balancer_output()
@@ -1510,7 +1520,8 @@ elbv2_delete_rule <- function(RuleArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$delete_rule_input(RuleArn = RuleArn)
   output <- .elbv2$delete_rule_output()
@@ -1556,7 +1567,8 @@ elbv2_delete_shared_trust_store_association <- function(TrustStoreArn, ResourceA
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$delete_shared_trust_store_association_input(TrustStoreArn = TrustStoreArn, ResourceArn = ResourceArn)
   output <- .elbv2$delete_shared_trust_store_association_output()
@@ -1610,7 +1622,8 @@ elbv2_delete_target_group <- function(TargetGroupArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$delete_target_group_input(TargetGroupArn = TargetGroupArn)
   output <- .elbv2$delete_target_group_output()
@@ -1654,7 +1667,8 @@ elbv2_delete_trust_store <- function(TrustStoreArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$delete_trust_store_input(TrustStoreArn = TrustStoreArn)
   output <- .elbv2$delete_trust_store_output()
@@ -1733,7 +1747,8 @@ elbv2_deregister_targets <- function(TargetGroupArn, Targets) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$deregister_targets_input(TargetGroupArn = TargetGroupArn, Targets = Targets)
   output <- .elbv2$deregister_targets_output()
@@ -1799,7 +1814,8 @@ elbv2_describe_account_limits <- function(Marker = NULL, PageSize = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "PageSize", output_token = "NextMarker", result_key = "Limits"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$describe_account_limits_input(Marker = Marker, PageSize = PageSize)
   output <- .elbv2$describe_account_limits_output()
@@ -1865,7 +1881,8 @@ elbv2_describe_capacity_reservation <- function(LoadBalancerArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$describe_capacity_reservation_input(LoadBalancerArn = LoadBalancerArn)
   output <- .elbv2$describe_capacity_reservation_output()
@@ -1919,7 +1936,8 @@ elbv2_describe_listener_attributes <- function(ListenerArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$describe_listener_attributes_input(ListenerArn = ListenerArn)
   output <- .elbv2$describe_listener_attributes_output()
@@ -1983,7 +2001,8 @@ elbv2_describe_listener_certificates <- function(ListenerArn, Marker = NULL, Pag
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "PageSize", output_token = "NextMarker", result_key = "Certificates"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$describe_listener_certificates_input(ListenerArn = ListenerArn, Marker = Marker, PageSize = PageSize)
   output <- .elbv2$describe_listener_certificates_output()
@@ -2151,7 +2170,8 @@ elbv2_describe_listeners <- function(LoadBalancerArn = NULL, ListenerArns = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "PageSize", result_key = "Listeners"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$describe_listeners_input(LoadBalancerArn = LoadBalancerArn, ListenerArns = ListenerArns, Marker = Marker, PageSize = PageSize)
   output <- .elbv2$describe_listeners_output()
@@ -2222,7 +2242,8 @@ elbv2_describe_load_balancer_attributes <- function(LoadBalancerArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$describe_load_balancer_attributes_input(LoadBalancerArn = LoadBalancerArn)
   output <- .elbv2$describe_load_balancer_attributes_output()
@@ -2337,7 +2358,8 @@ elbv2_describe_load_balancers <- function(LoadBalancerArns = NULL, Names = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "PageSize", result_key = "LoadBalancers"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$describe_load_balancers_input(LoadBalancerArns = LoadBalancerArns, Names = Names, Marker = Marker, PageSize = PageSize)
   output <- .elbv2$describe_load_balancers_output()
@@ -2560,7 +2582,8 @@ elbv2_describe_rules <- function(ListenerArn = NULL, RuleArns = NULL, Marker = N
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "PageSize", output_token = "NextMarker", result_key = "Rules"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$describe_rules_input(ListenerArn = ListenerArn, RuleArns = RuleArns, Marker = Marker, PageSize = PageSize)
   output <- .elbv2$describe_rules_output()
@@ -2647,7 +2670,8 @@ elbv2_describe_ssl_policies <- function(Names = NULL, Marker = NULL, PageSize = 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "PageSize", output_token = "NextMarker", result_key = "SslPolicies"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$describe_ssl_policies_input(Names = Names, Marker = Marker, PageSize = PageSize, LoadBalancerType = LoadBalancerType)
   output <- .elbv2$describe_ssl_policies_output()
@@ -2718,7 +2742,8 @@ elbv2_describe_tags <- function(ResourceArns) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$describe_tags_input(ResourceArns = ResourceArns)
   output <- .elbv2$describe_tags_output()
@@ -2788,7 +2813,8 @@ elbv2_describe_target_group_attributes <- function(TargetGroupArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$describe_target_group_attributes_input(TargetGroupArn = TargetGroupArn)
   output <- .elbv2$describe_target_group_attributes_output()
@@ -2888,7 +2914,8 @@ elbv2_describe_target_groups <- function(LoadBalancerArn = NULL, TargetGroupArns
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "PageSize", result_key = "TargetGroups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$describe_target_groups_input(LoadBalancerArn = LoadBalancerArn, TargetGroupArns = TargetGroupArns, Names = Names, Marker = Marker, PageSize = PageSize)
   output <- .elbv2$describe_target_groups_output()
@@ -2996,7 +3023,8 @@ elbv2_describe_target_health <- function(TargetGroupArn, Targets = NULL, Include
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$describe_target_health_input(TargetGroupArn = TargetGroupArn, Targets = Targets, Include = Include)
   output <- .elbv2$describe_target_health_output()
@@ -3054,7 +3082,8 @@ elbv2_describe_trust_store_associations <- function(TrustStoreArn, Marker = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "PageSize", output_token = "NextMarker", result_key = "TrustStoreAssociations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$describe_trust_store_associations_input(TrustStoreArn = TrustStoreArn, Marker = Marker, PageSize = PageSize)
   output <- .elbv2$describe_trust_store_associations_output()
@@ -3121,7 +3150,8 @@ elbv2_describe_trust_store_revocations <- function(TrustStoreArn, RevocationIds 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "PageSize", output_token = "NextMarker", result_key = "TrustStoreRevocations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$describe_trust_store_revocations_input(TrustStoreArn = TrustStoreArn, RevocationIds = RevocationIds, Marker = Marker, PageSize = PageSize)
   output <- .elbv2$describe_trust_store_revocations_output()
@@ -3189,7 +3219,8 @@ elbv2_describe_trust_stores <- function(TrustStoreArns = NULL, Names = NULL, Mar
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "PageSize", output_token = "NextMarker", result_key = "TrustStores"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$describe_trust_stores_input(TrustStoreArns = TrustStoreArns, Names = Names, Marker = Marker, PageSize = PageSize)
   output <- .elbv2$describe_trust_stores_output()
@@ -3238,7 +3269,8 @@ elbv2_get_resource_policy <- function(ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$get_resource_policy_input(ResourceArn = ResourceArn)
   output <- .elbv2$get_resource_policy_output()
@@ -3289,7 +3321,8 @@ elbv2_get_trust_store_ca_certificates_bundle <- function(TrustStoreArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$get_trust_store_ca_certificates_bundle_input(TrustStoreArn = TrustStoreArn)
   output <- .elbv2$get_trust_store_ca_certificates_bundle_output()
@@ -3342,7 +3375,8 @@ elbv2_get_trust_store_revocation_content <- function(TrustStoreArn, RevocationId
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$get_trust_store_revocation_content_input(TrustStoreArn = TrustStoreArn, RevocationId = RevocationId)
   output <- .elbv2$get_trust_store_revocation_content_output()
@@ -3416,7 +3450,8 @@ elbv2_modify_capacity_reservation <- function(LoadBalancerArn, MinimumLoadBalanc
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$modify_capacity_reservation_input(LoadBalancerArn = LoadBalancerArn, MinimumLoadBalancerCapacity = MinimumLoadBalancerCapacity, ResetCapacityReservation = ResetCapacityReservation)
   output <- .elbv2$modify_capacity_reservation_output()
@@ -3476,7 +3511,8 @@ elbv2_modify_ip_pools <- function(LoadBalancerArn, IpamPools = NULL, RemoveIpamP
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$modify_ip_pools_input(LoadBalancerArn = LoadBalancerArn, IpamPools = IpamPools, RemoveIpamPools = RemoveIpamPools)
   output <- .elbv2$modify_ip_pools_output()
@@ -3765,7 +3801,8 @@ elbv2_modify_listener <- function(ListenerArn, Port = NULL, Protocol = NULL, Ssl
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$modify_listener_input(ListenerArn = ListenerArn, Port = Port, Protocol = Protocol, SslPolicy = SslPolicy, Certificates = Certificates, DefaultActions = DefaultActions, AlpnPolicy = AlpnPolicy, MutualAuthentication = MutualAuthentication)
   output <- .elbv2$modify_listener_output()
@@ -3826,7 +3863,8 @@ elbv2_modify_listener_attributes <- function(ListenerArn, Attributes) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$modify_listener_attributes_input(ListenerArn = ListenerArn, Attributes = Attributes)
   output <- .elbv2$modify_listener_attributes_output()
@@ -3939,7 +3977,8 @@ elbv2_modify_load_balancer_attributes <- function(LoadBalancerArn, Attributes) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$modify_load_balancer_attributes_input(LoadBalancerArn = LoadBalancerArn, Attributes = Attributes)
   output <- .elbv2$modify_load_balancer_attributes_output()
@@ -4316,7 +4355,8 @@ elbv2_modify_rule <- function(RuleArn, Conditions = NULL, Actions = NULL, Transf
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$modify_rule_input(RuleArn = RuleArn, Conditions = Conditions, Actions = Actions, Transforms = Transforms, ResetTransforms = ResetTransforms)
   output <- .elbv2$modify_rule_output()
@@ -4432,7 +4472,8 @@ elbv2_modify_target_group <- function(TargetGroupArn, HealthCheckProtocol = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$modify_target_group_input(TargetGroupArn = TargetGroupArn, HealthCheckProtocol = HealthCheckProtocol, HealthCheckPort = HealthCheckPort, HealthCheckPath = HealthCheckPath, HealthCheckEnabled = HealthCheckEnabled, HealthCheckIntervalSeconds = HealthCheckIntervalSeconds, HealthCheckTimeoutSeconds = HealthCheckTimeoutSeconds, HealthyThresholdCount = HealthyThresholdCount, UnhealthyThresholdCount = UnhealthyThresholdCount, Matcher = Matcher)
   output <- .elbv2$modify_target_group_output()
@@ -4508,7 +4549,8 @@ elbv2_modify_target_group_attributes <- function(TargetGroupArn, Attributes) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$modify_target_group_attributes_input(TargetGroupArn = TargetGroupArn, Attributes = Attributes)
   output <- .elbv2$modify_target_group_attributes_output()
@@ -4572,7 +4614,8 @@ elbv2_modify_trust_store <- function(TrustStoreArn, CaCertificatesBundleS3Bucket
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$modify_trust_store_input(TrustStoreArn = TrustStoreArn, CaCertificatesBundleS3Bucket = CaCertificatesBundleS3Bucket, CaCertificatesBundleS3Key = CaCertificatesBundleS3Key, CaCertificatesBundleS3ObjectVersion = CaCertificatesBundleS3ObjectVersion)
   output <- .elbv2$modify_trust_store_output()
@@ -4671,7 +4714,8 @@ elbv2_register_targets <- function(TargetGroupArn, Targets) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$register_targets_input(TargetGroupArn = TargetGroupArn, Targets = Targets)
   output <- .elbv2$register_targets_output()
@@ -4723,7 +4767,8 @@ elbv2_remove_listener_certificates <- function(ListenerArn, Certificates) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$remove_listener_certificates_input(ListenerArn = ListenerArn, Certificates = Certificates)
   output <- .elbv2$remove_listener_certificates_output()
@@ -4789,7 +4834,8 @@ elbv2_remove_tags <- function(ResourceArns, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$remove_tags_input(ResourceArns = ResourceArns, TagKeys = TagKeys)
   output <- .elbv2$remove_tags_output()
@@ -4837,7 +4883,8 @@ elbv2_remove_trust_store_revocations <- function(TrustStoreArn, RevocationIds) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$remove_trust_store_revocations_input(TrustStoreArn = TrustStoreArn, RevocationIds = RevocationIds)
   output <- .elbv2$remove_trust_store_revocations_output()
@@ -4895,7 +4942,8 @@ elbv2_set_ip_address_type <- function(LoadBalancerArn, IpAddressType) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$set_ip_address_type_input(LoadBalancerArn = LoadBalancerArn, IpAddressType = IpAddressType)
   output <- .elbv2$set_ip_address_type_output()
@@ -5119,7 +5167,8 @@ elbv2_set_rule_priorities <- function(RulePriorities) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$set_rule_priorities_input(RulePriorities = RulePriorities)
   output <- .elbv2$set_rule_priorities_output()
@@ -5195,7 +5244,8 @@ elbv2_set_security_groups <- function(LoadBalancerArn, SecurityGroups, EnforceSe
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$set_security_groups_input(LoadBalancerArn = LoadBalancerArn, SecurityGroups = SecurityGroups, EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic = EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic)
   output <- .elbv2$set_security_groups_output()
@@ -5321,7 +5371,8 @@ elbv2_set_subnets <- function(LoadBalancerArn, Subnets = NULL, SubnetMappings = 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elbv2$set_subnets_input(LoadBalancerArn = LoadBalancerArn, Subnets = Subnets, SubnetMappings = SubnetMappings, IpAddressType = IpAddressType, EnablePrefixForIpv6SourceNat = EnablePrefixForIpv6SourceNat)
   output <- .elbv2$set_subnets_output()

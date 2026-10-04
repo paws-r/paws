@@ -26,6 +26,7 @@ The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a root ID stri
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_bedrock.html}{BEDROCK_POLICY}
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_s3.html}{S3_POLICY}
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_network_security_director.html}{NETWORK_SECURITY_DIRECTOR_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_guardduty.html}{GUARDDUTY_POLICY}
 }}
 }
 \description{

@@ -1,4 +1,4 @@
-svc <- paws.machine.learning::bedrockruntime()
+svc <- paws::bedrockruntime()
 
 test_that("list_async_invokes", {
   skip_on_cran()

@@ -22,7 +22,8 @@ pinpointsmsvoice_create_configuration_set <- function(ConfigurationSetName = NUL
     http_path = "/v1/sms-voice/configuration-sets",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .pinpointsmsvoice$create_configuration_set_input(ConfigurationSetName = ConfigurationSetName)
   output <- .pinpointsmsvoice$create_configuration_set_output()
@@ -55,7 +56,8 @@ pinpointsmsvoice_create_configuration_set_event_destination <- function(Configur
     http_path = "/v1/sms-voice/configuration-sets/{ConfigurationSetName}/event-destinations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .pinpointsmsvoice$create_configuration_set_event_destination_input(ConfigurationSetName = ConfigurationSetName, EventDestination = EventDestination, EventDestinationName = EventDestinationName)
   output <- .pinpointsmsvoice$create_configuration_set_event_destination_output()
@@ -86,7 +88,8 @@ pinpointsmsvoice_delete_configuration_set <- function(ConfigurationSetName) {
     http_path = "/v1/sms-voice/configuration-sets/{ConfigurationSetName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .pinpointsmsvoice$delete_configuration_set_input(ConfigurationSetName = ConfigurationSetName)
   output <- .pinpointsmsvoice$delete_configuration_set_output()
@@ -118,7 +121,8 @@ pinpointsmsvoice_delete_configuration_set_event_destination <- function(Configur
     http_path = "/v1/sms-voice/configuration-sets/{ConfigurationSetName}/event-destinations/{EventDestinationName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .pinpointsmsvoice$delete_configuration_set_event_destination_input(ConfigurationSetName = ConfigurationSetName, EventDestinationName = EventDestinationName)
   output <- .pinpointsmsvoice$delete_configuration_set_event_destination_output()
@@ -151,7 +155,8 @@ pinpointsmsvoice_get_configuration_set_event_destinations <- function(Configurat
     http_path = "/v1/sms-voice/configuration-sets/{ConfigurationSetName}/event-destinations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .pinpointsmsvoice$get_configuration_set_event_destinations_input(ConfigurationSetName = ConfigurationSetName)
   output <- .pinpointsmsvoice$get_configuration_set_event_destinations_output()
@@ -184,7 +189,8 @@ pinpointsmsvoice_list_configuration_sets <- function(NextToken = NULL, PageSize 
     http_path = "/v1/sms-voice/configuration-sets",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .pinpointsmsvoice$list_configuration_sets_input(NextToken = NextToken, PageSize = PageSize)
   output <- .pinpointsmsvoice$list_configuration_sets_output()
@@ -219,7 +225,8 @@ pinpointsmsvoice_send_voice_message <- function(CallerId = NULL, ConfigurationSe
     http_path = "/v1/sms-voice/voice/message",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .pinpointsmsvoice$send_voice_message_input(CallerId = CallerId, ConfigurationSetName = ConfigurationSetName, Content = Content, DestinationPhoneNumber = DestinationPhoneNumber, OriginationPhoneNumber = OriginationPhoneNumber)
   output <- .pinpointsmsvoice$send_voice_message_output()
@@ -252,7 +259,8 @@ pinpointsmsvoice_update_configuration_set_event_destination <- function(Configur
     http_path = "/v1/sms-voice/configuration-sets/{ConfigurationSetName}/event-destinations/{EventDestinationName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .pinpointsmsvoice$update_configuration_set_event_destination_input(ConfigurationSetName = ConfigurationSetName, EventDestination = EventDestination, EventDestinationName = EventDestinationName)
   output <- .pinpointsmsvoice$update_configuration_set_event_destination_output()

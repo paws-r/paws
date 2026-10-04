@@ -27,7 +27,8 @@ codestarconnections_create_connection <- function(ProviderType = NULL, Connectio
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codestarconnections$create_connection_input(ProviderType = ProviderType, ConnectionName = ConnectionName, Tags = Tags, HostArn = HostArn)
   output <- .codestarconnections$create_connection_output()
@@ -63,7 +64,8 @@ codestarconnections_create_host <- function(Name, ProviderType, ProviderEndpoint
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codestarconnections$create_host_input(Name = Name, ProviderType = ProviderType, ProviderEndpoint = ProviderEndpoint, VpcConfiguration = VpcConfiguration, Tags = Tags)
   output <- .codestarconnections$create_host_output()
@@ -98,7 +100,8 @@ codestarconnections_create_repository_link <- function(ConnectionArn, OwnerId, R
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codestarconnections$create_repository_link_input(ConnectionArn = ConnectionArn, OwnerId = OwnerId, RepositoryName = RepositoryName, EncryptionKeyArn = EncryptionKeyArn, Tags = Tags)
   output <- .codestarconnections$create_repository_link_output()
@@ -138,7 +141,8 @@ codestarconnections_create_sync_configuration <- function(Branch, ConfigFile, Re
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codestarconnections$create_sync_configuration_input(Branch = Branch, ConfigFile = ConfigFile, RepositoryLinkId = RepositoryLinkId, ResourceName = ResourceName, RoleArn = RoleArn, SyncType = SyncType, PublishDeploymentStatus = PublishDeploymentStatus, TriggerResourceUpdateOn = TriggerResourceUpdateOn)
   output <- .codestarconnections$create_sync_configuration_output()
@@ -171,7 +175,8 @@ codestarconnections_delete_connection <- function(ConnectionArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codestarconnections$delete_connection_input(ConnectionArn = ConnectionArn)
   output <- .codestarconnections$delete_connection_output()
@@ -202,7 +207,8 @@ codestarconnections_delete_host <- function(HostArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codestarconnections$delete_host_input(HostArn = HostArn)
   output <- .codestarconnections$delete_host_output()
@@ -234,7 +240,8 @@ codestarconnections_delete_repository_link <- function(RepositoryLinkId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codestarconnections$delete_repository_link_input(RepositoryLinkId = RepositoryLinkId)
   output <- .codestarconnections$delete_repository_link_output()
@@ -266,7 +273,8 @@ codestarconnections_delete_sync_configuration <- function(SyncType, ResourceName
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codestarconnections$delete_sync_configuration_input(SyncType = SyncType, ResourceName = ResourceName)
   output <- .codestarconnections$delete_sync_configuration_output()
@@ -298,7 +306,8 @@ codestarconnections_get_connection <- function(ConnectionArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codestarconnections$get_connection_input(ConnectionArn = ConnectionArn)
   output <- .codestarconnections$get_connection_output()
@@ -330,7 +339,8 @@ codestarconnections_get_host <- function(HostArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codestarconnections$get_host_input(HostArn = HostArn)
   output <- .codestarconnections$get_host_output()
@@ -361,7 +371,8 @@ codestarconnections_get_repository_link <- function(RepositoryLinkId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codestarconnections$get_repository_link_input(RepositoryLinkId = RepositoryLinkId)
   output <- .codestarconnections$get_repository_link_output()
@@ -394,7 +405,8 @@ codestarconnections_get_repository_sync_status <- function(Branch, RepositoryLin
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codestarconnections$get_repository_sync_status_input(Branch = Branch, RepositoryLinkId = RepositoryLinkId, SyncType = SyncType)
   output <- .codestarconnections$get_repository_sync_status_output()
@@ -427,7 +439,8 @@ codestarconnections_get_resource_sync_status <- function(ResourceName, SyncType)
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codestarconnections$get_resource_sync_status_input(ResourceName = ResourceName, SyncType = SyncType)
   output <- .codestarconnections$get_resource_sync_status_output()
@@ -459,7 +472,8 @@ codestarconnections_get_sync_blocker_summary <- function(SyncType, ResourceName)
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codestarconnections$get_sync_blocker_summary_input(SyncType = SyncType, ResourceName = ResourceName)
   output <- .codestarconnections$get_sync_blocker_summary_output()
@@ -492,7 +506,8 @@ codestarconnections_get_sync_configuration <- function(SyncType, ResourceName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codestarconnections$get_sync_configuration_input(SyncType = SyncType, ResourceName = ResourceName)
   output <- .codestarconnections$get_sync_configuration_output()
@@ -526,7 +541,8 @@ codestarconnections_list_connections <- function(ProviderTypeFilter = NULL, Host
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codestarconnections$list_connections_input(ProviderTypeFilter = ProviderTypeFilter, HostArnFilter = HostArnFilter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .codestarconnections$list_connections_output()
@@ -558,7 +574,8 @@ codestarconnections_list_hosts <- function(MaxResults = NULL, NextToken = NULL) 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codestarconnections$list_hosts_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .codestarconnections$list_hosts_output()
@@ -590,7 +607,8 @@ codestarconnections_list_repository_links <- function(MaxResults = NULL, NextTok
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codestarconnections$list_repository_links_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .codestarconnections$list_repository_links_output()
@@ -623,7 +641,8 @@ codestarconnections_list_repository_sync_definitions <- function(RepositoryLinkI
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codestarconnections$list_repository_sync_definitions_input(RepositoryLinkId = RepositoryLinkId, SyncType = SyncType)
   output <- .codestarconnections$list_repository_sync_definitions_output()
@@ -657,7 +676,8 @@ codestarconnections_list_sync_configurations <- function(MaxResults = NULL, Next
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codestarconnections$list_sync_configurations_input(MaxResults = MaxResults, NextToken = NextToken, RepositoryLinkId = RepositoryLinkId, SyncType = SyncType)
   output <- .codestarconnections$list_sync_configurations_output()
@@ -689,7 +709,8 @@ codestarconnections_list_tags_for_resource <- function(ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codestarconnections$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .codestarconnections$list_tags_for_resource_output()
@@ -721,7 +742,8 @@ codestarconnections_tag_resource <- function(ResourceArn, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codestarconnections$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .codestarconnections$tag_resource_output()
@@ -753,7 +775,8 @@ codestarconnections_untag_resource <- function(ResourceArn, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codestarconnections$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .codestarconnections$untag_resource_output()
@@ -786,7 +809,8 @@ codestarconnections_update_host <- function(HostArn, ProviderEndpoint = NULL, Vp
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codestarconnections$update_host_input(HostArn = HostArn, ProviderEndpoint = ProviderEndpoint, VpcConfiguration = VpcConfiguration)
   output <- .codestarconnections$update_host_output()
@@ -820,7 +844,8 @@ codestarconnections_update_repository_link <- function(ConnectionArn = NULL, Enc
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codestarconnections$update_repository_link_input(ConnectionArn = ConnectionArn, EncryptionKeyArn = EncryptionKeyArn, RepositoryLinkId = RepositoryLinkId)
   output <- .codestarconnections$update_repository_link_output()
@@ -855,7 +880,8 @@ codestarconnections_update_sync_blocker <- function(Id, SyncType, ResourceName, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codestarconnections$update_sync_blocker_input(Id = Id, SyncType = SyncType, ResourceName = ResourceName, ResolvedReason = ResolvedReason)
   output <- .codestarconnections$update_sync_blocker_output()
@@ -894,7 +920,8 @@ codestarconnections_update_sync_configuration <- function(Branch = NULL, ConfigF
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codestarconnections$update_sync_configuration_input(Branch = Branch, ConfigFile = ConfigFile, RepositoryLinkId = RepositoryLinkId, ResourceName = ResourceName, RoleArn = RoleArn, SyncType = SyncType, PublishDeploymentStatus = PublishDeploymentStatus, TriggerResourceUpdateOn = TriggerResourceUpdateOn)
   output <- .codestarconnections$update_sync_configuration_output()

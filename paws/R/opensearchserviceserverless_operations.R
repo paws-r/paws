@@ -82,7 +82,8 @@ opensearchserviceserverless_batch_get_collection <- function(ids = NULL, names =
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$batch_get_collection_input(ids = ids, names = names)
   output <- .opensearchserviceserverless$batch_get_collection_output()
@@ -179,7 +180,8 @@ opensearchserviceserverless_batch_get_collection_group <- function(ids = NULL, n
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$batch_get_collection_group_input(ids = ids, names = names)
   output <- .opensearchserviceserverless$batch_get_collection_group_output()
@@ -252,7 +254,8 @@ opensearchserviceserverless_batch_get_effective_lifecycle_policy <- function(res
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$batch_get_effective_lifecycle_policy_input(resourceIdentifiers = resourceIdentifiers)
   output <- .opensearchserviceserverless$batch_get_effective_lifecycle_policy_output()
@@ -324,7 +327,8 @@ opensearchserviceserverless_batch_get_lifecycle_policy <- function(identifiers) 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$batch_get_lifecycle_policy_input(identifiers = identifiers)
   output <- .opensearchserviceserverless$batch_get_lifecycle_policy_output()
@@ -399,7 +403,8 @@ opensearchserviceserverless_batch_get_vpc_endpoint <- function(ids) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$batch_get_vpc_endpoint_input(ids = ids)
   output <- .opensearchserviceserverless$batch_get_vpc_endpoint_output()
@@ -465,7 +470,8 @@ opensearchserviceserverless_create_access_policy <- function(type, name, descrip
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$create_access_policy_input(type = type, name = name, description = description, policy = policy, clientToken = clientToken)
   output <- .opensearchserviceserverless$create_access_policy_output()
@@ -560,7 +566,8 @@ opensearchserviceserverless_create_collection <- function(name, type = NULL, des
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$create_collection_input(name = name, type = type, description = description, tags = tags, standbyReplicas = standbyReplicas, vectorOptions = vectorOptions, collectionGroupName = collectionGroupName, encryptionConfig = encryptionConfig, deletionProtection = deletionProtection, clientToken = clientToken)
   output <- .opensearchserviceserverless$create_collection_output()
@@ -655,7 +662,8 @@ opensearchserviceserverless_create_collection_group <- function(name, standbyRep
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$create_collection_group_input(name = name, standbyReplicas = standbyReplicas, description = description, tags = tags, capacityLimits = capacityLimits, generation = generation, clientToken = clientToken)
   output <- .opensearchserviceserverless$create_collection_group_output()
@@ -703,7 +711,8 @@ opensearchserviceserverless_create_index <- function(id, indexName, indexSchema 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$create_index_input(id = id, indexName = indexName, indexSchema = indexSchema)
   output <- .opensearchserviceserverless$create_index_output()
@@ -769,7 +778,8 @@ opensearchserviceserverless_create_lifecycle_policy <- function(type, name, desc
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$create_lifecycle_policy_input(type = type, name = name, description = description, policy = policy, clientToken = clientToken)
   output <- .opensearchserviceserverless$create_lifecycle_policy_output()
@@ -871,7 +881,8 @@ opensearchserviceserverless_create_security_config <- function(type, name, descr
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$create_security_config_input(type = type, name = name, description = description, samlOptions = samlOptions, iamIdentityCenterOptions = iamIdentityCenterOptions, iamFederationOptions = iamFederationOptions, clientToken = clientToken)
   output <- .opensearchserviceserverless$create_security_config_output()
@@ -938,7 +949,8 @@ opensearchserviceserverless_create_security_policy <- function(type, name, descr
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$create_security_policy_input(type = type, name = name, description = description, policy = policy, clientToken = clientToken)
   output <- .opensearchserviceserverless$create_security_policy_output()
@@ -1004,7 +1016,8 @@ opensearchserviceserverless_create_vpc_endpoint <- function(name, vpcId, subnetI
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$create_vpc_endpoint_input(name = name, vpcId = vpcId, subnetIds = subnetIds, securityGroupIds = securityGroupIds, clientToken = clientToken)
   output <- .opensearchserviceserverless$create_vpc_endpoint_output()
@@ -1053,7 +1066,8 @@ opensearchserviceserverless_delete_access_policy <- function(type, name, clientT
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$delete_access_policy_input(type = type, name = name, clientToken = clientToken)
   output <- .opensearchserviceserverless$delete_access_policy_output()
@@ -1109,7 +1123,8 @@ opensearchserviceserverless_delete_collection <- function(id, clientToken = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$delete_collection_input(id = id, clientToken = clientToken)
   output <- .opensearchserviceserverless$delete_collection_output()
@@ -1155,7 +1170,8 @@ opensearchserviceserverless_delete_collection_group <- function(id, clientToken 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$delete_collection_group_input(id = id, clientToken = clientToken)
   output <- .opensearchserviceserverless$delete_collection_group_output()
@@ -1201,7 +1217,8 @@ opensearchserviceserverless_delete_index <- function(id, indexName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$delete_index_input(id = id, indexName = indexName)
   output <- .opensearchserviceserverless$delete_index_output()
@@ -1250,7 +1267,8 @@ opensearchserviceserverless_delete_lifecycle_policy <- function(type, name, clie
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$delete_lifecycle_policy_input(type = type, name = name, clientToken = clientToken)
   output <- .opensearchserviceserverless$delete_lifecycle_policy_output()
@@ -1296,7 +1314,8 @@ opensearchserviceserverless_delete_security_config <- function(id, clientToken =
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$delete_security_config_input(id = id, clientToken = clientToken)
   output <- .opensearchserviceserverless$delete_security_config_output()
@@ -1345,7 +1364,8 @@ opensearchserviceserverless_delete_security_policy <- function(type, name, clien
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$delete_security_policy_input(type = type, name = name, clientToken = clientToken)
   output <- .opensearchserviceserverless$delete_security_policy_output()
@@ -1400,7 +1420,8 @@ opensearchserviceserverless_delete_vpc_endpoint <- function(id, clientToken = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$delete_vpc_endpoint_input(id = id, clientToken = clientToken)
   output <- .opensearchserviceserverless$delete_vpc_endpoint_output()
@@ -1459,7 +1480,8 @@ opensearchserviceserverless_get_access_policy <- function(type, name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$get_access_policy_input(type = type, name = name)
   output <- .opensearchserviceserverless$get_access_policy_output()
@@ -1511,7 +1533,8 @@ opensearchserviceserverless_get_account_settings <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$get_account_settings_input()
   output <- .opensearchserviceserverless$get_account_settings_output()
@@ -1563,7 +1586,8 @@ opensearchserviceserverless_get_index <- function(id, indexName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$get_index_input(id = id, indexName = indexName)
   output <- .opensearchserviceserverless$get_index_output()
@@ -1624,7 +1648,8 @@ opensearchserviceserverless_get_policies_stats <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$get_policies_stats_input()
   output <- .opensearchserviceserverless$get_policies_stats_output()
@@ -1700,7 +1725,8 @@ opensearchserviceserverless_get_security_config <- function(id) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$get_security_config_input(id = id)
   output <- .opensearchserviceserverless$get_security_config_output()
@@ -1760,7 +1786,8 @@ opensearchserviceserverless_get_security_policy <- function(type, name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$get_security_policy_input(type = type, name = name)
   output <- .opensearchserviceserverless$get_security_policy_output()
@@ -1829,7 +1856,8 @@ opensearchserviceserverless_list_access_policies <- function(type, resource = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$list_access_policies_input(type = type, resource = resource, nextToken = nextToken, maxResults = maxResults)
   output <- .opensearchserviceserverless$list_access_policies_output()
@@ -1897,7 +1925,8 @@ opensearchserviceserverless_list_collection_groups <- function(nextToken = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$list_collection_groups_input(nextToken = nextToken, maxResults = maxResults)
   output <- .opensearchserviceserverless$list_collection_groups_output()
@@ -1967,7 +1996,8 @@ opensearchserviceserverless_list_collections <- function(collectionFilters = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$list_collections_input(collectionFilters = collectionFilters, nextToken = nextToken, maxResults = maxResults)
   output <- .opensearchserviceserverless$list_collections_output()
@@ -2035,7 +2065,8 @@ opensearchserviceserverless_list_lifecycle_policies <- function(type, resources 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$list_lifecycle_policies_input(type = type, resources = resources, nextToken = nextToken, maxResults = maxResults)
   output <- .opensearchserviceserverless$list_lifecycle_policies_output()
@@ -2100,7 +2131,8 @@ opensearchserviceserverless_list_security_configs <- function(type, nextToken = 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$list_security_configs_input(type = type, nextToken = nextToken, maxResults = maxResults)
   output <- .opensearchserviceserverless$list_security_configs_output()
@@ -2169,7 +2201,8 @@ opensearchserviceserverless_list_security_policies <- function(type, resource = 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$list_security_policies_input(type = type, resource = resource, nextToken = nextToken, maxResults = maxResults)
   output <- .opensearchserviceserverless$list_security_policies_output()
@@ -2223,7 +2256,8 @@ opensearchserviceserverless_list_tags_for_resource <- function(resourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .opensearchserviceserverless$list_tags_for_resource_output()
@@ -2287,7 +2321,8 @@ opensearchserviceserverless_list_vpc_endpoints <- function(vpcEndpointFilters = 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$list_vpc_endpoints_input(vpcEndpointFilters = vpcEndpointFilters, nextToken = nextToken, maxResults = maxResults)
   output <- .opensearchserviceserverless$list_vpc_endpoints_output()
@@ -2338,7 +2373,8 @@ opensearchserviceserverless_tag_resource <- function(resourceArn, tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .opensearchserviceserverless$tag_resource_output()
@@ -2386,7 +2422,8 @@ opensearchserviceserverless_untag_resource <- function(resourceArn, tagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .opensearchserviceserverless$untag_resource_output()
@@ -2454,7 +2491,8 @@ opensearchserviceserverless_update_access_policy <- function(type, name, policyV
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$update_access_policy_input(type = type, name = name, policyVersion = policyVersion, description = description, policy = policy, clientToken = clientToken)
   output <- .opensearchserviceserverless$update_access_policy_output()
@@ -2512,7 +2550,8 @@ opensearchserviceserverless_update_account_settings <- function(capacityLimits =
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$update_account_settings_input(capacityLimits = capacityLimits)
   output <- .opensearchserviceserverless$update_account_settings_output()
@@ -2585,7 +2624,8 @@ opensearchserviceserverless_update_collection <- function(id, description = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$update_collection_input(id = id, description = description, vectorOptions = vectorOptions, deletionProtection = deletionProtection, clientToken = clientToken)
   output <- .opensearchserviceserverless$update_collection_output()
@@ -2660,7 +2700,8 @@ opensearchserviceserverless_update_collection_group <- function(id, description 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$update_collection_group_input(id = id, description = description, capacityLimits = capacityLimits, clientToken = clientToken)
   output <- .opensearchserviceserverless$update_collection_group_output()
@@ -2708,7 +2749,8 @@ opensearchserviceserverless_update_index <- function(id, indexName, indexSchema 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$update_index_input(id = id, indexName = indexName, indexSchema = indexSchema)
   output <- .opensearchserviceserverless$update_index_output()
@@ -2776,7 +2818,8 @@ opensearchserviceserverless_update_lifecycle_policy <- function(type, name, poli
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$update_lifecycle_policy_input(type = type, name = name, policyVersion = policyVersion, description = description, policy = policy, clientToken = clientToken)
   output <- .opensearchserviceserverless$update_lifecycle_policy_output()
@@ -2877,7 +2920,8 @@ opensearchserviceserverless_update_security_config <- function(id, configVersion
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$update_security_config_input(id = id, configVersion = configVersion, description = description, samlOptions = samlOptions, iamIdentityCenterOptionsUpdates = iamIdentityCenterOptionsUpdates, iamFederationOptions = iamFederationOptions, clientToken = clientToken)
   output <- .opensearchserviceserverless$update_security_config_output()
@@ -2945,7 +2989,8 @@ opensearchserviceserverless_update_security_policy <- function(type, name, polic
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$update_security_policy_input(type = type, name = name, policyVersion = policyVersion, description = description, policy = policy, clientToken = clientToken)
   output <- .opensearchserviceserverless$update_security_policy_output()
@@ -3025,7 +3070,8 @@ opensearchserviceserverless_update_vpc_endpoint <- function(id, addSubnetIds = N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchserviceserverless$update_vpc_endpoint_input(id = id, addSubnetIds = addSubnetIds, removeSubnetIds = removeSubnetIds, addSecurityGroupIds = addSecurityGroupIds, removeSecurityGroupIds = removeSecurityGroupIds, clientToken = clientToken)
   output <- .opensearchserviceserverless$update_vpc_endpoint_output()

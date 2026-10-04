@@ -26,7 +26,7 @@ The string for each service name and resource type is the same as that embedded 
 \itemize{
 \item For a list of service name strings, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#genref-aws-service-namespaces}{Amazon Web Services Service Namespaces}.
 \item For resource type strings, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arns-syntax}{Example ARNs}.
-\item For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces}.
+\item For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces}.
 }
 
 For the list of services whose resources you can tag using the Resource Groups Tagging API, see \href{https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/}{Services that support the Resource Groups Tagging API}. If an Amazon Web Services service isn't listed on that page, you might still be able to tag that service's resources by using that service's native tagging operations instead of using Resource Groups Tagging API operations. All tagged resources, whether the tagging used the Resource Groups Tagging API or not, are returned by the \verb{Get*} operation.

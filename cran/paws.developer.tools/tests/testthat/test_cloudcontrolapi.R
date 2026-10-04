@@ -1,4 +1,4 @@
-svc <- paws.developer.tools::cloudcontrolapi()
+svc <- paws::cloudcontrolapi()
 
 test_that("list_resource_requests", {
   skip_on_cran()

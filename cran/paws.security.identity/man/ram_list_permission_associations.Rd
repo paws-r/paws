@@ -17,7 +17,7 @@ ram_list_permission_associations(
 )
 }
 \arguments{
-\item{permissionArn}{Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)} of the managed permission.}
+\item{permissionArn}{Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Name (ARN)} of the managed permission.}
 
 \item{permissionVersion}{Specifies that you want to list only those associations with resource shares that use this version of the managed permission. If you don't provide a value for this parameter, then the operation returns information about associations with resource shares that use any version of the managed permission.}
 

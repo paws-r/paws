@@ -2,8 +2,9 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_get_lifecycle_execution}
 \alias{imagebuilder_get_lifecycle_execution}
-\title{Retrieves the runtime information for a specific runtime instance of the
-lifecycle policy}
+\title{Retrieves runtime information for a lifecycle execution – a single run
+of lifecycle actions that a lifecycle policy or a
+StartResourceStateUpdate request started}
 \usage{
 imagebuilder_get_lifecycle_execution(lifecycleExecutionId)
 }
@@ -11,7 +12,7 @@ imagebuilder_get_lifecycle_execution(lifecycleExecutionId)
 \item{lifecycleExecutionId}{[required] The unique identifier for a runtime instance of the lifecycle policy.}
 }
 \description{
-Retrieves the runtime information for a specific runtime instance of the lifecycle policy.
+Retrieves runtime information for a lifecycle execution – a single run of lifecycle actions that a lifecycle policy or a \code{\link[=imagebuilder_start_resource_state_update]{start_resource_state_update}} request started.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_get_lifecycle_execution/} for full documentation.
 }

@@ -123,6 +123,16 @@ NULL
   return(populate(args, .bedrockagent_shapes[["create_prompt_version_output"]]))
 }
 
+.bedrockagent$create_vpc_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .bedrockagent_shapes[["create_vpc_configuration_input"]]))
+}
+
+.bedrockagent$create_vpc_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .bedrockagent_shapes[["create_vpc_configuration_output"]]))
+}
+
 .bedrockagent$delete_agent_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   return(populate(args, .bedrockagent_shapes[["delete_agent_input"]]))
@@ -241,6 +251,16 @@ NULL
 .bedrockagent$delete_resource_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   return(populate(args, .bedrockagent_shapes[["delete_resource_policy_output"]]))
+}
+
+.bedrockagent$delete_vpc_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .bedrockagent_shapes[["delete_vpc_configuration_input"]]))
+}
+
+.bedrockagent$delete_vpc_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .bedrockagent_shapes[["delete_vpc_configuration_output"]]))
 }
 
 .bedrockagent$disassociate_agent_collaborator_input <- function(...) {
@@ -413,6 +433,16 @@ NULL
   return(populate(args, .bedrockagent_shapes[["get_resource_policy_output"]]))
 }
 
+.bedrockagent$get_vpc_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .bedrockagent_shapes[["get_vpc_configuration_input"]]))
+}
+
+.bedrockagent$get_vpc_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .bedrockagent_shapes[["get_vpc_configuration_output"]]))
+}
+
 .bedrockagent$ingest_knowledge_base_documents_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   return(populate(args, .bedrockagent_shapes[["ingest_knowledge_base_documents_input"]]))
@@ -571,6 +601,16 @@ NULL
 .bedrockagent$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   return(populate(args, .bedrockagent_shapes[["list_tags_for_resource_output"]]))
+}
+
+.bedrockagent$list_vpc_configurations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .bedrockagent_shapes[["list_vpc_configurations_input"]]))
+}
+
+.bedrockagent$list_vpc_configurations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .bedrockagent_shapes[["list_vpc_configurations_output"]]))
 }
 
 .bedrockagent$prepare_agent_input <- function(...) {

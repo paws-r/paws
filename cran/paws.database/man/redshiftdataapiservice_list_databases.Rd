@@ -6,7 +6,7 @@
 \usage{
 redshiftdataapiservice_list_databases(
   ClusterIdentifier = NULL,
-  Database,
+  Database = NULL,
   SecretArn = NULL,
   DbUser = NULL,
   NextToken = NULL,
@@ -17,7 +17,7 @@ redshiftdataapiservice_list_databases(
 \arguments{
 \item{ClusterIdentifier}{The cluster identifier. This parameter is required when connecting to a cluster and authenticating using either Secrets Manager or temporary credentials.}
 
-\item{Database}{[required] The name of the database. This parameter is required when authenticating using either Secrets Manager or temporary credentials.}
+\item{Database}{The name of the database. This parameter is required when authenticating using either Secrets Manager or temporary credentials.}
 
 \item{SecretArn}{The name or ARN of the secret that enables access to the database. This parameter is required when authenticating using Secrets Manager.}
 

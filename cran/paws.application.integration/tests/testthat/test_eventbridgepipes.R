@@ -1,4 +1,4 @@
-svc <- paws.application.integration::eventbridgepipes()
+svc <- paws::eventbridgepipes()
 
 test_that("list_pipes", {
   skip_on_cran()

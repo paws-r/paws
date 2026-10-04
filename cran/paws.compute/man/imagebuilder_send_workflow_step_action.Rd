@@ -2,8 +2,8 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_send_workflow_step_action}
 \alias{imagebuilder_send_workflow_step_action}
-\title{Pauses or resumes image creation when the associated workflow runs a
-WaitForAction step}
+\title{Sends an action to a workflow step that has paused at a WaitForAction
+step, so that image creation can continue}
 \usage{
 imagebuilder_send_workflow_step_action(
   stepExecutionId,
@@ -14,18 +14,18 @@ imagebuilder_send_workflow_step_action(
 )
 }
 \arguments{
-\item{stepExecutionId}{[required] Uniquely identifies the workflow step that sent the step action.}
+\item{stepExecutionId}{[required] Uniquely identifies the waiting workflow step that you send the action to. To get this identifier, call \code{\link[=imagebuilder_list_waiting_workflow_steps]{list_waiting_workflow_steps}}.}
 
 \item{imageBuildVersionArn}{[required] The Amazon Resource Name (ARN) of the image build version associated with the workflow step execution. This value must match the image that owns the waiting step. If the ARN does not correspond to the image running the workflow, then the request fails with a validation error.}
 
-\item{action}{[required] The action to perform on the paused workflow step. The workflow step must be in a waiting state to accept an action. The request fails if the step has already timed out or been actioned.}
+\item{action}{[required] The action to perform on the paused workflow step. \code{RESUME} completes the waiting step, and the workflow continues. \code{STOP} fails the step, and the step's \code{onFailure} setting determines whether the workflow continues or aborts. The workflow step must be in a waiting state to accept an action. The request fails if the step has already timed out or been actioned.}
 
 \item{reason}{The reason for the action. This value is stored with the step execution record and is accessible in subsequent workflow steps via step output references.}
 
-\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
+\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
 }
 \description{
-Pauses or resumes image creation when the associated workflow runs a \code{WaitForAction} step.
+Sends an action to a workflow step that has paused at a \code{WaitForAction} step, so that image creation can continue. To find the steps that are waiting for an action, call \code{\link[=imagebuilder_list_waiting_workflow_steps]{list_waiting_workflow_steps}}.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_send_workflow_step_action/} for full documentation.
 }

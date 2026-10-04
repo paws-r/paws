@@ -40,7 +40,8 @@ recyclebin_create_rule <- function(RetentionPeriod, Description = NULL, Tags = N
     http_path = "/rules",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .recyclebin$create_rule_input(RetentionPeriod = RetentionPeriod, Description = Description, Tags = Tags, ResourceType = ResourceType, ResourceTags = ResourceTags, LockConfiguration = LockConfiguration, ExcludeResourceTags = ExcludeResourceTags)
   output <- .recyclebin$create_rule_output()
@@ -71,7 +72,8 @@ recyclebin_delete_rule <- function(Identifier) {
     http_path = "/rules/{identifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .recyclebin$delete_rule_input(Identifier = Identifier)
   output <- .recyclebin$delete_rule_output()
@@ -102,7 +104,8 @@ recyclebin_get_rule <- function(Identifier) {
     http_path = "/rules/{identifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .recyclebin$get_rule_input(Identifier = Identifier)
   output <- .recyclebin$get_rule_output()
@@ -144,7 +147,8 @@ recyclebin_list_rules <- function(MaxResults = NULL, NextToken = NULL, ResourceT
     http_path = "/list-rules",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Rules"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .recyclebin$list_rules_input(MaxResults = MaxResults, NextToken = NextToken, ResourceType = ResourceType, ResourceTags = ResourceTags, LockState = LockState, ExcludeResourceTags = ExcludeResourceTags)
   output <- .recyclebin$list_rules_output()
@@ -175,7 +179,8 @@ recyclebin_list_tags_for_resource <- function(ResourceArn) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .recyclebin$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .recyclebin$list_tags_for_resource_output()
@@ -207,7 +212,8 @@ recyclebin_lock_rule <- function(Identifier, LockConfiguration) {
     http_path = "/rules/{identifier}/lock",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .recyclebin$lock_rule_input(Identifier = Identifier, LockConfiguration = LockConfiguration)
   output <- .recyclebin$lock_rule_output()
@@ -239,7 +245,8 @@ recyclebin_tag_resource <- function(ResourceArn, Tags) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .recyclebin$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .recyclebin$tag_resource_output()
@@ -270,7 +277,8 @@ recyclebin_unlock_rule <- function(Identifier) {
     http_path = "/rules/{identifier}/unlock",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .recyclebin$unlock_rule_input(Identifier = Identifier)
   output <- .recyclebin$unlock_rule_output()
@@ -302,7 +310,8 @@ recyclebin_untag_resource <- function(ResourceArn, TagKeys) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .recyclebin$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .recyclebin$untag_resource_output()
@@ -344,7 +353,8 @@ recyclebin_update_rule <- function(Identifier, RetentionPeriod = NULL, Descripti
     http_path = "/rules/{identifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .recyclebin$update_rule_input(Identifier = Identifier, RetentionPeriod = RetentionPeriod, Description = Description, ResourceType = ResourceType, ResourceTags = ResourceTags, ExcludeResourceTags = ExcludeResourceTags)
   output <- .recyclebin$update_rule_output()

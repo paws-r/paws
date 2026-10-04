@@ -22,7 +22,8 @@ resourcegroupstaggingapi_describe_report_creation <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourcegroupstaggingapi$describe_report_creation_input()
   output <- .resourcegroupstaggingapi$describe_report_creation_output()
@@ -46,13 +47,13 @@ resourcegroupstaggingapi_describe_report_creation <- function() {
 #' @param RegionFilters Specifies a list of Amazon Web Services Regions to limit the output to. If you use this parameter, the count of returned noncompliant resources includes only resources in the specified Regions.
 #' @param ResourceTypeFilters Specifies that you want the response to include information for only resources of the specified types. The format of each resource type is `service[:resourceType]`. For example, specifying a resource type of `ec2` returns all Amazon EC2 resources (which includes EC2 instances). Specifying a resource type of `ec2:instance` returns only EC2 instances.
 #' 
-#' The string for each service name and resource type is the same as that embedded in a resource's Amazon Resource Name (ARN). Consult the \emph{\href{https://docs.aws.amazon.com/general/latest/gr/}{Amazon Web Services General Reference}} for the following:
+#' The string for each service name and resource type is the same as that embedded in a resource's Amazon Resource Name (ARN). Consult the *\href{https://docs.aws.amazon.com/general/latest/gr/}{Amazon Web Services General Reference}* for the following:
 #' 
 #' -   For a list of service name strings, see [Amazon Web Services Service Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#genref-aws-service-namespaces).
 #' 
 #' -   For resource type strings, see [Example ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arns-syntax).
 #' 
-#' -   For more information about ARNs, see [Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
+#' -   For more information about ARNs, see [Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series).
 #' 
 #' For the list of services whose resources you can tag using the Resource Groups Tagging API, see [Services that support the Resource Groups Tagging API](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/). If an Amazon Web Services service isn't listed on that page, you might still be able to tag that service's resources by using that service's native tagging operations instead of using Resource Groups Tagging API operations. All tagged resources, whether the tagging used the Resource Groups Tagging API or not, are returned by the `Get*` operation.
 #' 
@@ -72,7 +73,8 @@ resourcegroupstaggingapi_get_compliance_summary <- function(TargetIdFilters = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "PaginationToken", limit_key = "MaxResults", output_token = "PaginationToken", result_key = "SummaryList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourcegroupstaggingapi$get_compliance_summary_input(TargetIdFilters = TargetIdFilters, RegionFilters = RegionFilters, ResourceTypeFilters = ResourceTypeFilters, TagKeyFilters = TagKeyFilters, GroupBy = GroupBy, MaxResults = MaxResults, PaginationToken = PaginationToken)
   output <- .resourcegroupstaggingapi$get_compliance_summary_output()
@@ -149,7 +151,7 @@ resourcegroupstaggingapi_get_compliance_summary <- function(TargetIdFilters = NU
 #' 
 #' If a resource specified by this parameter doesn't exist, it doesn't generate an error; it simply isn't included in the response.
 #' 
-#' An ARN (Amazon Resource Name) uniquely identifies a resource. For more information, see [Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) in the *Amazon Web Services General Reference*.
+#' An ARN (Amazon Resource Name) uniquely identifies a resource. For more information, see [Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) in the *Amazon Web Services General Reference*.
 #'
 #' @keywords internal
 #'
@@ -161,7 +163,8 @@ resourcegroupstaggingapi_get_resources <- function(PaginationToken = NULL, TagFi
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "PaginationToken", limit_key = "ResourcesPerPage", output_token = "PaginationToken", result_key = "ResourceTagMappingList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourcegroupstaggingapi$get_resources_input(PaginationToken = PaginationToken, TagFilters = TagFilters, ResourcesPerPage = ResourcesPerPage, TagsPerPage = TagsPerPage, ResourceTypeFilters = ResourceTypeFilters, IncludeComplianceDetails = IncludeComplianceDetails, ExcludeCompliantResources = ExcludeCompliantResources, ResourceARNList = ResourceARNList)
   output <- .resourcegroupstaggingapi$get_resources_output()
@@ -193,7 +196,8 @@ resourcegroupstaggingapi_get_tag_keys <- function(PaginationToken = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "PaginationToken", output_token = "PaginationToken", result_key = "TagKeys"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourcegroupstaggingapi$get_tag_keys_input(PaginationToken = PaginationToken)
   output <- .resourcegroupstaggingapi$get_tag_keys_output()
@@ -226,7 +230,8 @@ resourcegroupstaggingapi_get_tag_values <- function(PaginationToken = NULL, Key)
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "PaginationToken", output_token = "PaginationToken", result_key = "TagValues"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourcegroupstaggingapi$get_tag_values_input(PaginationToken = PaginationToken, Key = Key)
   output <- .resourcegroupstaggingapi$get_tag_values_output()
@@ -259,7 +264,8 @@ resourcegroupstaggingapi_list_required_tags <- function(NextToken = NULL, MaxRes
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "RequiredTags"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourcegroupstaggingapi$list_required_tags_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .resourcegroupstaggingapi$list_required_tags_output()
@@ -296,7 +302,8 @@ resourcegroupstaggingapi_start_report_creation <- function(S3Bucket) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourcegroupstaggingapi$start_report_creation_input(S3Bucket = S3Bucket)
   output <- .resourcegroupstaggingapi$start_report_creation_output()
@@ -317,7 +324,7 @@ resourcegroupstaggingapi_start_report_creation <- function(S3Bucket) {
 #'
 #' @param ResourceARNList &#91;required&#93; Specifies the list of ARNs of the resources that you want to apply tags to.
 #' 
-#' An ARN (Amazon Resource Name) uniquely identifies a resource. For more information, see [Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) in the *Amazon Web Services General Reference*.
+#' An ARN (Amazon Resource Name) uniquely identifies a resource. For more information, see [Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) in the *Amazon Web Services General Reference*.
 #' @param Tags &#91;required&#93; Specifies a list of tags that you want to add to the specified resources. A tag consists of a key and a value that you define.
 #'
 #' @keywords internal
@@ -330,7 +337,8 @@ resourcegroupstaggingapi_tag_resources <- function(ResourceARNList, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourcegroupstaggingapi$tag_resources_input(ResourceARNList = ResourceARNList, Tags = Tags)
   output <- .resourcegroupstaggingapi$tag_resources_output()
@@ -351,7 +359,7 @@ resourcegroupstaggingapi_tag_resources <- function(ResourceARNList, Tags) {
 #'
 #' @param ResourceARNList &#91;required&#93; Specifies a list of ARNs of the resources that you want to remove tags from.
 #' 
-#' An ARN (Amazon Resource Name) uniquely identifies a resource. For more information, see [Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) in the *Amazon Web Services General Reference*.
+#' An ARN (Amazon Resource Name) uniquely identifies a resource. For more information, see [Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) in the *Amazon Web Services General Reference*.
 #' @param TagKeys &#91;required&#93; Specifies a list of tag keys that you want to remove from the specified resources.
 #'
 #' @keywords internal
@@ -364,7 +372,8 @@ resourcegroupstaggingapi_untag_resources <- function(ResourceARNList, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourcegroupstaggingapi$untag_resources_input(ResourceARNList = ResourceARNList, TagKeys = TagKeys)
   output <- .resourcegroupstaggingapi$untag_resources_output()

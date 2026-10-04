@@ -1,4 +1,4 @@
-svc <- paws.database::simpledb()
+svc <- paws::simpledb()
 
 test_that("list_domains", {
   skip_on_cran()

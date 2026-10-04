@@ -50,7 +50,8 @@ account_accept_primary_email_update <- function(AccountId, PrimaryEmail, Otp) {
     http_path = "/acceptPrimaryEmailUpdate",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .account$accept_primary_email_update_input(AccountId = AccountId, PrimaryEmail = PrimaryEmail, Otp = Otp)
   output <- .account$accept_primary_email_update_output()
@@ -109,7 +110,8 @@ account_delete_alternate_contact <- function(AlternateContactType, AccountId = N
     http_path = "/deleteAlternateContact",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .account$delete_alternate_contact_input(AlternateContactType = AlternateContactType, AccountId = AccountId)
   output <- .account$delete_alternate_contact_output()
@@ -161,7 +163,8 @@ account_disable_region <- function(AccountId = NULL, RegionName) {
     http_path = "/disableRegion",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .account$disable_region_input(AccountId = AccountId, RegionName = RegionName)
   output <- .account$disable_region_output()
@@ -211,7 +214,8 @@ account_enable_region <- function(AccountId = NULL, RegionName) {
     http_path = "/enableRegion",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .account$enable_region_input(AccountId = AccountId, RegionName = RegionName)
   output <- .account$enable_region_output()
@@ -274,7 +278,8 @@ account_get_account_information <- function(AccountId = NULL) {
     http_path = "/getAccountInformation",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .account$get_account_information_input(AccountId = AccountId)
   output <- .account$get_account_information_output()
@@ -344,7 +349,8 @@ account_get_alternate_contact <- function(AlternateContactType, AccountId = NULL
     http_path = "/getAlternateContact",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .account$get_alternate_contact_input(AlternateContactType = AlternateContactType, AccountId = AccountId)
   output <- .account$get_alternate_contact_output()
@@ -390,7 +396,8 @@ account_get_alternate_contact <- function(AlternateContactType, AccountId = NULL
 #'     PhoneNumber = "string",
 #'     CompanyName = "string",
 #'     WebsiteUrl = "string"
-#'   )
+#'   ),
+#'   VerificationStatus = "PENDING"|"VERIFIED"|"UNVERIFIED"|"NOT_SUPPORTED"
 #' )
 #' ```
 #'
@@ -413,7 +420,8 @@ account_get_contact_information <- function(AccountId = NULL) {
     http_path = "/getContactInformation",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .account$get_contact_information_input(AccountId = AccountId)
   output <- .account$get_contact_information_output()
@@ -473,7 +481,8 @@ account_get_gov_cloud_account_information <- function(StandardAccountId = NULL) 
     http_path = "/getGovCloudAccountInformation",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .account$get_gov_cloud_account_information_input(StandardAccountId = StandardAccountId)
   output <- .account$get_gov_cloud_account_information_output()
@@ -526,7 +535,8 @@ account_get_primary_email <- function(AccountId) {
     http_path = "/getPrimaryEmail",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .account$get_primary_email_input(AccountId = AccountId)
   output <- .account$get_primary_email_output()
@@ -583,7 +593,8 @@ account_get_primary_email_update_status <- function(AccountId = NULL) {
     http_path = "/getPrimaryEmailUpdateStatus",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .account$get_primary_email_update_status_input(AccountId = AccountId)
   output <- .account$get_primary_email_update_status_output()
@@ -639,7 +650,8 @@ account_get_region_opt_status <- function(AccountId = NULL, RegionName) {
     http_path = "/getRegionOptStatus",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .account$get_region_opt_status_input(AccountId = AccountId, RegionName = RegionName)
   output <- .account$get_region_opt_status_output()
@@ -708,7 +720,8 @@ account_list_regions <- function(AccountId = NULL, MaxResults = NULL, NextToken 
     http_path = "/listRegions",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Regions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .account$list_regions_input(AccountId = AccountId, MaxResults = MaxResults, NextToken = NextToken, RegionOptStatusContains = RegionOptStatusContains)
   output <- .account$list_regions_output()
@@ -762,7 +775,8 @@ account_put_account_name <- function(AccountName, AccountId = NULL) {
     http_path = "/putAccountName",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .account$put_account_name_input(AccountName = AccountName, AccountId = AccountId)
   output <- .account$put_account_name_output()
@@ -830,7 +844,8 @@ account_put_alternate_contact <- function(Name, Title, EmailAddress, PhoneNumber
     http_path = "/putAlternateContact",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .account$put_alternate_contact_input(Name = Name, Title = Title, EmailAddress = EmailAddress, PhoneNumber = PhoneNumber, AlternateContactType = AlternateContactType, AccountId = AccountId)
   output <- .account$put_alternate_contact_output()
@@ -896,7 +911,8 @@ account_put_contact_information <- function(ContactInformation, AccountId = NULL
     http_path = "/putContactInformation",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .account$put_contact_information_input(ContactInformation = ContactInformation, AccountId = AccountId)
   output <- .account$put_contact_information_output()
@@ -907,6 +923,67 @@ account_put_contact_information <- function(ContactInformation, AccountId = NULL
   return(response)
 }
 .account$operations$put_contact_information <- account_put_contact_information
+
+#' Sends a one-time passcode to the phone number in the primary contact
+#' information of an Amazon Web Services account
+#'
+#' @description
+#' Sends a one-time passcode to the phone number in the primary contact information of an Amazon Web Services account. Use [`verify_phone_number`][account_verify_phone_number] to submit the passcode and complete the verification.
+#' 
+#' For complete details about how to use the primary contact operations, see [Update the primary contact for your Amazon Web Services account](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact-primary.html).
+#'
+#' @usage
+#' account_send_phone_number_verification(AccountId)
+#'
+#' @param AccountId Specifies the 12 digit account ID number of the Amazon Web Services account that you want to access or modify with this operation.
+#' 
+#' If you do not specify this parameter, it defaults to the Amazon Web Services account of the identity used to call the operation.
+#' 
+#' To use this parameter, the caller must be an identity in the [organization's management account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account) or a delegated administrator account, and the specified account ID must be a member account in the same organization. The organization must have [all features enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html), and the organization must have [trusted access](https://docs.aws.amazon.com/organizations/latest/userguide/services-that-can-integrate-account.html) enabled for the Account Management service, and optionally a [delegated administrator](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#delegated-admin) account assigned.
+#' 
+#' The management account can't specify its own `AccountId`; it must call the operation in standalone context by not including the `AccountId` parameter.
+#' 
+#' To call this operation on an account that is not a member of an organization, then don't specify this parameter, and call the operation using an identity belonging to the account whose contacts you wish to retrieve or modify.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "PENDING"|"VERIFIED"|"UNVERIFIED"|"NOT_SUPPORTED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$send_phone_number_verification(
+#'   AccountId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname account_send_phone_number_verification
+#'
+#' @aliases account_send_phone_number_verification
+account_send_phone_number_verification <- function(AccountId = NULL) {
+  op <- new_operation(
+    name = "SendPhoneNumberVerification",
+    http_method = "POST",
+    http_path = "/sendPhoneNumberVerification",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .account$send_phone_number_verification_input(AccountId = AccountId)
+  output <- .account$send_phone_number_verification_output()
+  config <- get_config()
+  svc <- .account$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.account$operations$send_phone_number_verification <- account_send_phone_number_verification
 
 #' Starts the process to update the primary email address for the specified
 #' account
@@ -952,7 +1029,8 @@ account_start_primary_email_update <- function(AccountId, PrimaryEmail) {
     http_path = "/startPrimaryEmailUpdate",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .account$start_primary_email_update_input(AccountId = AccountId, PrimaryEmail = PrimaryEmail)
   output <- .account$start_primary_email_update_output()
@@ -963,3 +1041,67 @@ account_start_primary_email_update <- function(AccountId, PrimaryEmail) {
   return(response)
 }
 .account$operations$start_primary_email_update <- account_start_primary_email_update
+
+#' Verifies the phone number in the primary contact information of an
+#' Amazon Web Services account by submitting the one-time passcode that
+#' SendPhoneNumberVerification sent to that phone number
+#'
+#' @description
+#' Verifies the phone number in the primary contact information of an Amazon Web Services account by submitting the one-time passcode that [`send_phone_number_verification`][account_send_phone_number_verification] sent to that phone number.
+#' 
+#' For complete details about how to use the primary contact operations, see [Update the primary contact for your Amazon Web Services account](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact-primary.html).
+#'
+#' @usage
+#' account_verify_phone_number(AccountId, Otp)
+#'
+#' @param AccountId Specifies the 12 digit account ID number of the Amazon Web Services account that you want to access or modify with this operation.
+#' 
+#' If you do not specify this parameter, it defaults to the Amazon Web Services account of the identity used to call the operation.
+#' 
+#' To use this parameter, the caller must be an identity in the [organization's management account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account) or a delegated administrator account, and the specified account ID must be a member account in the same organization. The organization must have [all features enabled](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html), and the organization must have [trusted access](https://docs.aws.amazon.com/organizations/latest/userguide/services-that-can-integrate-account.html) enabled for the Account Management service, and optionally a [delegated administrator](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#delegated-admin) account assigned.
+#' 
+#' The management account can't specify its own `AccountId`; it must call the operation in standalone context by not including the `AccountId` parameter.
+#' 
+#' To call this operation on an account that is not a member of an organization, then don't specify this parameter, and call the operation using an identity belonging to the account whose contacts you wish to retrieve or modify.
+#' @param Otp &#91;required&#93; The one-time passcode sent to the phone number in the primary contact information by the [`send_phone_number_verification`][account_send_phone_number_verification] operation.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "PENDING"|"VERIFIED"|"UNVERIFIED"|"NOT_SUPPORTED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$verify_phone_number(
+#'   AccountId = "string",
+#'   Otp = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname account_verify_phone_number
+#'
+#' @aliases account_verify_phone_number
+account_verify_phone_number <- function(AccountId = NULL, Otp) {
+  op <- new_operation(
+    name = "VerifyPhoneNumber",
+    http_method = "POST",
+    http_path = "/verifyPhoneNumber",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .account$verify_phone_number_input(AccountId = AccountId, Otp = Otp)
+  output <- .account$verify_phone_number_output()
+  config <- get_config()
+  svc <- .account$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.account$operations$verify_phone_number <- account_verify_phone_number

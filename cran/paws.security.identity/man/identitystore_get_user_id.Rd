@@ -7,7 +7,9 @@
 identitystore_get_user_id(IdentityStoreId, AlternateIdentifier)
 }
 \arguments{
-\item{IdentityStoreId}{[required] The globally unique identifier for the identity store.}
+\item{IdentityStoreId}{[required] The globally unique identifier for the identity store.
+
+You can specify the identity store by ID or by Amazon Resource Name (ARN). For example, identity store ID \code{d-1234567890} or identity store ARN \verb{arn:aws:identitystore::111122223333:identitystore/d-1234567890}.}
 
 \item{AlternateIdentifier}{[required] A unique identifier for a user or group that is not the primary identifier. This value can be an identifier from an external identity provider (IdP) that is associated with the user, the group, or a unique attribute. For the unique attribute, the only valid paths are \code{ userName} and \code{emails.value}.}
 }

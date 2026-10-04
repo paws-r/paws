@@ -22,7 +22,8 @@ cloudformation_activate_organizations_access <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$activate_organizations_access_input()
   output <- .cloudformation$activate_organizations_access_output()
@@ -82,7 +83,8 @@ cloudformation_activate_type <- function(Type = NULL, PublicTypeArn = NULL, Publ
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$activate_type_input(Type = Type, PublicTypeArn = PublicTypeArn, PublisherId = PublisherId, TypeName = TypeName, TypeNameAlias = TypeNameAlias, AutoUpdate = AutoUpdate, LoggingConfig = LoggingConfig, ExecutionRoleArn = ExecutionRoleArn, VersionBump = VersionBump, MajorVersion = MajorVersion)
   output <- .cloudformation$activate_type_output()
@@ -114,7 +116,8 @@ cloudformation_batch_describe_type_configurations <- function(TypeConfigurationI
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$batch_describe_type_configurations_input(TypeConfigurationIdentifiers = TypeConfigurationIdentifiers)
   output <- .cloudformation$batch_describe_type_configurations_output()
@@ -152,7 +155,8 @@ cloudformation_cancel_update_stack <- function(StackName, ClientRequestToken = N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$cancel_update_stack_input(StackName = StackName, ClientRequestToken = ClientRequestToken)
   output <- .cloudformation$cancel_update_stack_output()
@@ -199,7 +203,8 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$continue_update_rollback_input(StackName = StackName, RoleARN = RoleARN, ResourcesToSkip = ResourcesToSkip, ClientRequestToken = ClientRequestToken)
   output <- .cloudformation$continue_update_rollback_output()
@@ -332,7 +337,8 @@ cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, Tem
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$create_change_set_input(StackName = StackName, TemplateBody = TemplateBody, TemplateURL = TemplateURL, UsePreviousTemplate = UsePreviousTemplate, Parameters = Parameters, Capabilities = Capabilities, ResourceTypes = ResourceTypes, RoleARN = RoleARN, RollbackConfiguration = RollbackConfiguration, NotificationARNs = NotificationARNs, Tags = Tags, ChangeSetName = ChangeSetName, ClientToken = ClientToken, Description = Description, ChangeSetType = ChangeSetType, ResourcesToImport = ResourcesToImport, IncludeNestedStacks = IncludeNestedStacks, OnStackFailure = OnStackFailure, ImportExistingResources = ImportExistingResources, DeploymentMode = DeploymentMode, DeploymentConfig = DeploymentConfig, DisableValidation = DisableValidation)
   output <- .cloudformation$create_change_set_output()
@@ -369,7 +375,8 @@ cloudformation_create_generated_template <- function(Resources = NULL, Generated
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$create_generated_template_input(Resources = Resources, GeneratedTemplateName = GeneratedTemplateName, StackName = StackName, TemplateConfiguration = TemplateConfiguration)
   output <- .cloudformation$create_generated_template_output()
@@ -495,7 +502,8 @@ cloudformation_create_stack <- function(StackName, TemplateBody = NULL, Template
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$create_stack_input(StackName = StackName, TemplateBody = TemplateBody, TemplateURL = TemplateURL, Parameters = Parameters, DisableRollback = DisableRollback, RollbackConfiguration = RollbackConfiguration, TimeoutInMinutes = TimeoutInMinutes, NotificationARNs = NotificationARNs, Capabilities = Capabilities, ResourceTypes = ResourceTypes, RoleARN = RoleARN, OnFailure = OnFailure, StackPolicyBody = StackPolicyBody, StackPolicyURL = StackPolicyURL, Tags = Tags, ClientRequestToken = ClientRequestToken, EnableTerminationProtection = EnableTerminationProtection, RetainExceptOnCreate = RetainExceptOnCreate, DeploymentConfig = DeploymentConfig, DisableValidation = DisableValidation)
   output <- .cloudformation$create_stack_output()
@@ -566,7 +574,8 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$create_stack_instances_input(StackSetName = StackSetName, Accounts = Accounts, DeploymentTargets = DeploymentTargets, Regions = Regions, ParameterOverrides = ParameterOverrides, OperationPreferences = OperationPreferences, OperationId = OperationId, CallAs = CallAs)
   output <- .cloudformation$create_stack_instances_output()
@@ -601,7 +610,8 @@ cloudformation_create_stack_refactor <- function(Description = NULL, EnableStack
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$create_stack_refactor_input(Description = Description, EnableStackCreation = EnableStackCreation, ResourceMappings = ResourceMappings, StackDefinitions = StackDefinitions)
   output <- .cloudformation$create_stack_refactor_output()
@@ -718,7 +728,8 @@ cloudformation_create_stack_set <- function(StackSetName, Description = NULL, Te
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$create_stack_set_input(StackSetName = StackSetName, Description = Description, TemplateBody = TemplateBody, TemplateURL = TemplateURL, StackId = StackId, Parameters = Parameters, Capabilities = Capabilities, Tags = Tags, AdministrationRoleARN = AdministrationRoleARN, ExecutionRoleName = ExecutionRoleName, PermissionModel = PermissionModel, AutoDeployment = AutoDeployment, CallAs = CallAs, ClientRequestToken = ClientRequestToken, ManagedExecution = ManagedExecution)
   output <- .cloudformation$create_stack_set_output()
@@ -749,7 +760,8 @@ cloudformation_deactivate_organizations_access <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$deactivate_organizations_access_input()
   output <- .cloudformation$deactivate_organizations_access_output()
@@ -789,7 +801,8 @@ cloudformation_deactivate_type <- function(TypeName = NULL, Type = NULL, Arn = N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$deactivate_type_input(TypeName = TypeName, Type = Type, Arn = Arn)
   output <- .cloudformation$deactivate_type_output()
@@ -821,7 +834,8 @@ cloudformation_delete_change_set <- function(ChangeSetName, StackName = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$delete_change_set_input(ChangeSetName = ChangeSetName, StackName = StackName)
   output <- .cloudformation$delete_change_set_output()
@@ -852,7 +866,8 @@ cloudformation_delete_generated_template <- function(GeneratedTemplateName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$delete_generated_template_input(GeneratedTemplateName = GeneratedTemplateName)
   output <- .cloudformation$delete_generated_template_output()
@@ -900,7 +915,8 @@ cloudformation_delete_stack <- function(StackName, RetainResources = NULL, RoleA
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$delete_stack_input(StackName = StackName, RetainResources = RetainResources, RoleARN = RoleARN, ClientRequestToken = ClientRequestToken, DeletionMode = DeletionMode, DeploymentConfig = DeploymentConfig)
   output <- .cloudformation$delete_stack_output()
@@ -959,7 +975,8 @@ cloudformation_delete_stack_instances <- function(StackSetName, Accounts = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$delete_stack_instances_input(StackSetName = StackSetName, Accounts = Accounts, DeploymentTargets = DeploymentTargets, Regions = Regions, OperationPreferences = OperationPreferences, RetainStacks = RetainStacks, OperationId = OperationId, CallAs = CallAs)
   output <- .cloudformation$delete_stack_instances_output()
@@ -999,7 +1016,8 @@ cloudformation_delete_stack_set <- function(StackSetName, CallAs = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$delete_stack_set_input(StackSetName = StackSetName, CallAs = CallAs)
   output <- .cloudformation$delete_stack_set_output()
@@ -1040,7 +1058,8 @@ cloudformation_deregister_type <- function(Arn = NULL, Type = NULL, TypeName = N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$deregister_type_input(Arn = Arn, Type = Type, TypeName = TypeName, VersionId = VersionId)
   output <- .cloudformation$deregister_type_output()
@@ -1072,7 +1091,8 @@ cloudformation_describe_account_limits <- function(NextToken = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "AccountLimits"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$describe_account_limits_input(NextToken = NextToken)
   output <- .cloudformation$describe_account_limits_output()
@@ -1107,7 +1127,8 @@ cloudformation_describe_change_set <- function(ChangeSetName, StackName = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Changes", non_aggregate_keys = list("ChangeSetName", "ChangeSetId", "StackId", "StackName", "Description", "Parameters", "CreationTime", "ExecutionStatus", "Status", "StatusReason", "NotificationARNs", "RollbackConfiguration", "Capabilities", "Tags", "ParentChangeSetId", "IncludeNestedStacks", "RootChangeSetId", "OnStackFailure", "ImportExistingResources", "StackDriftStatus", "DeploymentMode", "DeploymentConfig")),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$describe_change_set_input(ChangeSetName = ChangeSetName, StackName = StackName, NextToken = NextToken, IncludePropertyValues = IncludePropertyValues)
   output <- .cloudformation$describe_change_set_output()
@@ -1142,7 +1163,8 @@ cloudformation_describe_change_set_hooks <- function(ChangeSetName, StackName = 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$describe_change_set_hooks_input(ChangeSetName = ChangeSetName, StackName = StackName, NextToken = NextToken, LogicalResourceId = LogicalResourceId)
   output <- .cloudformation$describe_change_set_hooks_output()
@@ -1177,7 +1199,8 @@ cloudformation_describe_events <- function(StackName = NULL, ChangeSetName = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "OperationEvents"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$describe_events_input(StackName = StackName, ChangeSetName = ChangeSetName, OperationId = OperationId, Filters = Filters, NextToken = NextToken)
   output <- .cloudformation$describe_events_output()
@@ -1208,7 +1231,8 @@ cloudformation_describe_generated_template <- function(GeneratedTemplateName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$describe_generated_template_input(GeneratedTemplateName = GeneratedTemplateName)
   output <- .cloudformation$describe_generated_template_output()
@@ -1247,7 +1271,8 @@ cloudformation_describe_organizations_access <- function(CallAs = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$describe_organizations_access_input(CallAs = CallAs)
   output <- .cloudformation$describe_organizations_access_output()
@@ -1280,7 +1305,8 @@ cloudformation_describe_publisher <- function(PublisherId = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$describe_publisher_input(PublisherId = PublisherId)
   output <- .cloudformation$describe_publisher_output()
@@ -1311,7 +1337,8 @@ cloudformation_describe_resource_scan <- function(ResourceScanId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$describe_resource_scan_input(ResourceScanId = ResourceScanId)
   output <- .cloudformation$describe_resource_scan_output()
@@ -1344,7 +1371,8 @@ cloudformation_describe_stack_drift_detection_status <- function(StackDriftDetec
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$describe_stack_drift_detection_status_input(StackDriftDetectionId = StackDriftDetectionId)
   output <- .cloudformation$describe_stack_drift_detection_status_output()
@@ -1381,7 +1409,8 @@ cloudformation_describe_stack_events <- function(StackName, NextToken = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "StackEvents"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$describe_stack_events_input(StackName = StackName, NextToken = NextToken)
   output <- .cloudformation$describe_stack_events_output()
@@ -1424,7 +1453,8 @@ cloudformation_describe_stack_instance <- function(StackSetName, StackInstanceAc
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$describe_stack_instance_input(StackSetName = StackSetName, StackInstanceAccount = StackInstanceAccount, StackInstanceRegion = StackInstanceRegion, CallAs = CallAs)
   output <- .cloudformation$describe_stack_instance_output()
@@ -1455,7 +1485,8 @@ cloudformation_describe_stack_refactor <- function(StackRefactorId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$describe_stack_refactor_input(StackRefactorId = StackRefactorId)
   output <- .cloudformation$describe_stack_refactor_output()
@@ -1491,7 +1522,8 @@ cloudformation_describe_stack_resource <- function(StackName, LogicalResourceId)
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$describe_stack_resource_input(StackName = StackName, LogicalResourceId = LogicalResourceId)
   output <- .cloudformation$describe_stack_resource_output()
@@ -1536,7 +1568,8 @@ cloudformation_describe_stack_resource_drifts <- function(StackName, StackResour
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$describe_stack_resource_drifts_input(StackName = StackName, StackResourceDriftStatusFilters = StackResourceDriftStatusFilters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudformation$describe_stack_resource_drifts_output()
@@ -1580,7 +1613,8 @@ cloudformation_describe_stack_resources <- function(StackName = NULL, LogicalRes
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$describe_stack_resources_input(StackName = StackName, LogicalResourceId = LogicalResourceId, PhysicalResourceId = PhysicalResourceId)
   output <- .cloudformation$describe_stack_resources_output()
@@ -1620,7 +1654,8 @@ cloudformation_describe_stack_set <- function(StackSetName, CallAs = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$describe_stack_set_input(StackSetName = StackSetName, CallAs = CallAs)
   output <- .cloudformation$describe_stack_set_output()
@@ -1661,7 +1696,8 @@ cloudformation_describe_stack_set_operation <- function(StackSetName, OperationI
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$describe_stack_set_operation_input(StackSetName = StackSetName, OperationId = OperationId, CallAs = CallAs)
   output <- .cloudformation$describe_stack_set_operation_output()
@@ -1706,7 +1742,8 @@ cloudformation_describe_stacks <- function(StackName = NULL, NextToken = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Stacks"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$describe_stacks_input(StackName = StackName, NextToken = NextToken)
   output <- .cloudformation$describe_stacks_output()
@@ -1753,7 +1790,8 @@ cloudformation_describe_type <- function(Type = NULL, TypeName = NULL, Arn = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$describe_type_input(Type = Type, TypeName = TypeName, Arn = Arn, VersionId = VersionId, PublisherId = PublisherId, PublicVersionNumber = PublicVersionNumber)
   output <- .cloudformation$describe_type_output()
@@ -1787,7 +1825,8 @@ cloudformation_describe_type_registration <- function(RegistrationToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$describe_type_registration_input(RegistrationToken = RegistrationToken)
   output <- .cloudformation$describe_type_registration_output()
@@ -1821,7 +1860,8 @@ cloudformation_detect_stack_drift <- function(StackName, LogicalResourceIds = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$detect_stack_drift_input(StackName = StackName, LogicalResourceIds = LogicalResourceIds)
   output <- .cloudformation$detect_stack_drift_output()
@@ -1855,7 +1895,8 @@ cloudformation_detect_stack_resource_drift <- function(StackName, LogicalResourc
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$detect_stack_resource_drift_input(StackName = StackName, LogicalResourceId = LogicalResourceId)
   output <- .cloudformation$detect_stack_resource_drift_output()
@@ -1899,7 +1940,8 @@ cloudformation_detect_stack_set_drift <- function(StackSetName, OperationPrefere
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$detect_stack_set_drift_input(StackSetName = StackSetName, OperationPreferences = OperationPreferences, OperationId = OperationId, CallAs = CallAs)
   output <- .cloudformation$detect_stack_set_drift_output()
@@ -1936,7 +1978,8 @@ cloudformation_estimate_template_cost <- function(TemplateBody = NULL, TemplateU
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$estimate_template_cost_input(TemplateBody = TemplateBody, TemplateURL = TemplateURL, Parameters = Parameters)
   output <- .cloudformation$estimate_template_cost_output()
@@ -1980,7 +2023,8 @@ cloudformation_execute_change_set <- function(ChangeSetName, StackName = NULL, C
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$execute_change_set_input(ChangeSetName = ChangeSetName, StackName = StackName, ClientRequestToken = ClientRequestToken, DisableRollback = DisableRollback, RetainExceptOnCreate = RetainExceptOnCreate)
   output <- .cloudformation$execute_change_set_output()
@@ -2011,7 +2055,8 @@ cloudformation_execute_stack_refactor <- function(StackRefactorId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$execute_stack_refactor_input(StackRefactorId = StackRefactorId)
   output <- .cloudformation$execute_stack_refactor_output()
@@ -2047,7 +2092,8 @@ cloudformation_get_generated_template <- function(Format = NULL, GeneratedTempla
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$get_generated_template_input(Format = Format, GeneratedTemplateName = GeneratedTemplateName)
   output <- .cloudformation$get_generated_template_output()
@@ -2079,7 +2125,8 @@ cloudformation_get_hook_result <- function(HookResultId = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$get_hook_result_input(HookResultId = HookResultId)
   output <- .cloudformation$get_hook_result_output()
@@ -2110,7 +2157,8 @@ cloudformation_get_stack_policy <- function(StackName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$get_stack_policy_input(StackName = StackName)
   output <- .cloudformation$get_stack_policy_output()
@@ -2149,7 +2197,8 @@ cloudformation_get_template <- function(StackName = NULL, ChangeSetName = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$get_template_input(StackName = StackName, ChangeSetName = ChangeSetName, TemplateStage = TemplateStage)
   output <- .cloudformation$get_template_output()
@@ -2201,7 +2250,8 @@ cloudformation_get_template_summary <- function(TemplateBody = NULL, TemplateURL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$get_template_summary_input(TemplateBody = TemplateBody, TemplateURL = TemplateURL, StackName = StackName, StackSetName = StackSetName, CallAs = CallAs, TemplateSummaryConfig = TemplateSummaryConfig)
   output <- .cloudformation$get_template_summary_output()
@@ -2248,7 +2298,8 @@ cloudformation_import_stacks_to_stack_set <- function(StackSetName, StackIds = N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$import_stacks_to_stack_set_input(StackSetName = StackSetName, StackIds = StackIds, StackIdsUrl = StackIdsUrl, OrganizationalUnitIds = OrganizationalUnitIds, OperationPreferences = OperationPreferences, OperationId = OperationId, CallAs = CallAs)
   output <- .cloudformation$import_stacks_to_stack_set_output()
@@ -2280,7 +2331,8 @@ cloudformation_list_change_sets <- function(StackName, NextToken = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Summaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$list_change_sets_input(StackName = StackName, NextToken = NextToken)
   output <- .cloudformation$list_change_sets_output()
@@ -2312,7 +2364,8 @@ cloudformation_list_exports <- function(NextToken = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Exports"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$list_exports_input(NextToken = NextToken)
   output <- .cloudformation$list_exports_output()
@@ -2344,7 +2397,8 @@ cloudformation_list_generated_templates <- function(NextToken = NULL, MaxResults
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$list_generated_templates_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudformation$list_generated_templates_output()
@@ -2393,7 +2447,8 @@ cloudformation_list_hook_results <- function(TargetType = NULL, TargetId = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$list_hook_results_input(TargetType = TargetType, TargetId = TargetId, TypeArn = TypeArn, Status = Status, NextToken = NextToken)
   output <- .cloudformation$list_hook_results_output()
@@ -2425,7 +2480,8 @@ cloudformation_list_imports <- function(ExportName, NextToken = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Imports"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$list_imports_input(ExportName = ExportName, NextToken = NextToken)
   output <- .cloudformation$list_imports_output()
@@ -2459,7 +2515,8 @@ cloudformation_list_resource_scan_related_resources <- function(ResourceScanId, 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "RelatedResources"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$list_resource_scan_related_resources_input(ResourceScanId = ResourceScanId, Resources = Resources, NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudformation$list_resource_scan_related_resources_output()
@@ -2496,7 +2553,8 @@ cloudformation_list_resource_scan_resources <- function(ResourceScanId, Resource
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Resources"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$list_resource_scan_resources_input(ResourceScanId = ResourceScanId, ResourceIdentifier = ResourceIdentifier, ResourceTypePrefix = ResourceTypePrefix, TagKey = TagKey, TagValue = TagValue, NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudformation$list_resource_scan_resources_output()
@@ -2529,7 +2587,8 @@ cloudformation_list_resource_scans <- function(NextToken = NULL, MaxResults = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ResourceScanSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$list_resource_scans_input(NextToken = NextToken, MaxResults = MaxResults, ScanTypeFilter = ScanTypeFilter)
   output <- .cloudformation$list_resource_scans_output()
@@ -2583,7 +2642,8 @@ cloudformation_list_stack_instance_resource_drifts <- function(StackSetName, Nex
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$list_stack_instance_resource_drifts_input(StackSetName = StackSetName, NextToken = NextToken, MaxResults = MaxResults, StackInstanceResourceDriftStatuses = StackInstanceResourceDriftStatuses, StackInstanceAccount = StackInstanceAccount, StackInstanceRegion = StackInstanceRegion, OperationId = OperationId, CallAs = CallAs)
   output <- .cloudformation$list_stack_instance_resource_drifts_output()
@@ -2629,7 +2689,8 @@ cloudformation_list_stack_instances <- function(StackSetName, NextToken = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Summaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$list_stack_instances_input(StackSetName = StackSetName, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters, StackInstanceAccount = StackInstanceAccount, StackInstanceRegion = StackInstanceRegion, CallAs = CallAs)
   output <- .cloudformation$list_stack_instances_output()
@@ -2663,7 +2724,8 @@ cloudformation_list_stack_refactor_actions <- function(StackRefactorId, NextToke
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "StackRefactorActions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$list_stack_refactor_actions_input(StackRefactorId = StackRefactorId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudformation$list_stack_refactor_actions_output()
@@ -2696,7 +2758,8 @@ cloudformation_list_stack_refactors <- function(ExecutionStatusFilter = NULL, Ne
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "StackRefactorSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$list_stack_refactors_input(ExecutionStatusFilter = ExecutionStatusFilter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudformation$list_stack_refactors_output()
@@ -2732,7 +2795,8 @@ cloudformation_list_stack_resources <- function(StackName, NextToken = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "StackResourceSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$list_stack_resources_input(StackName = StackName, NextToken = NextToken)
   output <- .cloudformation$list_stack_resources_output()
@@ -2774,7 +2838,8 @@ cloudformation_list_stack_set_auto_deployment_targets <- function(StackSetName, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$list_stack_set_auto_deployment_targets_input(StackSetName = StackSetName, NextToken = NextToken, MaxResults = MaxResults, CallAs = CallAs)
   output <- .cloudformation$list_stack_set_auto_deployment_targets_output()
@@ -2818,7 +2883,8 @@ cloudformation_list_stack_set_operation_results <- function(StackSetName, Operat
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Summaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$list_stack_set_operation_results_input(StackSetName = StackSetName, OperationId = OperationId, NextToken = NextToken, MaxResults = MaxResults, CallAs = CallAs, Filters = Filters)
   output <- .cloudformation$list_stack_set_operation_results_output()
@@ -2860,7 +2926,8 @@ cloudformation_list_stack_set_operations <- function(StackSetName, NextToken = N
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Summaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$list_stack_set_operations_input(StackSetName = StackSetName, NextToken = NextToken, MaxResults = MaxResults, CallAs = CallAs)
   output <- .cloudformation$list_stack_set_operations_output()
@@ -2903,7 +2970,8 @@ cloudformation_list_stack_sets <- function(NextToken = NULL, MaxResults = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Summaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$list_stack_sets_input(NextToken = NextToken, MaxResults = MaxResults, Status = Status, CallAs = CallAs)
   output <- .cloudformation$list_stack_sets_output()
@@ -2936,7 +3004,8 @@ cloudformation_list_stacks <- function(NextToken = NULL, StackStatusFilter = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "StackSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$list_stacks_input(NextToken = NextToken, StackStatusFilter = StackStatusFilter)
   output <- .cloudformation$list_stacks_output()
@@ -2980,7 +3049,8 @@ cloudformation_list_type_registrations <- function(Type = NULL, TypeName = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$list_type_registrations_input(Type = Type, TypeName = TypeName, TypeArn = TypeArn, RegistrationStatusFilter = RegistrationStatusFilter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudformation$list_type_registrations_output()
@@ -3033,7 +3103,8 @@ cloudformation_list_type_versions <- function(Type = NULL, TypeName = NULL, Arn 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$list_type_versions_input(Type = Type, TypeName = TypeName, Arn = Arn, MaxResults = MaxResults, NextToken = NextToken, DeprecatedStatus = DeprecatedStatus, PublisherId = PublisherId)
   output <- .cloudformation$list_type_versions_output()
@@ -3102,7 +3173,8 @@ cloudformation_list_types <- function(Visibility = NULL, ProvisioningType = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TypeSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$list_types_input(Visibility = Visibility, ProvisioningType = ProvisioningType, DeprecatedStatus = DeprecatedStatus, Type = Type, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudformation$list_types_output()
@@ -3153,7 +3225,8 @@ cloudformation_publish_type <- function(Type = NULL, Arn = NULL, TypeName = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$publish_type_input(Type = Type, Arn = Arn, TypeName = TypeName, PublicVersionNumber = PublicVersionNumber)
   output <- .cloudformation$publish_type_output()
@@ -3190,7 +3263,8 @@ cloudformation_record_handler_progress <- function(BearerToken, OperationStatus,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$record_handler_progress_input(BearerToken = BearerToken, OperationStatus = OperationStatus, CurrentOperationStatus = CurrentOperationStatus, StatusMessage = StatusMessage, ErrorCode = ErrorCode, ResourceModel = ResourceModel, ClientRequestToken = ClientRequestToken)
   output <- .cloudformation$record_handler_progress_output()
@@ -3227,7 +3301,8 @@ cloudformation_register_publisher <- function(AcceptTermsAndConditions = NULL, C
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$register_publisher_input(AcceptTermsAndConditions = AcceptTermsAndConditions, ConnectionArn = ConnectionArn)
   output <- .cloudformation$register_publisher_output()
@@ -3280,7 +3355,7 @@ cloudformation_register_publisher <- function(AcceptTermsAndConditions = NULL, C
 #' 
 #' For CloudFormation to assume the specified execution role, the role must contain a trust relationship with the CloudFormation service principal (`resources.cloudformation.amazonaws.com`). For more information about adding trust relationships, see [Modifying a role trust policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage.html#roles-managingrole_edit-trust-policy) in the *Identity and Access Management User Guide*.
 #' 
-#' If your extension calls Amazon Web Services APIs in any of its handlers, you must create an \emph{\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{IAM execution role}} that includes the necessary permissions to call those Amazon Web Services APIs, and provision that execution role in your account. When CloudFormation needs to invoke the resource type handler, CloudFormation assumes this execution role to create a temporary session token, which it then passes to the resource type handler, thereby supplying your resource type with the appropriate credentials.
+#' If your extension calls Amazon Web Services APIs in any of its handlers, you must create an *\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{IAM execution role}* that includes the necessary permissions to call those Amazon Web Services APIs, and provision that execution role in your account. When CloudFormation needs to invoke the resource type handler, CloudFormation assumes this execution role to create a temporary session token, which it then passes to the resource type handler, thereby supplying your resource type with the appropriate credentials.
 #' @param ClientRequestToken A unique identifier that acts as an idempotency key for this registration request. Specifying a client request token prevents CloudFormation from generating more than one version of an extension from the same registration request, even if the request is submitted multiple times.
 #'
 #' @keywords internal
@@ -3293,7 +3368,8 @@ cloudformation_register_type <- function(Type = NULL, TypeName, SchemaHandlerPac
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$register_type_input(Type = Type, TypeName = TypeName, SchemaHandlerPackage = SchemaHandlerPackage, LoggingConfig = LoggingConfig, ExecutionRoleArn = ExecutionRoleArn, ClientRequestToken = ClientRequestToken)
   output <- .cloudformation$register_type_output()
@@ -3331,7 +3407,8 @@ cloudformation_rollback_stack <- function(StackName, RoleARN = NULL, ClientReque
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$rollback_stack_input(StackName = StackName, RoleARN = RoleARN, ClientRequestToken = ClientRequestToken, RetainExceptOnCreate = RetainExceptOnCreate, DeploymentConfig = DeploymentConfig)
   output <- .cloudformation$rollback_stack_output()
@@ -3366,7 +3443,8 @@ cloudformation_set_stack_policy <- function(StackName, StackPolicyBody = NULL, S
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$set_stack_policy_input(StackName = StackName, StackPolicyBody = StackPolicyBody, StackPolicyURL = StackPolicyURL)
   output <- .cloudformation$set_stack_policy_output()
@@ -3414,7 +3492,8 @@ cloudformation_set_type_configuration <- function(TypeArn = NULL, Configuration,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$set_type_configuration_input(TypeArn = TypeArn, Configuration = Configuration, ConfigurationAlias = ConfigurationAlias, TypeName = TypeName, Type = Type)
   output <- .cloudformation$set_type_configuration_output()
@@ -3454,7 +3533,8 @@ cloudformation_set_type_default_version <- function(Arn = NULL, Type = NULL, Typ
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$set_type_default_version_input(Arn = Arn, Type = Type, TypeName = TypeName, VersionId = VersionId)
   output <- .cloudformation$set_type_default_version_output()
@@ -3489,7 +3569,8 @@ cloudformation_signal_resource <- function(StackName, LogicalResourceId, UniqueI
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$signal_resource_input(StackName = StackName, LogicalResourceId = LogicalResourceId, UniqueId = UniqueId, Status = Status)
   output <- .cloudformation$signal_resource_output()
@@ -3521,7 +3602,8 @@ cloudformation_start_resource_scan <- function(ClientRequestToken = NULL, ScanFi
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$start_resource_scan_input(ClientRequestToken = ClientRequestToken, ScanFilters = ScanFilters)
   output <- .cloudformation$start_resource_scan_output()
@@ -3563,7 +3645,8 @@ cloudformation_stop_stack_set_operation <- function(StackSetName, OperationId, C
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$stop_stack_set_operation_input(StackSetName = StackSetName, OperationId = OperationId, CallAs = CallAs)
   output <- .cloudformation$stop_stack_set_operation_output()
@@ -3619,7 +3702,8 @@ cloudformation_test_type <- function(Arn = NULL, Type = NULL, TypeName = NULL, V
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$test_type_input(Arn = Arn, Type = Type, TypeName = TypeName, VersionId = VersionId, LogDeliveryBucket = LogDeliveryBucket)
   output <- .cloudformation$test_type_output()
@@ -3655,7 +3739,8 @@ cloudformation_update_generated_template <- function(GeneratedTemplateName, NewG
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$update_generated_template_input(GeneratedTemplateName = GeneratedTemplateName, NewGeneratedTemplateName = NewGeneratedTemplateName, AddResources = AddResources, RemoveResources = RemoveResources, RefreshAllResources = RefreshAllResources, TemplateConfiguration = TemplateConfiguration)
   output <- .cloudformation$update_generated_template_output()
@@ -3789,7 +3874,8 @@ cloudformation_update_stack <- function(StackName, TemplateBody = NULL, Template
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$update_stack_input(StackName = StackName, TemplateBody = TemplateBody, TemplateURL = TemplateURL, UsePreviousTemplate = UsePreviousTemplate, StackPolicyDuringUpdateBody = StackPolicyDuringUpdateBody, StackPolicyDuringUpdateURL = StackPolicyDuringUpdateURL, Parameters = Parameters, Capabilities = Capabilities, ResourceTypes = ResourceTypes, RoleARN = RoleARN, RollbackConfiguration = RollbackConfiguration, StackPolicyBody = StackPolicyBody, StackPolicyURL = StackPolicyURL, NotificationARNs = NotificationARNs, Tags = Tags, DisableRollback = DisableRollback, ClientRequestToken = ClientRequestToken, RetainExceptOnCreate = RetainExceptOnCreate, DeploymentConfig = DeploymentConfig, DisableValidation = DisableValidation)
   output <- .cloudformation$update_stack_output()
@@ -3858,7 +3944,8 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$update_stack_instances_input(StackSetName = StackSetName, Accounts = Accounts, DeploymentTargets = DeploymentTargets, Regions = Regions, ParameterOverrides = ParameterOverrides, OperationPreferences = OperationPreferences, OperationId = OperationId, CallAs = CallAs)
   output <- .cloudformation$update_stack_instances_output()
@@ -4000,7 +4087,8 @@ cloudformation_update_stack_set <- function(StackSetName, Description = NULL, Te
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$update_stack_set_input(StackSetName = StackSetName, Description = Description, TemplateBody = TemplateBody, TemplateURL = TemplateURL, UsePreviousTemplate = UsePreviousTemplate, Parameters = Parameters, Capabilities = Capabilities, Tags = Tags, OperationPreferences = OperationPreferences, AdministrationRoleARN = AdministrationRoleARN, ExecutionRoleName = ExecutionRoleName, DeploymentTargets = DeploymentTargets, PermissionModel = PermissionModel, AutoDeployment = AutoDeployment, OperationId = OperationId, Accounts = Accounts, Regions = Regions, CallAs = CallAs, ManagedExecution = ManagedExecution)
   output <- .cloudformation$update_stack_set_output()
@@ -4032,7 +4120,8 @@ cloudformation_update_termination_protection <- function(EnableTerminationProtec
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$update_termination_protection_input(EnableTerminationProtection = EnableTerminationProtection, StackName = StackName)
   output <- .cloudformation$update_termination_protection_output()
@@ -4068,7 +4157,8 @@ cloudformation_validate_template <- function(TemplateBody = NULL, TemplateURL = 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudformation$validate_template_input(TemplateBody = TemplateBody, TemplateURL = TemplateURL)
   output <- .cloudformation$validate_template_output()

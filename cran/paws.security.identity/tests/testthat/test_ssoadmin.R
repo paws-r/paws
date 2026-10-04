@@ -1,4 +1,4 @@
-svc <- paws.security.identity::ssoadmin()
+svc <- paws::ssoadmin()
 
 test_that("list_application_providers", {
   skip_on_cran()

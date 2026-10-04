@@ -11,7 +11,7 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/resourceexplorer_associate_default_view/](https://www.paws-r-sdk.com/docs/resourceexplorer_associate_default_view/) for full documentation.
 #'
-#' @param ViewArn &#91;required&#93; The [Amazon resource name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) of the view to set as the default for the Amazon Web Services Region and Amazon Web Services account in which you call this operation. The specified view must already exist in the called Region.
+#' @param ViewArn &#91;required&#93; The [Amazon resource name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) of the view to set as the default for the Amazon Web Services Region and Amazon Web Services account in which you call this operation. The specified view must already exist in the called Region.
 #'
 #' @keywords internal
 #'
@@ -23,7 +23,8 @@ resourceexplorer_associate_default_view <- function(ViewArn) {
     http_path = "/AssociateDefaultView",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourceexplorer$associate_default_view_input(ViewArn = ViewArn)
   output <- .resourceexplorer$associate_default_view_output()
@@ -42,7 +43,7 @@ resourceexplorer_associate_default_view <- function(ViewArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/resourceexplorer_batch_get_view/](https://www.paws-r-sdk.com/docs/resourceexplorer_batch_get_view/) for full documentation.
 #'
-#' @param ViewArns A list of [Amazon resource names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) that identify the views you want details for.
+#' @param ViewArns A list of [Amazon resource names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) that identify the views you want details for.
 #'
 #' @keywords internal
 #'
@@ -54,7 +55,8 @@ resourceexplorer_batch_get_view <- function(ViewArns = NULL) {
     http_path = "/BatchGetView",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourceexplorer$batch_get_view_input(ViewArns = ViewArns)
   output <- .resourceexplorer$batch_get_view_output()
@@ -87,7 +89,8 @@ resourceexplorer_create_index <- function(ClientToken = NULL, Tags = NULL) {
     http_path = "/CreateIndex",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourceexplorer$create_index_input(ClientToken = ClientToken, Tags = Tags)
   output <- .resourceexplorer$create_index_output()
@@ -121,7 +124,8 @@ resourceexplorer_create_resource_explorer_setup <- function(RegionList, Aggregat
     http_path = "/CreateResourceExplorerSetup",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourceexplorer$create_resource_explorer_setup_input(RegionList = RegionList, AggregatorRegions = AggregatorRegions, ViewName = ViewName)
   output <- .resourceexplorer$create_resource_explorer_setup_output()
@@ -165,7 +169,8 @@ resourceexplorer_create_view <- function(ClientToken = NULL, ViewName, IncludedP
     http_path = "/CreateView",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourceexplorer$create_view_input(ClientToken = ClientToken, ViewName = ViewName, IncludedProperties = IncludedProperties, Scope = Scope, Filters = Filters, Tags = Tags)
   output <- .resourceexplorer$create_view_output()
@@ -185,7 +190,7 @@ resourceexplorer_create_view <- function(ClientToken = NULL, ViewName, IncludedP
 #'
 #' See [https://www.paws-r-sdk.com/docs/resourceexplorer_delete_index/](https://www.paws-r-sdk.com/docs/resourceexplorer_delete_index/) for full documentation.
 #'
-#' @param Arn &#91;required&#93; The [Amazon resource name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) of the index that you want to delete.
+#' @param Arn &#91;required&#93; The [Amazon resource name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) of the index that you want to delete.
 #'
 #' @keywords internal
 #'
@@ -197,7 +202,8 @@ resourceexplorer_delete_index <- function(Arn) {
     http_path = "/DeleteIndex",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourceexplorer$delete_index_input(Arn = Arn)
   output <- .resourceexplorer$delete_index_output()
@@ -229,7 +235,8 @@ resourceexplorer_delete_resource_explorer_setup <- function(RegionList = NULL, D
     http_path = "/DeleteResourceExplorerSetup",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourceexplorer$delete_resource_explorer_setup_input(RegionList = RegionList, DeleteInAllRegions = DeleteInAllRegions)
   output <- .resourceexplorer$delete_resource_explorer_setup_output()
@@ -248,7 +255,7 @@ resourceexplorer_delete_resource_explorer_setup <- function(RegionList = NULL, D
 #'
 #' See [https://www.paws-r-sdk.com/docs/resourceexplorer_delete_view/](https://www.paws-r-sdk.com/docs/resourceexplorer_delete_view/) for full documentation.
 #'
-#' @param ViewArn &#91;required&#93; The [Amazon resource name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) of the view that you want to delete.
+#' @param ViewArn &#91;required&#93; The [Amazon resource name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) of the view that you want to delete.
 #'
 #' @keywords internal
 #'
@@ -260,7 +267,8 @@ resourceexplorer_delete_view <- function(ViewArn) {
     http_path = "/DeleteView",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourceexplorer$delete_view_input(ViewArn = ViewArn)
   output <- .resourceexplorer$delete_view_output()
@@ -292,7 +300,8 @@ resourceexplorer_disassociate_default_view <- function() {
     http_path = "/DisassociateDefaultView",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourceexplorer$disassociate_default_view_input()
   output <- .resourceexplorer$disassociate_default_view_output()
@@ -325,7 +334,8 @@ resourceexplorer_get_account_level_service_configuration <- function() {
     http_path = "/GetAccountLevelServiceConfiguration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourceexplorer$get_account_level_service_configuration_input()
   output <- .resourceexplorer$get_account_level_service_configuration_output()
@@ -357,7 +367,8 @@ resourceexplorer_get_default_view <- function() {
     http_path = "/GetDefaultView",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourceexplorer$get_default_view_input()
   output <- .resourceexplorer$get_default_view_output()
@@ -389,7 +400,8 @@ resourceexplorer_get_index <- function() {
     http_path = "/GetIndex",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourceexplorer$get_index_input()
   output <- .resourceexplorer$get_index_output()
@@ -420,7 +432,8 @@ resourceexplorer_get_managed_view <- function(ManagedViewArn) {
     http_path = "/GetManagedView",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourceexplorer$get_managed_view_input(ManagedViewArn = ManagedViewArn)
   output <- .resourceexplorer$get_managed_view_output()
@@ -453,7 +466,8 @@ resourceexplorer_get_resource_explorer_setup <- function(TaskId, MaxResults = NU
     http_path = "/GetResourceExplorerSetup",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Regions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourceexplorer$get_resource_explorer_setup_input(TaskId = TaskId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .resourceexplorer$get_resource_explorer_setup_output()
@@ -485,7 +499,8 @@ resourceexplorer_get_service_index <- function() {
     http_path = "/GetServiceIndex",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourceexplorer$get_service_index_input()
   output <- .resourceexplorer$get_service_index_output()
@@ -516,7 +531,8 @@ resourceexplorer_get_service_view <- function(ServiceViewArn) {
     http_path = "/GetServiceView",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourceexplorer$get_service_view_input(ServiceViewArn = ServiceViewArn)
   output <- .resourceexplorer$get_service_view_output()
@@ -535,7 +551,7 @@ resourceexplorer_get_service_view <- function(ServiceViewArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/resourceexplorer_get_view/](https://www.paws-r-sdk.com/docs/resourceexplorer_get_view/) for full documentation.
 #'
-#' @param ViewArn &#91;required&#93; The [Amazon resource name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) of the view that you want information about.
+#' @param ViewArn &#91;required&#93; The [Amazon resource name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) of the view that you want information about.
 #'
 #' @keywords internal
 #'
@@ -547,7 +563,8 @@ resourceexplorer_get_view <- function(ViewArn) {
     http_path = "/GetView",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourceexplorer$get_view_input(ViewArn = ViewArn)
   output <- .resourceexplorer$get_view_output()
@@ -587,7 +604,8 @@ resourceexplorer_list_indexes <- function(Type = NULL, Regions = NULL, MaxResult
     http_path = "/ListIndexes",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Indexes"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourceexplorer$list_indexes_input(Type = Type, Regions = Regions, MaxResults = MaxResults, NextToken = NextToken)
   output <- .resourceexplorer$list_indexes_output()
@@ -624,7 +642,8 @@ resourceexplorer_list_indexes_for_members <- function(AccountIdList, MaxResults 
     http_path = "/ListIndexesForMembers",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Indexes"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourceexplorer$list_indexes_for_members_input(AccountIdList = AccountIdList, MaxResults = MaxResults, NextToken = NextToken)
   output <- .resourceexplorer$list_indexes_for_members_output()
@@ -661,7 +680,8 @@ resourceexplorer_list_managed_views <- function(MaxResults = NULL, NextToken = N
     http_path = "/ListManagedViews",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ManagedViews"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourceexplorer$list_managed_views_input(MaxResults = MaxResults, NextToken = NextToken, ServicePrincipal = ServicePrincipal)
   output <- .resourceexplorer$list_managed_views_output()
@@ -704,7 +724,8 @@ resourceexplorer_list_resources <- function(Filters = NULL, MaxResults = NULL, V
     http_path = "/ListResources",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Resources"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourceexplorer$list_resources_input(Filters = Filters, MaxResults = MaxResults, ViewArn = ViewArn, NextToken = NextToken)
   output <- .resourceexplorer$list_resources_output()
@@ -738,7 +759,8 @@ resourceexplorer_list_service_indexes <- function(Regions = NULL, MaxResults = N
     http_path = "/ListServiceIndexes",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Indexes"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourceexplorer$list_service_indexes_input(Regions = Regions, MaxResults = MaxResults, NextToken = NextToken)
   output <- .resourceexplorer$list_service_indexes_output()
@@ -771,7 +793,8 @@ resourceexplorer_list_service_views <- function(MaxResults = NULL, NextToken = N
     http_path = "/ListServiceViews",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ServiceViews"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourceexplorer$list_service_views_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .resourceexplorer$list_service_views_output()
@@ -804,7 +827,8 @@ resourceexplorer_list_streaming_access_for_services <- function(MaxResults = NUL
     http_path = "/ListStreamingAccessForServices",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "StreamingAccessForServices"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourceexplorer$list_streaming_access_for_services_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .resourceexplorer$list_streaming_access_for_services_output()
@@ -839,7 +863,8 @@ resourceexplorer_list_supported_resource_types <- function(NextToken = NULL, Max
     http_path = "/ListSupportedResourceTypes",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResourceTypes"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourceexplorer$list_supported_resource_types_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .resourceexplorer$list_supported_resource_types_output()
@@ -858,7 +883,7 @@ resourceexplorer_list_supported_resource_types <- function(NextToken = NULL, Max
 #'
 #' See [https://www.paws-r-sdk.com/docs/resourceexplorer_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/resourceexplorer_list_tags_for_resource/) for full documentation.
 #'
-#' @param resourceArn &#91;required&#93; The [Amazon resource name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) of the view or index that you want to attach tags to.
+#' @param resourceArn &#91;required&#93; The [Amazon resource name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) of the view or index that you want to attach tags to.
 #'
 #' @keywords internal
 #'
@@ -870,7 +895,8 @@ resourceexplorer_list_tags_for_resource <- function(resourceArn) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourceexplorer$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .resourceexplorer$list_tags_for_resource_output()
@@ -886,7 +912,7 @@ resourceexplorer_list_tags_for_resource <- function(resourceArn) {
 #' Amazon Web Services Region in which you call this operation
 #'
 #' @description
-#' Lists the [Amazon resource names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) of the views available in the Amazon Web Services Region in which you call this operation.
+#' Lists the [Amazon resource names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) of the views available in the Amazon Web Services Region in which you call this operation.
 #'
 #' See [https://www.paws-r-sdk.com/docs/resourceexplorer_list_views/](https://www.paws-r-sdk.com/docs/resourceexplorer_list_views/) for full documentation.
 #'
@@ -905,7 +931,8 @@ resourceexplorer_list_views <- function(NextToken = NULL, MaxResults = NULL) {
     http_path = "/ListViews",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Views"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourceexplorer$list_views_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .resourceexplorer$list_views_output()
@@ -935,7 +962,7 @@ resourceexplorer_list_views <- function(NextToken = NULL, MaxResults = NULL) {
 #' @param MaxResults The maximum number of results that you want included on each page of the response. If you do not include this parameter, it defaults to a value appropriate to the operation. If additional items exist beyond those included in the current response, the `NextToken` response element is present and has a value (is not null). Include that value as the `NextToken` request parameter in the next call to the operation to get the next part of the results.
 #' 
 #' An API operation can return fewer results than the maximum even when there are more results available. You should check `NextToken` after every operation to ensure that you receive all of the results.
-#' @param ViewArn Specifies the [Amazon resource name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) of the view to use for the query. If you don't specify a value for this parameter, then the operation automatically uses the default view for the Amazon Web Services Region in which you called this operation. If the Region either doesn't have a default view or if you don't have permission to use the default view, then the operation fails with a `401 Unauthorized` exception.
+#' @param ViewArn Specifies the [Amazon resource name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) of the view to use for the query. If you don't specify a value for this parameter, then the operation automatically uses the default view for the Amazon Web Services Region in which you called this operation. If the Region either doesn't have a default view or if you don't have permission to use the default view, then the operation fails with a `401 Unauthorized` exception.
 #' @param NextToken The parameter for receiving additional results if you receive a `NextToken` response in a previous request. A `NextToken` response indicates that more output is available. Set this parameter to the value of the previous call's `NextToken` response to indicate where the output should continue from. The pagination tokens expire after 24 hours.
 #'
 #' @keywords internal
@@ -948,7 +975,8 @@ resourceexplorer_search <- function(QueryString, MaxResults = NULL, ViewArn = NU
     http_path = "/Search",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Resources"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourceexplorer$search_input(QueryString = QueryString, MaxResults = MaxResults, ViewArn = ViewArn, NextToken = NextToken)
   output <- .resourceexplorer$search_output()
@@ -981,7 +1009,8 @@ resourceexplorer_tag_resource <- function(resourceArn, Tags = NULL) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourceexplorer$tag_resource_input(resourceArn = resourceArn, Tags = Tags)
   output <- .resourceexplorer$tag_resource_output()
@@ -1014,7 +1043,8 @@ resourceexplorer_untag_resource <- function(resourceArn, tagKeys) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourceexplorer$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .resourceexplorer$untag_resource_output()
@@ -1034,7 +1064,7 @@ resourceexplorer_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/resourceexplorer_update_index_type/](https://www.paws-r-sdk.com/docs/resourceexplorer_update_index_type/) for full documentation.
 #'
-#' @param Arn &#91;required&#93; The [Amazon resource name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) of the index that you want to update.
+#' @param Arn &#91;required&#93; The [Amazon resource name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) of the index that you want to update.
 #' @param Type &#91;required&#93; The type of the index. To understand the difference between `LOCAL` and `AGGREGATOR`, see [Turning on cross-Region search](https://docs.aws.amazon.com/resource-explorer/latest/userguide/manage-aggregator-region.html) in the *Amazon Web Services Resource Explorer User Guide*.
 #'
 #' @keywords internal
@@ -1047,7 +1077,8 @@ resourceexplorer_update_index_type <- function(Arn, Type) {
     http_path = "/UpdateIndexType",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourceexplorer$update_index_type_input(Arn = Arn, Type = Type)
   output <- .resourceexplorer$update_index_type_output()
@@ -1066,7 +1097,7 @@ resourceexplorer_update_index_type <- function(Arn, Type) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/resourceexplorer_update_view/](https://www.paws-r-sdk.com/docs/resourceexplorer_update_view/) for full documentation.
 #'
-#' @param ViewArn &#91;required&#93; The [Amazon resource name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) of the view that you want to modify.
+#' @param ViewArn &#91;required&#93; The [Amazon resource name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) of the view that you want to modify.
 #' @param IncludedProperties Specifies optional fields that you want included in search results from this view. It is a list of objects that each describe a field to include.
 #' 
 #' The default is an empty list, with no optional fields included in the results.
@@ -1086,7 +1117,8 @@ resourceexplorer_update_view <- function(ViewArn, IncludedProperties = NULL, Fil
     http_path = "/UpdateView",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourceexplorer$update_view_input(ViewArn = ViewArn, IncludedProperties = IncludedProperties, Filters = Filters)
   output <- .resourceexplorer$update_view_output()

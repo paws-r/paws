@@ -1,4 +1,4 @@
-svc <- paws.application.integration::sfn()
+svc <- paws::sfn()
 
 test_that("list_activities", {
   skip_on_cran()

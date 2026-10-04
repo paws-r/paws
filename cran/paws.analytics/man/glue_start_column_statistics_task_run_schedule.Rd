@@ -4,12 +4,18 @@
 \alias{glue_start_column_statistics_task_run_schedule}
 \title{Starts a column statistics task run schedule}
 \usage{
-glue_start_column_statistics_task_run_schedule(DatabaseName, TableName)
+glue_start_column_statistics_task_run_schedule(
+  DatabaseName,
+  TableName,
+  CatalogID = NULL
+)
 }
 \arguments{
 \item{DatabaseName}{[required] The name of the database where the table resides.}
 
 \item{TableName}{[required] The name of the table for which to start a column statistic task run schedule.}
+
+\item{CatalogID}{The ID of the Data Catalog where the table resides. If none is supplied, the Amazon Web Services account ID is used by default.}
 }
 \description{
 Starts a column statistics task run schedule.

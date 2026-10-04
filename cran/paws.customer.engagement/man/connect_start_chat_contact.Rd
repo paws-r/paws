@@ -18,7 +18,9 @@ connect_start_chat_contact(
   RelatedContactId = NULL,
   SegmentAttributes = NULL,
   CustomerId = NULL,
-  DisconnectOnCustomerExit = NULL
+  DisconnectOnCustomerExit = NULL,
+  ConnectionTypes = NULL,
+  ChatStreamingConfiguration = NULL
 )
 }
 \arguments{
@@ -65,6 +67,28 @@ The types \code{application/vnd.amazonaws.connect.message.interactive} and \code
 \item{CustomerId}{The customer's identification number. For example, the \code{CustomerId} may be a customer number from your CRM.}
 
 \item{DisconnectOnCustomerExit}{A list of participant types to automatically disconnect when the end customer ends the chat session, allowing them to continue through disconnect flows such as surveys or feedback forms.}
+
+\item{ConnectionTypes}{The types of connection information to return in the response. This parameter is optional.
+
+To receive connection information, specify one or both of the following values:
+\itemize{
+\item \code{CONNECTION_CREDENTIALS}: Returns a connection token.
+\item \code{WEBSOCKET}: Returns a websocket URL.
+}
+
+\code{WEBSOCKET} and \code{CONNECTION_CREDENTIALS} are the values this operation acts on. No other value returns connection information.
+
+Request \code{WEBSOCKET} to get a URL the participant connects to directly. You do not need to call \href{https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_CreateParticipantConnection.html}{CreateParticipantConnection} for it. Request \code{CONNECTION_CREDENTIALS} on its own and the response returns a connection token but no websocket URL.
+
+If you omit this parameter, the response has no connection information.
+
+When you start a new chat contact and the information you request cannot be returned, StartChatContact returns an error rather than a response that omits it. When you retry a request with the same \code{ClientToken}, the response repeats the original contact and can omit a websocket URL if the chat has already ended.}
+
+\item{ChatStreamingConfiguration}{The streaming configuration, such as the Amazon SNS streaming endpoint. Use it to initiate real-time message streaming when the chat is created. This parameter is optional.
+
+Setting this parameter returns a \code{StreamingId} in the response, and you do not need to call \code{\link[=connect_start_contact_streaming]{start_contact_streaming}}.
+
+This parameter starts message streaming only. The response does not include connection information, and setting this parameter does not remove the need to call \href{https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_CreateParticipantConnection.html}{CreateParticipantConnection}.}
 }
 \description{
 Initiates a flow to start a new chat for the customer. Response of this API provides a token required to obtain credentials from the \href{https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_CreateParticipantConnection.html}{CreateParticipantConnection} API in the Connect Customer Participant Service.

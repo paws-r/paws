@@ -28,7 +28,8 @@ pricing_describe_services <- function(ServiceCode = NULL, FormatVersion = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Services", non_aggregate_keys = list("FormatVersion")),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .pricing$describe_services_input(ServiceCode = ServiceCode, FormatVersion = FormatVersion, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pricing$describe_services_output()
@@ -62,7 +63,8 @@ pricing_get_attribute_values <- function(ServiceCode, AttributeName, NextToken =
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AttributeValues"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .pricing$get_attribute_values_input(ServiceCode = ServiceCode, AttributeName = AttributeName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pricing$get_attribute_values_output()
@@ -94,7 +96,8 @@ pricing_get_price_list_file_url <- function(PriceListArn, FileFormat) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .pricing$get_price_list_file_url_input(PriceListArn = PriceListArn, FileFormat = FileFormat)
   output <- .pricing$get_price_list_file_url_output()
@@ -131,7 +134,8 @@ pricing_get_products <- function(ServiceCode, Filters = NULL, FormatVersion = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PriceList", non_aggregate_keys = list("FormatVersion")),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .pricing$get_products_input(ServiceCode = ServiceCode, Filters = Filters, FormatVersion = FormatVersion, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pricing$get_products_output()
@@ -171,7 +175,8 @@ pricing_list_price_lists <- function(ServiceCode, EffectiveDate, RegionCode = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PriceLists"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .pricing$list_price_lists_input(ServiceCode = ServiceCode, EffectiveDate = EffectiveDate, RegionCode = RegionCode, CurrencyCode = CurrencyCode, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pricing$list_price_lists_output()

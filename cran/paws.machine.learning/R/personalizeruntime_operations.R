@@ -33,7 +33,8 @@ personalizeruntime_get_action_recommendations <- function(campaignArn = NULL, us
     http_path = "/action-recommendations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .personalizeruntime$get_action_recommendations_input(campaignArn = campaignArn, userId = userId, numResults = numResults, filterArn = filterArn, filterValues = filterValues)
   output <- .personalizeruntime$get_action_recommendations_output()
@@ -76,7 +77,8 @@ personalizeruntime_get_personalized_ranking <- function(campaignArn, inputList, 
     http_path = "/personalize-ranking",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .personalizeruntime$get_personalized_ranking_input(campaignArn = campaignArn, inputList = inputList, userId = userId, context = context, filterArn = filterArn, filterValues = filterValues, metadataColumns = metadataColumns)
   output <- .personalizeruntime$get_personalized_ranking_output()
@@ -128,7 +130,8 @@ personalizeruntime_get_recommendations <- function(campaignArn = NULL, itemId = 
     http_path = "/recommendations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .personalizeruntime$get_recommendations_input(campaignArn = campaignArn, itemId = itemId, userId = userId, numResults = numResults, context = context, filterArn = filterArn, filterValues = filterValues, recommenderArn = recommenderArn, promotions = promotions, metadataColumns = metadataColumns)
   output <- .personalizeruntime$get_recommendations_output()

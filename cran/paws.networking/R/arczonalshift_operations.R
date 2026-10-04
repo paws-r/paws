@@ -23,7 +23,8 @@ arczonalshift_cancel_practice_run <- function(zonalShiftId) {
     http_path = "/practiceruns/{zonalShiftId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .arczonalshift$cancel_practice_run_input(zonalShiftId = zonalShiftId)
   output <- .arczonalshift$cancel_practice_run_output()
@@ -54,7 +55,8 @@ arczonalshift_cancel_zonal_shift <- function(zonalShiftId) {
     http_path = "/zonalshifts/{zonalShiftId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .arczonalshift$cancel_zonal_shift_input(zonalShiftId = zonalShiftId)
   output <- .arczonalshift$cancel_zonal_shift_output()
@@ -119,7 +121,8 @@ arczonalshift_create_practice_run_configuration <- function(resourceIdentifier, 
     http_path = "/configuration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .arczonalshift$create_practice_run_configuration_input(resourceIdentifier = resourceIdentifier, blockedWindows = blockedWindows, blockedDates = blockedDates, blockingAlarms = blockingAlarms, allowedWindows = allowedWindows, outcomeAlarms = outcomeAlarms)
   output <- .arczonalshift$create_practice_run_configuration_output()
@@ -150,7 +153,8 @@ arczonalshift_delete_practice_run_configuration <- function(resourceIdentifier) 
     http_path = "/configuration/{resourceIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .arczonalshift$delete_practice_run_configuration_input(resourceIdentifier = resourceIdentifier)
   output <- .arczonalshift$delete_practice_run_configuration_output()
@@ -181,7 +185,8 @@ arczonalshift_get_autoshift_observer_notification_status <- function() {
     http_path = "/autoshift-observer-notification",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .arczonalshift$get_autoshift_observer_notification_status_input()
   output <- .arczonalshift$get_autoshift_observer_notification_status_output()
@@ -224,7 +229,8 @@ arczonalshift_get_managed_resource <- function(resourceIdentifier) {
     http_path = "/managedresources/{resourceIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .arczonalshift$get_managed_resource_input(resourceIdentifier = resourceIdentifier)
   output <- .arczonalshift$get_managed_resource_output()
@@ -257,7 +263,8 @@ arczonalshift_list_autoshifts <- function(nextToken = NULL, status = NULL, maxRe
     http_path = "/autoshifts",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .arczonalshift$list_autoshifts_input(nextToken = nextToken, status = status, maxResults = maxResults)
   output <- .arczonalshift$list_autoshifts_output()
@@ -291,7 +298,8 @@ arczonalshift_list_managed_resources <- function(nextToken = NULL, maxResults = 
     http_path = "/managedresources",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .arczonalshift$list_managed_resources_input(nextToken = nextToken, maxResults = maxResults)
   output <- .arczonalshift$list_managed_resources_output()
@@ -335,7 +343,8 @@ arczonalshift_list_zonal_shifts <- function(nextToken = NULL, status = NULL, max
     http_path = "/zonalshifts",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .arczonalshift$list_zonal_shifts_input(nextToken = nextToken, status = status, maxResults = maxResults, resourceIdentifier = resourceIdentifier)
   output <- .arczonalshift$list_zonal_shifts_output()
@@ -369,7 +378,8 @@ arczonalshift_start_practice_run <- function(resourceIdentifier, awayFrom, comme
     http_path = "/practiceruns",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .arczonalshift$start_practice_run_input(resourceIdentifier = resourceIdentifier, awayFrom = awayFrom, comment = comment)
   output <- .arczonalshift$start_practice_run_output()
@@ -427,7 +437,8 @@ arczonalshift_start_zonal_shift <- function(resourceIdentifier, awayFrom, expire
     http_path = "/zonalshifts",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .arczonalshift$start_zonal_shift_input(resourceIdentifier = resourceIdentifier, awayFrom = awayFrom, expiresIn = expiresIn, comment = comment)
   output <- .arczonalshift$start_zonal_shift_output()
@@ -458,7 +469,8 @@ arczonalshift_update_autoshift_observer_notification_status <- function(status) 
     http_path = "/autoshift-observer-notification",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .arczonalshift$update_autoshift_observer_notification_status_input(status = status)
   output <- .arczonalshift$update_autoshift_observer_notification_status_output()
@@ -510,7 +522,8 @@ arczonalshift_update_practice_run_configuration <- function(resourceIdentifier, 
     http_path = "/configuration/{resourceIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .arczonalshift$update_practice_run_configuration_input(resourceIdentifier = resourceIdentifier, blockedWindows = blockedWindows, blockedDates = blockedDates, blockingAlarms = blockingAlarms, allowedWindows = allowedWindows, outcomeAlarms = outcomeAlarms)
   output <- .arczonalshift$update_practice_run_configuration_output()
@@ -544,7 +557,8 @@ arczonalshift_update_zonal_autoshift_configuration <- function(resourceIdentifie
     http_path = "/managedresources/{resourceIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .arczonalshift$update_zonal_autoshift_configuration_input(resourceIdentifier = resourceIdentifier, zonalAutoshiftStatus = zonalAutoshiftStatus)
   output <- .arczonalshift$update_zonal_autoshift_configuration_output()
@@ -588,7 +602,8 @@ arczonalshift_update_zonal_shift <- function(zonalShiftId, comment = NULL, expir
     http_path = "/zonalshifts/{zonalShiftId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .arczonalshift$update_zonal_shift_input(zonalShiftId = zonalShiftId, comment = comment, expiresIn = expiresIn)
   output <- .arczonalshift$update_zonal_shift_output()

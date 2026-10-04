@@ -59,7 +59,7 @@ Amazon Web Services Well-Architected helps you evaluate your architectures again
 
 This is the \emph{Amazon Web Services Well-Architected API Reference}. Through this API, you can programmatically access personalized recommendations and automation scripts from the Amazon Web Services Well-Architected Agent, and create and manage workloads, conduct lens reviews, track milestones, manage custom lenses, share workloads across accounts, and manage profiles with the Well-Architected Tool.
 
-For more information about the service, see the \href{https://docs.aws.amazon.com/wellarchitected/latest/userguide/intro.html}{Amazon Web Services Well-Architected User Guide}.
+For more information about the service, see the \href{https://docs.aws.amazon.com/wellarchitected/latest/userguide/}{Amazon Web Services Well-Architected User Guide}.
 }
 \section{Service syntax}{
 

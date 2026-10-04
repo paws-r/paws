@@ -15,7 +15,8 @@ lexmodelsv2_create_bot_locale(
   audioFillerSettings = NULL,
   speechRecognitionSettings = NULL,
   generativeAISettings = NULL,
-  speechDetectionSensitivity = NULL
+  speechDetectionSensitivity = NULL,
+  speakerDiarizationSettings = NULL
 )
 }
 \arguments{
@@ -48,6 +49,8 @@ For example, suppose a bot is configured with the confidence threshold of 0.80 a
 \item{generativeAISettings}{Contains specifications about the generative AI capabilities from Amazon Bedrock that you can turn on for your bot.}
 
 \item{speechDetectionSensitivity}{The sensitivity level for voice activity detection (VAD) in the bot locale. This setting helps optimize speech recognition accuracy by adjusting how the system responds to background noise during voice interactions.}
+
+\item{speakerDiarizationSettings}{The speaker diarization settings to configure for the new bot locale. When enabled, Amazon Lex restricts speech detection to the primary (loudest) speaker during streaming audio conversations.}
 }
 \description{
 Creates a locale in the bot. The locale contains the intents and slot types that the bot uses in conversations with users in the specified language and locale. You must add a locale to a bot before you can add intents and slot types to the bot.

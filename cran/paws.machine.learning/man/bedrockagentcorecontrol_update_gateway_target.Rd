@@ -12,7 +12,8 @@ bedrockagentcorecontrol_update_gateway_target(
   targetConfiguration,
   credentialProviderConfigurations = NULL,
   metadataConfiguration = NULL,
-  privateEndpoint = NULL
+  privateEndpoint = NULL,
+  certificateConfigurations = NULL
 )
 }
 \arguments{
@@ -31,6 +32,8 @@ bedrockagentcorecontrol_update_gateway_target(
 \item{metadataConfiguration}{Configuration for HTTP header and query parameter propagation to the gateway target.}
 
 \item{privateEndpoint}{The private endpoint configuration for the gateway target. Use this to connect the gateway to private resources in your VPC.}
+
+\item{certificateConfigurations}{The private certificate authority (CA) configurations for the gateway target. Use this to have the gateway trust a private CA when it establishes TLS connections to the target endpoint. Provide each certificate by reference to an Amazon S3 object or an Amazon Web Services Secrets Manager secret. You can specify only one certificate authority configuration in this list. To remove a previously configured certificate authority, omit this field on update.}
 }
 \description{
 Updates an existing gateway target.

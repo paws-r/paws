@@ -170,7 +170,7 @@ In each Region, Amazon Web Services maintains multiple Availability Zones. These
 \link[paws.customer.engagement:pinpointsmsvoicev2_discard_registration_version]{discard_registration_version} \tab Discard the current version of the registration\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_get_protect_configuration_country_rule_set]{get_protect_configuration_country_rule_set} \tab Retrieve the CountryRuleSet for the specified NumberCapability from a protect configuration\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_get_resource_policy]{get_resource_policy} \tab Retrieves the JSON text of the resource-based policy document attached to the End User Messaging SMS resource\cr
-\link[paws.customer.engagement:pinpointsmsvoicev2_list_available_phone_numbers]{list_available_phone_numbers} \tab Search available phone numbers from aggregator inventory, optionally filtered by pattern\cr
+\link[paws.customer.engagement:pinpointsmsvoicev2_list_available_phone_numbers]{list_available_phone_numbers} \tab Retrieves a list of phone numbers that are available to request, based on the country, capabilities, and number type that you specify\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_list_notify_countries]{list_notify_countries} \tab Lists countries that support notify messaging\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_list_pool_origination_identities]{list_pool_origination_identities} \tab Lists all associated origination identities in your pool\cr
 \link[paws.customer.engagement:pinpointsmsvoicev2_list_protect_configuration_rule_set_number_overrides]{list_protect_configuration_rule_set_number_overrides} \tab Retrieve all of the protect configuration rule set number overrides that match the filters\cr

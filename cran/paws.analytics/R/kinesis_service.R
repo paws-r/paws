@@ -135,6 +135,7 @@ NULL
 #'  \link[=kinesis_update_max_record_size]{update_max_record_size} \tab This allows you to update the MaxRecordSize of a single record that you can write to, and read from a stream\cr
 #'  \link[=kinesis_update_shard_count]{update_shard_count} \tab Updates the shard count of the specified stream to the specified number of shards\cr
 #'  \link[=kinesis_update_stream_mode]{update_stream_mode} \tab Updates the capacity mode of the data stream\cr
+#'  \link[=kinesis_update_stream_record_distribution_strategy]{update_stream_record_distribution_strategy} \tab Updates the record distribution strategy for the specified Amazon Kinesis Data Streams on-demand data stream\cr
 #'  \link[=kinesis_update_stream_warm_throughput]{update_stream_warm_throughput} \tab Updates the warm throughput configuration for the specified Amazon Kinesis Data Streams on-demand data stream
 #' }
 #'

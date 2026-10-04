@@ -25,7 +25,8 @@ bedrockagentcore_batch_create_memory_records <- function(memoryId, records, clie
     http_path = "/memories/{memoryId}/memoryRecords/batchCreate",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$batch_create_memory_records_input(memoryId = memoryId, records = records, clientToken = clientToken)
   output <- .bedrockagentcore$batch_create_memory_records_output()
@@ -58,7 +59,8 @@ bedrockagentcore_batch_delete_memory_records <- function(memoryId, records) {
     http_path = "/memories/{memoryId}/memoryRecords/batchDelete",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$batch_delete_memory_records_input(memoryId = memoryId, records = records)
   output <- .bedrockagentcore$batch_delete_memory_records_output()
@@ -91,7 +93,8 @@ bedrockagentcore_batch_update_memory_records <- function(memoryId, records) {
     http_path = "/memories/{memoryId}/memoryRecords/batchUpdate",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$batch_update_memory_records_input(memoryId = memoryId, records = records)
   output <- .bedrockagentcore$batch_update_memory_records_output()
@@ -123,7 +126,8 @@ bedrockagentcore_complete_resource_token_auth <- function(userIdentifier, sessio
     http_path = "/identities/CompleteResourceTokenAuth",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$complete_resource_token_auth_input(userIdentifier = userIdentifier, sessionUri = sessionUri)
   output <- .bedrockagentcore$complete_resource_token_auth_output()
@@ -163,7 +167,8 @@ bedrockagentcore_create_ab_test <- function(name, description = NULL, gatewayArn
     http_path = "/ab-tests",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$create_ab_test_input(name = name, description = description, gatewayArn = gatewayArn, variants = variants, gatewayFilter = gatewayFilter, evaluationConfig = evaluationConfig, roleArn = roleArn, enableOnCreate = enableOnCreate, clientToken = clientToken, tags = tags)
   output <- .bedrockagentcore$create_ab_test_output()
@@ -203,7 +208,8 @@ bedrockagentcore_create_event <- function(memoryId, actorId, sessionId = NULL, e
     http_path = "/memories/{memoryId}/events",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$create_event_input(memoryId = memoryId, actorId = actorId, sessionId = sessionId, eventTimestamp = eventTimestamp, payload = payload, branch = branch, clientToken = clientToken, metadata = metadata, extractionMode = extractionMode, extractionConfig = extractionConfig)
   output <- .bedrockagentcore$create_event_output()
@@ -240,7 +246,8 @@ bedrockagentcore_create_payment_instrument <- function(userId = NULL, agentName 
     http_path = "/payments/createPaymentInstrument",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$create_payment_instrument_input(userId = userId, agentName = agentName, paymentManagerArn = paymentManagerArn, paymentConnectorId = paymentConnectorId, paymentInstrumentType = paymentInstrumentType, paymentInstrumentDetails = paymentInstrumentDetails, clientToken = clientToken)
   output <- .bedrockagentcore$create_payment_instrument_output()
@@ -276,7 +283,8 @@ bedrockagentcore_create_payment_session <- function(userId = NULL, agentName = N
     http_path = "/payments/createPaymentSession",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$create_payment_session_input(userId = userId, agentName = agentName, paymentManagerArn = paymentManagerArn, limits = limits, expiryTimeInMinutes = expiryTimeInMinutes, clientToken = clientToken)
   output <- .bedrockagentcore$create_payment_session_output()
@@ -307,7 +315,8 @@ bedrockagentcore_delete_ab_test <- function(abTestId) {
     http_path = "/ab-tests/{abTestId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$delete_ab_test_input(abTestId = abTestId)
   output <- .bedrockagentcore$delete_ab_test_output()
@@ -338,7 +347,8 @@ bedrockagentcore_delete_batch_evaluation <- function(batchEvaluationId) {
     http_path = "/evaluations/batch-evaluate/{batchEvaluationId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$delete_batch_evaluation_input(batchEvaluationId = batchEvaluationId)
   output <- .bedrockagentcore$delete_batch_evaluation_output()
@@ -371,7 +381,8 @@ bedrockagentcore_delete_capacity_provider_session <- function(capacityProviderId
     http_path = "/capacity-providers/{capacityProviderId}/sessions/{sessionId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$delete_capacity_provider_session_input(capacityProviderId = capacityProviderId, sessionId = sessionId)
   output <- .bedrockagentcore$delete_capacity_provider_session_output()
@@ -405,7 +416,8 @@ bedrockagentcore_delete_event <- function(memoryId, sessionId, eventId, actorId)
     http_path = "/memories/{memoryId}/actor/{actorId}/sessions/{sessionId}/events/{eventId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$delete_event_input(memoryId = memoryId, sessionId = sessionId, eventId = eventId, actorId = actorId)
   output <- .bedrockagentcore$delete_event_output()
@@ -438,7 +450,8 @@ bedrockagentcore_delete_memory_record <- function(memoryId, memoryRecordId, name
     http_path = "/memories/{memoryId}/memoryRecords/{memoryRecordId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$delete_memory_record_input(memoryId = memoryId, memoryRecordId = memoryRecordId, namespace = namespace)
   output <- .bedrockagentcore$delete_memory_record_output()
@@ -472,7 +485,8 @@ bedrockagentcore_delete_payment_instrument <- function(userId = NULL, paymentMan
     http_path = "/payments/deletePaymentInstrument",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$delete_payment_instrument_input(userId = userId, paymentManagerArn = paymentManagerArn, paymentConnectorId = paymentConnectorId, paymentInstrumentId = paymentInstrumentId)
   output <- .bedrockagentcore$delete_payment_instrument_output()
@@ -505,7 +519,8 @@ bedrockagentcore_delete_payment_session <- function(userId = NULL, paymentManage
     http_path = "/payments/deletePaymentSession",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$delete_payment_session_input(userId = userId, paymentManagerArn = paymentManagerArn, paymentSessionId = paymentSessionId)
   output <- .bedrockagentcore$delete_payment_session_output()
@@ -536,7 +551,8 @@ bedrockagentcore_delete_recommendation <- function(recommendationId) {
     http_path = "/recommendations/{recommendationId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$delete_recommendation_input(recommendationId = recommendationId)
   output <- .bedrockagentcore$delete_recommendation_output()
@@ -571,7 +587,8 @@ bedrockagentcore_evaluate <- function(evaluatorId, evaluationInput, evaluationTa
     http_path = "/evaluations/evaluate/{evaluatorId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$evaluate_input(evaluatorId = evaluatorId, evaluationInput = evaluationInput, evaluationTarget = evaluationTarget, evaluationReferenceInputs = evaluationReferenceInputs)
   output <- .bedrockagentcore$evaluate_output()
@@ -603,7 +620,8 @@ bedrockagentcore_get_ab_test <- function(abTestId) {
     http_path = "/ab-tests/{abTestId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$get_ab_test_input(abTestId = abTestId)
   output <- .bedrockagentcore$get_ab_test_output()
@@ -636,7 +654,8 @@ bedrockagentcore_get_agent_card <- function(runtimeSessionId = NULL, agentRuntim
     http_path = "/runtimes/{agentRuntimeArn}/invocations/.well-known/agent-card.json",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$get_agent_card_input(runtimeSessionId = runtimeSessionId, agentRuntimeArn = agentRuntimeArn, qualifier = qualifier)
   output <- .bedrockagentcore$get_agent_card_output()
@@ -668,7 +687,8 @@ bedrockagentcore_get_batch_evaluation <- function(batchEvaluationId) {
     http_path = "/evaluations/batch-evaluate/{batchEvaluationId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$get_batch_evaluation_input(batchEvaluationId = batchEvaluationId)
   output <- .bedrockagentcore$get_batch_evaluation_output()
@@ -701,7 +721,8 @@ bedrockagentcore_get_browser_session <- function(browserIdentifier, sessionId) {
     http_path = "/browsers/{browserIdentifier}/sessions/get",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$get_browser_session_input(browserIdentifier = browserIdentifier, sessionId = sessionId)
   output <- .bedrockagentcore$get_browser_session_output()
@@ -734,7 +755,8 @@ bedrockagentcore_get_code_interpreter_session <- function(codeInterpreterIdentif
     http_path = "/code-interpreters/{codeInterpreterIdentifier}/sessions/get",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$get_code_interpreter_session_input(codeInterpreterIdentifier = codeInterpreterIdentifier, sessionId = sessionId)
   output <- .bedrockagentcore$get_code_interpreter_session_output()
@@ -769,7 +791,8 @@ bedrockagentcore_get_event <- function(memoryId, sessionId, actorId, eventId) {
     http_path = "/memories/{memoryId}/actor/{actorId}/sessions/{sessionId}/events/{eventId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$get_event_input(memoryId = memoryId, sessionId = sessionId, actorId = actorId, eventId = eventId)
   output <- .bedrockagentcore$get_event_output()
@@ -802,7 +825,8 @@ bedrockagentcore_get_memory_record <- function(memoryId, memoryRecordId, namespa
     http_path = "/memories/{memoryId}/memoryRecord/{memoryRecordId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$get_memory_record_input(memoryId = memoryId, memoryRecordId = memoryRecordId, namespace = namespace)
   output <- .bedrockagentcore$get_memory_record_output()
@@ -837,7 +861,8 @@ bedrockagentcore_get_payment_instrument <- function(userId = NULL, agentName = N
     http_path = "/payments/getPaymentInstrument",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$get_payment_instrument_input(userId = userId, agentName = agentName, paymentManagerArn = paymentManagerArn, paymentConnectorId = paymentConnectorId, paymentInstrumentId = paymentInstrumentId)
   output <- .bedrockagentcore$get_payment_instrument_output()
@@ -874,7 +899,8 @@ bedrockagentcore_get_payment_instrument_balance <- function(userId = NULL, agent
     http_path = "/payments/getPaymentInstrumentBalance",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$get_payment_instrument_balance_input(userId = userId, agentName = agentName, paymentManagerArn = paymentManagerArn, paymentConnectorId = paymentConnectorId, paymentInstrumentId = paymentInstrumentId, chain = chain, token = token)
   output <- .bedrockagentcore$get_payment_instrument_balance_output()
@@ -908,7 +934,8 @@ bedrockagentcore_get_payment_session <- function(userId = NULL, agentName = NULL
     http_path = "/payments/getPaymentSession",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$get_payment_session_input(userId = userId, agentName = agentName, paymentManagerArn = paymentManagerArn, paymentSessionId = paymentSessionId)
   output <- .bedrockagentcore$get_payment_session_output()
@@ -940,7 +967,8 @@ bedrockagentcore_get_recommendation <- function(recommendationId) {
     http_path = "/recommendations/{recommendationId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$get_recommendation_input(recommendationId = recommendationId)
   output <- .bedrockagentcore$get_recommendation_output()
@@ -972,7 +1000,8 @@ bedrockagentcore_get_resource_api_key <- function(workloadIdentityToken, resourc
     http_path = "/identities/api-key",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$get_resource_api_key_input(workloadIdentityToken = workloadIdentityToken, resourceCredentialProviderName = resourceCredentialProviderName)
   output <- .bedrockagentcore$get_resource_api_key_output()
@@ -1013,7 +1042,8 @@ bedrockagentcore_get_resource_oauth_2_token <- function(workloadIdentityToken, r
     http_path = "/identities/oauth2/token",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$get_resource_oauth_2_token_input(workloadIdentityToken = workloadIdentityToken, resourceCredentialProviderName = resourceCredentialProviderName, scopes = scopes, oauth2Flow = oauth2Flow, sessionUri = sessionUri, resourceOauth2ReturnUrl = resourceOauth2ReturnUrl, forceAuthentication = forceAuthentication, customParameters = customParameters, customState = customState, resources = resources, audiences = audiences)
   output <- .bedrockagentcore$get_resource_oauth_2_token_output()
@@ -1047,7 +1077,8 @@ bedrockagentcore_get_resource_payment_token <- function(workloadIdentityToken, r
     http_path = "/identities/payment/token",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$get_resource_payment_token_input(workloadIdentityToken = workloadIdentityToken, resourceCredentialProviderName = resourceCredentialProviderName, paymentTokenRequest = paymentTokenRequest)
   output <- .bedrockagentcore$get_resource_payment_token_output()
@@ -1079,7 +1110,8 @@ bedrockagentcore_get_workload_access_token <- function(workloadName) {
     http_path = "/identities/GetWorkloadAccessToken",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$get_workload_access_token_input(workloadName = workloadName)
   output <- .bedrockagentcore$get_workload_access_token_output()
@@ -1112,7 +1144,8 @@ bedrockagentcore_get_workload_access_token_for_jwt <- function(workloadName, use
     http_path = "/identities/GetWorkloadAccessTokenForJWT",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$get_workload_access_token_for_jwt_input(workloadName = workloadName, userToken = userToken)
   output <- .bedrockagentcore$get_workload_access_token_for_jwt_output()
@@ -1145,7 +1178,8 @@ bedrockagentcore_get_workload_access_token_for_user_id <- function(workloadName,
     http_path = "/identities/GetWorkloadAccessTokenForUserId",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$get_workload_access_token_for_user_id_input(workloadName = workloadName, userId = userId)
   output <- .bedrockagentcore$get_workload_access_token_for_user_id_output()
@@ -1184,7 +1218,8 @@ bedrockagentcore_ingest_data <- function(memoryId, source, contentTimestamp, act
     http_path = "/memories/{memoryId}/ingest",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$ingest_data_input(memoryId = memoryId, source = source, contentTimestamp = contentTimestamp, actorId = actorId, sessionId = sessionId, extractionConfig = extractionConfig, metadata = metadata, clientToken = clientToken)
   output <- .bedrockagentcore$ingest_data_output()
@@ -1237,7 +1272,8 @@ bedrockagentcore_invoke_agent_runtime <- function(contentType = NULL, accept = N
     http_path = "/runtimes/{agentRuntimeArn}/invocations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$invoke_agent_runtime_input(contentType = contentType, accept = accept, mcpSessionId = mcpSessionId, runtimeSessionId = runtimeSessionId, mcpProtocolVersion = mcpProtocolVersion, mcpMethod = mcpMethod, mcpName = mcpName, runtimeUserId = runtimeUserId, traceId = traceId, traceParent = traceParent, traceState = traceState, baggage = baggage, agentRuntimeArn = agentRuntimeArn, qualifier = qualifier, accountId = accountId, payload = payload)
   output <- .bedrockagentcore$invoke_agent_runtime_output()
@@ -1279,7 +1315,8 @@ bedrockagentcore_invoke_agent_runtime_command <- function(contentType = NULL, ac
     http_path = "/runtimes/{agentRuntimeArn}/commands",
     host_prefix = "",
     paginator = list(),
-    stream_api = TRUE
+    stream_api = TRUE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$invoke_agent_runtime_command_input(contentType = contentType, accept = accept, runtimeSessionId = runtimeSessionId, traceId = traceId, traceParent = traceParent, traceState = traceState, baggage = baggage, agentRuntimeArn = agentRuntimeArn, qualifier = qualifier, accountId = accountId, body = body)
   output <- .bedrockagentcore$invoke_agent_runtime_command_output()
@@ -1313,7 +1350,8 @@ bedrockagentcore_invoke_browser <- function(browserIdentifier, sessionId, action
     http_path = "/browsers/{browserIdentifier}/sessions/invoke",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$invoke_browser_input(browserIdentifier = browserIdentifier, sessionId = sessionId, action = action)
   output <- .bedrockagentcore$invoke_browser_output()
@@ -1350,7 +1388,8 @@ bedrockagentcore_invoke_code_interpreter <- function(codeInterpreterIdentifier, 
     http_path = "/code-interpreters/{codeInterpreterIdentifier}/tools/invoke",
     host_prefix = "",
     paginator = list(),
-    stream_api = TRUE
+    stream_api = TRUE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$invoke_code_interpreter_input(codeInterpreterIdentifier = codeInterpreterIdentifier, sessionId = sessionId, traceId = traceId, traceParent = traceParent, name = name, arguments = arguments)
   output <- .bedrockagentcore$invoke_code_interpreter_output()
@@ -1398,7 +1437,8 @@ bedrockagentcore_invoke_harness <- function(harnessArn, qualifier = NULL, runtim
     http_path = "/harnesses/invoke",
     host_prefix = "",
     paginator = list(),
-    stream_api = TRUE
+    stream_api = TRUE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$invoke_harness_input(harnessArn = harnessArn, qualifier = qualifier, runtimeSessionId = runtimeSessionId, runtimeUserId = runtimeUserId, traceParent = traceParent, traceState = traceState, traceId = traceId, baggage = baggage, messages = messages, model = model, systemPrompt = systemPrompt, tools = tools, skills = skills, allowedTools = allowedTools, maxIterations = maxIterations, maxTokens = maxTokens, timeoutSeconds = timeoutSeconds, actorId = actorId)
   output <- .bedrockagentcore$invoke_harness_output()
@@ -1430,7 +1470,8 @@ bedrockagentcore_list_ab_tests <- function(maxResults = NULL, nextToken = NULL) 
     http_path = "/ab-tests",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "abTests"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$list_ab_tests_input(maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagentcore$list_ab_tests_output()
@@ -1463,7 +1504,8 @@ bedrockagentcore_list_actors <- function(memoryId, maxResults = NULL, nextToken 
     http_path = "/memories/{memoryId}/actors",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "actorSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$list_actors_input(memoryId = memoryId, maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagentcore$list_actors_output()
@@ -1496,7 +1538,8 @@ bedrockagentcore_list_batch_evaluations <- function(maxResults = NULL, nextToken
     http_path = "/evaluations/batch-evaluate",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "batchEvaluations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$list_batch_evaluations_input(maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagentcore$list_batch_evaluations_output()
@@ -1531,7 +1574,8 @@ bedrockagentcore_list_browser_sessions <- function(browserIdentifier, maxResults
     http_path = "/browsers/{browserIdentifier}/sessions/list",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$list_browser_sessions_input(browserIdentifier = browserIdentifier, maxResults = maxResults, nextToken = nextToken, status = status)
   output <- .bedrockagentcore$list_browser_sessions_output()
@@ -1566,7 +1610,8 @@ bedrockagentcore_list_code_interpreter_sessions <- function(codeInterpreterIdent
     http_path = "/code-interpreters/{codeInterpreterIdentifier}/sessions/list",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$list_code_interpreter_sessions_input(codeInterpreterIdentifier = codeInterpreterIdentifier, maxResults = maxResults, nextToken = nextToken, status = status)
   output <- .bedrockagentcore$list_code_interpreter_sessions_output()
@@ -1603,7 +1648,8 @@ bedrockagentcore_list_events <- function(memoryId, sessionId, actorId, includePa
     http_path = "/memories/{memoryId}/actor/{actorId}/sessions/{sessionId}",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "events"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$list_events_input(memoryId = memoryId, sessionId = sessionId, actorId = actorId, includePayloads = includePayloads, filter = filter, maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagentcore$list_events_output()
@@ -1638,7 +1684,8 @@ bedrockagentcore_list_memory_extraction_jobs <- function(memoryId, maxResults = 
     http_path = "/memories/{memoryId}/extractionJobs",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobs"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$list_memory_extraction_jobs_input(memoryId = memoryId, maxResults = maxResults, filter = filter, nextToken = nextToken)
   output <- .bedrockagentcore$list_memory_extraction_jobs_output()
@@ -1676,7 +1723,8 @@ bedrockagentcore_list_memory_records <- function(memoryId, namespace = NULL, nam
     http_path = "/memories/{memoryId}/memoryRecords",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "memoryRecordSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$list_memory_records_input(memoryId = memoryId, namespace = namespace, namespacePath = namespacePath, memoryStrategyId = memoryStrategyId, maxResults = maxResults, nextToken = nextToken, metadataFilters = metadataFilters)
   output <- .bedrockagentcore$list_memory_records_output()
@@ -1712,7 +1760,8 @@ bedrockagentcore_list_payment_instruments <- function(userId = NULL, agentName =
     http_path = "/payments/listPaymentInstruments",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "paymentInstruments"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$list_payment_instruments_input(userId = userId, agentName = agentName, paymentManagerArn = paymentManagerArn, paymentConnectorId = paymentConnectorId, nextToken = nextToken, maxResults = maxResults)
   output <- .bedrockagentcore$list_payment_instruments_output()
@@ -1747,7 +1796,8 @@ bedrockagentcore_list_payment_sessions <- function(userId = NULL, agentName = NU
     http_path = "/payments/listPaymentSessions",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "paymentSessions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$list_payment_sessions_input(userId = userId, agentName = agentName, paymentManagerArn = paymentManagerArn, nextToken = nextToken, maxResults = maxResults)
   output <- .bedrockagentcore$list_payment_sessions_output()
@@ -1781,7 +1831,8 @@ bedrockagentcore_list_recommendations <- function(maxResults = NULL, nextToken =
     http_path = "/recommendations",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "recommendationSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$list_recommendations_input(maxResults = maxResults, nextToken = nextToken, statusFilter = statusFilter)
   output <- .bedrockagentcore$list_recommendations_output()
@@ -1817,7 +1868,8 @@ bedrockagentcore_list_sessions <- function(memoryId, actorId, maxResults = NULL,
     http_path = "/memories/{memoryId}/actor/{actorId}/sessions",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "sessionSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$list_sessions_input(memoryId = memoryId, actorId = actorId, maxResults = maxResults, nextToken = nextToken, filter = filter)
   output <- .bedrockagentcore$list_sessions_output()
@@ -1855,7 +1907,8 @@ bedrockagentcore_process_payment <- function(userId = NULL, agentName = NULL, pa
     http_path = "/payments/processPayment",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$process_payment_input(userId = userId, agentName = agentName, paymentManagerArn = paymentManagerArn, paymentSessionId = paymentSessionId, paymentInstrumentId = paymentInstrumentId, paymentType = paymentType, paymentInput = paymentInput, clientToken = clientToken)
   output <- .bedrockagentcore$process_payment_output()
@@ -1892,7 +1945,8 @@ bedrockagentcore_retrieve_memory_records <- function(memoryId, namespace = NULL,
     http_path = "/memories/{memoryId}/retrieve",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "memoryRecordSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$retrieve_memory_records_input(memoryId = memoryId, namespace = namespace, namespacePath = namespacePath, searchCriteria = searchCriteria, nextToken = nextToken, maxResults = maxResults)
   output <- .bedrockagentcore$retrieve_memory_records_output()
@@ -1929,7 +1983,8 @@ bedrockagentcore_save_browser_session_profile <- function(traceId = NULL, traceP
     http_path = "/browser-profiles/{profileIdentifier}/save",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$save_browser_session_profile_input(traceId = traceId, traceParent = traceParent, profileIdentifier = profileIdentifier, browserIdentifier = browserIdentifier, sessionId = sessionId, clientToken = clientToken)
   output <- .bedrockagentcore$save_browser_session_profile_output()
@@ -1963,7 +2018,8 @@ bedrockagentcore_search_registry_records <- function(searchQuery, registryIds, m
     http_path = "/registry-records/search",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$search_registry_records_input(searchQuery = searchQuery, registryIds = registryIds, maxResults = maxResults, filters = filters)
   output <- .bedrockagentcore$search_registry_records_output()
@@ -2004,7 +2060,8 @@ bedrockagentcore_start_batch_evaluation <- function(batchEvaluationName, evaluat
     http_path = "/evaluations/batch-evaluate",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$start_batch_evaluation_input(batchEvaluationName = batchEvaluationName, evaluators = evaluators, insights = insights, dataSourceConfig = dataSourceConfig, clientToken = clientToken, evaluationMetadata = evaluationMetadata, tags = tags, kmsKeyArn = kmsKeyArn, description = description, outputConfig = outputConfig)
   output <- .bedrockagentcore$start_batch_evaluation_output()
@@ -2047,7 +2104,8 @@ bedrockagentcore_start_browser_session <- function(traceId = NULL, traceParent =
     http_path = "/browsers/{browserIdentifier}/sessions/start",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$start_browser_session_input(traceId = traceId, traceParent = traceParent, browserIdentifier = browserIdentifier, name = name, sessionTimeoutSeconds = sessionTimeoutSeconds, viewPort = viewPort, extensions = extensions, profileConfiguration = profileConfiguration, proxyConfiguration = proxyConfiguration, enterprisePolicies = enterprisePolicies, certificates = certificates, filesystemConfigurations = filesystemConfigurations, clientToken = clientToken)
   output <- .bedrockagentcore$start_browser_session_output()
@@ -2086,7 +2144,8 @@ bedrockagentcore_start_code_interpreter_session <- function(traceId = NULL, trac
     http_path = "/code-interpreters/{codeInterpreterIdentifier}/sessions/start",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$start_code_interpreter_session_input(traceId = traceId, traceParent = traceParent, codeInterpreterIdentifier = codeInterpreterIdentifier, name = name, sessionTimeoutSeconds = sessionTimeoutSeconds, certificates = certificates, filesystemConfigurations = filesystemConfigurations, clientToken = clientToken)
   output <- .bedrockagentcore$start_code_interpreter_session_output()
@@ -2121,7 +2180,8 @@ bedrockagentcore_start_memory_extraction_job <- function(memoryId, extractionJob
     http_path = "/memories/{memoryId}/extractionJobs/start",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$start_memory_extraction_job_input(memoryId = memoryId, extractionJob = extractionJob, clientToken = clientToken)
   output <- .bedrockagentcore$start_memory_extraction_job_output()
@@ -2160,7 +2220,8 @@ bedrockagentcore_start_recommendation <- function(name, description = NULL, type
     http_path = "/recommendations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$start_recommendation_input(name = name, description = description, type = type, recommendationConfig = recommendationConfig, kmsKeyArn = kmsKeyArn, clientToken = clientToken, tags = tags)
   output <- .bedrockagentcore$start_recommendation_output()
@@ -2191,7 +2252,8 @@ bedrockagentcore_stop_batch_evaluation <- function(batchEvaluationId) {
     http_path = "/evaluations/batch-evaluate/{batchEvaluationId}/stop",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$stop_batch_evaluation_input(batchEvaluationId = batchEvaluationId)
   output <- .bedrockagentcore$stop_batch_evaluation_output()
@@ -2226,7 +2288,8 @@ bedrockagentcore_stop_browser_session <- function(traceId = NULL, traceParent = 
     http_path = "/browsers/{browserIdentifier}/sessions/stop",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$stop_browser_session_input(traceId = traceId, traceParent = traceParent, browserIdentifier = browserIdentifier, sessionId = sessionId, clientToken = clientToken)
   output <- .bedrockagentcore$stop_browser_session_output()
@@ -2262,7 +2325,8 @@ bedrockagentcore_stop_code_interpreter_session <- function(traceId = NULL, trace
     http_path = "/code-interpreters/{codeInterpreterIdentifier}/sessions/stop",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$stop_code_interpreter_session_input(traceId = traceId, traceParent = traceParent, codeInterpreterIdentifier = codeInterpreterIdentifier, sessionId = sessionId, clientToken = clientToken)
   output <- .bedrockagentcore$stop_code_interpreter_session_output()
@@ -2296,7 +2360,8 @@ bedrockagentcore_stop_runtime_session <- function(runtimeSessionId, agentRuntime
     http_path = "/runtimes/{agentRuntimeArn}/stopruntimesession",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$stop_runtime_session_input(runtimeSessionId = runtimeSessionId, agentRuntimeArn = agentRuntimeArn, qualifier = qualifier, clientToken = clientToken)
   output <- .bedrockagentcore$stop_runtime_session_output()
@@ -2336,7 +2401,8 @@ bedrockagentcore_update_ab_test <- function(abTestId, clientToken = NULL, name =
     http_path = "/ab-tests/{abTestId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$update_ab_test_input(abTestId = abTestId, clientToken = clientToken, name = name, description = description, variants = variants, gatewayFilter = gatewayFilter, evaluationConfig = evaluationConfig, roleArn = roleArn, executionStatus = executionStatus)
   output <- .bedrockagentcore$update_ab_test_output()
@@ -2370,7 +2436,8 @@ bedrockagentcore_update_browser_stream <- function(browserIdentifier, sessionId,
     http_path = "/browsers/{browserIdentifier}/sessions/streams/update",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentcore$update_browser_stream_input(browserIdentifier = browserIdentifier, sessionId = sessionId, streamUpdate = streamUpdate, clientToken = clientToken)
   output <- .bedrockagentcore$update_browser_stream_output()

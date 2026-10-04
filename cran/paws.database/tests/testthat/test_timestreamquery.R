@@ -1,4 +1,4 @@
-svc <- paws.database::timestreamquery()
+svc <- paws::timestreamquery()
 
 test_that("describe_account_settings", {
   skip_on_cran()

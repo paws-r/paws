@@ -113,6 +113,16 @@ NULL
   return(populate(args, .billing_shapes[["get_resource_policy_output"]]))
 }
 
+.billing$list_billing_view_segments_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .billing_shapes[["list_billing_view_segments_input"]]))
+}
+
+.billing$list_billing_view_segments_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .billing_shapes[["list_billing_view_segments_output"]]))
+}
+
 .billing$list_billing_views_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   return(populate(args, .billing_shapes[["list_billing_views_input"]]))
@@ -121,6 +131,26 @@ NULL
 .billing$list_billing_views_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   return(populate(args, .billing_shapes[["list_billing_views_output"]]))
+}
+
+.billing$list_business_support_account_charges_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .billing_shapes[["list_business_support_account_charges_input"]]))
+}
+
+.billing$list_business_support_account_charges_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .billing_shapes[["list_business_support_account_charges_output"]]))
+}
+
+.billing$list_business_support_subscription_history_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .billing_shapes[["list_business_support_subscription_history_input"]]))
+}
+
+.billing$list_business_support_subscription_history_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .billing_shapes[["list_business_support_subscription_history_output"]]))
 }
 
 .billing$list_enterprise_support_linked_account_charges_input <- function(...) {

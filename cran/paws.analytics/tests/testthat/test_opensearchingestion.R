@@ -1,4 +1,4 @@
-svc <- paws.analytics::opensearchingestion()
+svc <- paws::opensearchingestion()
 
 test_that("list_pipeline_blueprints", {
   skip_on_cran()

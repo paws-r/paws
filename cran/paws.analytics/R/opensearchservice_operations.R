@@ -23,7 +23,8 @@ opensearchservice_accept_inbound_connection <- function(ConnectionId) {
     http_path = "/2021-01-01/opensearch/cc/inboundConnection/{ConnectionId}/accept",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$accept_inbound_connection_input(ConnectionId = ConnectionId)
   output <- .opensearchservice$accept_inbound_connection_output()
@@ -57,7 +58,8 @@ opensearchservice_add_data_source <- function(DomainName, Name, DataSourceType, 
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/dataSource",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$add_data_source_input(DomainName = DomainName, Name = Name, DataSourceType = DataSourceType, Description = Description)
   output <- .opensearchservice$add_data_source_output()
@@ -94,7 +96,8 @@ opensearchservice_add_direct_query_data_source <- function(DataSourceName, DataS
     http_path = "/2021-01-01/opensearch/directQueryDataSource",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$add_direct_query_data_source_input(DataSourceName = DataSourceName, DataSourceType = DataSourceType, Description = Description, OpenSearchArns = OpenSearchArns, DataSourceAccessPolicy = DataSourceAccessPolicy, TagList = TagList)
   output <- .opensearchservice$add_direct_query_data_source_output()
@@ -127,7 +130,8 @@ opensearchservice_add_tags <- function(ARN, TagList) {
     http_path = "/2021-01-01/tags",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$add_tags_input(ARN = ARN, TagList = TagList)
   output <- .opensearchservice$add_tags_output()
@@ -161,7 +165,8 @@ opensearchservice_associate_package <- function(PackageID, DomainName, Prerequis
     http_path = "/2021-01-01/packages/associate/{PackageID}/{DomainName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$associate_package_input(PackageID = PackageID, DomainName = DomainName, PrerequisitePackageIDList = PrerequisitePackageIDList, AssociationConfiguration = AssociationConfiguration)
   output <- .opensearchservice$associate_package_output()
@@ -194,7 +199,8 @@ opensearchservice_associate_packages <- function(PackageList, DomainName) {
     http_path = "/2021-01-01/packages/associateMultiple",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$associate_packages_input(PackageList = PackageList, DomainName = DomainName)
   output <- .opensearchservice$associate_packages_output()
@@ -229,7 +235,8 @@ opensearchservice_attach_data_source <- function(id, dataSourceArn, workspaceId 
     http_path = "/2021-01-01/opensearch/application/{id}/attachDataSource",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$attach_data_source_input(id = id, dataSourceArn = dataSourceArn, workspaceId = workspaceId, workspaceConfiguration = workspaceConfiguration, clientToken = clientToken)
   output <- .opensearchservice$attach_data_source_output()
@@ -264,7 +271,8 @@ opensearchservice_authorize_vpc_endpoint_access <- function(DomainName, Account 
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/authorizeVpcEndpointAccess",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$authorize_vpc_endpoint_access_input(DomainName = DomainName, Account = Account, Service = Service, ServiceOptions = ServiceOptions)
   output <- .opensearchservice$authorize_vpc_endpoint_access_output()
@@ -297,7 +305,8 @@ opensearchservice_cancel_domain_config_change <- function(DomainName, DryRun = N
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/config/cancel",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$cancel_domain_config_change_input(DomainName = DomainName, DryRun = DryRun)
   output <- .opensearchservice$cancel_domain_config_change_output()
@@ -329,7 +338,8 @@ opensearchservice_cancel_service_software_update <- function(DomainName) {
     http_path = "/2021-01-01/opensearch/serviceSoftwareUpdate/cancel",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$cancel_service_software_update_input(DomainName = DomainName)
   output <- .opensearchservice$cancel_service_software_update_output()
@@ -366,7 +376,8 @@ opensearchservice_create_application <- function(clientToken = NULL, name, dataS
     http_path = "/2021-01-01/opensearch/application",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$create_application_input(clientToken = clientToken, name = name, dataSources = dataSources, iamIdentityCenterOptions = iamIdentityCenterOptions, appConfigs = appConfigs, tagList = tagList, kmsKeyArn = kmsKeyArn)
   output <- .opensearchservice$create_application_output()
@@ -435,7 +446,8 @@ opensearchservice_create_domain <- function(DomainName, EngineVersion = NULL, Cl
     http_path = "/2021-01-01/opensearch/domain",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$create_domain_input(DomainName = DomainName, EngineVersion = EngineVersion, ClusterConfig = ClusterConfig, EBSOptions = EBSOptions, AccessPolicies = AccessPolicies, IPAddressType = IPAddressType, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedOptions = AdvancedOptions, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, IdentityCenterOptions = IdentityCenterOptions, TagList = TagList, AutoTuneOptions = AutoTuneOptions, OffPeakWindowOptions = OffPeakWindowOptions, SoftwareUpdateOptions = SoftwareUpdateOptions, AIMLOptions = AIMLOptions, DeploymentStrategyOptions = DeploymentStrategyOptions, AutomatedSnapshotPauseOptions = AutomatedSnapshotPauseOptions, UseCase = UseCase, EngineMode = EngineMode)
   output <- .opensearchservice$create_domain_output()
@@ -469,7 +481,8 @@ opensearchservice_create_index <- function(DomainName, IndexName, IndexSchema) {
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/index",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$create_index_input(DomainName = DomainName, IndexName = IndexName, IndexSchema = IndexSchema)
   output <- .opensearchservice$create_index_output()
@@ -505,7 +518,8 @@ opensearchservice_create_outbound_connection <- function(LocalDomainInfo, Remote
     http_path = "/2021-01-01/opensearch/cc/outboundConnection",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$create_outbound_connection_input(LocalDomainInfo = LocalDomainInfo, RemoteDomainInfo = RemoteDomainInfo, ConnectionAlias = ConnectionAlias, ConnectionMode = ConnectionMode, ConnectionProperties = ConnectionProperties)
   output <- .opensearchservice$create_outbound_connection_output()
@@ -543,7 +557,8 @@ opensearchservice_create_package <- function(PackageName, PackageType, PackageDe
     http_path = "/2021-01-01/packages",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$create_package_input(PackageName = PackageName, PackageType = PackageType, PackageDescription = PackageDescription, PackageSource = PackageSource, PackageConfiguration = PackageConfiguration, EngineVersion = EngineVersion, PackageVendingOptions = PackageVendingOptions, PackageEncryptionOptions = PackageEncryptionOptions)
   output <- .opensearchservice$create_package_output()
@@ -576,7 +591,8 @@ opensearchservice_create_vpc_endpoint <- function(DomainArn, VpcOptions, ClientT
     http_path = "/2021-01-01/opensearch/vpcEndpoints",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$create_vpc_endpoint_input(DomainArn = DomainArn, VpcOptions = VpcOptions, ClientToken = ClientToken)
   output <- .opensearchservice$create_vpc_endpoint_output()
@@ -607,7 +623,8 @@ opensearchservice_delete_application <- function(id) {
     http_path = "/2021-01-01/opensearch/application/{id}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$delete_application_input(id = id)
   output <- .opensearchservice$delete_application_output()
@@ -639,7 +656,8 @@ opensearchservice_delete_data_source <- function(DomainName, Name) {
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/dataSource/{DataSourceName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$delete_data_source_input(DomainName = DomainName, Name = Name)
   output <- .opensearchservice$delete_data_source_output()
@@ -671,7 +689,8 @@ opensearchservice_delete_direct_query_data_source <- function(DataSourceName) {
     http_path = "/2021-01-01/opensearch/directQueryDataSource/{DataSourceName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$delete_direct_query_data_source_input(DataSourceName = DataSourceName)
   output <- .opensearchservice$delete_direct_query_data_source_output()
@@ -702,7 +721,8 @@ opensearchservice_delete_domain <- function(DomainName) {
     http_path = "/2021-01-01/opensearch/domain/{DomainName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$delete_domain_input(DomainName = DomainName)
   output <- .opensearchservice$delete_domain_output()
@@ -734,7 +754,8 @@ opensearchservice_delete_inbound_connection <- function(ConnectionId) {
     http_path = "/2021-01-01/opensearch/cc/inboundConnection/{ConnectionId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$delete_inbound_connection_input(ConnectionId = ConnectionId)
   output <- .opensearchservice$delete_inbound_connection_output()
@@ -766,7 +787,8 @@ opensearchservice_delete_index <- function(DomainName, IndexName) {
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/index/{IndexName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$delete_index_input(DomainName = DomainName, IndexName = IndexName)
   output <- .opensearchservice$delete_index_output()
@@ -798,7 +820,8 @@ opensearchservice_delete_outbound_connection <- function(ConnectionId) {
     http_path = "/2021-01-01/opensearch/cc/outboundConnection/{ConnectionId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$delete_outbound_connection_input(ConnectionId = ConnectionId)
   output <- .opensearchservice$delete_outbound_connection_output()
@@ -829,7 +852,8 @@ opensearchservice_delete_package <- function(PackageID) {
     http_path = "/2021-01-01/packages/{PackageID}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$delete_package_input(PackageID = PackageID)
   output <- .opensearchservice$delete_package_output()
@@ -860,7 +884,8 @@ opensearchservice_delete_vpc_endpoint <- function(VpcEndpointId) {
     http_path = "/2021-01-01/opensearch/vpcEndpoints/{VpcEndpointId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$delete_vpc_endpoint_input(VpcEndpointId = VpcEndpointId)
   output <- .opensearchservice$delete_vpc_endpoint_output()
@@ -892,7 +917,8 @@ opensearchservice_deregister_capability <- function(applicationId, capabilityNam
     http_path = "/2021-01-01/opensearch/application/{ApplicationId}/capability/deregister/{CapabilityName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$deregister_capability_input(applicationId = applicationId, capabilityName = capabilityName)
   output <- .opensearchservice$deregister_capability_output()
@@ -925,7 +951,8 @@ opensearchservice_describe_data_source_attachment <- function(id, dataSourceArn)
     http_path = "/2021-01-01/opensearch/application/{id}/describeDataSourceAttachment",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$describe_data_source_attachment_input(id = id, dataSourceArn = dataSourceArn)
   output <- .opensearchservice$describe_data_source_attachment_output()
@@ -958,7 +985,8 @@ opensearchservice_describe_domain <- function(DomainName) {
     http_path = "/2021-01-01/opensearch/domain/{DomainName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$describe_domain_input(DomainName = DomainName)
   output <- .opensearchservice$describe_domain_output()
@@ -992,7 +1020,8 @@ opensearchservice_describe_domain_auto_tunes <- function(DomainName, MaxResults 
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/autoTunes",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$describe_domain_auto_tunes_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .opensearchservice$describe_domain_auto_tunes_output()
@@ -1025,7 +1054,8 @@ opensearchservice_describe_domain_change_progress <- function(DomainName, Change
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/progress",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$describe_domain_change_progress_input(DomainName = DomainName, ChangeId = ChangeId)
   output <- .opensearchservice$describe_domain_change_progress_output()
@@ -1056,7 +1086,8 @@ opensearchservice_describe_domain_config <- function(DomainName) {
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/config",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$describe_domain_config_input(DomainName = DomainName)
   output <- .opensearchservice$describe_domain_config_output()
@@ -1089,7 +1120,8 @@ opensearchservice_describe_domain_health <- function(DomainName) {
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/health",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$describe_domain_health_input(DomainName = DomainName)
   output <- .opensearchservice$describe_domain_health_output()
@@ -1122,7 +1154,8 @@ opensearchservice_describe_domain_nodes <- function(DomainName) {
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/nodes",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$describe_domain_nodes_input(DomainName = DomainName)
   output <- .opensearchservice$describe_domain_nodes_output()
@@ -1154,7 +1187,8 @@ opensearchservice_describe_domains <- function(DomainNames) {
     http_path = "/2021-01-01/opensearch/domain-info",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$describe_domains_input(DomainNames = DomainNames)
   output <- .opensearchservice$describe_domains_output()
@@ -1188,7 +1222,8 @@ opensearchservice_describe_dry_run_progress <- function(DomainName, DryRunId = N
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/dryRun",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$describe_dry_run_progress_input(DomainName = DomainName, DryRunId = DryRunId, LoadDryRunConfig = LoadDryRunConfig)
   output <- .opensearchservice$describe_dry_run_progress_output()
@@ -1222,7 +1257,8 @@ opensearchservice_describe_inbound_connections <- function(Filters = NULL, MaxRe
     http_path = "/2021-01-01/opensearch/cc/inboundConnection/search",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$describe_inbound_connections_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .opensearchservice$describe_inbound_connections_output()
@@ -1256,7 +1292,8 @@ opensearchservice_describe_insight_details <- function(Entity, InsightId, ShowHt
     http_path = "/2021-01-01/opensearch/insight-details",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$describe_insight_details_input(Entity = Entity, InsightId = InsightId, ShowHtmlContent = ShowHtmlContent)
   output <- .opensearchservice$describe_insight_details_output()
@@ -1290,7 +1327,8 @@ opensearchservice_describe_instance_type_limits <- function(DomainName = NULL, I
     http_path = "/2021-01-01/opensearch/instanceTypeLimits/{EngineVersion}/{InstanceType}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$describe_instance_type_limits_input(DomainName = DomainName, InstanceType = InstanceType, EngineVersion = EngineVersion)
   output <- .opensearchservice$describe_instance_type_limits_output()
@@ -1324,7 +1362,8 @@ opensearchservice_describe_outbound_connections <- function(Filters = NULL, MaxR
     http_path = "/2021-01-01/opensearch/cc/outboundConnection/search",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$describe_outbound_connections_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .opensearchservice$describe_outbound_connections_output()
@@ -1357,7 +1396,8 @@ opensearchservice_describe_packages <- function(Filters = NULL, MaxResults = NUL
     http_path = "/2021-01-01/packages/describe",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$describe_packages_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .opensearchservice$describe_packages_output()
@@ -1391,7 +1431,8 @@ opensearchservice_describe_reserved_instance_offerings <- function(ReservedInsta
     http_path = "/2021-01-01/opensearch/reservedInstanceOfferings",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$describe_reserved_instance_offerings_input(ReservedInstanceOfferingId = ReservedInstanceOfferingId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .opensearchservice$describe_reserved_instance_offerings_output()
@@ -1425,7 +1466,8 @@ opensearchservice_describe_reserved_instances <- function(ReservedInstanceId = N
     http_path = "/2021-01-01/opensearch/reservedInstances",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$describe_reserved_instances_input(ReservedInstanceId = ReservedInstanceId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .opensearchservice$describe_reserved_instances_output()
@@ -1456,7 +1498,8 @@ opensearchservice_describe_vpc_endpoints <- function(VpcEndpointIds) {
     http_path = "/2021-01-01/opensearch/vpcEndpoints/describe",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$describe_vpc_endpoints_input(VpcEndpointIds = VpcEndpointIds)
   output <- .opensearchservice$describe_vpc_endpoints_output()
@@ -1488,7 +1531,8 @@ opensearchservice_detach_data_source <- function(id, dataSourceArn) {
     http_path = "/2021-01-01/opensearch/application/{id}/detachDataSource",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$detach_data_source_input(id = id, dataSourceArn = dataSourceArn)
   output <- .opensearchservice$detach_data_source_output()
@@ -1520,7 +1564,8 @@ opensearchservice_dissociate_package <- function(PackageID, DomainName) {
     http_path = "/2021-01-01/packages/dissociate/{PackageID}/{DomainName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$dissociate_package_input(PackageID = PackageID, DomainName = DomainName)
   output <- .opensearchservice$dissociate_package_output()
@@ -1552,7 +1597,8 @@ opensearchservice_dissociate_packages <- function(PackageList, DomainName) {
     http_path = "/2021-01-01/packages/dissociateMultiple",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$dissociate_packages_input(PackageList = PackageList, DomainName = DomainName)
   output <- .opensearchservice$dissociate_packages_output()
@@ -1584,7 +1630,8 @@ opensearchservice_get_application <- function(id) {
     http_path = "/2021-01-01/opensearch/application/{id}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$get_application_input(id = id)
   output <- .opensearchservice$get_application_output()
@@ -1617,7 +1664,8 @@ opensearchservice_get_capability <- function(applicationId, capabilityName) {
     http_path = "/2021-01-01/opensearch/application/{ApplicationId}/capability/{CapabilityName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$get_capability_input(applicationId = applicationId, capabilityName = capabilityName)
   output <- .opensearchservice$get_capability_output()
@@ -1649,7 +1697,8 @@ opensearchservice_get_compatible_versions <- function(DomainName = NULL) {
     http_path = "/2021-01-01/opensearch/compatibleVersions",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$get_compatible_versions_input(DomainName = DomainName)
   output <- .opensearchservice$get_compatible_versions_output()
@@ -1681,7 +1730,8 @@ opensearchservice_get_data_source <- function(DomainName, Name) {
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/dataSource/{DataSourceName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$get_data_source_input(DomainName = DomainName, Name = Name)
   output <- .opensearchservice$get_data_source_output()
@@ -1712,7 +1762,8 @@ opensearchservice_get_default_application_setting <- function() {
     http_path = "/2021-01-01/opensearch/defaultApplicationSetting",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$get_default_application_setting_input()
   output <- .opensearchservice$get_default_application_setting_output()
@@ -1744,7 +1795,8 @@ opensearchservice_get_direct_query_data_source <- function(DataSourceName) {
     http_path = "/2021-01-01/opensearch/directQueryDataSource/{DataSourceName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$get_direct_query_data_source_input(DataSourceName = DataSourceName)
   output <- .opensearchservice$get_direct_query_data_source_output()
@@ -1776,7 +1828,8 @@ opensearchservice_get_domain_maintenance_status <- function(DomainName, Maintena
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/domainMaintenance",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$get_domain_maintenance_status_input(DomainName = DomainName, MaintenanceId = MaintenanceId)
   output <- .opensearchservice$get_domain_maintenance_status_output()
@@ -1809,7 +1862,8 @@ opensearchservice_get_index <- function(DomainName, IndexName) {
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/index/{IndexName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$get_index_input(DomainName = DomainName, IndexName = IndexName)
   output <- .opensearchservice$get_index_output()
@@ -1842,7 +1896,8 @@ opensearchservice_get_migration <- function(migrationId) {
     http_path = "/2021-01-01/opensearch/app-migrations/{migrationId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$get_migration_input(migrationId = migrationId)
   output <- .opensearchservice$get_migration_output()
@@ -1877,7 +1932,8 @@ opensearchservice_get_package_version_history <- function(PackageID, MaxResults 
     http_path = "/2021-01-01/packages/{PackageID}/history",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$get_package_version_history_input(PackageID = PackageID, MaxResults = MaxResults, NextToken = NextToken)
   output <- .opensearchservice$get_package_version_history_output()
@@ -1911,7 +1967,8 @@ opensearchservice_get_upgrade_history <- function(DomainName, MaxResults = NULL,
     http_path = "/2021-01-01/opensearch/upgradeDomain/{DomainName}/history",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$get_upgrade_history_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .opensearchservice$get_upgrade_history_output()
@@ -1943,7 +2000,8 @@ opensearchservice_get_upgrade_status <- function(DomainName) {
     http_path = "/2021-01-01/opensearch/upgradeDomain/{DomainName}/status",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$get_upgrade_status_input(DomainName = DomainName)
   output <- .opensearchservice$get_upgrade_status_output()
@@ -1978,7 +2036,8 @@ opensearchservice_insight_feedback <- function(Entity, InsightId, Thumbs, Feedba
     http_path = "/2021-01-01/opensearch/insight-feedback",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$insight_feedback_input(Entity = Entity, InsightId = InsightId, Thumbs = Thumbs, FeedbackText = FeedbackText)
   output <- .opensearchservice$insight_feedback_output()
@@ -2011,7 +2070,8 @@ opensearchservice_list_applications <- function(nextToken = NULL, statuses = NUL
     http_path = "/2021-01-01/opensearch/list-applications",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "ApplicationSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$list_applications_input(nextToken = nextToken, statuses = statuses, maxResults = maxResults)
   output <- .opensearchservice$list_applications_output()
@@ -2046,7 +2106,8 @@ opensearchservice_list_data_source_attachments <- function(id, nextToken = NULL,
     http_path = "/2021-01-01/opensearch/application/{id}/listDataSourceAttachments",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$list_data_source_attachments_input(id = id, nextToken = nextToken, maxResults = maxResults)
   output <- .opensearchservice$list_data_source_attachments_output()
@@ -2077,7 +2138,8 @@ opensearchservice_list_data_sources <- function(DomainName) {
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/dataSource",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$list_data_sources_input(DomainName = DomainName)
   output <- .opensearchservice$list_data_sources_output()
@@ -2109,7 +2171,8 @@ opensearchservice_list_direct_query_data_sources <- function(NextToken = NULL) {
     http_path = "/2021-01-01/opensearch/directQueryDataSource",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$list_direct_query_data_sources_input(NextToken = NextToken)
   output <- .opensearchservice$list_direct_query_data_sources_output()
@@ -2144,7 +2207,8 @@ opensearchservice_list_domain_maintenances <- function(DomainName, Action = NULL
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/domainMaintenances",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$list_domain_maintenances_input(DomainName = DomainName, Action = Action, Status = Status, MaxResults = MaxResults, NextToken = NextToken)
   output <- .opensearchservice$list_domain_maintenances_output()
@@ -2176,7 +2240,8 @@ opensearchservice_list_domain_names <- function(EngineType = NULL) {
     http_path = "/2021-01-01/domain",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$list_domain_names_input(EngineType = EngineType)
   output <- .opensearchservice$list_domain_names_output()
@@ -2210,7 +2275,8 @@ opensearchservice_list_domains_for_package <- function(PackageID, MaxResults = N
     http_path = "/2021-01-01/packages/{PackageID}/domains",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$list_domains_for_package_input(PackageID = PackageID, MaxResults = MaxResults, NextToken = NextToken)
   output <- .opensearchservice$list_domains_for_package_output()
@@ -2246,7 +2312,8 @@ opensearchservice_list_insights <- function(Entity, TimeRange = NULL, SortOrder 
     http_path = "/2021-01-01/opensearch/insights",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$list_insights_input(Entity = Entity, TimeRange = TimeRange, SortOrder = SortOrder, MaxResults = MaxResults, NextToken = NextToken)
   output <- .opensearchservice$list_insights_output()
@@ -2283,7 +2350,8 @@ opensearchservice_list_instance_type_details <- function(EngineVersion, DomainNa
     http_path = "/2021-01-01/opensearch/instanceTypeDetails/{EngineVersion}",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$list_instance_type_details_input(EngineVersion = EngineVersion, DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken, RetrieveAZs = RetrieveAZs, InstanceType = InstanceType)
   output <- .opensearchservice$list_instance_type_details_output()
@@ -2317,7 +2385,8 @@ opensearchservice_list_migrations <- function(applicationId, status = NULL, maxR
     http_path = "/2021-01-01/opensearch/app-migrations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$list_migrations_input(applicationId = applicationId, status = status, maxResults = maxResults, nextToken = nextToken)
   output <- .opensearchservice$list_migrations_output()
@@ -2350,7 +2419,8 @@ opensearchservice_list_packages_for_domain <- function(DomainName, MaxResults = 
     http_path = "/2021-01-01/domain/{DomainName}/packages",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$list_packages_for_domain_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .opensearchservice$list_packages_for_domain_output()
@@ -2384,7 +2454,8 @@ opensearchservice_list_scheduled_actions <- function(DomainName, MaxResults = NU
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/scheduledActions",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$list_scheduled_actions_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .opensearchservice$list_scheduled_actions_output()
@@ -2416,7 +2487,8 @@ opensearchservice_list_tags <- function(ARN) {
     http_path = "/2021-01-01/tags/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$list_tags_input(ARN = ARN)
   output <- .opensearchservice$list_tags_output()
@@ -2449,7 +2521,8 @@ opensearchservice_list_versions <- function(MaxResults = NULL, NextToken = NULL)
     http_path = "/2021-01-01/opensearch/versions",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$list_versions_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .opensearchservice$list_versions_output()
@@ -2483,7 +2556,8 @@ opensearchservice_list_vpc_endpoint_access <- function(DomainName, NextToken = N
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/listVpcEndpointAccess",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$list_vpc_endpoint_access_input(DomainName = DomainName, NextToken = NextToken)
   output <- .opensearchservice$list_vpc_endpoint_access_output()
@@ -2515,7 +2589,8 @@ opensearchservice_list_vpc_endpoints <- function(NextToken = NULL) {
     http_path = "/2021-01-01/opensearch/vpcEndpoints",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$list_vpc_endpoints_input(NextToken = NextToken)
   output <- .opensearchservice$list_vpc_endpoints_output()
@@ -2548,7 +2623,8 @@ opensearchservice_list_vpc_endpoints_for_domain <- function(DomainName, NextToke
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/vpcEndpoints",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$list_vpc_endpoints_for_domain_input(DomainName = DomainName, NextToken = NextToken)
   output <- .opensearchservice$list_vpc_endpoints_for_domain_output()
@@ -2581,7 +2657,8 @@ opensearchservice_purchase_reserved_instance_offering <- function(ReservedInstan
     http_path = "/2021-01-01/opensearch/purchaseReservedInstanceOffering",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$purchase_reserved_instance_offering_input(ReservedInstanceOfferingId = ReservedInstanceOfferingId, ReservationName = ReservationName, InstanceCount = InstanceCount)
   output <- .opensearchservice$purchase_reserved_instance_offering_output()
@@ -2613,7 +2690,8 @@ opensearchservice_put_default_application_setting <- function(applicationArn, se
     http_path = "/2021-01-01/opensearch/defaultApplicationSetting",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$put_default_application_setting_input(applicationArn = applicationArn, setAsDefault = setAsDefault)
   output <- .opensearchservice$put_default_application_setting_output()
@@ -2646,7 +2724,8 @@ opensearchservice_register_capability <- function(applicationId, capabilityName,
     http_path = "/2021-01-01/opensearch/application/{ApplicationId}/capability/register",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$register_capability_input(applicationId = applicationId, capabilityName = capabilityName, capabilityConfig = capabilityConfig)
   output <- .opensearchservice$register_capability_output()
@@ -2678,7 +2757,8 @@ opensearchservice_reject_inbound_connection <- function(ConnectionId) {
     http_path = "/2021-01-01/opensearch/cc/inboundConnection/{ConnectionId}/reject",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$reject_inbound_connection_input(ConnectionId = ConnectionId)
   output <- .opensearchservice$reject_inbound_connection_output()
@@ -2711,7 +2791,8 @@ opensearchservice_remove_tags <- function(ARN, TagKeys) {
     http_path = "/2021-01-01/tags-removal",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$remove_tags_input(ARN = ARN, TagKeys = TagKeys)
   output <- .opensearchservice$remove_tags_output()
@@ -2746,7 +2827,8 @@ opensearchservice_revoke_vpc_endpoint_access <- function(DomainName, Account = N
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/revokeVpcEndpointAccess",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$revoke_vpc_endpoint_access_input(DomainName = DomainName, Account = Account, Service = Service, ServiceOptions = ServiceOptions)
   output <- .opensearchservice$revoke_vpc_endpoint_access_output()
@@ -2778,7 +2860,8 @@ opensearchservice_rollback_service_software_update <- function(DomainName) {
     http_path = "/2021-01-01/opensearch/serviceSoftwareUpdate/rollback",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$rollback_service_software_update_input(DomainName = DomainName)
   output <- .opensearchservice$rollback_service_software_update_output()
@@ -2811,7 +2894,8 @@ opensearchservice_start_domain_maintenance <- function(DomainName, Action, NodeI
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/domainMaintenance",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$start_domain_maintenance_input(DomainName = DomainName, Action = Action, NodeId = NodeId)
   output <- .opensearchservice$start_domain_maintenance_output()
@@ -2845,7 +2929,8 @@ opensearchservice_start_migration <- function(applicationId, migrationOptions, c
     http_path = "/2021-01-01/opensearch/app-migrations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$start_migration_input(applicationId = applicationId, migrationOptions = migrationOptions, clientToken = clientToken)
   output <- .opensearchservice$start_migration_output()
@@ -2887,7 +2972,8 @@ opensearchservice_start_service_software_update <- function(DomainName, Schedule
     http_path = "/2021-01-01/opensearch/serviceSoftwareUpdate/start",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$start_service_software_update_input(DomainName = DomainName, ScheduleAt = ScheduleAt, DesiredStartTime = DesiredStartTime)
   output <- .opensearchservice$start_service_software_update_output()
@@ -2922,7 +3008,8 @@ opensearchservice_update_application <- function(id, dataSources = NULL, appConf
     http_path = "/2021-01-01/opensearch/application/{id}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$update_application_input(id = id, dataSources = dataSources, appConfigs = appConfigs, iamIdentityCenterOptions = iamIdentityCenterOptions)
   output <- .opensearchservice$update_application_output()
@@ -2957,7 +3044,8 @@ opensearchservice_update_data_source <- function(DomainName, Name, DataSourceTyp
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/dataSource/{DataSourceName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$update_data_source_input(DomainName = DomainName, Name = Name, DataSourceType = DataSourceType, Description = Description, Status = Status)
   output <- .opensearchservice$update_data_source_output()
@@ -2993,7 +3081,8 @@ opensearchservice_update_direct_query_data_source <- function(DataSourceName, Da
     http_path = "/2021-01-01/opensearch/directQueryDataSource/{DataSourceName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$update_direct_query_data_source_input(DataSourceName = DataSourceName, DataSourceType = DataSourceType, Description = Description, OpenSearchArns = OpenSearchArns, DataSourceAccessPolicy = DataSourceAccessPolicy)
   output <- .opensearchservice$update_direct_query_data_source_output()
@@ -3054,20 +3143,22 @@ opensearchservice_update_direct_query_data_source <- function(DataSourceName, Da
 #' Maximum suspension duration: 3 days.
 #' @param UseCase The primary use case for the domain. For valid values, see `DomainUseCase`.
 #' @param EngineMode The engine mode for the domain. The engine mode can't be changed after the domain is created. For valid values, see `EngineMode`.
+#' @param AcceptedWarnings A list of advisory warning codes to accept for this configuration change. By default, any advisory warning blocks the change. Include the code of each warning you want to accept so the change can proceed. You can find warning codes in the`ValidationFailures` list returned by [`describe_domain_change_progress`][opensearchservice_describe_domain_change_progress]and [`describe_dry_run_progress`][opensearchservice_describe_dry_run_progress]. Critical validation failures cannot be accepted and always block the change. If you omit this parameter or pass an empty list, all warnings block the change. For more information, see [Validating a domain update](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-configuration-changes.html#validation-check).
 #'
 #' @keywords internal
 #'
 #' @rdname opensearchservice_update_domain_config
-opensearchservice_update_domain_config <- function(DomainName, ClusterConfig = NULL, EBSOptions = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, AdvancedOptions = NULL, AccessPolicies = NULL, IPAddressType = NULL, LogPublishingOptions = NULL, EncryptionAtRestOptions = NULL, DomainEndpointOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedSecurityOptions = NULL, IdentityCenterOptions = NULL, AutoTuneOptions = NULL, DryRun = NULL, DryRunMode = NULL, OffPeakWindowOptions = NULL, SoftwareUpdateOptions = NULL, AIMLOptions = NULL, DeploymentStrategyOptions = NULL, AutomatedSnapshotPauseOptions = NULL, UseCase = NULL, EngineMode = NULL) {
+opensearchservice_update_domain_config <- function(DomainName, ClusterConfig = NULL, EBSOptions = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, AdvancedOptions = NULL, AccessPolicies = NULL, IPAddressType = NULL, LogPublishingOptions = NULL, EncryptionAtRestOptions = NULL, DomainEndpointOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedSecurityOptions = NULL, IdentityCenterOptions = NULL, AutoTuneOptions = NULL, DryRun = NULL, DryRunMode = NULL, OffPeakWindowOptions = NULL, SoftwareUpdateOptions = NULL, AIMLOptions = NULL, DeploymentStrategyOptions = NULL, AutomatedSnapshotPauseOptions = NULL, UseCase = NULL, EngineMode = NULL, AcceptedWarnings = NULL) {
   op <- new_operation(
     name = "UpdateDomainConfig",
     http_method = "POST",
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/config",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
-  input <- .opensearchservice$update_domain_config_input(DomainName = DomainName, ClusterConfig = ClusterConfig, EBSOptions = EBSOptions, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, AdvancedOptions = AdvancedOptions, AccessPolicies = AccessPolicies, IPAddressType = IPAddressType, LogPublishingOptions = LogPublishingOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, DomainEndpointOptions = DomainEndpointOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, IdentityCenterOptions = IdentityCenterOptions, AutoTuneOptions = AutoTuneOptions, DryRun = DryRun, DryRunMode = DryRunMode, OffPeakWindowOptions = OffPeakWindowOptions, SoftwareUpdateOptions = SoftwareUpdateOptions, AIMLOptions = AIMLOptions, DeploymentStrategyOptions = DeploymentStrategyOptions, AutomatedSnapshotPauseOptions = AutomatedSnapshotPauseOptions, UseCase = UseCase, EngineMode = EngineMode)
+  input <- .opensearchservice$update_domain_config_input(DomainName = DomainName, ClusterConfig = ClusterConfig, EBSOptions = EBSOptions, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, AdvancedOptions = AdvancedOptions, AccessPolicies = AccessPolicies, IPAddressType = IPAddressType, LogPublishingOptions = LogPublishingOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, DomainEndpointOptions = DomainEndpointOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, IdentityCenterOptions = IdentityCenterOptions, AutoTuneOptions = AutoTuneOptions, DryRun = DryRun, DryRunMode = DryRunMode, OffPeakWindowOptions = OffPeakWindowOptions, SoftwareUpdateOptions = SoftwareUpdateOptions, AIMLOptions = AIMLOptions, DeploymentStrategyOptions = DeploymentStrategyOptions, AutomatedSnapshotPauseOptions = AutomatedSnapshotPauseOptions, UseCase = UseCase, EngineMode = EngineMode, AcceptedWarnings = AcceptedWarnings)
   output <- .opensearchservice$update_domain_config_output()
   config <- get_config()
   svc <- .opensearchservice$service(config, op)
@@ -3099,7 +3190,8 @@ opensearchservice_update_index <- function(DomainName, IndexName, IndexSchema) {
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/index/{IndexName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$update_index_input(DomainName = DomainName, IndexName = IndexName, IndexSchema = IndexSchema)
   output <- .opensearchservice$update_index_output()
@@ -3135,7 +3227,8 @@ opensearchservice_update_package <- function(PackageID, PackageSource, PackageDe
     http_path = "/2021-01-01/packages/update",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$update_package_input(PackageID = PackageID, PackageSource = PackageSource, PackageDescription = PackageDescription, CommitMessage = CommitMessage, PackageConfiguration = PackageConfiguration, PackageEncryptionOptions = PackageEncryptionOptions)
   output <- .opensearchservice$update_package_output()
@@ -3168,7 +3261,8 @@ opensearchservice_update_package_scope <- function(PackageID, Operation, Package
     http_path = "/2021-01-01/packages/updateScope",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$update_package_scope_input(PackageID = PackageID, Operation = Operation, PackageUserList = PackageUserList)
   output <- .opensearchservice$update_package_scope_output()
@@ -3209,7 +3303,8 @@ opensearchservice_update_scheduled_action <- function(DomainName, ActionID, Acti
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/scheduledAction/update",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$update_scheduled_action_input(DomainName = DomainName, ActionID = ActionID, ActionType = ActionType, ScheduleAt = ScheduleAt, DesiredStartTime = DesiredStartTime)
   output <- .opensearchservice$update_scheduled_action_output()
@@ -3241,7 +3336,8 @@ opensearchservice_update_vpc_endpoint <- function(VpcEndpointId, VpcOptions) {
     http_path = "/2021-01-01/opensearch/vpcEndpoints/update",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$update_vpc_endpoint_input(VpcEndpointId = VpcEndpointId, VpcOptions = VpcOptions)
   output <- .opensearchservice$update_vpc_endpoint_output()
@@ -3277,7 +3373,8 @@ opensearchservice_upgrade_domain <- function(DomainName, TargetVersion, PerformC
     http_path = "/2021-01-01/opensearch/upgradeDomain",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .opensearchservice$upgrade_domain_input(DomainName = DomainName, TargetVersion = TargetVersion, PerformCheckOnly = PerformCheckOnly, AdvancedOptions = AdvancedOptions)
   output <- .opensearchservice$upgrade_domain_output()

@@ -63,7 +63,8 @@ cloudtraildataservice_put_audit_events <- function(auditEvents, channelArn, exte
     http_path = "/PutAuditEvents",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtraildataservice$put_audit_events_input(auditEvents = auditEvents, channelArn = channelArn, externalId = externalId)
   output <- .cloudtraildataservice$put_audit_events_output()

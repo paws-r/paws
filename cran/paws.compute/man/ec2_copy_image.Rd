@@ -65,7 +65,7 @@ Only one of \code{DestinationAvailabilityZone}, \code{DestinationAvailabilityZon
 The following tags are not be copied:
 \itemize{
 \item System tags (prefixed with \verb{aws:})
-\item For public and shared AMIs, user-defined tags that are attached by other Amazon Web Services accounts
+\item For public and shared AMIs, user-defined tags that are attached by other Amazon Web Services accounts, except tags with the \verb{ec2:SharedTag/} prefix. For more information about tag sharing, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#sharing-tags}{Sharing tags} in the \emph{Amazon EC2 User Guide}.
 }
 
 Default: Your user-defined AMI tags are not copied.}

@@ -52,7 +52,8 @@ controltower_create_landing_zone <- function(version, remediationTypes = NULL, t
     http_path = "/create-landingzone",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .controltower$create_landing_zone_input(version = version, remediationTypes = remediationTypes, tags = tags, manifest = manifest)
   output <- .controltower$create_landing_zone_output()
@@ -103,7 +104,8 @@ controltower_delete_landing_zone <- function(landingZoneIdentifier) {
     http_path = "/delete-landingzone",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .controltower$delete_landing_zone_input(landingZoneIdentifier = landingZoneIdentifier)
   output <- .controltower$delete_landing_zone_output()
@@ -152,7 +154,8 @@ controltower_disable_baseline <- function(enabledBaselineIdentifier) {
     http_path = "/disable-baseline",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .controltower$disable_baseline_input(enabledBaselineIdentifier = enabledBaselineIdentifier)
   output <- .controltower$disable_baseline_output()
@@ -206,7 +209,8 @@ controltower_disable_control <- function(controlIdentifier = NULL, targetIdentif
     http_path = "/disable-control",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .controltower$disable_control_input(controlIdentifier = controlIdentifier, targetIdentifier = targetIdentifier, enabledControlIdentifier = enabledControlIdentifier)
   output <- .controltower$disable_control_output()
@@ -272,7 +276,8 @@ controltower_enable_baseline <- function(baselineVersion, parameters = NULL, bas
     http_path = "/enable-baseline",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .controltower$enable_baseline_input(baselineVersion = baselineVersion, parameters = parameters, baselineIdentifier = baselineIdentifier, targetIdentifier = targetIdentifier, tags = tags)
   output <- .controltower$enable_baseline_output()
@@ -336,7 +341,8 @@ controltower_enable_control <- function(controlIdentifier, targetIdentifier, tag
     http_path = "/enable-control",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .controltower$enable_control_input(controlIdentifier = controlIdentifier, targetIdentifier = targetIdentifier, tags = tags, parameters = parameters)
   output <- .controltower$enable_control_output()
@@ -388,7 +394,8 @@ controltower_get_baseline <- function(baselineIdentifier) {
     http_path = "/get-baseline",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .controltower$get_baseline_input(baselineIdentifier = baselineIdentifier)
   output <- .controltower$get_baseline_output()
@@ -450,7 +457,8 @@ controltower_get_baseline_operation <- function(operationIdentifier) {
     http_path = "/get-baseline-operation",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .controltower$get_baseline_operation_input(operationIdentifier = operationIdentifier)
   output <- .controltower$get_baseline_operation_output()
@@ -514,7 +522,8 @@ controltower_get_control_operation <- function(operationIdentifier) {
     http_path = "/get-control-operation",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .controltower$get_control_operation_input(operationIdentifier = operationIdentifier)
   output <- .controltower$get_control_operation_output()
@@ -587,7 +596,8 @@ controltower_get_enabled_baseline <- function(enabledBaselineIdentifier) {
     http_path = "/get-enabled-baseline",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .controltower$get_enabled_baseline_input(enabledBaselineIdentifier = enabledBaselineIdentifier)
   output <- .controltower$get_enabled_baseline_output()
@@ -667,7 +677,8 @@ controltower_get_enabled_control <- function(enabledControlIdentifier) {
     http_path = "/get-enabled-control",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .controltower$get_enabled_control_input(enabledControlIdentifier = enabledControlIdentifier)
   output <- .controltower$get_enabled_control_output()
@@ -728,7 +739,8 @@ controltower_get_landing_zone <- function(landingZoneIdentifier) {
     http_path = "/get-landingzone",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .controltower$get_landing_zone_input(landingZoneIdentifier = landingZoneIdentifier)
   output <- .controltower$get_landing_zone_output()
@@ -788,7 +800,8 @@ controltower_get_landing_zone_operation <- function(operationIdentifier) {
     http_path = "/get-landingzone-operation",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .controltower$get_landing_zone_operation_input(operationIdentifier = operationIdentifier)
   output <- .controltower$get_landing_zone_operation_output()
@@ -846,7 +859,8 @@ controltower_list_baselines <- function(nextToken = NULL, maxResults = NULL) {
     http_path = "/list-baselines",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "baselines"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .controltower$list_baselines_input(nextToken = nextToken, maxResults = maxResults)
   output <- .controltower$list_baselines_output()
@@ -932,7 +946,8 @@ controltower_list_control_operations <- function(filter = NULL, nextToken = NULL
     http_path = "/list-control-operations",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "controlOperations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .controltower$list_control_operations_input(filter = filter, nextToken = nextToken, maxResults = maxResults)
   output <- .controltower$list_control_operations_output()
@@ -1024,7 +1039,8 @@ controltower_list_enabled_baselines <- function(filter = NULL, nextToken = NULL,
     http_path = "/list-enabled-baselines",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "enabledBaselines"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .controltower$list_enabled_baselines_input(filter = filter, nextToken = nextToken, maxResults = maxResults, includeChildren = includeChildren)
   output <- .controltower$list_enabled_baselines_output()
@@ -1131,7 +1147,8 @@ controltower_list_enabled_controls <- function(targetIdentifier = NULL, nextToke
     http_path = "/list-enabled-controls",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "enabledControls"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .controltower$list_enabled_controls_input(targetIdentifier = targetIdentifier, nextToken = nextToken, maxResults = maxResults, filter = filter, includeChildren = includeChildren)
   output <- .controltower$list_enabled_controls_output()
@@ -1198,7 +1215,8 @@ controltower_list_landing_zone_operations <- function(filter = NULL, nextToken =
     http_path = "/list-landingzone-operations",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "landingZoneOperations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .controltower$list_landing_zone_operations_input(filter = filter, nextToken = nextToken, maxResults = maxResults)
   output <- .controltower$list_landing_zone_operations_output()
@@ -1257,7 +1275,8 @@ controltower_list_landing_zones <- function(nextToken = NULL, maxResults = NULL)
     http_path = "/list-landingzones",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "landingZones"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .controltower$list_landing_zones_input(nextToken = nextToken, maxResults = maxResults)
   output <- .controltower$list_landing_zones_output()
@@ -1308,7 +1327,8 @@ controltower_list_tags_for_resource <- function(resourceArn) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .controltower$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .controltower$list_tags_for_resource_output()
@@ -1357,7 +1377,8 @@ controltower_reset_enabled_baseline <- function(enabledBaselineIdentifier) {
     http_path = "/reset-enabled-baseline",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .controltower$reset_enabled_baseline_input(enabledBaselineIdentifier = enabledBaselineIdentifier)
   output <- .controltower$reset_enabled_baseline_output()
@@ -1406,7 +1427,8 @@ controltower_reset_enabled_control <- function(enabledControlIdentifier) {
     http_path = "/reset-enabled-control",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .controltower$reset_enabled_control_input(enabledControlIdentifier = enabledControlIdentifier)
   output <- .controltower$reset_enabled_control_output()
@@ -1455,7 +1477,8 @@ controltower_reset_landing_zone <- function(landingZoneIdentifier) {
     http_path = "/reset-landingzone",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .controltower$reset_landing_zone_input(landingZoneIdentifier = landingZoneIdentifier)
   output <- .controltower$reset_landing_zone_output()
@@ -1503,7 +1526,8 @@ controltower_tag_resource <- function(resourceArn, tags) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .controltower$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .controltower$tag_resource_output()
@@ -1551,7 +1575,8 @@ controltower_untag_resource <- function(resourceArn, tagKeys) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .controltower$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .controltower$untag_resource_output()
@@ -1610,7 +1635,8 @@ controltower_update_enabled_baseline <- function(baselineVersion, parameters = N
     http_path = "/update-enabled-baseline",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .controltower$update_enabled_baseline_input(baselineVersion = baselineVersion, parameters = parameters, enabledBaselineIdentifier = enabledBaselineIdentifier)
   output <- .controltower$update_enabled_baseline_output()
@@ -1673,7 +1699,8 @@ controltower_update_enabled_control <- function(parameters, enabledControlIdenti
     http_path = "/update-enabled-control",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .controltower$update_enabled_control_input(parameters = parameters, enabledControlIdentifier = enabledControlIdentifier)
   output <- .controltower$update_enabled_control_output()
@@ -1731,7 +1758,8 @@ controltower_update_landing_zone <- function(version, remediationTypes = NULL, l
     http_path = "/update-landingzone",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .controltower$update_landing_zone_input(version = version, remediationTypes = remediationTypes, landingZoneIdentifier = landingZoneIdentifier, manifest = manifest)
   output <- .controltower$update_landing_zone_output()

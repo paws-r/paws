@@ -161,7 +161,8 @@ connectcases_batch_get_case_rule <- function(domainId, caseRules) {
     http_path = "/domains/{domainId}/rules-batch",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$batch_get_case_rule_input(domainId = domainId, caseRules = caseRules)
   output <- .connectcases$batch_get_case_rule_output()
@@ -247,7 +248,8 @@ connectcases_batch_get_field <- function(domainId, fields) {
     http_path = "/domains/{domainId}/fields-batch",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$batch_get_field_input(domainId = domainId, fields = fields)
   output <- .connectcases$batch_get_field_output()
@@ -313,7 +315,8 @@ connectcases_batch_put_field_options <- function(domainId, fieldId, options) {
     http_path = "/domains/{domainId}/fields/{fieldId}/options",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$batch_put_field_options_input(domainId = domainId, fieldId = fieldId, options = options)
   output <- .connectcases$batch_put_field_options_output()
@@ -400,7 +403,8 @@ connectcases_create_case <- function(domainId, templateId, fields, clientToken =
     http_path = "/domains/{domainId}/cases",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$create_case_input(domainId = domainId, templateId = templateId, fields = fields, clientToken = clientToken, performedBy = performedBy, tags = tags)
   output <- .connectcases$create_case_output()
@@ -543,7 +547,8 @@ connectcases_create_case_rule <- function(domainId, name, description = NULL, ru
     http_path = "/domains/{domainId}/case-rules",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$create_case_rule_input(domainId = domainId, name = name, description = description, rule = rule)
   output <- .connectcases$create_case_rule_output()
@@ -597,7 +602,8 @@ connectcases_create_domain <- function(name) {
     http_path = "/domains",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$create_domain_input(name = name)
   output <- .connectcases$create_domain_output()
@@ -659,7 +665,8 @@ connectcases_create_field <- function(domainId, name, type, description = NULL, 
     http_path = "/domains/{domainId}/fields",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$create_field_input(domainId = domainId, name = name, type = type, description = description, attributes = attributes)
   output <- .connectcases$create_field_output()
@@ -750,7 +757,8 @@ connectcases_create_layout <- function(domainId, name, content) {
     http_path = "/domains/{domainId}/layouts",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$create_layout_input(domainId = domainId, name = name, content = content)
   output <- .connectcases$create_layout_output()
@@ -888,7 +896,8 @@ connectcases_create_related_item <- function(domainId, caseId, type, content, pe
     http_path = "/domains/{domainId}/cases/{caseId}/related-items/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$create_related_item_input(domainId = domainId, caseId = caseId, type = type, content = content, performedBy = performedBy)
   output <- .connectcases$create_related_item_output()
@@ -982,7 +991,8 @@ connectcases_create_template <- function(domainId, name, description = NULL, lay
     http_path = "/domains/{domainId}/templates",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$create_template_input(domainId = domainId, name = name, description = description, layoutConfiguration = layoutConfiguration, requiredFields = requiredFields, status = status, rules = rules, tagPropagationConfigurations = tagPropagationConfigurations)
   output <- .connectcases$create_template_output()
@@ -1037,7 +1047,8 @@ connectcases_delete_case <- function(domainId, caseId) {
     http_path = "/domains/{domainId}/cases/{caseId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$delete_case_input(domainId = domainId, caseId = caseId)
   output <- .connectcases$delete_case_output()
@@ -1083,7 +1094,8 @@ connectcases_delete_case_rule <- function(domainId, caseRuleId) {
     http_path = "/domains/{domainId}/case-rules/{caseRuleId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$delete_case_rule_input(domainId = domainId, caseRuleId = caseRuleId)
   output <- .connectcases$delete_case_rule_output()
@@ -1129,7 +1141,8 @@ connectcases_delete_domain <- function(domainId) {
     http_path = "/domains/{domainId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$delete_domain_input(domainId = domainId)
   output <- .connectcases$delete_domain_output()
@@ -1201,7 +1214,8 @@ connectcases_delete_field <- function(domainId, fieldId) {
     http_path = "/domains/{domainId}/fields/{fieldId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$delete_field_input(domainId = domainId, fieldId = fieldId)
   output <- .connectcases$delete_field_output()
@@ -1255,7 +1269,8 @@ connectcases_delete_layout <- function(domainId, layoutId) {
     http_path = "/domains/{domainId}/layouts/{layoutId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$delete_layout_input(domainId = domainId, layoutId = layoutId)
   output <- .connectcases$delete_layout_output()
@@ -1305,7 +1320,8 @@ connectcases_delete_related_item <- function(domainId, caseId, relatedItemId) {
     http_path = "/domains/{domainId}/cases/{caseId}/related-items/{relatedItemId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$delete_related_item_input(domainId = domainId, caseId = caseId, relatedItemId = relatedItemId)
   output <- .connectcases$delete_related_item_output()
@@ -1361,7 +1377,8 @@ connectcases_delete_template <- function(domainId, templateId) {
     http_path = "/domains/{domainId}/templates/{templateId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$delete_template_input(domainId = domainId, templateId = templateId)
   output <- .connectcases$delete_template_output()
@@ -1436,7 +1453,8 @@ connectcases_get_case <- function(caseId, domainId, fields, nextToken = NULL) {
     http_path = "/domains/{domainId}/cases/{caseId}",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$get_case_input(caseId = caseId, domainId = domainId, fields = fields, nextToken = nextToken)
   output <- .connectcases$get_case_output()
@@ -1528,7 +1546,8 @@ connectcases_get_case_audit_events <- function(caseId, domainId, maxResults = NU
     http_path = "/domains/{domainId}/cases/{caseId}/audit-history",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$get_case_audit_events_input(caseId = caseId, domainId = domainId, maxResults = maxResults, nextToken = nextToken)
   output <- .connectcases$get_case_audit_events_output()
@@ -1591,7 +1610,8 @@ connectcases_get_case_event_configuration <- function(domainId) {
     http_path = "/domains/{domainId}/case-event-configuration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$get_case_event_configuration_input(domainId = domainId)
   output <- .connectcases$get_case_event_configuration_output()
@@ -1649,7 +1669,8 @@ connectcases_get_domain <- function(domainId) {
     http_path = "/domains/{domainId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$get_domain_input(domainId = domainId)
   output <- .connectcases$get_domain_output()
@@ -1744,7 +1765,8 @@ connectcases_get_layout <- function(domainId, layoutId) {
     http_path = "/domains/{domainId}/layouts/{layoutId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$get_layout_input(domainId = domainId, layoutId = layoutId)
   output <- .connectcases$get_layout_output()
@@ -1839,7 +1861,8 @@ connectcases_get_template <- function(domainId, templateId) {
     http_path = "/domains/{domainId}/templates/{templateId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$get_template_input(domainId = domainId, templateId = templateId)
   output <- .connectcases$get_template_output()
@@ -1901,7 +1924,8 @@ connectcases_list_case_rules <- function(domainId, maxResults = NULL, nextToken 
     http_path = "/domains/{domainId}/rules-list/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "caseRules"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$list_case_rules_input(domainId = domainId, maxResults = maxResults, nextToken = nextToken)
   output <- .connectcases$list_case_rules_output()
@@ -1963,7 +1987,8 @@ connectcases_list_cases_for_contact <- function(domainId, contactArn, maxResults
     http_path = "/domains/{domainId}/list-cases-for-contact",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$list_cases_for_contact_input(domainId = domainId, contactArn = contactArn, maxResults = maxResults, nextToken = nextToken)
   output <- .connectcases$list_cases_for_contact_output()
@@ -2021,7 +2046,8 @@ connectcases_list_domains <- function(maxResults = NULL, nextToken = NULL) {
     http_path = "/domains-list",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$list_domains_input(maxResults = maxResults, nextToken = nextToken)
   output <- .connectcases$list_domains_output()
@@ -2088,7 +2114,8 @@ connectcases_list_field_options <- function(domainId, fieldId, maxResults = NULL
     http_path = "/domains/{domainId}/fields/{fieldId}/options-list",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$list_field_options_input(domainId = domainId, fieldId = fieldId, maxResults = maxResults, nextToken = nextToken, values = values)
   output <- .connectcases$list_field_options_output()
@@ -2155,7 +2182,8 @@ connectcases_list_fields <- function(domainId, maxResults = NULL, nextToken = NU
     http_path = "/domains/{domainId}/fields-list",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$list_fields_input(domainId = domainId, maxResults = maxResults, nextToken = nextToken)
   output <- .connectcases$list_fields_output()
@@ -2215,7 +2243,8 @@ connectcases_list_layouts <- function(domainId, maxResults = NULL, nextToken = N
     http_path = "/domains/{domainId}/layouts-list",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$list_layouts_input(domainId = domainId, maxResults = maxResults, nextToken = nextToken)
   output <- .connectcases$list_layouts_output()
@@ -2266,7 +2295,8 @@ connectcases_list_tags_for_resource <- function(arn) {
     http_path = "/tags/{arn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$list_tags_for_resource_input(arn = arn)
   output <- .connectcases$list_tags_for_resource_output()
@@ -2349,7 +2379,8 @@ connectcases_list_templates <- function(domainId, maxResults = NULL, nextToken =
     http_path = "/domains/{domainId}/templates-list",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$list_templates_input(domainId = domainId, maxResults = maxResults, nextToken = nextToken, status = status)
   output <- .connectcases$list_templates_output()
@@ -2409,7 +2440,8 @@ connectcases_put_case_event_configuration <- function(domainId, eventBridge) {
     http_path = "/domains/{domainId}/case-event-configuration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$put_case_event_configuration_input(domainId = domainId, eventBridge = eventBridge)
   output <- .connectcases$put_case_event_configuration_output()
@@ -2656,7 +2688,8 @@ connectcases_search_all_related_items <- function(domainId, maxResults = NULL, n
     http_path = "/domains/{domainId}/related-items-search",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "relatedItems"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$search_all_related_items_input(domainId = domainId, maxResults = maxResults, nextToken = nextToken, filters = filters, sorts = sorts)
   output <- .connectcases$search_all_related_items_output()
@@ -2827,7 +2860,8 @@ connectcases_search_cases <- function(domainId, maxResults = NULL, nextToken = N
     http_path = "/domains/{domainId}/cases-search",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "cases"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$search_cases_input(domainId = domainId, maxResults = maxResults, nextToken = nextToken, searchTerm = searchTerm, filter = filter, sorts = sorts, fields = fields)
   output <- .connectcases$search_cases_output()
@@ -3052,7 +3086,8 @@ connectcases_search_related_items <- function(domainId, caseId, maxResults = NUL
     http_path = "/domains/{domainId}/cases/{caseId}/related-items-search",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "relatedItems"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$search_related_items_input(domainId = domainId, caseId = caseId, maxResults = maxResults, nextToken = nextToken, filters = filters)
   output <- .connectcases$search_related_items_output()
@@ -3100,7 +3135,8 @@ connectcases_tag_resource <- function(arn, tags) {
     http_path = "/tags/{arn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$tag_resource_input(arn = arn, tags = tags)
   output <- .connectcases$tag_resource_output()
@@ -3148,7 +3184,8 @@ connectcases_untag_resource <- function(arn, tagKeys) {
     http_path = "/tags/{arn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$untag_resource_input(arn = arn, tagKeys = tagKeys)
   output <- .connectcases$untag_resource_output()
@@ -3216,7 +3253,8 @@ connectcases_update_case <- function(domainId, caseId, fields, performedBy = NUL
     http_path = "/domains/{domainId}/cases/{caseId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$update_case_input(domainId = domainId, caseId = caseId, fields = fields, performedBy = performedBy)
   output <- .connectcases$update_case_output()
@@ -3356,7 +3394,8 @@ connectcases_update_case_rule <- function(domainId, caseRuleId, name = NULL, des
     http_path = "/domains/{domainId}/case-rules/{caseRuleId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$update_case_rule_input(domainId = domainId, caseRuleId = caseRuleId, name = name, description = description, rule = rule)
   output <- .connectcases$update_case_rule_output()
@@ -3413,7 +3452,8 @@ connectcases_update_field <- function(domainId, fieldId, name = NULL, descriptio
     http_path = "/domains/{domainId}/fields/{fieldId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$update_field_input(domainId = domainId, fieldId = fieldId, name = name, description = description, attributes = attributes)
   output <- .connectcases$update_field_output()
@@ -3500,7 +3540,8 @@ connectcases_update_layout <- function(domainId, layoutId, name = NULL, content 
     http_path = "/domains/{domainId}/layouts/{layoutId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$update_layout_input(domainId = domainId, layoutId = layoutId, name = name, content = content)
   output <- .connectcases$update_layout_output()
@@ -3666,7 +3707,8 @@ connectcases_update_related_item <- function(domainId, caseId, relatedItemId, co
     http_path = "/domains/{domainId}/cases/{caseId}/related-items/{relatedItemId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$update_related_item_input(domainId = domainId, caseId = caseId, relatedItemId = relatedItemId, content = content, performedBy = performedBy)
   output <- .connectcases$update_related_item_output()
@@ -3756,7 +3798,8 @@ connectcases_update_template <- function(domainId, templateId, name = NULL, desc
     http_path = "/domains/{domainId}/templates/{templateId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcases$update_template_input(domainId = domainId, templateId = templateId, name = name, description = description, layoutConfiguration = layoutConfiguration, requiredFields = requiredFields, status = status, rules = rules, tagPropagationConfigurations = tagPropagationConfigurations)
   output <- .connectcases$update_template_output()

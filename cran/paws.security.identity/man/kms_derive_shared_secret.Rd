@@ -32,7 +32,7 @@ To get the key ID and key ARN for a KMS key, use \code{\link[=kms_list_keys]{lis
 
 \item{PublicKey}{[required] Specifies the public key in your peer's NIST-standard elliptic curve (ECC) or SM2 (China Regions only) key pair.
 
-The public key must be a DER-encoded X.509 public key, also known as \code{SubjectPublicKeyInfo} (SPKI), as defined in \href{https://datatracker.ietf.org/doc/html/rfc5280}{RFC 5280}.
+The public key must be a DER-encoded X.509 public key, also known as \code{SubjectPublicKeyInfo} (SPKI), as defined in \href{https://www.rfc-editor.org/info/rfc5280/}{RFC 5280}.
 
 \code{\link[=kms_get_public_key]{get_public_key}} returns the public key of an asymmetric KMS key pair in the required DER-encoded format.
 

@@ -1,4 +1,4 @@
-svc <- paws.management::servicequotas()
+svc <- paws::servicequotas()
 
 test_that("list_requested_service_quota_change_history", {
   skip_on_cran()

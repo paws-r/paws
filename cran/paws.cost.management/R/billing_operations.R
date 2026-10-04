@@ -24,7 +24,8 @@ billing_associate_source_views <- function(arn, sourceViews) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billing$associate_source_views_input(arn = arn, sourceViews = sourceViews)
   output <- .billing$associate_source_views_output()
@@ -60,7 +61,8 @@ billing_create_billing_view <- function(name, description = NULL, sourceViews, d
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billing$create_billing_view_input(name = name, description = description, sourceViews = sourceViews, dataFilterExpression = dataFilterExpression, clientToken = clientToken, resourceTags = resourceTags)
   output <- .billing$create_billing_view_output()
@@ -92,7 +94,8 @@ billing_delete_billing_view <- function(arn, force = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billing$delete_billing_view_input(arn = arn, force = force)
   output <- .billing$delete_billing_view_output()
@@ -125,7 +128,8 @@ billing_disassociate_source_views <- function(arn, sourceViews) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billing$disassociate_source_views_input(arn = arn, sourceViews = sourceViews)
   output <- .billing$disassociate_source_views_output()
@@ -159,7 +163,8 @@ billing_get_billing_preferences <- function(nextToken = NULL, maxResults = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billing$get_billing_preferences_input(nextToken = nextToken, maxResults = maxResults, features = features, filters = filters)
   output <- .billing$get_billing_preferences_output()
@@ -190,7 +195,8 @@ billing_get_billing_view <- function(arn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billing$get_billing_view_input(arn = arn)
   output <- .billing$get_billing_view_output()
@@ -227,7 +233,8 @@ billing_get_credit_allocation_history <- function(accountId, creditId = NULL, st
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "creditAllocationHistoryList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billing$get_credit_allocation_history_input(accountId = accountId, creditId = creditId, startDate = startDate, endDate = endDate, nextToken = nextToken, maxResults = maxResults)
   output <- .billing$get_credit_allocation_history_output()
@@ -262,7 +269,8 @@ billing_get_credits <- function(accountId, startDate, endDate = NULL, payerAccou
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billing$get_credits_input(accountId = accountId, startDate = startDate, endDate = endDate, payerAccountFlag = payerAccountFlag)
   output <- .billing$get_credits_output()
@@ -294,7 +302,8 @@ billing_get_enterprise_support_charge_summary <- function(billingMonth) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billing$get_enterprise_support_charge_summary_input(billingMonth = billingMonth)
   output <- .billing$get_enterprise_support_charge_summary_output()
@@ -325,7 +334,8 @@ billing_get_enterprise_support_contract_details <- function(billingMonth) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billing$get_enterprise_support_contract_details_input(billingMonth = billingMonth)
   output <- .billing$get_enterprise_support_contract_details_output()
@@ -357,7 +367,8 @@ billing_get_resource_policy <- function(resourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billing$get_resource_policy_input(resourceArn = resourceArn)
   output <- .billing$get_resource_policy_output()
@@ -368,6 +379,41 @@ billing_get_resource_policy <- function(resourceArn) {
   return(response)
 }
 .billing$operations$get_resource_policy <- billing_get_resource_policy
+
+#' Lists the segments of a billing view over a given time period
+#'
+#' @description
+#' Lists the segments of a billing view over a given time period. Each segment identifies the billing domain (`PRO_FORMA` or `BILLABLE`) and the account relationships that apply during its time range.
+#'
+#' See [https://www.paws-r-sdk.com/docs/billing_list_billing_view_segments/](https://www.paws-r-sdk.com/docs/billing_list_billing_view_segments/) for full documentation.
+#'
+#' @param timeRange The billing period to query. If you don't provide a time range, the current billing period, which is the calendar month in UTC, is used.
+#' @param arn The Amazon Resource Name (ARN) that uniquely identifies the billing view to query. If you don't provide an ARN, the caller's `PRIMARY` billing view is used. The ARN must reference a primary billing view. Custom billing views aren't supported.
+#' @param maxResults The number of entries a paginated response contains. Valid values range from 1 to 100. The default is 100.
+#' @param nextToken The pagination token that is used on subsequent calls to list billing view segments.
+#'
+#' @keywords internal
+#'
+#' @rdname billing_list_billing_view_segments
+billing_list_billing_view_segments <- function(timeRange = NULL, arn = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListBillingViewSegments",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .billing$list_billing_view_segments_input(timeRange = timeRange, arn = arn, maxResults = maxResults, nextToken = nextToken)
+  output <- .billing$list_billing_view_segments_output()
+  config <- get_config()
+  svc <- .billing$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.billing$operations$list_billing_view_segments <- billing_list_billing_view_segments
 
 #' Lists the billing views available for a given time period
 #'
@@ -395,7 +441,8 @@ billing_list_billing_views <- function(activeTimeRange = NULL, arns = NULL, bill
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "billingViews"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billing$list_billing_views_input(activeTimeRange = activeTimeRange, arns = arns, billingViewTypes = billingViewTypes, names = names, ownerAccountId = ownerAccountId, sourceAccountId = sourceAccountId, maxResults = maxResults, nextToken = nextToken)
   output <- .billing$list_billing_views_output()
@@ -407,6 +454,80 @@ billing_list_billing_views <- function(activeTimeRange = NULL, arns = NULL, bill
 }
 .billing$operations$list_billing_views <- billing_list_billing_views
 
+#' Returns Business Support charges broken down at the linked account level
+#' for a given billing month
+#'
+#' @description
+#' Returns Business Support charges broken down at the linked account level for a given billing month.
+#'
+#' See [https://www.paws-r-sdk.com/docs/billing_list_business_support_account_charges/](https://www.paws-r-sdk.com/docs/billing_list_business_support_account_charges/) for full documentation.
+#'
+#' @param billingMonth &#91;required&#93; The billing month to retrieve Business Support charges for, in YYYY-MM format. You can request the current month (charges will be estimated) or a past month (charges will be finalized).
+#' @param accountId The linked account ID to filter results to a specific account. If you don't specify a value, the response includes charges for all linked accounts.
+#' @param maxResults The maximum number of results to return per page. Default is 100.
+#' @param nextToken The pagination token for the next page of results.
+#'
+#' @keywords internal
+#'
+#' @rdname billing_list_business_support_account_charges
+billing_list_business_support_account_charges <- function(billingMonth, accountId = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListBusinessSupportAccountCharges",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "accountCharges"),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .billing$list_business_support_account_charges_input(billingMonth = billingMonth, accountId = accountId, maxResults = maxResults, nextToken = nextToken)
+  output <- .billing$list_business_support_account_charges_output()
+  config <- get_config()
+  svc <- .billing$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.billing$operations$list_business_support_account_charges <- billing_list_business_support_account_charges
+
+#' Returns the history of Business Support subscription contracts across
+#' accounts
+#'
+#' @description
+#' Returns the history of Business Support subscription contracts across accounts.
+#'
+#' See [https://www.paws-r-sdk.com/docs/billing_list_business_support_subscription_history/](https://www.paws-r-sdk.com/docs/billing_list_business_support_subscription_history/) for full documentation.
+#'
+#' @param billingMonth The billing month to retrieve subscription contracts for, in YYYY-MM format. If you don't specify a value, defaults to the current month.
+#' @param accountId The account ID to filter results to a specific account. If you don't specify a value, the response includes subscription history for all accounts.
+#' @param startDate The start date to filter subscription contracts from.
+#' @param endDate The end date to filter subscription contracts to.
+#' @param maxResults The maximum number of results to return per page. Default is 100.
+#' @param nextToken The pagination token for the next page of results.
+#'
+#' @keywords internal
+#'
+#' @rdname billing_list_business_support_subscription_history
+billing_list_business_support_subscription_history <- function(billingMonth = NULL, accountId = NULL, startDate = NULL, endDate = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListBusinessSupportSubscriptionHistory",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "subscriptionContracts"),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .billing$list_business_support_subscription_history_input(billingMonth = billingMonth, accountId = accountId, startDate = startDate, endDate = endDate, maxResults = maxResults, nextToken = nextToken)
+  output <- .billing$list_business_support_subscription_history_output()
+  config <- get_config()
+  svc <- .billing$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.billing$operations$list_business_support_subscription_history <- billing_list_business_support_subscription_history
+
 #' Returns Support-eligible spend broken down at linked account level
 #'
 #' @description
@@ -415,8 +536,8 @@ billing_list_billing_views <- function(activeTimeRange = NULL, arns = NULL, bill
 #' See [https://www.paws-r-sdk.com/docs/billing_list_enterprise_support_linked_account_charges/](https://www.paws-r-sdk.com/docs/billing_list_enterprise_support_linked_account_charges/) for full documentation.
 #'
 #' @param billingMonth &#91;required&#93; The billing month in YYYY-MM format. This must be a month in the past.
-#' @param accountId An optional linked account ID to filter results to a specific account.
-#' @param maxResults The maximum number of results to return per page.
+#' @param accountId The linked account ID to filter results to a specific account. If you don't specify a value, the response includes charges for all linked accounts.
+#' @param maxResults The maximum number of results to return per page. Default is 100.
 #' @param nextToken The pagination token for the next page of results.
 #'
 #' @keywords internal
@@ -429,7 +550,8 @@ billing_list_enterprise_support_linked_account_charges <- function(billingMonth,
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "linkedAccount"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billing$list_enterprise_support_linked_account_charges_input(billingMonth = billingMonth, accountId = accountId, maxResults = maxResults, nextToken = nextToken)
   output <- .billing$list_enterprise_support_linked_account_charges_output()
@@ -463,7 +585,8 @@ billing_list_source_views_for_billing_view <- function(arn, maxResults = NULL, n
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "sourceViews"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billing$list_source_views_for_billing_view_input(arn = arn, maxResults = maxResults, nextToken = nextToken)
   output <- .billing$list_source_views_for_billing_view_output()
@@ -494,7 +617,8 @@ billing_list_tags_for_resource <- function(resourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billing$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .billing$list_tags_for_resource_output()
@@ -526,7 +650,8 @@ billing_redeem_credits <- function(promoCode) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billing$redeem_credits_input(promoCode = promoCode)
   output <- .billing$redeem_credits_output()
@@ -559,7 +684,8 @@ billing_tag_resource <- function(resourceArn, resourceTags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billing$tag_resource_input(resourceArn = resourceArn, resourceTags = resourceTags)
   output <- .billing$tag_resource_output()
@@ -591,7 +717,8 @@ billing_untag_resource <- function(resourceArn, resourceTagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billing$untag_resource_input(resourceArn = resourceArn, resourceTagKeys = resourceTagKeys)
   output <- .billing$untag_resource_output()
@@ -623,7 +750,8 @@ billing_update_billing_preferences <- function(feature, billingPreferencesPerKey
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billing$update_billing_preferences_input(feature = feature, billingPreferencesPerKey = billingPreferencesPerKey)
   output <- .billing$update_billing_preferences_output()
@@ -657,7 +785,8 @@ billing_update_billing_view <- function(arn, name = NULL, description = NULL, da
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .billing$update_billing_view_input(arn = arn, name = name, description = description, dataFilterExpression = dataFilterExpression)
   output <- .billing$update_billing_view_output()

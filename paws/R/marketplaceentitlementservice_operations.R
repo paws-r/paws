@@ -73,7 +73,8 @@ marketplaceentitlementservice_get_entitlements <- function(ProductCode, Filter =
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Entitlements"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .marketplaceentitlementservice$get_entitlements_input(ProductCode = ProductCode, Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .marketplaceentitlementservice$get_entitlements_output()

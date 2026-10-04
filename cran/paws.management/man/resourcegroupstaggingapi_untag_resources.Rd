@@ -9,7 +9,7 @@ resourcegroupstaggingapi_untag_resources(ResourceARNList, TagKeys)
 \arguments{
 \item{ResourceARNList}{[required] Specifies a list of ARNs of the resources that you want to remove tags from.
 
-An ARN (Amazon Resource Name) uniquely identifies a resource. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces} in the \emph{Amazon Web Services General Reference}.}
+An ARN (Amazon Resource Name) uniquely identifies a resource. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces} in the \emph{Amazon Web Services General Reference}.}
 
 \item{TagKeys}{[required] Specifies a list of tag keys that you want to remove from the specified resources.}
 }

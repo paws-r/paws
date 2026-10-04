@@ -153,6 +153,16 @@ NULL
   return(populate(args, .billingconductor_shapes[["get_billing_group_cost_report_output"]]))
 }
 
+.billingconductor$get_billing_transfer_preference_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .billingconductor_shapes[["get_billing_transfer_preference_input"]]))
+}
+
+.billingconductor$get_billing_transfer_preference_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .billingconductor_shapes[["get_billing_transfer_preference_output"]]))
+}
+
 .billingconductor$list_account_associations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   return(populate(args, .billingconductor_shapes[["list_account_associations_input"]]))
@@ -291,6 +301,16 @@ NULL
 .billingconductor$update_billing_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   return(populate(args, .billingconductor_shapes[["update_billing_group_output"]]))
+}
+
+.billingconductor$update_billing_transfer_preference_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .billingconductor_shapes[["update_billing_transfer_preference_input"]]))
+}
+
+.billingconductor$update_billing_transfer_preference_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .billingconductor_shapes[["update_billing_transfer_preference_output"]]))
 }
 
 .billingconductor$update_custom_line_item_input <- function(...) {

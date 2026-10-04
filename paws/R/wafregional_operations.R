@@ -47,7 +47,8 @@ wafregional_associate_web_acl <- function(WebACLId, ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$associate_web_acl_input(WebACLId = WebACLId, ResourceArn = ResourceArn)
   output <- .wafregional$associate_web_acl_output()
@@ -129,7 +130,8 @@ wafregional_create_byte_match_set <- function(Name, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$create_byte_match_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .wafregional$create_byte_match_set_output()
@@ -206,7 +208,8 @@ wafregional_create_geo_match_set <- function(Name, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$create_geo_match_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .wafregional$create_geo_match_set_output()
@@ -292,7 +295,8 @@ wafregional_create_ip_set <- function(Name, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$create_ip_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .wafregional$create_ip_set_output()
@@ -413,7 +417,8 @@ wafregional_create_rate_based_rule <- function(Name, MetricName, RateKey, RateLi
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$create_rate_based_rule_input(Name = Name, MetricName = MetricName, RateKey = RateKey, RateLimit = RateLimit, ChangeToken = ChangeToken, Tags = Tags)
   output <- .wafregional$create_rate_based_rule_output()
@@ -494,7 +499,8 @@ wafregional_create_regex_match_set <- function(Name, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$create_regex_match_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .wafregional$create_regex_match_set_output()
@@ -568,7 +574,8 @@ wafregional_create_regex_pattern_set <- function(Name, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$create_regex_pattern_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .wafregional$create_regex_pattern_set_output()
@@ -676,7 +683,8 @@ wafregional_create_rule <- function(Name, MetricName, ChangeToken, Tags = NULL) 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$create_rule_input(Name = Name, MetricName = MetricName, ChangeToken = ChangeToken, Tags = Tags)
   output <- .wafregional$create_rule_output()
@@ -755,7 +763,8 @@ wafregional_create_rule_group <- function(Name, MetricName, ChangeToken, Tags = 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$create_rule_group_input(Name = Name, MetricName = MetricName, ChangeToken = ChangeToken, Tags = Tags)
   output <- .wafregional$create_rule_group_output()
@@ -847,7 +856,8 @@ wafregional_create_size_constraint_set <- function(Name, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$create_size_constraint_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .wafregional$create_size_constraint_set_output()
@@ -937,7 +947,8 @@ wafregional_create_sql_injection_match_set <- function(Name, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$create_sql_injection_match_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .wafregional$create_sql_injection_match_set_output()
@@ -1064,7 +1075,8 @@ wafregional_create_web_acl <- function(Name, MetricName, DefaultAction, ChangeTo
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$create_web_acl_input(Name = Name, MetricName = MetricName, DefaultAction = DefaultAction, ChangeToken = ChangeToken, Tags = Tags)
   output <- .wafregional$create_web_acl_output()
@@ -1127,7 +1139,8 @@ wafregional_create_web_acl_migration_stack <- function(WebACLId, S3BucketName, I
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$create_web_acl_migration_stack_input(WebACLId = WebACLId, S3BucketName = S3BucketName, IgnoreUnsupportedType = IgnoreUnsupportedType)
   output <- .wafregional$create_web_acl_migration_stack_output()
@@ -1217,7 +1230,8 @@ wafregional_create_xss_match_set <- function(Name, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$create_xss_match_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .wafregional$create_xss_match_set_output()
@@ -1292,7 +1306,8 @@ wafregional_delete_byte_match_set <- function(ByteMatchSetId, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$delete_byte_match_set_input(ByteMatchSetId = ByteMatchSetId, ChangeToken = ChangeToken)
   output <- .wafregional$delete_byte_match_set_output()
@@ -1357,7 +1372,8 @@ wafregional_delete_geo_match_set <- function(GeoMatchSetId, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$delete_geo_match_set_input(GeoMatchSetId = GeoMatchSetId, ChangeToken = ChangeToken)
   output <- .wafregional$delete_geo_match_set_output()
@@ -1432,7 +1448,8 @@ wafregional_delete_ip_set <- function(IPSetId, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$delete_ip_set_input(IPSetId = IPSetId, ChangeToken = ChangeToken)
   output <- .wafregional$delete_ip_set_output()
@@ -1480,7 +1497,8 @@ wafregional_delete_logging_configuration <- function(ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$delete_logging_configuration_input(ResourceArn = ResourceArn)
   output <- .wafregional$delete_logging_configuration_output()
@@ -1532,7 +1550,8 @@ wafregional_delete_permission_policy <- function(ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$delete_permission_policy_input(ResourceArn = ResourceArn)
   output <- .wafregional$delete_permission_policy_output()
@@ -1597,7 +1616,8 @@ wafregional_delete_rate_based_rule <- function(RuleId, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$delete_rate_based_rule_input(RuleId = RuleId, ChangeToken = ChangeToken)
   output <- .wafregional$delete_rate_based_rule_output()
@@ -1662,7 +1682,8 @@ wafregional_delete_regex_match_set <- function(RegexMatchSetId, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$delete_regex_match_set_input(RegexMatchSetId = RegexMatchSetId, ChangeToken = ChangeToken)
   output <- .wafregional$delete_regex_match_set_output()
@@ -1717,7 +1738,8 @@ wafregional_delete_regex_pattern_set <- function(RegexPatternSetId, ChangeToken)
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$delete_regex_pattern_set_input(RegexPatternSetId = RegexPatternSetId, ChangeToken = ChangeToken)
   output <- .wafregional$delete_regex_pattern_set_output()
@@ -1791,7 +1813,8 @@ wafregional_delete_rule <- function(RuleId, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$delete_rule_input(RuleId = RuleId, ChangeToken = ChangeToken)
   output <- .wafregional$delete_rule_output()
@@ -1856,7 +1879,8 @@ wafregional_delete_rule_group <- function(RuleGroupId, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$delete_rule_group_input(RuleGroupId = RuleGroupId, ChangeToken = ChangeToken)
   output <- .wafregional$delete_rule_group_output()
@@ -1931,7 +1955,8 @@ wafregional_delete_size_constraint_set <- function(SizeConstraintSetId, ChangeTo
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$delete_size_constraint_set_input(SizeConstraintSetId = SizeConstraintSetId, ChangeToken = ChangeToken)
   output <- .wafregional$delete_size_constraint_set_output()
@@ -2007,7 +2032,8 @@ wafregional_delete_sql_injection_match_set <- function(SqlInjectionMatchSetId, C
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$delete_sql_injection_match_set_input(SqlInjectionMatchSetId = SqlInjectionMatchSetId, ChangeToken = ChangeToken)
   output <- .wafregional$delete_sql_injection_match_set_output()
@@ -2080,7 +2106,8 @@ wafregional_delete_web_acl <- function(WebACLId, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$delete_web_acl_input(WebACLId = WebACLId, ChangeToken = ChangeToken)
   output <- .wafregional$delete_web_acl_output()
@@ -2155,7 +2182,8 @@ wafregional_delete_xss_match_set <- function(XssMatchSetId, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$delete_xss_match_set_input(XssMatchSetId = XssMatchSetId, ChangeToken = ChangeToken)
   output <- .wafregional$delete_xss_match_set_output()
@@ -2209,7 +2237,8 @@ wafregional_disassociate_web_acl <- function(ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$disassociate_web_acl_input(ResourceArn = ResourceArn)
   output <- .wafregional$disassociate_web_acl_output()
@@ -2285,7 +2314,8 @@ wafregional_get_byte_match_set <- function(ByteMatchSetId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$get_byte_match_set_input(ByteMatchSetId = ByteMatchSetId)
   output <- .wafregional$get_byte_match_set_output()
@@ -2347,7 +2377,8 @@ wafregional_get_change_token <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$get_change_token_input()
   output <- .wafregional$get_change_token_output()
@@ -2415,7 +2446,8 @@ wafregional_get_change_token_status <- function(ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$get_change_token_status_input(ChangeToken = ChangeToken)
   output <- .wafregional$get_change_token_status_output()
@@ -2477,7 +2509,8 @@ wafregional_get_geo_match_set <- function(GeoMatchSetId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$get_geo_match_set_input(GeoMatchSetId = GeoMatchSetId)
   output <- .wafregional$get_geo_match_set_output()
@@ -2548,7 +2581,8 @@ wafregional_get_ip_set <- function(IPSetId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$get_ip_set_input(IPSetId = IPSetId)
   output <- .wafregional$get_ip_set_output()
@@ -2612,7 +2646,8 @@ wafregional_get_logging_configuration <- function(ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$get_logging_configuration_input(ResourceArn = ResourceArn)
   output <- .wafregional$get_logging_configuration_output()
@@ -2665,7 +2700,8 @@ wafregional_get_permission_policy <- function(ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$get_permission_policy_input(ResourceArn = ResourceArn)
   output <- .wafregional$get_permission_policy_output()
@@ -2731,7 +2767,8 @@ wafregional_get_rate_based_rule <- function(RuleId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$get_rate_based_rule_input(RuleId = RuleId)
   output <- .wafregional$get_rate_based_rule_output()
@@ -2789,7 +2826,8 @@ wafregional_get_rate_based_rule_managed_keys <- function(RuleId, NextMarker = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$get_rate_based_rule_managed_keys_input(RuleId = RuleId, NextMarker = NextMarker)
   output <- .wafregional$get_rate_based_rule_managed_keys_output()
@@ -2855,7 +2893,8 @@ wafregional_get_regex_match_set <- function(RegexMatchSetId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$get_regex_match_set_input(RegexMatchSetId = RegexMatchSetId)
   output <- .wafregional$get_regex_match_set_output()
@@ -2914,7 +2953,8 @@ wafregional_get_regex_pattern_set <- function(RegexPatternSetId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$get_regex_pattern_set_input(RegexPatternSetId = RegexPatternSetId)
   output <- .wafregional$get_regex_pattern_set_output()
@@ -2987,7 +3027,8 @@ wafregional_get_rule <- function(RuleId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$get_rule_input(RuleId = RuleId)
   output <- .wafregional$get_rule_output()
@@ -3046,7 +3087,8 @@ wafregional_get_rule_group <- function(RuleGroupId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$get_rule_group_input(RuleGroupId = RuleGroupId)
   output <- .wafregional$get_rule_group_output()
@@ -3166,7 +3208,8 @@ wafregional_get_sampled_requests <- function(WebAclId, RuleId, TimeWindow, MaxIt
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$get_sampled_requests_input(WebAclId = WebAclId, RuleId = RuleId, TimeWindow = TimeWindow, MaxItems = MaxItems)
   output <- .wafregional$get_sampled_requests_output()
@@ -3242,7 +3285,8 @@ wafregional_get_size_constraint_set <- function(SizeConstraintSetId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$get_size_constraint_set_input(SizeConstraintSetId = SizeConstraintSetId)
   output <- .wafregional$get_size_constraint_set_output()
@@ -3316,7 +3360,8 @@ wafregional_get_sql_injection_match_set <- function(SqlInjectionMatchSetId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$get_sql_injection_match_set_input(SqlInjectionMatchSetId = SqlInjectionMatchSetId)
   output <- .wafregional$get_sql_injection_match_set_output()
@@ -3404,7 +3449,8 @@ wafregional_get_web_acl <- function(WebACLId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$get_web_acl_input(WebACLId = WebACLId)
   output <- .wafregional$get_web_acl_output()
@@ -3466,7 +3512,8 @@ wafregional_get_web_acl_for_resource <- function(ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$get_web_acl_for_resource_input(ResourceArn = ResourceArn)
   output <- .wafregional$get_web_acl_for_resource_output()
@@ -3540,7 +3587,8 @@ wafregional_get_xss_match_set <- function(XssMatchSetId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$get_xss_match_set_input(XssMatchSetId = XssMatchSetId)
   output <- .wafregional$get_xss_match_set_output()
@@ -3616,7 +3664,8 @@ wafregional_list_activated_rules_in_rule_group <- function(RuleGroupId = NULL, N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$list_activated_rules_in_rule_group_input(RuleGroupId = RuleGroupId, NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_activated_rules_in_rule_group_output()
@@ -3677,7 +3726,8 @@ wafregional_list_byte_match_sets <- function(NextMarker = NULL, Limit = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$list_byte_match_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_byte_match_sets_output()
@@ -3738,7 +3788,8 @@ wafregional_list_geo_match_sets <- function(NextMarker = NULL, Limit = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$list_geo_match_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_geo_match_sets_output()
@@ -3807,7 +3858,8 @@ wafregional_list_ip_sets <- function(NextMarker = NULL, Limit = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$list_ip_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_ip_sets_output()
@@ -3876,7 +3928,8 @@ wafregional_list_logging_configurations <- function(NextMarker = NULL, Limit = N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$list_logging_configurations_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_logging_configurations_output()
@@ -3937,7 +3990,8 @@ wafregional_list_rate_based_rules <- function(NextMarker = NULL, Limit = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$list_rate_based_rules_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_rate_based_rules_output()
@@ -3998,7 +4052,8 @@ wafregional_list_regex_match_sets <- function(NextMarker = NULL, Limit = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$list_regex_match_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_regex_match_sets_output()
@@ -4059,7 +4114,8 @@ wafregional_list_regex_pattern_sets <- function(NextMarker = NULL, Limit = NULL)
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$list_regex_pattern_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_regex_pattern_sets_output()
@@ -4116,7 +4172,8 @@ wafregional_list_resources_for_web_acl <- function(WebACLId, ResourceType = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$list_resources_for_web_acl_input(WebACLId = WebACLId, ResourceType = ResourceType)
   output <- .wafregional$list_resources_for_web_acl_output()
@@ -4177,7 +4234,8 @@ wafregional_list_rule_groups <- function(NextMarker = NULL, Limit = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$list_rule_groups_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_rule_groups_output()
@@ -4246,7 +4304,8 @@ wafregional_list_rules <- function(NextMarker = NULL, Limit = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$list_rules_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_rules_output()
@@ -4316,7 +4375,8 @@ wafregional_list_size_constraint_sets <- function(NextMarker = NULL, Limit = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$list_size_constraint_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_size_constraint_sets_output()
@@ -4386,7 +4446,8 @@ wafregional_list_sql_injection_match_sets <- function(NextMarker = NULL, Limit =
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$list_sql_injection_match_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_sql_injection_match_sets_output()
@@ -4448,7 +4509,8 @@ wafregional_list_subscribed_rule_groups <- function(NextMarker = NULL, Limit = N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$list_subscribed_rule_groups_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_subscribed_rule_groups_output()
@@ -4516,7 +4578,8 @@ wafregional_list_tags_for_resource <- function(NextMarker = NULL, Limit = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$list_tags_for_resource_input(NextMarker = NextMarker, Limit = Limit, ResourceARN = ResourceARN)
   output <- .wafregional$list_tags_for_resource_output()
@@ -4585,7 +4648,8 @@ wafregional_list_web_ac_ls <- function(NextMarker = NULL, Limit = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$list_web_ac_ls_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_web_ac_ls_output()
@@ -4654,7 +4718,8 @@ wafregional_list_xss_match_sets <- function(NextMarker = NULL, Limit = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$list_xss_match_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_xss_match_sets_output()
@@ -4743,7 +4808,8 @@ wafregional_put_logging_configuration <- function(LoggingConfiguration) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$put_logging_configuration_input(LoggingConfiguration = LoggingConfiguration)
   output <- .wafregional$put_logging_configuration_output()
@@ -4815,7 +4881,8 @@ wafregional_put_permission_policy <- function(ResourceArn, Policy) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$put_permission_policy_input(ResourceArn = ResourceArn, Policy = Policy)
   output <- .wafregional$put_permission_policy_output()
@@ -4872,7 +4939,8 @@ wafregional_tag_resource <- function(ResourceARN, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .wafregional$tag_resource_output()
@@ -4922,7 +4990,8 @@ wafregional_untag_resource <- function(ResourceARN, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .wafregional$untag_resource_output()
@@ -5044,7 +5113,8 @@ wafregional_update_byte_match_set <- function(ByteMatchSetId, ChangeToken, Updat
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$update_byte_match_set_input(ByteMatchSetId = ByteMatchSetId, ChangeToken = ChangeToken, Updates = Updates)
   output <- .wafregional$update_byte_match_set_output()
@@ -5133,7 +5203,8 @@ wafregional_update_geo_match_set <- function(GeoMatchSetId, ChangeToken, Updates
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$update_geo_match_set_input(GeoMatchSetId = GeoMatchSetId, ChangeToken = ChangeToken, Updates = Updates)
   output <- .wafregional$update_geo_match_set_output()
@@ -5257,7 +5328,8 @@ wafregional_update_ip_set <- function(IPSetId, ChangeToken, Updates) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$update_ip_set_input(IPSetId = IPSetId, ChangeToken = ChangeToken, Updates = Updates)
   output <- .wafregional$update_ip_set_output()
@@ -5350,7 +5422,8 @@ wafregional_update_rate_based_rule <- function(RuleId, ChangeToken, Updates, Rat
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$update_rate_based_rule_input(RuleId = RuleId, ChangeToken = ChangeToken, Updates = Updates, RateLimit = RateLimit)
   output <- .wafregional$update_rate_based_rule_output()
@@ -5440,7 +5513,8 @@ wafregional_update_regex_match_set <- function(RegexMatchSetId, Updates, ChangeT
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$update_regex_match_set_input(RegexMatchSetId = RegexMatchSetId, Updates = Updates, ChangeToken = ChangeToken)
   output <- .wafregional$update_regex_match_set_output()
@@ -5527,7 +5601,8 @@ wafregional_update_regex_pattern_set <- function(RegexPatternSetId, Updates, Cha
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$update_regex_pattern_set_input(RegexPatternSetId = RegexPatternSetId, Updates = Updates, ChangeToken = ChangeToken)
   output <- .wafregional$update_regex_pattern_set_output()
@@ -5641,7 +5716,8 @@ wafregional_update_rule <- function(RuleId, ChangeToken, Updates) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$update_rule_input(RuleId = RuleId, ChangeToken = ChangeToken, Updates = Updates)
   output <- .wafregional$update_rule_output()
@@ -5740,7 +5816,8 @@ wafregional_update_rule_group <- function(RuleGroupId, Updates, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$update_rule_group_input(RuleGroupId = RuleGroupId, Updates = Updates, ChangeToken = ChangeToken)
   output <- .wafregional$update_rule_group_output()
@@ -5865,7 +5942,8 @@ wafregional_update_size_constraint_set <- function(SizeConstraintSetId, ChangeTo
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$update_size_constraint_set_input(SizeConstraintSetId = SizeConstraintSetId, ChangeToken = ChangeToken, Updates = Updates)
   output <- .wafregional$update_size_constraint_set_output()
@@ -5982,7 +6060,8 @@ wafregional_update_sql_injection_match_set <- function(SqlInjectionMatchSetId, C
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$update_sql_injection_match_set_input(SqlInjectionMatchSetId = SqlInjectionMatchSetId, ChangeToken = ChangeToken, Updates = Updates)
   output <- .wafregional$update_sql_injection_match_set_output()
@@ -6125,7 +6204,8 @@ wafregional_update_web_acl <- function(WebACLId, ChangeToken, Updates = NULL, De
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$update_web_acl_input(WebACLId = WebACLId, ChangeToken = ChangeToken, Updates = Updates, DefaultAction = DefaultAction)
   output <- .wafregional$update_web_acl_output()
@@ -6240,7 +6320,8 @@ wafregional_update_xss_match_set <- function(XssMatchSetId, ChangeToken, Updates
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .wafregional$update_xss_match_set_input(XssMatchSetId = XssMatchSetId, ChangeToken = ChangeToken, Updates = Updates)
   output <- .wafregional$update_xss_match_set_output()

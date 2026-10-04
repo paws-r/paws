@@ -6,13 +6,13 @@ NULL
 #' Cancels the creation of an image
 #'
 #' @description
-#' Cancels the creation of an image. This operation can only be used on images in a non-terminal state.
+#' Cancels the creation of an image. This operation can only be used on images in a non-terminal state. Cancellation is asynchronous: the request returns immediately, then Image Builder stops the running build and moves the image to the `CANCELLED` state. Output resources that the build already created, such as AMIs and snapshots, aren't removed.
 #'
 #' @usage
 #' imagebuilder_cancel_image_creation(imageBuildVersionArn, clientToken)
 #'
 #' @param imageBuildVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the image that you want to cancel creation for.
-#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -44,7 +44,8 @@ imagebuilder_cancel_image_creation <- function(imageBuildVersionArn, clientToken
     http_path = "/CancelImageCreation",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$cancel_image_creation_input(imageBuildVersionArn = imageBuildVersionArn, clientToken = clientToken)
   output <- .imagebuilder$cancel_image_creation_output()
@@ -56,17 +57,18 @@ imagebuilder_cancel_image_creation <- function(imageBuildVersionArn, clientToken
 }
 .imagebuilder$operations$cancel_image_creation <- imagebuilder_cancel_image_creation
 
-#' Cancels a specific image lifecycle policy runtime instance
+#' Cancels a lifecycle execution – a single run of lifecycle actions that a
+#' lifecycle policy or a StartResourceStateUpdate request started
 #'
 #' @description
-#' Cancels a specific image lifecycle policy runtime instance.
+#' Cancels a lifecycle execution – a single run of lifecycle actions that a lifecycle policy or a [`start_resource_state_update`][imagebuilder_start_resource_state_update] request started. You can only cancel an execution that hasn't reached a terminal state. Cancellation is asynchronous and doesn't undo completed lifecycle actions.
 #'
 #' @usage
 #' imagebuilder_cancel_lifecycle_execution(lifecycleExecutionId,
 #'   clientToken)
 #'
 #' @param lifecycleExecutionId &#91;required&#93; Identifies the specific runtime instance of the image lifecycle to cancel.
-#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -96,7 +98,8 @@ imagebuilder_cancel_lifecycle_execution <- function(lifecycleExecutionId, client
     http_path = "/CancelLifecycleExecution",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$cancel_lifecycle_execution_input(lifecycleExecutionId = lifecycleExecutionId, clientToken = clientToken)
   output <- .imagebuilder$cancel_lifecycle_execution_output()
@@ -117,13 +120,15 @@ imagebuilder_cancel_lifecycle_execution <- function(lifecycleExecutionId, client
 #' -   Inline, using the `data` property in the request body.
 #' 
 #' -   A URL that points to a YAML document file stored in Amazon S3, using the `uri` property in the request body.
+#' 
+#' Image Builder determines the component type from the document. If the document contains a single phase named `test`, the component type is `TEST`. Otherwise, the component type is `BUILD`.
 #'
 #' @usage
 #' imagebuilder_create_component(name, semanticVersion, description,
 #'   changeDescription, platform, supportedOsVersions, data, uri, kmsKeyId,
 #'   tags, clientToken, dryRun)
 #'
-#' @param name &#91;required&#93; The name of the component.
+#' @param name &#91;required&#93; The name of the component. Image Builder generates the component ARN from a normalized form of the name, so names that differ only in case, spaces, or underscores count as the same name. If a component with the same name and semantic version already exists in your account in the same Amazon Web Services Region, the request creates a new build version for it. If the content is also identical to the latest build version, the request fails because the component already exists.
 #' @param semanticVersion &#91;required&#93; The semantic version of the component. This version follows the semantic version syntax.
 #' 
 #' The semantic version has four nodes: \<major\>.\<minor\>.\<patch\>/\<build\>. You can assign values for the first three, and can filter on all of them.
@@ -136,13 +141,13 @@ imagebuilder_cancel_lifecycle_execution <- function(lifecycleExecutionId, client
 #' @param platform &#91;required&#93; The operating system platform of the component.
 #' @param supportedOsVersions The operating system (OS) version supported by the component. If the OS information is available, a prefix match is performed against the base image OS version during image recipe creation.
 #' @param data Component `data` contains inline YAML document content for the component. Alternatively, you can specify the `uri` of a YAML document file stored in Amazon S3. However, you cannot specify both properties.
-#' @param uri The `uri` of a YAML component document file. This must be an S3 URL (`s3://bucket/key`), and you must have permission to access the S3 bucket it points to. If you use Amazon S3, you can specify component content up to your service quota.
+#' @param uri The `uri` of a YAML component document file. This must be an S3 URL (`s3://bucket/key`), and you must have permission to access the S3 bucket it points to. If you use Amazon S3, you can specify component content up to your service quota for component size, which is 64 KB by default.
 #' 
 #' Alternatively, you can specify the YAML document inline, using the component `data` property. You cannot specify both properties.
-#' @param kmsKeyId The Amazon Resource Name (ARN) that uniquely identifies the KMS key used to encrypt this component. This can be either the Key ARN or the Alias ARN. For more information, see [Key identifiers (KeyId)](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN) in the *Key Management Service Developer Guide*.
+#' @param kmsKeyId The Amazon Resource Name (ARN) that uniquely identifies the KMS key used to encrypt this component. This can be either the Key ARN or the Alias ARN. For more information, see [Key identifiers (KeyId)](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN) in the *Key Management Service Developer Guide*. If you don't specify a key, Image Builder encrypts the component data with a KMS key that Image Builder owns.
 #' @param tags The tags that apply to the component.
-#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
-#' @param dryRun Validates the required permissions and request parameters without making the request. If validation succeeds, the operation returns a `DryRunOperationException` error response.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param dryRun Validates the required permissions and request parameters without performing the operation. If validation succeeds, the operation returns a `DryRunOperationException` error response.
 #'
 #' @return
 #' A list with the following syntax:
@@ -194,7 +199,8 @@ imagebuilder_create_component <- function(name, semanticVersion, description = N
     http_path = "/CreateComponent",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$create_component_input(name = name, semanticVersion = semanticVersion, description = description, changeDescription = changeDescription, platform = platform, supportedOsVersions = supportedOsVersions, data = data, uri = uri, kmsKeyId = kmsKeyId, tags = tags, clientToken = clientToken, dryRun = dryRun)
   output <- .imagebuilder$create_component_output()
@@ -219,7 +225,7 @@ imagebuilder_create_component <- function(name, semanticVersion, description = N
 #'   targetRepository, kmsKeyId, clientToken, dryRun)
 #'
 #' @param containerType &#91;required&#93; The type of container to create.
-#' @param name &#91;required&#93; The name of the container recipe.
+#' @param name &#91;required&#93; The name of the container recipe. The recipe name, combined with the semantic version, must be unique to your account in each Amazon Web Services Region. Image Builder generates the container recipe ARN from a normalized form of the name, so names that differ only in case, spaces, or underscores count as the same name.
 #' @param description The description of the container recipe.
 #' @param semanticVersion &#91;required&#93; The semantic version of the container recipe. This version follows the semantic version syntax.
 #' 
@@ -228,19 +234,19 @@ imagebuilder_create_component <- function(name, semanticVersion, description = N
 #' **Assignment:** For the first three nodes, you can assign any positive integer value, including zero. The upper limit is 2^30-1, or 1073741823, for each node. Image Builder automatically assigns the build number to the fourth node.
 #' 
 #' **Patterns:** You can use any numeric pattern that adheres to the assignment requirements for the nodes that you can assign. For example, you might choose a software version pattern, such as 1.0.0, or a date, such as 2021.01.01.
-#' @param components The components included in the container recipe.
+#' @param components The components included in the container recipe. You can specify each component only one time in a recipe.
 #' @param instanceConfiguration A group of options that can be used to configure an instance for building and testing container images.
-#' @param dockerfileTemplateData The Dockerfile template used to build your image as an inline data blob.
-#' @param dockerfileTemplateUri The Amazon S3 URI for the Dockerfile that is used to build your container image.
-#' @param platformOverride Specifies the operating system platform when you use a custom base image.
-#' @param imageOsVersionOverride Specifies the operating system version for the base image.
-#' @param parentImage &#91;required&#93; The base image for the container recipe.
+#' @param dockerfileTemplateData The Dockerfile template used to build your image, as an inline data blob. You must specify exactly one of the `dockerfileTemplateData` or `dockerfileTemplateUri` properties. For the contextual variables that the template can include, see [Create a new version of a container recipe](https://docs.aws.amazon.com/imagebuilder/latest/userguide/create-container-recipes.html) in the *EC2 Image Builder User Guide*.
+#' @param dockerfileTemplateUri The Amazon S3 URI for the Dockerfile template that is used to build your container image. You must have permission to read the object. Image Builder reads the object once, when it creates the recipe, and stores its content in the recipe. Later changes to the S3 object don't affect the recipe. You must specify exactly one of the `dockerfileTemplateData` or `dockerfileTemplateUri` properties.
+#' @param platformOverride Specifies the operating system platform when you use a custom base image. Container recipes support only the Linux and Windows platforms.
+#' @param imageOsVersionOverride Specifies the operating system version for the base image. Use this property only when the base image is a container image from a registry. When the base image is an Image Builder image, the operating system version comes from the parent image.
+#' @param parentImage &#91;required&#93; The base image for the container recipe. This can be an Image Builder image resource ARN or a container image URI from a registry, for example `amazonlinux:latest`.
 #' @param tags Tags that are attached to the container recipe.
 #' @param workingDirectory The working directory for use during build and test workflows.
-#' @param targetRepository &#91;required&#93; The destination repository for the container image.
+#' @param targetRepository &#91;required&#93; The destination repository for the container image. The Amazon ECR repository must already exist in the Amazon Web Services Region where the build runs.
 #' @param kmsKeyId The Amazon Resource Name (ARN) that uniquely identifies which KMS key is used to encrypt the Dockerfile template. This can be either the Key ARN or the Alias ARN. For more information, see [Key identifiers (KeyId)](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN) in the *Key Management Service Developer Guide*.
-#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
-#' @param dryRun Validates the required permissions and request parameters without making the request. If validation succeeds, the operation returns a `DryRunOperationException` error response.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param dryRun Validates the required permissions and request parameters without performing the operation. If validation succeeds, the operation returns a `DryRunOperationException` error response.
 #'
 #' @return
 #' A list with the following syntax:
@@ -329,7 +335,8 @@ imagebuilder_create_container_recipe <- function(containerType, name, descriptio
     http_path = "/CreateContainerRecipe",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$create_container_recipe_input(containerType = containerType, name = name, description = description, semanticVersion = semanticVersion, components = components, instanceConfiguration = instanceConfiguration, dockerfileTemplateData = dockerfileTemplateData, dockerfileTemplateUri = dockerfileTemplateUri, platformOverride = platformOverride, imageOsVersionOverride = imageOsVersionOverride, parentImage = parentImage, tags = tags, workingDirectory = workingDirectory, targetRepository = targetRepository, kmsKeyId = kmsKeyId, clientToken = clientToken, dryRun = dryRun)
   output <- .imagebuilder$create_container_recipe_output()
@@ -344,18 +351,18 @@ imagebuilder_create_container_recipe <- function(containerType, name, descriptio
 #' Creates a new distribution configuration
 #'
 #' @description
-#' Creates a new distribution configuration. Distribution configurations define and configure the outputs of your pipeline.
+#' Creates a new distribution configuration. Distribution configurations define and configure the outputs for your images, including the target Regions, accounts, and settings for each Region.
 #'
 #' @usage
 #' imagebuilder_create_distribution_configuration(name, description,
 #'   distributions, tags, clientToken, dryRun)
 #'
-#' @param name &#91;required&#93; The name of the distribution configuration.
+#' @param name &#91;required&#93; The name of the distribution configuration. Distribution configuration names must be unique to your account in each Amazon Web Services Region. Image Builder generates the distribution configuration ARN from a normalized form of the name, so names that differ only in case, spaces, or underscores count as the same name.
 #' @param description The description of the distribution configuration.
-#' @param distributions &#91;required&#93; The distributions of the distribution configuration.
+#' @param distributions &#91;required&#93; The distribution settings for the configuration. Each entry defines how output images are distributed in one target Amazon Web Services Region. A Region can appear at most once in the list.
 #' @param tags The tags of the distribution configuration.
-#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
-#' @param dryRun Validates the required permissions and request parameters without making the request. If validation succeeds, the operation returns a `DryRunOperationException` error response.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param dryRun Validates the required permissions and request parameters without performing the operation. If validation succeeds, the operation returns a `DryRunOperationException` error response.
 #'
 #' @return
 #' A list with the following syntax:
@@ -470,7 +477,8 @@ imagebuilder_create_distribution_configuration <- function(name, description = N
     http_path = "/CreateDistributionConfiguration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$create_distribution_configuration_input(name = name, description = description, distributions = distributions, tags = tags, clientToken = clientToken, dryRun = dryRun)
   output <- .imagebuilder$create_distribution_configuration_output()
@@ -486,7 +494,9 @@ imagebuilder_create_distribution_configuration <- function(name, description = N
 #' in the distribution configuration
 #'
 #' @description
-#' Creates a new image along with all configured output resources defined in the distribution configuration. You must specify exactly one recipe for your image, using either a ContainerRecipeArn or an ImageRecipeArn.
+#' Creates a new image along with all configured output resources defined in the distribution configuration. You must specify exactly one recipe for your image, using either a `containerRecipeArn` or an `imageRecipeArn`.
+#' 
+#' The response returns as soon as Image Builder creates the new image resource. The image build process runs asynchronously. To check its progress, call [`get_image`][imagebuilder_get_image] and check the image status.
 #'
 #' @usage
 #' imagebuilder_create_image(imageRecipeArn, containerRecipeArn,
@@ -495,18 +505,18 @@ imagebuilder_create_distribution_configuration <- function(name, description = N
 #'   clientToken, imageScanningConfiguration, workflows, executionRole,
 #'   loggingConfiguration)
 #'
-#' @param imageRecipeArn The Amazon Resource Name (ARN) of the image recipe that defines how images are configured, tested, and assessed.
-#' @param containerRecipeArn The Amazon Resource Name (ARN) of the container recipe that defines how images are configured and tested.
-#' @param distributionConfigurationArn The Amazon Resource Name (ARN) of the distribution configuration that defines and configures the outputs of your pipeline.
+#' @param imageRecipeArn The Amazon Resource Name (ARN) of the image recipe that defines how images are configured, tested, and assessed. You must specify either this property or `containerRecipeArn`, but not both.
+#' @param containerRecipeArn The Amazon Resource Name (ARN) of the container recipe that defines how images are configured and tested. You must specify either this property or `imageRecipeArn`, but not both.
+#' @param distributionConfigurationArn The Amazon Resource Name (ARN) of the distribution configuration that defines and configures the outputs of the image build. If you don't specify a distribution configuration, Image Builder creates the output image only in the account and Amazon Web Services Region where the build runs.
 #' @param infrastructureConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the infrastructure configuration that defines the environment in which your image will be built and tested.
-#' @param imageTestsConfiguration The image tests configuration of the image.
+#' @param imageTestsConfiguration Settings that determine whether Image Builder runs tests on the image after building it. Image tests are enabled by default.
 #' @param enhancedImageMetadataEnabled Specifies whether to collect additional information about the image being created, including the operating system (OS) version and package list. Defaults to `true`.
 #' @param tags The tags of the image.
-#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
-#' @param imageScanningConfiguration Contains settings for vulnerability scans.
-#' @param workflows Contains an array of workflow configuration objects.
-#' @param executionRole The name or Amazon Resource Name (ARN) for the IAM role you create that grants Image Builder access to perform workflow actions.
-#' @param loggingConfiguration The logging configuration for the image build process.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param imageScanningConfiguration Settings for vulnerability scans that Amazon Inspector runs during image creation. For AMI output, Amazon Inspector scans the test instance. For container output, Amazon Inspector scans the container image that Image Builder pushes to the Amazon ECR repository specified in `ecrConfiguration`.
+#' @param workflows The array of workflow configuration objects for the build. If you specify workflows, they replace the default workflows that Image Builder otherwise runs for the build, and you must also provide an `executionRole`.
+#' @param executionRole The name or Amazon Resource Name (ARN) for the IAM role you create that grants Image Builder access to perform workflow actions. This property is required if you specify `workflows`. If you don't provide a role, Image Builder uses the Image Builder service-linked role in your account, and creates it if it doesn't exist.
+#' @param loggingConfiguration The CloudWatch Logs log group where Image Builder sends the image build logs. If you specify a log group name outside of the `/aws/imagebuilder/` namespace, you must also provide an `executionRole` that has permission to write to that log group.
 #'
 #' @return
 #' A list with the following syntax:
@@ -583,7 +593,8 @@ imagebuilder_create_image <- function(imageRecipeArn = NULL, containerRecipeArn 
     http_path = "/CreateImage",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$create_image_input(imageRecipeArn = imageRecipeArn, containerRecipeArn = containerRecipeArn, distributionConfigurationArn = distributionConfigurationArn, infrastructureConfigurationArn = infrastructureConfigurationArn, imageTestsConfiguration = imageTestsConfiguration, enhancedImageMetadataEnabled = enhancedImageMetadataEnabled, tags = tags, clientToken = clientToken, imageScanningConfiguration = imageScanningConfiguration, workflows = workflows, executionRole = executionRole, loggingConfiguration = loggingConfiguration)
   output <- .imagebuilder$create_image_output()
@@ -598,7 +609,7 @@ imagebuilder_create_image <- function(imageRecipeArn = NULL, containerRecipeArn 
 #' Creates a new image pipeline
 #'
 #' @description
-#' Creates a new image pipeline. Use image pipelines to automate the creation and distribution of images.
+#' Creates a new image pipeline. Use image pipelines to automate the creation and distribution of images. You must specify exactly one recipe for the pipeline, using either a `containerRecipeArn` or an `imageRecipeArn`.
 #'
 #' @usage
 #' imagebuilder_create_image_pipeline(name, description, imageRecipeArn,
@@ -608,24 +619,24 @@ imagebuilder_create_image <- function(imageRecipeArn = NULL, containerRecipeArn 
 #'   clientToken, imageScanningConfiguration, workflows, executionRole,
 #'   loggingConfiguration, dryRun)
 #'
-#' @param name &#91;required&#93; The name of the image pipeline.
+#' @param name &#91;required&#93; The name of the image pipeline. Pipeline names must be unique to your account in each Amazon Web Services Region. Image Builder generates the pipeline ARN from a normalized form of the name, so names that differ only in case, spaces, or underscores count as the same name.
 #' @param description The description of the image pipeline.
-#' @param imageRecipeArn The Amazon Resource Name (ARN) of the image recipe that configures images created by this image pipeline.
-#' @param containerRecipeArn The Amazon Resource Name (ARN) of the container recipe that is used to configure images created by this container pipeline.
+#' @param imageRecipeArn The Amazon Resource Name (ARN) of the image recipe that configures images created by this image pipeline. You must specify either this property or `containerRecipeArn`, but not both.
+#' @param containerRecipeArn The Amazon Resource Name (ARN) of the container recipe that is used to configure images created by this container pipeline. You must specify either this property or `imageRecipeArn`, but not both.
 #' @param infrastructureConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the infrastructure configuration that builds images created by this image pipeline.
 #' @param distributionConfigurationArn The Amazon Resource Name (ARN) of the distribution configuration that configures and distributes images created by this image pipeline.
-#' @param imageTestsConfiguration The image test configuration of the image pipeline.
+#' @param imageTestsConfiguration Specifies the test settings that Image Builder applies to images that this pipeline creates. If you don't provide test settings, Image Builder stores a default configuration with image tests enabled.
 #' @param enhancedImageMetadataEnabled Specifies whether to collect additional information about the image being created, including the operating system (OS) version and package list. Defaults to `true`.
-#' @param schedule The schedule of the image pipeline.
-#' @param status The status of the image pipeline.
+#' @param schedule The schedule of the image pipeline. If you don't provide a schedule, the pipeline runs only when you call [`start_image_pipeline_execution`][imagebuilder_start_image_pipeline_execution].
+#' @param status The status of the image pipeline. If you don't specify a status, it defaults to `ENABLED`. A disabled pipeline doesn't run on its schedule, but you can still start builds manually.
 #' @param tags The tags of the image pipeline.
-#' @param imageTags The tags to be applied to the images produced by this pipeline.
-#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
-#' @param imageScanningConfiguration Contains settings for vulnerability scans.
-#' @param workflows Contains an array of workflow configuration objects.
+#' @param imageTags The tags that Image Builder applies to the Image Builder image resource that this pipeline's scheduled executions create. These tags don't apply to the output AMI. To tag output AMIs, use `amiTags` in the pipeline's distribution configuration.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param imageScanningConfiguration Contains settings for vulnerability scans that Amazon Inspector runs against the test instance during image creation.
+#' @param workflows The array of workflow configuration objects for builds that this pipeline starts. You must also specify `executionRole` when you provide workflows.
 #' @param executionRole The name or Amazon Resource Name (ARN) for the IAM role you create that grants Image Builder access to perform workflow actions.
 #' @param loggingConfiguration Specifies the logging configuration for the image pipeline. Use this to define custom CloudWatch Logs log groups for your pipeline execution logs and image build logs. The service manages log groups with names starting with `/aws/imagebuilder/` using the service-linked role. For custom log group names outside of this prefix, you must also provide an `executionRole`.
-#' @param dryRun Validates the required permissions and request parameters without making the request. If validation succeeds, the operation returns a `DryRunOperationException` error response.
+#' @param dryRun Validates the required permissions and request parameters without performing the operation. If validation succeeds, the operation returns a `DryRunOperationException` error response.
 #'
 #' @return
 #' A list with the following syntax:
@@ -712,7 +723,8 @@ imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRe
     http_path = "/CreateImagePipeline",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$create_image_pipeline_input(name = name, description = description, imageRecipeArn = imageRecipeArn, containerRecipeArn = containerRecipeArn, infrastructureConfigurationArn = infrastructureConfigurationArn, distributionConfigurationArn = distributionConfigurationArn, imageTestsConfiguration = imageTestsConfiguration, enhancedImageMetadataEnabled = enhancedImageMetadataEnabled, schedule = schedule, status = status, tags = tags, imageTags = imageTags, clientToken = clientToken, imageScanningConfiguration = imageScanningConfiguration, workflows = workflows, executionRole = executionRole, loggingConfiguration = loggingConfiguration, dryRun = dryRun)
   output <- .imagebuilder$create_image_pipeline_output()
@@ -735,7 +747,7 @@ imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRe
 #'   additionalInstanceConfiguration, amiTags, amiWatermarks, clientToken,
 #'   dryRun)
 #'
-#' @param name &#91;required&#93; The name of the image recipe.
+#' @param name &#91;required&#93; The name of the image recipe. The recipe name, combined with the semantic version, must be unique to your account in each Amazon Web Services Region. Image Builder generates the image recipe ARN from a normalized form of the name, so names that differ only in case, spaces, or underscores count as the same name.
 #' @param description The description of the image recipe.
 #' @param semanticVersion &#91;required&#93; The semantic version of the image recipe. This version follows the semantic version syntax.
 #' 
@@ -744,7 +756,7 @@ imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRe
 #' **Assignment:** For the first three nodes, you can assign any positive integer value, including zero. The upper limit is 2^30-1, or 1073741823, for each node. Image Builder automatically assigns the build number to the fourth node.
 #' 
 #' **Patterns:** You can use any numeric pattern that adheres to the assignment requirements for the nodes that you can assign. For example, you might choose a software version pattern, such as 1.0.0, or a date, such as 2021.01.01.
-#' @param components The components included in the image recipe.
+#' @param components The components included in the image recipe. Components are optional. A recipe with no components bakes the base image without additional customization. You can specify each component only one time in a recipe. Components with a status of `DEPRECATED` or `DISABLED` can't be added to new recipes.
 #' @param parentImage &#91;required&#93; The base image for customizations specified in the image recipe. You can specify the parent image using one of the following options:
 #' 
 #' -   AMI ID
@@ -755,17 +767,17 @@ imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRe
 #' 
 #' -   Amazon Web Services Marketplace product ID
 #' 
-#' If you enter an AMI ID or an SSM parameter that contains the AMI ID, you must have access to the AMI, and the AMI must be in the source Region.
-#' @param blockDeviceMappings The block device mappings of the image recipe.
+#' If you enter an AMI ID or an SSM parameter that contains the AMI ID, you must have access to the AMI. The AMI must also be in the Region where you're creating the recipe.
+#' @param blockDeviceMappings The block device mappings that Image Builder applies to the build instance and the output AMI. For example, you can override the size of the base image's root volume or attach additional EBS volumes.
 #' @param tags The tags of the image recipe.
-#' @param workingDirectory The working directory used during build and test workflows.
+#' @param workingDirectory The working directory used during build and test workflows. If you don't specify a working directory, Image Builder uses `/tmp` for Linux and macOS build instances, and `C:/` for Windows build instances.
 #' @param additionalInstanceConfiguration The additional settings and launch scripts for your build instances.
 #' @param amiTags Tags that are applied to the AMI that Image Builder creates during the Build phase prior to image distribution.
 #' @param amiWatermarks The AMI watermark names to attach to the output AMI from this recipe. AMI watermarks are lineage markers. They automatically propagate to derivative AMIs when the source AMI is copied or distributed across Regions or accounts.
 #' 
 #' AMI watermarks are supported only for image recipes. AMIs with watermarks cannot be made public.
-#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
-#' @param dryRun Validates the required permissions and request parameters without making the request. If validation succeeds, the operation returns a `DryRunOperationException` error response.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param dryRun Validates the required permissions and request parameters without performing the operation. If validation succeeds, the operation returns a `DryRunOperationException` error response.
 #'
 #' @return
 #' A list with the following syntax:
@@ -853,7 +865,8 @@ imagebuilder_create_image_recipe <- function(name, description = NULL, semanticV
     http_path = "/CreateImageRecipe",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$create_image_recipe_input(name = name, description = description, semanticVersion = semanticVersion, components = components, parentImage = parentImage, blockDeviceMappings = blockDeviceMappings, tags = tags, workingDirectory = workingDirectory, additionalInstanceConfiguration = additionalInstanceConfiguration, amiTags = amiTags, amiWatermarks = amiWatermarks, clientToken = clientToken, dryRun = dryRun)
   output <- .imagebuilder$create_image_recipe_output()
@@ -876,24 +889,28 @@ imagebuilder_create_image_recipe <- function(name, description = NULL, semanticV
 #'   keyPair, terminateInstanceOnFailure, snsTopicArn, resourceTags,
 #'   instanceMetadataOptions, tags, placement, clientToken, dryRun)
 #'
-#' @param name &#91;required&#93; The name of the infrastructure configuration.
+#' @param name &#91;required&#93; The name of the infrastructure configuration. Infrastructure configuration names must be unique to your account in each Amazon Web Services Region. Image Builder generates the infrastructure configuration ARN from a normalized form of the name, so names that differ only in case, spaces, or underscores count as the same name.
 #' @param description The description of the infrastructure configuration.
-#' @param instanceTypes The instance types of the infrastructure configuration. You can specify one or more instance types to use for this build. Image Builder picks one of these instance types based on availability.
-#' @param instanceProfileName &#91;required&#93; The instance profile to associate with the instance used to customize your Amazon EC2 AMI.
+#' @param instanceTypes The instance types of the infrastructure configuration. You can specify one or more instance types to use for this build. Image Builder picks one of these instance types based on availability. If you don't specify instance types, Image Builder selects compatible instance types automatically. If you specify a Dedicated Host, Image Builder uses only instance types that the host supports.
+#' @param instanceProfileName &#91;required&#93; The instance profile to associate with the instance used to customize your Amazon EC2 AMI. The instance profile must exist in your account.
 #' @param securityGroupIds The security group IDs to associate with the instance used to customize your Amazon EC2 AMI.
-#' @param subnetId The subnet ID in which to place the instance used to customize your Amazon EC2 AMI.
-#' @param logging The logging configuration of the infrastructure configuration.
+#' @param subnetId The subnet ID in which to place the instance used to customize your Amazon EC2 AMI. If you specify `subnetId`, you must also specify one or more security group IDs in `securityGroupIds`. Otherwise, the request fails.
+#' @param logging The logging configuration of the infrastructure configuration. When you configure S3 logs, Image Builder writes logs from the build and test process to the specified bucket under the key prefix.
 #' @param keyPair The key pair of the infrastructure configuration. You can use this to log on to and debug the instance used to create your image.
 #' @param terminateInstanceOnFailure Specifies whether to terminate the instance on failure. Set to false if you want Image Builder to retain the instance used to configure your AMI if the build or test phase of your workflow fails. Defaults to `true`.
-#' @param snsTopicArn The Amazon Resource Name (ARN) of the SNS topic to which Image Builder sends image build event notifications.
+#' @param snsTopicArn The Amazon Resource Name (ARN) of the SNS topic to which Image Builder sends image build event notifications. Specify a standard topic. Image Builder doesn't support FIFO topics. Image Builder validates the topic when you create or update the configuration. You must have permission to publish to the topic.
 #' 
-#' EC2 Image Builder is unable to send notifications to SNS topics that are encrypted using keys from other accounts. The key that is used to encrypt the SNS topic must reside in the account that the Image Builder service runs under.
-#' @param resourceTags The metadata tags to assign to the Amazon EC2 instance that Image Builder launches during the build process. Tags are formatted as key value pairs.
-#' @param instanceMetadataOptions The instance metadata options that you can set for the HTTP requests that pipeline builds use to launch EC2 build and test instances.
+#' EC2 Image Builder can't send notifications to SNS topics that are encrypted using keys from other accounts. If your SNS topic is encrypted, the key must be owned by the same account that owns your Image Builder resources.
+#' @param resourceTags The metadata tags to assign to the Amazon EC2 instance that Image Builder launches during the build process. Tags are formatted as key value pairs. Tag keys can't begin with `aws:` or match one of the following reserved keys: `CreatedBy`, `Ec2ImageBuilderArn`, `Name`, or `Tags`.
+#' @param instanceMetadataOptions The instance metadata service (IMDS) settings that Image Builder applies to the EC2 build and test instances it launches during image creation. If you don't set these options, the EC2 launch defaults for the instance apply. For more information about instance metadata options, see one of the following links:
+#' 
+#' -   [Configure the instance metadata options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html) in the *Amazon EC2 User Guide* for Linux instances.
+#' 
+#' -   [Configure the instance metadata options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html) in the *Amazon EC2 Windows Guide* for Windows instances.
 #' @param tags The metadata tags to assign to the infrastructure configuration resource that Image Builder creates as output. Tags are formatted as key value pairs.
-#' @param placement The instance placement settings that define where the instances that are launched from your image run.
-#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
-#' @param dryRun Validates the required permissions and request parameters without making the request. If validation succeeds, the operation returns a `DryRunOperationException` error response.
+#' @param placement The instance placement settings that define where the build and test instances that Image Builder launches during image creation run. These settings don't affect instances that you launch from the output image.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param dryRun Validates the required permissions and request parameters without performing the operation. If validation succeeds, the operation returns a `DryRunOperationException` error response.
 #'
 #' @return
 #' A list with the following syntax:
@@ -960,7 +977,8 @@ imagebuilder_create_infrastructure_configuration <- function(name, description =
     http_path = "/CreateInfrastructureConfiguration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$create_infrastructure_configuration_input(name = name, description = description, instanceTypes = instanceTypes, instanceProfileName = instanceProfileName, securityGroupIds = securityGroupIds, subnetId = subnetId, logging = logging, keyPair = keyPair, terminateInstanceOnFailure = terminateInstanceOnFailure, snsTopicArn = snsTopicArn, resourceTags = resourceTags, instanceMetadataOptions = instanceMetadataOptions, tags = tags, placement = placement, clientToken = clientToken, dryRun = dryRun)
   output <- .imagebuilder$create_infrastructure_configuration_output()
@@ -982,16 +1000,16 @@ imagebuilder_create_infrastructure_configuration <- function(name, description =
 #'   executionRole, resourceType, policyDetails, resourceSelection, tags,
 #'   clientToken, dryRun)
 #'
-#' @param name &#91;required&#93; The name of the lifecycle policy to create.
+#' @param name &#91;required&#93; The name of the lifecycle policy to create. Policy names must be unique to your account in each Amazon Web Services Region. Image Builder generates the policy ARN from a normalized form of the name, so names that differ only in case, spaces, or underscores count as the same name. You can't change the name after creation.
 #' @param description Optional description for the lifecycle policy.
-#' @param status Indicates whether the lifecycle policy resource is enabled.
-#' @param executionRole &#91;required&#93; The name or Amazon Resource Name (ARN) for the IAM role you create that grants Image Builder access to run lifecycle actions.
-#' @param resourceType &#91;required&#93; The type of Image Builder resource that the lifecycle policy applies to.
-#' @param policyDetails &#91;required&#93; Configuration details for the lifecycle policy rules.
-#' @param resourceSelection &#91;required&#93; Selection criteria for the resources that the lifecycle policy applies to.
+#' @param status Indicates whether the lifecycle policy resource is enabled. If you don't specify a status, it defaults to `ENABLED`. Only enabled policies run on their schedule.
+#' @param executionRole &#91;required&#93; The name or Amazon Resource Name (ARN) for the IAM role you create that grants Image Builder access to run lifecycle actions. You must have permission to pass the role, and the role's trust policy must allow the Image Builder service principal to assume it.
+#' @param resourceType &#91;required&#93; The type of Image Builder resource that the lifecycle policy applies to. The resource type determines the allowed rule actions: policies for AMI-based Image Builder images support `DELETE`, `DEPRECATE`, and `DISABLE`, and policies for container-based Image Builder images support only `DELETE`. You can't change the resource type after creation.
+#' @param policyDetails &#91;required&#93; Configuration details for the lifecycle policy rules. A policy can contain at most one rule per action type: one `DELETE`, one `DEPRECATE`, and one `DISABLE`.
+#' @param resourceSelection &#91;required&#93; Selection criteria for the resources that the lifecycle policy applies to. You must specify exactly one selection criteria: either recipes or a tag map, not both.
 #' @param tags Tags to apply to the lifecycle policy resource.
-#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
-#' @param dryRun Validates the required permissions and request parameters without making the request. If validation succeeds, the operation returns a `DryRunOperationException` error response.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param dryRun Validates the required permissions and request parameters without performing the operation. If validation succeeds, the operation returns a `DryRunOperationException` error response.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1080,7 +1098,8 @@ imagebuilder_create_lifecycle_policy <- function(name, description = NULL, statu
     http_path = "/CreateLifecyclePolicy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$create_lifecycle_policy_input(name = name, description = description, status = status, executionRole = executionRole, resourceType = resourceType, policyDetails = policyDetails, resourceSelection = resourceSelection, tags = tags, clientToken = clientToken, dryRun = dryRun)
   output <- .imagebuilder$create_lifecycle_policy_output()
@@ -1095,13 +1114,13 @@ imagebuilder_create_lifecycle_policy <- function(name, description = NULL, statu
 #' Creates a new workflow or a new version of an existing workflow
 #'
 #' @description
-#' Creates a new workflow or a new version of an existing workflow.
+#' Creates a new workflow or a new version of an existing workflow. If a workflow with the same name and semantic version already exists, and your request changes its configuration, Image Builder creates a new build version. If the configuration is identical to the latest build version, the request fails because that workflow configuration already exists.
 #'
 #' @usage
 #' imagebuilder_create_workflow(name, semanticVersion, description,
 #'   changeDescription, data, uri, kmsKeyId, tags, clientToken, type, dryRun)
 #'
-#' @param name &#91;required&#93; The name of the workflow to create.
+#' @param name &#91;required&#93; The name of the workflow to create. Image Builder generates the workflow ARN from a normalized form of the name, so names that differ only in case, spaces, or underscores count as the same name. If a workflow with the same name and semantic version already exists in your account in the same Amazon Web Services Region, the request creates a new build version for it. If the content is also identical to the latest build version, the request fails because the workflow already exists.
 #' @param semanticVersion &#91;required&#93; The semantic version of this workflow resource. The semantic version syntax adheres to the following rules.
 #' 
 #' The semantic version has four nodes: \<major\>.\<minor\>.\<patch\>/\<build\>. You can assign values for the first three, and can filter on all of them.
@@ -1111,15 +1130,15 @@ imagebuilder_create_lifecycle_policy <- function(name, description = NULL, statu
 #' **Patterns:** You can use any numeric pattern that adheres to the assignment requirements for the nodes that you can assign. For example, you might choose a software version pattern, such as 1.0.0, or a date, such as 2021.01.01.
 #' @param description Describes the workflow.
 #' @param changeDescription Describes what change has been made in this version of the workflow, or what makes this version different from other versions of the workflow.
-#' @param data Contains the UTF-8 encoded YAML document content for the workflow. Alternatively, you can specify the `uri` of a YAML document file stored in Amazon S3. However, you cannot specify both properties.
-#' @param uri The `uri` of a YAML component document file. This must be an S3 URL (`s3://bucket/key`), and you must have permission to access the S3 bucket it points to. If you use Amazon S3, you can specify component content up to your service quota.
+#' @param data The UTF-8 encoded YAML document content for the workflow, up to 16,000 characters. For larger documents, store the document in Amazon S3 and specify the `uri` property instead. You must specify exactly one of the `data` or `uri` properties.
+#' @param uri The `uri` of a YAML workflow document file stored in Amazon S3. This must be an S3 URL (`s3://bucket/key`), and you must have permission to access the S3 bucket it points to. A workflow document that you provide from Amazon S3 can be up to your service quota for workflow size.
 #' 
-#' Alternatively, you can specify the YAML document inline, using the component `data` property. You cannot specify both properties.
-#' @param kmsKeyId The Amazon Resource Name (ARN) that uniquely identifies the KMS key used to encrypt this workflow resource. This can be either the Key ARN or the Alias ARN. For more information, see [Key identifiers (KeyId)](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN) in the *Key Management Service Developer Guide*.
+#' Alternatively, you can specify the YAML document inline, using the workflow `data` property. You must specify exactly one of the `data` or `uri` properties.
+#' @param kmsKeyId The Amazon Resource Name (ARN) that uniquely identifies the KMS key used to encrypt this workflow resource. This can be either the Key ARN or the Alias ARN. For more information, see [Key identifiers (KeyId)](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN) in the *Key Management Service Developer Guide*. If you don't specify a key, Image Builder encrypts the workflow document with a KMS key that Image Builder owns.
 #' @param tags Tags that apply to the workflow resource.
-#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
-#' @param type &#91;required&#93; The phase in the image build process for which the workflow resource is responsible.
-#' @param dryRun Validates the required permissions and request parameters without making the request. If validation succeeds, the operation returns a `DryRunOperationException` error response.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param type &#91;required&#93; The image creation stage that this workflow applies to. Image Builder validates the workflow document steps against the stage you specify.
+#' @param dryRun Validates the required permissions and request parameters without performing the operation. If validation succeeds, the operation returns a `DryRunOperationException` error response.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1167,7 +1186,8 @@ imagebuilder_create_workflow <- function(name, semanticVersion, description = NU
     http_path = "/CreateWorkflow",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$create_workflow_input(name = name, semanticVersion = semanticVersion, description = description, changeDescription = changeDescription, data = data, uri = uri, kmsKeyId = kmsKeyId, tags = tags, clientToken = clientToken, type = type, dryRun = dryRun)
   output <- .imagebuilder$create_workflow_output()
@@ -1182,7 +1202,7 @@ imagebuilder_create_workflow <- function(name, semanticVersion, description = NU
 #' Deletes a component build version
 #'
 #' @description
-#' Deletes a component build version.
+#' Deletes a component build version. The request fails with `ResourceDependencyException` if an image recipe or container recipe references this component version. It also fails if the component build version is shared with other accounts.
 #'
 #' @usage
 #' imagebuilder_delete_component(componentBuildVersionArn)
@@ -1217,7 +1237,8 @@ imagebuilder_delete_component <- function(componentBuildVersionArn) {
     http_path = "/DeleteComponent",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$delete_component_input(componentBuildVersionArn = componentBuildVersionArn)
   output <- .imagebuilder$delete_component_output()
@@ -1232,7 +1253,7 @@ imagebuilder_delete_component <- function(componentBuildVersionArn) {
 #' Deletes a container recipe
 #'
 #' @description
-#' Deletes a container recipe.
+#' Deletes a container recipe. The request fails with `ResourceDependencyException` if the recipe is shared with other accounts, or if an image pipeline references it.
 #'
 #' @usage
 #' imagebuilder_delete_container_recipe(containerRecipeArn)
@@ -1267,7 +1288,8 @@ imagebuilder_delete_container_recipe <- function(containerRecipeArn) {
     http_path = "/DeleteContainerRecipe",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$delete_container_recipe_input(containerRecipeArn = containerRecipeArn)
   output <- .imagebuilder$delete_container_recipe_output()
@@ -1282,7 +1304,7 @@ imagebuilder_delete_container_recipe <- function(containerRecipeArn) {
 #' Deletes a distribution configuration
 #'
 #' @description
-#' Deletes a distribution configuration.
+#' Deletes a distribution configuration. You can't delete a configuration that an image pipeline still references. The request fails with `ResourceDependencyException`. Update or delete the referencing pipelines first.
 #'
 #' @usage
 #' imagebuilder_delete_distribution_configuration(
@@ -1318,7 +1340,8 @@ imagebuilder_delete_distribution_configuration <- function(distributionConfigura
     http_path = "/DeleteDistributionConfiguration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$delete_distribution_configuration_input(distributionConfigurationArn = distributionConfigurationArn)
   output <- .imagebuilder$delete_distribution_configuration_output()
@@ -1334,6 +1357,8 @@ imagebuilder_delete_distribution_configuration <- function(distributionConfigura
 #'
 #' @description
 #' Deletes an Image Builder image resource. This does not delete any EC2 AMIs or ECR container images that are created during the image build process. You must clean those up separately, using the appropriate Amazon EC2 or Amazon ECR console actions, or API or CLI commands.
+#' 
+#' The request fails with `ResourceDependencyException` if the image is shared with other accounts, or if other resources depend on it. It also fails while the image build is still running. Cancel an in-progress build with [`cancel_image_creation`][imagebuilder_cancel_image_creation] before you delete the image.
 #' 
 #' -   To deregister an EC2 Linux AMI, see [Deregister your Linux AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/deregister-ami.html) in the *Amazon EC2 User Guide* .
 #' 
@@ -1374,7 +1399,8 @@ imagebuilder_delete_image <- function(imageBuildVersionArn) {
     http_path = "/DeleteImage",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$delete_image_input(imageBuildVersionArn = imageBuildVersionArn)
   output <- .imagebuilder$delete_image_output()
@@ -1389,7 +1415,7 @@ imagebuilder_delete_image <- function(imageBuildVersionArn) {
 #' Deletes an image pipeline
 #'
 #' @description
-#' Deletes an image pipeline.
+#' Deletes an image pipeline. Images that the pipeline created aren't deleted - remove those separately with [`delete_image`][imagebuilder_delete_image]. You can delete a pipeline while a build that it started is still running. The build continues independently.
 #'
 #' @usage
 #' imagebuilder_delete_image_pipeline(imagePipelineArn)
@@ -1424,7 +1450,8 @@ imagebuilder_delete_image_pipeline <- function(imagePipelineArn) {
     http_path = "/DeleteImagePipeline",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$delete_image_pipeline_input(imagePipelineArn = imagePipelineArn)
   output <- .imagebuilder$delete_image_pipeline_output()
@@ -1474,7 +1501,8 @@ imagebuilder_delete_image_recipe <- function(imageRecipeArn) {
     http_path = "/DeleteImageRecipe",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$delete_image_recipe_input(imageRecipeArn = imageRecipeArn)
   output <- .imagebuilder$delete_image_recipe_output()
@@ -1489,7 +1517,7 @@ imagebuilder_delete_image_recipe <- function(imageRecipeArn) {
 #' Deletes an infrastructure configuration
 #'
 #' @description
-#' Deletes an infrastructure configuration.
+#' Deletes an infrastructure configuration. You can't delete a configuration that an image pipeline still references. The request fails with `ResourceDependencyException`. Update or delete the referencing pipelines first.
 #'
 #' @usage
 #' imagebuilder_delete_infrastructure_configuration(
@@ -1525,7 +1553,8 @@ imagebuilder_delete_infrastructure_configuration <- function(infrastructureConfi
     http_path = "/DeleteInfrastructureConfiguration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$delete_infrastructure_configuration_input(infrastructureConfigurationArn = infrastructureConfigurationArn)
   output <- .imagebuilder$delete_infrastructure_configuration_output()
@@ -1540,7 +1569,7 @@ imagebuilder_delete_infrastructure_configuration <- function(infrastructureConfi
 #' Deletes the specified lifecycle policy resource
 #'
 #' @description
-#' Deletes the specified lifecycle policy resource.
+#' Deletes the specified lifecycle policy resource. Deleting the policy removes its schedule, so no further lifecycle runs occur for that policy. If a lifecycle execution is in progress for the policy, Image Builder cancels it. Deletion doesn't revert actions that the policy already applied to your resources.
 #'
 #' @usage
 #' imagebuilder_delete_lifecycle_policy(lifecyclePolicyArn)
@@ -1574,7 +1603,8 @@ imagebuilder_delete_lifecycle_policy <- function(lifecyclePolicyArn) {
     http_path = "/DeleteLifecyclePolicy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$delete_lifecycle_policy_input(lifecyclePolicyArn = lifecyclePolicyArn)
   output <- .imagebuilder$delete_lifecycle_policy_output()
@@ -1589,7 +1619,7 @@ imagebuilder_delete_lifecycle_policy <- function(lifecyclePolicyArn) {
 #' Deletes a specific workflow resource
 #'
 #' @description
-#' Deletes a specific workflow resource.
+#' Deletes a specific workflow resource. You can't delete a workflow build version while an image pipeline references it. The request fails with `ResourceDependencyException`.
 #'
 #' @usage
 #' imagebuilder_delete_workflow(workflowBuildVersionArn)
@@ -1623,7 +1653,8 @@ imagebuilder_delete_workflow <- function(workflowBuildVersionArn) {
     http_path = "/DeleteWorkflow",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$delete_workflow_input(workflowBuildVersionArn = workflowBuildVersionArn)
   output <- .imagebuilder$delete_workflow_output()
@@ -1645,11 +1676,19 @@ imagebuilder_delete_workflow <- function(workflowBuildVersionArn) {
 #' imagebuilder_distribute_image(sourceImage, distributionConfigurationArn,
 #'   executionRole, tags, clientToken, loggingConfiguration)
 #'
-#' @param sourceImage &#91;required&#93; The source image to distribute. Specify an AMI identifier, SSM parameter path, or Image Builder image Amazon Resource Name (ARN). When you specify an Image Builder image Amazon Resource Name (ARN), the image must be in the `AVAILABLE` state.
+#' @param sourceImage &#91;required&#93; The source image to distribute. You can specify the source in any of the following formats:
+#' 
+#' -   An AMI ID.
+#' 
+#' -   An Amazon Web Services Systems Manager Parameter Store reference, prefixed by `ssm:`, followed by the parameter name or ARN.
+#' 
+#' -   An Image Builder image Amazon Resource Name (ARN). An image version ARN resolves to the latest available build version.
+#' 
+#' Whichever format you use, the source must resolve to an AMI in the current Amazon Web Services Region.
 #' @param distributionConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the distribution configuration. The configuration defines target Regions, accounts, and AMI settings. The distribution configuration must be in the same Region as this operation.
 #' @param executionRole &#91;required&#93; The name or Amazon Resource Name (ARN) of the IAM role that Image Builder assumes to distribute the image.
-#' @param tags The tags to apply to the distributed image.
-#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param tags The tags to apply to the new Image Builder image resource that this operation creates. To tag the output AMIs, use `amiTags` in the distribution configuration.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
 #' @param loggingConfiguration The logging configuration for the distribution.
 #'
 #' @return
@@ -1689,7 +1728,8 @@ imagebuilder_distribute_image <- function(sourceImage, distributionConfiguration
     http_path = "/DistributeImage",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$distribute_image_input(sourceImage = sourceImage, distributionConfigurationArn = distributionConfigurationArn, executionRole = executionRole, tags = tags, clientToken = clientToken, loggingConfiguration = loggingConfiguration)
   output <- .imagebuilder$distribute_image_output()
@@ -1709,7 +1749,7 @@ imagebuilder_distribute_image <- function(sourceImage, distributionConfiguration
 #' @usage
 #' imagebuilder_get_component(componentBuildVersionArn)
 #'
-#' @param componentBuildVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the component that you want to get. Regex requires the suffix `/\\d+$`.
+#' @param componentBuildVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the component that you want to get. You can specify a build version ARN, or a component version ARN. The version can use the `x` wildcard in trailing positions, for example `1.0.x` or `1.x.x`. Version ARNs resolve to the latest available matching component build version.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1786,7 +1826,8 @@ imagebuilder_get_component <- function(componentBuildVersionArn) {
     http_path = "/GetComponent",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$get_component_input(componentBuildVersionArn = componentBuildVersionArn)
   output <- .imagebuilder$get_component_output()
@@ -1836,7 +1877,8 @@ imagebuilder_get_component_policy <- function(componentArn) {
     http_path = "/GetComponentPolicy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$get_component_policy_input(componentArn = componentArn)
   output <- .imagebuilder$get_component_policy_output()
@@ -1946,7 +1988,8 @@ imagebuilder_get_container_recipe <- function(containerRecipeArn) {
     http_path = "/GetContainerRecipe",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$get_container_recipe_input(containerRecipeArn = containerRecipeArn)
   output <- .imagebuilder$get_container_recipe_output()
@@ -1996,7 +2039,8 @@ imagebuilder_get_container_recipe_policy <- function(containerRecipeArn) {
     http_path = "/GetContainerRecipePolicy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$get_container_recipe_policy_input(containerRecipeArn = containerRecipeArn)
   output <- .imagebuilder$get_container_recipe_policy_output()
@@ -2135,7 +2179,8 @@ imagebuilder_get_distribution_configuration <- function(distributionConfiguratio
     http_path = "/GetDistributionConfiguration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$get_distribution_configuration_input(distributionConfigurationArn = distributionConfigurationArn)
   output <- .imagebuilder$get_distribution_configuration_output()
@@ -2155,7 +2200,7 @@ imagebuilder_get_distribution_configuration <- function(distributionConfiguratio
 #' @usage
 #' imagebuilder_get_image(imageBuildVersionArn)
 #'
-#' @param imageBuildVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the image that you want to get.
+#' @param imageBuildVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the image that you want to get. You can specify a full build version ARN, or a version ARN with or without wildcards (`x.x.x`, `1.x.x`, or `1.0.x`). A version or wildcard ARN resolves to the latest matching build version that has reached `AVAILABLE` status. Builds that were later deprecated, disabled, or deleted don't resolve. To get an image in any other state, such as a failed or in-progress build, specify the full build version ARN.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2567,7 +2612,8 @@ imagebuilder_get_image <- function(imageBuildVersionArn) {
     http_path = "/GetImage",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$get_image_input(imageBuildVersionArn = imageBuildVersionArn)
   output <- .imagebuilder$get_image_output()
@@ -2681,7 +2727,8 @@ imagebuilder_get_image_pipeline <- function(imagePipelineArn) {
     http_path = "/GetImagePipeline",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$get_image_pipeline_input(imagePipelineArn = imagePipelineArn)
   output <- .imagebuilder$get_image_pipeline_output()
@@ -2731,7 +2778,8 @@ imagebuilder_get_image_policy <- function(imageArn) {
     http_path = "/GetImagePolicy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$get_image_policy_input(imageArn = imageArn)
   output <- .imagebuilder$get_image_policy_output()
@@ -2751,7 +2799,7 @@ imagebuilder_get_image_policy <- function(imageArn) {
 #' @usage
 #' imagebuilder_get_image_recipe(imageRecipeArn)
 #'
-#' @param imageRecipeArn &#91;required&#93; The Amazon Resource Name (ARN) of the image recipe that you want to retrieve.
+#' @param imageRecipeArn &#91;required&#93; The Amazon Resource Name (ARN) of the image recipe that you want to retrieve. You can use the `x` wildcard in trailing version positions to retrieve the latest matching version, for example `x.x.x` or `1.x.x`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2843,7 +2891,8 @@ imagebuilder_get_image_recipe <- function(imageRecipeArn) {
     http_path = "/GetImageRecipe",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$get_image_recipe_input(imageRecipeArn = imageRecipeArn)
   output <- .imagebuilder$get_image_recipe_output()
@@ -2893,7 +2942,8 @@ imagebuilder_get_image_recipe_policy <- function(imageRecipeArn) {
     http_path = "/GetImageRecipePolicy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$get_image_recipe_policy_input(imageRecipeArn = imageRecipeArn)
   output <- .imagebuilder$get_image_recipe_policy_output()
@@ -2983,7 +3033,8 @@ imagebuilder_get_infrastructure_configuration <- function(infrastructureConfigur
     http_path = "/GetInfrastructureConfiguration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$get_infrastructure_configuration_input(infrastructureConfigurationArn = infrastructureConfigurationArn)
   output <- .imagebuilder$get_infrastructure_configuration_output()
@@ -2995,11 +3046,12 @@ imagebuilder_get_infrastructure_configuration <- function(infrastructureConfigur
 }
 .imagebuilder$operations$get_infrastructure_configuration <- imagebuilder_get_infrastructure_configuration
 
-#' Retrieves the runtime information for a specific runtime instance of the
-#' lifecycle policy
+#' Retrieves runtime information for a lifecycle execution – a single run
+#' of lifecycle actions that a lifecycle policy or a
+#' StartResourceStateUpdate request started
 #'
 #' @description
-#' Retrieves the runtime information for a specific runtime instance of the lifecycle policy.
+#' Retrieves runtime information for a lifecycle execution – a single run of lifecycle actions that a lifecycle policy or a [`start_resource_state_update`][imagebuilder_start_resource_state_update] request started.
 #'
 #' @usage
 #' imagebuilder_get_lifecycle_execution(lifecycleExecutionId)
@@ -3049,7 +3101,8 @@ imagebuilder_get_lifecycle_execution <- function(lifecycleExecutionId) {
     http_path = "/GetLifecycleExecution",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$get_lifecycle_execution_input(lifecycleExecutionId = lifecycleExecutionId)
   output <- .imagebuilder$get_lifecycle_execution_output()
@@ -3167,7 +3220,8 @@ imagebuilder_get_lifecycle_policy <- function(lifecyclePolicyArn) {
     http_path = "/GetLifecyclePolicy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$get_lifecycle_policy_input(lifecyclePolicyArn = lifecyclePolicyArn)
   output <- .imagebuilder$get_lifecycle_policy_output()
@@ -3183,7 +3237,7 @@ imagebuilder_get_lifecycle_policy <- function(lifecyclePolicyArn) {
 #' requested Amazon Web Services Marketplace resource
 #'
 #' @description
-#' Verifies the subscription and performs resource dependency checks on the requested Amazon Web Services Marketplace resource. For Amazon Web Services Marketplace components, the response contains fields to download the components and their artifacts.
+#' Verifies the subscription and performs resource dependency checks on the requested Amazon Web Services Marketplace resource. The caller must be entitled to the resource. For Amazon Web Services Marketplace components, the response contains fields to download the components and their artifacts.
 #'
 #' @usage
 #' imagebuilder_get_marketplace_resource(resourceType, resourceArn,
@@ -3191,7 +3245,7 @@ imagebuilder_get_lifecycle_policy <- function(lifecyclePolicyArn) {
 #'
 #' @param resourceType &#91;required&#93; Specifies which type of Amazon Web Services Marketplace resource Image Builder retrieves.
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) that uniquely identifies an Amazon Web Services Marketplace resource.
-#' @param resourceLocation The bucket path that you can specify to download the resource from Amazon S3.
+#' @param resourceLocation The Amazon S3 location of the component artifact to retrieve, in `s3://bucket/key` form.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3224,7 +3278,8 @@ imagebuilder_get_marketplace_resource <- function(resourceType, resourceArn, res
     http_path = "/GetMarketplaceResource",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$get_marketplace_resource_input(resourceType = resourceType, resourceArn = resourceArn, resourceLocation = resourceLocation)
   output <- .imagebuilder$get_marketplace_resource_output()
@@ -3244,7 +3299,7 @@ imagebuilder_get_marketplace_resource <- function(resourceType, resourceArn, res
 #' @usage
 #' imagebuilder_get_workflow(workflowBuildVersionArn)
 #'
-#' @param workflowBuildVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the workflow resource that you want to get.
+#' @param workflowBuildVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the workflow resource that you want to get. You can specify a build version ARN, or a version ARN with or without wildcards (`x`) in its version segments. Image Builder resolves version and wildcard ARNs to the most recent matching build version.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3307,7 +3362,8 @@ imagebuilder_get_workflow <- function(workflowBuildVersionArn) {
     http_path = "/GetWorkflow",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$get_workflow_input(workflowBuildVersionArn = workflowBuildVersionArn)
   output <- .imagebuilder$get_workflow_output()
@@ -3370,7 +3426,8 @@ imagebuilder_get_workflow_execution <- function(workflowExecutionId) {
     http_path = "/GetWorkflowExecution",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$get_workflow_execution_input(workflowExecutionId = workflowExecutionId)
   output <- .imagebuilder$get_workflow_execution_output()
@@ -3391,7 +3448,7 @@ imagebuilder_get_workflow_execution <- function(workflowExecutionId) {
 #' @usage
 #' imagebuilder_get_workflow_step_execution(stepExecutionId)
 #'
-#' @param stepExecutionId &#91;required&#93; Use the unique identifier for a specific runtime instance of the workflow step to get runtime details for that step.
+#' @param stepExecutionId &#91;required&#93; The unique identifier for the runtime instance of the workflow step that you want to get runtime details for. To get the identifiers for the steps that ran in a workflow, call [`list_workflow_step_executions`][imagebuilder_list_workflow_step_executions].
 #'
 #' @return
 #' A list with the following syntax:
@@ -3438,7 +3495,8 @@ imagebuilder_get_workflow_step_execution <- function(stepExecutionId) {
     http_path = "/GetWorkflowStepExecution",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$get_workflow_step_execution_input(stepExecutionId = stepExecutionId)
   output <- .imagebuilder$get_workflow_step_execution_output()
@@ -3453,29 +3511,31 @@ imagebuilder_get_workflow_step_execution <- function(stepExecutionId) {
 #' Imports a component and transforms its data into a component document
 #'
 #' @description
-#' Imports a component and transforms its data into a component document.
+#' Imports a component and transforms its data into a component document. For the `SHELL` format, Image Builder wraps your script in a component document with a single step that runs the script.
 #'
 #' @usage
 #' imagebuilder_import_component(name, semanticVersion, description,
 #'   changeDescription, type, format, platform, data, uri, kmsKeyId, tags,
 #'   clientToken)
 #'
-#' @param name &#91;required&#93; The name of the component.
+#' @param name &#91;required&#93; The name of the component. Image Builder generates the component ARN from a normalized form of the name, so names that differ only in case, spaces, or underscores count as the same name. If a component with the same name and semantic version already exists in your account in the same Amazon Web Services Region, the request creates a new build version for it. If the content is also identical to the latest build version, the request fails because the component already exists.
 #' @param semanticVersion &#91;required&#93; The semantic version of the component. This version follows the semantic version syntax.
 #' 
 #' The semantic version has four nodes: \<major\>.\<minor\>.\<patch\>/\<build\>. You can assign values for the first three, and can filter on all of them.
 #' 
-#' **Filtering:** You can use wildcards (x) to specify the most recent versions or nodes when selecting the base image or components for your recipe. When you use a wildcard in any node, all nodes to the right of the first wildcard must also be wildcards.
+#' **Assignment:** For the first three nodes, you can assign any positive integer value, including zero. The upper limit is 2^30-1, or 1073741823, for each node. Image Builder automatically assigns the build number to the fourth node.
+#' 
+#' **Patterns:** You can use any numeric pattern that adheres to the assignment requirements for the nodes that you can assign. For example, you might choose a software version pattern, such as 1.0.0, or a date, such as 2021.01.01.
 #' @param description The description of the component. Describes the contents of the component.
 #' @param changeDescription The change description of the component. This description indicates the change that has been made in this version, or what makes this version different from other versions of the component.
 #' @param type &#91;required&#93; The type of the component denotes whether the component is used to build the image, or only to test it.
 #' @param format &#91;required&#93; The format of the resource that you want to import as a component.
 #' @param platform &#91;required&#93; The platform of the component.
-#' @param data The data of the component. Used to specify the data inline. Either `data` or `uri` can be used to specify the data within the component.
+#' @param data The data of the component. For the `SHELL` format, this is the plain script content. You must specify exactly one of the `data` or `uri` properties. For scripts that exceed the inline length constraint, use the `uri` property.
 #' @param uri The uri of the component. Must be an Amazon S3 URL and you must have permission to access the Amazon S3 bucket. If you use Amazon S3, you can specify component content up to your service quota. Either `data` or `uri` can be used to specify the data within the component.
-#' @param kmsKeyId The Amazon Resource Name (ARN) that uniquely identifies the KMS key used to encrypt this component. This can be either the Key ARN or the Alias ARN. For more information, see [Key identifiers (KeyId)](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN) in the *Key Management Service Developer Guide*.
+#' @param kmsKeyId The Amazon Resource Name (ARN) of the KMS key that is used to encrypt this component. This can be either the Key ARN or the Alias ARN. For more information, see [Key identifiers (KeyId)](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN) in the *Key Management Service Developer Guide*. If you don't specify a key, Image Builder encrypts the component data with a KMS key that Image Builder owns.
 #' @param tags The tags of the component.
-#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3519,7 +3579,8 @@ imagebuilder_import_component <- function(name, semanticVersion, description = N
     http_path = "/ImportComponent",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$import_component_input(name = name, semanticVersion = semanticVersion, description = description, changeDescription = changeDescription, type = type, format = format, platform = platform, data = data, uri = uri, kmsKeyId = kmsKeyId, tags = tags, clientToken = clientToken)
   output <- .imagebuilder$import_component_output()
@@ -3538,6 +3599,8 @@ imagebuilder_import_component <- function(name, semanticVersion, description = N
 #' Imports a Windows operating system image from a verified Microsoft ISO disk file. The following disk images are supported:
 #' 
 #' -   Windows 11 Enterprise
+#' 
+#' The response returns as soon as Image Builder creates the new image resource in the `PENDING` state. The conversion from ISO file to AMI then runs asynchronously on an EC2 instance that Image Builder launches with the specified infrastructure configuration.
 #'
 #' @usage
 #' imagebuilder_import_disk_image(name, semanticVersion, description,
@@ -3545,19 +3608,19 @@ imagebuilder_import_component <- function(name, semanticVersion, description = N
 #'   loggingConfiguration, tags, registerImageOptions, windowsConfiguration,
 #'   clientToken)
 #'
-#' @param name &#91;required&#93; The name of the image resource that's created from the import.
+#' @param name &#91;required&#93; The name of the image resource that's created from the import. Image Builder generates the image ARN from a normalized form of the name, so names that differ only in case, spaces, or underscores count as the same name. If an image with the same name and semantic version already exists in your account in the same Amazon Web Services Region, the import creates a new build version for it.
 #' @param semanticVersion &#91;required&#93; The semantic version to attach to the image that's created during the import process. This version follows the semantic version syntax.
 #' @param description The description for your disk image import.
 #' @param platform &#91;required&#93; The operating system platform for the imported image. Allowed values include the following: `Windows`.
-#' @param osVersion &#91;required&#93; The operating system version for the imported image. Allowed values include the following: `Microsoft Windows 11`.
-#' @param executionRole The name or Amazon Resource Name (ARN) for the IAM role you create that grants Image Builder access to perform workflow actions to import an image from a Microsoft ISO file.
+#' @param osVersion &#91;required&#93; The operating system version for the imported image. The only supported value is `Microsoft Windows 11`.
+#' @param executionRole The name or Amazon Resource Name (ARN) for the IAM role you create that grants Image Builder access to perform workflow actions to import an image from a Microsoft ISO file. If you don't provide a role, Image Builder uses the Image Builder service-linked role in your account, and creates it if it doesn't exist.
 #' @param infrastructureConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the infrastructure configuration resource that's used for launching the EC2 instance on which the ISO image is built.
-#' @param uri &#91;required&#93; The `uri` of the ISO disk file that's stored in Amazon S3.
-#' @param loggingConfiguration The logging configuration for the image build process.
+#' @param uri &#91;required&#93; The `uri` of the ISO disk file that's stored in Amazon S3, in `s3://bucket/key` format. The key must end with the `.iso`, `.ISO`, or `.Iso` extension, and the bucket must be owned by the account that makes the request.
+#' @param loggingConfiguration The CloudWatch Logs log group where Image Builder sends the import logs. If you specify a log group name outside of the `/aws/imagebuilder/` namespace, you must also provide an `executionRole` that has permission to write to that log group.
 #' @param tags Tags that are attached to image resources created from the import.
 #' @param registerImageOptions Configures Secure Boot and UEFI settings for the imported image.
 #' @param windowsConfiguration Specifies Windows settings for ISO imports.
-#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3608,7 +3671,8 @@ imagebuilder_import_disk_image <- function(name, semanticVersion, description = 
     http_path = "/ImportDiskImage",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$import_disk_image_input(name = name, semanticVersion = semanticVersion, description = description, platform = platform, osVersion = osVersion, executionRole = executionRole, infrastructureConfigurationArn = infrastructureConfigurationArn, uri = uri, loggingConfiguration = loggingConfiguration, tags = tags, registerImageOptions = registerImageOptions, windowsConfiguration = windowsConfiguration, clientToken = clientToken)
   output <- .imagebuilder$import_disk_image_output()
@@ -3620,21 +3684,20 @@ imagebuilder_import_disk_image <- function(name, semanticVersion, description = 
 }
 .imagebuilder$operations$import_disk_image <- imagebuilder_import_disk_image
 
-#' When you export your virtual machine (VM) from its virtualization
-#' environment, that process creates a set of one or more disk container
-#' files that act as snapshots of your VM’s environment, settings, and data
+#' Creates an Image Builder image resource from an Amazon EC2 VM import
+#' task
 #'
 #' @description
-#' When you export your virtual machine (VM) from its virtualization environment, that process creates a set of one or more disk container files that act as snapshots of your VM’s environment, settings, and data. The Amazon EC2 API [ImportImage](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportImage.html) action uses those files to import your VM and create an AMI. To import using the CLI command, see [import-image](https://docs.aws.amazon.com/cli/latest/reference/ec2/import-image.html)
+#' Creates an Image Builder image resource from an Amazon EC2 VM import task. The response returns as soon as Image Builder creates the image resource in the `PENDING` state. Image Builder then monitors the import task asynchronously. When the task completes, Image Builder records the AMI that it produced as the new image's output resource and marks the image `AVAILABLE`. You can then use the imported image as the base image for your recipes.
 #' 
-#' You can reference the task ID from the VM import to pull in the AMI that the import created as the base image for your Image Builder recipe.
+#' To create the VM import task, use the Amazon EC2 API [ImportImage](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportImage.html) operation, or the [import-image](https://docs.aws.amazon.com/cli/latest/reference/ec2/import-image.html) CLI command.
 #'
 #' @usage
 #' imagebuilder_import_vm_image(name, semanticVersion, description,
 #'   platform, osVersion, vmImportTaskId, loggingConfiguration, tags,
 #'   clientToken)
 #'
-#' @param name &#91;required&#93; The name of the base image that is created by the import process.
+#' @param name &#91;required&#93; The name of the base image that is created by the import process. Image Builder generates the image ARN from a normalized form of the name, so names that differ only in case, spaces, or underscores count as the same name. If an image with the same name and semantic version already exists in your account in the same Amazon Web Services Region, the import creates a new build version for it.
 #' @param semanticVersion &#91;required&#93; The semantic version to attach to the base image that was created during the import process. This version follows the semantic version syntax.
 #' 
 #' The semantic version has four nodes: \<major\>.\<minor\>.\<patch\>/\<build\>. You can assign values for the first three, and can filter on all of them.
@@ -3645,10 +3708,10 @@ imagebuilder_import_disk_image <- function(name, semanticVersion, description = 
 #' @param description The description for the base image that is created by the import process.
 #' @param platform &#91;required&#93; The operating system platform for the imported VM.
 #' @param osVersion The operating system version for the imported VM.
-#' @param vmImportTaskId &#91;required&#93; The `importTaskId` (API) or `ImportTaskId` (CLI) from the Amazon EC2 VM import process. Image Builder retrieves information from the import process to pull in the AMI that is created from the VM source as the base image for your recipe.
-#' @param loggingConfiguration The logging configuration for the image build process.
+#' @param vmImportTaskId &#91;required&#93; The `importTaskId` (API) or `ImportTaskId` (CLI) from the Amazon EC2 VM import process. The import task doesn't need to be complete when you call ImportVmImage - Image Builder monitors the task and finishes creating the image when the task completes.
+#' @param loggingConfiguration The CloudWatch Logs log group where Image Builder sends the import logs. For ImportVmImage, the log group name must be within the `/aws/imagebuilder/` namespace.
 #' @param tags Tags that are attached to the import resources.
-#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3691,7 +3754,8 @@ imagebuilder_import_vm_image <- function(name, semanticVersion, description = NU
     http_path = "/ImportVmImage",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$import_vm_image_input(name = name, semanticVersion = semanticVersion, description = description, platform = platform, osVersion = osVersion, vmImportTaskId = vmImportTaskId, loggingConfiguration = loggingConfiguration, tags = tags, clientToken = clientToken)
   output <- .imagebuilder$import_vm_image_output()
@@ -3703,17 +3767,17 @@ imagebuilder_import_vm_image <- function(name, semanticVersion, description = NU
 }
 .imagebuilder$operations$import_vm_image <- imagebuilder_import_vm_image
 
-#' Returns the list of component build versions for the specified component
-#' version Amazon Resource Name (ARN)
+#' Returns a list of component build versions for the specified component
+#' version ARN
 #'
 #' @description
-#' Returns the list of component build versions for the specified component version Amazon Resource Name (ARN).
+#' Returns a list of component build versions for the specified component version ARN. You can only list build versions for components that your account owns. Deprecated build versions aren't included in the results.
 #'
 #' @usage
 #' imagebuilder_list_component_build_versions(componentVersionArn,
 #'   maxResults, nextToken)
 #'
-#' @param componentVersionArn The component version Amazon Resource Name (ARN) whose versions you want to list.
+#' @param componentVersionArn The component version ARN whose build versions you want to list. The ARN must specify an exact version, without a build number suffix. If you don't specify an ARN, Image Builder returns build versions for the components that your account owns.
 #' @param maxResults The maximum number of items to return in a single request.
 #' @param nextToken A token to specify where to start paginating. Use the `nextToken` value from a previously truncated response.
 #'
@@ -3772,7 +3836,8 @@ imagebuilder_list_component_build_versions <- function(componentVersionArn = NUL
     http_path = "/ListComponentBuildVersions",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "componentSummaryList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$list_component_build_versions_input(componentVersionArn = componentVersionArn, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_component_build_versions_output()
@@ -3784,11 +3849,10 @@ imagebuilder_list_component_build_versions <- function(componentVersionArn = NUL
 }
 .imagebuilder$operations$list_component_build_versions <- imagebuilder_list_component_build_versions
 
-#' Returns the list of components that can be filtered by name, or by using
-#' the listed filters to streamline results
+#' Returns the list of components that you have access to
 #'
 #' @description
-#' Returns the list of components that can be filtered by name, or by using the listed `filters` to streamline results. Newly created components can take up to two minutes to appear in the ListComponents API Results.
+#' Returns the list of components that you have access to. By default, the response doesn't include components in the `DEPRECATED` state. To list deprecated components, use the `status` filter with the value `DEPRECATED`.
 #' 
 #' The semantic version has four nodes: \<major\>.\<minor\>.\<patch\>/\<build\>. You can assign values for the first three, and can filter on all of them.
 #' 
@@ -3798,7 +3862,7 @@ imagebuilder_list_component_build_versions <- function(componentVersionArn = NUL
 #' imagebuilder_list_components(owner, filters, byName, maxResults,
 #'   nextToken)
 #'
-#' @param owner Filters results based on the type of owner for the component. By default, this request returns a list of components that your account owns. To see results for other types of owners, you can specify components that Amazon manages, third party components, or components that other accounts have shared with you.
+#' @param owner Filters results based on the type of owner for the component. By default, this request returns a list of components that your account owns. To see results for other types of owners, you can specify components that Amazon manages, components from the Amazon Web Services Marketplace, third party components, or components that other accounts have shared with you.
 #' @param filters Use the following filters to streamline results:
 #' 
 #' -   `description`
@@ -3807,12 +3871,16 @@ imagebuilder_list_component_build_versions <- function(componentVersionArn = NUL
 #' 
 #' -   `platform`
 #' 
+#' -   `productCodes`
+#' 
+#' -   `status`
+#' 
 #' -   `supportedOsVersion`
 #' 
 #' -   `type`
 #' 
 #' -   `version`
-#' @param byName Returns the list of components for the specified name.
+#' @param byName Specifies whether to return one entry per component name, with all versions of each component aggregated. Defaults to `false`, which returns one entry per component version. You can't combine this option with the `version` filter.
 #' @param maxResults The maximum number of items to return in a single request.
 #' @param nextToken A token to specify where to start paginating. Use the `nextToken` value from a previously truncated response.
 #'
@@ -3877,7 +3945,8 @@ imagebuilder_list_components <- function(owner = NULL, filters = NULL, byName = 
     http_path = "/ListComponents",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "componentVersionList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$list_components_input(owner = owner, filters = filters, byName = byName, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_components_output()
@@ -3898,7 +3967,7 @@ imagebuilder_list_components <- function(owner = NULL, filters = NULL, byName = 
 #' imagebuilder_list_container_recipes(owner, filters, maxResults,
 #'   nextToken)
 #'
-#' @param owner Returns container recipes belonging to the specified owner, that have been shared with you. You can omit this field to return container recipes belonging to your account.
+#' @param owner Returns container recipes belonging to the specified owner, that have been shared with you. You can omit this field to return container recipes belonging to your account. For container recipes, the valid owner values are `Self`, `Shared`, and `Amazon`.
 #' @param filters Use the following filters to streamline results:
 #' 
 #' -   `containerType`
@@ -3964,7 +4033,8 @@ imagebuilder_list_container_recipes <- function(owner = NULL, filters = NULL, ma
     http_path = "/ListContainerRecipes",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "containerRecipeSummaryList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$list_container_recipes_input(owner = owner, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_container_recipes_output()
@@ -4041,7 +4111,8 @@ imagebuilder_list_distribution_configurations <- function(filters = NULL, maxRes
     http_path = "/ListDistributionConfigurations",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "distributionConfigurationSummaryList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$list_distribution_configurations_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_distribution_configurations_output()
@@ -4062,7 +4133,7 @@ imagebuilder_list_distribution_configurations <- function(filters = NULL, maxRes
 #' imagebuilder_list_image_build_versions(imageVersionArn, filters,
 #'   maxResults, nextToken)
 #'
-#' @param imageVersionArn The Amazon Resource Name (ARN) of the image whose build versions you want to retrieve.
+#' @param imageVersionArn The Amazon Resource Name (ARN) of the image version whose build versions you want to retrieve. The ARN must specify an exact version (`<major>.<minor>.<patch>`) - wildcards aren't allowed. This parameter is optional. If you don't specify it, Image Builder returns build versions for all of the images in your account.
 #' @param filters Use the following filters to streamline results:
 #' 
 #' -   `name`
@@ -4218,7 +4289,8 @@ imagebuilder_list_image_build_versions <- function(imageVersionArn = NULL, filte
     http_path = "/ListImageBuildVersions",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imageSummaryList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$list_image_build_versions_input(imageVersionArn = imageVersionArn, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_image_build_versions_output()
@@ -4241,7 +4313,7 @@ imagebuilder_list_image_build_versions <- function(imageVersionArn = NULL, filte
 #' imagebuilder_list_image_packages(imageBuildVersionArn, maxResults,
 #'   nextToken)
 #'
-#' @param imageBuildVersionArn &#91;required&#93; Filter results for the ListImagePackages request by the Image Build Version ARN
+#' @param imageBuildVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the image build version whose packages you want to list. The value must be a full build version ARN.
 #' @param maxResults The maximum number of items to return in a single request.
 #' @param nextToken A token to specify where to start paginating. Use the `nextToken` value from a previously truncated response.
 #'
@@ -4281,7 +4353,8 @@ imagebuilder_list_image_packages <- function(imageBuildVersionArn, maxResults = 
     http_path = "/ListImagePackages",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imagePackageList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$list_image_packages_input(imageBuildVersionArn = imageBuildVersionArn, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_image_packages_output()
@@ -4452,7 +4525,8 @@ imagebuilder_list_image_pipeline_images <- function(imagePipelineArn, filters = 
     http_path = "/ListImagePipelineImages",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imageSummaryList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$list_image_pipeline_images_input(imagePipelineArn = imagePipelineArn, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_image_pipeline_images_output()
@@ -4592,7 +4666,8 @@ imagebuilder_list_image_pipelines <- function(filters = NULL, maxResults = NULL,
     http_path = "/ListImagePipelines",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imagePipelineList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$list_image_pipelines_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_image_pipelines_output()
@@ -4674,7 +4749,8 @@ imagebuilder_list_image_recipes <- function(owner = NULL, filters = NULL, maxRes
     http_path = "/ListImageRecipes",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imageRecipeSummaryList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$list_image_recipes_input(owner = owner, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_image_recipes_output()
@@ -4693,8 +4769,6 @@ imagebuilder_list_image_recipes <- function(owner = NULL, filters = NULL, maxRes
 #' 
 #' To streamline results, you can use the following filters in your request:
 #' 
-#' -   `accountId`
-#' 
 #' -   `imageBuildVersionArn`
 #' 
 #' -   `imagePipelineArn`
@@ -4704,7 +4778,15 @@ imagebuilder_list_image_recipes <- function(owner = NULL, filters = NULL, maxRes
 #' @usage
 #' imagebuilder_list_image_scan_finding_aggregations(filter, nextToken)
 #'
-#' @param filter A filter name and value pair that is used to return a more specific list of results from a list operation. Filters can be used to match a set of resources by specific criteria, such as tags, attributes, or IDs.
+#' @param filter A filter name and value pair that determines the type of aggregation that Image Builder returns. Use one of the following filter names:
+#' 
+#' -   `imageBuildVersionArn`
+#' 
+#' -   `imagePipelineArn`
+#' 
+#' -   `vulnerabilityId`
+#' 
+#' If you don't specify a filter, Image Builder returns an aggregation for your account.
 #' @param nextToken A token to specify where to start paginating. Use the `nextToken` value from a previously truncated response.
 #'
 #' @return
@@ -4782,7 +4864,8 @@ imagebuilder_list_image_scan_finding_aggregations <- function(filter = NULL, nex
     http_path = "/ListImageScanFindingAggregations",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "responses"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$list_image_scan_finding_aggregations_input(filter = filter, nextToken = nextToken)
   output <- .imagebuilder$list_image_scan_finding_aggregations_output()
@@ -4797,20 +4880,20 @@ imagebuilder_list_image_scan_finding_aggregations <- function(filter = NULL, nex
 #' Returns a list of image scan findings for your account
 #'
 #' @description
-#' Returns a list of image scan findings for your account.
+#' Returns a list of image scan findings for your account. Amazon Inspector generates the findings when it scans images that have scanning enabled.
 #'
 #' @usage
 #' imagebuilder_list_image_scan_findings(filters, maxResults, nextToken)
 #'
 #' @param filters An array of name value pairs that you can use to filter your results. You can use the following filters to streamline results:
 #' 
-#' -   `imageBuildVersionArn`
+#' -   `imageBuildVersionArn` – Filters findings by the image build version that was scanned.
 #' 
-#' -   `imagePipelineArn`
+#' -   `imagePipelineArn` – Filters findings by the pipeline that created the scanned image.
 #' 
-#' -   `vulnerabilityId`
+#' -   `vulnerabilityId` – Filters findings by vulnerability ID, for example a CVE ID.
 #' 
-#' -   `severity`
+#' -   `severity` – Filters findings by severity level.
 #' 
 #' If you don't request a filter, then all findings in your account are listed.
 #' @param maxResults The maximum number of items to return in a single request.
@@ -4933,7 +5016,8 @@ imagebuilder_list_image_scan_findings <- function(filters = NULL, maxResults = N
     http_path = "/ListImageScanFindings",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findings"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$list_image_scan_findings_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_image_scan_findings_output()
@@ -4948,7 +5032,7 @@ imagebuilder_list_image_scan_findings <- function(filters = NULL, maxResults = N
 #' Returns the list of images that you have access to
 #'
 #' @description
-#' Returns the list of images that you have access to. Newly created images can take up to two minutes to appear in the ListImages API Results.
+#' Returns the list of images that you have access to.
 #'
 #' @usage
 #' imagebuilder_list_images(owner, filters, byName, maxResults, nextToken,
@@ -4966,10 +5050,10 @@ imagebuilder_list_image_scan_findings <- function(filters = NULL, maxResults = N
 #' -   `type`
 #' 
 #' -   `version`
-#' @param byName Requests a list of images with a specific recipe name.
+#' @param byName Specifies whether to return one entry per image name, with all versions of each image aggregated. Defaults to `false`, which returns one entry per image version. You can't combine this option with the `version` filter.
 #' @param maxResults The maximum number of items to return in a single request.
 #' @param nextToken A token to specify where to start paginating. Use the `nextToken` value from a previously truncated response.
-#' @param includeDeprecated Includes deprecated images in the response list.
+#' @param includeDeprecated Specifies whether to include deprecated Amazon-managed images in the results. Deprecated images that you own are always returned. Defaults to `false`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5025,7 +5109,8 @@ imagebuilder_list_images <- function(owner = NULL, filters = NULL, byName = NULL
     http_path = "/ListImages",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imageVersionList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$list_images_input(owner = owner, filters = filters, byName = byName, maxResults = maxResults, nextToken = nextToken, includeDeprecated = includeDeprecated)
   output <- .imagebuilder$list_images_output()
@@ -5112,7 +5197,8 @@ imagebuilder_list_infrastructure_configurations <- function(filters = NULL, maxR
     http_path = "/ListInfrastructureConfigurations",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "infrastructureConfigurationSummaryList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$list_infrastructure_configurations_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_infrastructure_configurations_output()
@@ -5135,9 +5221,7 @@ imagebuilder_list_infrastructure_configurations <- function(filters = NULL, maxR
 #'   parentResourceId, maxResults, nextToken)
 #'
 #' @param lifecycleExecutionId &#91;required&#93; The unique identifier for a runtime instance of the lifecycle policy.
-#' @param parentResourceId You can leave this empty to get a list of Image Builder resources that were identified for lifecycle actions.
-#' 
-#' To get a list of associated resources that are impacted for an individual resource (the parent), specify its Amazon Resource Name (ARN). Associated resources are produced from your image and distributed when you run a build, such as AMIs or container images stored in ECR repositories.
+#' @param parentResourceId The Amazon Resource Name (ARN) of an image build version to get the output resources for, such as AMIs or container images in Amazon ECR. You can get this value from the `resourceId` in the top-level response. If you leave this property empty, the response lists the Image Builder resources that the lifecycle execution identified for lifecycle actions. If the image build version that you specify in `parentResourceId` wasn't part of this lifecycle execution, the response contains an empty list.
 #' @param maxResults The maximum number of items to return in a single request.
 #' @param nextToken A token to specify where to start paginating. Use the `nextToken` value from a previously truncated response.
 #'
@@ -5209,7 +5293,8 @@ imagebuilder_list_lifecycle_execution_resources <- function(lifecycleExecutionId
     http_path = "/ListLifecycleExecutionResources",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "resources"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$list_lifecycle_execution_resources_input(lifecycleExecutionId = lifecycleExecutionId, parentResourceId = parentResourceId, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_lifecycle_execution_resources_output()
@@ -5232,7 +5317,7 @@ imagebuilder_list_lifecycle_execution_resources <- function(lifecycleExecutionId
 #'
 #' @param maxResults The maximum number of items to return in a single request.
 #' @param nextToken A token to specify where to start paginating. Use the `nextToken` value from a previously truncated response.
-#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource for which to get a list of lifecycle runtime instances.
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource for which to list lifecycle executions. Specify a lifecycle policy ARN to list its executions, or an image build version ARN to list the executions that [`start_resource_state_update`][imagebuilder_start_resource_state_update] started for that image. Other ARN types aren't valid for this request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5282,7 +5367,8 @@ imagebuilder_list_lifecycle_executions <- function(maxResults = NULL, nextToken 
     http_path = "/ListLifecycleExecutions",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "lifecycleExecutions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$list_lifecycle_executions_input(maxResults = maxResults, nextToken = nextToken, resourceArn = resourceArn)
   output <- .imagebuilder$list_lifecycle_executions_output()
@@ -5303,7 +5389,7 @@ imagebuilder_list_lifecycle_executions <- function(maxResults = NULL, nextToken 
 #' @usage
 #' imagebuilder_list_lifecycle_policies(filters, maxResults, nextToken)
 #'
-#' @param filters Streamline results based on one of the following values: `Name`, `Status`.
+#' @param filters Use the following filters to streamline results: `name`, `resourceType`, and `status`. Filter names are matched exactly as shown.
 #' @param maxResults The maximum number of items to return in a single request.
 #' @param nextToken A token to specify where to start paginating. Use the `nextToken` value from a previously truncated response.
 #'
@@ -5365,7 +5451,8 @@ imagebuilder_list_lifecycle_policies <- function(filters = NULL, maxResults = NU
     http_path = "/ListLifecyclePolicies",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "lifecyclePolicySummaryList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$list_lifecycle_policies_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_lifecycle_policies_output()
@@ -5416,7 +5503,8 @@ imagebuilder_list_tags_for_resource <- function(resourceArn) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .imagebuilder$list_tags_for_resource_output()
@@ -5428,11 +5516,11 @@ imagebuilder_list_tags_for_resource <- function(resourceArn) {
 }
 .imagebuilder$operations$list_tags_for_resource <- imagebuilder_list_tags_for_resource
 
-#' Retrieves a list of workflow steps that are waiting for action for
-#' workflows in your Amazon Web Services account
+#' Lists the workflow steps in your Amazon Web Services account that have
+#' paused at a WaitForAction step, and are waiting for you to respond
 #'
 #' @description
-#' Retrieves a list of workflow steps that are waiting for action for workflows in your Amazon Web Services account.
+#' Lists the workflow steps in your Amazon Web Services account that have paused at a `WaitForAction` step, and are waiting for you to respond. To send a response, call [`send_workflow_step_action`][imagebuilder_send_workflow_step_action].
 #'
 #' @usage
 #' imagebuilder_list_waiting_workflow_steps(maxResults, nextToken)
@@ -5479,7 +5567,8 @@ imagebuilder_list_waiting_workflow_steps <- function(maxResults = NULL, nextToke
     http_path = "/ListWaitingWorkflowSteps",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "steps"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$list_waiting_workflow_steps_input(maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_waiting_workflow_steps_output()
@@ -5500,7 +5589,7 @@ imagebuilder_list_waiting_workflow_steps <- function(maxResults = NULL, nextToke
 #' imagebuilder_list_workflow_build_versions(workflowVersionArn,
 #'   maxResults, nextToken)
 #'
-#' @param workflowVersionArn The Amazon Resource Name (ARN) of the workflow resource for which to get a list of build versions.
+#' @param workflowVersionArn The Amazon Resource Name (ARN) of the workflow resource for which to get a list of build versions. The version segments can contain wildcards (`x`) to match multiple versions of the workflow. If you don't specify an ARN, the response lists build versions for all of the workflows in your account.
 #' @param maxResults The maximum number of items to return in a single request.
 #' @param nextToken A token to specify where to start paginating. Use the `nextToken` value from a previously truncated response.
 #'
@@ -5552,7 +5641,8 @@ imagebuilder_list_workflow_build_versions <- function(workflowVersionArn = NULL,
     http_path = "/ListWorkflowBuildVersions",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workflowSummaryList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$list_workflow_build_versions_input(workflowVersionArn = workflowVersionArn, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_workflow_build_versions_output()
@@ -5627,7 +5717,8 @@ imagebuilder_list_workflow_executions <- function(maxResults = NULL, nextToken =
     http_path = "/ListWorkflowExecutions",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workflowExecutions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$list_workflow_executions_input(maxResults = maxResults, nextToken = nextToken, imageBuildVersionArn = imageBuildVersionArn)
   output <- .imagebuilder$list_workflow_executions_output()
@@ -5704,7 +5795,8 @@ imagebuilder_list_workflow_step_executions <- function(maxResults = NULL, nextTo
     http_path = "/ListWorkflowStepExecutions",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "steps"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$list_workflow_step_executions_input(maxResults = maxResults, nextToken = nextToken, workflowExecutionId = workflowExecutionId)
   output <- .imagebuilder$list_workflow_step_executions_output()
@@ -5716,18 +5808,18 @@ imagebuilder_list_workflow_step_executions <- function(maxResults = NULL, nextTo
 }
 .imagebuilder$operations$list_workflow_step_executions <- imagebuilder_list_workflow_step_executions
 
-#' Lists workflow build versions based on filtering parameters
+#' Lists workflow versions based on filtering parameters
 #'
 #' @description
-#' Lists workflow build versions based on filtering parameters.
+#' Lists workflow versions based on filtering parameters. To list the build versions of a specific workflow version, call [`list_workflow_build_versions`][imagebuilder_list_workflow_build_versions].
 #'
 #' @usage
 #' imagebuilder_list_workflows(owner, filters, byName, maxResults,
 #'   nextToken)
 #'
-#' @param owner Used to get a list of workflow build version filtered by the identity of the creator.
-#' @param filters Used to streamline search results.
-#' @param byName Specify all or part of the workflow name to streamline results.
+#' @param owner Filters results based on the workflow owner. By default, this request returns the workflows that your account owns (`Self`). Specify `Amazon` to list the workflows that Image Builder manages. Image Builder rejects the `Shared` and `ThirdParty` owner values for workflows, and `AWSMarketplace` returns no results.
+#' @param filters Filters to narrow the list of workflows. You can filter on `name`, `version`, `description`, and `type`.
+#' @param byName Specifies whether to return one entry per workflow name, with all versions of each workflow aggregated. Defaults to `false`, which returns one entry per workflow version. You can't combine this option with the `version` filter.
 #' @param maxResults The maximum number of items to return in a single request.
 #' @param nextToken A token to specify where to start paginating. Use the `nextToken` value from a previously truncated response.
 #'
@@ -5780,7 +5872,8 @@ imagebuilder_list_workflows <- function(owner = NULL, filters = NULL, byName = N
     http_path = "/ListWorkflows",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workflowVersionList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$list_workflows_input(owner = owner, filters = filters, byName = byName, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_workflows_output()
@@ -5795,7 +5888,7 @@ imagebuilder_list_workflows <- function(owner = NULL, filters = NULL, byName = N
 #' Applies a policy to a component
 #'
 #' @description
-#' Applies a policy to a component. To share resources, call the RAM API [CreateResourceShare](https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html). If you call this API, you must also call the RAM API [PromoteResourceShareCreatedFromPolicy](https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html) so that the resource is visible to all principals with whom the resource is shared.
+#' Applies a policy to a component. The preferred way to share resources is with the RAM API [CreateResourceShare](https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html). If you use the PutComponentPolicy operation instead, you must also call the RAM API [PromoteResourceShareCreatedFromPolicy](https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html). Otherwise, the resource isn't visible to the principals that it's shared with.
 #'
 #' @usage
 #' imagebuilder_put_component_policy(componentArn, policy)
@@ -5832,7 +5925,8 @@ imagebuilder_put_component_policy <- function(componentArn, policy) {
     http_path = "/PutComponentPolicy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$put_component_policy_input(componentArn = componentArn, policy = policy)
   output <- .imagebuilder$put_component_policy_output()
@@ -5844,10 +5938,10 @@ imagebuilder_put_component_policy <- function(componentArn, policy) {
 }
 .imagebuilder$operations$put_component_policy <- imagebuilder_put_component_policy
 
-#' Applies a policy to a container image
+#' Applies a policy to a container recipe
 #'
 #' @description
-#' Applies a policy to a container image. To share resources, call the RAM API [CreateResourceShare](https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html). If you call this API, you must also call the RAM API [PromoteResourceShareCreatedFromPolicy](https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html) so that the resource is visible to all principals with whom the resource is shared.
+#' Applies a policy to a container recipe. The preferred way to share resources is with the RAM API [CreateResourceShare](https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html). If you use the PutContainerRecipePolicy operation instead, you must also call the RAM API [PromoteResourceShareCreatedFromPolicy](https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html). Otherwise, the resource isn't visible to the principals that it's shared with.
 #'
 #' @usage
 #' imagebuilder_put_container_recipe_policy(containerRecipeArn, policy)
@@ -5884,7 +5978,8 @@ imagebuilder_put_container_recipe_policy <- function(containerRecipeArn, policy)
     http_path = "/PutContainerRecipePolicy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$put_container_recipe_policy_input(containerRecipeArn = containerRecipeArn, policy = policy)
   output <- .imagebuilder$put_container_recipe_policy_output()
@@ -5899,13 +5994,13 @@ imagebuilder_put_container_recipe_policy <- function(containerRecipeArn, policy)
 #' Applies a policy to an image
 #'
 #' @description
-#' Applies a policy to an image. To share resources, call the RAM API [CreateResourceShare](https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html). If you call this API, you must also call the RAM API [PromoteResourceShareCreatedFromPolicy](https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html) so that the resource is visible to all principals with whom the resource is shared.
+#' Applies a policy to an image. The preferred way to share resources is with the RAM API [CreateResourceShare](https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html). If you use the PutImagePolicy operation instead, you must also call the RAM API [PromoteResourceShareCreatedFromPolicy](https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html). Otherwise, the resource isn't visible to the principals that it's shared with.
 #'
 #' @usage
 #' imagebuilder_put_image_policy(imageArn, policy)
 #'
 #' @param imageArn &#91;required&#93; The Amazon Resource Name (ARN) of the image that this policy should be applied to.
-#' @param policy &#91;required&#93; The policy to apply.
+#' @param policy &#91;required&#93; The resource policy to apply to the image, as a JSON policy document. Image Builder validates the policy with Amazon Web Services RAM before applying it, and rejects invalid policies with `InvalidParameterValueException`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5936,7 +6031,8 @@ imagebuilder_put_image_policy <- function(imageArn, policy) {
     http_path = "/PutImagePolicy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$put_image_policy_input(imageArn = imageArn, policy = policy)
   output <- .imagebuilder$put_image_policy_output()
@@ -5951,7 +6047,7 @@ imagebuilder_put_image_policy <- function(imageArn, policy) {
 #' Applies a policy to an image recipe
 #'
 #' @description
-#' Applies a policy to an image recipe. To share resources, call the RAM API [CreateResourceShare](https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html). If you call this API, you must also call the RAM API [PromoteResourceShareCreatedFromPolicy](https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html) so that the resource is visible to all principals with whom the resource is shared.
+#' Applies a policy to an image recipe. The preferred way to share resources is with the RAM API [CreateResourceShare](https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html). If you use the PutImageRecipePolicy operation instead, you must also call the RAM API [PromoteResourceShareCreatedFromPolicy](https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html). Otherwise, the resource isn't visible to the principals that it's shared with.
 #'
 #' @usage
 #' imagebuilder_put_image_recipe_policy(imageRecipeArn, policy)
@@ -5988,7 +6084,8 @@ imagebuilder_put_image_recipe_policy <- function(imageRecipeArn, policy) {
     http_path = "/PutImageRecipePolicy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$put_image_recipe_policy_input(imageRecipeArn = imageRecipeArn, policy = policy)
   output <- .imagebuilder$put_image_recipe_policy_output()
@@ -6000,16 +6097,17 @@ imagebuilder_put_image_recipe_policy <- function(imageRecipeArn, policy) {
 }
 .imagebuilder$operations$put_image_recipe_policy <- imagebuilder_put_image_recipe_policy
 
-#' Retries an image distribution or test without rebuilding the image
+#' Retries a failed or canceled image build without rebuilding the phases
+#' that already completed
 #'
 #' @description
-#' Retries an image distribution or test without rebuilding the image.
+#' Retries a failed or canceled image build without rebuilding the phases that already completed. The image re-runs asynchronously in place: the same build version returns to the test or distribution phase where it failed and continues from there. No new image build version is created. Retry is only supported for AMI-based images.
 #'
 #' @usage
 #' imagebuilder_retry_image(imageBuildVersionArn, clientToken)
 #'
-#' @param imageBuildVersionArn &#91;required&#93; The source image Amazon Resource Name (ARN) to retry.
-#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param imageBuildVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the image build version that you want to retry. The image must be in the `FAILED` or `CANCELLED` state.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6040,7 +6138,8 @@ imagebuilder_retry_image <- function(imageBuildVersionArn, clientToken) {
     http_path = "/RetryImage",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$retry_image_input(imageBuildVersionArn = imageBuildVersionArn, clientToken = clientToken)
   output <- .imagebuilder$retry_image_output()
@@ -6052,21 +6151,21 @@ imagebuilder_retry_image <- function(imageBuildVersionArn, clientToken) {
 }
 .imagebuilder$operations$retry_image <- imagebuilder_retry_image
 
-#' Pauses or resumes image creation when the associated workflow runs a
-#' WaitForAction step
+#' Sends an action to a workflow step that has paused at a WaitForAction
+#' step, so that image creation can continue
 #'
 #' @description
-#' Pauses or resumes image creation when the associated workflow runs a `WaitForAction` step.
+#' Sends an action to a workflow step that has paused at a `WaitForAction` step, so that image creation can continue. To find the steps that are waiting for an action, call [`list_waiting_workflow_steps`][imagebuilder_list_waiting_workflow_steps].
 #'
 #' @usage
 #' imagebuilder_send_workflow_step_action(stepExecutionId,
 #'   imageBuildVersionArn, action, reason, clientToken)
 #'
-#' @param stepExecutionId &#91;required&#93; Uniquely identifies the workflow step that sent the step action.
+#' @param stepExecutionId &#91;required&#93; Uniquely identifies the waiting workflow step that you send the action to. To get this identifier, call [`list_waiting_workflow_steps`][imagebuilder_list_waiting_workflow_steps].
 #' @param imageBuildVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the image build version associated with the workflow step execution. This value must match the image that owns the waiting step. If the ARN does not correspond to the image running the workflow, then the request fails with a validation error.
-#' @param action &#91;required&#93; The action to perform on the paused workflow step. The workflow step must be in a waiting state to accept an action. The request fails if the step has already timed out or been actioned.
+#' @param action &#91;required&#93; The action to perform on the paused workflow step. `RESUME` completes the waiting step, and the workflow continues. `STOP` fails the step, and the step's `onFailure` setting determines whether the workflow continues or aborts. The workflow step must be in a waiting state to accept an action. The request fails if the step has already timed out or been actioned.
 #' @param reason The reason for the action. This value is stored with the step execution record and is accessible in subsequent workflow steps via step output references.
-#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6101,7 +6200,8 @@ imagebuilder_send_workflow_step_action <- function(stepExecutionId, imageBuildVe
     http_path = "/SendWorkflowStepAction",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$send_workflow_step_action_input(stepExecutionId = stepExecutionId, imageBuildVersionArn = imageBuildVersionArn, action = action, reason = reason, clientToken = clientToken)
   output <- .imagebuilder$send_workflow_step_action_output()
@@ -6116,14 +6216,14 @@ imagebuilder_send_workflow_step_action <- function(stepExecutionId, imageBuildVe
 #' Manually triggers a pipeline to create an image
 #'
 #' @description
-#' Manually triggers a pipeline to create an image.
+#' Manually triggers a pipeline to create an image. You can start a build this way whether the pipeline is enabled or disabled. The response returns as soon as Image Builder creates the new image resource and queues the build. Use the returned `imageBuildVersionArn` with [`get_image`][imagebuilder_get_image] to track build progress.
 #'
 #' @usage
 #' imagebuilder_start_image_pipeline_execution(imagePipelineArn,
 #'   clientToken, tags)
 #'
 #' @param imagePipelineArn &#91;required&#93; The Amazon Resource Name (ARN) of the image pipeline that you want to manually invoke.
-#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
 #' @param tags The tags for Image Builder to apply to the image resource that's created when pipeline execution starts.
 #'
 #' @return
@@ -6159,7 +6259,8 @@ imagebuilder_start_image_pipeline_execution <- function(imagePipelineArn, client
     http_path = "/StartImagePipelineExecution",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$start_image_pipeline_execution_input(imagePipelineArn = imagePipelineArn, clientToken = clientToken, tags = tags)
   output <- .imagebuilder$start_image_pipeline_execution_output()
@@ -6171,11 +6272,10 @@ imagebuilder_start_image_pipeline_execution <- function(imagePipelineArn, client
 }
 .imagebuilder$operations$start_image_pipeline_execution <- imagebuilder_start_image_pipeline_execution
 
-#' Begins an asynchronous resource state update for lifecycle changes to
-#' the specified image resources
+#' Begins an ad-hoc state change for the specified image build version
 #'
 #' @description
-#' Begins an asynchronous resource state update for lifecycle changes to the specified image resources.
+#' Begins an ad-hoc state change for the specified image build version. This is a one-time operation - if you schedule the update, it runs only once. If the request includes underlying resources, or schedules the update far enough in the future, Image Builder runs the update as an asynchronous lifecycle execution and returns its identifier. Otherwise, for target states other than `DELETED`, the state change applies immediately. If a request that starts a lifecycle execution arrives while the image already has one in progress, Image Builder rejects it.
 #'
 #' @usage
 #' imagebuilder_start_resource_state_update(resourceArn, state,
@@ -6183,11 +6283,11 @@ imagebuilder_start_image_pipeline_execution <- function(imagePipelineArn, client
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the image build version to update. The image must be in one of these terminal states: `AVAILABLE`, `DEPRECATED`, `DISABLED`, `FAILED`, or `CANCELLED`. Images with `FAILED` or `CANCELLED` status can transition only to `DELETED`.
 #' @param state &#91;required&#93; Specifies the lifecycle action to take for this request. For AMI-based images, valid values are `AVAILABLE`, `DEPRECATED`, `DISABLED`, and `DELETED`. For container-based images, only `DELETED` is supported.
-#' @param executionRole The name or Amazon Resource Name (ARN) of the IAM role that’s used to update image state.
-#' @param includeResources Specifies which image resources to include in the state update. When specified, the lifecycle action applies to underlying resources. These resources include AMIs, snapshots, and containers in addition to the Image Builder image resource. Requires `executionRole` to also be specified. To delete an image and its underlying resources, you must specify `includeResources`. To delete only the Image Builder image record without affecting underlying resources, use the [`delete_image`][imagebuilder_delete_image] API instead.
-#' @param exclusionRules Skip action on the image resource and associated resources if specified exclusion rules are met.
-#' @param updateAt Specifies the timestamp when the state transition takes effect. Use this parameter only when the target status is `DEPRECATED`. The value must be a future time.
-#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param executionRole The name or Amazon Resource Name (ARN) of the IAM role that's used to update image state. You must provide this property together with `includeResources`. Neither is valid without the other.
+#' @param includeResources Specifies which underlying resources to update, in addition to the Image Builder image resource itself. Snapshots and containers are only valid for the `DELETED` state. To set an image to `DELETED`, you must include its underlying resources. To delete only the Image Builder image record, use the [`delete_image`][imagebuilder_delete_image] operation instead.
+#' @param exclusionRules Rules that Image Builder evaluates against each of the image's AMIs. Matching AMIs and their snapshots are skipped. Exclusion rules only take effect when the request includes AMIs. If the target state is `DELETED` and any resource was skipped, the Image Builder image resource itself is also retained. For the `DEPRECATED` and `DISABLED` target states, Image Builder updates the image resource's state regardless of exclusions.
+#' @param updateAt The timestamp that indicates when resources are updated by a lifecycle action. This property is valid only when the target status is `DEPRECATED`, and the value must be a future time. If you don't specify a value, Image Builder begins the state update right away. For a scheduled deprecation, included AMIs get their EC2 deprecation time set immediately, and Image Builder schedules the image resource to transition to `DEPRECATED` at that time.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6248,7 +6348,8 @@ imagebuilder_start_resource_state_update <- function(resourceArn, state, executi
     http_path = "/StartResourceStateUpdate",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$start_resource_state_update_input(resourceArn = resourceArn, state = state, executionRole = executionRole, includeResources = includeResources, exclusionRules = exclusionRules, updateAt = updateAt, clientToken = clientToken)
   output <- .imagebuilder$start_resource_state_update_output()
@@ -6296,7 +6397,8 @@ imagebuilder_tag_resource <- function(resourceArn, tags) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .imagebuilder$tag_resource_output()
@@ -6344,7 +6446,8 @@ imagebuilder_untag_resource <- function(resourceArn, tagKeys) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .imagebuilder$untag_resource_output()
@@ -6359,7 +6462,9 @@ imagebuilder_untag_resource <- function(resourceArn, tagKeys) {
 #' Updates a distribution configuration
 #'
 #' @description
-#' Updates a distribution configuration. Distribution configurations define and configure the outputs of your pipeline.
+#' Updates a distribution configuration. Distribution configurations define and configure the outputs for your images, including the target Regions, accounts, and settings for each Region.
+#' 
+#' This operation doesn't support selective updates. The request replaces the stored configuration, so include every setting that you want to keep.
 #'
 #' @usage
 #' imagebuilder_update_distribution_configuration(
@@ -6367,8 +6472,8 @@ imagebuilder_untag_resource <- function(resourceArn, tagKeys) {
 #'
 #' @param distributionConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the distribution configuration that you want to update.
 #' @param description The description of the distribution configuration.
-#' @param distributions &#91;required&#93; The distributions of the distribution configuration.
-#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param distributions &#91;required&#93; The distribution settings for the configuration. Each entry defines how output images are distributed in one target Amazon Web Services Region. A Region can appear at most once in the list. This list replaces the configuration's existing distributions entirely.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6479,7 +6584,8 @@ imagebuilder_update_distribution_configuration <- function(distributionConfigura
     http_path = "/UpdateDistributionConfiguration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$update_distribution_configuration_input(distributionConfigurationArn = distributionConfigurationArn, description = description, distributions = distributions, clientToken = clientToken)
   output <- .imagebuilder$update_distribution_configuration_output()
@@ -6494,9 +6600,9 @@ imagebuilder_update_distribution_configuration <- function(distributionConfigura
 #' Updates an image pipeline
 #'
 #' @description
-#' Updates an image pipeline. Use image pipelines to automate the creation and distribution of images. You must specify exactly one recipe for your image, using either a `containerRecipeArn` or an `imageRecipeArn`.
+#' Updates an image pipeline. Use image pipelines to automate the creation and distribution of images. You must specify exactly one recipe for your image, using either a `containerRecipeArn` or an `imageRecipeArn`. The recipe must be the same type, image or container, as the pipeline's current recipe.
 #' 
-#' UpdateImagePipeline does not support selective updates for the pipeline. You must specify all of the required properties in the update request, not just the properties that have changed.
+#' UpdateImagePipeline does not support selective updates. The request replaces the pipeline's entire configuration, so include every setting that you want to keep. Any optional property that you omit is removed or reset to its default.
 #'
 #' @usage
 #' imagebuilder_update_image_pipeline(imagePipelineArn, description,
@@ -6508,20 +6614,20 @@ imagebuilder_update_distribution_configuration <- function(distributionConfigura
 #'
 #' @param imagePipelineArn &#91;required&#93; The Amazon Resource Name (ARN) of the image pipeline that you want to update.
 #' @param description The description of the image pipeline.
-#' @param imageRecipeArn The Amazon Resource Name (ARN) of the image recipe that configures images updated by this image pipeline.
-#' @param containerRecipeArn The Amazon Resource Name (ARN) of the container pipeline to update.
-#' @param infrastructureConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the infrastructure configuration that Image Builder uses to build images that this image pipeline has updated.
-#' @param distributionConfigurationArn The Amazon Resource Name (ARN) of the distribution configuration that Image Builder uses to configure and distribute images that this image pipeline has updated.
-#' @param imageTestsConfiguration The image test configuration of the image pipeline.
+#' @param imageRecipeArn The Amazon Resource Name (ARN) of the image recipe that configures images created by this image pipeline. You must specify either this property or `containerRecipeArn`, but not both.
+#' @param containerRecipeArn The Amazon Resource Name (ARN) of the container recipe that is used to configure images created by this container pipeline. You must specify either this property or `imageRecipeArn`, but not both.
+#' @param infrastructureConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the infrastructure configuration that Image Builder uses to build images created by this image pipeline.
+#' @param distributionConfigurationArn The Amazon Resource Name (ARN) of the distribution configuration that Image Builder uses to configure and distribute images created by this image pipeline.
+#' @param imageTestsConfiguration Specifies the test settings that Image Builder applies to images that this pipeline creates. If you don't provide test settings, Image Builder stores a default configuration with image tests enabled.
 #' @param enhancedImageMetadataEnabled Specifies whether to collect additional information about the image being created, including the operating system (OS) version and package list. Defaults to `true`.
-#' @param schedule The schedule of the image pipeline.
-#' @param status The status of the image pipeline.
-#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
-#' @param imageScanningConfiguration Contains settings for vulnerability scans.
-#' @param workflows Contains the workflows to run for the pipeline.
-#' @param loggingConfiguration Update logging configuration for the output image that's created when the pipeline runs.
-#' @param executionRole The name or Amazon Resource Name (ARN) for the IAM role you create that grants Image Builder access to perform workflow actions.
-#' @param imageTags The tags to be applied to the images produced by this pipeline.
+#' @param schedule The schedule of the image pipeline. Because the update replaces the entire configuration, omitting this property removes any existing schedule. The pipeline then runs only when you call [`start_image_pipeline_execution`][imagebuilder_start_image_pipeline_execution].
+#' @param status The status of the image pipeline. Defaults to `ENABLED` when omitted. To keep a pipeline disabled, include this property set to `DISABLED` in your update request.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param imageScanningConfiguration Contains settings for vulnerability scans that Amazon Inspector runs against the test instance during image creation.
+#' @param workflows The array of workflow configuration objects for builds that this pipeline starts. You must also specify `executionRole` when you provide workflows.
+#' @param loggingConfiguration Specifies the logging configuration for the image pipeline. Use this to define custom CloudWatch Logs log groups for your pipeline execution logs and image build logs. The service manages log groups with names starting with `/aws/imagebuilder/` using the service-linked role. For custom log group names outside of this prefix, you must also provide an `executionRole`.
+#' @param executionRole The name or Amazon Resource Name (ARN) for the IAM role you create that grants Image Builder access to perform workflow actions. If you omit this property, the pipeline reverts to the Image Builder service-linked role.
+#' @param imageTags The tags that Image Builder applies to the Image Builder image resource that this pipeline's scheduled executions create. These tags don't apply to the output AMI. To tag output AMIs, use `amiTags` in the pipeline's distribution configuration.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6604,7 +6710,8 @@ imagebuilder_update_image_pipeline <- function(imagePipelineArn, description = N
     http_path = "/UpdateImagePipeline",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$update_image_pipeline_input(imagePipelineArn = imagePipelineArn, description = description, imageRecipeArn = imageRecipeArn, containerRecipeArn = containerRecipeArn, infrastructureConfigurationArn = infrastructureConfigurationArn, distributionConfigurationArn = distributionConfigurationArn, imageTestsConfiguration = imageTestsConfiguration, enhancedImageMetadataEnabled = enhancedImageMetadataEnabled, schedule = schedule, status = status, clientToken = clientToken, imageScanningConfiguration = imageScanningConfiguration, workflows = workflows, loggingConfiguration = loggingConfiguration, executionRole = executionRole, imageTags = imageTags)
   output <- .imagebuilder$update_image_pipeline_output()
@@ -6620,6 +6727,8 @@ imagebuilder_update_image_pipeline <- function(imagePipelineArn, description = N
 #'
 #' @description
 #' Updates an infrastructure configuration. An infrastructure configuration defines the environment in which Image Builder builds and tests your image.
+#' 
+#' This operation doesn't support selective updates. The request replaces the configuration, so include every setting that you want to keep. Omitted optional properties are cleared.
 #'
 #' @usage
 #' imagebuilder_update_infrastructure_configuration(
@@ -6630,24 +6739,24 @@ imagebuilder_update_image_pipeline <- function(imagePipelineArn, description = N
 #'
 #' @param infrastructureConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the infrastructure configuration that you want to update.
 #' @param description The description of the infrastructure configuration.
-#' @param instanceTypes The instance types of the infrastructure configuration. You can specify one or more instance types to use for this build. Image Builder picks one of these instance types based on availability.
-#' @param instanceProfileName &#91;required&#93; The instance profile to associate with the instance used to customize your Amazon EC2 AMI.
+#' @param instanceTypes The instance types of the infrastructure configuration. You can specify one or more instance types to use for this build. Image Builder picks one of these instance types based on availability. If you don't specify instance types, Image Builder selects compatible instance types automatically. If you specify a Dedicated Host, Image Builder uses only instance types that the host supports.
+#' @param instanceProfileName &#91;required&#93; The instance profile to associate with the instance used to customize your Amazon EC2 AMI. The instance profile must exist in your account.
 #' @param securityGroupIds The security group IDs to associate with the instance used to customize your Amazon EC2 AMI.
-#' @param subnetId The subnet ID to place the instance used to customize your Amazon EC2 AMI in.
-#' @param logging The logging configuration of the infrastructure configuration.
+#' @param subnetId The subnet ID in which to place the instance used to customize your Amazon EC2 AMI. If you specify `subnetId`, you must also specify one or more security group IDs in `securityGroupIds`. Otherwise, the request fails.
+#' @param logging The logging configuration of the infrastructure configuration. When you configure S3 logs, Image Builder writes logs from the build and test process to the specified bucket under the key prefix.
 #' @param keyPair The key pair of the infrastructure configuration. You can use this to log on to and debug the instance used to create your image.
 #' @param terminateInstanceOnFailure Specifies whether to terminate the instance on failure. Set to false if you want Image Builder to retain the instance used to configure your AMI if the build or test phase of your workflow fails. Defaults to `true`.
-#' @param snsTopicArn The Amazon Resource Name (ARN) of the SNS topic to which Image Builder sends image build event notifications.
+#' @param snsTopicArn The Amazon Resource Name (ARN) of the SNS topic to which Image Builder sends image build event notifications. Specify a standard topic. Image Builder doesn't support FIFO topics. Image Builder validates the topic when you create or update the configuration. You must have permission to publish to the topic.
 #' 
-#' EC2 Image Builder is unable to send notifications to SNS topics that are encrypted using keys from other accounts. The key that is used to encrypt the SNS topic must reside in the account that the Image Builder service runs under.
-#' @param resourceTags The tags attached to the resource created by Image Builder.
-#' @param instanceMetadataOptions The instance metadata options that you can set for the HTTP requests that pipeline builds use to launch EC2 build and test instances. For more information about instance metadata options, see one of the following links:
+#' EC2 Image Builder can't send notifications to SNS topics that are encrypted using keys from other accounts. If your SNS topic is encrypted, the key must be owned by the same account that owns your Image Builder resources.
+#' @param resourceTags The metadata tags to assign to the Amazon EC2 instance that Image Builder launches during the build process. Tags are formatted as key value pairs. Tag keys can't begin with `aws:` or match one of the following reserved keys: `CreatedBy`, `Ec2ImageBuilderArn`, `Name`, or `Tags`.
+#' @param instanceMetadataOptions The instance metadata service (IMDS) settings that Image Builder applies to the EC2 build and test instances it launches during image creation. If you don't set these options, the EC2 launch defaults for the instance apply. For more information about instance metadata options, see one of the following links:
 #' 
 #' -   [Configure the instance metadata options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html) in the *Amazon EC2 User Guide* for Linux instances.
 #' 
 #' -   [Configure the instance metadata options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html) in the *Amazon EC2 Windows Guide* for Windows instances.
-#' @param placement The instance placement settings that define where the instances that are launched from your image run.
-#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param placement The instance placement settings that define where the build and test instances that Image Builder launches during image creation run. These settings don't affect instances that you launch from the output image.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6710,7 +6819,8 @@ imagebuilder_update_infrastructure_configuration <- function(infrastructureConfi
     http_path = "/UpdateInfrastructureConfiguration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$update_infrastructure_configuration_input(infrastructureConfigurationArn = infrastructureConfigurationArn, description = description, instanceTypes = instanceTypes, instanceProfileName = instanceProfileName, securityGroupIds = securityGroupIds, subnetId = subnetId, logging = logging, keyPair = keyPair, terminateInstanceOnFailure = terminateInstanceOnFailure, snsTopicArn = snsTopicArn, resourceTags = resourceTags, instanceMetadataOptions = instanceMetadataOptions, placement = placement, clientToken = clientToken)
   output <- .imagebuilder$update_infrastructure_configuration_output()
@@ -6725,7 +6835,7 @@ imagebuilder_update_infrastructure_configuration <- function(infrastructureConfi
 #' Updates the specified lifecycle policy
 #'
 #' @description
-#' Updates the specified lifecycle policy.
+#' Updates the specified lifecycle policy. The request replaces the existing policy configuration rather than merging changes, so re-specify every setting that you want to keep. The `resourceType` must match the existing policy's value.
 #'
 #' @usage
 #' imagebuilder_update_lifecycle_policy(lifecyclePolicyArn, description,
@@ -6733,13 +6843,13 @@ imagebuilder_update_infrastructure_configuration <- function(infrastructureConfi
 #'   clientToken)
 #'
 #' @param lifecyclePolicyArn &#91;required&#93; The Amazon Resource Name (ARN) of the lifecycle policy resource.
-#' @param description Optional description for the lifecycle policy.
-#' @param status Indicates whether the lifecycle policy resource is enabled.
-#' @param executionRole &#91;required&#93; The name or Amazon Resource Name (ARN) of the IAM role that Image Builder uses to update the lifecycle policy.
-#' @param resourceType &#91;required&#93; The type of image resource that the lifecycle policy applies to.
+#' @param description Optional description for the lifecycle policy. Because the update replaces the entire configuration, omitting this property removes any existing description.
+#' @param status Indicates whether the lifecycle policy resource is enabled. Defaults to `ENABLED` when omitted, so updating a disabled policy without setting this property re-enables it.
+#' @param executionRole &#91;required&#93; The name or Amazon Resource Name (ARN) for the IAM role you create that grants Image Builder access to run lifecycle actions.
+#' @param resourceType &#91;required&#93; The type of image resource that the lifecycle policy applies to. The value must match the policy's existing resource type. You can't change the resource type of an existing lifecycle policy.
 #' @param policyDetails &#91;required&#93; The configuration details for a lifecycle policy resource.
-#' @param resourceSelection &#91;required&#93; Selection criteria for resources that the lifecycle policy applies to.
-#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
+#' @param resourceSelection &#91;required&#93; Selection criteria for resources that the lifecycle policy applies to. You must specify exactly one selection criteria: either recipes or a tag map, not both.
+#' @param clientToken &#91;required&#93; A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see [Ensuring idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html) in the *Amazon EC2 API Reference*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6823,7 +6933,8 @@ imagebuilder_update_lifecycle_policy <- function(lifecyclePolicyArn, description
     http_path = "/UpdateLifecyclePolicy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .imagebuilder$update_lifecycle_policy_input(lifecyclePolicyArn = lifecyclePolicyArn, description = description, status = status, executionRole = executionRole, resourceType = resourceType, policyDetails = policyDetails, resourceSelection = resourceSelection, clientToken = clientToken)
   output <- .imagebuilder$update_lifecycle_policy_output()

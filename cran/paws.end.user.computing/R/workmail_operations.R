@@ -40,7 +40,8 @@ workmail_associate_delegate_to_resource <- function(OrganizationId, ResourceId, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$associate_delegate_to_resource_input(OrganizationId = OrganizationId, ResourceId = ResourceId, EntityId = EntityId)
   output <- .workmail$associate_delegate_to_resource_output()
@@ -89,7 +90,8 @@ workmail_associate_member_to_group <- function(OrganizationId, GroupId, MemberId
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$associate_member_to_group_input(OrganizationId = OrganizationId, GroupId = GroupId, MemberId = MemberId)
   output <- .workmail$associate_member_to_group_output()
@@ -121,7 +123,8 @@ workmail_assume_impersonation_role <- function(OrganizationId, ImpersonationRole
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$assume_impersonation_role_input(OrganizationId = OrganizationId, ImpersonationRoleId = ImpersonationRoleId)
   output <- .workmail$assume_impersonation_role_output()
@@ -154,7 +157,8 @@ workmail_cancel_mailbox_export_job <- function(ClientToken, JobId, OrganizationI
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$cancel_mailbox_export_job_input(ClientToken = ClientToken, JobId = JobId, OrganizationId = OrganizationId)
   output <- .workmail$cancel_mailbox_export_job_output()
@@ -187,7 +191,8 @@ workmail_create_alias <- function(OrganizationId, EntityId, Alias) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$create_alias_input(OrganizationId = OrganizationId, EntityId = EntityId, Alias = Alias)
   output <- .workmail$create_alias_output()
@@ -223,7 +228,8 @@ workmail_create_availability_configuration <- function(ClientToken = NULL, Organ
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$create_availability_configuration_input(ClientToken = ClientToken, OrganizationId = OrganizationId, DomainName = DomainName, EwsProvider = EwsProvider, LambdaProvider = LambdaProvider)
   output <- .workmail$create_availability_configuration_output()
@@ -257,7 +263,8 @@ workmail_create_group <- function(OrganizationId, Name, HiddenFromGlobalAddressL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$create_group_input(OrganizationId = OrganizationId, Name = Name, HiddenFromGlobalAddressList = HiddenFromGlobalAddressList)
   output <- .workmail$create_group_output()
@@ -291,7 +298,8 @@ workmail_create_identity_center_application <- function(Name, InstanceArn, Clien
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$create_identity_center_application_input(Name = Name, InstanceArn = InstanceArn, ClientToken = ClientToken)
   output <- .workmail$create_identity_center_application_output()
@@ -327,7 +335,8 @@ workmail_create_impersonation_role <- function(ClientToken = NULL, OrganizationI
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$create_impersonation_role_input(ClientToken = ClientToken, OrganizationId = OrganizationId, Name = Name, Type = Type, Description = Description, Rules = Rules)
   output <- .workmail$create_impersonation_role_output()
@@ -371,7 +380,8 @@ workmail_create_mobile_device_access_rule <- function(OrganizationId, ClientToke
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$create_mobile_device_access_rule_input(OrganizationId = OrganizationId, ClientToken = ClientToken, Name = Name, Description = Description, Effect = Effect, DeviceTypes = DeviceTypes, NotDeviceTypes = NotDeviceTypes, DeviceModels = DeviceModels, NotDeviceModels = NotDeviceModels, DeviceOperatingSystems = DeviceOperatingSystems, NotDeviceOperatingSystems = NotDeviceOperatingSystems, DeviceUserAgents = DeviceUserAgents, NotDeviceUserAgents = NotDeviceUserAgents)
   output <- .workmail$create_mobile_device_access_rule_output()
@@ -407,7 +417,8 @@ workmail_create_organization <- function(DirectoryId = NULL, Alias, ClientToken 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$create_organization_input(DirectoryId = DirectoryId, Alias = Alias, ClientToken = ClientToken, Domains = Domains, KmsKeyArn = KmsKeyArn, EnableInteroperability = EnableInteroperability)
   output <- .workmail$create_organization_output()
@@ -442,7 +453,8 @@ workmail_create_resource <- function(OrganizationId, Name, Type, Description = N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$create_resource_input(OrganizationId = OrganizationId, Name = Name, Type = Type, Description = Description, HiddenFromGlobalAddressList = HiddenFromGlobalAddressList)
   output <- .workmail$create_resource_output()
@@ -484,7 +496,8 @@ workmail_create_user <- function(OrganizationId, Name, DisplayName, Password = N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$create_user_input(OrganizationId = OrganizationId, Name = Name, DisplayName = DisplayName, Password = Password, Role = Role, FirstName = FirstName, LastName = LastName, HiddenFromGlobalAddressList = HiddenFromGlobalAddressList, IdentityProviderUserId = IdentityProviderUserId)
   output <- .workmail$create_user_output()
@@ -516,7 +529,8 @@ workmail_delete_access_control_rule <- function(OrganizationId, Name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$delete_access_control_rule_input(OrganizationId = OrganizationId, Name = Name)
   output <- .workmail$delete_access_control_rule_output()
@@ -550,7 +564,8 @@ workmail_delete_alias <- function(OrganizationId, EntityId, Alias) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$delete_alias_input(OrganizationId = OrganizationId, EntityId = EntityId, Alias = Alias)
   output <- .workmail$delete_alias_output()
@@ -583,7 +598,8 @@ workmail_delete_availability_configuration <- function(OrganizationId, DomainNam
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$delete_availability_configuration_input(OrganizationId = OrganizationId, DomainName = DomainName)
   output <- .workmail$delete_availability_configuration_output()
@@ -614,7 +630,8 @@ workmail_delete_email_monitoring_configuration <- function(OrganizationId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$delete_email_monitoring_configuration_input(OrganizationId = OrganizationId)
   output <- .workmail$delete_email_monitoring_configuration_output()
@@ -652,7 +669,8 @@ workmail_delete_group <- function(OrganizationId, GroupId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$delete_group_input(OrganizationId = OrganizationId, GroupId = GroupId)
   output <- .workmail$delete_group_output()
@@ -683,7 +701,8 @@ workmail_delete_identity_center_application <- function(ApplicationArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$delete_identity_center_application_input(ApplicationArn = ApplicationArn)
   output <- .workmail$delete_identity_center_application_output()
@@ -714,7 +733,8 @@ workmail_delete_identity_provider_configuration <- function(OrganizationId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$delete_identity_provider_configuration_input(OrganizationId = OrganizationId)
   output <- .workmail$delete_identity_provider_configuration_output()
@@ -746,7 +766,8 @@ workmail_delete_impersonation_role <- function(OrganizationId, ImpersonationRole
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$delete_impersonation_role_input(OrganizationId = OrganizationId, ImpersonationRoleId = ImpersonationRoleId)
   output <- .workmail$delete_impersonation_role_output()
@@ -795,7 +816,8 @@ workmail_delete_mailbox_permissions <- function(OrganizationId, EntityId, Grante
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$delete_mailbox_permissions_input(OrganizationId = OrganizationId, EntityId = EntityId, GranteeId = GranteeId)
   output <- .workmail$delete_mailbox_permissions_output()
@@ -835,7 +857,8 @@ workmail_delete_mobile_device_access_override <- function(OrganizationId, UserId
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$delete_mobile_device_access_override_input(OrganizationId = OrganizationId, UserId = UserId, DeviceId = DeviceId)
   output <- .workmail$delete_mobile_device_access_override_output()
@@ -868,7 +891,8 @@ workmail_delete_mobile_device_access_rule <- function(OrganizationId, MobileDevi
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$delete_mobile_device_access_rule_input(OrganizationId = OrganizationId, MobileDeviceAccessRuleId = MobileDeviceAccessRuleId)
   output <- .workmail$delete_mobile_device_access_rule_output()
@@ -904,7 +928,8 @@ workmail_delete_organization <- function(ClientToken = NULL, OrganizationId, Del
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$delete_organization_input(ClientToken = ClientToken, OrganizationId = OrganizationId, DeleteDirectory = DeleteDirectory, ForceDelete = ForceDelete, DeleteIdentityCenterApplication = DeleteIdentityCenterApplication)
   output <- .workmail$delete_organization_output()
@@ -937,7 +962,8 @@ workmail_delete_personal_access_token <- function(OrganizationId, PersonalAccess
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$delete_personal_access_token_input(OrganizationId = OrganizationId, PersonalAccessTokenId = PersonalAccessTokenId)
   output <- .workmail$delete_personal_access_token_output()
@@ -975,7 +1001,8 @@ workmail_delete_resource <- function(OrganizationId, ResourceId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$delete_resource_input(OrganizationId = OrganizationId, ResourceId = ResourceId)
   output <- .workmail$delete_resource_output()
@@ -1007,7 +1034,8 @@ workmail_delete_retention_policy <- function(OrganizationId, Id) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$delete_retention_policy_input(OrganizationId = OrganizationId, Id = Id)
   output <- .workmail$delete_retention_policy_output()
@@ -1045,7 +1073,8 @@ workmail_delete_user <- function(OrganizationId, UserId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$delete_user_input(OrganizationId = OrganizationId, UserId = UserId)
   output <- .workmail$delete_user_output()
@@ -1085,7 +1114,8 @@ workmail_deregister_from_work_mail <- function(OrganizationId, EntityId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$deregister_from_work_mail_input(OrganizationId = OrganizationId, EntityId = EntityId)
   output <- .workmail$deregister_from_work_mail_output()
@@ -1118,7 +1148,8 @@ workmail_deregister_mail_domain <- function(OrganizationId, DomainName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$deregister_mail_domain_input(OrganizationId = OrganizationId, DomainName = DomainName)
   output <- .workmail$deregister_mail_domain_output()
@@ -1150,7 +1181,8 @@ workmail_describe_email_monitoring_configuration <- function(OrganizationId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$describe_email_monitoring_configuration_input(OrganizationId = OrganizationId)
   output <- .workmail$describe_email_monitoring_configuration_output()
@@ -1182,7 +1214,8 @@ workmail_describe_entity <- function(OrganizationId, Email) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$describe_entity_input(OrganizationId = OrganizationId, Email = Email)
   output <- .workmail$describe_entity_output()
@@ -1222,7 +1255,8 @@ workmail_describe_group <- function(OrganizationId, GroupId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$describe_group_input(OrganizationId = OrganizationId, GroupId = GroupId)
   output <- .workmail$describe_group_output()
@@ -1254,7 +1288,8 @@ workmail_describe_identity_provider_configuration <- function(OrganizationId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$describe_identity_provider_configuration_input(OrganizationId = OrganizationId)
   output <- .workmail$describe_identity_provider_configuration_output()
@@ -1285,7 +1320,8 @@ workmail_describe_inbound_dmarc_settings <- function(OrganizationId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$describe_inbound_dmarc_settings_input(OrganizationId = OrganizationId)
   output <- .workmail$describe_inbound_dmarc_settings_output()
@@ -1317,7 +1353,8 @@ workmail_describe_mailbox_export_job <- function(JobId, OrganizationId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$describe_mailbox_export_job_input(JobId = JobId, OrganizationId = OrganizationId)
   output <- .workmail$describe_mailbox_export_job_output()
@@ -1349,7 +1386,8 @@ workmail_describe_organization <- function(OrganizationId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$describe_organization_input(OrganizationId = OrganizationId)
   output <- .workmail$describe_organization_output()
@@ -1389,7 +1427,8 @@ workmail_describe_resource <- function(OrganizationId, ResourceId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$describe_resource_input(OrganizationId = OrganizationId, ResourceId = ResourceId)
   output <- .workmail$describe_resource_output()
@@ -1429,7 +1468,8 @@ workmail_describe_user <- function(OrganizationId, UserId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$describe_user_input(OrganizationId = OrganizationId, UserId = UserId)
   output <- .workmail$describe_user_output()
@@ -1478,7 +1518,8 @@ workmail_disassociate_delegate_from_resource <- function(OrganizationId, Resourc
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$disassociate_delegate_from_resource_input(OrganizationId = OrganizationId, ResourceId = ResourceId, EntityId = EntityId)
   output <- .workmail$disassociate_delegate_from_resource_output()
@@ -1527,7 +1568,8 @@ workmail_disassociate_member_from_group <- function(OrganizationId, GroupId, Mem
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$disassociate_member_from_group_input(OrganizationId = OrganizationId, GroupId = GroupId, MemberId = MemberId)
   output <- .workmail$disassociate_member_from_group_output()
@@ -1564,7 +1606,8 @@ workmail_get_access_control_effect <- function(OrganizationId, IpAddress, Action
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$get_access_control_effect_input(OrganizationId = OrganizationId, IpAddress = IpAddress, Action = Action, UserId = UserId, ImpersonationRoleId = ImpersonationRoleId)
   output <- .workmail$get_access_control_effect_output()
@@ -1595,7 +1638,8 @@ workmail_get_default_retention_policy <- function(OrganizationId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$get_default_retention_policy_input(OrganizationId = OrganizationId)
   output <- .workmail$get_default_retention_policy_output()
@@ -1627,7 +1671,8 @@ workmail_get_impersonation_role <- function(OrganizationId, ImpersonationRoleId)
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$get_impersonation_role_input(OrganizationId = OrganizationId, ImpersonationRoleId = ImpersonationRoleId)
   output <- .workmail$get_impersonation_role_output()
@@ -1666,7 +1711,8 @@ workmail_get_impersonation_role_effect <- function(OrganizationId, Impersonation
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$get_impersonation_role_effect_input(OrganizationId = OrganizationId, ImpersonationRoleId = ImpersonationRoleId, TargetUser = TargetUser)
   output <- .workmail$get_impersonation_role_effect_output()
@@ -1699,7 +1745,8 @@ workmail_get_mail_domain <- function(OrganizationId, DomainName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$get_mail_domain_input(OrganizationId = OrganizationId, DomainName = DomainName)
   output <- .workmail$get_mail_domain_output()
@@ -1739,7 +1786,8 @@ workmail_get_mailbox_details <- function(OrganizationId, UserId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$get_mailbox_details_input(OrganizationId = OrganizationId, UserId = UserId)
   output <- .workmail$get_mailbox_details_output()
@@ -1775,7 +1823,8 @@ workmail_get_mobile_device_access_effect <- function(OrganizationId, DeviceType 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$get_mobile_device_access_effect_input(OrganizationId = OrganizationId, DeviceType = DeviceType, DeviceModel = DeviceModel, DeviceOperatingSystem = DeviceOperatingSystem, DeviceUserAgent = DeviceUserAgent)
   output <- .workmail$get_mobile_device_access_effect_output()
@@ -1815,7 +1864,8 @@ workmail_get_mobile_device_access_override <- function(OrganizationId, UserId, D
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$get_mobile_device_access_override_input(OrganizationId = OrganizationId, UserId = UserId, DeviceId = DeviceId)
   output <- .workmail$get_mobile_device_access_override_output()
@@ -1848,7 +1898,8 @@ workmail_get_personal_access_token_metadata <- function(OrganizationId, Personal
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$get_personal_access_token_metadata_input(OrganizationId = OrganizationId, PersonalAccessTokenId = PersonalAccessTokenId)
   output <- .workmail$get_personal_access_token_metadata_output()
@@ -1879,7 +1930,8 @@ workmail_list_access_control_rules <- function(OrganizationId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$list_access_control_rules_input(OrganizationId = OrganizationId)
   output <- .workmail$list_access_control_rules_output()
@@ -1914,7 +1966,8 @@ workmail_list_aliases <- function(OrganizationId, EntityId, NextToken = NULL, Ma
     http_path = "/",
     host_prefix = "",
     paginator = list(result_key = "Aliases", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$list_aliases_input(OrganizationId = OrganizationId, EntityId = EntityId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_aliases_output()
@@ -1948,7 +2001,8 @@ workmail_list_availability_configurations <- function(OrganizationId, MaxResults
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AvailabilityConfigurations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$list_availability_configurations_input(OrganizationId = OrganizationId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .workmail$list_availability_configurations_output()
@@ -1990,7 +2044,8 @@ workmail_list_group_members <- function(OrganizationId, GroupId, NextToken = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(result_key = "Members", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$list_group_members_input(OrganizationId = OrganizationId, GroupId = GroupId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_group_members_output()
@@ -2024,7 +2079,8 @@ workmail_list_groups <- function(OrganizationId, NextToken = NULL, MaxResults = 
     http_path = "/",
     host_prefix = "",
     paginator = list(result_key = "Groups", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$list_groups_input(OrganizationId = OrganizationId, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .workmail$list_groups_output()
@@ -2067,7 +2123,8 @@ workmail_list_groups_for_entity <- function(OrganizationId, EntityId, Filters = 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$list_groups_for_entity_input(OrganizationId = OrganizationId, EntityId = EntityId, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_groups_for_entity_output()
@@ -2100,7 +2157,8 @@ workmail_list_impersonation_roles <- function(OrganizationId, NextToken = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$list_impersonation_roles_input(OrganizationId = OrganizationId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_impersonation_roles_output()
@@ -2133,7 +2191,8 @@ workmail_list_mail_domains <- function(OrganizationId, MaxResults = NULL, NextTo
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$list_mail_domains_input(OrganizationId = OrganizationId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .workmail$list_mail_domains_output()
@@ -2167,7 +2226,8 @@ workmail_list_mailbox_export_jobs <- function(OrganizationId, NextToken = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$list_mailbox_export_jobs_input(OrganizationId = OrganizationId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_mailbox_export_jobs_output()
@@ -2210,7 +2270,8 @@ workmail_list_mailbox_permissions <- function(OrganizationId, EntityId, NextToke
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Permissions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$list_mailbox_permissions_input(OrganizationId = OrganizationId, EntityId = EntityId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_mailbox_permissions_output()
@@ -2252,7 +2313,8 @@ workmail_list_mobile_device_access_overrides <- function(OrganizationId, UserId 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$list_mobile_device_access_overrides_input(OrganizationId = OrganizationId, UserId = UserId, DeviceId = DeviceId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_mobile_device_access_overrides_output()
@@ -2284,7 +2346,8 @@ workmail_list_mobile_device_access_rules <- function(OrganizationId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$list_mobile_device_access_rules_input(OrganizationId = OrganizationId)
   output <- .workmail$list_mobile_device_access_rules_output()
@@ -2316,7 +2379,8 @@ workmail_list_organizations <- function(NextToken = NULL, MaxResults = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(result_key = "OrganizationSummaries", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$list_organizations_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_organizations_output()
@@ -2350,7 +2414,8 @@ workmail_list_personal_access_tokens <- function(OrganizationId, UserId = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PersonalAccessTokenSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$list_personal_access_tokens_input(OrganizationId = OrganizationId, UserId = UserId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_personal_access_tokens_output()
@@ -2392,7 +2457,8 @@ workmail_list_resource_delegates <- function(OrganizationId, ResourceId, NextTok
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Delegates"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$list_resource_delegates_input(OrganizationId = OrganizationId, ResourceId = ResourceId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_resource_delegates_output()
@@ -2426,7 +2492,8 @@ workmail_list_resources <- function(OrganizationId, NextToken = NULL, MaxResults
     http_path = "/",
     host_prefix = "",
     paginator = list(result_key = "Resources", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$list_resources_input(OrganizationId = OrganizationId, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .workmail$list_resources_output()
@@ -2457,7 +2524,8 @@ workmail_list_tags_for_resource <- function(ResourceARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$list_tags_for_resource_input(ResourceARN = ResourceARN)
   output <- .workmail$list_tags_for_resource_output()
@@ -2491,7 +2559,8 @@ workmail_list_users <- function(OrganizationId, NextToken = NULL, MaxResults = N
     http_path = "/",
     host_prefix = "",
     paginator = list(result_key = "Users", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$list_users_input(OrganizationId = OrganizationId, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .workmail$list_users_output()
@@ -2533,7 +2602,8 @@ workmail_put_access_control_rule <- function(Name, Effect, Description, IpRanges
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$put_access_control_rule_input(Name = Name, Effect = Effect, Description = Description, IpRanges = IpRanges, NotIpRanges = NotIpRanges, Actions = Actions, NotActions = NotActions, UserIds = UserIds, NotUserIds = NotUserIds, OrganizationId = OrganizationId, ImpersonationRoleIds = ImpersonationRoleIds, NotImpersonationRoleIds = NotImpersonationRoleIds)
   output <- .workmail$put_access_control_rule_output()
@@ -2567,7 +2637,8 @@ workmail_put_email_monitoring_configuration <- function(OrganizationId, RoleArn 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$put_email_monitoring_configuration_input(OrganizationId = OrganizationId, RoleArn = RoleArn, LogGroupArn = LogGroupArn)
   output <- .workmail$put_email_monitoring_configuration_output()
@@ -2602,7 +2673,8 @@ workmail_put_identity_provider_configuration <- function(OrganizationId, Authent
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$put_identity_provider_configuration_input(OrganizationId = OrganizationId, AuthenticationMode = AuthenticationMode, IdentityCenterConfiguration = IdentityCenterConfiguration, PersonalAccessTokenConfiguration = PersonalAccessTokenConfiguration)
   output <- .workmail$put_identity_provider_configuration_output()
@@ -2634,7 +2706,8 @@ workmail_put_inbound_dmarc_settings <- function(OrganizationId, Enforced) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$put_inbound_dmarc_settings_input(OrganizationId = OrganizationId, Enforced = Enforced)
   output <- .workmail$put_inbound_dmarc_settings_output()
@@ -2684,7 +2757,8 @@ workmail_put_mailbox_permissions <- function(OrganizationId, EntityId, GranteeId
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$put_mailbox_permissions_input(OrganizationId = OrganizationId, EntityId = EntityId, GranteeId = GranteeId, PermissionValues = PermissionValues)
   output <- .workmail$put_mailbox_permissions_output()
@@ -2726,7 +2800,8 @@ workmail_put_mobile_device_access_override <- function(OrganizationId, UserId, D
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$put_mobile_device_access_override_input(OrganizationId = OrganizationId, UserId = UserId, DeviceId = DeviceId, Effect = Effect, Description = Description)
   output <- .workmail$put_mobile_device_access_override_output()
@@ -2761,7 +2836,8 @@ workmail_put_retention_policy <- function(OrganizationId, Id = NULL, Name, Descr
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$put_retention_policy_input(OrganizationId = OrganizationId, Id = Id, Name = Name, Description = Description, FolderConfigurations = FolderConfigurations)
   output <- .workmail$put_retention_policy_output()
@@ -2795,7 +2871,8 @@ workmail_register_mail_domain <- function(ClientToken = NULL, OrganizationId, Do
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$register_mail_domain_input(ClientToken = ClientToken, OrganizationId = OrganizationId, DomainName = DomainName)
   output <- .workmail$register_mail_domain_output()
@@ -2835,7 +2912,8 @@ workmail_register_to_work_mail <- function(OrganizationId, EntityId, Email) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$register_to_work_mail_input(OrganizationId = OrganizationId, EntityId = EntityId, Email = Email)
   output <- .workmail$register_to_work_mail_output()
@@ -2868,7 +2946,8 @@ workmail_reset_password <- function(OrganizationId, UserId, Password) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$reset_password_input(OrganizationId = OrganizationId, UserId = UserId, Password = Password)
   output <- .workmail$reset_password_output()
@@ -2916,7 +2995,8 @@ workmail_start_mailbox_export_job <- function(ClientToken, OrganizationId, Entit
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$start_mailbox_export_job_input(ClientToken = ClientToken, OrganizationId = OrganizationId, EntityId = EntityId, Description = Description, RoleArn = RoleArn, KmsKeyArn = KmsKeyArn, S3BucketName = S3BucketName, S3Prefix = S3Prefix)
   output <- .workmail$start_mailbox_export_job_output()
@@ -2949,7 +3029,8 @@ workmail_tag_resource <- function(ResourceARN, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .workmail$tag_resource_output()
@@ -2984,7 +3065,8 @@ workmail_test_availability_configuration <- function(OrganizationId, DomainName 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$test_availability_configuration_input(OrganizationId = OrganizationId, DomainName = DomainName, EwsProvider = EwsProvider, LambdaProvider = LambdaProvider)
   output <- .workmail$test_availability_configuration_output()
@@ -3017,7 +3099,8 @@ workmail_untag_resource <- function(ResourceARN, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .workmail$untag_resource_output()
@@ -3052,7 +3135,8 @@ workmail_update_availability_configuration <- function(OrganizationId, DomainNam
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$update_availability_configuration_input(OrganizationId = OrganizationId, DomainName = DomainName, EwsProvider = EwsProvider, LambdaProvider = LambdaProvider)
   output <- .workmail$update_availability_configuration_output()
@@ -3084,7 +3168,8 @@ workmail_update_default_mail_domain <- function(OrganizationId, DomainName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$update_default_mail_domain_input(OrganizationId = OrganizationId, DomainName = DomainName)
   output <- .workmail$update_default_mail_domain_output()
@@ -3125,7 +3210,8 @@ workmail_update_group <- function(OrganizationId, GroupId, HiddenFromGlobalAddre
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$update_group_input(OrganizationId = OrganizationId, GroupId = GroupId, HiddenFromGlobalAddressList = HiddenFromGlobalAddressList)
   output <- .workmail$update_group_output()
@@ -3161,7 +3247,8 @@ workmail_update_impersonation_role <- function(OrganizationId, ImpersonationRole
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$update_impersonation_role_input(OrganizationId = OrganizationId, ImpersonationRoleId = ImpersonationRoleId, Name = Name, Type = Type, Description = Description, Rules = Rules)
   output <- .workmail$update_impersonation_role_output()
@@ -3203,7 +3290,8 @@ workmail_update_mailbox_quota <- function(OrganizationId, UserId, MailboxQuota) 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$update_mailbox_quota_input(OrganizationId = OrganizationId, UserId = UserId, MailboxQuota = MailboxQuota)
   output <- .workmail$update_mailbox_quota_output()
@@ -3247,7 +3335,8 @@ workmail_update_mobile_device_access_rule <- function(OrganizationId, MobileDevi
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$update_mobile_device_access_rule_input(OrganizationId = OrganizationId, MobileDeviceAccessRuleId = MobileDeviceAccessRuleId, Name = Name, Description = Description, Effect = Effect, DeviceTypes = DeviceTypes, NotDeviceTypes = NotDeviceTypes, DeviceModels = DeviceModels, NotDeviceModels = NotDeviceModels, DeviceOperatingSystems = DeviceOperatingSystems, NotDeviceOperatingSystems = NotDeviceOperatingSystems, DeviceUserAgents = DeviceUserAgents, NotDeviceUserAgents = NotDeviceUserAgents)
   output <- .workmail$update_mobile_device_access_rule_output()
@@ -3288,7 +3377,8 @@ workmail_update_primary_email_address <- function(OrganizationId, EntityId, Emai
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$update_primary_email_address_input(OrganizationId = OrganizationId, EntityId = EntityId, Email = Email)
   output <- .workmail$update_primary_email_address_output()
@@ -3333,7 +3423,8 @@ workmail_update_resource <- function(OrganizationId, ResourceId, Name = NULL, Bo
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$update_resource_input(OrganizationId = OrganizationId, ResourceId = ResourceId, Name = Name, BookingOptions = BookingOptions, Description = Description, Type = Type, HiddenFromGlobalAddressList = HiddenFromGlobalAddressList)
   output <- .workmail$update_resource_output()
@@ -3391,7 +3482,8 @@ workmail_update_user <- function(OrganizationId, UserId, Role = NULL, DisplayNam
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workmail$update_user_input(OrganizationId = OrganizationId, UserId = UserId, Role = Role, DisplayName = DisplayName, FirstName = FirstName, LastName = LastName, HiddenFromGlobalAddressList = HiddenFromGlobalAddressList, Initials = Initials, Telephone = Telephone, Street = Street, JobTitle = JobTitle, City = City, Company = Company, ZipCode = ZipCode, Department = Department, Country = Country, Office = Office, IdentityProviderUserId = IdentityProviderUserId)
   output <- .workmail$update_user_output()

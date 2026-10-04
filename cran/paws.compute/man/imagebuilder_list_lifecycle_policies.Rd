@@ -12,7 +12,7 @@ imagebuilder_list_lifecycle_policies(
 )
 }
 \arguments{
-\item{filters}{Streamline results based on one of the following values: \code{Name}, \code{Status}.}
+\item{filters}{Use the following filters to streamline results: \code{name}, \code{resourceType}, and \code{status}. Filter names are matched exactly as shown.}
 
 \item{maxResults}{The maximum number of items to return in a single request.}
 
