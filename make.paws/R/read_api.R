@@ -166,11 +166,68 @@ merge_region_config <- function(api, region_config) {
     if (!is.null(result$credentialScope$region)) {
       endpoint$signing_region <- result$credentialScope$region
     }
+    dualstack_endpoint <- get_dualstack_endpoint(service, service_data, service_defaults, dnsSuffix)
+    if (!is.null(dualstack_endpoint)) {
+      endpoint$dualstack_endpoint <- dualstack_endpoint
+    }
     ep[[regionRegex]] <- endpoint
   }
   ep_order <- sort(vapply(ep, \(x) x$global, FUN.VALUE = FALSE), decreasing = TRUE)
   api$region_config <- ep[names(ep_order)]
   return(api)
+}
+
+# Returns the first entry in `variants` tagged "dualstack" but not "fips", or
+# NULL when none match. Combined dualstack+fips variants are out of scope for
+# now (paws.common has no FIPS support to pair them with).
+find_dualstack_variant <- function(variants) {
+  for (variant in variants) {
+    tags <- unlist(variant$tags) %||% character(0)
+    if ("dualstack" %in% tags && !("fips" %in% tags)) {
+      return(variant)
+    }
+  }
+  return(NULL)
+}
+
+# Returns a dualstack endpoint template for `service` in this partition, with
+# `{service}`/dnsSuffix already substituted and `{region}` left in place for
+# runtime substitution (the same shape as the `endpoint` field) -- or NULL
+# when the service has no dualstack variant in this partition, which is the
+# common case (most services don't have one).
+#
+# Dualstack variants are declared per-service in endpoints.json, either in
+# the service's own `defaults.variants` (already a `{region}` template, e.g.
+# s3's `s3.dualstack.{region}.{dnsSuffix}`) or per literal region under
+# `endpoints.<region>.variants` (a literal hostname, e.g. ec2's
+# `ec2.us-east-1.api.aws`, which we generalize back into a `{region}`
+# template). The generic partition-wide `defaults.variants` (which exists for
+# every service, dualstack-capable or not) is deliberately NOT used as a
+# fallback here -- it would otherwise claim dualstack support for services
+# that don't actually have it.
+get_dualstack_endpoint <- function(service, service_data, service_defaults, dnsSuffix) {
+  variant <- find_dualstack_variant(service_defaults$variants)
+  if (!is.null(variant)) {
+    if (is.null(variant$hostname)) {
+      return(NULL)
+    }
+    return(build_endpoint(service, variant$hostname, variant$dnsSuffix %||% dnsSuffix))
+  }
+
+  for (region_name in names(service_data$endpoints)) {
+    variant <- find_dualstack_variant(service_data$endpoints[[region_name]][["variants"]])
+    if (is.null(variant)) {
+      next
+    }
+    if (is.null(variant$hostname)) {
+      # No hostname override: this region's regular endpoint is already
+      # dualstack-capable, so there's no distinct endpoint to resolve to.
+      return(NULL)
+    }
+    hostname <- gsub(region_name, "{region}", variant$hostname, fixed = TRUE)
+    return(build_endpoint(service, hostname, variant$dnsSuffix %||% dnsSuffix))
+  }
+  return(NULL)
 }
 
 build_endpoint <- function(service, hostname, dnsSuffix) {

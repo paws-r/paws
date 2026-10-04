@@ -138,6 +138,12 @@ service_params <- function() {
     sts_regional_endpoint = paste(
       "Set sts regional endpoint resolver to regional or legacy",
       "\\url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}"
+    ),
+    use_dual_stack = paste(
+      "Set this to `true` to use the dualstack (IPv4 and IPv6) endpoint for a",
+      "service, where available, falling back to the regular endpoint when it",
+      "isn't. Defaults to the `AWS_USE_DUALSTACK_ENDPOINT` environment variable",
+      "when unset."
     )
   )
   desc <- c(desc, comment_list_itemize(config))
@@ -195,7 +201,8 @@ service_syntax <- function(api) {
         close_connection = "logical",
         timeout = "numeric",
         s3_force_path_style = "logical",
-        sts_regional_endpoint = "string"
+        sts_regional_endpoint = "string",
+        use_dual_stack = "logical"
       ),
       credentials = list(
         creds = list(

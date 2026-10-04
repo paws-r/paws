@@ -19,6 +19,7 @@ config(
   s3_force_path_style = FALSE,
   s3_virtual_address = FALSE,
   sts_regional_endpoint = "",
+  use_dual_stack = FALSE,
   signature_version = ""
 )
 
@@ -73,6 +74,10 @@ addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
 
 \item{sts_regional_endpoint}{Set sts regional endpoint resolver to regional or
 legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+
+\item{use_dual_stack}{Set this to \code{true} to use the dualstack (IPv4 and IPv6) endpoint
+for a service, where available, falling back to the regular endpoint when it isn't.
+Defaults to the \code{AWS_USE_DUALSTACK_ENDPOINT} environment variable when unset.}
 
 \item{signature_version}{The signature version used when signing requests.
 Note that the default version is Signature Version 4.}

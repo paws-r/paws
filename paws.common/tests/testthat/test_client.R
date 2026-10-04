@@ -103,6 +103,47 @@ test_that("resolver_endpoint known partition name", {
   expect_equal(r$signing_region, "us-east-1")
 })
 
+test_that("resolver_endpoint use_dual_stack resolves to the dualstack endpoint", {
+  endpoints <- list(
+    "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(
+      endpoint = "s3.{region}.amazonaws.com",
+      dualstack_endpoint = "s3.dualstack.{region}.amazonaws.com",
+      global = FALSE
+    )
+  )
+
+  r <- resolver_endpoint("s3", "us-east-1", endpoints, use_dual_stack = TRUE)
+  expect_equal(r$endpoint, "https://s3.dualstack.us-east-1.amazonaws.com")
+  expect_equal(r$signing_region, "us-east-1")
+})
+
+test_that("resolver_endpoint use_dual_stack falls back when no dualstack endpoint exists", {
+  endpoints <- list(
+    "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(
+      endpoint = "ec2.{region}.amazonaws.com",
+      global = FALSE
+    )
+  )
+
+  r <- resolver_endpoint("ec2", "us-east-1", endpoints, use_dual_stack = TRUE)
+  expect_equal(r$endpoint, "https://ec2.us-east-1.amazonaws.com")
+  expect_equal(r$signing_region, "us-east-1")
+})
+
+test_that("resolver_endpoint use_dual_stack = FALSE is unaffected by a dualstack endpoint", {
+  endpoints <- list(
+    "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(
+      endpoint = "s3.{region}.amazonaws.com",
+      dualstack_endpoint = "s3.dualstack.{region}.amazonaws.com",
+      global = FALSE
+    )
+  )
+
+  r <- resolver_endpoint("s3", "us-east-1", endpoints)
+  expect_equal(r$endpoint, "https://s3.us-east-1.amazonaws.com")
+  expect_equal(r$signing_region, "us-east-1")
+})
+
 test_that("client_config uses custom endpoint", {
   Sys.setenv("AWS_REGION" = "region")
   cfgs <- Config()

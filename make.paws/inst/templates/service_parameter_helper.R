@@ -34,6 +34,9 @@
 #' @param s3_virtual_address Set this to `true` to force the request to use virtual-hosted-style
 #' @param sts_regional_endpoint Set sts regional endpoint resolver to regional or
 #' legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}
+#' @param use_dual_stack Set this to `true` to use the dualstack (IPv4 and IPv6) endpoint
+#' for a service, where available, falling back to the regular endpoint when it isn't.
+#' Defaults to the `AWS_USE_DUALSTACK_ENDPOINT` environment variable when unset.
 #' @param signature_version The signature version used when signing requests.
 #' Note that the default version is Signature Version 4.
 #' @param creds \code{creds()} or \code{list} in same format.
