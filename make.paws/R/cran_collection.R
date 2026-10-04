@@ -7,6 +7,7 @@ make_collection <- function(sdk_dir, out_dir, categories, service_names) {
   version <- get_version(sdk_dir)
   package_dir <- file.path(out_dir, package)
   write_skeleton_category(package_dir, package)
+  write_placeholder_test(package_dir, package)
   write_description_category(
     package_dir,
     package,

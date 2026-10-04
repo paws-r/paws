@@ -34,8 +34,27 @@ write_testthat_file <- function(path, package) {
   write_utf8(contents, file.path(path, "tests", "testthat.R"))
 }
 
+placeholder_test_template <- template(
+  `
+  # ${package} re-exports its category packages (e.g. paws.storage) and has
+  # no operations of its own, so there are no generated service tests here.
+  test_that("${package} loads", {
+    expect_true(requireNamespace("${package}", quietly = TRUE))
+  })
+  `
+)
+
+# Write a placeholder test for a package that has no generated service
+# tests of its own (e.g. the top-level "paws" collection package), since
+# CRAN flags a package with a tests/testthat setup but no test files.
+write_placeholder_test <- function(path, package) {
+  contents <- render(placeholder_test_template, package = package)
+  filename <- paste0("test_", package, ".R")
+  write_utf8(contents, file.path(path, TEST_DIR, filename))
+}
+
 # Make all tests for a given API.
-make_tests <- function(api, categories) {
+make_tests <- function(api, categories, api_name) {
   tests <- list()
   i <- 1
   for (operation in get_testable_operations(api)) {
@@ -47,7 +66,7 @@ make_tests <- function(api, categories) {
   }
   tests <- paste(tests, collapse = "\n\n")
   service <- package_name(api)
-  package <- get_service_package_name(service, categories)
+  package <- get_service_package_name(api_name, categories)
   render(test_file_template, package = package, service = service, tests = tests)
 }
 
