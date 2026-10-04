@@ -3,6 +3,23 @@ test_that("parsing complex URL", {
   expect_equal(build_url(parse_url(expected)), expected)
 })
 
+test_that("parsing complex URL with bracketed IPv6 host", {
+  expected <- "https://user_1:password_1@[fd00:ec2::254]:8080/dir/../api?q=1#frag"
+  expect_equal(build_url(parse_url(expected)), expected)
+})
+
+test_that("parsing bracketed IPv6 hosts", {
+  cases <- c(
+    "https://[fd00:ec2::254]/path",
+    "https://[fd00:ec2::254]:443/path",
+    "https://[2001:db8:0:0:0:0:0:1]/path",
+    "https://[::1]:8080/path"
+  )
+  for (expected in cases) {
+    expect_equal(build_url(parse_url(expected)), expected)
+  }
+})
+
 test_that("parsing and building URLs", {
   expected <- "https://example.com/a%20path%20with%20spaces"
   actual <- build_url(parse_url(expected))

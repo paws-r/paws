@@ -211,61 +211,59 @@ public:
                                  { return ch == '/' || ch == '?' || ch == '#'; });
     std::string host_port = std::string(it, host_end);
 
-    // Use rfind to locate the last occurrence of ':' in host_port
-    // Use find to locate '@' in host_port
-    auto colon_pos = host_port.rfind(':');
+    // Split off userinfo (<user>[:<password>]@) first, then parse the
+    // remaining <host>[:<port>], which may be a bracketed IPv6 literal
+    // (e.g. "[fd00:ec2::254]:443") containing colons of its own.
     auto at_pos = host_port.find('@');
-
-    if (colon_pos != std::string::npos)
+    std::string userinfo;
+    std::string host_part = host_port;
+    if (at_pos != std::string::npos)
     {
-      if (at_pos != std::string::npos)
-      {
-        if (colon_pos > at_pos)
-        {
-          // contains: <user>:<password>@<host>:<port>
-          result.host = host_port.substr(0, colon_pos);
-          result.port = host_port.substr(colon_pos + 1);
+      userinfo = host_port.substr(0, at_pos);
+      host_part = host_port.substr(at_pos + 1);
 
-          // split user, password and host
-          auto user_col_pos = result.host.find(':');
-          if (user_col_pos != std::string::npos)
-          {
-            result.user = result.host.substr(0, user_col_pos);
-            result.password = result.host.substr(user_col_pos + 1, at_pos - user_col_pos - 1);
-            result.host = result.host.substr(at_pos + 1);
-          }
-          else
-          {
-            // assume user when ":" can't be found
-            result.user = result.host.substr(0, at_pos);
-            result.host = result.host.substr(at_pos + 1);
-          }
-        }
-        else
-        {
-          // contains: <user>:<pass>@<host>
-          result.user = host_port.substr(0, colon_pos);
-          result.password = host_port.substr(colon_pos + 1, at_pos - colon_pos - 1);
-          result.host = host_port.substr(at_pos + 1);
-        }
+      auto user_col_pos = userinfo.find(':');
+      if (user_col_pos != std::string::npos)
+      {
+        result.user = userinfo.substr(0, user_col_pos);
+        result.password = userinfo.substr(user_col_pos + 1);
       }
       else
       {
-        // contains: <host>:<port>
-        result.host = host_port.substr(0, colon_pos);
-        result.port = host_port.substr(colon_pos + 1);
+        result.user = userinfo;
       }
     }
-    else if (at_pos != std::string::npos)
+
+    if (!host_part.empty() && host_part[0] == '[')
     {
-      // contains: <user>@<host>
-      result.user = host_port.substr(0, at_pos);
-      result.host = host_port.substr(at_pos + 1);
+      // bracketed IPv6 literal: <host> ends at the matching ']'
+      auto close_bracket = host_part.find(']');
+      if (close_bracket == std::string::npos)
+      {
+        result.host = host_part;
+      }
+      else
+      {
+        result.host = host_part.substr(0, close_bracket + 1);
+        std::string rest = host_part.substr(close_bracket + 1);
+        if (!rest.empty() && rest[0] == ':')
+        {
+          result.port = rest.substr(1);
+        }
+      }
     }
     else
     {
-      // contains: <host>
-      result.host = host_port;
+      auto colon_pos = host_part.rfind(':');
+      if (colon_pos == std::string::npos)
+      {
+        result.host = host_part;
+      }
+      else
+      {
+        result.host = host_part.substr(0, colon_pos);
+        result.port = host_part.substr(colon_pos + 1);
+      }
     }
 
     it = host_end;
