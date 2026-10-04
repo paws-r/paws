@@ -1,4 +1,4 @@
-svc <- paws::arczonalshift()
+svc <- paws.networking::arczonalshift()
 
 test_that("list_autoshifts", {
   skip_on_cran()

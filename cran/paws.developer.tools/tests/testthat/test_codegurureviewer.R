@@ -1,4 +1,4 @@
-svc <- paws::codegurureviewer()
+svc <- paws.developer.tools::codegurureviewer()
 
 test_that("list_repository_associations", {
   skip_on_cran()

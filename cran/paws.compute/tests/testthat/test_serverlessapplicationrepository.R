@@ -1,4 +1,4 @@
-svc <- paws::serverlessapplicationrepository()
+svc <- paws.compute::serverlessapplicationrepository()
 
 test_that("list_applications", {
   skip_on_cran()

@@ -7,7 +7,7 @@
 resourceexplorer_batch_get_view(ViewArns = NULL)
 }
 \arguments{
-\item{ViewArns}{A list of \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon resource names (ARNs)} that identify the views you want details for.}
+\item{ViewArns}{A list of \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon resource names (ARNs)} that identify the views you want details for.}
 }
 \description{
 Retrieves details about a list of views.

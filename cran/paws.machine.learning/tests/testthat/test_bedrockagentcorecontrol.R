@@ -1,4 +1,4 @@
-svc <- paws::bedrockagentcorecontrol()
+svc <- paws.machine.learning::bedrockagentcorecontrol()
 
 test_that("list_agent_runtimes", {
   skip_on_cran()

@@ -1,3 +1,3 @@
-svc <- paws::forecastqueryservice()
+svc <- paws.machine.learning::forecastqueryservice()
 
 

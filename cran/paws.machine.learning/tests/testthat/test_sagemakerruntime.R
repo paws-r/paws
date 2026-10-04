@@ -1,3 +1,3 @@
-svc <- paws::sagemakerruntime()
+svc <- paws.machine.learning::sagemakerruntime()
 
 

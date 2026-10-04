@@ -22,7 +22,7 @@ This value is optional. If you include a value, it must be between 1 and 100, in
 
 \item{RetiringPrincipal}{The retiring principal for which to list grants. Enter a principal in your Amazon Web Services account.
 
-To specify the retiring principal, use the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Name (ARN)} of an Amazon Web Services principal. Valid principals include Amazon Web Services accounts, IAM users, IAM roles, federated users, and assumed role users. For help with the ARN syntax for a principal, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns}{IAM ARNs} in the \emph{Identity and Access Management User Guide} .
+To specify the retiring principal, use the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)} of an Amazon Web Services principal. Valid principals include Amazon Web Services accounts, IAM users, IAM roles, federated users, and assumed role users. For help with the ARN syntax for a principal, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns}{IAM ARNs} in the \emph{Identity and Access Management User Guide} .
 
 You must specify either \code{RetiringPrincipal} or \code{RetiringServicePrincipal}, but not both.}
 

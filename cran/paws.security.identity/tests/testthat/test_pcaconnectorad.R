@@ -1,4 +1,4 @@
-svc <- paws::pcaconnectorad()
+svc <- paws.security.identity::pcaconnectorad()
 
 test_that("list_connectors", {
   skip_on_cran()

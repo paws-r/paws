@@ -1,4 +1,4 @@
-svc <- paws::ivsrealtime()
+svc <- paws.analytics::ivsrealtime()
 
 test_that("list_compositions", {
   skip_on_cran()

@@ -1,4 +1,4 @@
-svc <- paws::acmpca()
+svc <- paws.security.identity::acmpca()
 
 test_that("list_certificate_authorities", {
   skip_on_cran()

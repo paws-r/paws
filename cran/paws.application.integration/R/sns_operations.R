@@ -488,7 +488,7 @@ sns_delete_topic <- function(TopicArn) {
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the topic whose `DataProtectionPolicy` you want to get.
 #' 
-#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) in the Amazon Web Services General Reference.
+#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) in the Amazon Web Services General Reference.
 #'
 #' @keywords internal
 #'
@@ -1205,7 +1205,7 @@ sns_publish_batch <- function(TopicArn, PublishBatchRequestEntries) {
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the topic whose `DataProtectionPolicy` you want to add or update.
 #' 
-#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) in the Amazon Web Services General Reference.
+#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) in the Amazon Web Services General Reference.
 #' @param DataProtectionPolicy &#91;required&#93; The JSON serialization of the topic's `DataProtectionPolicy`.
 #' 
 #' The `DataProtectionPolicy` must be in JSON string format.

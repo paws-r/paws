@@ -13,7 +13,7 @@ ram_replace_permission_associations(
 )
 }
 \arguments{
-\item{fromPermissionArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Name (ARN)} of the managed permission that you want to replace.}
+\item{fromPermissionArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)} of the managed permission that you want to replace.}
 
 \item{fromPermissionVersion}{Specifies that you want to updated the permissions for only those resource shares that use the specified version of the managed permission.}
 

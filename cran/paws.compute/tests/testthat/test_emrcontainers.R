@@ -1,4 +1,4 @@
-svc <- paws::emrcontainers()
+svc <- paws.compute::emrcontainers()
 
 test_that("list_job_templates", {
   skip_on_cran()

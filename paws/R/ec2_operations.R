@@ -76534,7 +76534,7 @@ ec2_report_instance_status <- function(DryRun = NULL, Instances, Status, StartTi
 #' 
 #' You can specify tags for the Spot Fleet request and instances launched by the fleet. You cannot tag other resource types in a Spot Fleet request because only the `spot-fleet-request` and `instance` resource types are supported.
 #' 
-#' For more information, see [Spot Fleet requests](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet-request-type.html?refid=646586d5-fde5-40ef-8e3b-58ab4bd675ec) in the *Amazon EC2 User Guide*.
+#' For more information, see [Spot Fleet requests](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet-request-type.html) in the *Amazon EC2 User Guide*.
 #' 
 #' We strongly discourage using the RequestSpotFleet API because it is a legacy API with no planned investment. For options for requesting Spot Instances, see [Which is the best Spot request method to use?](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-best-practices.html#which-spot-request-method-to-use) in the *Amazon EC2 User Guide*.
 #'

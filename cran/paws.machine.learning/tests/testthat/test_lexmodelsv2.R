@@ -1,4 +1,4 @@
-svc <- paws::lexmodelsv2()
+svc <- paws.machine.learning::lexmodelsv2()
 
 test_that("list_bots", {
   skip_on_cran()

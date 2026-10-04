@@ -1,3 +1,3 @@
-svc <- paws::augmentedairuntime()
+svc <- paws.machine.learning::augmentedairuntime()
 
 

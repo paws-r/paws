@@ -1,3 +1,3 @@
-svc <- paws::sagemakeredgemanager()
+svc <- paws.machine.learning::sagemakeredgemanager()
 
 

@@ -1,4 +1,4 @@
-svc <- paws::docdbelastic()
+svc <- paws.database::docdbelastic()
 
 test_that("list_cluster_snapshots", {
   skip_on_cran()

@@ -1,3 +1,3 @@
-svc <- paws::rdsdataservice()
+svc <- paws.database::rdsdataservice()
 
 

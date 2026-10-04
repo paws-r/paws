@@ -1,3 +1,3 @@
-svc <- paws::connectcontactlens()
+svc <- paws.customer.engagement::connectcontactlens()
 
 

@@ -14,7 +14,7 @@ ram_promote_permission_created_from_policy(
 )
 }
 \arguments{
-\item{permissionArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Name (ARN)} of the \code{CREATED_FROM_POLICY} permission that you want to promote. You can get this \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Name (ARN)} by calling the \code{\link[=ram_list_resource_share_permissions]{list_resource_share_permissions}} operation.}
+\item{permissionArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)} of the \code{CREATED_FROM_POLICY} permission that you want to promote. You can get this \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)} by calling the \code{\link[=ram_list_resource_share_permissions]{list_resource_share_permissions}} operation.}
 
 \item{name}{[required] Specifies a name for the promoted customer managed permission.}
 

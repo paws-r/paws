@@ -50,13 +50,13 @@ Valid Values: \code{multi-node | single-node}}
 
 \item{NodeType}{The new node type of the cluster. If you specify a new node type, you must also specify the number of nodes parameter.
 
-For more information about resizing clusters, go to \link{Resizing Clusters in Amazon Redshift}(https://docs.aws.amazon.com/redshift/latest/mgmt/?cdn=https\%3A//efxtech.com&cdn_url=https\%3A//efxtech.com&cdn-url=https\%3A//efxtech.com&cdnhost=https\%3A//efxtech.com&cdn_host=https\%3A//efxtech.com&cdn-host=https\%3A//efxtech.com&cdnbase=https\%3A//efxtech.com&cdn_base=https\%3A//efxtech.com&cdn-base=https\%3A//efxtech.com&assetcdn=https\%3A//efxtech.com&assets_cdn=https\%3A//efxtech.com&assets-cdn=https\%3A//efxtech.com&assets_host=https\%3A//efxtech.com&assets_host=https\%3A//efxtech.com&assets-host=https\%3A//efxtech.com&assets-host=https\%3A//efxtech.com&assets_url=https\%3A//efxtech.com&assets-url=https\%3A//efxtech.com&asset_host=https\%3A//efxtech.com&asset_host=https\%3A//efxtech.com&asset-host=https\%3A//efxtech.com&asset-host=https\%3A//efxtech.com&asset_url=https\%3A//efxtech.com&asset-url=https\%3A//efxtech.com&staticcdn=https\%3A//efxtech.com&static_cdn=https\%3A//efxtech.com&static-cdn=https\%3A//efxtech.
+For more information about resizing clusters, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/}{Resizing Clusters in Amazon Redshift} in the \emph{Amazon Redshift Cluster Management Guide}.
 
 Valid Values: \code{dc2.large} | \code{dc2.8xlarge} | \code{rg.large} | \code{rg.xlarge} | \code{rg.4xlarge} | \code{rg.12xlarge} | \code{ra3.large} | \code{ra3.xlplus} | \code{ra3.4xlarge} | \code{ra3.16xlarge}}
 
 \item{NumberOfNodes}{The new number of nodes of the cluster. If you specify a new number of nodes, you must also specify the node type parameter.
 
-For more information about resizing clusters, go to \link{Resizing Clusters in Amazon Redshift}(https://docs.aws.amazon.com/redshift/latest/mgmt/?cdn=https\%3A//efxtech.com&cdn_url=https\%3A//efxtech.com&cdn-url=https\%3A//efxtech.com&cdnhost=https\%3A//efxtech.com&cdn_host=https\%3A//efxtech.com&cdn-host=https\%3A//efxtech.com&cdnbase=https\%3A//efxtech.com&cdn_base=https\%3A//efxtech.com&cdn-base=https\%3A//efxtech.com&assetcdn=https\%3A//efxtech.com&assets_cdn=https\%3A//efxtech.com&assets-cdn=https\%3A//efxtech.com&assets_host=https\%3A//efxtech.com&assets_host=https\%3A//efxtech.com&assets-host=https\%3A//efxtech.com&assets-host=https\%3A//efxtech.com&assets_url=https\%3A//efxtech.com&assets-url=https\%3A//efxtech.com&asset_host=https\%3A//efxtech.com&asset_host=https\%3A//efxtech.com&asset-host=https\%3A//efxtech.com&asset-host=https\%3A//efxtech.com&asset_url=https\%3A//efxtech.com&asset-url=https\%3A//efxtech.com&staticcdn=https\%3A//efxtech.com&static_cdn=https\%3A//efxtech.com&static-cdn=https\%3A//efxtech.
+For more information about resizing clusters, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/}{Resizing Clusters in Amazon Redshift} in the \emph{Amazon Redshift Cluster Management Guide}.
 
 Valid Values: Integer greater than \code{0}.}
 

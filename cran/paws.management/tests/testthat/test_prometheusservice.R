@@ -1,4 +1,4 @@
-svc <- paws::prometheusservice()
+svc <- paws.management::prometheusservice()
 
 test_that("list_scrapers", {
   skip_on_cran()

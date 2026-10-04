@@ -1,4 +1,4 @@
-svc <- paws::route53recoveryreadiness()
+svc <- paws.networking::route53recoveryreadiness()
 
 test_that("list_cells", {
   skip_on_cran()

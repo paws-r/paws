@@ -14,9 +14,9 @@ ram_associate_resource_share_permission(
 )
 }
 \arguments{
-\item{resourceShareArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Name (ARN)} of the resource share to which you want to add or replace permissions.}
+\item{resourceShareArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)} of the resource share to which you want to add or replace permissions.}
 
-\item{permissionArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Name (ARN)} of the RAM permission to associate with the resource share. To find the ARN for a permission, use either the \code{\link[=ram_list_permissions]{list_permissions}} operation or go to the Permissions library page in the RAM console and then choose the name of the permission. The ARN is displayed on the detail page.}
+\item{permissionArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)} of the RAM permission to associate with the resource share. To find the ARN for a permission, use either the \code{\link[=ram_list_permissions]{list_permissions}} operation or go to the Permissions library page in the RAM console and then choose the name of the permission. The ARN is displayed on the detail page.}
 
 \item{replace}{Specifies whether the specified permission should replace the existing permission associated with the resource share. Use \code{true} to replace the current permissions. Use \code{false} to add the permission to a resource share that currently doesn't have a permission. The default value is \code{false}.
 

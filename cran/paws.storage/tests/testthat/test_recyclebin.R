@@ -1,3 +1,3 @@
-svc <- paws::recyclebin()
+svc <- paws.storage::recyclebin()
 
 

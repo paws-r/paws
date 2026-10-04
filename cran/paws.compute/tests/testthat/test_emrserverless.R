@@ -1,4 +1,4 @@
-svc <- paws::emrserverless()
+svc <- paws.compute::emrserverless()
 
 test_that("list_applications", {
   skip_on_cran()

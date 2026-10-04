@@ -1,3 +1,3 @@
-svc <- paws::marketplacemetering()
+svc <- paws.cost.management::marketplacemetering()
 
 

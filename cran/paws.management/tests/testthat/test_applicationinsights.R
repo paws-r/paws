@@ -1,4 +1,4 @@
-svc <- paws::applicationinsights()
+svc <- paws.management::applicationinsights()
 
 test_that("list_applications", {
   skip_on_cran()

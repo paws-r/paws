@@ -9,7 +9,7 @@ elasticache_remove_tags_from_resource(ResourceName, TagKeys)
 \arguments{
 \item{ResourceName}{[required] The Amazon Resource Name (ARN) of the resource from which you want the tags removed, for example \code{arn:aws:elasticache:us-west-2:0123456789:cluster:myCluster} or \code{arn:aws:elasticache:us-west-2:0123456789:snapshot:mySnapshot}.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Names (ARNs) and Amazon Service Namespaces}.}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs) and Amazon Service Namespaces}.}
 
 \item{TagKeys}{[required] A list of \code{TagKeys} identifying the tags you want removed from the named resource.}
 }

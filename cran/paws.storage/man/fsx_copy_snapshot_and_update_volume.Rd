@@ -18,7 +18,7 @@ fsx_copy_snapshot_and_update_volume(
 
 \item{VolumeId}{[required] Specifies the ID of the volume that you are copying the snapshot to.}
 
-\item{SourceSnapshotARN}{[required] The Amazon Resource Name (ARN) for a given resource. ARNs uniquely identify Amazon Web Services resources. We require an ARN when you need to specify a resource unambiguously across all of Amazon Web Services. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Names (ARNs)} in the \emph{Amazon Web Services General Reference}.}
+\item{SourceSnapshotARN}{[required] The Amazon Resource Name (ARN) for a given resource. ARNs uniquely identify Amazon Web Services resources. We require an ARN when you need to specify a resource unambiguously across all of Amazon Web Services. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} in the \emph{Amazon Web Services General Reference}.}
 
 \item{CopyStrategy}{Specifies the strategy to use when copying data from a snapshot to the volume.
 \itemize{

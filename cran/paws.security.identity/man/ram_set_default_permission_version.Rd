@@ -12,7 +12,7 @@ ram_set_default_permission_version(
 )
 }
 \arguments{
-\item{permissionArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Name (ARN)} of the customer managed permission whose default version you want to change.}
+\item{permissionArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)} of the customer managed permission whose default version you want to change.}
 
 \item{permissionVersion}{[required] Specifies the version number that you want to designate as the default for customer managed permission. To see a list of all available version numbers, use \code{\link[=ram_list_permission_versions]{list_permission_versions}}.}
 

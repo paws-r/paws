@@ -286,7 +286,7 @@ This setting doesn't apply to RDS Custom DB instances.}
 
 \item{Domain}{The Active Directory directory ID to create the DB instance in. Currently, only MySQL, Microsoft SQL Server, Oracle, and PostgreSQL DB instances can be created in an Active Directory Domain.
 
-For more information, see \link{Kerberos Authentication}(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/database-authentication.html?cdn=https\%3A//efxtech.com&cdn_url=https\%3A//efxtech.com&cdn-url=https\%3A//efxtech.com&cdnhost=https\%3A//efxtech.com&cdn_host=https\%3A//efxtech.com&cdn-host=https\%3A//efxtech.com&cdnbase=https\%3A//efxtech.com&cdn_base=https\%3A//efxtech.com&cdn-base=https\%3A//efxtech.com&assetcdn=https\%3A//efxtech.com&assets_cdn=https\%3A//efxtech.com&assets-cdn=https\%3A//efxtech.com&assets_host=https\%3A//efxtech.com&assets_host=https\%3A//efxtech.com&assets-host=https\%3A//efxtech.com&assets-host=https\%3A//efxtech.com&assets_url=https\%3A//efxtech.com&assets-url=https\%3A//efxtech.com&asset_host=https\%3A//efxtech.com&asset_host=https\%3A//efxtech.com&asset-host=https\%3A//efxtech.com&asset-host=https\%3A//efxtech.com&asset_url=https\%3A//efxtech.com&asset-url=https\%3A//efxtech.com&staticcdn=https\%3A//efxtech.com&static_cdn=https\%3A//efxtech.com&static-cdn=https\%3A//efxtech.com&s
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/database-authentication.html}{Kerberos Authentication} in the \emph{Amazon RDS User Guide}.
 
 This setting doesn't apply to RDS Custom DB instances.}
 

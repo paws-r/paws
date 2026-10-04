@@ -1,4 +1,4 @@
-svc <- paws::codestarconnections()
+svc <- paws.developer.tools::codestarconnections()
 
 test_that("list_connections", {
   skip_on_cran()

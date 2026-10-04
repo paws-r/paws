@@ -74,7 +74,7 @@ elasticsearchservice_accept_inbound_cross_cluster_search_connection <- function(
 #' Attaches tags to an existing Elasticsearch domain
 #'
 #' @description
-#' Attaches tags to an existing Elasticsearch domain. Tags are a set of case-sensitive key value pairs. An Elasticsearch domain may have up to 10 tags. See <a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/#es-managedomains-awsresorcetagging" target="_blank">Tagging Amazon Elasticsearch Service Domains for more information.</a>
+#' Attaches tags to an existing Elasticsearch domain. Tags are a set of case-sensitive key value pairs. An Elasticsearch domain may have up to 10 tags. See <a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/?trkcampaign=pac_lambda_product_page#es-managedomains-awsresorcetagging" target="_blank">Tagging Amazon Elasticsearch Service Domains for more information.</a>
 #'
 #' @usage
 #' elasticsearchservice_add_tags(ARN, TagList)

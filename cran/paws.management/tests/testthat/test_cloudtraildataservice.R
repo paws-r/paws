@@ -1,3 +1,3 @@
-svc <- paws::cloudtraildataservice()
+svc <- paws.management::cloudtraildataservice()
 
 

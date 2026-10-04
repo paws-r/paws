@@ -9,7 +9,7 @@ iam_get_role_template_version(TemplateArn, MinorVersion = NULL)
 \arguments{
 \item{TemplateArn}{[required] The Amazon Resource Name (ARN) of the role template whose version you want to retrieve.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Names (ARNs)} in the \emph{Amazon Web Services General Reference}.}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} in the \emph{Amazon Web Services General Reference}.}
 
 \item{MinorVersion}{The minor version of the role template to retrieve. If you do not specify a minor version, the service returns the template's default minor version.}
 }

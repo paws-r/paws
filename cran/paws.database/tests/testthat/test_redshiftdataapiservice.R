@@ -1,4 +1,4 @@
-svc <- paws::redshiftdataapiservice()
+svc <- paws.database::redshiftdataapiservice()
 
 test_that("list_databases", {
   skip_on_cran()

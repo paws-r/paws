@@ -1,4 +1,4 @@
-svc <- paws::resourceexplorer()
+svc <- paws.application.integration::resourceexplorer()
 
 test_that("list_indexes", {
   skip_on_cran()

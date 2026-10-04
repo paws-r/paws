@@ -1,4 +1,4 @@
-svc <- paws::autoscalingplans()
+svc <- paws.management::autoscalingplans()
 
 test_that("describe_scaling_plans", {
   skip_on_cran()

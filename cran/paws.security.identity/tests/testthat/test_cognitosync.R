@@ -1,4 +1,4 @@
-svc <- paws::cognitosync()
+svc <- paws.security.identity::cognitosync()
 
 test_that("list_identity_pool_usage", {
   skip_on_cran()
