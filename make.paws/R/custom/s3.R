@@ -306,8 +306,12 @@ s3_generate_presigned_url <- function(
   }
 
   # sign request
+  # Default to SigV4 (not the legacy "v1" query-auth scheme), matching
+  # boto3's default and because SigV4-only regions reject "v1" presigned
+  # URLs outright. Set `signature_version = "v1"` to opt back into the
+  # legacy scheme.
   request <- do.call(
-    signer(config, "v1_sign_request_handler"),
+    signer(config, "v4_sign_request_handler"),
     list(request = request),
     envir = getNamespace("paws.common")
   )
