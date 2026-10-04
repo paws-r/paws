@@ -544,6 +544,7 @@ container_credentials_provider <- function() {
 # Gets the job role credentials by making an http request
 get_container_credentials <- function(credentials_uri, credentials_full_uri) {
   if (credentials_uri != "") {
+    # IPv4-only: the ECS task metadata service has no IPv6 endpoint upstream.
     metadata_url <- file.path("http://169.254.170.2", credentials_uri)
   } else {
     metadata_url <- credentials_full_uri
