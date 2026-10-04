@@ -72,6 +72,12 @@ resolve_checksum_algorithm <- function(request) {
   if (is.null(http_checksum) || has_checksum_header(request)) {
     return(request)
   }
+  # s3_generate_presigned_url() calls the signer directly, bypassing the
+  # sign HandlerList, so apply_checksum_header() never runs for it - resolving
+  # an algorithm here would just make content_md5() wrongly skip Content-MD5.
+  if (is_presigned(request)) {
+    return(request)
+  }
 
   algorithm_member <- http_checksum$request_algorithm_member
   user_algorithm <- NULL
@@ -87,10 +93,6 @@ resolve_checksum_algorithm <- function(request) {
       (!is.null(algorithm_member) &&
         isTRUE(request$config$request_checksum_calculation == "when_supported"))
   ) {
-    # Don't default a checksum onto presigned URLs.
-    if (is_presigned(request)) {
-      return(request)
-    }
     algorithm <- DEFAULT_CHECKSUM_ALGORITHM
   } else {
     return(request)

@@ -178,7 +178,12 @@ checksum_test_creds <- Credentials(
   })
 )
 
-build_checksum_request <- function(body, checksum_algorithm = NULL, config = Config()) {
+build_checksum_request <- function(
+  body,
+  checksum_algorithm = NULL,
+  config = Config(),
+  expire_time = 0
+) {
   metadata <- list(
     endpoints = list(
       "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(
@@ -233,6 +238,7 @@ build_checksum_request <- function(body, checksum_algorithm = NULL, config = Con
   svc$config$credentials <- checksum_test_creds
   svc$client_info$signing_region <- "us-east-1"
   request <- new_request(svc, op, input, output)
+  request$expire_time <- expire_time
   return(request)
 }
 
@@ -273,4 +279,30 @@ test_that("sign() adds no checksum when request_checksum_calculation = when_requ
   result <- sign(request)
 
   expect_false(has_checksum_header(result))
+})
+
+test_that("resolve_checksum_algorithm does not resolve anything for presigned requests, even with an explicit algorithm", {
+  # s3_generate_presigned_url() never runs apply_checksum_header() (it calls
+  # the signer directly, bypassing the sign HandlerList), so resolving an
+  # algorithm here would just make content_md5() wrongly skip Content-MD5
+  # with nothing to replace it. Covers the caller-supplied-algorithm branch,
+  # not just the default-CRC32 branch.
+  request <- base_checksum_request(params = list(ChecksumAlgorithm = "sha256"))
+  request$expire_time <- 123
+  result <- resolve_checksum_algorithm(request)
+  expect_null(result$context$checksum$request_algorithm)
+})
+
+test_that("build() on a presigned request with an explicit ChecksumAlgorithm still gets Content-MD5", {
+  body <- charToRaw("Hello World")
+  request <- build_checksum_request(
+    body,
+    checksum_algorithm = "SHA256",
+    expire_time = 123
+  )
+  result <- build(request)
+
+  expect_null(result$context$checksum$request_algorithm)
+  expect_false(is.null(result$http_request$header[["Content-Md5"]]))
+  expect_null(result$http_request$header[["x-amz-checksum-sha256"]])
 })
