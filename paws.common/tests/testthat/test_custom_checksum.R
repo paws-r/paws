@@ -116,6 +116,16 @@ test_that("resolve_checksum_algorithm does not default an operation with no algo
   expect_null(result$context$checksum$request_algorithm)
 })
 
+test_that("resolve_checksum_algorithm defaults correctly when config comes from set_config()", {
+  # set_config() tags every Config scalar via tag_annotate()/populate() for
+  # autocomplete, so this must compare equal despite the extra attribute.
+  svc <- set_config(list(), list())
+  request <- base_checksum_request()
+  request$config <- svc$.internal$config
+  result <- resolve_checksum_algorithm(request)
+  expect_equal(result$context$checksum$request_algorithm, "CRC32")
+})
+
 test_that("resolve_checksum_algorithm skips defaulting for presigned requests", {
   request <- base_checksum_request(request_checksum_required = TRUE, expire_time = 123)
   result <- resolve_checksum_algorithm(request)

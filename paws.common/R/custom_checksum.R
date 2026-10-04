@@ -85,7 +85,7 @@ resolve_checksum_algorithm <- function(request) {
   } else if (
     isTRUE(http_checksum$request_checksum_required) ||
       (!is.null(algorithm_member) &&
-        identical(request$config$request_checksum_calculation, "when_supported"))
+        isTRUE(request$config$request_checksum_calculation == "when_supported"))
   ) {
     # Don't default a checksum onto presigned URLs.
     if (is_presigned(request)) {
