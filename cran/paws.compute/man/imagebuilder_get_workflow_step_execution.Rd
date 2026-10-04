@@ -8,7 +8,7 @@ workflow step}
 imagebuilder_get_workflow_step_execution(stepExecutionId)
 }
 \arguments{
-\item{stepExecutionId}{[required] Use the unique identifier for a specific runtime instance of the workflow step to get runtime details for that step.}
+\item{stepExecutionId}{[required] The unique identifier for the runtime instance of the workflow step that you want to get runtime details for. To get the identifiers for the steps that ran in a workflow, call \code{\link[=imagebuilder_list_workflow_step_executions]{list_workflow_step_executions}}.}
 }
 \description{
 Retrieves runtime information for a specific runtime instance of the workflow step.

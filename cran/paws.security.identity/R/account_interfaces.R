@@ -147,6 +147,16 @@ NULL
   list()
 }
 
+.account$send_phone_number_verification_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .account_shapes[["send_phone_number_verification_input"]]))
+}
+
+.account$send_phone_number_verification_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .account_shapes[["send_phone_number_verification_output"]]))
+}
+
 .account$start_primary_email_update_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   return(populate(args, .account_shapes[["start_primary_email_update_input"]]))
@@ -155,4 +165,14 @@ NULL
 .account$start_primary_email_update_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   return(populate(args, .account_shapes[["start_primary_email_update_output"]]))
+}
+
+.account$verify_phone_number_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .account_shapes[["verify_phone_number_input"]]))
+}
+
+.account$verify_phone_number_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .account_shapes[["verify_phone_number_output"]]))
 }

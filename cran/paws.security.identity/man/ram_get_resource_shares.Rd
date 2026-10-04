@@ -18,7 +18,7 @@ ram_get_resource_shares(
 )
 }
 \arguments{
-\item{resourceShareArns}{Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} of individual resource shares that you want information about.}
+\item{resourceShareArns}{Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Names (ARNs)} of individual resource shares that you want information about.}
 
 \item{resourceShareStatus}{Specifies that you want to retrieve details of only those resource shares that have this status.}
 
@@ -36,7 +36,7 @@ ram_get_resource_shares(
 
 \item{maxResults}{Specifies the total number of results that you want included on each page of the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the number you specify, the \code{NextToken} response element is returned with a value (not null). Include the specified value as the \code{NextToken} request parameter in the next call to the operation to get the next part of the results. Note that the service might return fewer results than the maximum even when there are more results available. You should check \code{NextToken} after every operation to ensure that you receive all of the results.}
 
-\item{permissionArn}{Specifies that you want to retrieve details of only those resource shares that use the managed permission with this \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}.}
+\item{permissionArn}{Specifies that you want to retrieve details of only those resource shares that use the managed permission with this \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Name (ARN)}.}
 
 \item{permissionVersion}{Specifies that you want to retrieve details for only those resource shares that use the specified version of the managed permission.}
 }

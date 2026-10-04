@@ -11,7 +11,7 @@ resourceexplorer_update_view(
 )
 }
 \arguments{
-\item{ViewArn}{[required] The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon resource name (ARN)} of the view that you want to modify.}
+\item{ViewArn}{[required] The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon resource name (ARN)} of the view that you want to modify.}
 
 \item{IncludedProperties}{Specifies optional fields that you want included in search results from this view. It is a list of objects that each describe a field to include.
 

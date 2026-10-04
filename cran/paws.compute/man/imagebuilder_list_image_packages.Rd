@@ -13,7 +13,7 @@ imagebuilder_list_image_packages(
 )
 }
 \arguments{
-\item{imageBuildVersionArn}{[required] Filter results for the ListImagePackages request by the Image Build Version ARN}
+\item{imageBuildVersionArn}{[required] The Amazon Resource Name (ARN) of the image build version whose packages you want to list. The value must be a full build version ARN.}
 
 \item{maxResults}{The maximum number of items to return in a single request.}
 

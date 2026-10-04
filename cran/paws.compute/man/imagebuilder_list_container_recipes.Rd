@@ -12,7 +12,7 @@ imagebuilder_list_container_recipes(
 )
 }
 \arguments{
-\item{owner}{Returns container recipes belonging to the specified owner, that have been shared with you. You can omit this field to return container recipes belonging to your account.}
+\item{owner}{Returns container recipes belonging to the specified owner, that have been shared with you. You can omit this field to return container recipes belonging to your account. For container recipes, the valid owner values are \code{Self}, \code{Shared}, and \code{Amazon}.}
 
 \item{filters}{Use the following filters to streamline results:
 \itemize{

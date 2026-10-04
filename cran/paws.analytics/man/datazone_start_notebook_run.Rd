@@ -12,6 +12,7 @@ datazone_start_notebook_run(
   computeConfiguration = NULL,
   networkConfiguration = NULL,
   timeoutConfiguration = NULL,
+  notificationConfiguration = NULL,
   triggerSource = NULL,
   metadata = NULL,
   parameters = NULL,
@@ -32,6 +33,8 @@ datazone_start_notebook_run(
 \item{networkConfiguration}{The network configuration for the notebook run, including network access type and optional VPC settings.}
 
 \item{timeoutConfiguration}{The timeout configuration for the notebook run. The default timeout is 720 minutes (12 hours) and the maximum is 1440 minutes (24 hours).}
+
+\item{notificationConfiguration}{The notification configuration for the notebook run. Use this to specify the notebook run states that trigger notifications.}
 
 \item{triggerSource}{The source that triggered the notebook run.}
 

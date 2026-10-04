@@ -68,7 +68,8 @@ cloudwatch_associate_dataset_kms_key <- function(DatasetIdentifier, KmsKeyArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$associate_dataset_kms_key_input(DatasetIdentifier = DatasetIdentifier, KmsKeyArn = KmsKeyArn)
   output <- .cloudwatch$associate_dataset_kms_key_output()
@@ -79,6 +80,87 @@ cloudwatch_associate_dataset_kms_key <- function(DatasetIdentifier, KmsKeyArn) {
   return(response)
 }
 .cloudwatch$operations$associate_dataset_kms_key <- cloudwatch_associate_dataset_kms_key
+
+#' Creates a resource metrics configuration for an Amazon Web Services
+#' resource
+#'
+#' @description
+#' Creates a resource metrics configuration for an Amazon Web Services resource. After you create a configuration, Amazon CloudWatch collects detailed metrics for that resource.
+#' 
+#' Each Amazon Web Services resource can have only one resource metrics configuration. If a configuration already exists for the specified resource ARN, this operation returns a `ConflictException`. To modify an existing configuration, use [`update_resource_metrics_configuration`][cloudwatch_update_resource_metrics_configuration].
+#' 
+#' If the Amazon Web Services resource that you specify in `ResourceArn` does not exist, this operation returns a `ResourceNotFoundException`. Verify that the resource ARN is correct and that the resource exists before you retry the request.
+#' 
+#' To create a resource metrics configuration, you must have the `cloudwatch:CreateResourceMetricsConfiguration` permission. For information about scoping this permission to specific resources, see [Condition keys for resource metrics configuration access](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/iam-cw-condition-keys-resource-arn.html) in the *Amazon CloudWatch User Guide*.
+#'
+#' @usage
+#' cloudwatch_create_resource_metrics_configuration(ResourceArn,
+#'   MetricSelections)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon Web Services resource to enable detailed monitoring for.
+#' @param MetricSelections Specifies which metrics Amazon CloudWatch collects for the resource. If you omit this parameter, Amazon CloudWatch collects all available detailed metrics for the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceMetricsConfiguration = list(
+#'     ResourceArn = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     MetricSelections = list(
+#'       list(
+#'         IncludeMetrics = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_resource_metrics_configuration(
+#'   ResourceArn = "string",
+#'   MetricSelections = list(
+#'     list(
+#'       IncludeMetrics = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_create_resource_metrics_configuration
+#'
+#' @aliases cloudwatch_create_resource_metrics_configuration
+cloudwatch_create_resource_metrics_configuration <- function(ResourceArn, MetricSelections = NULL) {
+  op <- new_operation(
+    name = "CreateResourceMetricsConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .cloudwatch$create_resource_metrics_configuration_input(ResourceArn = ResourceArn, MetricSelections = MetricSelections)
+  output <- .cloudwatch$create_resource_metrics_configuration_output()
+  config <- get_config()
+  svc <- .cloudwatch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$create_resource_metrics_configuration <- cloudwatch_create_resource_metrics_configuration
 
 #' Deletes a specific alarm mute rule
 #'
@@ -120,7 +202,8 @@ cloudwatch_delete_alarm_mute_rule <- function(AlarmMuteRuleName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$delete_alarm_mute_rule_input(AlarmMuteRuleName = AlarmMuteRuleName)
   output <- .cloudwatch$delete_alarm_mute_rule_output()
@@ -174,7 +257,8 @@ cloudwatch_delete_alarms <- function(AlarmNames) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$delete_alarms_input(AlarmNames = AlarmNames)
   output <- .cloudwatch$delete_alarms_output()
@@ -302,7 +386,8 @@ cloudwatch_delete_anomaly_detector <- function(AnomalyDetectorId = NULL, Namespa
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$delete_anomaly_detector_input(AnomalyDetectorId = AnomalyDetectorId, Namespace = Namespace, MetricName = MetricName, Dimensions = Dimensions, Stat = Stat, SingleMetricAnomalyDetector = SingleMetricAnomalyDetector, MetricMathAnomalyDetector = MetricMathAnomalyDetector)
   output <- .cloudwatch$delete_anomaly_detector_output()
@@ -348,7 +433,8 @@ cloudwatch_delete_dashboards <- function(DashboardNames) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$delete_dashboards_input(DashboardNames = DashboardNames)
   output <- .cloudwatch$delete_dashboards_output()
@@ -408,7 +494,8 @@ cloudwatch_delete_insight_rules <- function(RuleNames) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$delete_insight_rules_input(RuleNames = RuleNames)
   output <- .cloudwatch$delete_insight_rules_output()
@@ -452,7 +539,8 @@ cloudwatch_delete_metric_stream <- function(Name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$delete_metric_stream_input(Name = Name)
   output <- .cloudwatch$delete_metric_stream_output()
@@ -463,6 +551,56 @@ cloudwatch_delete_metric_stream <- function(Name) {
   return(response)
 }
 .cloudwatch$operations$delete_metric_stream <- cloudwatch_delete_metric_stream
+
+#' Deletes the resource metrics configuration for an Amazon Web Services
+#' resource
+#'
+#' @description
+#' Deletes the resource metrics configuration for an Amazon Web Services resource. After you delete the configuration, Amazon CloudWatch stops collecting detailed metrics for the resource. Metric data that Amazon CloudWatch already collected for the resource is not deleted.
+#' 
+#' This operation returns a `ResourceNotFoundException` if no resource metrics configuration exists for the specified resource ARN. Verify that the resource ARN is correct.
+#' 
+#' To delete a resource metrics configuration, you must have the `cloudwatch:DeleteResourceMetricsConfiguration` permission. For information about scoping this permission to specific resources, see [Condition keys for resource metrics configuration access](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/iam-cw-condition-keys-resource-arn.html) in the *Amazon CloudWatch User Guide*.
+#'
+#' @usage
+#' cloudwatch_delete_resource_metrics_configuration(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon Web Services resource to delete the resource metrics configuration for.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_resource_metrics_configuration(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_delete_resource_metrics_configuration
+#'
+#' @aliases cloudwatch_delete_resource_metrics_configuration
+cloudwatch_delete_resource_metrics_configuration <- function(ResourceArn) {
+  op <- new_operation(
+    name = "DeleteResourceMetricsConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .cloudwatch$delete_resource_metrics_configuration_input(ResourceArn = ResourceArn)
+  output <- .cloudwatch$delete_resource_metrics_configuration_output()
+  config <- get_config()
+  svc <- .cloudwatch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$delete_resource_metrics_configuration <- cloudwatch_delete_resource_metrics_configuration
 
 #' Returns the information of the current alarm contributors that are in
 #' ALARM state
@@ -516,7 +654,8 @@ cloudwatch_describe_alarm_contributors <- function(AlarmName, NextToken = NULL) 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$describe_alarm_contributors_input(AlarmName = AlarmName, NextToken = NextToken)
   output <- .cloudwatch$describe_alarm_contributors_output()
@@ -609,7 +748,8 @@ cloudwatch_describe_alarm_history <- function(AlarmName = NULL, AlarmContributor
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxRecords", result_key = "AlarmHistoryItems"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$describe_alarm_history_input(AlarmName = AlarmName, AlarmContributorId = AlarmContributorId, AlarmTypes = AlarmTypes, HistoryItemType = HistoryItemType, StartDate = StartDate, EndDate = EndDate, MaxRecords = MaxRecords, NextToken = NextToken, ScanBy = ScanBy)
   output <- .cloudwatch$describe_alarm_history_output()
@@ -886,7 +1026,8 @@ cloudwatch_describe_alarms <- function(AlarmNames = NULL, AlarmNamePrefix = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxRecords", result_key = list("MetricAlarms", "CompositeAlarms", "LogAlarms")),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$describe_alarms_input(AlarmNames = AlarmNames, AlarmNamePrefix = AlarmNamePrefix, AlarmTypes = AlarmTypes, ChildrenOfAlarmName = ChildrenOfAlarmName, ParentsOfAlarmName = ParentsOfAlarmName, StateValue = StateValue, ActionPrefix = ActionPrefix, MaxRecords = MaxRecords, NextToken = NextToken)
   output <- .cloudwatch$describe_alarms_output()
@@ -1046,7 +1187,8 @@ cloudwatch_describe_alarms_for_metric <- function(MetricName, Namespace, Statist
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$describe_alarms_for_metric_input(MetricName = MetricName, Namespace = Namespace, Statistic = Statistic, ExtendedStatistic = ExtendedStatistic, Dimensions = Dimensions, Period = Period, Unit = Unit)
   output <- .cloudwatch$describe_alarms_for_metric_output()
@@ -1189,7 +1331,8 @@ cloudwatch_describe_anomaly_detectors <- function(AnomalyDetectorIds = NULL, Nex
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AnomalyDetectors"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$describe_anomaly_detectors_input(AnomalyDetectorIds = AnomalyDetectorIds, NextToken = NextToken, MaxResults = MaxResults, Namespace = Namespace, MetricName = MetricName, Dimensions = Dimensions, AnomalyDetectorTypes = AnomalyDetectorTypes)
   output <- .cloudwatch$describe_anomaly_detectors_output()
@@ -1252,7 +1395,8 @@ cloudwatch_describe_insight_rules <- function(NextToken = NULL, MaxResults = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$describe_insight_rules_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudwatch$describe_insight_rules_output()
@@ -1298,7 +1442,8 @@ cloudwatch_disable_alarm_actions <- function(AlarmNames) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$disable_alarm_actions_input(AlarmNames = AlarmNames)
   output <- .cloudwatch$disable_alarm_actions_output()
@@ -1356,7 +1501,8 @@ cloudwatch_disable_insight_rules <- function(RuleNames) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$disable_insight_rules_input(RuleNames = RuleNames)
   output <- .cloudwatch$disable_insight_rules_output()
@@ -1411,7 +1557,8 @@ cloudwatch_disassociate_dataset_kms_key <- function(DatasetIdentifier) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$disassociate_dataset_kms_key_input(DatasetIdentifier = DatasetIdentifier)
   output <- .cloudwatch$disassociate_dataset_kms_key_output()
@@ -1457,7 +1604,8 @@ cloudwatch_enable_alarm_actions <- function(AlarmNames) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$enable_alarm_actions_input(AlarmNames = AlarmNames)
   output <- .cloudwatch$enable_alarm_actions_output()
@@ -1515,7 +1663,8 @@ cloudwatch_enable_insight_rules <- function(RuleNames) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$enable_insight_rules_input(RuleNames = RuleNames)
   output <- .cloudwatch$enable_insight_rules_output()
@@ -1603,7 +1752,8 @@ cloudwatch_get_alarm_mute_rule <- function(AlarmMuteRuleName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$get_alarm_mute_rule_input(AlarmMuteRuleName = AlarmMuteRuleName)
   output <- .cloudwatch$get_alarm_mute_rule_output()
@@ -1621,6 +1771,8 @@ cloudwatch_get_alarm_mute_rule <- function(AlarmMuteRuleName) {
 #' Displays the details of the dashboard that you specify.
 #' 
 #' To copy an existing dashboard, use [`get_dashboard`][cloudwatch_get_dashboard], and then use the data returned within `DashboardBody` as the template for the new dashboard when you call [`put_dashboard`][cloudwatch_put_dashboard] to create the copy.
+#' 
+#' You might have recently enabled an [opt-in Region (Region that is disabled by default)](https://docs.aws.amazon.com/glossary/latest/reference/glos-chap.html#optinregion) for your account. In that Region, [`get_dashboard`][cloudwatch_get_dashboard] can return an access denied error for up to 24 hours after you enable the Region. This delay occurs while dashboard data propagates. The error does not indicate a problem with your permissions. Because dashboards are global, you can call [`get_dashboard`][cloudwatch_get_dashboard] in any other enabled Region, or retry after propagation completes.
 #'
 #' @usage
 #' cloudwatch_get_dashboard(DashboardName)
@@ -1656,7 +1808,8 @@ cloudwatch_get_dashboard <- function(DashboardName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$get_dashboard_input(DashboardName = DashboardName)
   output <- .cloudwatch$get_dashboard_output()
@@ -1711,7 +1864,8 @@ cloudwatch_get_dataset <- function(DatasetIdentifier) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$get_dataset_input(DatasetIdentifier = DatasetIdentifier)
   output <- .cloudwatch$get_dataset_output()
@@ -1849,7 +2003,8 @@ cloudwatch_get_insight_rule_report <- function(RuleName, StartTime, EndTime, Per
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$get_insight_rule_report_input(RuleName = RuleName, StartTime = StartTime, EndTime = EndTime, Period = Period, MaxContributorCount = MaxContributorCount, Metrics = Metrics, OrderBy = OrderBy)
   output <- .cloudwatch$get_insight_rule_report_output()
@@ -1868,7 +2023,7 @@ cloudwatch_get_insight_rule_report <- function(RuleName, StartTime, EndTime, Per
 #' 
 #' A [`get_metric_data`][cloudwatch_get_metric_data] operation that does not include a query can retrieve as many as 500 different metrics in a single request, with a total of as many as 100,800 data points. You can also optionally perform metric math expressions on the values of the returned statistics, to create new time series that represent new insights into your data. For example, using Lambda metrics, you could divide the Errors metric by the Invocations metric to get an error rate time series. For more information about metric math expressions, see [Metric Math Syntax and Functions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax) in the *Amazon CloudWatch User Guide*.
 #' 
-#' If you include a Metrics Insights query, each [`get_metric_data`][cloudwatch_get_metric_data] operation can include only one query. But the same [`get_metric_data`][cloudwatch_get_metric_data] operation can also retrieve other metrics. Metrics Insights queries can query only the most recent three hours of metric data. For more information about Metrics Insights, see [Query your metrics with CloudWatch Metrics Insights](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/query_with_cloudwatch-metrics-insights.html).
+#' If you include a Metrics Insights query, each [`get_metric_data`][cloudwatch_get_metric_data] operation can include only one query. But the same [`get_metric_data`][cloudwatch_get_metric_data] operation can also retrieve other metrics. Metrics Insights queries can query the most recent two weeks of metric data. For alarm condition evaluations, Metrics Insights queries can query only the most recent three hours of metric data. For more information about Metrics Insights, see [Query your metrics with CloudWatch Metrics Insights](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/query_with_cloudwatch-metrics-insights.html).
 #' 
 #' Calls to the [`get_metric_data`][cloudwatch_get_metric_data] API have a different pricing structure than calls to [`get_metric_statistics`][cloudwatch_get_metric_statistics]. For more information about pricing, see [Amazon CloudWatch Pricing](https://aws.amazon.com/cloudwatch/pricing/).
 #' 
@@ -2012,7 +2167,8 @@ cloudwatch_get_metric_data <- function(MetricDataQueries, StartTime, EndTime, Ne
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxDatapoints", output_token = "NextToken", result_key = list("MetricDataResults", "Messages")),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$get_metric_data_input(MetricDataQueries = MetricDataQueries, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, ScanBy = ScanBy, MaxDatapoints = MaxDatapoints, LabelOptions = LabelOptions)
   output <- .cloudwatch$get_metric_data_output()
@@ -2157,7 +2313,8 @@ cloudwatch_get_metric_statistics <- function(Namespace, MetricName, Dimensions =
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$get_metric_statistics_input(Namespace = Namespace, MetricName = MetricName, Dimensions = Dimensions, StartTime = StartTime, EndTime = EndTime, Period = Period, Statistics = Statistics, ExtendedStatistics = ExtendedStatistics, Unit = Unit)
   output <- .cloudwatch$get_metric_statistics_output()
@@ -2247,7 +2404,8 @@ cloudwatch_get_metric_stream <- function(Name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$get_metric_stream_input(Name = Name)
   output <- .cloudwatch$get_metric_stream_output()
@@ -2335,7 +2493,8 @@ cloudwatch_get_metric_widget_image <- function(MetricWidget, OutputFormat = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$get_metric_widget_image_input(MetricWidget = MetricWidget, OutputFormat = OutputFormat)
   output <- .cloudwatch$get_metric_widget_image_output()
@@ -2363,7 +2522,29 @@ cloudwatch_get_metric_widget_image <- function(MetricWidget, OutputFormat = NULL
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   Status = "Running"|"Stopped"
+#'   Status = "Running"|"Stopped",
+#'   IncludeFilters = list(
+#'     list(
+#'       Namespace = "string",
+#'       MetricNames = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   ExcludeFilters = list(
+#'     list(
+#'       Namespace = "string",
+#'       MetricNames = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   UpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
 #' )
 #' ```
 #'
@@ -2384,7 +2565,8 @@ cloudwatch_get_o_tel_enrichment <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$get_o_tel_enrichment_input()
   output <- .cloudwatch$get_o_tel_enrichment_output()
@@ -2395,6 +2577,76 @@ cloudwatch_get_o_tel_enrichment <- function() {
   return(response)
 }
 .cloudwatch$operations$get_o_tel_enrichment <- cloudwatch_get_o_tel_enrichment
+
+#' Retrieves the current resource metrics configuration for an Amazon Web
+#' Services resource
+#'
+#' @description
+#' Retrieves the current resource metrics configuration for an Amazon Web Services resource. The response includes the resource ARN, any metric selections, and the times at which the configuration was created and last updated.
+#' 
+#' This operation returns a `ResourceNotFoundException` if no resource metrics configuration exists for the specified resource ARN. To create a configuration, use [`create_resource_metrics_configuration`][cloudwatch_create_resource_metrics_configuration].
+#' 
+#' To retrieve a resource metrics configuration, you must have the `cloudwatch:GetResourceMetricsConfiguration` permission. For information about scoping this permission to specific resources, see [Condition keys for resource metrics configuration access](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/iam-cw-condition-keys-resource-arn.html) in the *Amazon CloudWatch User Guide*.
+#'
+#' @usage
+#' cloudwatch_get_resource_metrics_configuration(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon Web Services resource to retrieve the resource metrics configuration for.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceMetricsConfiguration = list(
+#'     ResourceArn = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     MetricSelections = list(
+#'       list(
+#'         IncludeMetrics = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_resource_metrics_configuration(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_get_resource_metrics_configuration
+#'
+#' @aliases cloudwatch_get_resource_metrics_configuration
+cloudwatch_get_resource_metrics_configuration <- function(ResourceArn) {
+  op <- new_operation(
+    name = "GetResourceMetricsConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .cloudwatch$get_resource_metrics_configuration_input(ResourceArn = ResourceArn)
+  output <- .cloudwatch$get_resource_metrics_configuration_output()
+  config <- get_config()
+  svc <- .cloudwatch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$get_resource_metrics_configuration <- cloudwatch_get_resource_metrics_configuration
 
 #' Lists alarm mute rules in your Amazon Web Services account and region
 #'
@@ -2463,7 +2715,8 @@ cloudwatch_list_alarm_mute_rules <- function(AlarmName = NULL, Statuses = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "AlarmMuteRuleSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$list_alarm_mute_rules_input(AlarmName = AlarmName, Statuses = Statuses, MaxRecords = MaxRecords, NextToken = NextToken)
   output <- .cloudwatch$list_alarm_mute_rules_output()
@@ -2481,6 +2734,8 @@ cloudwatch_list_alarm_mute_rules <- function(AlarmName = NULL, Statuses = NULL, 
 #' Returns a list of the dashboards for your account. If you include `DashboardNamePrefix`, only those dashboards with names starting with the prefix are listed. Otherwise, all dashboards in your account are listed.
 #' 
 #' [`list_dashboards`][cloudwatch_list_dashboards] returns up to 1000 results on one page. If there are more than 1000 dashboards, you can call [`list_dashboards`][cloudwatch_list_dashboards] again and include the value you received for `NextToken` in the first call, to receive the next 1000 results.
+#' 
+#' You might have recently enabled an [opt-in Region (Region that is disabled by default)](https://docs.aws.amazon.com/glossary/latest/reference/glos-chap.html#optinregion) for your account. In that Region, [`list_dashboards`][cloudwatch_list_dashboards] can return an access denied error for up to 24 hours after you enable the Region. This delay occurs while dashboard data propagates. The error does not indicate a problem with your permissions. Because dashboards are global, you can call [`list_dashboards`][cloudwatch_list_dashboards] in any other enabled Region, or retry after propagation completes.
 #'
 #' @usage
 #' cloudwatch_list_dashboards(DashboardNamePrefix, NextToken)
@@ -2526,7 +2781,8 @@ cloudwatch_list_dashboards <- function(DashboardNamePrefix = NULL, NextToken = N
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "DashboardEntries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$list_dashboards_input(DashboardNamePrefix = DashboardNamePrefix, NextToken = NextToken)
   output <- .cloudwatch$list_dashboards_output()
@@ -2591,7 +2847,8 @@ cloudwatch_list_managed_insight_rules <- function(ResourceARN, NextToken = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$list_managed_insight_rules_input(ResourceARN = ResourceARN, NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudwatch$list_managed_insight_rules_output()
@@ -2657,7 +2914,8 @@ cloudwatch_list_metric_streams <- function(NextToken = NULL, MaxResults = NULL) 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$list_metric_streams_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudwatch$list_metric_streams_output()
@@ -2751,7 +3009,8 @@ cloudwatch_list_metrics <- function(Namespace = NULL, MetricName = NULL, Dimensi
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = list( "Metrics", "OwningAccounts")),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$list_metrics_input(Namespace = Namespace, MetricName = MetricName, Dimensions = Dimensions, NextToken = NextToken, RecentlyActive = RecentlyActive, IncludeLinkedAccounts = IncludeLinkedAccounts, OwningAccount = OwningAccount)
   output <- .cloudwatch$list_metrics_output()
@@ -2815,7 +3074,8 @@ cloudwatch_list_tags_for_resource <- function(ResourceARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$list_tags_for_resource_input(ResourceARN = ResourceARN)
   output <- .cloudwatch$list_tags_for_resource_output()
@@ -2905,7 +3165,8 @@ cloudwatch_put_alarm_mute_rule <- function(Name, Description = NULL, Rule, MuteT
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$put_alarm_mute_rule_input(Name = Name, Description = Description, Rule = Rule, MuteTargets = MuteTargets, Tags = Tags, StartDate = StartDate, ExpireDate = ExpireDate)
   output <- .cloudwatch$put_alarm_mute_rule_output()
@@ -3060,7 +3321,8 @@ cloudwatch_put_anomaly_detector <- function(Namespace = NULL, MetricName = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$put_anomaly_detector_input(Namespace = Namespace, MetricName = MetricName, Dimensions = Dimensions, Stat = Stat, Configuration = Configuration, MetricCharacteristics = MetricCharacteristics, SingleMetricAnomalyDetector = SingleMetricAnomalyDetector, MetricMathAnomalyDetector = MetricMathAnomalyDetector)
   output <- .cloudwatch$put_anomaly_detector_output()
@@ -3252,7 +3514,8 @@ cloudwatch_put_composite_alarm <- function(ActionsEnabled = NULL, AlarmActions =
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$put_composite_alarm_input(ActionsEnabled = ActionsEnabled, AlarmActions = AlarmActions, AlarmDescription = AlarmDescription, AlarmName = AlarmName, AlarmRule = AlarmRule, InsufficientDataActions = InsufficientDataActions, OKActions = OKActions, Tags = Tags, ActionsSuppressor = ActionsSuppressor, ActionsSuppressorWaitPeriod = ActionsSuppressorWaitPeriod, ActionsSuppressorExtensionPeriod = ActionsSuppressorExtensionPeriod)
   output <- .cloudwatch$put_composite_alarm_output()
@@ -3328,7 +3591,8 @@ cloudwatch_put_dashboard <- function(DashboardName, DashboardBody, Tags = NULL) 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$put_dashboard_input(DashboardName = DashboardName, DashboardBody = DashboardBody, Tags = Tags)
   output <- .cloudwatch$put_dashboard_output()
@@ -3398,7 +3662,8 @@ cloudwatch_put_insight_rule <- function(RuleName, RuleState = NULL, RuleDefiniti
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$put_insight_rule_input(RuleName = RuleName, RuleState = RuleState, RuleDefinition = RuleDefinition, Tags = Tags, ApplyOnTransformedLogs = ApplyOnTransformedLogs)
   output <- .cloudwatch$put_insight_rule_output()
@@ -3567,7 +3832,8 @@ cloudwatch_put_log_alarm <- function(AlarmName, AlarmDescription = NULL, Schedul
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$put_log_alarm_input(AlarmName = AlarmName, AlarmDescription = AlarmDescription, ScheduledQueryConfiguration = ScheduledQueryConfiguration, ActionLogLineCount = ActionLogLineCount, ActionLogLineRoleArn = ActionLogLineRoleArn, ActionsEnabled = ActionsEnabled, OKActions = OKActions, AlarmActions = AlarmActions, InsufficientDataActions = InsufficientDataActions, QueryResultsToEvaluate = QueryResultsToEvaluate, QueryResultsToAlarm = QueryResultsToAlarm, Threshold = Threshold, ComparisonOperator = ComparisonOperator, TreatMissingData = TreatMissingData, Tags = Tags, WarmUpConfiguration = WarmUpConfiguration)
   output <- .cloudwatch$put_log_alarm_output()
@@ -3635,7 +3901,8 @@ cloudwatch_put_managed_insight_rules <- function(ManagedRules) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$put_managed_insight_rules_input(ManagedRules = ManagedRules)
   output <- .cloudwatch$put_managed_insight_rules_output()
@@ -3867,21 +4134,21 @@ cloudwatch_put_managed_insight_rules <- function(ManagedRules) {
 #' 
 #' We recommend omitting `Unit` so that you don't inadvertently specify an incorrect unit that is not published for this metric. Doing so causes the alarm to be stuck in the `INSUFFICIENT DATA` state.
 #' @param EvaluationPeriods The number of periods over which data is compared to the specified threshold. If you are setting an alarm that requires that a number of consecutive data points be breaching to trigger the alarm, this value specifies that number. If you are setting an "M out of N" alarm, this value is the N.
-#' @param DatapointsToAlarm The number of data points that must be breaching to trigger the alarm. This is used only if you are setting an "M out of N" alarm. In that case, this value is the M. For more information, see [Evaluating an Alarm](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Alarms.html?refid=26d4c157-4446-43f8-8d4f-5ec17bc1717d#alarm-evaluation) in the *Amazon CloudWatch User Guide*.
+#' @param DatapointsToAlarm The number of data points that must be breaching to trigger the alarm. This is used only if you are setting an "M out of N" alarm. In that case, this value is the M. For more information, see [Evaluating an Alarm](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Alarms.html#alarm-evaluation) in the *Amazon CloudWatch User Guide*.
 #' @param Threshold The value against which the specified statistic is compared.
 #' 
 #' This parameter is required for alarms based on static thresholds, but should not be used for alarms based on anomaly detection models.
 #' @param ComparisonOperator The arithmetic operation to use when comparing the specified statistic and threshold. The specified statistic value is used as the first operand.
 #' 
 #' The values `LessThanLowerOrGreaterThanUpperThreshold`, `LessThanLowerThreshold`, and `GreaterThanUpperThreshold` are used only for alarms based on anomaly detection models.
-#' @param TreatMissingData Sets how this alarm is to handle missing data points. If `TreatMissingData` is omitted, the default behavior of `missing` is used. For more information, see [Configuring How CloudWatch Alarms Treats Missing Data](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Alarms.html?refid=26d4c157-4446-43f8-8d4f-5ec17bc1717d#alarms-and-missing-data).
+#' @param TreatMissingData Sets how this alarm is to handle missing data points. If `TreatMissingData` is omitted, the default behavior of `missing` is used. For more information, see [Configuring How CloudWatch Alarms Treats Missing Data](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Alarms.html#alarms-and-missing-data).
 #' 
 #' Valid Values: `breaching | notBreaching | ignore | missing`
 #' 
 #' Alarms that evaluate metrics in the `AWS/DynamoDB` namespace always `ignore` missing data even if you choose a different option for `TreatMissingData`. When an `AWS/DynamoDB` metric has missing data, alarms that evaluate that metric remain in their current state.
 #' 
 #' This parameter is not applicable to PromQL alarms.
-#' @param EvaluateLowSampleCountPercentile Used only for alarms based on percentiles. If you specify `ignore`, the alarm state does not change during periods with too few data points to be statistically significant. If you specify `evaluate` or omit this parameter, the alarm is always evaluated and possibly changes state no matter how many data points are available. For more information, see [Percentile-Based CloudWatch Alarms and Low Data Samples](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Alarms.html?refid=26d4c157-4446-43f8-8d4f-5ec17bc1717d#percentiles-with-low-samples).
+#' @param EvaluateLowSampleCountPercentile Used only for alarms based on percentiles. If you specify `ignore`, the alarm state does not change during periods with too few data points to be statistically significant. If you specify `evaluate` or omit this parameter, the alarm is always evaluated and possibly changes state no matter how many data points are available. For more information, see [Percentile-Based CloudWatch Alarms and Low Data Samples](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Alarms.html#percentiles-with-low-samples).
 #' 
 #' Valid Values: `evaluate | ignore`
 #' @param Metrics An array of `MetricDataQuery` structures that enable you to create an alarm based on the result of a metric math expression. For each [`put_metric_alarm`][cloudwatch_put_metric_alarm] operation, you must specify either `MetricName`, a `Metrics` array, or an `EvaluationCriteria`.
@@ -4023,7 +4290,8 @@ cloudwatch_put_metric_alarm <- function(AlarmName, AlarmDescription = NULL, Acti
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$put_metric_alarm_input(AlarmName = AlarmName, AlarmDescription = AlarmDescription, ActionsEnabled = ActionsEnabled, OKActions = OKActions, AlarmActions = AlarmActions, InsufficientDataActions = InsufficientDataActions, MetricName = MetricName, Namespace = Namespace, Statistic = Statistic, ExtendedStatistic = ExtendedStatistic, Dimensions = Dimensions, Period = Period, Unit = Unit, EvaluationPeriods = EvaluationPeriods, DatapointsToAlarm = DatapointsToAlarm, Threshold = Threshold, ComparisonOperator = ComparisonOperator, TreatMissingData = TreatMissingData, EvaluateLowSampleCountPercentile = EvaluateLowSampleCountPercentile, Metrics = Metrics, Tags = Tags, ThresholdMetricId = ThresholdMetricId, EvaluationWindow = EvaluationWindow, WarmUpConfiguration = WarmUpConfiguration, EvaluationCriteria = EvaluationCriteria, EvaluationInterval = EvaluationInterval)
   output <- .cloudwatch$put_metric_alarm_output()
@@ -4190,7 +4458,8 @@ cloudwatch_put_metric_data <- function(Namespace, MetricData = NULL, EntityMetri
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$put_metric_data_input(Namespace = Namespace, MetricData = MetricData, EntityMetricData = EntityMetricData, StrictEntityValidation = StrictEntityValidation)
   output <- .cloudwatch$put_metric_data_output()
@@ -4324,7 +4593,8 @@ cloudwatch_put_metric_stream <- function(Name, IncludeFilters = NULL, ExcludeFil
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$put_metric_stream_input(Name = Name, IncludeFilters = IncludeFilters, ExcludeFilters = ExcludeFilters, FirehoseArn = FirehoseArn, RoleArn = RoleArn, OutputFormat = OutputFormat, Tags = Tags, StatisticsConfigurations = StatisticsConfigurations, IncludeLinkedAccountsMetrics = IncludeLinkedAccountsMetrics)
   output <- .cloudwatch$put_metric_stream_output()
@@ -4383,7 +4653,8 @@ cloudwatch_set_alarm_state <- function(AlarmName, StateValue, StateReason, State
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$set_alarm_state_input(AlarmName = AlarmName, StateValue = StateValue, StateReason = StateReason, StateReasonData = StateReasonData)
   output <- .cloudwatch$set_alarm_state_output()
@@ -4431,7 +4702,8 @@ cloudwatch_start_metric_streams <- function(Names) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$start_metric_streams_input(Names = Names)
   output <- .cloudwatch$start_metric_streams_output()
@@ -4450,18 +4722,70 @@ cloudwatch_start_metric_streams <- function(Names) {
 #' Enables enrichment and PromQL access for CloudWatch vended metrics for [supported Amazon Web Services resources](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/UsingResourceTagsForTelemetry.html) in the account. Once enabled, metrics that contain a resource identifier dimension (for example, EC2 `CPUUtilization` with an `InstanceId` dimension) are enriched with resource ARN and resource tag labels and become queryable using PromQL.
 #' 
 #' Before calling this operation, you must enable resource tags on telemetry for your account. For more information, see [Enable resource tags on telemetry](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/EnableResourceTagsOnTelemetry.html).
+#' 
+#' Optionally, `IncludeFilters` and `ExcludeFilters` limit enrichment to a subset of the account's metrics. These filters are stored only when this operation starts enrichment. Calling [`start_o_tel_enrichment`][cloudwatch_start_o_tel_enrichment] for an account where enrichment is already running has no effect and does not modify the filters that are applied. To change them, use [`update_o_tel_enrichment`][cloudwatch_update_o_tel_enrichment].
 #'
 #' @usage
-#' cloudwatch_start_o_tel_enrichment()
+#' cloudwatch_start_o_tel_enrichment(IncludeFilters, ExcludeFilters)
 #'
-
+#' @param IncludeFilters The metric namespaces, and the metric names, to enrich. If this parameter is omitted, every namespace that Amazon CloudWatch supports for enrichment is in scope.
+#' 
+#' A maximum of 100 filters is allowed across `IncludeFilters` and `ExcludeFilters` combined.
+#' @param ExcludeFilters The metric namespaces, and the metric names, to leave unenriched. If this parameter is omitted, nothing is excluded.
+#' 
+#' Amazon CloudWatch applies `ExcludeFilters` after `IncludeFilters`, so a metric that both parameters match is not enriched.
+#' 
+#' A maximum of 100 filters is allowed across `IncludeFilters` and `ExcludeFilters` combined.
 #'
 #' @return
-#' An empty list.
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IncludeFilters = list(
+#'     list(
+#'       Namespace = "string",
+#'       MetricNames = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   ExcludeFilters = list(
+#'     list(
+#'       Namespace = "string",
+#'       MetricNames = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   UpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
 #'
 #' @section Request syntax:
 #' ```
-#' svc$start_o_tel_enrichment()
+#' svc$start_o_tel_enrichment(
+#'   IncludeFilters = list(
+#'     list(
+#'       Namespace = "string",
+#'       MetricNames = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   ExcludeFilters = list(
+#'     list(
+#'       Namespace = "string",
+#'       MetricNames = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
 #' ```
 #'
 #' @keywords internal
@@ -4469,16 +4793,17 @@ cloudwatch_start_metric_streams <- function(Names) {
 #' @rdname cloudwatch_start_o_tel_enrichment
 #'
 #' @aliases cloudwatch_start_o_tel_enrichment
-cloudwatch_start_o_tel_enrichment <- function() {
+cloudwatch_start_o_tel_enrichment <- function(IncludeFilters = NULL, ExcludeFilters = NULL) {
   op <- new_operation(
     name = "StartOTelEnrichment",
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
-  input <- .cloudwatch$start_o_tel_enrichment_input()
+  input <- .cloudwatch$start_o_tel_enrichment_input(IncludeFilters = IncludeFilters, ExcludeFilters = ExcludeFilters)
   output <- .cloudwatch$start_o_tel_enrichment_output()
   config <- get_config()
   svc <- .cloudwatch$service(config, op)
@@ -4524,7 +4849,8 @@ cloudwatch_stop_metric_streams <- function(Names) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$stop_metric_streams_input(Names = Names)
   output <- .cloudwatch$stop_metric_streams_output()
@@ -4567,7 +4893,8 @@ cloudwatch_stop_o_tel_enrichment <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$stop_o_tel_enrichment_input()
   output <- .cloudwatch$stop_o_tel_enrichment_output()
@@ -4637,7 +4964,8 @@ cloudwatch_tag_resource <- function(ResourceARN, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .cloudwatch$tag_resource_output()
@@ -4695,7 +5023,8 @@ cloudwatch_untag_resource <- function(ResourceARN, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatch$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .cloudwatch$untag_resource_output()
@@ -4706,3 +5035,182 @@ cloudwatch_untag_resource <- function(ResourceARN, TagKeys) {
   return(response)
 }
 .cloudwatch$operations$untag_resource <- cloudwatch_untag_resource
+
+#' Replaces the filters that determine which CloudWatch vended metrics are
+#' enriched with resource ARN and resource tag labels for the account
+#'
+#' @description
+#' Replaces the filters that determine which CloudWatch vended metrics are enriched with resource ARN and resource tag labels for the account. Enrichment must already be running for the account. If it is not, this operation returns a `ResourceNotFoundException`. To start enrichment, use [`start_o_tel_enrichment`][cloudwatch_start_o_tel_enrichment].
+#' 
+#' The filters in the request completely replace the stored filters; they are not merged with them. `IncludeFilters` and `ExcludeFilters` are replaced as a pair, so a request that specifies only `IncludeFilters` also clears the stored `ExcludeFilters`, and a request that specifies neither clears both.
+#'
+#' @usage
+#' cloudwatch_update_o_tel_enrichment(IncludeFilters, ExcludeFilters)
+#'
+#' @param IncludeFilters The metric namespaces, and the metric names, to enrich. If this parameter is omitted, every namespace that Amazon CloudWatch supports for enrichment is in scope.
+#' 
+#' A maximum of 100 filters is allowed across `IncludeFilters` and `ExcludeFilters` combined.
+#' @param ExcludeFilters The metric namespaces, and the metric names, to leave unenriched. If this parameter is omitted, nothing is excluded.
+#' 
+#' Amazon CloudWatch applies `ExcludeFilters` after `IncludeFilters`, so a metric that both parameters match is not enriched.
+#' 
+#' A maximum of 100 filters is allowed across `IncludeFilters` and `ExcludeFilters` combined.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   IncludeFilters = list(
+#'     list(
+#'       Namespace = "string",
+#'       MetricNames = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   ExcludeFilters = list(
+#'     list(
+#'       Namespace = "string",
+#'       MetricNames = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   UpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_o_tel_enrichment(
+#'   IncludeFilters = list(
+#'     list(
+#'       Namespace = "string",
+#'       MetricNames = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   ExcludeFilters = list(
+#'     list(
+#'       Namespace = "string",
+#'       MetricNames = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_update_o_tel_enrichment
+#'
+#' @aliases cloudwatch_update_o_tel_enrichment
+cloudwatch_update_o_tel_enrichment <- function(IncludeFilters = NULL, ExcludeFilters = NULL) {
+  op <- new_operation(
+    name = "UpdateOTelEnrichment",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .cloudwatch$update_o_tel_enrichment_input(IncludeFilters = IncludeFilters, ExcludeFilters = ExcludeFilters)
+  output <- .cloudwatch$update_o_tel_enrichment_output()
+  config <- get_config()
+  svc <- .cloudwatch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$update_o_tel_enrichment <- cloudwatch_update_o_tel_enrichment
+
+#' Updates the resource metrics configuration for an Amazon Web Services
+#' resource
+#'
+#' @description
+#' Updates the resource metrics configuration for an Amazon Web Services resource. The `MetricSelections` value that you provide replaces any existing metric selections for the resource; it is not merged with them.
+#' 
+#' If you omit `MetricSelections`, Amazon CloudWatch removes any existing metric selection filter and collects all available detailed metrics for the resource.
+#' 
+#' This operation returns a `ResourceNotFoundException` if no resource metrics configuration exists for the specified resource ARN. To create a configuration, use [`create_resource_metrics_configuration`][cloudwatch_create_resource_metrics_configuration].
+#' 
+#' To update a resource metrics configuration, you must have the `cloudwatch:UpdateResourceMetricsConfiguration` permission. For information about scoping this permission to specific resources, see [Condition keys for resource metrics configuration access](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/iam-cw-condition-keys-resource-arn.html) in the *Amazon CloudWatch User Guide*.
+#'
+#' @usage
+#' cloudwatch_update_resource_metrics_configuration(ResourceArn,
+#'   MetricSelections)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon Web Services resource to update the resource metrics configuration for.
+#' @param MetricSelections Specifies which metrics Amazon CloudWatch collects for the resource. The selections that you provide completely replace any existing metric selections.
+#' 
+#' If you omit this parameter, Amazon CloudWatch removes any existing metric selection filter and collects all available detailed metrics for the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceMetricsConfiguration = list(
+#'     ResourceArn = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     MetricSelections = list(
+#'       list(
+#'         IncludeMetrics = list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_resource_metrics_configuration(
+#'   ResourceArn = "string",
+#'   MetricSelections = list(
+#'     list(
+#'       IncludeMetrics = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatch_update_resource_metrics_configuration
+#'
+#' @aliases cloudwatch_update_resource_metrics_configuration
+cloudwatch_update_resource_metrics_configuration <- function(ResourceArn, MetricSelections = NULL) {
+  op <- new_operation(
+    name = "UpdateResourceMetricsConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .cloudwatch$update_resource_metrics_configuration_input(ResourceArn = ResourceArn, MetricSelections = MetricSelections)
+  output <- .cloudwatch$update_resource_metrics_configuration_output()
+  config <- get_config()
+  svc <- .cloudwatch$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatch$operations$update_resource_metrics_configuration <- cloudwatch_update_resource_metrics_configuration

@@ -53,7 +53,34 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Amazon Lex Model Building Service provides APIs for creating, managing, and deploying conversational bots and their components.
+This document provides detailed information about the Amazon Lex V2 API actions and their parameters.
+
+For information about the IAM access control permissions you need to use this API, see \href{https://docs.aws.amazon.com/lexv2/latest/dg/security_iam_service-with-iam.html}{Identity-based policies for Amazon Lex V2}.
+
+Amazon Lex V2 Model Building V2 operations let you build and manage bots.
+
+If you use a custom HTTP client to call Amazon Lex Model Building V2 operations, you must set the "Content-Type" HTTP header to "application/x-amz-json-1.1". Otherwise, you receive an HTTP 404 - UnknownOperationException in the response.
+
+Amazon Lex Model Building V2 operations return the responses with the "application/x-amz-json-1.1" content type.
+
+You can use \href{https://builder.aws.com/build/tools#sdk}{Amazon Web Services SDKs} to access Amazon Lex V2 APIs using your favorite programming language. The SDKs automatically perform useful tasks for you, such as:
+\itemize{
+\item Cryptographically sign your service requests
+\item Retry requests
+\item Handle error responses
+}
+
+The following resources provide additional information about the Amazon Lex V2 Model Building API.
+\itemize{
+\item \emph{Amazon Web Services General Reference}
+\itemize{
+\item \href{https://docs.aws.amazon.com/general/latest/gr/lex.html}{Amazon Lex V2 Endpoints for each region}.
+}
+\item \emph{Command Line Interface}
+\itemize{
+\item \href{https://docs.aws.amazon.com/cli/latest/reference/lexv2-models/}{Amazon Lex Model Building V2 CLI commands}.
+}
+}
 }
 \section{Service syntax}{
 

@@ -23,7 +23,8 @@ appstream_associate_app_block_builder_app_block <- function(AppBlockArn, AppBloc
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$associate_app_block_builder_app_block_input(AppBlockArn = AppBlockArn, AppBlockBuilderName = AppBlockBuilderName)
   output <- .appstream$associate_app_block_builder_app_block_output()
@@ -55,7 +56,8 @@ appstream_associate_application_fleet <- function(FleetName, ApplicationArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$associate_application_fleet_input(FleetName = FleetName, ApplicationArn = ApplicationArn)
   output <- .appstream$associate_application_fleet_output()
@@ -88,7 +90,8 @@ appstream_associate_application_to_entitlement <- function(StackName, Entitlemen
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$associate_application_to_entitlement_input(StackName = StackName, EntitlementName = EntitlementName, ApplicationIdentifier = ApplicationIdentifier)
   output <- .appstream$associate_application_to_entitlement_output()
@@ -120,7 +123,8 @@ appstream_associate_fleet <- function(FleetName, StackName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$associate_fleet_input(FleetName = FleetName, StackName = StackName)
   output <- .appstream$associate_fleet_output()
@@ -203,7 +207,8 @@ appstream_associate_software_to_image_builder <- function(ImageBuilderName, Soft
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$associate_software_to_image_builder_input(ImageBuilderName = ImageBuilderName, SoftwareNames = SoftwareNames)
   output <- .appstream$associate_software_to_image_builder_output()
@@ -234,7 +239,8 @@ appstream_batch_associate_user_stack <- function(UserStackAssociations) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$batch_associate_user_stack_input(UserStackAssociations = UserStackAssociations)
   output <- .appstream$batch_associate_user_stack_output()
@@ -265,7 +271,8 @@ appstream_batch_disassociate_user_stack <- function(UserStackAssociations) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$batch_disassociate_user_stack_input(UserStackAssociations = UserStackAssociations)
   output <- .appstream$batch_disassociate_user_stack_output()
@@ -300,7 +307,8 @@ appstream_copy_image <- function(SourceImageName, DestinationImageName, Destinat
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$copy_image_input(SourceImageName = SourceImageName, DestinationImageName = DestinationImageName, DestinationRegion = DestinationRegion, DestinationImageDescription = DestinationImageDescription)
   output <- .appstream$copy_image_output()
@@ -338,7 +346,8 @@ appstream_create_app_block <- function(Name, Description = NULL, DisplayName = N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$create_app_block_input(Name = Name, Description = Description, DisplayName = DisplayName, SourceS3Location = SourceS3Location, SetupScriptDetails = SetupScriptDetails, Tags = Tags, PostSetupScriptDetails = PostSetupScriptDetails, PackagingType = PackagingType)
   output <- .appstream$create_app_block_output()
@@ -403,7 +412,8 @@ appstream_create_app_block_builder <- function(Name, Description = NULL, Display
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$create_app_block_builder_input(Name = Name, Description = Description, DisplayName = DisplayName, Tags = Tags, Platform = Platform, InstanceType = InstanceType, VpcConfig = VpcConfig, EnableDefaultInternetAccess = EnableDefaultInternetAccess, IamRoleArn = IamRoleArn, AccessEndpoints = AccessEndpoints, DisableIMDSV1 = DisableIMDSV1)
   output <- .appstream$create_app_block_builder_output()
@@ -435,7 +445,8 @@ appstream_create_app_block_builder_streaming_url <- function(AppBlockBuilderName
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$create_app_block_builder_streaming_url_input(AppBlockBuilderName = AppBlockBuilderName, Validity = Validity)
   output <- .appstream$create_app_block_builder_streaming_url_output()
@@ -476,7 +487,8 @@ appstream_create_application <- function(Name, DisplayName = NULL, Description =
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$create_application_input(Name = Name, DisplayName = DisplayName, Description = Description, IconS3Location = IconS3Location, LaunchPath = LaunchPath, WorkingDirectory = WorkingDirectory, LaunchParameters = LaunchParameters, Platforms = Platforms, InstanceFamilies = InstanceFamilies, AppBlockArn = AppBlockArn, Tags = Tags)
   output <- .appstream$create_application_output()
@@ -510,7 +522,8 @@ appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitD
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$create_directory_config_input(DirectoryName = DirectoryName, OrganizationalUnitDistinguishedNames = OrganizationalUnitDistinguishedNames, ServiceAccountCredentials = ServiceAccountCredentials, CertificateBasedAuthProperties = CertificateBasedAuthProperties)
   output <- .appstream$create_directory_config_output()
@@ -545,7 +558,8 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$create_entitlement_input(Name = Name, StackName = StackName, Description = Description, AppVisibility = AppVisibility, Attributes = Attributes)
   output <- .appstream$create_entitlement_output()
@@ -580,7 +594,8 @@ appstream_create_export_image_task <- function(ImageName, AmiName, IamRoleArn, T
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$create_export_image_task_input(ImageName = ImageName, AmiName = AmiName, IamRoleArn = IamRoleArn, TagSpecifications = TagSpecifications, AmiDescription = AmiDescription)
   output <- .appstream$create_export_image_task_output()
@@ -772,7 +787,8 @@ appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, Inst
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$create_fleet_input(Name = Name, ImageName = ImageName, ImageArn = ImageArn, InstanceType = InstanceType, FleetType = FleetType, ComputeCapacity = ComputeCapacity, VpcConfig = VpcConfig, MaxUserDurationInSeconds = MaxUserDurationInSeconds, DisconnectTimeoutInSeconds = DisconnectTimeoutInSeconds, Description = Description, DisplayName = DisplayName, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, Tags = Tags, IdleDisconnectTimeoutInSeconds = IdleDisconnectTimeoutInSeconds, IamRoleArn = IamRoleArn, StreamView = StreamView, Platform = Platform, MaxConcurrentSessions = MaxConcurrentSessions, UsbDeviceFilterStrings = UsbDeviceFilterStrings, SessionScriptS3Location = SessionScriptS3Location, MaxSessionsPerInstance = MaxSessionsPerInstance, RootVolumeConfig = RootVolumeConfig, DisableIMDSV1 = DisableIMDSV1)
   output <- .appstream$create_fleet_output()
@@ -1023,7 +1039,8 @@ appstream_create_image_builder <- function(Name, ImageName = NULL, ImageArn = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$create_image_builder_input(Name = Name, ImageName = ImageName, ImageArn = ImageArn, InstanceType = InstanceType, Description = Description, DisplayName = DisplayName, VpcConfig = VpcConfig, IamRoleArn = IamRoleArn, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, AppstreamAgentVersion = AppstreamAgentVersion, Tags = Tags, AccessEndpoints = AccessEndpoints, RootVolumeConfig = RootVolumeConfig, SoftwaresToInstall = SoftwaresToInstall, SoftwaresToUninstall = SoftwaresToUninstall, DisableIMDSV1 = DisableIMDSV1)
   output <- .appstream$create_image_builder_output()
@@ -1055,7 +1072,8 @@ appstream_create_image_builder_streaming_url <- function(Name, Validity = NULL) 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$create_image_builder_streaming_url_input(Name = Name, Validity = Validity)
   output <- .appstream$create_image_builder_streaming_url_output()
@@ -1096,7 +1114,8 @@ appstream_create_imported_image <- function(Name, SourceAmiId = NULL, WorkspaceI
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$create_imported_image_input(Name = Name, SourceAmiId = SourceAmiId, WorkspaceImageId = WorkspaceImageId, IamRoleArn = IamRoleArn, Description = Description, DisplayName = DisplayName, Tags = Tags, RuntimeValidationConfig = RuntimeValidationConfig, AgentSoftwareVersion = AgentSoftwareVersion, AppCatalogConfig = AppCatalogConfig, DryRun = DryRun)
   output <- .appstream$create_imported_image_output()
@@ -1148,7 +1167,8 @@ appstream_create_stack <- function(Name, Description = NULL, DisplayName = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$create_stack_input(Name = Name, Description = Description, DisplayName = DisplayName, StorageConnectors = StorageConnectors, RedirectURL = RedirectURL, FeedbackURL = FeedbackURL, UserSettings = UserSettings, ApplicationSettings = ApplicationSettings, Tags = Tags, AccessEndpoints = AccessEndpoints, EmbedHostDomains = EmbedHostDomains, StreamingExperienceSettings = StreamingExperienceSettings, ContentRedirection = ContentRedirection, AgentAccessConfig = AgentAccessConfig)
   output <- .appstream$create_stack_output()
@@ -1185,7 +1205,8 @@ appstream_create_streaming_url <- function(StackName, FleetName, UserId, Applica
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$create_streaming_url_input(StackName = StackName, FleetName = FleetName, UserId = UserId, ApplicationId = ApplicationId, Validity = Validity, SessionContext = SessionContext)
   output <- .appstream$create_streaming_url_output()
@@ -1222,7 +1243,8 @@ appstream_create_theme_for_stack <- function(StackName, FooterLinks = NULL, Titl
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$create_theme_for_stack_input(StackName = StackName, FooterLinks = FooterLinks, TitleText = TitleText, ThemeStyling = ThemeStyling, OrganizationLogoS3Location = OrganizationLogoS3Location, FaviconS3Location = FaviconS3Location)
   output <- .appstream$create_theme_for_stack_output()
@@ -1267,7 +1289,8 @@ appstream_create_updated_image <- function(existingImageName, newImageName, newI
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$create_updated_image_input(existingImageName = existingImageName, newImageName = newImageName, newImageDescription = newImageDescription, newImageDisplayName = newImageDisplayName, newImageTags = newImageTags, dryRun = dryRun)
   output <- .appstream$create_updated_image_output()
@@ -1298,7 +1321,8 @@ appstream_create_usage_report_subscription <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$create_usage_report_subscription_input()
   output <- .appstream$create_usage_report_subscription_output()
@@ -1337,7 +1361,8 @@ appstream_create_user <- function(UserName, MessageAction = NULL, FirstName = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$create_user_input(UserName = UserName, MessageAction = MessageAction, FirstName = FirstName, LastName = LastName, AuthenticationType = AuthenticationType)
   output <- .appstream$create_user_output()
@@ -1368,7 +1393,8 @@ appstream_delete_app_block <- function(Name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$delete_app_block_input(Name = Name)
   output <- .appstream$delete_app_block_output()
@@ -1399,7 +1425,8 @@ appstream_delete_app_block_builder <- function(Name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$delete_app_block_builder_input(Name = Name)
   output <- .appstream$delete_app_block_builder_output()
@@ -1430,7 +1457,8 @@ appstream_delete_application <- function(Name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$delete_application_input(Name = Name)
   output <- .appstream$delete_application_output()
@@ -1462,7 +1490,8 @@ appstream_delete_directory_config <- function(DirectoryName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$delete_directory_config_input(DirectoryName = DirectoryName)
   output <- .appstream$delete_directory_config_output()
@@ -1494,7 +1523,8 @@ appstream_delete_entitlement <- function(Name, StackName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$delete_entitlement_input(Name = Name, StackName = StackName)
   output <- .appstream$delete_entitlement_output()
@@ -1525,7 +1555,8 @@ appstream_delete_fleet <- function(Name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$delete_fleet_input(Name = Name)
   output <- .appstream$delete_fleet_output()
@@ -1556,7 +1587,8 @@ appstream_delete_image <- function(Name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$delete_image_input(Name = Name)
   output <- .appstream$delete_image_output()
@@ -1587,7 +1619,8 @@ appstream_delete_image_builder <- function(Name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$delete_image_builder_input(Name = Name)
   output <- .appstream$delete_image_builder_output()
@@ -1619,7 +1652,8 @@ appstream_delete_image_permissions <- function(Name, SharedAccountId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$delete_image_permissions_input(Name = Name, SharedAccountId = SharedAccountId)
   output <- .appstream$delete_image_permissions_output()
@@ -1650,7 +1684,8 @@ appstream_delete_stack <- function(Name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$delete_stack_input(Name = Name)
   output <- .appstream$delete_stack_output()
@@ -1682,7 +1717,8 @@ appstream_delete_theme_for_stack <- function(StackName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$delete_theme_for_stack_input(StackName = StackName)
   output <- .appstream$delete_theme_for_stack_output()
@@ -1713,7 +1749,8 @@ appstream_delete_usage_report_subscription <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$delete_usage_report_subscription_input()
   output <- .appstream$delete_usage_report_subscription_output()
@@ -1747,7 +1784,8 @@ appstream_delete_user <- function(UserName, AuthenticationType) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$delete_user_input(UserName = UserName, AuthenticationType = AuthenticationType)
   output <- .appstream$delete_user_output()
@@ -1782,7 +1820,8 @@ appstream_describe_app_block_builder_app_block_associations <- function(AppBlock
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$describe_app_block_builder_app_block_associations_input(AppBlockArn = AppBlockArn, AppBlockBuilderName = AppBlockBuilderName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .appstream$describe_app_block_builder_app_block_associations_output()
@@ -1815,7 +1854,8 @@ appstream_describe_app_block_builders <- function(Names = NULL, NextToken = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$describe_app_block_builders_input(Names = Names, NextToken = NextToken, MaxResults = MaxResults)
   output <- .appstream$describe_app_block_builders_output()
@@ -1848,7 +1888,8 @@ appstream_describe_app_blocks <- function(Arns = NULL, NextToken = NULL, MaxResu
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$describe_app_blocks_input(Arns = Arns, NextToken = NextToken, MaxResults = MaxResults)
   output <- .appstream$describe_app_blocks_output()
@@ -1883,7 +1924,8 @@ appstream_describe_app_license_usage <- function(BillingPeriod, MaxResults = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$describe_app_license_usage_input(BillingPeriod = BillingPeriod, MaxResults = MaxResults, NextToken = NextToken)
   output <- .appstream$describe_app_license_usage_output()
@@ -1918,7 +1960,8 @@ appstream_describe_application_fleet_associations <- function(FleetName = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$describe_application_fleet_associations_input(FleetName = FleetName, ApplicationArn = ApplicationArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .appstream$describe_application_fleet_associations_output()
@@ -1951,7 +1994,8 @@ appstream_describe_applications <- function(Arns = NULL, NextToken = NULL, MaxRe
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$describe_applications_input(Arns = Arns, NextToken = NextToken, MaxResults = MaxResults)
   output <- .appstream$describe_applications_output()
@@ -1986,7 +2030,8 @@ appstream_describe_directory_configs <- function(DirectoryNames = NULL, MaxResul
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "DirectoryConfigs"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$describe_directory_configs_input(DirectoryNames = DirectoryNames, MaxResults = MaxResults, NextToken = NextToken)
   output <- .appstream$describe_directory_configs_output()
@@ -2020,7 +2065,8 @@ appstream_describe_entitlements <- function(Name = NULL, StackName, NextToken = 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$describe_entitlements_input(Name = Name, StackName = StackName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .appstream$describe_entitlements_output()
@@ -2053,7 +2099,8 @@ appstream_describe_fleets <- function(Names = NULL, NextToken = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Fleets"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$describe_fleets_input(Names = Names, NextToken = NextToken)
   output <- .appstream$describe_fleets_output()
@@ -2087,7 +2134,8 @@ appstream_describe_image_builders <- function(Names = NULL, MaxResults = NULL, N
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ImageBuilders"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$describe_image_builders_input(Names = Names, MaxResults = MaxResults, NextToken = NextToken)
   output <- .appstream$describe_image_builders_output()
@@ -2122,7 +2170,8 @@ appstream_describe_image_permissions <- function(Name, MaxResults = NULL, Shared
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$describe_image_permissions_input(Name = Name, MaxResults = MaxResults, SharedAwsAccountIds = SharedAwsAccountIds, NextToken = NextToken)
   output <- .appstream$describe_image_permissions_output()
@@ -2158,7 +2207,8 @@ appstream_describe_images <- function(Names = NULL, Arns = NULL, Type = NULL, Ne
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Images"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$describe_images_input(Names = Names, Arns = Arns, Type = Type, NextToken = NextToken, MaxResults = MaxResults)
   output <- .appstream$describe_images_output()
@@ -2196,7 +2246,8 @@ appstream_describe_sessions <- function(StackName, FleetName, UserId = NULL, Nex
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "Limit", result_key = "Sessions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$describe_sessions_input(StackName = StackName, FleetName = FleetName, UserId = UserId, NextToken = NextToken, Limit = Limit, AuthenticationType = AuthenticationType, InstanceId = InstanceId)
   output <- .appstream$describe_sessions_output()
@@ -2230,7 +2281,8 @@ appstream_describe_software_associations <- function(AssociatedResource, MaxResu
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$describe_software_associations_input(AssociatedResource = AssociatedResource, MaxResults = MaxResults, NextToken = NextToken)
   output <- .appstream$describe_software_associations_output()
@@ -2263,7 +2315,8 @@ appstream_describe_stacks <- function(Names = NULL, NextToken = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Stacks"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$describe_stacks_input(Names = Names, NextToken = NextToken)
   output <- .appstream$describe_stacks_output()
@@ -2294,7 +2347,8 @@ appstream_describe_theme_for_stack <- function(StackName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$describe_theme_for_stack_input(StackName = StackName)
   output <- .appstream$describe_theme_for_stack_output()
@@ -2326,7 +2380,8 @@ appstream_describe_usage_report_subscriptions <- function(MaxResults = NULL, Nex
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$describe_usage_report_subscriptions_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .appstream$describe_usage_report_subscriptions_output()
@@ -2363,7 +2418,8 @@ appstream_describe_user_stack_associations <- function(StackName = NULL, UserNam
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "UserStackAssociations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$describe_user_stack_associations_input(StackName = StackName, UserName = UserName, AuthenticationType = AuthenticationType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .appstream$describe_user_stack_associations_output()
@@ -2397,7 +2453,8 @@ appstream_describe_users <- function(AuthenticationType, MaxResults = NULL, Next
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Users"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$describe_users_input(AuthenticationType = AuthenticationType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .appstream$describe_users_output()
@@ -2431,7 +2488,8 @@ appstream_disable_user <- function(UserName, AuthenticationType) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$disable_user_input(UserName = UserName, AuthenticationType = AuthenticationType)
   output <- .appstream$disable_user_output()
@@ -2463,7 +2521,8 @@ appstream_disassociate_app_block_builder_app_block <- function(AppBlockArn, AppB
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$disassociate_app_block_builder_app_block_input(AppBlockArn = AppBlockArn, AppBlockBuilderName = AppBlockBuilderName)
   output <- .appstream$disassociate_app_block_builder_app_block_output()
@@ -2495,7 +2554,8 @@ appstream_disassociate_application_fleet <- function(FleetName, ApplicationArn) 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$disassociate_application_fleet_input(FleetName = FleetName, ApplicationArn = ApplicationArn)
   output <- .appstream$disassociate_application_fleet_output()
@@ -2528,7 +2588,8 @@ appstream_disassociate_application_from_entitlement <- function(StackName, Entit
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$disassociate_application_from_entitlement_input(StackName = StackName, EntitlementName = EntitlementName, ApplicationIdentifier = ApplicationIdentifier)
   output <- .appstream$disassociate_application_from_entitlement_output()
@@ -2560,7 +2621,8 @@ appstream_disassociate_fleet <- function(FleetName, StackName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$disassociate_fleet_input(FleetName = FleetName, StackName = StackName)
   output <- .appstream$disassociate_fleet_output()
@@ -2643,7 +2705,8 @@ appstream_disassociate_software_from_image_builder <- function(ImageBuilderName,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$disassociate_software_from_image_builder_input(ImageBuilderName = ImageBuilderName, SoftwareNames = SoftwareNames)
   output <- .appstream$disassociate_software_from_image_builder_output()
@@ -2674,7 +2737,8 @@ appstream_drain_session_instance <- function(SessionId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$drain_session_instance_input(SessionId = SessionId)
   output <- .appstream$drain_session_instance_output()
@@ -2708,7 +2772,8 @@ appstream_enable_user <- function(UserName, AuthenticationType) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$enable_user_input(UserName = UserName, AuthenticationType = AuthenticationType)
   output <- .appstream$enable_user_output()
@@ -2739,7 +2804,8 @@ appstream_expire_session <- function(SessionId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$expire_session_input(SessionId = SessionId)
   output <- .appstream$expire_session_output()
@@ -2771,7 +2837,8 @@ appstream_get_export_image_task <- function(TaskId = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$get_export_image_task_input(TaskId = TaskId)
   output <- .appstream$get_export_image_task_output()
@@ -2804,7 +2871,8 @@ appstream_list_associated_fleets <- function(StackName, NextToken = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Names"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$list_associated_fleets_input(StackName = StackName, NextToken = NextToken)
   output <- .appstream$list_associated_fleets_output()
@@ -2837,7 +2905,8 @@ appstream_list_associated_stacks <- function(FleetName, NextToken = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Names"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$list_associated_stacks_input(FleetName = FleetName, NextToken = NextToken)
   output <- .appstream$list_associated_stacks_output()
@@ -2871,7 +2940,8 @@ appstream_list_entitled_applications <- function(StackName, EntitlementName, Nex
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$list_entitled_applications_input(StackName = StackName, EntitlementName = EntitlementName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .appstream$list_entitled_applications_output()
@@ -2904,7 +2974,8 @@ appstream_list_export_image_tasks <- function(Filters = NULL, MaxResults = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$list_export_image_tasks_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .appstream$list_export_image_tasks_output()
@@ -2936,7 +3007,8 @@ appstream_list_tags_for_resource <- function(ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .appstream$list_tags_for_resource_output()
@@ -2967,7 +3039,8 @@ appstream_start_app_block_builder <- function(Name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$start_app_block_builder_input(Name = Name)
   output <- .appstream$start_app_block_builder_output()
@@ -2998,7 +3071,8 @@ appstream_start_fleet <- function(Name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$start_fleet_input(Name = Name)
   output <- .appstream$start_fleet_output()
@@ -3030,7 +3104,8 @@ appstream_start_image_builder <- function(Name, AppstreamAgentVersion = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$start_image_builder_input(Name = Name, AppstreamAgentVersion = AppstreamAgentVersion)
   output <- .appstream$start_image_builder_output()
@@ -3063,7 +3138,8 @@ appstream_start_software_deployment_to_image_builder <- function(ImageBuilderNam
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$start_software_deployment_to_image_builder_input(ImageBuilderName = ImageBuilderName, RetryFailedDeployments = RetryFailedDeployments)
   output <- .appstream$start_software_deployment_to_image_builder_output()
@@ -3094,7 +3170,8 @@ appstream_stop_app_block_builder <- function(Name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$stop_app_block_builder_input(Name = Name)
   output <- .appstream$stop_app_block_builder_output()
@@ -3125,7 +3202,8 @@ appstream_stop_fleet <- function(Name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$stop_fleet_input(Name = Name)
   output <- .appstream$stop_fleet_output()
@@ -3156,7 +3234,8 @@ appstream_stop_image_builder <- function(Name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$stop_image_builder_input(Name = Name)
   output <- .appstream$stop_image_builder_output()
@@ -3195,7 +3274,8 @@ appstream_tag_resource <- function(ResourceArn, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .appstream$tag_resource_output()
@@ -3228,7 +3308,8 @@ appstream_untag_resource <- function(ResourceArn, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .appstream$untag_resource_output()
@@ -3285,7 +3366,8 @@ appstream_update_app_block_builder <- function(Name, Description = NULL, Display
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$update_app_block_builder_input(Name = Name, Description = Description, DisplayName = DisplayName, Platform = Platform, InstanceType = InstanceType, VpcConfig = VpcConfig, EnableDefaultInternetAccess = EnableDefaultInternetAccess, IamRoleArn = IamRoleArn, AccessEndpoints = AccessEndpoints, AttributesToDelete = AttributesToDelete, DisableIMDSV1 = DisableIMDSV1)
   output <- .appstream$update_app_block_builder_output()
@@ -3324,7 +3406,8 @@ appstream_update_application <- function(Name, DisplayName = NULL, Description =
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$update_application_input(Name = Name, DisplayName = DisplayName, Description = Description, IconS3Location = IconS3Location, LaunchPath = LaunchPath, WorkingDirectory = WorkingDirectory, LaunchParameters = LaunchParameters, AppBlockArn = AppBlockArn, AttributesToDelete = AttributesToDelete)
   output <- .appstream$update_application_output()
@@ -3358,7 +3441,8 @@ appstream_update_directory_config <- function(DirectoryName, OrganizationalUnitD
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$update_directory_config_input(DirectoryName = DirectoryName, OrganizationalUnitDistinguishedNames = OrganizationalUnitDistinguishedNames, ServiceAccountCredentials = ServiceAccountCredentials, CertificateBasedAuthProperties = CertificateBasedAuthProperties)
   output <- .appstream$update_directory_config_output()
@@ -3393,7 +3477,8 @@ appstream_update_entitlement <- function(Name, StackName, Description = NULL, Ap
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$update_entitlement_input(Name = Name, StackName = StackName, Description = Description, AppVisibility = AppVisibility, Attributes = Attributes)
   output <- .appstream$update_entitlement_output()
@@ -3569,7 +3654,8 @@ appstream_update_fleet <- function(ImageName = NULL, ImageArn = NULL, Name = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$update_fleet_input(ImageName = ImageName, ImageArn = ImageArn, Name = Name, InstanceType = InstanceType, ComputeCapacity = ComputeCapacity, VpcConfig = VpcConfig, MaxUserDurationInSeconds = MaxUserDurationInSeconds, DisconnectTimeoutInSeconds = DisconnectTimeoutInSeconds, DeleteVpcConfig = DeleteVpcConfig, Description = Description, DisplayName = DisplayName, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, IdleDisconnectTimeoutInSeconds = IdleDisconnectTimeoutInSeconds, AttributesToDelete = AttributesToDelete, IamRoleArn = IamRoleArn, StreamView = StreamView, Platform = Platform, MaxConcurrentSessions = MaxConcurrentSessions, UsbDeviceFilterStrings = UsbDeviceFilterStrings, SessionScriptS3Location = SessionScriptS3Location, MaxSessionsPerInstance = MaxSessionsPerInstance, RootVolumeConfig = RootVolumeConfig, DisableIMDSV1 = DisableIMDSV1)
   output <- .appstream$update_fleet_output()
@@ -3602,7 +3688,8 @@ appstream_update_image_permissions <- function(Name, SharedAccountId, ImagePermi
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$update_image_permissions_input(Name = Name, SharedAccountId = SharedAccountId, ImagePermissions = ImagePermissions)
   output <- .appstream$update_image_permissions_output()
@@ -3647,7 +3734,8 @@ appstream_update_stack <- function(DisplayName = NULL, Description = NULL, Name,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$update_stack_input(DisplayName = DisplayName, Description = Description, Name = Name, StorageConnectors = StorageConnectors, DeleteStorageConnectors = DeleteStorageConnectors, RedirectURL = RedirectURL, FeedbackURL = FeedbackURL, AttributesToDelete = AttributesToDelete, UserSettings = UserSettings, ApplicationSettings = ApplicationSettings, AccessEndpoints = AccessEndpoints, EmbedHostDomains = EmbedHostDomains, StreamingExperienceSettings = StreamingExperienceSettings, ContentRedirection = ContentRedirection, AgentAccessConfig = AgentAccessConfig)
   output <- .appstream$update_stack_output()
@@ -3686,7 +3774,8 @@ appstream_update_theme_for_stack <- function(StackName, FooterLinks = NULL, Titl
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appstream$update_theme_for_stack_input(StackName = StackName, FooterLinks = FooterLinks, TitleText = TitleText, ThemeStyling = ThemeStyling, OrganizationLogoS3Location = OrganizationLogoS3Location, FaviconS3Location = FaviconS3Location, State = State, AttributesToDelete = AttributesToDelete)
   output <- .appstream$update_theme_for_stack_output()

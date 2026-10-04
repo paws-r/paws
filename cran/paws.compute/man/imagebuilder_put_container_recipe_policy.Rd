@@ -2,7 +2,7 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_put_container_recipe_policy}
 \alias{imagebuilder_put_container_recipe_policy}
-\title{Applies a policy to a container image}
+\title{Applies a policy to a container recipe}
 \usage{
 imagebuilder_put_container_recipe_policy(containerRecipeArn, policy)
 }
@@ -12,7 +12,7 @@ imagebuilder_put_container_recipe_policy(containerRecipeArn, policy)
 \item{policy}{[required] The policy to apply to the container recipe.}
 }
 \description{
-Applies a policy to a container image. To share resources, call the RAM API \href{https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html}{CreateResourceShare}. If you call this API, you must also call the RAM API \href{https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html}{PromoteResourceShareCreatedFromPolicy} so that the resource is visible to all principals with whom the resource is shared.
+Applies a policy to a container recipe. The preferred way to share resources is with the RAM API \href{https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html}{CreateResourceShare}. If you use the PutContainerRecipePolicy operation instead, you must also call the RAM API \href{https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html}{PromoteResourceShareCreatedFromPolicy}. Otherwise, the resource isn't visible to the principals that it's shared with.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_put_container_recipe_policy/} for full documentation.
 }

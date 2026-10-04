@@ -1,4 +1,4 @@
-svc <- paws.machine.learning::bedrockagentruntime()
+svc <- paws::bedrockagentruntime()
 
 test_that("list_sessions", {
   skip_on_cran()

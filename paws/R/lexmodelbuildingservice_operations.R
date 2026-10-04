@@ -92,7 +92,8 @@ lexmodelbuildingservice_create_bot_version <- function(name, checksum = NULL) {
     http_path = "/bots/{name}/versions",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$create_bot_version_input(name = name, checksum = checksum)
   output <- .lexmodelbuildingservice$create_bot_version_output()
@@ -278,7 +279,8 @@ lexmodelbuildingservice_create_intent_version <- function(name, checksum = NULL)
     http_path = "/intents/{name}/versions",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$create_intent_version_input(name = name, checksum = checksum)
   output <- .lexmodelbuildingservice$create_intent_version_output()
@@ -362,7 +364,8 @@ lexmodelbuildingservice_create_slot_type_version <- function(name, checksum = NU
     http_path = "/slottypes/{name}/versions",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$create_slot_type_version_input(name = name, checksum = checksum)
   output <- .lexmodelbuildingservice$create_slot_type_version_output()
@@ -412,7 +415,8 @@ lexmodelbuildingservice_delete_bot <- function(name) {
     http_path = "/bots/{name}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$delete_bot_input(name = name)
   output <- .lexmodelbuildingservice$delete_bot_output()
@@ -460,7 +464,8 @@ lexmodelbuildingservice_delete_bot_alias <- function(name, botName) {
     http_path = "/bots/{botName}/aliases/{name}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$delete_bot_alias_input(name = name, botName = botName)
   output <- .lexmodelbuildingservice$delete_bot_alias_output()
@@ -512,7 +517,8 @@ lexmodelbuildingservice_delete_bot_channel_association <- function(name, botName
     http_path = "/bots/{botName}/aliases/{aliasName}/channels/{name}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$delete_bot_channel_association_input(name = name, botName = botName, botAlias = botAlias)
   output <- .lexmodelbuildingservice$delete_bot_channel_association_output()
@@ -560,7 +566,8 @@ lexmodelbuildingservice_delete_bot_version <- function(name, version) {
     http_path = "/bots/{name}/versions/{version}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$delete_bot_version_input(name = name, version = version)
   output <- .lexmodelbuildingservice$delete_bot_version_output()
@@ -610,7 +617,8 @@ lexmodelbuildingservice_delete_intent <- function(name) {
     http_path = "/intents/{name}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$delete_intent_input(name = name)
   output <- .lexmodelbuildingservice$delete_intent_output()
@@ -658,7 +666,8 @@ lexmodelbuildingservice_delete_intent_version <- function(name, version) {
     http_path = "/intents/{name}/versions/{version}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$delete_intent_version_input(name = name, version = version)
   output <- .lexmodelbuildingservice$delete_intent_version_output()
@@ -708,7 +717,8 @@ lexmodelbuildingservice_delete_slot_type <- function(name) {
     http_path = "/slottypes/{name}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$delete_slot_type_input(name = name)
   output <- .lexmodelbuildingservice$delete_slot_type_output()
@@ -756,7 +766,8 @@ lexmodelbuildingservice_delete_slot_type_version <- function(name, version) {
     http_path = "/slottypes/{name}/version/{version}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$delete_slot_type_version_input(name = name, version = version)
   output <- .lexmodelbuildingservice$delete_slot_type_version_output()
@@ -808,7 +819,8 @@ lexmodelbuildingservice_delete_utterances <- function(botName, userId) {
     http_path = "/bots/{botName}/utterances/{userId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$delete_utterances_input(botName = botName, userId = userId)
   output <- .lexmodelbuildingservice$delete_utterances_output()
@@ -915,7 +927,8 @@ lexmodelbuildingservice_get_bot <- function(name, versionOrAlias) {
     http_path = "/bots/{name}/versions/{versionoralias}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$get_bot_input(name = name, versionOrAlias = versionOrAlias)
   output <- .lexmodelbuildingservice$get_bot_output()
@@ -990,7 +1003,8 @@ lexmodelbuildingservice_get_bot_alias <- function(name, botName) {
     http_path = "/bots/{botName}/aliases/{name}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$get_bot_alias_input(name = name, botName = botName)
   output <- .lexmodelbuildingservice$get_bot_alias_output()
@@ -1075,7 +1089,8 @@ lexmodelbuildingservice_get_bot_aliases <- function(botName, nextToken = NULL, m
     http_path = "/bots/{botName}/aliases/",
     host_prefix = "",
     paginator = list(result_key = "BotAliases", output_token = "nextToken", input_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$get_bot_aliases_input(botName = botName, nextToken = nextToken, maxResults = maxResults, nameContains = nameContains)
   output <- .lexmodelbuildingservice$get_bot_aliases_output()
@@ -1144,7 +1159,8 @@ lexmodelbuildingservice_get_bot_channel_association <- function(name, botName, b
     http_path = "/bots/{botName}/aliases/{aliasName}/channels/{name}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$get_bot_channel_association_input(name = name, botName = botName, botAlias = botAlias)
   output <- .lexmodelbuildingservice$get_bot_channel_association_output()
@@ -1221,7 +1237,8 @@ lexmodelbuildingservice_get_bot_channel_associations <- function(botName, botAli
     http_path = "/bots/{botName}/aliases/{aliasName}/channels/",
     host_prefix = "",
     paginator = list(result_key = "botChannelAssociations", output_token = "nextToken", input_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$get_bot_channel_associations_input(botName = botName, botAlias = botAlias, nextToken = nextToken, maxResults = maxResults, nameContains = nameContains)
   output <- .lexmodelbuildingservice$get_bot_channel_associations_output()
@@ -1294,7 +1311,8 @@ lexmodelbuildingservice_get_bot_versions <- function(name, nextToken = NULL, max
     http_path = "/bots/{name}/versions/",
     host_prefix = "",
     paginator = list(result_key = "bots", output_token = "nextToken", input_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$get_bot_versions_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .lexmodelbuildingservice$get_bot_versions_output()
@@ -1376,7 +1394,8 @@ lexmodelbuildingservice_get_bots <- function(nextToken = NULL, maxResults = NULL
     http_path = "/bots/",
     host_prefix = "",
     paginator = list(result_key = "bots", output_token = "nextToken", input_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$get_bots_input(nextToken = nextToken, maxResults = maxResults, nameContains = nameContains)
   output <- .lexmodelbuildingservice$get_bots_output()
@@ -1435,7 +1454,8 @@ lexmodelbuildingservice_get_builtin_intent <- function(signature) {
     http_path = "/builtins/intents/{signature}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$get_builtin_intent_input(signature = signature)
   output <- .lexmodelbuildingservice$get_builtin_intent_output()
@@ -1501,7 +1521,8 @@ lexmodelbuildingservice_get_builtin_intents <- function(locale = NULL, signature
     http_path = "/builtins/intents/",
     host_prefix = "",
     paginator = list(result_key = "intents", output_token = "nextToken", input_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$get_builtin_intents_input(locale = locale, signatureContains = signatureContains, nextToken = nextToken, maxResults = maxResults)
   output <- .lexmodelbuildingservice$get_builtin_intents_output()
@@ -1569,7 +1590,8 @@ lexmodelbuildingservice_get_builtin_slot_types <- function(locale = NULL, signat
     http_path = "/builtins/slottypes/",
     host_prefix = "",
     paginator = list(result_key = "slotTypes", output_token = "nextToken", input_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$get_builtin_slot_types_input(locale = locale, signatureContains = signatureContains, nextToken = nextToken, maxResults = maxResults)
   output <- .lexmodelbuildingservice$get_builtin_slot_types_output()
@@ -1631,7 +1653,8 @@ lexmodelbuildingservice_get_export <- function(name, version, resourceType, expo
     http_path = "/exports/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$get_export_input(name = name, version = version, resourceType = resourceType, exportType = exportType)
   output <- .lexmodelbuildingservice$get_export_output()
@@ -1691,7 +1714,8 @@ lexmodelbuildingservice_get_import <- function(importId) {
     http_path = "/imports/{importId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$get_import_input(importId = importId)
   output <- .lexmodelbuildingservice$get_import_output()
@@ -1881,7 +1905,8 @@ lexmodelbuildingservice_get_intent <- function(name, version) {
     http_path = "/intents/{name}/versions/{version}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$get_intent_input(name = name, version = version)
   output <- .lexmodelbuildingservice$get_intent_output()
@@ -1953,7 +1978,8 @@ lexmodelbuildingservice_get_intent_versions <- function(name, nextToken = NULL, 
     http_path = "/intents/{name}/versions/",
     host_prefix = "",
     paginator = list(result_key = "intents", output_token = "nextToken", input_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$get_intent_versions_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .lexmodelbuildingservice$get_intent_versions_output()
@@ -2035,7 +2061,8 @@ lexmodelbuildingservice_get_intents <- function(nextToken = NULL, maxResults = N
     http_path = "/intents/",
     host_prefix = "",
     paginator = list(result_key = "intents", output_token = "nextToken", input_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$get_intents_input(nextToken = nextToken, maxResults = maxResults, nameContains = nameContains)
   output <- .lexmodelbuildingservice$get_intents_output()
@@ -2107,7 +2134,8 @@ lexmodelbuildingservice_get_migration <- function(migrationId) {
     http_path = "/migrations/{migrationId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$get_migration_input(migrationId = migrationId)
   output <- .lexmodelbuildingservice$get_migration_output()
@@ -2182,7 +2210,8 @@ lexmodelbuildingservice_get_migrations <- function(sortByAttribute = NULL, sortB
     http_path = "/migrations",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$get_migrations_input(sortByAttribute = sortByAttribute, sortByOrder = sortByOrder, v1BotNameContains = v1BotNameContains, migrationStatusEquals = migrationStatusEquals, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelbuildingservice$get_migrations_output()
@@ -2270,7 +2299,8 @@ lexmodelbuildingservice_get_slot_type <- function(name, version) {
     http_path = "/slottypes/{name}/versions/{version}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$get_slot_type_input(name = name, version = version)
   output <- .lexmodelbuildingservice$get_slot_type_output()
@@ -2343,7 +2373,8 @@ lexmodelbuildingservice_get_slot_type_versions <- function(name, nextToken = NUL
     http_path = "/slottypes/{name}/versions/",
     host_prefix = "",
     paginator = list(result_key = "slotTypes", output_token = "nextToken", input_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$get_slot_type_versions_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .lexmodelbuildingservice$get_slot_type_versions_output()
@@ -2426,7 +2457,8 @@ lexmodelbuildingservice_get_slot_types <- function(nextToken = NULL, maxResults 
     http_path = "/slottypes/",
     host_prefix = "",
     paginator = list(result_key = "slotTypes", output_token = "nextToken", input_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$get_slot_types_input(nextToken = nextToken, maxResults = maxResults, nameContains = nameContains)
   output <- .lexmodelbuildingservice$get_slot_types_output()
@@ -2511,7 +2543,8 @@ lexmodelbuildingservice_get_utterances_view <- function(botName, botVersions, st
     http_path = "/bots/{botname}/utterances?view=aggregation",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$get_utterances_view_input(botName = botName, botVersions = botVersions, statusType = statusType)
   output <- .lexmodelbuildingservice$get_utterances_view_output()
@@ -2565,7 +2598,8 @@ lexmodelbuildingservice_list_tags_for_resource <- function(resourceArn) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .lexmodelbuildingservice$list_tags_for_resource_output()
@@ -2851,7 +2885,8 @@ lexmodelbuildingservice_put_bot <- function(name, description = NULL, intents = 
     http_path = "/bots/{name}/versions/$LATEST",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$put_bot_input(name = name, description = description, intents = intents, enableModelImprovements = enableModelImprovements, nluIntentConfidenceThreshold = nluIntentConfidenceThreshold, clarificationPrompt = clarificationPrompt, abortStatement = abortStatement, idleSessionTTLInSeconds = idleSessionTTLInSeconds, voiceId = voiceId, checksum = checksum, processBehavior = processBehavior, locale = locale, childDirected = childDirected, detectSentiment = detectSentiment, createVersion = createVersion, tags = tags)
   output <- .lexmodelbuildingservice$put_bot_output()
@@ -2963,7 +2998,8 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
     http_path = "/bots/{botName}/aliases/{name}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$put_bot_alias_input(name = name, description = description, botVersion = botVersion, botName = botName, checksum = checksum, conversationLogs = conversationLogs, tags = tags)
   output <- .lexmodelbuildingservice$put_bot_alias_output()
@@ -3478,7 +3514,8 @@ lexmodelbuildingservice_put_intent <- function(name, description = NULL, slots =
     http_path = "/intents/{name}/versions/$LATEST",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$put_intent_input(name = name, description = description, slots = slots, sampleUtterances = sampleUtterances, confirmationPrompt = confirmationPrompt, rejectionStatement = rejectionStatement, followUpPrompt = followUpPrompt, conclusionStatement = conclusionStatement, dialogCodeHook = dialogCodeHook, fulfillmentActivity = fulfillmentActivity, parentIntentSignature = parentIntentSignature, checksum = checksum, createVersion = createVersion, kendraConfiguration = kendraConfiguration, inputContexts = inputContexts, outputContexts = outputContexts)
   output <- .lexmodelbuildingservice$put_intent_output()
@@ -3627,7 +3664,8 @@ lexmodelbuildingservice_put_slot_type <- function(name, description = NULL, enum
     http_path = "/slottypes/{name}/versions/$LATEST",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$put_slot_type_input(name = name, description = description, enumerationValues = enumerationValues, checksum = checksum, valueSelectionStrategy = valueSelectionStrategy, createVersion = createVersion, parentSlotTypeSignature = parentSlotTypeSignature, slotTypeConfigurations = slotTypeConfigurations)
   output <- .lexmodelbuildingservice$put_slot_type_output()
@@ -3709,7 +3747,8 @@ lexmodelbuildingservice_start_import <- function(payload, resourceType, mergeStr
     http_path = "/imports/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$start_import_input(payload = payload, resourceType = resourceType, mergeStrategy = mergeStrategy, tags = tags)
   output <- .lexmodelbuildingservice$start_import_output()
@@ -3786,7 +3825,8 @@ lexmodelbuildingservice_start_migration <- function(v1BotName, v1BotVersion, v2B
     http_path = "/migrations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$start_migration_input(v1BotName = v1BotName, v1BotVersion = v1BotVersion, v2BotName = v2BotName, v2BotRole = v2BotRole, migrationStrategy = migrationStrategy)
   output <- .lexmodelbuildingservice$start_migration_output()
@@ -3837,7 +3877,8 @@ lexmodelbuildingservice_tag_resource <- function(resourceArn, tags) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .lexmodelbuildingservice$tag_resource_output()
@@ -3885,7 +3926,8 @@ lexmodelbuildingservice_untag_resource <- function(resourceArn, tagKeys) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexmodelbuildingservice$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .lexmodelbuildingservice$untag_resource_output()

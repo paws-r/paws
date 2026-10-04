@@ -59,7 +59,8 @@ s3outposts_create_endpoint <- function(OutpostId, SubnetId, SecurityGroupId, Acc
     http_path = "/S3Outposts/CreateEndpoint",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3outposts$create_endpoint_input(OutpostId = OutpostId, SubnetId = SubnetId, SecurityGroupId = SecurityGroupId, AccessType = AccessType, CustomerOwnedIpv4Pool = CustomerOwnedIpv4Pool)
   output <- .s3outposts$create_endpoint_output()
@@ -113,7 +114,8 @@ s3outposts_delete_endpoint <- function(EndpointId, OutpostId) {
     http_path = "/S3Outposts/DeleteEndpoint",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3outposts$delete_endpoint_input(EndpointId = EndpointId, OutpostId = OutpostId)
   output <- .s3outposts$delete_endpoint_output()
@@ -195,7 +197,8 @@ s3outposts_list_endpoints <- function(NextToken = NULL, MaxResults = NULL) {
     http_path = "/S3Outposts/ListEndpoints",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Endpoints"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3outposts$list_endpoints_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .s3outposts$list_endpoints_output()
@@ -256,7 +259,8 @@ s3outposts_list_outposts_with_s3 <- function(NextToken = NULL, MaxResults = NULL
     http_path = "/S3Outposts/ListOutpostsWithS3",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Outposts"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3outposts$list_outposts_with_s3_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .s3outposts$list_outposts_with_s3_output()
@@ -341,7 +345,8 @@ s3outposts_list_shared_endpoints <- function(NextToken = NULL, MaxResults = NULL
     http_path = "/S3Outposts/ListSharedEndpoints",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Endpoints"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3outposts$list_shared_endpoints_input(NextToken = NextToken, MaxResults = MaxResults, OutpostId = OutpostId)
   output <- .s3outposts$list_shared_endpoints_output()

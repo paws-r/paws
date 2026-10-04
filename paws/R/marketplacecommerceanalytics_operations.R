@@ -160,7 +160,8 @@ marketplacecommerceanalytics_generate_data_set <- function(dataSetType, dataSetP
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .marketplacecommerceanalytics$generate_data_set_input(dataSetType = dataSetType, dataSetPublicationDate = dataSetPublicationDate, roleNameArn = roleNameArn, destinationS3BucketName = destinationS3BucketName, destinationS3Prefix = destinationS3Prefix, snsTopicArn = snsTopicArn, customerDefinedValues = customerDefinedValues)
   output <- .marketplacecommerceanalytics$generate_data_set_output()
@@ -230,7 +231,8 @@ marketplacecommerceanalytics_start_support_data_export <- function(dataSetType, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .marketplacecommerceanalytics$start_support_data_export_input(dataSetType = dataSetType, fromDate = fromDate, roleNameArn = roleNameArn, destinationS3BucketName = destinationS3BucketName, destinationS3Prefix = destinationS3Prefix, snsTopicArn = snsTopicArn, customerDefinedValues = customerDefinedValues)
   output <- .marketplacecommerceanalytics$start_support_data_export_output()

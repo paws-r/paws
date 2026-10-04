@@ -70,7 +70,8 @@ lambda_add_layer_version_permission <- function(LayerName, VersionNumber, Statem
     http_path = "/2018-10-31/layers/{LayerName}/versions/{VersionNumber}/policy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$add_layer_version_permission_input(LayerName = LayerName, VersionNumber = VersionNumber, StatementId = StatementId, Action = Action, Principal = Principal, OrganizationId = OrganizationId, RevisionId = RevisionId)
   output <- .lambda$add_layer_version_permission_output()
@@ -183,7 +184,8 @@ lambda_add_permission <- function(FunctionName, StatementId, Action, Principal, 
     http_path = "/2015-03-31/functions/{FunctionName}/policy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$add_permission_input(FunctionName = FunctionName, StatementId = StatementId, Action = Action, Principal = Principal, SourceArn = SourceArn, FunctionUrlAuthType = FunctionUrlAuthType, InvokedViaFunctionUrl = InvokedViaFunctionUrl, SourceAccount = SourceAccount, EventSourceToken = EventSourceToken, Qualifier = Qualifier, RevisionId = RevisionId, PrincipalOrgID = PrincipalOrgID)
   output <- .lambda$add_permission_output()
@@ -353,7 +355,8 @@ lambda_checkpoint_durable_execution <- function(DurableExecutionArn, CheckpointT
     http_path = "/2025-12-01/durable-executions/{DurableExecutionArn}/checkpoint",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$checkpoint_durable_execution_input(DurableExecutionArn = DurableExecutionArn, CheckpointToken = CheckpointToken, Updates = Updates, ClientToken = ClientToken)
   output <- .lambda$checkpoint_durable_execution_output()
@@ -448,7 +451,8 @@ lambda_create_alias <- function(FunctionName, Name, FunctionVersion, Description
     http_path = "/2015-03-31/functions/{FunctionName}/aliases",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$create_alias_input(FunctionName = FunctionName, Name = Name, FunctionVersion = FunctionVersion, Description = Description, RoutingConfig = RoutingConfig)
   output <- .lambda$create_alias_output()
@@ -605,7 +609,8 @@ lambda_create_capacity_provider <- function(CapacityProviderName, VpcConfig, Per
     http_path = "/2025-11-30/capacity-providers",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$create_capacity_provider_input(CapacityProviderName = CapacityProviderName, VpcConfig = VpcConfig, PermissionsConfig = PermissionsConfig, InstanceRequirements = InstanceRequirements, CapacityProviderScalingConfig = CapacityProviderScalingConfig, KmsKeyArn = KmsKeyArn, Tags = Tags, PropagateTags = PropagateTags, TelemetryConfig = TelemetryConfig)
   output <- .lambda$create_capacity_provider_output()
@@ -682,7 +687,8 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
     http_path = "/2020-04-22/code-signing-configs",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$create_code_signing_config_input(Description = Description, AllowedPublishers = AllowedPublishers, CodeSigningPolicies = CodeSigningPolicies, Tags = Tags)
   output <- .lambda$create_code_signing_config_output()
@@ -1098,7 +1104,8 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
     http_path = "/2015-03-31/event-source-mappings",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$create_event_source_mapping_input(EventSourceArn = EventSourceArn, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, FilterCriteria = FilterCriteria, KMSKeyArn = KMSKeyArn, MetricsConfig = MetricsConfig, LoggingConfig = LoggingConfig, ScalingConfig = ScalingConfig, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, ParallelizationFactor = ParallelizationFactor, StartingPosition = StartingPosition, StartingPositionTimestamp = StartingPositionTimestamp, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, Tags = Tags, TumblingWindowInSeconds = TumblingWindowInSeconds, Topics = Topics, Queues = Queues, SourceAccessConfigurations = SourceAccessConfigurations, SelfManagedEventSource = SelfManagedEventSource, FunctionResponseTypes = FunctionResponseTypes, AmazonManagedKafkaEventSourceConfig = AmazonManagedKafkaEventSourceConfig, SelfManagedKafkaEventSourceConfig = SelfManagedKafkaEventSourceConfig, DocumentDBEventSourceConfig = DocumentDBEventSourceConfig, ProvisionedPollerConfig = ProvisionedPollerConfig)
   output <- .lambda$create_event_source_mapping_output()
@@ -1465,7 +1472,8 @@ lambda_create_function <- function(FunctionName, Runtime = NULL, Role, Handler =
     http_path = "/2015-03-31/functions",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$create_function_input(FunctionName = FunctionName, Runtime = Runtime, Role = Role, Handler = Handler, Code = Code, Description = Description, Timeout = Timeout, MemorySize = MemorySize, Publish = Publish, PublishTo = PublishTo, VpcConfig = VpcConfig, PackageType = PackageType, DeadLetterConfig = DeadLetterConfig, Environment = Environment, KMSKeyArn = KMSKeyArn, TracingConfig = TracingConfig, Tags = Tags, Layers = Layers, FileSystemConfigs = FileSystemConfigs, CodeSigningConfigArn = CodeSigningConfigArn, ImageConfig = ImageConfig, Architectures = Architectures, EphemeralStorage = EphemeralStorage, SnapStart = SnapStart, LoggingConfig = LoggingConfig, TenancyConfig = TenancyConfig, CapacityProviderConfig = CapacityProviderConfig, DurableConfig = DurableConfig)
   output <- .lambda$create_function_output()
@@ -1573,7 +1581,8 @@ lambda_create_function_url_config <- function(FunctionName, Qualifier = NULL, Au
     http_path = "/2021-10-31/functions/{FunctionName}/url",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$create_function_url_config_input(FunctionName = FunctionName, Qualifier = Qualifier, AuthType = AuthType, Cors = Cors, InvokeMode = InvokeMode)
   output <- .lambda$create_function_url_config_output()
@@ -1639,7 +1648,8 @@ lambda_delete_alias <- function(FunctionName, Name) {
     http_path = "/2015-03-31/functions/{FunctionName}/aliases/{Name}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$delete_alias_input(FunctionName = FunctionName, Name = Name)
   output <- .lambda$delete_alias_output()
@@ -1737,7 +1747,8 @@ lambda_delete_capacity_provider <- function(CapacityProviderName) {
     http_path = "/2025-11-30/capacity-providers/{CapacityProviderName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$delete_capacity_provider_input(CapacityProviderName = CapacityProviderName)
   output <- .lambda$delete_capacity_provider_output()
@@ -1781,7 +1792,8 @@ lambda_delete_code_signing_config <- function(CodeSigningConfigArn) {
     http_path = "/2020-04-22/code-signing-configs/{CodeSigningConfigArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$delete_code_signing_config_input(CodeSigningConfigArn = CodeSigningConfigArn)
   output <- .lambda$delete_code_signing_config_output()
@@ -1960,7 +1972,8 @@ lambda_delete_event_source_mapping <- function(UUID) {
     http_path = "/2015-03-31/event-source-mappings/{UUID}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$delete_event_source_mapping_input(UUID = UUID)
   output <- .lambda$delete_event_source_mapping_output()
@@ -2035,7 +2048,8 @@ lambda_delete_function <- function(FunctionName, Qualifier = NULL) {
     http_path = "/2015-03-31/functions/{FunctionName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$delete_function_input(FunctionName = FunctionName, Qualifier = Qualifier)
   output <- .lambda$delete_function_output()
@@ -2089,7 +2103,8 @@ lambda_delete_function_code_signing_config <- function(FunctionName) {
     http_path = "/2020-06-30/functions/{FunctionName}/code-signing-config",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$delete_function_code_signing_config_input(FunctionName = FunctionName)
   output <- .lambda$delete_function_code_signing_config_output()
@@ -2152,7 +2167,8 @@ lambda_delete_function_concurrency <- function(FunctionName) {
     http_path = "/2017-10-31/functions/{FunctionName}/concurrency",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$delete_function_concurrency_input(FunctionName = FunctionName)
   output <- .lambda$delete_function_concurrency_output()
@@ -2221,7 +2237,8 @@ lambda_delete_function_event_invoke_config <- function(FunctionName, Qualifier =
     http_path = "/2019-09-25/functions/{FunctionName}/event-invoke-config",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$delete_function_event_invoke_config_input(FunctionName = FunctionName, Qualifier = Qualifier)
   output <- .lambda$delete_function_event_invoke_config_output()
@@ -2277,7 +2294,8 @@ lambda_delete_function_url_config <- function(FunctionName, Qualifier = NULL) {
     http_path = "/2021-10-31/functions/{FunctionName}/url",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$delete_function_url_config_input(FunctionName = FunctionName, Qualifier = Qualifier)
   output <- .lambda$delete_function_url_config_output()
@@ -2332,7 +2350,8 @@ lambda_delete_layer_version <- function(LayerName, VersionNumber) {
     http_path = "/2018-10-31/layers/{LayerName}/versions/{VersionNumber}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$delete_layer_version_input(LayerName = LayerName, VersionNumber = VersionNumber)
   output <- .lambda$delete_layer_version_output()
@@ -2398,7 +2417,8 @@ lambda_delete_provisioned_concurrency_config <- function(FunctionName, Qualifier
     http_path = "/2019-09-30/functions/{FunctionName}/provisioned-concurrency",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$delete_provisioned_concurrency_config_input(FunctionName = FunctionName, Qualifier = Qualifier)
   output <- .lambda$delete_provisioned_concurrency_config_output()
@@ -2444,7 +2464,8 @@ lambda_delete_resource_policy <- function(ResourceArn, RevisionId = NULL) {
     http_path = "/2026-07-09/resource-policy/{ResourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$delete_resource_policy_input(ResourceArn = ResourceArn, RevisionId = RevisionId)
   output <- .lambda$delete_resource_policy_output()
@@ -2509,7 +2530,8 @@ lambda_get_account_settings <- function() {
     http_path = "/2016-08-19/account-settings",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$get_account_settings_input()
   output <- .lambda$get_account_settings_output()
@@ -2589,7 +2611,8 @@ lambda_get_alias <- function(FunctionName, Name) {
     http_path = "/2015-03-31/functions/{FunctionName}/aliases/{Name}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$get_alias_input(FunctionName = FunctionName, Name = Name)
   output <- .lambda$get_alias_output()
@@ -2688,7 +2711,8 @@ lambda_get_capacity_provider <- function(CapacityProviderName) {
     http_path = "/2025-11-30/capacity-providers/{CapacityProviderName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$get_capacity_provider_input(CapacityProviderName = CapacityProviderName)
   output <- .lambda$get_capacity_provider_output()
@@ -2750,7 +2774,8 @@ lambda_get_code_signing_config <- function(CodeSigningConfigArn) {
     http_path = "/2020-04-22/code-signing-configs/{CodeSigningConfigArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$get_code_signing_config_input(CodeSigningConfigArn = CodeSigningConfigArn)
   output <- .lambda$get_code_signing_config_output()
@@ -2833,7 +2858,8 @@ lambda_get_durable_execution <- function(DurableExecutionArn, IncludeExecutionDa
     http_path = "/2025-12-01/durable-executions/{DurableExecutionArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$get_durable_execution_input(DurableExecutionArn = DurableExecutionArn, IncludeExecutionData = IncludeExecutionData)
   output <- .lambda$get_durable_execution_output()
@@ -3141,7 +3167,8 @@ lambda_get_durable_execution_history <- function(DurableExecutionArn, IncludeExe
     http_path = "/2025-12-01/durable-executions/{DurableExecutionArn}/history",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "Events"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$get_durable_execution_history_input(DurableExecutionArn = DurableExecutionArn, IncludeExecutionData = IncludeExecutionData, MaxItems = MaxItems, Marker = Marker, ReverseOrder = ReverseOrder)
   output <- .lambda$get_durable_execution_history_output()
@@ -3274,7 +3301,8 @@ lambda_get_durable_execution_state <- function(DurableExecutionArn, CheckpointTo
     http_path = "/2025-12-01/durable-executions/{DurableExecutionArn}/state",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "Operations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$get_durable_execution_state_input(DurableExecutionArn = DurableExecutionArn, CheckpointToken = CheckpointToken, Marker = Marker, MaxItems = MaxItems)
   output <- .lambda$get_durable_execution_state_output()
@@ -3451,7 +3479,8 @@ lambda_get_event_source_mapping <- function(UUID) {
     http_path = "/2015-03-31/event-source-mappings/{UUID}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$get_event_source_mapping_input(UUID = UUID)
   output <- .lambda$get_event_source_mapping_output()
@@ -3670,7 +3699,8 @@ lambda_get_function <- function(FunctionName, Qualifier = NULL) {
     http_path = "/2015-03-31/functions/{FunctionName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$get_function_input(FunctionName = FunctionName, Qualifier = Qualifier)
   output <- .lambda$get_function_output()
@@ -3730,7 +3760,8 @@ lambda_get_function_code_signing_config <- function(FunctionName) {
     http_path = "/2020-06-30/functions/{FunctionName}/code-signing-config",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$get_function_code_signing_config_input(FunctionName = FunctionName)
   output <- .lambda$get_function_code_signing_config_output()
@@ -3799,7 +3830,8 @@ lambda_get_function_concurrency <- function(FunctionName) {
     http_path = "/2019-09-30/functions/{FunctionName}/concurrency",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$get_function_concurrency_input(FunctionName = FunctionName)
   output <- .lambda$get_function_concurrency_output()
@@ -3991,7 +4023,8 @@ lambda_get_function_configuration <- function(FunctionName, Qualifier = NULL) {
     http_path = "/2015-03-31/functions/{FunctionName}/configuration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$get_function_configuration_input(FunctionName = FunctionName, Qualifier = Qualifier)
   output <- .lambda$get_function_configuration_output()
@@ -4078,7 +4111,8 @@ lambda_get_function_event_invoke_config <- function(FunctionName, Qualifier = NU
     http_path = "/2019-09-25/functions/{FunctionName}/event-invoke-config",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$get_function_event_invoke_config_input(FunctionName = FunctionName, Qualifier = Qualifier)
   output <- .lambda$get_function_event_invoke_config_output()
@@ -4127,7 +4161,8 @@ lambda_get_function_recursion_config <- function(FunctionName) {
     http_path = "/2024-08-31/functions/{FunctionName}/recursion-config",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$get_function_recursion_config_input(FunctionName = FunctionName)
   output <- .lambda$get_function_recursion_config_output()
@@ -4187,7 +4222,8 @@ lambda_get_function_scaling_config <- function(FunctionName, Qualifier) {
     http_path = "/2025-11-30/functions/{FunctionName}/function-scaling-config",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$get_function_scaling_config_input(FunctionName = FunctionName, Qualifier = Qualifier)
   output <- .lambda$get_function_scaling_config_output()
@@ -4269,7 +4305,8 @@ lambda_get_function_url_config <- function(FunctionName, Qualifier = NULL) {
     http_path = "/2021-10-31/functions/{FunctionName}/url",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$get_function_url_config_input(FunctionName = FunctionName, Qualifier = Qualifier)
   output <- .lambda$get_function_url_config_output()
@@ -4354,7 +4391,8 @@ lambda_get_layer_version <- function(LayerName, VersionNumber) {
     http_path = "/2018-10-31/layers/{LayerName}/versions/{VersionNumber}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$get_layer_version_input(LayerName = LayerName, VersionNumber = VersionNumber)
   output <- .lambda$get_layer_version_output()
@@ -4436,7 +4474,8 @@ lambda_get_layer_version_by_arn <- function(Arn) {
     http_path = "/2018-10-31/layers?find=LayerVersion",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$get_layer_version_by_arn_input(Arn = Arn)
   output <- .lambda$get_layer_version_by_arn_output()
@@ -4488,7 +4527,8 @@ lambda_get_layer_version_policy <- function(LayerName, VersionNumber) {
     http_path = "/2018-10-31/layers/{LayerName}/versions/{VersionNumber}/policy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$get_layer_version_policy_input(LayerName = LayerName, VersionNumber = VersionNumber)
   output <- .lambda$get_layer_version_policy_output()
@@ -4560,7 +4600,8 @@ lambda_get_policy <- function(FunctionName, Qualifier = NULL) {
     http_path = "/2015-03-31/functions/{FunctionName}/policy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$get_policy_input(FunctionName = FunctionName, Qualifier = Qualifier)
   output <- .lambda$get_policy_output()
@@ -4644,7 +4685,8 @@ lambda_get_provisioned_concurrency_config <- function(FunctionName, Qualifier) {
     http_path = "/2019-09-30/functions/{FunctionName}/provisioned-concurrency",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$get_provisioned_concurrency_config_input(FunctionName = FunctionName, Qualifier = Qualifier)
   output <- .lambda$get_provisioned_concurrency_config_output()
@@ -4694,7 +4736,8 @@ lambda_get_resource_policy <- function(ResourceArn) {
     http_path = "/2026-07-09/resource-policy/{ResourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$get_resource_policy_input(ResourceArn = ResourceArn)
   output <- .lambda$get_resource_policy_output()
@@ -4757,7 +4800,8 @@ lambda_get_runtime_management_config <- function(FunctionName, Qualifier = NULL)
     http_path = "/2021-07-20/functions/{FunctionName}/runtime-management-config",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$get_runtime_management_config_input(FunctionName = FunctionName, Qualifier = Qualifier)
   output <- .lambda$get_runtime_management_config_output()
@@ -4880,7 +4924,8 @@ lambda_invoke <- function(FunctionName, InvocationType = NULL, LogType = NULL, C
     http_path = "/2015-03-31/functions/{FunctionName}/invocations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$invoke_input(FunctionName = FunctionName, InvocationType = InvocationType, LogType = LogType, ClientContext = ClientContext, DurableExecutionName = DurableExecutionName, Payload = Payload, Qualifier = Qualifier, TenantId = TenantId)
   output <- .lambda$invoke_output()
@@ -4956,7 +5001,8 @@ lambda_invoke_async <- function(FunctionName, InvokeArgs) {
     http_path = "/2014-11-13/functions/{FunctionName}/invoke-async",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$invoke_async_input(FunctionName = FunctionName, InvokeArgs = InvokeArgs)
   output <- .lambda$invoke_async_output()
@@ -5049,7 +5095,8 @@ lambda_invoke_with_response_stream <- function(FunctionName, LogType = NULL, Cli
     http_path = "/2021-11-15/functions/{FunctionName}/response-streaming-invocations",
     host_prefix = "",
     paginator = list(),
-    stream_api = TRUE
+    stream_api = TRUE,
+    http_checksum = NULL
   )
   input <- .lambda$invoke_with_response_stream_input(FunctionName = FunctionName, LogType = LogType, ClientContext = ClientContext, Qualifier = Qualifier, Payload = Payload, TenantId = TenantId, InvocationType = InvocationType)
   output <- .lambda$invoke_with_response_stream_output()
@@ -5137,7 +5184,8 @@ lambda_list_aliases <- function(FunctionName, FunctionVersion = NULL, Marker = N
     http_path = "/2015-03-31/functions/{FunctionName}/aliases",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "Aliases"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$list_aliases_input(FunctionName = FunctionName, FunctionVersion = FunctionVersion, Marker = Marker, MaxItems = MaxItems)
   output <- .lambda$list_aliases_output()
@@ -5242,7 +5290,8 @@ lambda_list_capacity_providers <- function(State = NULL, Marker = NULL, MaxItems
     http_path = "/2025-11-30/capacity-providers",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "CapacityProviders"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$list_capacity_providers_input(State = State, Marker = Marker, MaxItems = MaxItems)
   output <- .lambda$list_capacity_providers_output()
@@ -5309,7 +5358,8 @@ lambda_list_code_signing_configs <- function(Marker = NULL, MaxItems = NULL) {
     http_path = "/2020-04-22/code-signing-configs",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "CodeSigningConfigs"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$list_code_signing_configs_input(Marker = Marker, MaxItems = MaxItems)
   output <- .lambda$list_code_signing_configs_output()
@@ -5397,7 +5447,8 @@ lambda_list_durable_executions_by_function <- function(FunctionName, Qualifier =
     http_path = "/2025-12-01/functions/{FunctionName}/durable-executions",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "DurableExecutions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$list_durable_executions_by_function_input(FunctionName = FunctionName, Qualifier = Qualifier, DurableExecutionName = DurableExecutionName, Statuses = Statuses, StartedAfter = StartedAfter, StartedBefore = StartedBefore, ReverseOrder = ReverseOrder, Marker = Marker, MaxItems = MaxItems)
   output <- .lambda$list_durable_executions_by_function_output()
@@ -5610,7 +5661,8 @@ lambda_list_event_source_mappings <- function(EventSourceArn = NULL, FunctionNam
     http_path = "/2015-03-31/event-source-mappings",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "EventSourceMappings"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$list_event_source_mappings_input(EventSourceArn = EventSourceArn, FunctionName = FunctionName, Marker = Marker, MaxItems = MaxItems)
   output <- .lambda$list_event_source_mappings_output()
@@ -5704,7 +5756,8 @@ lambda_list_function_event_invoke_configs <- function(FunctionName, Marker = NUL
     http_path = "/2019-09-25/functions/{FunctionName}/event-invoke-config/list",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "FunctionEventInvokeConfigs"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$list_function_event_invoke_configs_input(FunctionName = FunctionName, Marker = Marker, MaxItems = MaxItems)
   output <- .lambda$list_function_event_invoke_configs_output()
@@ -5793,7 +5846,8 @@ lambda_list_function_url_configs <- function(FunctionName, Marker = NULL, MaxIte
     http_path = "/2021-10-31/functions/{FunctionName}/urls",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "FunctionUrlConfigs"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$list_function_url_configs_input(FunctionName = FunctionName, Marker = Marker, MaxItems = MaxItems)
   output <- .lambda$list_function_url_configs_output()
@@ -5855,7 +5909,8 @@ lambda_list_function_versions_by_capacity_provider <- function(CapacityProviderN
     http_path = "/2025-11-30/capacity-providers/{CapacityProviderName}/function-versions",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "FunctionVersions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$list_function_versions_by_capacity_provider_input(CapacityProviderName = CapacityProviderName, Marker = Marker, MaxItems = MaxItems)
   output <- .lambda$list_function_versions_by_capacity_provider_output()
@@ -6045,7 +6100,8 @@ lambda_list_functions <- function(MasterRegion = NULL, FunctionVersion = NULL, M
     http_path = "/2015-03-31/functions",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "Functions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$list_functions_input(MasterRegion = MasterRegion, FunctionVersion = FunctionVersion, Marker = Marker, MaxItems = MaxItems)
   output <- .lambda$list_functions_output()
@@ -6102,7 +6158,8 @@ lambda_list_functions_by_code_signing_config <- function(CodeSigningConfigArn, M
     http_path = "/2020-04-22/code-signing-configs/{CodeSigningConfigArn}/functions",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "FunctionArns"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$list_functions_by_code_signing_config_input(CodeSigningConfigArn = CodeSigningConfigArn, Marker = Marker, MaxItems = MaxItems)
   output <- .lambda$list_functions_by_code_signing_config_output()
@@ -6188,7 +6245,8 @@ lambda_list_layer_versions <- function(CompatibleArchitecture = NULL, Compatible
     http_path = "/2018-10-31/layers/{LayerName}/versions",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "LayerVersions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$list_layer_versions_input(CompatibleArchitecture = CompatibleArchitecture, CompatibleRuntime = CompatibleRuntime, LayerName = LayerName, Marker = Marker, MaxItems = MaxItems)
   output <- .lambda$list_layer_versions_output()
@@ -6277,7 +6335,8 @@ lambda_list_layers <- function(CompatibleArchitecture = NULL, CompatibleRuntime 
     http_path = "/2018-10-31/layers",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "Layers"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$list_layers_input(CompatibleArchitecture = CompatibleArchitecture, CompatibleRuntime = CompatibleRuntime, Marker = Marker, MaxItems = MaxItems)
   output <- .lambda$list_layers_output()
@@ -6362,7 +6421,8 @@ lambda_list_provisioned_concurrency_configs <- function(FunctionName, Marker = N
     http_path = "/2019-09-30/functions/{FunctionName}/provisioned-concurrency?List=ALL",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "ProvisionedConcurrencyConfigs"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$list_provisioned_concurrency_configs_input(FunctionName = FunctionName, Marker = Marker, MaxItems = MaxItems)
   output <- .lambda$list_provisioned_concurrency_configs_output()
@@ -6423,7 +6483,8 @@ lambda_list_tags <- function(Resource) {
     http_path = "/2017-03-31/tags/{Resource}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$list_tags_input(Resource = Resource)
   output <- .lambda$list_tags_output()
@@ -6620,7 +6681,8 @@ lambda_list_versions_by_function <- function(FunctionName, Marker = NULL, MaxIte
     http_path = "/2015-03-31/functions/{FunctionName}/versions",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextMarker", result_key = "Versions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$list_versions_by_function_input(FunctionName = FunctionName, Marker = Marker, MaxItems = MaxItems)
   output <- .lambda$list_versions_by_function_output()
@@ -6743,7 +6805,8 @@ lambda_publish_layer_version <- function(LayerName, Description = NULL, Content,
     http_path = "/2018-10-31/layers/{LayerName}/versions",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$publish_layer_version_input(LayerName = LayerName, Description = Description, Content = Content, CompatibleArchitectures = CompatibleArchitectures, CompatibleRuntimes = CompatibleRuntimes, LicenseInfo = LicenseInfo)
   output <- .lambda$publish_layer_version_output()
@@ -6944,7 +7007,8 @@ lambda_publish_version <- function(FunctionName, CodeSha256 = NULL, Description 
     http_path = "/2015-03-31/functions/{FunctionName}/versions",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$publish_version_input(FunctionName = FunctionName, CodeSha256 = CodeSha256, Description = Description, RevisionId = RevisionId, PublishTo = PublishTo)
   output <- .lambda$publish_version_output()
@@ -7007,7 +7071,8 @@ lambda_put_function_code_signing_config <- function(CodeSigningConfigArn, Functi
     http_path = "/2020-06-30/functions/{FunctionName}/code-signing-config",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$put_function_code_signing_config_input(CodeSigningConfigArn = CodeSigningConfigArn, FunctionName = FunctionName)
   output <- .lambda$put_function_code_signing_config_output()
@@ -7084,7 +7149,8 @@ lambda_put_function_concurrency <- function(FunctionName, ReservedConcurrentExec
     http_path = "/2017-10-31/functions/{FunctionName}/concurrency",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$put_function_concurrency_input(FunctionName = FunctionName, ReservedConcurrentExecutions = ReservedConcurrentExecutions)
   output <- .lambda$put_function_concurrency_output()
@@ -7204,7 +7270,8 @@ lambda_put_function_event_invoke_config <- function(FunctionName, Qualifier = NU
     http_path = "/2019-09-25/functions/{FunctionName}/event-invoke-config",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$put_function_event_invoke_config_input(FunctionName = FunctionName, Qualifier = Qualifier, MaximumRetryAttempts = MaximumRetryAttempts, MaximumEventAgeInSeconds = MaximumEventAgeInSeconds, DestinationConfig = DestinationConfig)
   output <- .lambda$put_function_event_invoke_config_output()
@@ -7275,7 +7342,8 @@ lambda_put_function_recursion_config <- function(FunctionName, RecursiveLoop) {
     http_path = "/2024-08-31/functions/{FunctionName}/recursion-config",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$put_function_recursion_config_input(FunctionName = FunctionName, RecursiveLoop = RecursiveLoop)
   output <- .lambda$put_function_recursion_config_output()
@@ -7332,7 +7400,8 @@ lambda_put_function_scaling_config <- function(FunctionName, Qualifier, Function
     http_path = "/2025-11-30/functions/{FunctionName}/function-scaling-config",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$put_function_scaling_config_input(FunctionName = FunctionName, Qualifier = Qualifier, FunctionScalingConfig = FunctionScalingConfig)
   output <- .lambda$put_function_scaling_config_output()
@@ -7413,7 +7482,8 @@ lambda_put_provisioned_concurrency_config <- function(FunctionName, Qualifier, P
     http_path = "/2019-09-30/functions/{FunctionName}/provisioned-concurrency",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$put_provisioned_concurrency_config_input(FunctionName = FunctionName, Qualifier = Qualifier, ProvisionedConcurrentExecutions = ProvisionedConcurrentExecutions)
   output <- .lambda$put_provisioned_concurrency_config_output()
@@ -7471,7 +7541,8 @@ lambda_put_resource_policy <- function(ResourceArn, Policy, RevisionId = NULL) {
     http_path = "/2026-07-09/resource-policy/{ResourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$put_resource_policy_input(ResourceArn = ResourceArn, Policy = Policy, RevisionId = RevisionId)
   output <- .lambda$put_resource_policy_output()
@@ -7547,7 +7618,8 @@ lambda_put_runtime_management_config <- function(FunctionName, Qualifier = NULL,
     http_path = "/2021-07-20/functions/{FunctionName}/runtime-management-config",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$put_runtime_management_config_input(FunctionName = FunctionName, Qualifier = Qualifier, UpdateRuntimeOn = UpdateRuntimeOn, RuntimeVersionArn = RuntimeVersionArn)
   output <- .lambda$put_runtime_management_config_output()
@@ -7610,7 +7682,8 @@ lambda_remove_layer_version_permission <- function(LayerName, VersionNumber, Sta
     http_path = "/2018-10-31/layers/{LayerName}/versions/{VersionNumber}/policy/{StatementId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$remove_layer_version_permission_input(LayerName = LayerName, VersionNumber = VersionNumber, StatementId = StatementId, RevisionId = RevisionId)
   output <- .lambda$remove_layer_version_permission_output()
@@ -7683,7 +7756,8 @@ lambda_remove_permission <- function(FunctionName, StatementId, Qualifier = NULL
     http_path = "/2015-03-31/functions/{FunctionName}/policy/{StatementId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$remove_permission_input(FunctionName = FunctionName, StatementId = StatementId, Qualifier = Qualifier, RevisionId = RevisionId)
   output <- .lambda$remove_permission_output()
@@ -7736,7 +7810,8 @@ lambda_send_durable_execution_callback_failure <- function(CallbackId, Error = N
     http_path = "/2025-12-01/durable-execution-callbacks/{CallbackId}/fail",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$send_durable_execution_callback_failure_input(CallbackId = CallbackId, Error = Error)
   output <- .lambda$send_durable_execution_callback_failure_output()
@@ -7781,7 +7856,8 @@ lambda_send_durable_execution_callback_heartbeat <- function(CallbackId) {
     http_path = "/2025-12-01/durable-execution-callbacks/{CallbackId}/heartbeat",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$send_durable_execution_callback_heartbeat_input(CallbackId = CallbackId)
   output <- .lambda$send_durable_execution_callback_heartbeat_output()
@@ -7828,7 +7904,8 @@ lambda_send_durable_execution_callback_success <- function(CallbackId, Result = 
     http_path = "/2025-12-01/durable-execution-callbacks/{CallbackId}/succeed",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$send_durable_execution_callback_success_input(CallbackId = CallbackId, Result = Result)
   output <- .lambda$send_durable_execution_callback_success_output()
@@ -7888,7 +7965,8 @@ lambda_stop_durable_execution <- function(DurableExecutionArn, Error = NULL) {
     http_path = "/2025-12-01/durable-executions/{DurableExecutionArn}/stop",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$stop_durable_execution_input(DurableExecutionArn = DurableExecutionArn, Error = Error)
   output <- .lambda$stop_durable_execution_output()
@@ -7949,7 +8027,8 @@ lambda_tag_resource <- function(Resource, Tags) {
     http_path = "/2017-03-31/tags/{Resource}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$tag_resource_input(Resource = Resource, Tags = Tags)
   output <- .lambda$tag_resource_output()
@@ -8010,7 +8089,8 @@ lambda_untag_resource <- function(Resource, TagKeys) {
     http_path = "/2017-03-31/tags/{Resource}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$untag_resource_input(Resource = Resource, TagKeys = TagKeys)
   output <- .lambda$untag_resource_output()
@@ -8109,7 +8189,8 @@ lambda_update_alias <- function(FunctionName, Name, FunctionVersion = NULL, Desc
     http_path = "/2015-03-31/functions/{FunctionName}/aliases/{Name}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$update_alias_input(FunctionName = FunctionName, Name = Name, FunctionVersion = FunctionVersion, Description = Description, RoutingConfig = RoutingConfig, RevisionId = RevisionId)
   output <- .lambda$update_alias_output()
@@ -8233,7 +8314,8 @@ lambda_update_capacity_provider <- function(CapacityProviderName, CapacityProvid
     http_path = "/2025-11-30/capacity-providers/{CapacityProviderName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$update_capacity_provider_input(CapacityProviderName = CapacityProviderName, CapacityProviderScalingConfig = CapacityProviderScalingConfig, PropagateTags = PropagateTags, TelemetryConfig = TelemetryConfig)
   output <- .lambda$update_capacity_provider_output()
@@ -8308,7 +8390,8 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
     http_path = "/2020-04-22/code-signing-configs/{CodeSigningConfigArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$update_code_signing_config_input(CodeSigningConfigArn = CodeSigningConfigArn, Description = Description, AllowedPublishers = AllowedPublishers, CodeSigningPolicies = CodeSigningPolicies)
   output <- .lambda$update_code_signing_config_output()
@@ -8685,7 +8768,8 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
     http_path = "/2015-03-31/event-source-mappings/{UUID}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$update_event_source_mapping_input(UUID = UUID, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, FilterCriteria = FilterCriteria, KMSKeyArn = KMSKeyArn, MetricsConfig = MetricsConfig, LoggingConfig = LoggingConfig, ScalingConfig = ScalingConfig, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, ParallelizationFactor = ParallelizationFactor, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, TumblingWindowInSeconds = TumblingWindowInSeconds, SourceAccessConfigurations = SourceAccessConfigurations, FunctionResponseTypes = FunctionResponseTypes, AmazonManagedKafkaEventSourceConfig = AmazonManagedKafkaEventSourceConfig, SelfManagedKafkaEventSourceConfig = SelfManagedKafkaEventSourceConfig, DocumentDBEventSourceConfig = DocumentDBEventSourceConfig, ProvisionedPollerConfig = ProvisionedPollerConfig)
   output <- .lambda$update_event_source_mapping_output()
@@ -8917,7 +9001,8 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
     http_path = "/2015-03-31/functions/{FunctionName}/code",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$update_function_code_input(FunctionName = FunctionName, ZipFile = ZipFile, S3Bucket = S3Bucket, S3Key = S3Key, S3ObjectVersion = S3ObjectVersion, S3ObjectStorageMode = S3ObjectStorageMode, ImageUri = ImageUri, Architectures = Architectures, Publish = Publish, PublishTo = PublishTo, DryRun = DryRun, RevisionId = RevisionId, SourceKMSKeyArn = SourceKMSKeyArn)
   output <- .lambda$update_function_code_output()
@@ -9222,7 +9307,8 @@ lambda_update_function_configuration <- function(FunctionName, Role = NULL, Hand
     http_path = "/2015-03-31/functions/{FunctionName}/configuration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$update_function_configuration_input(FunctionName = FunctionName, Role = Role, Handler = Handler, Description = Description, Timeout = Timeout, MemorySize = MemorySize, VpcConfig = VpcConfig, Environment = Environment, Runtime = Runtime, DeadLetterConfig = DeadLetterConfig, KMSKeyArn = KMSKeyArn, TracingConfig = TracingConfig, RevisionId = RevisionId, Layers = Layers, FileSystemConfigs = FileSystemConfigs, ImageConfig = ImageConfig, EphemeralStorage = EphemeralStorage, SnapStart = SnapStart, LoggingConfig = LoggingConfig, CapacityProviderConfig = CapacityProviderConfig, DurableConfig = DurableConfig)
   output <- .lambda$update_function_configuration_output()
@@ -9341,7 +9427,8 @@ lambda_update_function_event_invoke_config <- function(FunctionName, Qualifier =
     http_path = "/2019-09-25/functions/{FunctionName}/event-invoke-config",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$update_function_event_invoke_config_input(FunctionName = FunctionName, Qualifier = Qualifier, MaximumRetryAttempts = MaximumRetryAttempts, MaximumEventAgeInSeconds = MaximumEventAgeInSeconds, DestinationConfig = DestinationConfig)
   output <- .lambda$update_function_event_invoke_config_output()
@@ -9449,7 +9536,8 @@ lambda_update_function_url_config <- function(FunctionName, Qualifier = NULL, Au
     http_path = "/2021-10-31/functions/{FunctionName}/url",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lambda$update_function_url_config_input(FunctionName = FunctionName, Qualifier = Qualifier, AuthType = AuthType, Cors = Cors, InvokeMode = InvokeMode)
   output <- .lambda$update_function_url_config_output()

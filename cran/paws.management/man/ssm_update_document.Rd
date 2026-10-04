@@ -30,7 +30,7 @@ ssm_update_document(
 
 If you change a document version for a State Manager association, Systems Manager immediately runs the association unless you previously specifed the \code{apply-only-at-cron-interval} parameter.}
 
-\item{DocumentFormat}{Specify the document format for the new document version. Systems Manager supports JSON and YAML documents. JSON is the default format.}
+\item{DocumentFormat}{Specify the document format for the new document version. The document format can be JSON, YAML, or TEXT. JSON is the default format.}
 
 \item{TargetType}{Specify a new target type for the document.}
 }

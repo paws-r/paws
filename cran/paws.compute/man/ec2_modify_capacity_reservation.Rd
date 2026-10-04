@@ -13,7 +13,10 @@ ec2_modify_capacity_reservation(
   Accept = NULL,
   DryRun = NULL,
   AdditionalInfo = NULL,
-  InstanceMatchCriteria = NULL
+  InstanceMatchCriteria = NULL,
+  AcceptModificationTerms = NULL,
+  StartDate = NULL,
+  QuoteId = NULL
 )
 }
 \arguments{
@@ -42,6 +45,12 @@ You must provide an \code{EndDate} value if \code{EndDateType} is \code{limited}
 \item{InstanceMatchCriteria}{The matching criteria (instance eligibility) that you want to use in the modified Capacity Reservation. If you change the instance eligibility of an existing Capacity Reservation from \code{targeted} to \code{open}, any running instances that match the attributes of the Capacity Reservation, have the \code{CapacityReservationPreference} set to \code{open}, and are not yet running in the Capacity Reservation, will automatically use the modified Capacity Reservation.
 
 To modify the instance eligibility, the Capacity Reservation must be completely idle (zero usage).}
+
+\item{AcceptModificationTerms}{Indicates that you accept the modification terms of the quote identified by \code{QuoteId}. To apply a quoted modification, set this parameter to \code{true}.}
+
+\item{StartDate}{The new start date for the Capacity Reservation, in the ISO8601 format in the UTC time zone (\code{YYYY-MM-DDThh:mm:ss.sssZ}). Applies to future-dated Capacity Reservations only. Requires a quote from \code{\link[=ec2_create_capacity_reservation_date_change_quote]{create_capacity_reservation_date_change_quote}}; pass the quote ID in \code{QuoteId} with \code{AcceptModificationTerms} set to \code{true}.}
+
+\item{QuoteId}{The ID of the quote that describes the modification you want to apply. Generate a quote by using \code{\link[=ec2_create_capacity_reservation_date_change_quote]{create_capacity_reservation_date_change_quote}}. The quote must be in the \code{active} state, and each quote can be used only once.}
 }
 \description{
 Modifies a Capacity Reservation's capacity, instance eligibility, and the conditions under which it is to be released. You can't modify a Capacity Reservation's instance type, EBS optimization, platform, instance store settings, Availability Zone, or tenancy. If you need to modify any of these attributes, we recommend that you cancel the Capacity Reservation, and then create a new one with the required attributes. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/capacity-reservations-modify.html}{Modify an active Capacity Reservation}.

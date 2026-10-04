@@ -699,6 +699,16 @@ NULL
   return(populate(args, .ec2_shapes[["create_capacity_reservation_cancellation_quote_output"]]))
 }
 
+.ec2$create_capacity_reservation_date_change_quote_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .ec2_shapes[["create_capacity_reservation_date_change_quote_input"]]))
+}
+
+.ec2$create_capacity_reservation_date_change_quote_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .ec2_shapes[["create_capacity_reservation_date_change_quote_output"]]))
+}
+
 .ec2$create_capacity_reservation_fleet_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   return(populate(args, .ec2_shapes[["create_capacity_reservation_fleet_input"]]))
@@ -1774,6 +1784,16 @@ NULL
 .ec2$delete_client_vpn_endpoint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   return(populate(args, .ec2_shapes[["delete_client_vpn_endpoint_output"]]))
+}
+
+.ec2$delete_client_vpn_endpoint_authorization_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .ec2_shapes[["delete_client_vpn_endpoint_authorization_policy_input"]]))
+}
+
+.ec2$delete_client_vpn_endpoint_authorization_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .ec2_shapes[["delete_client_vpn_endpoint_authorization_policy_output"]]))
 }
 
 .ec2$delete_client_vpn_route_input <- function(...) {
@@ -2976,6 +2996,16 @@ NULL
 .ec2$describe_capacity_reservation_cancellation_quotes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   return(populate(args, .ec2_shapes[["describe_capacity_reservation_cancellation_quotes_output"]]))
+}
+
+.ec2$describe_capacity_reservation_date_change_quotes_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .ec2_shapes[["describe_capacity_reservation_date_change_quotes_input"]]))
+}
+
+.ec2$describe_capacity_reservation_date_change_quotes_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .ec2_shapes[["describe_capacity_reservation_date_change_quotes_output"]]))
 }
 
 .ec2$describe_capacity_reservation_fleets_input <- function(...) {
@@ -5560,6 +5590,16 @@ NULL
   return(populate(args, .ec2_shapes[["get_capacity_reservation_usage_output"]]))
 }
 
+.ec2$get_client_vpn_endpoint_authorization_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .ec2_shapes[["get_client_vpn_endpoint_authorization_policy_input"]]))
+}
+
+.ec2$get_client_vpn_endpoint_authorization_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .ec2_shapes[["get_client_vpn_endpoint_authorization_policy_output"]]))
+}
+
 .ec2$get_coip_pool_usage_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   return(populate(args, .ec2_shapes[["get_coip_pool_usage_input"]]))
@@ -6398,6 +6438,16 @@ NULL
 .ec2$modify_client_vpn_endpoint_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   return(populate(args, .ec2_shapes[["modify_client_vpn_endpoint_output"]]))
+}
+
+.ec2$modify_client_vpn_endpoint_authorization_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .ec2_shapes[["modify_client_vpn_endpoint_authorization_policy_input"]]))
+}
+
+.ec2$modify_client_vpn_endpoint_authorization_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .ec2_shapes[["modify_client_vpn_endpoint_authorization_policy_output"]]))
 }
 
 .ec2$modify_default_credit_specification_input <- function(...) {

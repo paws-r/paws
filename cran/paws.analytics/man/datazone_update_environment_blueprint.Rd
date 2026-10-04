@@ -9,7 +9,8 @@ datazone_update_environment_blueprint(
   identifier,
   description = NULL,
   provisioningProperties = NULL,
-  userParameters = NULL
+  userParameters = NULL,
+  blueprintCategory = NULL
 )
 }
 \arguments{
@@ -22,6 +23,8 @@ datazone_update_environment_blueprint(
 \item{provisioningProperties}{The provisioning properties to be updated as part of the \code{\link[=datazone_update_environment_blueprint]{update_environment_blueprint}} action.}
 
 \item{userParameters}{The user parameters to be updated as part of the \code{\link[=datazone_update_environment_blueprint]{update_environment_blueprint}} action.}
+
+\item{blueprintCategory}{The category to update. The only valid value is \code{TOOLING}.}
 }
 \description{
 Updates an environment blueprint in Amazon DataZone.

@@ -415,6 +415,15 @@ NULL
   list()
 }
 
+.kinesis$update_stream_record_distribution_strategy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .kinesis_shapes[["update_stream_record_distribution_strategy_input"]]))
+}
+
+.kinesis$update_stream_record_distribution_strategy_output <- function(...) {
+  list()
+}
+
 .kinesis$update_stream_warm_throughput_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   return(populate(args, .kinesis_shapes[["update_stream_warm_throughput_input"]]))

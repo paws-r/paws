@@ -52,7 +52,8 @@ sagemakerruntime_invoke_endpoint <- function(EndpointName, Body, ContentType = N
     http_path = "/endpoints/{EndpointName}/invocations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sagemakerruntime$invoke_endpoint_input(EndpointName = EndpointName, Body = Body, ContentType = ContentType, Accept = Accept, CustomAttributes = CustomAttributes, TargetModel = TargetModel, TargetVariant = TargetVariant, TargetContainerHostname = TargetContainerHostname, InferenceId = InferenceId, EnableExplanations = EnableExplanations, InferenceComponentName = InferenceComponentName, SessionId = SessionId, PrefixAwareId = PrefixAwareId)
   output <- .sagemakerruntime$invoke_endpoint_output()
@@ -104,7 +105,8 @@ sagemakerruntime_invoke_endpoint_async <- function(EndpointName, ContentType = N
     http_path = "/endpoints/{EndpointName}/async-invocations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sagemakerruntime$invoke_endpoint_async_input(EndpointName = EndpointName, ContentType = ContentType, Accept = Accept, CustomAttributes = CustomAttributes, InferenceId = InferenceId, InputLocation = InputLocation, S3OutputPathExtension = S3OutputPathExtension, Filename = Filename, RequestTTLSeconds = RequestTTLSeconds, InvocationTimeoutSeconds = InvocationTimeoutSeconds, Body = Body)
   output <- .sagemakerruntime$invoke_endpoint_async_output()
@@ -158,7 +160,8 @@ sagemakerruntime_invoke_endpoint_with_response_stream <- function(EndpointName, 
     http_path = "/endpoints/{EndpointName}/invocations-response-stream",
     host_prefix = "",
     paginator = list(),
-    stream_api = TRUE
+    stream_api = TRUE,
+    http_checksum = NULL
   )
   input <- .sagemakerruntime$invoke_endpoint_with_response_stream_input(EndpointName = EndpointName, Body = Body, ContentType = ContentType, Accept = Accept, CustomAttributes = CustomAttributes, TargetVariant = TargetVariant, TargetContainerHostname = TargetContainerHostname, InferenceId = InferenceId, InferenceComponentName = InferenceComponentName, SessionId = SessionId, PrefixAwareId = PrefixAwareId)
   output <- .sagemakerruntime$invoke_endpoint_with_response_stream_output()

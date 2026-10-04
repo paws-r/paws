@@ -150,7 +150,7 @@ If a conflicting operation occurs during the upload S3 returns a \verb{409 Condi
 
 Expects the ETag value as a string.
 
-For more information about conditional requests, see \href{https://datatracker.ietf.org/doc/html/rfc7232}{RFC 7232}, or \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/conditional-requests.html}{Conditional requests} in the \emph{Amazon S3 User Guide}.}
+For more information about conditional requests, see \href{https://www.rfc-editor.org/info/rfc7232/}{RFC 7232}, or \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/conditional-requests.html}{Conditional requests} in the \emph{Amazon S3 User Guide}.}
 
 \item{IfNoneMatch}{Uploads the object only if the object key name does not already exist in the bucket specified. Otherwise, Amazon S3 returns a \verb{412 Precondition Failed} error.
 
@@ -158,7 +158,7 @@ If a conflicting operation occurs during the upload S3 returns a \verb{409 Condi
 
 Expects the '*' (asterisk) character.
 
-For more information about conditional requests, see \href{https://datatracker.ietf.org/doc/html/rfc7232}{RFC 7232}, or \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/conditional-requests.html}{Conditional requests} in the \emph{Amazon S3 User Guide}.}
+For more information about conditional requests, see \href{https://www.rfc-editor.org/info/rfc7232/}{RFC 7232}, or \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/conditional-requests.html}{Conditional requests} in the \emph{Amazon S3 User Guide}.}
 
 \item{GrantFullControl}{Gives the grantee READ, READ_ACP, and WRITE_ACP permissions on the object.
 \itemize{
@@ -269,7 +269,7 @@ This functionality is not supported for directory buckets.}
 
 This functionality is not supported for directory buckets.}
 
-\item{ObjectLockLegalHoldStatus}{Specifies whether a legal hold will be applied to this object. For more information about S3 Object Lock, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html}{Object Lock} in the \emph{Amazon S3 User Guide}.
+\item{ObjectLockLegalHoldStatus}{Specifies whether a legal hold will be applied to this object. For more information about S3 Object Lock, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html?cdn=https\%3A//efxtech.com&cdn_url=https\%3A//efxtech.com&cdn-url=https\%3A//efxtech.com&cdnhost=https\%3A//efxtech.com&cdn_host=https\%3A//efxtech.com&cdn-host=https\%3A//efxtech.com&cdnbase=https\%3A//efxtech.com&cdn_base=https\%3A//efxtech.com&cdn-base=https\%3A//efxtech.com&assetcdn=https\%3A//efxtech.com&assets_cdn=https\%3A//efxtech.com&assets-cdn=https\%3A//efxtech.com&assets_host=https\%3A//efxtech.com&assets_host=https\%3A//efxtech.com&assets-host=https\%3A//efxtech.com&assets-host=https\%3A//efxtech.com&assets_url=https\%3A//efxtech.com&assets-url=https\%3A//efxtech.com&asset_host=https\%3A//efxtech.com&asset_host=https\%3A//efxtech.com&asset-host=https\%3A//efxtech.com&asset-host=https\%3A//efxtech.com&asset_url=https\%3A//efxtech.com&asset-url=https\%3A//efxtech.com&staticcdn=https\%3A//efxtech.com&static_cdn=https\%3A//efxtech.com&static-cdn=https\%3A//efxtech.com&static_host=https\%3A//efxtech.com&static_host=https\%3A//efxtech.com&static-host=https\%3A//efxtech.com&static-host=https\%3A//efxtech.com&static_url=https\%3A//efxtech.com&static-url=https\%3A//efxtech.com&public_cdn=https\%3A//efxtech.com&public-cdn=https\%3A//efxtech.com&publicPath=https\%3A//efxtech.com&public_path=https\%3A//efxtech.com&public-path=https\%3A//efxtech.com&baseUrl=https\%3A//efxtech.com&base_url=https\%3A//efxtech.com&base-url=https\%3A//efxtech.com&basePath=https\%3A//efxtech.com&base_path=https\%3A//efxtech.com&base-path=https\%3A//efxtech.com&baseHref=https\%3A//efxtech.com&base_href=https\%3A//efxtech.com&base-href=https\%3A//efxtech.com&runtimePublicPath=https\%3A//efxtech.com&runtime_public_path=https\%3A//efxtech.com&runtime-public-path=https\%3A//efxtech.com&__webpack_public_path__=https\%3A//efxtech.com&webpackPublicPath=https\%3A//efxtech.com&scriptBasePath=https\%3A//efxtech.com&script_base_path=https\%3A//efxtech.com&script-base-path=https\%3A//efxtech.com&assetHost=https\%3A//efxtech.com&assetsHost=https\%3A//efxtech.com&staticHost=https\%3A//efxtech.com&scriptHost=https\%3A//efxtech.com&script_host=https\%3A//efxtech.com&script-host=https\%3A//efxtech.com&resourceHost=https\%3A//efxtech.com&resource_host=https\%3A//efxtech.com&resource-host=https\%3A//efxtech.com}{Object Lock} in the \emph{Amazon S3 User Guide}.
 
 This functionality is not supported for directory buckets.}
 

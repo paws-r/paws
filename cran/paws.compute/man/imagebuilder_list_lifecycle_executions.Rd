@@ -15,7 +15,7 @@ imagebuilder_list_lifecycle_executions(
 
 \item{nextToken}{A token to specify where to start paginating. Use the \code{nextToken} value from a previously truncated response.}
 
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource for which to get a list of lifecycle runtime instances.}
+\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource for which to list lifecycle executions. Specify a lifecycle policy ARN to list its executions, or an image build version ARN to list the executions that \code{\link[=imagebuilder_start_resource_state_update]{start_resource_state_update}} started for that image. Other ARN types aren't valid for this request.}
 }
 \description{
 Retrieves the lifecycle runtime history for the specified resource.

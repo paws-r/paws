@@ -1,4 +1,4 @@
-svc <- paws.security.identity::iamrolesanywhere()
+svc <- paws::iamrolesanywhere()
 
 test_that("list_crls", {
   skip_on_cran()

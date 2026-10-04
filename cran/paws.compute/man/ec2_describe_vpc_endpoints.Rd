@@ -27,7 +27,7 @@ ec2_describe_vpc_endpoints(
 \item \code{vpc-id} - The ID of the VPC in which the endpoint resides.
 \item \code{vpc-endpoint-id} - The ID of the endpoint.
 \item \code{vpc-endpoint-state} - The state of the endpoint (\code{pendingAcceptance} | \code{pending} | \code{available} | \code{deleting} | \code{deleted} | \code{rejected} | \code{failed}).
-\item \code{vpc-endpoint-type} - The type of VPC endpoint (\code{Interface} | \code{Gateway} | \code{GatewayLoadBalancer} | \code{Resource} | \code{ServiceNetwork}).
+\item \code{vpc-endpoint-type} - The type of VPC endpoint (\code{Interface} | \code{Gateway} | \code{GatewayLoadBalancer} | \code{Resource} | \code{ServiceNetwork} | \code{Tunnel}).
 }}
 
 \item{MaxResults}{The maximum number of items to return for this request. The request returns a token that you can specify in a subsequent call to get the next set of results.

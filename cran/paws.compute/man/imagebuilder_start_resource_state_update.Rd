@@ -2,8 +2,7 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_start_resource_state_update}
 \alias{imagebuilder_start_resource_state_update}
-\title{Begins an asynchronous resource state update for lifecycle changes to
-the specified image resources}
+\title{Begins an ad-hoc state change for the specified image build version}
 \usage{
 imagebuilder_start_resource_state_update(
   resourceArn,
@@ -20,18 +19,18 @@ imagebuilder_start_resource_state_update(
 
 \item{state}{[required] Specifies the lifecycle action to take for this request. For AMI-based images, valid values are \code{AVAILABLE}, \code{DEPRECATED}, \code{DISABLED}, and \code{DELETED}. For container-based images, only \code{DELETED} is supported.}
 
-\item{executionRole}{The name or Amazon Resource Name (ARN) of the IAM role that’s used to update image state.}
+\item{executionRole}{The name or Amazon Resource Name (ARN) of the IAM role that's used to update image state. You must provide this property together with \code{includeResources}. Neither is valid without the other.}
 
-\item{includeResources}{Specifies which image resources to include in the state update. When specified, the lifecycle action applies to underlying resources. These resources include AMIs, snapshots, and containers in addition to the Image Builder image resource. Requires \code{executionRole} to also be specified. To delete an image and its underlying resources, you must specify \code{includeResources}. To delete only the Image Builder image record without affecting underlying resources, use the \code{\link[=imagebuilder_delete_image]{delete_image}} API instead.}
+\item{includeResources}{Specifies which underlying resources to update, in addition to the Image Builder image resource itself. Snapshots and containers are only valid for the \code{DELETED} state. To set an image to \code{DELETED}, you must include its underlying resources. To delete only the Image Builder image record, use the \code{\link[=imagebuilder_delete_image]{delete_image}} operation instead.}
 
-\item{exclusionRules}{Skip action on the image resource and associated resources if specified exclusion rules are met.}
+\item{exclusionRules}{Rules that Image Builder evaluates against each of the image's AMIs. Matching AMIs and their snapshots are skipped. Exclusion rules only take effect when the request includes AMIs. If the target state is \code{DELETED} and any resource was skipped, the Image Builder image resource itself is also retained. For the \code{DEPRECATED} and \code{DISABLED} target states, Image Builder updates the image resource's state regardless of exclusions.}
 
-\item{updateAt}{Specifies the timestamp when the state transition takes effect. Use this parameter only when the target status is \code{DEPRECATED}. The value must be a future time.}
+\item{updateAt}{The timestamp that indicates when resources are updated by a lifecycle action. This property is valid only when the target status is \code{DEPRECATED}, and the value must be a future time. If you don't specify a value, Image Builder begins the state update right away. For a scheduled deprecation, included AMIs get their EC2 deprecation time set immediately, and Image Builder schedules the image resource to transition to \code{DEPRECATED} at that time.}
 
-\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
+\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
 }
 \description{
-Begins an asynchronous resource state update for lifecycle changes to the specified image resources.
+Begins an ad-hoc state change for the specified image build version. This is a one-time operation - if you schedule the update, it runs only once. If the request includes underlying resources, or schedules the update far enough in the future, Image Builder runs the update as an asynchronous lifecycle execution and returns its identifier. Otherwise, for target states other than \code{DELETED}, the state change applies immediately. If a request that starts a lifecycle execution arrives while the image already has one in progress, Image Builder rejects it.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_start_resource_state_update/} for full documentation.
 }

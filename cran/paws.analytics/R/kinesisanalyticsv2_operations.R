@@ -26,7 +26,8 @@ kinesisanalyticsv2_add_application_cloud_watch_logging_option <- function(Applic
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesisanalyticsv2$add_application_cloud_watch_logging_option_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, CloudWatchLoggingOption = CloudWatchLoggingOption, ConditionalToken = ConditionalToken)
   output <- .kinesisanalyticsv2$add_application_cloud_watch_logging_option_output()
@@ -60,7 +61,8 @@ kinesisanalyticsv2_add_application_input <- function(ApplicationName, CurrentApp
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesisanalyticsv2$add_application_input_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, Input = Input)
   output <- .kinesisanalyticsv2$add_application_input_output()
@@ -95,7 +97,8 @@ kinesisanalyticsv2_add_application_input_processing_configuration <- function(Ap
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesisanalyticsv2$add_application_input_processing_configuration_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, InputId = InputId, InputProcessingConfiguration = InputProcessingConfiguration)
   output <- .kinesisanalyticsv2$add_application_input_processing_configuration_output()
@@ -129,7 +132,8 @@ kinesisanalyticsv2_add_application_output <- function(ApplicationName, CurrentAp
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesisanalyticsv2$add_application_output_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, Output = Output)
   output <- .kinesisanalyticsv2$add_application_output_output()
@@ -163,7 +167,8 @@ kinesisanalyticsv2_add_application_reference_data_source <- function(Application
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesisanalyticsv2$add_application_reference_data_source_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, ReferenceDataSource = ReferenceDataSource)
   output <- .kinesisanalyticsv2$add_application_reference_data_source_output()
@@ -197,7 +202,8 @@ kinesisanalyticsv2_add_application_vpc_configuration <- function(ApplicationName
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesisanalyticsv2$add_application_vpc_configuration_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, VpcConfiguration = VpcConfiguration, ConditionalToken = ConditionalToken)
   output <- .kinesisanalyticsv2$add_application_vpc_configuration_output()
@@ -235,7 +241,8 @@ kinesisanalyticsv2_create_application <- function(ApplicationName, ApplicationDe
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesisanalyticsv2$create_application_input(ApplicationName = ApplicationName, ApplicationDescription = ApplicationDescription, RuntimeEnvironment = RuntimeEnvironment, ServiceExecutionRole = ServiceExecutionRole, ApplicationConfiguration = ApplicationConfiguration, CloudWatchLoggingOptions = CloudWatchLoggingOptions, Tags = Tags, ApplicationMode = ApplicationMode)
   output <- .kinesisanalyticsv2$create_application_output()
@@ -269,7 +276,8 @@ kinesisanalyticsv2_create_application_presigned_url <- function(ApplicationName,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesisanalyticsv2$create_application_presigned_url_input(ApplicationName = ApplicationName, UrlType = UrlType, SessionExpirationDurationInSeconds = SessionExpirationDurationInSeconds)
   output <- .kinesisanalyticsv2$create_application_presigned_url_output()
@@ -301,7 +309,8 @@ kinesisanalyticsv2_create_application_snapshot <- function(ApplicationName, Snap
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesisanalyticsv2$create_application_snapshot_input(ApplicationName = ApplicationName, SnapshotName = SnapshotName)
   output <- .kinesisanalyticsv2$create_application_snapshot_output()
@@ -333,7 +342,8 @@ kinesisanalyticsv2_delete_application <- function(ApplicationName, CreateTimesta
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesisanalyticsv2$delete_application_input(ApplicationName = ApplicationName, CreateTimestamp = CreateTimestamp)
   output <- .kinesisanalyticsv2$delete_application_output()
@@ -368,7 +378,8 @@ kinesisanalyticsv2_delete_application_cloud_watch_logging_option <- function(App
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesisanalyticsv2$delete_application_cloud_watch_logging_option_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, CloudWatchLoggingOptionId = CloudWatchLoggingOptionId, ConditionalToken = ConditionalToken)
   output <- .kinesisanalyticsv2$delete_application_cloud_watch_logging_option_output()
@@ -401,7 +412,8 @@ kinesisanalyticsv2_delete_application_input_processing_configuration <- function
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesisanalyticsv2$delete_application_input_processing_configuration_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, InputId = InputId)
   output <- .kinesisanalyticsv2$delete_application_input_processing_configuration_output()
@@ -435,7 +447,8 @@ kinesisanalyticsv2_delete_application_output <- function(ApplicationName, Curren
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesisanalyticsv2$delete_application_output_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, OutputId = OutputId)
   output <- .kinesisanalyticsv2$delete_application_output_output()
@@ -469,7 +482,8 @@ kinesisanalyticsv2_delete_application_reference_data_source <- function(Applicat
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesisanalyticsv2$delete_application_reference_data_source_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, ReferenceId = ReferenceId)
   output <- .kinesisanalyticsv2$delete_application_reference_data_source_output()
@@ -502,7 +516,8 @@ kinesisanalyticsv2_delete_application_snapshot <- function(ApplicationName, Snap
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesisanalyticsv2$delete_application_snapshot_input(ApplicationName = ApplicationName, SnapshotName = SnapshotName, SnapshotCreationTimestamp = SnapshotCreationTimestamp)
   output <- .kinesisanalyticsv2$delete_application_snapshot_output()
@@ -537,7 +552,8 @@ kinesisanalyticsv2_delete_application_vpc_configuration <- function(ApplicationN
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesisanalyticsv2$delete_application_vpc_configuration_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, VpcConfigurationId = VpcConfigurationId, ConditionalToken = ConditionalToken)
   output <- .kinesisanalyticsv2$delete_application_vpc_configuration_output()
@@ -570,7 +586,8 @@ kinesisanalyticsv2_describe_application <- function(ApplicationName, IncludeAddi
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesisanalyticsv2$describe_application_input(ApplicationName = ApplicationName, IncludeAdditionalDetails = IncludeAdditionalDetails)
   output <- .kinesisanalyticsv2$describe_application_output()
@@ -602,7 +619,8 @@ kinesisanalyticsv2_describe_application_operation <- function(ApplicationName, O
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesisanalyticsv2$describe_application_operation_input(ApplicationName = ApplicationName, OperationId = OperationId)
   output <- .kinesisanalyticsv2$describe_application_operation_output()
@@ -634,7 +652,8 @@ kinesisanalyticsv2_describe_application_snapshot <- function(ApplicationName, Sn
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesisanalyticsv2$describe_application_snapshot_input(ApplicationName = ApplicationName, SnapshotName = SnapshotName)
   output <- .kinesisanalyticsv2$describe_application_snapshot_output()
@@ -667,7 +686,8 @@ kinesisanalyticsv2_describe_application_version <- function(ApplicationName, App
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesisanalyticsv2$describe_application_version_input(ApplicationName = ApplicationName, ApplicationVersionId = ApplicationVersionId)
   output <- .kinesisanalyticsv2$describe_application_version_output()
@@ -705,7 +725,8 @@ kinesisanalyticsv2_discover_input_schema <- function(ResourceARN = NULL, Service
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesisanalyticsv2$discover_input_schema_input(ResourceARN = ResourceARN, ServiceExecutionRole = ServiceExecutionRole, InputStartingPositionConfiguration = InputStartingPositionConfiguration, S3Configuration = S3Configuration, InputProcessingConfiguration = InputProcessingConfiguration)
   output <- .kinesisanalyticsv2$discover_input_schema_output()
@@ -741,7 +762,8 @@ kinesisanalyticsv2_list_application_operations <- function(ApplicationName, Limi
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "Limit", result_key = "ApplicationOperationInfoList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesisanalyticsv2$list_application_operations_input(ApplicationName = ApplicationName, Limit = Limit, NextToken = NextToken, Operation = Operation, OperationStatus = OperationStatus)
   output <- .kinesisanalyticsv2$list_application_operations_output()
@@ -774,7 +796,8 @@ kinesisanalyticsv2_list_application_snapshots <- function(ApplicationName, Limit
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "SnapshotSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesisanalyticsv2$list_application_snapshots_input(ApplicationName = ApplicationName, Limit = Limit, NextToken = NextToken)
   output <- .kinesisanalyticsv2$list_application_snapshots_output()
@@ -808,7 +831,8 @@ kinesisanalyticsv2_list_application_versions <- function(ApplicationName, Limit 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "Limit", result_key = "ApplicationVersionSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesisanalyticsv2$list_application_versions_input(ApplicationName = ApplicationName, Limit = Limit, NextToken = NextToken)
   output <- .kinesisanalyticsv2$list_application_versions_output()
@@ -841,7 +865,8 @@ kinesisanalyticsv2_list_applications <- function(Limit = NULL, NextToken = NULL)
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "ApplicationSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesisanalyticsv2$list_applications_input(Limit = Limit, NextToken = NextToken)
   output <- .kinesisanalyticsv2$list_applications_output()
@@ -872,7 +897,8 @@ kinesisanalyticsv2_list_tags_for_resource <- function(ResourceARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesisanalyticsv2$list_tags_for_resource_input(ResourceARN = ResourceARN)
   output <- .kinesisanalyticsv2$list_tags_for_resource_output()
@@ -904,7 +930,8 @@ kinesisanalyticsv2_rollback_application <- function(ApplicationName, CurrentAppl
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesisanalyticsv2$rollback_application_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId)
   output <- .kinesisanalyticsv2$rollback_application_output()
@@ -936,7 +963,8 @@ kinesisanalyticsv2_start_application <- function(ApplicationName, RunConfigurati
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesisanalyticsv2$start_application_input(ApplicationName = ApplicationName, RunConfiguration = RunConfiguration)
   output <- .kinesisanalyticsv2$start_application_output()
@@ -974,7 +1002,8 @@ kinesisanalyticsv2_stop_application <- function(ApplicationName, Force = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesisanalyticsv2$stop_application_input(ApplicationName = ApplicationName, Force = Force)
   output <- .kinesisanalyticsv2$stop_application_output()
@@ -1007,7 +1036,8 @@ kinesisanalyticsv2_tag_resource <- function(ResourceARN, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesisanalyticsv2$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .kinesisanalyticsv2$tag_resource_output()
@@ -1040,7 +1070,8 @@ kinesisanalyticsv2_untag_resource <- function(ResourceARN, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesisanalyticsv2$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .kinesisanalyticsv2$untag_resource_output()
@@ -1082,7 +1113,8 @@ kinesisanalyticsv2_update_application <- function(ApplicationName, CurrentApplic
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesisanalyticsv2$update_application_input(ApplicationName = ApplicationName, CurrentApplicationVersionId = CurrentApplicationVersionId, ApplicationConfigurationUpdate = ApplicationConfigurationUpdate, ServiceExecutionRoleUpdate = ServiceExecutionRoleUpdate, RunConfigurationUpdate = RunConfigurationUpdate, CloudWatchLoggingOptionUpdates = CloudWatchLoggingOptionUpdates, ConditionalToken = ConditionalToken, RuntimeEnvironmentUpdate = RuntimeEnvironmentUpdate)
   output <- .kinesisanalyticsv2$update_application_output()
@@ -1115,7 +1147,8 @@ kinesisanalyticsv2_update_application_maintenance_configuration <- function(Appl
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kinesisanalyticsv2$update_application_maintenance_configuration_input(ApplicationName = ApplicationName, ApplicationMaintenanceConfigurationUpdate = ApplicationMaintenanceConfigurationUpdate)
   output <- .kinesisanalyticsv2$update_application_maintenance_configuration_output()

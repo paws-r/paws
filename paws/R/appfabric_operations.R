@@ -64,7 +64,8 @@ appfabric_batch_get_user_access_tasks <- function(appBundleIdentifier, taskIdLis
     http_path = "/useraccess/batchget",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appfabric$batch_get_user_access_tasks_input(appBundleIdentifier = appBundleIdentifier, taskIdList = taskIdList)
   output <- .appfabric$batch_get_user_access_tasks_output()
@@ -136,7 +137,8 @@ appfabric_connect_app_authorization <- function(appBundleIdentifier, appAuthoriz
     http_path = "/appbundles/{appBundleIdentifier}/appauthorizations/{appAuthorizationIdentifier}/connect",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appfabric$connect_app_authorization_input(appBundleIdentifier = appBundleIdentifier, appAuthorizationIdentifier = appAuthorizationIdentifier, authRequest = authRequest)
   output <- .appfabric$connect_app_authorization_output()
@@ -265,7 +267,8 @@ appfabric_create_app_authorization <- function(appBundleIdentifier, app, credent
     http_path = "/appbundles/{appBundleIdentifier}/appauthorizations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appfabric$create_app_authorization_input(appBundleIdentifier = appBundleIdentifier, app = app, credential = credential, tenant = tenant, authType = authType, clientToken = clientToken, tags = tags)
   output <- .appfabric$create_app_authorization_output()
@@ -332,7 +335,8 @@ appfabric_create_app_bundle <- function(clientToken = NULL, customerManagedKeyId
     http_path = "/appbundles",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appfabric$create_app_bundle_input(clientToken = clientToken, customerManagedKeyIdentifier = customerManagedKeyIdentifier, tags = tags)
   output <- .appfabric$create_app_bundle_output()
@@ -440,7 +444,8 @@ appfabric_create_ingestion <- function(appBundleIdentifier, app, tenantId, inges
     http_path = "/appbundles/{appBundleIdentifier}/ingestions",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appfabric$create_ingestion_input(appBundleIdentifier = appBundleIdentifier, app = app, tenantId = tenantId, ingestionType = ingestionType, clientToken = clientToken, tags = tags)
   output <- .appfabric$create_ingestion_output()
@@ -559,7 +564,8 @@ appfabric_create_ingestion_destination <- function(appBundleIdentifier, ingestio
     http_path = "/appbundles/{appBundleIdentifier}/ingestions/{ingestionIdentifier}/ingestiondestinations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appfabric$create_ingestion_destination_input(appBundleIdentifier = appBundleIdentifier, ingestionIdentifier = ingestionIdentifier, processingConfiguration = processingConfiguration, destinationConfiguration = destinationConfiguration, clientToken = clientToken, tags = tags)
   output <- .appfabric$create_ingestion_destination_output()
@@ -606,7 +612,8 @@ appfabric_delete_app_authorization <- function(appBundleIdentifier, appAuthoriza
     http_path = "/appbundles/{appBundleIdentifier}/appauthorizations/{appAuthorizationIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appfabric$delete_app_authorization_input(appBundleIdentifier = appBundleIdentifier, appAuthorizationIdentifier = appAuthorizationIdentifier)
   output <- .appfabric$delete_app_authorization_output()
@@ -650,7 +657,8 @@ appfabric_delete_app_bundle <- function(appBundleIdentifier) {
     http_path = "/appbundles/{appBundleIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appfabric$delete_app_bundle_input(appBundleIdentifier = appBundleIdentifier)
   output <- .appfabric$delete_app_bundle_output()
@@ -696,7 +704,8 @@ appfabric_delete_ingestion <- function(appBundleIdentifier, ingestionIdentifier)
     http_path = "/appbundles/{appBundleIdentifier}/ingestions/{ingestionIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appfabric$delete_ingestion_input(appBundleIdentifier = appBundleIdentifier, ingestionIdentifier = ingestionIdentifier)
   output <- .appfabric$delete_ingestion_output()
@@ -747,7 +756,8 @@ appfabric_delete_ingestion_destination <- function(appBundleIdentifier, ingestio
     http_path = "/appbundles/{appBundleIdentifier}/ingestions/{ingestionIdentifier}/ingestiondestinations/{ingestionDestinationIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appfabric$delete_ingestion_destination_input(appBundleIdentifier = appBundleIdentifier, ingestionIdentifier = ingestionIdentifier, ingestionDestinationIdentifier = ingestionDestinationIdentifier)
   output <- .appfabric$delete_ingestion_destination_output()
@@ -817,7 +827,8 @@ appfabric_get_app_authorization <- function(appBundleIdentifier, appAuthorizatio
     http_path = "/appbundles/{appBundleIdentifier}/appauthorizations/{appAuthorizationIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appfabric$get_app_authorization_input(appBundleIdentifier = appBundleIdentifier, appAuthorizationIdentifier = appAuthorizationIdentifier)
   output <- .appfabric$get_app_authorization_output()
@@ -869,7 +880,8 @@ appfabric_get_app_bundle <- function(appBundleIdentifier) {
     http_path = "/appbundles/{appBundleIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appfabric$get_app_bundle_input(appBundleIdentifier = appBundleIdentifier)
   output <- .appfabric$get_app_bundle_output()
@@ -933,7 +945,8 @@ appfabric_get_ingestion <- function(appBundleIdentifier, ingestionIdentifier) {
     http_path = "/appbundles/{appBundleIdentifier}/ingestions/{ingestionIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appfabric$get_ingestion_input(appBundleIdentifier = appBundleIdentifier, ingestionIdentifier = ingestionIdentifier)
   output <- .appfabric$get_ingestion_output()
@@ -1017,7 +1030,8 @@ appfabric_get_ingestion_destination <- function(appBundleIdentifier, ingestionId
     http_path = "/appbundles/{appBundleIdentifier}/ingestions/{ingestionIdentifier}/ingestiondestinations/{ingestionDestinationIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appfabric$get_ingestion_destination_input(appBundleIdentifier = appBundleIdentifier, ingestionIdentifier = ingestionIdentifier, ingestionDestinationIdentifier = ingestionDestinationIdentifier)
   output <- .appfabric$get_ingestion_destination_output()
@@ -1088,7 +1102,8 @@ appfabric_list_app_authorizations <- function(appBundleIdentifier, maxResults = 
     http_path = "/appbundles/{appBundleIdentifier}/appauthorizations",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "appAuthorizationSummaryList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appfabric$list_app_authorizations_input(appBundleIdentifier = appBundleIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .appfabric$list_app_authorizations_output()
@@ -1146,7 +1161,8 @@ appfabric_list_app_bundles <- function(maxResults = NULL, nextToken = NULL) {
     http_path = "/appbundles",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "appBundleSummaryList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appfabric$list_app_bundles_input(maxResults = maxResults, nextToken = nextToken)
   output <- .appfabric$list_app_bundles_output()
@@ -1209,7 +1225,8 @@ appfabric_list_ingestion_destinations <- function(appBundleIdentifier, ingestion
     http_path = "/appbundles/{appBundleIdentifier}/ingestions/{ingestionIdentifier}/ingestiondestinations",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "ingestionDestinations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appfabric$list_ingestion_destinations_input(appBundleIdentifier = appBundleIdentifier, ingestionIdentifier = ingestionIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .appfabric$list_ingestion_destinations_output()
@@ -1272,7 +1289,8 @@ appfabric_list_ingestions <- function(appBundleIdentifier, maxResults = NULL, ne
     http_path = "/appbundles/{appBundleIdentifier}/ingestions",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "ingestions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appfabric$list_ingestions_input(appBundleIdentifier = appBundleIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .appfabric$list_ingestions_output()
@@ -1326,7 +1344,8 @@ appfabric_list_tags_for_resource <- function(resourceArn) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appfabric$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .appfabric$list_tags_for_resource_output()
@@ -1372,7 +1391,8 @@ appfabric_start_ingestion <- function(ingestionIdentifier, appBundleIdentifier) 
     http_path = "/appbundles/{appBundleIdentifier}/ingestions/{ingestionIdentifier}/start",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appfabric$start_ingestion_input(ingestionIdentifier = ingestionIdentifier, appBundleIdentifier = appBundleIdentifier)
   output <- .appfabric$start_ingestion_output()
@@ -1436,7 +1456,8 @@ appfabric_start_user_access_tasks <- function(appBundleIdentifier, email) {
     http_path = "/useraccess/start",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appfabric$start_user_access_tasks_input(appBundleIdentifier = appBundleIdentifier, email = email)
   output <- .appfabric$start_user_access_tasks_output()
@@ -1482,7 +1503,8 @@ appfabric_stop_ingestion <- function(ingestionIdentifier, appBundleIdentifier) {
     http_path = "/appbundles/{appBundleIdentifier}/ingestions/{ingestionIdentifier}/stop",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appfabric$stop_ingestion_input(ingestionIdentifier = ingestionIdentifier, appBundleIdentifier = appBundleIdentifier)
   output <- .appfabric$stop_ingestion_output()
@@ -1533,7 +1555,8 @@ appfabric_tag_resource <- function(resourceArn, tags) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appfabric$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .appfabric$tag_resource_output()
@@ -1581,7 +1604,8 @@ appfabric_untag_resource <- function(resourceArn, tagKeys) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appfabric$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .appfabric$untag_resource_output()
@@ -1671,7 +1695,8 @@ appfabric_update_app_authorization <- function(appBundleIdentifier, appAuthoriza
     http_path = "/appbundles/{appBundleIdentifier}/appauthorizations/{appAuthorizationIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appfabric$update_app_authorization_input(appBundleIdentifier = appBundleIdentifier, appAuthorizationIdentifier = appAuthorizationIdentifier, credential = credential, tenant = tenant)
   output <- .appfabric$update_app_authorization_output()
@@ -1772,7 +1797,8 @@ appfabric_update_ingestion_destination <- function(appBundleIdentifier, ingestio
     http_path = "/appbundles/{appBundleIdentifier}/ingestions/{ingestionIdentifier}/ingestiondestinations/{ingestionDestinationIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appfabric$update_ingestion_destination_input(appBundleIdentifier = appBundleIdentifier, ingestionIdentifier = ingestionIdentifier, ingestionDestinationIdentifier = ingestionDestinationIdentifier, destinationConfiguration = destinationConfiguration)
   output <- .appfabric$update_ingestion_destination_output()

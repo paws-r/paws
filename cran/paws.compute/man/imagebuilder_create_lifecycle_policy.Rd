@@ -18,25 +18,25 @@ imagebuilder_create_lifecycle_policy(
 )
 }
 \arguments{
-\item{name}{[required] The name of the lifecycle policy to create.}
+\item{name}{[required] The name of the lifecycle policy to create. Policy names must be unique to your account in each Amazon Web Services Region. Image Builder generates the policy ARN from a normalized form of the name, so names that differ only in case, spaces, or underscores count as the same name. You can't change the name after creation.}
 
 \item{description}{Optional description for the lifecycle policy.}
 
-\item{status}{Indicates whether the lifecycle policy resource is enabled.}
+\item{status}{Indicates whether the lifecycle policy resource is enabled. If you don't specify a status, it defaults to \code{ENABLED}. Only enabled policies run on their schedule.}
 
-\item{executionRole}{[required] The name or Amazon Resource Name (ARN) for the IAM role you create that grants Image Builder access to run lifecycle actions.}
+\item{executionRole}{[required] The name or Amazon Resource Name (ARN) for the IAM role you create that grants Image Builder access to run lifecycle actions. You must have permission to pass the role, and the role's trust policy must allow the Image Builder service principal to assume it.}
 
-\item{resourceType}{[required] The type of Image Builder resource that the lifecycle policy applies to.}
+\item{resourceType}{[required] The type of Image Builder resource that the lifecycle policy applies to. The resource type determines the allowed rule actions: policies for AMI-based Image Builder images support \code{DELETE}, \code{DEPRECATE}, and \code{DISABLE}, and policies for container-based Image Builder images support only \code{DELETE}. You can't change the resource type after creation.}
 
-\item{policyDetails}{[required] Configuration details for the lifecycle policy rules.}
+\item{policyDetails}{[required] Configuration details for the lifecycle policy rules. A policy can contain at most one rule per action type: one \code{DELETE}, one \code{DEPRECATE}, and one \code{DISABLE}.}
 
-\item{resourceSelection}{[required] Selection criteria for the resources that the lifecycle policy applies to.}
+\item{resourceSelection}{[required] Selection criteria for the resources that the lifecycle policy applies to. You must specify exactly one selection criteria: either recipes or a tag map, not both.}
 
 \item{tags}{Tags to apply to the lifecycle policy resource.}
 
-\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
+\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
 
-\item{dryRun}{Validates the required permissions and request parameters without making the request. If validation succeeds, the operation returns a \code{DryRunOperationException} error response.}
+\item{dryRun}{Validates the required permissions and request parameters without performing the operation. If validation succeeds, the operation returns a \code{DryRunOperationException} error response.}
 }
 \description{
 Creates a lifecycle policy resource.

@@ -5,7 +5,7 @@ NULL
 #' Amazon Rekognition
 #'
 #' @description
-#' This is the API Reference for [Amazon Rekognition Image](https://docs.aws.amazon.com/rekognition/latest/dg/images.html), [Amazon Rekognition Custom Labels](https://docs.aws.amazon.com/rekognition/latest/customlabels-dg/what-is.html), [Amazon Rekognition Stored Video](https://docs.aws.amazon.com/rekognition/latest/dg/video.html), [Amazon Rekognition Streaming Video](https://docs.aws.amazon.com/rekognition/latest/dg/streaming-video.html). It provides descriptions of actions, data types, common parameters, and common errors.
+#' This is the API Reference for [Amazon Rekognition Image](https://docs.aws.amazon.com/rekognition/latest/dg/images.html), [Amazon Rekognition Bulk Image Analysis](https://docs.aws.amazon.com/rekognition/latest/dg/bulk-analysis.html), [Amazon Rekognition Custom Labels](https://docs.aws.amazon.com/rekognition/latest/customlabels-dg/what-is.html), [Amazon Rekognition Stored Video](https://docs.aws.amazon.com/rekognition/latest/dg/video.html), [Amazon Rekognition Face Liveness](https://docs.aws.amazon.com/rekognition/latest/dg/face-liveness.html), [Amazon Rekognition Streaming Video](https://docs.aws.amazon.com/rekognition/latest/dg/streaming-video.html). It provides descriptions of actions, data types, common parameters, and common errors.
 #' 
 #' **Amazon Rekognition Image**
 #' 
@@ -39,13 +39,9 @@ NULL
 #' 
 #' -   [`get_celebrity_info`][rekognition_get_celebrity_info]
 #' 
-#' -   [`get_media_analysis_job`][rekognition_get_media_analysis_job]
-#' 
 #' -   [`index_faces`][rekognition_index_faces]
 #' 
 #' -   [`list_collections`][rekognition_list_collections]
-#' 
-#' -   [ListMediaAnalysisJob](https://docs.aws.amazon.com/rekognition/latest/APIReference/)
 #' 
 #' -   [`list_faces`][rekognition_list_faces]
 #' 
@@ -60,6 +56,12 @@ NULL
 #' -   [`search_users`][rekognition_search_users]
 #' 
 #' -   [`search_users_by_image`][rekognition_search_users_by_image]
+#' 
+#' **Amazon Rekognition Bulk Image Analysis**
+#' 
+#' -   [`get_media_analysis_job`][rekognition_get_media_analysis_job]
+#' 
+#' -   [ListMediaAnalysisJob](https://docs.aws.amazon.com/rekognition/latest/APIReference/)
 #' 
 #' -   [`start_media_analysis_job`][rekognition_start_media_analysis_job]
 #' 
@@ -105,7 +107,7 @@ NULL
 #' 
 #' -   [`update_dataset_entries`][rekognition_update_dataset_entries]
 #' 
-#' **Amazon Rekognition Video Stored Video**
+#' **Amazon Rekognition Stored Video**
 #' 
 #' -   [`get_celebrity_recognition`][rekognition_get_celebrity_recognition]
 #' 
@@ -139,7 +141,15 @@ NULL
 #' 
 #' -   [`start_text_detection`][rekognition_start_text_detection]
 #' 
-#' **Amazon Rekognition Video Streaming Video**
+#' **Amazon Rekognition Face Liveness**
+#' 
+#' -   [`create_face_liveness_session`][rekognition_create_face_liveness_session]
+#' 
+#' -   [`get_face_liveness_session_results`][rekognition_get_face_liveness_session_results]
+#' 
+#' -   [StartFaceLivenessSession](https://docs.aws.amazon.com/rekognition/latest/APIReference/API_rekognitionstreaming_StartFaceLivenessSession.html)
+#' 
+#' **Amazon Rekognition Streaming Video**
 #' 
 #' -   [`create_stream_processor`][rekognition_create_stream_processor]
 #' 
@@ -260,7 +270,7 @@ NULL
 #'  \link[=rekognition_create_face_liveness_session]{create_face_liveness_session} \tab This API operation initiates a Face Liveness session\cr
 #'  \link[=rekognition_create_project]{create_project} \tab Creates a new Amazon Rekognition project\cr
 #'  \link[=rekognition_create_project_version]{create_project_version} \tab Creates a new version of Amazon Rekognition project (like a Custom Labels model or a custom adapter) and begins training\cr
-#'  \link[=rekognition_create_stream_processor]{create_stream_processor} \tab Creates an Amazon Rekognition stream processor that you can use to detect and recognize faces or to detect labels in a streaming video\cr
+#'  \link[=rekognition_create_stream_processor]{create_stream_processor} \tab Service availability notice: Streaming Video and Bulk Image Analysis is no longer available to new customers\cr
 #'  \link[=rekognition_create_user]{create_user} \tab Creates a new User within a collection specified by CollectionId\cr
 #'  \link[=rekognition_delete_collection]{delete_collection} \tab Deletes the specified collection\cr
 #'  \link[=rekognition_delete_dataset]{delete_dataset} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
@@ -268,13 +278,13 @@ NULL
 #'  \link[=rekognition_delete_project]{delete_project} \tab Deletes a Amazon Rekognition project\cr
 #'  \link[=rekognition_delete_project_policy]{delete_project_policy} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
 #'  \link[=rekognition_delete_project_version]{delete_project_version} \tab Deletes a Rekognition project model or project version, like a Amazon Rekognition Custom Labels model or a custom adapter\cr
-#'  \link[=rekognition_delete_stream_processor]{delete_stream_processor} \tab Deletes the stream processor identified by Name\cr
+#'  \link[=rekognition_delete_stream_processor]{delete_stream_processor} \tab Service availability notice: Streaming Video and Bulk Image Analysis is no longer available to new customers\cr
 #'  \link[=rekognition_delete_user]{delete_user} \tab Deletes the specified UserID within the collection\cr
 #'  \link[=rekognition_describe_collection]{describe_collection} \tab Describes the specified collection\cr
 #'  \link[=rekognition_describe_dataset]{describe_dataset} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
 #'  \link[=rekognition_describe_projects]{describe_projects} \tab Gets information about your Rekognition projects\cr
 #'  \link[=rekognition_describe_project_versions]{describe_project_versions} \tab Lists and describes the versions of an Amazon Rekognition project\cr
-#'  \link[=rekognition_describe_stream_processor]{describe_stream_processor} \tab Provides information about a stream processor created by CreateStreamProcessor\cr
+#'  \link[=rekognition_describe_stream_processor]{describe_stream_processor} \tab Service availability notice: Streaming Video and Bulk Image Analysis is no longer available to new customers\cr
 #'  \link[=rekognition_detect_custom_labels]{detect_custom_labels} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
 #'  \link[=rekognition_detect_faces]{detect_faces} \tab Detects faces within an image that is provided as input\cr
 #'  \link[=rekognition_detect_labels]{detect_labels} \tab Detects instances of real-world entities within an image (JPEG or PNG) provided as input\cr
@@ -290,7 +300,7 @@ NULL
 #'  \link[=rekognition_get_face_liveness_session_results]{get_face_liveness_session_results} \tab Retrieves the results of a specific Face Liveness session\cr
 #'  \link[=rekognition_get_face_search]{get_face_search} \tab Gets the face search results for Amazon Rekognition Video face search started by StartFaceSearch\cr
 #'  \link[=rekognition_get_label_detection]{get_label_detection} \tab Gets the label detection results of a Amazon Rekognition Video analysis started by StartLabelDetection\cr
-#'  \link[=rekognition_get_media_analysis_job]{get_media_analysis_job} \tab Retrieves the results for a given media analysis job\cr
+#'  \link[=rekognition_get_media_analysis_job]{get_media_analysis_job} \tab Service availability notice: Streaming Video and Bulk Image Analysis is no longer available to new customers\cr
 #'  \link[=rekognition_get_person_tracking]{get_person_tracking} \tab End of support notice: On October 31, 2025, AWS will discontinue support for Amazon Rekognition People Pathing\cr
 #'  \link[=rekognition_get_segment_detection]{get_segment_detection} \tab Gets the segment detection results of a Amazon Rekognition Video analysis started by StartSegmentDetection\cr
 #'  \link[=rekognition_get_text_detection]{get_text_detection} \tab Gets the text detection results of a Amazon Rekognition Video analysis started by StartTextDetection\cr
@@ -299,9 +309,9 @@ NULL
 #'  \link[=rekognition_list_dataset_entries]{list_dataset_entries} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
 #'  \link[=rekognition_list_dataset_labels]{list_dataset_labels} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
 #'  \link[=rekognition_list_faces]{list_faces} \tab Returns metadata for faces in the specified collection\cr
-#'  \link[=rekognition_list_media_analysis_jobs]{list_media_analysis_jobs} \tab Returns a list of media analysis jobs\cr
+#'  \link[=rekognition_list_media_analysis_jobs]{list_media_analysis_jobs} \tab Service availability notice: Streaming Video and Bulk Image Analysis is no longer available to new customers\cr
 #'  \link[=rekognition_list_project_policies]{list_project_policies} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
-#'  \link[=rekognition_list_stream_processors]{list_stream_processors} \tab Gets a list of stream processors that you have created with CreateStreamProcessor\cr
+#'  \link[=rekognition_list_stream_processors]{list_stream_processors} \tab Service availability notice: Streaming Video and Bulk Image Analysis is no longer available to new customers\cr
 #'  \link[=rekognition_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags in an Amazon Rekognition collection, stream processor, or Custom Labels model\cr
 #'  \link[=rekognition_list_users]{list_users} \tab Returns metadata of the User such as UserID in the specified collection\cr
 #'  \link[=rekognition_put_project_policy]{put_project_policy} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
@@ -315,18 +325,18 @@ NULL
 #'  \link[=rekognition_start_face_detection]{start_face_detection} \tab Starts asynchronous detection of faces in a stored video\cr
 #'  \link[=rekognition_start_face_search]{start_face_search} \tab Starts the asynchronous search for faces in a collection that match the faces of persons detected in a stored video\cr
 #'  \link[=rekognition_start_label_detection]{start_label_detection} \tab Starts asynchronous detection of labels in a stored video\cr
-#'  \link[=rekognition_start_media_analysis_job]{start_media_analysis_job} \tab Initiates a new media analysis job\cr
+#'  \link[=rekognition_start_media_analysis_job]{start_media_analysis_job} \tab Service availability notice: Streaming Video and Bulk Image Analysis is no longer available to new customers\cr
 #'  \link[=rekognition_start_person_tracking]{start_person_tracking} \tab End of support notice: On October 31, 2025, AWS will discontinue support for Amazon Rekognition People Pathing\cr
 #'  \link[=rekognition_start_project_version]{start_project_version} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
 #'  \link[=rekognition_start_segment_detection]{start_segment_detection} \tab Starts asynchronous detection of segment detection in a stored video\cr
-#'  \link[=rekognition_start_stream_processor]{start_stream_processor} \tab Starts processing a stream processor\cr
+#'  \link[=rekognition_start_stream_processor]{start_stream_processor} \tab Service availability notice: Streaming Video and Bulk Image Analysis is no longer available to new customers\cr
 #'  \link[=rekognition_start_text_detection]{start_text_detection} \tab Starts asynchronous detection of text in a stored video\cr
 #'  \link[=rekognition_stop_project_version]{stop_project_version} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
-#'  \link[=rekognition_stop_stream_processor]{stop_stream_processor} \tab Stops a running stream processor that was created by CreateStreamProcessor\cr
+#'  \link[=rekognition_stop_stream_processor]{stop_stream_processor} \tab Service availability notice: Streaming Video and Bulk Image Analysis is no longer available to new customers\cr
 #'  \link[=rekognition_tag_resource]{tag_resource} \tab Adds one or more key-value tags to an Amazon Rekognition collection, stream processor, or Custom Labels model\cr
 #'  \link[=rekognition_untag_resource]{untag_resource} \tab Removes one or more tags from an Amazon Rekognition collection, stream processor, or Custom Labels model\cr
 #'  \link[=rekognition_update_dataset_entries]{update_dataset_entries} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
-#'  \link[=rekognition_update_stream_processor]{update_stream_processor} \tab Allows you to update a stream processor
+#'  \link[=rekognition_update_stream_processor]{update_stream_processor} \tab Service availability notice: Streaming Video and Bulk Image Analysis is no longer available to new customers
 #' }
 #'
 #' @return

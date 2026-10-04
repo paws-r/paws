@@ -18,22 +18,22 @@ imagebuilder_update_lifecycle_policy(
 \arguments{
 \item{lifecyclePolicyArn}{[required] The Amazon Resource Name (ARN) of the lifecycle policy resource.}
 
-\item{description}{Optional description for the lifecycle policy.}
+\item{description}{Optional description for the lifecycle policy. Because the update replaces the entire configuration, omitting this property removes any existing description.}
 
-\item{status}{Indicates whether the lifecycle policy resource is enabled.}
+\item{status}{Indicates whether the lifecycle policy resource is enabled. Defaults to \code{ENABLED} when omitted, so updating a disabled policy without setting this property re-enables it.}
 
-\item{executionRole}{[required] The name or Amazon Resource Name (ARN) of the IAM role that Image Builder uses to update the lifecycle policy.}
+\item{executionRole}{[required] The name or Amazon Resource Name (ARN) for the IAM role you create that grants Image Builder access to run lifecycle actions.}
 
-\item{resourceType}{[required] The type of image resource that the lifecycle policy applies to.}
+\item{resourceType}{[required] The type of image resource that the lifecycle policy applies to. The value must match the policy's existing resource type. You can't change the resource type of an existing lifecycle policy.}
 
 \item{policyDetails}{[required] The configuration details for a lifecycle policy resource.}
 
-\item{resourceSelection}{[required] Selection criteria for resources that the lifecycle policy applies to.}
+\item{resourceSelection}{[required] Selection criteria for resources that the lifecycle policy applies to. You must specify exactly one selection criteria: either recipes or a tag map, not both.}
 
-\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
+\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
 }
 \description{
-Updates the specified lifecycle policy.
+Updates the specified lifecycle policy. The request replaces the existing policy configuration rather than merging changes, so re-specify every setting that you want to keep. The \code{resourceType} must match the existing policy's value.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_update_lifecycle_policy/} for full documentation.
 }

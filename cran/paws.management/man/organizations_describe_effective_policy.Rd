@@ -21,6 +21,7 @@ organizations_describe_effective_policy(PolicyType, TargetId = NULL)
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_bedrock.html}{BEDROCK_POLICY}
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_s3.html}{S3_POLICY}
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_network_security_director.html}{NETWORK_SECURITY_DIRECTOR_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_guardduty.html}{GUARDDUTY_POLICY}
 }}
 
 \item{TargetId}{When you're signed in as the management account, specify the ID of the account that you want details about. Specifying an organization root or organizational unit (OU) as the target is not supported.}

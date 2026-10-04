@@ -13,9 +13,9 @@ ram_get_resource_share_invitations(
 )
 }
 \arguments{
-\item{resourceShareInvitationArns}{Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} of the resource share invitations you want information about.}
+\item{resourceShareInvitationArns}{Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Names (ARNs)} of the resource share invitations you want information about.}
 
-\item{resourceShareArns}{Specifies that you want details about invitations only for the resource shares described by this list of \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}}
+\item{resourceShareArns}{Specifies that you want details about invitations only for the resource shares described by this list of \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Names (ARNs)}}
 
 \item{nextToken}{Specifies that you want to receive the next page of results. Valid only if you received a \code{NextToken} response in the previous request. If you did, it indicates that more output is available. Set this parameter to the value provided by the previous call's \code{NextToken} response to request the next page of results.}
 

@@ -27,7 +27,8 @@ ivschat_create_chat_token <- function(roomIdentifier, userId, capabilities = NUL
     http_path = "/CreateChatToken",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivschat$create_chat_token_input(roomIdentifier = roomIdentifier, userId = userId, capabilities = capabilities, sessionDurationInMinutes = sessionDurationInMinutes, attributes = attributes)
   output <- .ivschat$create_chat_token_output()
@@ -61,7 +62,8 @@ ivschat_create_logging_configuration <- function(name = NULL, destinationConfigu
     http_path = "/CreateLoggingConfiguration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivschat$create_logging_configuration_input(name = name, destinationConfiguration = destinationConfiguration, tags = tags)
   output <- .ivschat$create_logging_configuration_output()
@@ -97,7 +99,8 @@ ivschat_create_room <- function(name = NULL, maximumMessageRatePerSecond = NULL,
     http_path = "/CreateRoom",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivschat$create_room_input(name = name, maximumMessageRatePerSecond = maximumMessageRatePerSecond, maximumMessageLength = maximumMessageLength, messageReviewHandler = messageReviewHandler, tags = tags, loggingConfigurationIdentifiers = loggingConfigurationIdentifiers)
   output <- .ivschat$create_room_output()
@@ -128,7 +131,8 @@ ivschat_delete_logging_configuration <- function(identifier) {
     http_path = "/DeleteLoggingConfiguration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivschat$delete_logging_configuration_input(identifier = identifier)
   output <- .ivschat$delete_logging_configuration_output()
@@ -163,7 +167,8 @@ ivschat_delete_message <- function(roomIdentifier, id, reason = NULL) {
     http_path = "/DeleteMessage",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivschat$delete_message_input(roomIdentifier = roomIdentifier, id = id, reason = reason)
   output <- .ivschat$delete_message_output()
@@ -194,7 +199,8 @@ ivschat_delete_room <- function(identifier) {
     http_path = "/DeleteRoom",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivschat$delete_room_input(identifier = identifier)
   output <- .ivschat$delete_room_output()
@@ -227,7 +233,8 @@ ivschat_disconnect_user <- function(roomIdentifier, userId, reason = NULL) {
     http_path = "/DisconnectUser",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivschat$disconnect_user_input(roomIdentifier = roomIdentifier, userId = userId, reason = reason)
   output <- .ivschat$disconnect_user_output()
@@ -258,7 +265,8 @@ ivschat_get_logging_configuration <- function(identifier) {
     http_path = "/GetLoggingConfiguration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivschat$get_logging_configuration_input(identifier = identifier)
   output <- .ivschat$get_logging_configuration_output()
@@ -289,7 +297,8 @@ ivschat_get_room <- function(identifier) {
     http_path = "/GetRoom",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivschat$get_room_input(identifier = identifier)
   output <- .ivschat$get_room_output()
@@ -322,7 +331,8 @@ ivschat_list_logging_configurations <- function(nextToken = NULL, maxResults = N
     http_path = "/ListLoggingConfigurations",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivschat$list_logging_configurations_input(nextToken = nextToken, maxResults = maxResults)
   output <- .ivschat$list_logging_configurations_output()
@@ -358,7 +368,8 @@ ivschat_list_rooms <- function(name = NULL, nextToken = NULL, maxResults = NULL,
     http_path = "/ListRooms",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivschat$list_rooms_input(name = name, nextToken = nextToken, maxResults = maxResults, messageReviewHandlerUri = messageReviewHandlerUri, loggingConfigurationIdentifier = loggingConfigurationIdentifier)
   output <- .ivschat$list_rooms_output()
@@ -389,7 +400,8 @@ ivschat_list_tags_for_resource <- function(resourceArn) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivschat$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .ivschat$list_tags_for_resource_output()
@@ -422,7 +434,8 @@ ivschat_send_event <- function(roomIdentifier, eventName, attributes = NULL) {
     http_path = "/SendEvent",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivschat$send_event_input(roomIdentifier = roomIdentifier, eventName = eventName, attributes = attributes)
   output <- .ivschat$send_event_output()
@@ -454,7 +467,8 @@ ivschat_tag_resource <- function(resourceArn, tags) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivschat$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .ivschat$tag_resource_output()
@@ -486,7 +500,8 @@ ivschat_untag_resource <- function(resourceArn, tagKeys) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivschat$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .ivschat$untag_resource_output()
@@ -519,7 +534,8 @@ ivschat_update_logging_configuration <- function(identifier, name = NULL, destin
     http_path = "/UpdateLoggingConfiguration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivschat$update_logging_configuration_input(identifier = identifier, name = name, destinationConfiguration = destinationConfiguration)
   output <- .ivschat$update_logging_configuration_output()
@@ -555,7 +571,8 @@ ivschat_update_room <- function(identifier, name = NULL, maximumMessageRatePerSe
     http_path = "/UpdateRoom",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ivschat$update_room_input(identifier = identifier, name = name, maximumMessageRatePerSecond = maximumMessageRatePerSecond, maximumMessageLength = maximumMessageLength, messageReviewHandler = messageReviewHandler, loggingConfigurationIdentifiers = loggingConfigurationIdentifiers)
   output <- .ivschat$update_room_output()

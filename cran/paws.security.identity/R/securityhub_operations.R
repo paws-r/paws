@@ -24,7 +24,8 @@ securityhub_accept_administrator_invitation <- function(AdministratorId, Invitat
     http_path = "/administrator",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$accept_administrator_invitation_input(AdministratorId = AdministratorId, InvitationId = InvitationId)
   output <- .securityhub$accept_administrator_invitation_output()
@@ -56,7 +57,8 @@ securityhub_accept_invitation <- function(MasterId, InvitationId) {
     http_path = "/master",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$accept_invitation_input(MasterId = MasterId, InvitationId = InvitationId)
   output <- .securityhub$accept_invitation_output()
@@ -87,7 +89,8 @@ securityhub_batch_delete_automation_rules <- function(AutomationRulesArns) {
     http_path = "/automationrules/delete",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$batch_delete_automation_rules_input(AutomationRulesArns = AutomationRulesArns)
   output <- .securityhub$batch_delete_automation_rules_output()
@@ -119,7 +122,8 @@ securityhub_batch_disable_standards <- function(StandardsSubscriptionArns) {
     http_path = "/standards/deregister",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$batch_disable_standards_input(StandardsSubscriptionArns = StandardsSubscriptionArns)
   output <- .securityhub$batch_disable_standards_output()
@@ -150,7 +154,8 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
     http_path = "/standards/register",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$batch_enable_standards_input(StandardsSubscriptionRequests = StandardsSubscriptionRequests)
   output <- .securityhub$batch_enable_standards_output()
@@ -182,7 +187,8 @@ securityhub_batch_get_automation_rules <- function(AutomationRulesArns) {
     http_path = "/automationrules/get",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$batch_get_automation_rules_input(AutomationRulesArns = AutomationRulesArns)
   output <- .securityhub$batch_get_automation_rules_output()
@@ -214,7 +220,8 @@ securityhub_batch_get_configuration_policy_associations <- function(Configuratio
     http_path = "/configurationPolicyAssociation/batchget",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$batch_get_configuration_policy_associations_input(ConfigurationPolicyAssociationIdentifiers = ConfigurationPolicyAssociationIdentifiers)
   output <- .securityhub$batch_get_configuration_policy_associations_output()
@@ -246,7 +253,8 @@ securityhub_batch_get_security_controls <- function(SecurityControlIds) {
     http_path = "/securityControls/batchGet",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$batch_get_security_controls_input(SecurityControlIds = SecurityControlIds)
   output <- .securityhub$batch_get_security_controls_output()
@@ -278,7 +286,8 @@ securityhub_batch_get_standards_control_associations <- function(StandardsContro
     http_path = "/associations/batchGet",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$batch_get_standards_control_associations_input(StandardsControlAssociationIds = StandardsControlAssociationIds)
   output <- .securityhub$batch_get_standards_control_associations_output()
@@ -310,7 +319,8 @@ securityhub_batch_import_findings <- function(Findings) {
     http_path = "/findings/import",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$batch_import_findings_input(Findings = Findings)
   output <- .securityhub$batch_import_findings_output()
@@ -342,7 +352,8 @@ securityhub_batch_update_automation_rules <- function(UpdateAutomationRulesReque
     http_path = "/automationrules/update",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$batch_update_automation_rules_input(UpdateAutomationRulesRequestItems = UpdateAutomationRulesRequestItems)
   output <- .securityhub$batch_update_automation_rules_output()
@@ -413,7 +424,8 @@ securityhub_batch_update_findings <- function(FindingIdentifiers, Note = NULL, S
     http_path = "/findings/batchupdate",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$batch_update_findings_input(FindingIdentifiers = FindingIdentifiers, Note = Note, Severity = Severity, VerificationState = VerificationState, Confidence = Confidence, Criticality = Criticality, Types = Types, UserDefinedFields = UserDefinedFields, Workflow = Workflow, RelatedFindings = RelatedFindings)
   output <- .securityhub$batch_update_findings_output()
@@ -448,7 +460,8 @@ securityhub_batch_update_findings_v2 <- function(MetadataUids = NULL, FindingIde
     http_path = "/findingsv2/batchupdatev2",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$batch_update_findings_v2_input(MetadataUids = MetadataUids, FindingIdentifiers = FindingIdentifiers, Comment = Comment, SeverityId = SeverityId, StatusId = StatusId)
   output <- .securityhub$batch_update_findings_v2_output()
@@ -482,7 +495,8 @@ securityhub_batch_update_standards_control_associations <- function(StandardsCon
     http_path = "/associations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$batch_update_standards_control_associations_input(StandardsControlAssociationUpdates = StandardsControlAssociationUpdates)
   output <- .securityhub$batch_update_standards_control_associations_output()
@@ -515,7 +529,8 @@ securityhub_create_action_target <- function(Name, Description, Id) {
     http_path = "/actionTargets",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$create_action_target_input(Name = Name, Description = Description, Id = Id)
   output <- .securityhub$create_action_target_output()
@@ -549,7 +564,8 @@ securityhub_create_aggregator_v2 <- function(RegionLinkingMode, LinkedRegions = 
     http_path = "/aggregatorv2/create",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$create_aggregator_v2_input(RegionLinkingMode = RegionLinkingMode, LinkedRegions = LinkedRegions, Tags = Tags, ClientToken = ClientToken)
   output <- .securityhub$create_aggregator_v2_output()
@@ -587,7 +603,8 @@ securityhub_create_automation_rule <- function(Tags = NULL, RuleStatus = NULL, R
     http_path = "/automationrules/create",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$create_automation_rule_input(Tags = Tags, RuleStatus = RuleStatus, RuleOrder = RuleOrder, RuleName = RuleName, Description = Description, IsTerminal = IsTerminal, Criteria = Criteria, Actions = Actions)
   output <- .securityhub$create_automation_rule_output()
@@ -625,7 +642,8 @@ securityhub_create_automation_rule_v2 <- function(RuleName, RuleStatus = NULL, D
     http_path = "/automationrulesv2/create",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$create_automation_rule_v2_input(RuleName = RuleName, RuleStatus = RuleStatus, Description = Description, RuleOrder = RuleOrder, Criteria = Criteria, Actions = Actions, Tags = Tags, ClientToken = ClientToken)
   output <- .securityhub$create_automation_rule_v2_output()
@@ -659,7 +677,8 @@ securityhub_create_configuration_policy <- function(Name, Description = NULL, Co
     http_path = "/configurationPolicy/create",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$create_configuration_policy_input(Name = Name, Description = Description, ConfigurationPolicy = ConfigurationPolicy, Tags = Tags)
   output <- .securityhub$create_configuration_policy_output()
@@ -694,7 +713,8 @@ securityhub_create_connector <- function(Name, Description = NULL, Provider, Tag
     http_path = "/connectors",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$create_connector_input(Name = Name, Description = Description, Provider = Provider, Tags = Tags, ClientToken = ClientToken)
   output <- .securityhub$create_connector_output()
@@ -730,7 +750,8 @@ securityhub_create_connector_v2 <- function(Name, Description = NULL, Provider, 
     http_path = "/connectorsv2",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$create_connector_v2_input(Name = Name, Description = Description, Provider = Provider, KmsKeyArn = KmsKeyArn, Tags = Tags, ClientToken = ClientToken)
   output <- .securityhub$create_connector_v2_output()
@@ -778,7 +799,8 @@ securityhub_create_finding_aggregator <- function(RegionLinkingMode, Regions = N
     http_path = "/findingAggregator/create",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$create_finding_aggregator_input(RegionLinkingMode = RegionLinkingMode, Regions = Regions)
   output <- .securityhub$create_finding_aggregator_output()
@@ -811,7 +833,8 @@ securityhub_create_insight <- function(Name, Filters, GroupByAttribute) {
     http_path = "/insights",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$create_insight_input(Name = Name, Filters = Filters, GroupByAttribute = GroupByAttribute)
   output <- .securityhub$create_insight_output()
@@ -844,7 +867,8 @@ securityhub_create_members <- function(AccountDetails) {
     http_path = "/members",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$create_members_input(AccountDetails = AccountDetails)
   output <- .securityhub$create_members_output()
@@ -879,7 +903,8 @@ securityhub_create_ticket_v2 <- function(ConnectorId, FindingMetadataUid, Client
     http_path = "/ticketsv2",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$create_ticket_v2_input(ConnectorId = ConnectorId, FindingMetadataUid = FindingMetadataUid, ClientToken = ClientToken, Mode = Mode)
   output <- .securityhub$create_ticket_v2_output()
@@ -911,7 +936,8 @@ securityhub_decline_invitations <- function(AccountIds) {
     http_path = "/invitations/decline",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$decline_invitations_input(AccountIds = AccountIds)
   output <- .securityhub$decline_invitations_output()
@@ -942,7 +968,8 @@ securityhub_delete_action_target <- function(ActionTargetArn) {
     http_path = "/actionTargets/{ActionTargetArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$delete_action_target_input(ActionTargetArn = ActionTargetArn)
   output <- .securityhub$delete_action_target_output()
@@ -973,7 +1000,8 @@ securityhub_delete_aggregator_v2 <- function(AggregatorV2Arn) {
     http_path = "/aggregatorv2/delete/{AggregatorV2Arn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$delete_aggregator_v2_input(AggregatorV2Arn = AggregatorV2Arn)
   output <- .securityhub$delete_aggregator_v2_output()
@@ -1004,7 +1032,8 @@ securityhub_delete_automation_rule_v2 <- function(Identifier) {
     http_path = "/automationrulesv2/{Identifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$delete_automation_rule_v2_input(Identifier = Identifier)
   output <- .securityhub$delete_automation_rule_v2_output()
@@ -1035,7 +1064,8 @@ securityhub_delete_configuration_policy <- function(Identifier) {
     http_path = "/configurationPolicy/{Identifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$delete_configuration_policy_input(Identifier = Identifier)
   output <- .securityhub$delete_configuration_policy_output()
@@ -1066,7 +1096,8 @@ securityhub_delete_connector <- function(ConnectorId) {
     http_path = "/connectors/{ConnectorId+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$delete_connector_input(ConnectorId = ConnectorId)
   output <- .securityhub$delete_connector_output()
@@ -1097,7 +1128,8 @@ securityhub_delete_connector_v2 <- function(ConnectorId) {
     http_path = "/connectorsv2/{ConnectorId+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$delete_connector_v2_input(ConnectorId = ConnectorId)
   output <- .securityhub$delete_connector_v2_output()
@@ -1128,7 +1160,8 @@ securityhub_delete_finding_aggregator <- function(FindingAggregatorArn) {
     http_path = "/findingAggregator/delete/{FindingAggregatorArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$delete_finding_aggregator_input(FindingAggregatorArn = FindingAggregatorArn)
   output <- .securityhub$delete_finding_aggregator_output()
@@ -1159,7 +1192,8 @@ securityhub_delete_insight <- function(InsightArn) {
     http_path = "/insights/{InsightArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$delete_insight_input(InsightArn = InsightArn)
   output <- .securityhub$delete_insight_output()
@@ -1191,7 +1225,8 @@ securityhub_delete_invitations <- function(AccountIds) {
     http_path = "/invitations/delete",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$delete_invitations_input(AccountIds = AccountIds)
   output <- .securityhub$delete_invitations_output()
@@ -1222,7 +1257,8 @@ securityhub_delete_members <- function(AccountIds) {
     http_path = "/members/delete",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$delete_members_input(AccountIds = AccountIds)
   output <- .securityhub$delete_members_output()
@@ -1258,7 +1294,8 @@ securityhub_describe_action_targets <- function(ActionTargetArns = NULL, NextTok
     http_path = "/actionTargets/get",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ActionTargets"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$describe_action_targets_input(ActionTargetArns = ActionTargetArns, NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$describe_action_targets_output()
@@ -1290,7 +1327,8 @@ securityhub_describe_hub <- function(HubArn = NULL) {
     http_path = "/accounts",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$describe_hub_input(HubArn = HubArn)
   output <- .securityhub$describe_hub_output()
@@ -1322,7 +1360,8 @@ securityhub_describe_organization_configuration <- function() {
     http_path = "/organization/configuration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$describe_organization_configuration_input()
   output <- .securityhub$describe_organization_configuration_output()
@@ -1357,7 +1396,8 @@ securityhub_describe_products <- function(NextToken = NULL, MaxResults = NULL, P
     http_path = "/products",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Products"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$describe_products_input(NextToken = NextToken, MaxResults = MaxResults, ProductArn = ProductArn)
   output <- .securityhub$describe_products_output()
@@ -1389,7 +1429,8 @@ securityhub_describe_products_v2 <- function(NextToken = NULL, MaxResults = NULL
     http_path = "/productsV2",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ProductsV2"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$describe_products_v2_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$describe_products_v2_output()
@@ -1420,7 +1461,8 @@ securityhub_describe_security_hub_v2 <- function() {
     http_path = "/hubv2",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$describe_security_hub_v2_input()
   output <- .securityhub$describe_security_hub_v2_output()
@@ -1455,7 +1497,8 @@ securityhub_describe_standards <- function(NextToken = NULL, MaxResults = NULL, 
     http_path = "/standards",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Standards"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$describe_standards_input(NextToken = NextToken, MaxResults = MaxResults, Providers = Providers)
   output <- .securityhub$describe_standards_output()
@@ -1490,7 +1533,8 @@ securityhub_describe_standards_controls <- function(StandardsSubscriptionArn, Ne
     http_path = "/standards/controls/{StandardsSubscriptionArn+}",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Controls"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$describe_standards_controls_input(StandardsSubscriptionArn = StandardsSubscriptionArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$describe_standards_controls_output()
@@ -1521,7 +1565,8 @@ securityhub_disable_import_findings_for_product <- function(ProductSubscriptionA
     http_path = "/productSubscriptions/{ProductSubscriptionArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$disable_import_findings_for_product_input(ProductSubscriptionArn = ProductSubscriptionArn)
   output <- .securityhub$disable_import_findings_for_product_output()
@@ -1553,7 +1598,8 @@ securityhub_disable_organization_admin_account <- function(AdminAccountId, Featu
     http_path = "/organization/admin/disable",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$disable_organization_admin_account_input(AdminAccountId = AdminAccountId, Feature = Feature)
   output <- .securityhub$disable_organization_admin_account_output()
@@ -1585,7 +1631,8 @@ securityhub_disable_security_hub <- function() {
     http_path = "/accounts",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$disable_security_hub_input()
   output <- .securityhub$disable_security_hub_output()
@@ -1617,7 +1664,8 @@ securityhub_disable_security_hub_feature_v2 <- function(FeatureName) {
     http_path = "/hubv2/feature/{FeatureName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$disable_security_hub_feature_v2_input(FeatureName = FeatureName)
   output <- .securityhub$disable_security_hub_feature_v2_output()
@@ -1649,7 +1697,8 @@ securityhub_disable_security_hub_v2 <- function() {
     http_path = "/hubv2",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$disable_security_hub_v2_input()
   output <- .securityhub$disable_security_hub_v2_output()
@@ -1681,7 +1730,8 @@ securityhub_disassociate_from_administrator_account <- function() {
     http_path = "/administrator/disassociate",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$disassociate_from_administrator_account_input()
   output <- .securityhub$disassociate_from_administrator_account_output()
@@ -1712,7 +1762,8 @@ securityhub_disassociate_from_master_account <- function() {
     http_path = "/master/disassociate",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$disassociate_from_master_account_input()
   output <- .securityhub$disassociate_from_master_account_output()
@@ -1744,7 +1795,8 @@ securityhub_disassociate_members <- function(AccountIds) {
     http_path = "/members/disassociate",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$disassociate_members_input(AccountIds = AccountIds)
   output <- .securityhub$disassociate_members_output()
@@ -1775,7 +1827,8 @@ securityhub_enable_import_findings_for_product <- function(ProductArn) {
     http_path = "/productSubscriptions",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$enable_import_findings_for_product_input(ProductArn = ProductArn)
   output <- .securityhub$enable_import_findings_for_product_output()
@@ -1808,7 +1861,8 @@ securityhub_enable_organization_admin_account <- function(AdminAccountId, Featur
     http_path = "/organization/admin/enable",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$enable_organization_admin_account_input(AdminAccountId = AdminAccountId, Feature = Feature)
   output <- .securityhub$enable_organization_admin_account_output()
@@ -1846,7 +1900,8 @@ securityhub_enable_security_hub <- function(Tags = NULL, EnableDefaultStandards 
     http_path = "/accounts",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$enable_security_hub_input(Tags = Tags, EnableDefaultStandards = EnableDefaultStandards, ControlFindingGenerator = ControlFindingGenerator)
   output <- .securityhub$enable_security_hub_output()
@@ -1878,7 +1933,8 @@ securityhub_enable_security_hub_feature_v2 <- function(FeatureName) {
     http_path = "/hubv2/feature/{FeatureName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$enable_security_hub_feature_v2_input(FeatureName = FeatureName)
   output <- .securityhub$enable_security_hub_feature_v2_output()
@@ -1910,7 +1966,8 @@ securityhub_enable_security_hub_v2 <- function(Tags = NULL) {
     http_path = "/hubv2",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$enable_security_hub_v2_input(Tags = Tags)
   output <- .securityhub$enable_security_hub_v2_output()
@@ -1942,7 +1999,8 @@ securityhub_generate_recommended_policy_v2 <- function(MetadataUid) {
     http_path = "/recommendedPolicyV2/{MetadataUid}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$generate_recommended_policy_v2_input(MetadataUid = MetadataUid)
   output <- .securityhub$generate_recommended_policy_v2_output()
@@ -1974,7 +2032,8 @@ securityhub_get_administrator_account <- function() {
     http_path = "/administrator",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$get_administrator_account_input()
   output <- .securityhub$get_administrator_account_output()
@@ -2005,7 +2064,8 @@ securityhub_get_aggregator_v2 <- function(AggregatorV2Arn) {
     http_path = "/aggregatorv2/get/{AggregatorV2Arn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$get_aggregator_v2_input(AggregatorV2Arn = AggregatorV2Arn)
   output <- .securityhub$get_aggregator_v2_output()
@@ -2036,7 +2096,8 @@ securityhub_get_automation_rule_v2 <- function(Identifier) {
     http_path = "/automationrulesv2/{Identifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$get_automation_rule_v2_input(Identifier = Identifier)
   output <- .securityhub$get_automation_rule_v2_output()
@@ -2067,7 +2128,8 @@ securityhub_get_configuration_policy <- function(Identifier) {
     http_path = "/configurationPolicy/get/{Identifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$get_configuration_policy_input(Identifier = Identifier)
   output <- .securityhub$get_configuration_policy_output()
@@ -2099,7 +2161,8 @@ securityhub_get_configuration_policy_association <- function(Target) {
     http_path = "/configurationPolicyAssociation/get",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$get_configuration_policy_association_input(Target = Target)
   output <- .securityhub$get_configuration_policy_association_output()
@@ -2130,7 +2193,8 @@ securityhub_get_connector <- function(ConnectorId) {
     http_path = "/connectors/{ConnectorId+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$get_connector_input(ConnectorId = ConnectorId)
   output <- .securityhub$get_connector_output()
@@ -2162,7 +2226,8 @@ securityhub_get_connector_v2 <- function(ConnectorId) {
     http_path = "/connectorsv2/{ConnectorId+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$get_connector_v2_input(ConnectorId = ConnectorId)
   output <- .securityhub$get_connector_v2_output()
@@ -2198,7 +2263,8 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
     http_path = "/standards/get",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "StandardsSubscriptions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$get_enabled_standards_input(StandardsSubscriptionArns = StandardsSubscriptionArns, NextToken = NextToken, MaxResults = MaxResults, Providers = Providers)
   output <- .securityhub$get_enabled_standards_output()
@@ -2229,7 +2295,8 @@ securityhub_get_finding_aggregator <- function(FindingAggregatorArn) {
     http_path = "/findingAggregator/get/{FindingAggregatorArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$get_finding_aggregator_input(FindingAggregatorArn = FindingAggregatorArn)
   output <- .securityhub$get_finding_aggregator_output()
@@ -2272,7 +2339,8 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
     http_path = "/findingHistory/get",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Records"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$get_finding_history_input(FindingIdentifier = FindingIdentifier, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$get_finding_history_output()
@@ -2310,7 +2378,8 @@ securityhub_get_finding_statistics_v2 <- function(GroupByRules, Scopes = NULL, S
     http_path = "/findingsv2/statistics",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$get_finding_statistics_v2_input(GroupByRules = GroupByRules, Scopes = Scopes, SortOrder = SortOrder, MaxStatisticResults = MaxStatisticResults)
   output <- .securityhub$get_finding_statistics_v2_output()
@@ -2350,7 +2419,8 @@ securityhub_get_findings <- function(Filters = NULL, SortCriteria = NULL, NextTo
     http_path = "/findings",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Findings"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$get_findings_input(Filters = Filters, SortCriteria = SortCriteria, NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$get_findings_output()
@@ -2385,7 +2455,8 @@ securityhub_get_findings_trends_v2 <- function(Filters = NULL, StartTime, EndTim
     http_path = "/findingsTrendsv2",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TrendsMetrics"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$get_findings_trends_v2_input(Filters = Filters, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$get_findings_trends_v2_output()
@@ -2424,7 +2495,8 @@ securityhub_get_findings_v2 <- function(Filters = NULL, Scopes = NULL, SortCrite
     http_path = "/findingsv2",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Findings"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$get_findings_v2_input(Filters = Filters, Scopes = Scopes, SortCriteria = SortCriteria, NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$get_findings_v2_output()
@@ -2456,7 +2528,8 @@ securityhub_get_insight_results <- function(InsightArn) {
     http_path = "/insights/results/{InsightArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$get_insight_results_input(InsightArn = InsightArn)
   output <- .securityhub$get_insight_results_output()
@@ -2491,7 +2564,8 @@ securityhub_get_insights <- function(InsightArns = NULL, NextToken = NULL, MaxRe
     http_path = "/insights/get",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Insights"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$get_insights_input(InsightArns = InsightArns, NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$get_insights_output()
@@ -2523,7 +2597,8 @@ securityhub_get_invitations_count <- function() {
     http_path = "/invitations/count",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$get_invitations_count_input()
   output <- .securityhub$get_invitations_count_output()
@@ -2554,7 +2629,8 @@ securityhub_get_master_account <- function() {
     http_path = "/master",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$get_master_account_input()
   output <- .securityhub$get_master_account_output()
@@ -2586,7 +2662,8 @@ securityhub_get_members <- function(AccountIds) {
     http_path = "/members/get",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$get_members_input(AccountIds = AccountIds)
   output <- .securityhub$get_members_output()
@@ -2619,7 +2696,8 @@ securityhub_get_recommended_policy_v2 <- function(MetadataUid, NextToken = NULL,
     http_path = "/recommendedPolicyV2/{MetadataUid}",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RecommendationSteps"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$get_recommended_policy_v2_input(MetadataUid = MetadataUid, NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$get_recommended_policy_v2_output()
@@ -2630,6 +2708,45 @@ securityhub_get_recommended_policy_v2 <- function(MetadataUid, NextToken = NULL,
   return(response)
 }
 .securityhub$operations$get_recommended_policy_v2 <- securityhub_get_recommended_policy_v2
+
+#' Retrieves remediation targets for the account, or for all member
+#' accounts if the caller is the delegated administrator
+#'
+#' @description
+#' Retrieves remediation targets for the account, or for all member accounts if the caller is the delegated administrator. Results are sorted by priority, highest first, and are paginated. Use `TargetUid` or `MetadataUid` to scope the request to a single target or finding.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_get_remediations_v2/](https://www.paws-r-sdk.com/docs/securityhub_get_remediations_v2/) for full documentation.
+#'
+#' @param TargetUid The unique identifier (ID) of an existing remediation target to return. Returns the single matching target. You can't use `TargetUid` together with `MetadataUid` or `Filters`.
+#' @param MetadataUid The unique identifier (ID) of the Security Hub exposure finding, found under the `metadata.uid` field of the finding. Returns the remediation targets associated with that finding. You can't use `MetadataUid` together with `TargetUid` or `Filters`.
+#' @param Filters Filters remediation targets based on a set of criteria. You can't use `Filters` together with `TargetUid` or `MetadataUid`.
+#' @param ShowGuidance Specifies whether to show remediation target guidance.
+#' @param GuidanceFormat The format of the remediation guidance examples to return. Valid values are `All`, `AwsCli`, `Cli`, `Python`, `Terraform`, `Cdk`, `CloudFormation`, `IaC`, and `Template`. If you don't specify a value, all formats are returned. Applies only when `ShowGuidance` is `true`.
+#' @param MaxResults The maximum number of results to return. Valid range is 1-100. If you don't specify a value, the operation returns up to 25 results.
+#' @param NextToken The token used to paginate the remediations target list returned. On your first call to [`get_remediations_v2`][securityhub_get_remediations_v2], omit this parameter or set it to `NULL`. For subsequent calls, use the `NextToken` value returned in the previous response to retrieve the next page of results.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_get_remediations_v2
+securityhub_get_remediations_v2 <- function(TargetUid = NULL, MetadataUid = NULL, Filters = NULL, ShowGuidance = NULL, GuidanceFormat = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "GetRemediationsV2",
+    http_method = "POST",
+    http_path = "/GetRemediationsV2",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items"),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .securityhub$get_remediations_v2_input(TargetUid = TargetUid, MetadataUid = MetadataUid, Filters = Filters, ShowGuidance = ShowGuidance, GuidanceFormat = GuidanceFormat, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .securityhub$get_remediations_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$get_remediations_v2 <- securityhub_get_remediations_v2
 
 #' Retrieves statistical information about Amazon Web Services resources
 #' and their associated security findings
@@ -2658,7 +2775,8 @@ securityhub_get_resources_statistics_v2 <- function(GroupByRules, Scopes = NULL,
     http_path = "/resourcesv2/statistics",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$get_resources_statistics_v2_input(GroupByRules = GroupByRules, Scopes = Scopes, SortOrder = SortOrder, MaxStatisticResults = MaxStatisticResults)
   output <- .securityhub$get_resources_statistics_v2_output()
@@ -2693,7 +2811,8 @@ securityhub_get_resources_trends_v2 <- function(Filters = NULL, StartTime, EndTi
     http_path = "/resourcesTrendsv2",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TrendsMetrics"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$get_resources_trends_v2_input(Filters = Filters, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$get_resources_trends_v2_output()
@@ -2732,7 +2851,8 @@ securityhub_get_resources_v2 <- function(Filters = NULL, Scopes = NULL, SortCrit
     http_path = "/resourcesv2",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Resources"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$get_resources_v2_input(Filters = Filters, Scopes = Scopes, SortCriteria = SortCriteria, NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$get_resources_v2_output()
@@ -2763,7 +2883,8 @@ securityhub_get_security_control_definition <- function(SecurityControlId) {
     http_path = "/securityControl/definition",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$get_security_control_definition_input(SecurityControlId = SecurityControlId)
   output <- .securityhub$get_security_control_definition_output()
@@ -2795,7 +2916,8 @@ securityhub_invite_members <- function(AccountIds) {
     http_path = "/members/invite",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$invite_members_input(AccountIds = AccountIds)
   output <- .securityhub$invite_members_output()
@@ -2827,7 +2949,8 @@ securityhub_list_aggregators_v2 <- function(NextToken = NULL, MaxResults = NULL)
     http_path = "/aggregatorv2/list",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AggregatorsV2"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$list_aggregators_v2_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$list_aggregators_v2_output()
@@ -2859,7 +2982,8 @@ securityhub_list_automation_rules <- function(NextToken = NULL, MaxResults = NUL
     http_path = "/automationrules/list",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$list_automation_rules_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$list_automation_rules_output()
@@ -2891,7 +3015,8 @@ securityhub_list_automation_rules_v2 <- function(NextToken = NULL, MaxResults = 
     http_path = "/automationrulesv2/list",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$list_automation_rules_v2_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$list_automation_rules_v2_output()
@@ -2924,7 +3049,8 @@ securityhub_list_configuration_policies <- function(NextToken = NULL, MaxResults
     http_path = "/configurationPolicy/list",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ConfigurationPolicySummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$list_configuration_policies_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$list_configuration_policies_output()
@@ -2958,7 +3084,8 @@ securityhub_list_configuration_policy_associations <- function(NextToken = NULL,
     http_path = "/configurationPolicyAssociation/list",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ConfigurationPolicyAssociationSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$list_configuration_policy_associations_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .securityhub$list_configuration_policy_associations_output()
@@ -2993,7 +3120,8 @@ securityhub_list_connectors <- function(NextToken = NULL, MaxResults = NULL, Pro
     http_path = "/connectors",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$list_connectors_input(NextToken = NextToken, MaxResults = MaxResults, ProviderName = ProviderName, ConnectorStatus = ConnectorStatus, EnablementStatus = EnablementStatus)
   output <- .securityhub$list_connectors_output()
@@ -3029,7 +3157,8 @@ securityhub_list_connectors_v2 <- function(NextToken = NULL, MaxResults = NULL, 
     http_path = "/connectorsv2",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$list_connectors_v2_input(NextToken = NextToken, MaxResults = MaxResults, ProviderName = ProviderName, ConnectorStatus = ConnectorStatus, EnablementStatus = EnablementStatus)
   output <- .securityhub$list_connectors_v2_output()
@@ -3064,7 +3193,8 @@ securityhub_list_enabled_products_for_import <- function(NextToken = NULL, MaxRe
     http_path = "/productSubscriptions",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ProductSubscriptions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$list_enabled_products_for_import_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$list_enabled_products_for_import_output()
@@ -3075,6 +3205,40 @@ securityhub_list_enabled_products_for_import <- function(NextToken = NULL, MaxRe
   return(response)
 }
 .securityhub$operations$list_enabled_products_for_import <- securityhub_list_enabled_products_for_import
+
+#' Retrieves the exposure findings tied to a specific remediation target
+#'
+#' @description
+#' Retrieves the exposure findings tied to a specific remediation target. Results are sorted by previous severity, highest first, and are paginated.
+#'
+#' See [https://www.paws-r-sdk.com/docs/securityhub_list_exposures_by_remediation_v2/](https://www.paws-r-sdk.com/docs/securityhub_list_exposures_by_remediation_v2/) for full documentation.
+#'
+#' @param TargetUid &#91;required&#93; The unique identifier (ID) of an existing remediation target to list exposure findings for.
+#' @param MaxResults The maximum number of results to return. Valid range is 1-100. If you don't specify a value, the operation returns up to 25 results.
+#' @param NextToken The token used to paginate the exposures list returned. On your first call to [`list_exposures_by_remediation_v2`][securityhub_list_exposures_by_remediation_v2], omit this parameter or set it to `NULL`. For subsequent calls, use the `NextToken` value returned in the previous response to retrieve the next page of results.
+#'
+#' @keywords internal
+#'
+#' @rdname securityhub_list_exposures_by_remediation_v2
+securityhub_list_exposures_by_remediation_v2 <- function(TargetUid, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListExposuresByRemediationV2",
+    http_method = "POST",
+    http_path = "/ListExposuresByRemediationV2",
+    host_prefix = "",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items"),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .securityhub$list_exposures_by_remediation_v2_input(TargetUid = TargetUid, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .securityhub$list_exposures_by_remediation_v2_output()
+  config <- get_config()
+  svc <- .securityhub$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.securityhub$operations$list_exposures_by_remediation_v2 <- securityhub_list_exposures_by_remediation_v2
 
 #' If cross-Region aggregation is enabled, then ListFindingAggregators
 #' returns the Amazon Resource Name (ARN) of the finding aggregator
@@ -3097,7 +3261,8 @@ securityhub_list_finding_aggregators <- function(NextToken = NULL, MaxResults = 
     http_path = "/findingAggregator/list",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FindingAggregators"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$list_finding_aggregators_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$list_finding_aggregators_output()
@@ -3135,7 +3300,8 @@ securityhub_list_free_trial_statuses_v2 <- function(AccountIds = NULL, Statuses 
     http_path = "/freetrial/statusv2/list",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AccountFreeTrialStatuses"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$list_free_trial_statuses_v2_input(AccountIds = AccountIds, Statuses = Statuses, MaxResults = MaxResults, NextToken = NextToken)
   output <- .securityhub$list_free_trial_statuses_v2_output()
@@ -3170,7 +3336,8 @@ securityhub_list_invitations <- function(MaxResults = NULL, NextToken = NULL) {
     http_path = "/invitations",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Invitations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$list_invitations_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .securityhub$list_invitations_output()
@@ -3210,7 +3377,8 @@ securityhub_list_members <- function(OnlyAssociated = NULL, MaxResults = NULL, N
     http_path = "/members",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Members"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$list_members_input(OnlyAssociated = OnlyAssociated, MaxResults = MaxResults, NextToken = NextToken)
   output <- .securityhub$list_members_output()
@@ -3243,7 +3411,8 @@ securityhub_list_organization_admin_accounts <- function(MaxResults = NULL, Next
     http_path = "/organization/admin",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AdminAccounts"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$list_organization_admin_accounts_input(MaxResults = MaxResults, NextToken = NextToken, Feature = Feature)
   output <- .securityhub$list_organization_admin_accounts_output()
@@ -3277,7 +3446,8 @@ securityhub_list_security_control_definitions <- function(StandardsArn = NULL, N
     http_path = "/securityControls/definitions",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "SecurityControlDefinitions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$list_security_control_definitions_input(StandardsArn = StandardsArn, NextToken = NextToken, MaxResults = MaxResults, Providers = Providers)
   output <- .securityhub$list_security_control_definitions_output()
@@ -3311,7 +3481,8 @@ securityhub_list_standards_control_associations <- function(SecurityControlId, N
     http_path = "/associations",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "StandardsControlAssociationSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$list_standards_control_associations_input(SecurityControlId = SecurityControlId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .securityhub$list_standards_control_associations_output()
@@ -3342,7 +3513,8 @@ securityhub_list_tags_for_resource <- function(ResourceArn) {
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .securityhub$list_tags_for_resource_output()
@@ -3375,7 +3547,8 @@ securityhub_register_connector_v2 <- function(AuthCode, AuthState) {
     http_path = "/connectorsv2/register",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$register_connector_v2_input(AuthCode = AuthCode, AuthState = AuthState)
   output <- .securityhub$register_connector_v2_output()
@@ -3408,7 +3581,8 @@ securityhub_start_configuration_policy_association <- function(ConfigurationPoli
     http_path = "/configurationPolicyAssociation/associate",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$start_configuration_policy_association_input(ConfigurationPolicyIdentifier = ConfigurationPolicyIdentifier, Target = Target)
   output <- .securityhub$start_configuration_policy_association_output()
@@ -3441,7 +3615,8 @@ securityhub_start_configuration_policy_disassociation <- function(Target = NULL,
     http_path = "/configurationPolicyAssociation/disassociate",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$start_configuration_policy_disassociation_input(Target = Target, ConfigurationPolicyIdentifier = ConfigurationPolicyIdentifier)
   output <- .securityhub$start_configuration_policy_disassociation_output()
@@ -3473,7 +3648,8 @@ securityhub_tag_resource <- function(ResourceArn, Tags) {
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .securityhub$tag_resource_output()
@@ -3505,7 +3681,8 @@ securityhub_untag_resource <- function(ResourceArn, TagKeys) {
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .securityhub$untag_resource_output()
@@ -3539,7 +3716,8 @@ securityhub_update_action_target <- function(ActionTargetArn, Name = NULL, Descr
     http_path = "/actionTargets/{ActionTargetArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$update_action_target_input(ActionTargetArn = ActionTargetArn, Name = Name, Description = Description)
   output <- .securityhub$update_action_target_output()
@@ -3572,7 +3750,8 @@ securityhub_update_aggregator_v2 <- function(AggregatorV2Arn, RegionLinkingMode,
     http_path = "/aggregatorv2/update/{AggregatorV2Arn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$update_aggregator_v2_input(AggregatorV2Arn = AggregatorV2Arn, RegionLinkingMode = RegionLinkingMode, LinkedRegions = LinkedRegions)
   output <- .securityhub$update_aggregator_v2_output()
@@ -3609,7 +3788,8 @@ securityhub_update_automation_rule_v2 <- function(Identifier, RuleStatus = NULL,
     http_path = "/automationrulesv2/{Identifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$update_automation_rule_v2_input(Identifier = Identifier, RuleStatus = RuleStatus, RuleOrder = RuleOrder, Description = Description, RuleName = RuleName, Criteria = Criteria, Actions = Actions)
   output <- .securityhub$update_automation_rule_v2_output()
@@ -3646,7 +3826,8 @@ securityhub_update_configuration_policy <- function(Identifier, Name = NULL, Des
     http_path = "/configurationPolicy/{Identifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$update_configuration_policy_input(Identifier = Identifier, Name = Name, Description = Description, UpdatedReason = UpdatedReason, ConfigurationPolicy = ConfigurationPolicy)
   output <- .securityhub$update_configuration_policy_output()
@@ -3680,7 +3861,8 @@ securityhub_update_connector <- function(ConnectorId, Description = NULL, Provid
     http_path = "/connectors/{ConnectorId+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$update_connector_input(ConnectorId = ConnectorId, Description = Description, Provider = Provider)
   output <- .securityhub$update_connector_output()
@@ -3714,7 +3896,8 @@ securityhub_update_connector_v2 <- function(ConnectorId, Description = NULL, Pro
     http_path = "/connectorsv2/{ConnectorId+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$update_connector_v2_input(ConnectorId = ConnectorId, Description = Description, Provider = Provider)
   output <- .securityhub$update_connector_v2_output()
@@ -3763,7 +3946,8 @@ securityhub_update_finding_aggregator <- function(FindingAggregatorArn, RegionLi
     http_path = "/findingAggregator/update",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$update_finding_aggregator_input(FindingAggregatorArn = FindingAggregatorArn, RegionLinkingMode = RegionLinkingMode, Regions = Regions)
   output <- .securityhub$update_finding_aggregator_output()
@@ -3796,7 +3980,8 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
     http_path = "/findings",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$update_findings_input(Filters = Filters, Note = Note, RecordState = RecordState)
   output <- .securityhub$update_findings_output()
@@ -3831,7 +4016,8 @@ securityhub_update_insight <- function(InsightArn, Name = NULL, Filters = NULL, 
     http_path = "/insights/{InsightArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$update_insight_input(InsightArn = InsightArn, Name = Name, Filters = Filters, GroupByAttribute = GroupByAttribute)
   output <- .securityhub$update_insight_output()
@@ -3874,7 +4060,8 @@ securityhub_update_organization_configuration <- function(AutoEnable, AutoEnable
     http_path = "/organization/configuration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$update_organization_configuration_input(AutoEnable = AutoEnable, AutoEnableStandards = AutoEnableStandards, OrganizationConfiguration = OrganizationConfiguration)
   output <- .securityhub$update_organization_configuration_output()
@@ -3907,7 +4094,8 @@ securityhub_update_security_control <- function(SecurityControlId, Parameters, L
     http_path = "/securityControl/update",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$update_security_control_input(SecurityControlId = SecurityControlId, Parameters = Parameters, LastUpdateReason = LastUpdateReason)
   output <- .securityhub$update_security_control_output()
@@ -3947,7 +4135,8 @@ securityhub_update_security_hub_configuration <- function(AutoEnableControls = N
     http_path = "/accounts",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$update_security_hub_configuration_input(AutoEnableControls = AutoEnableControls, ControlFindingGenerator = ControlFindingGenerator)
   output <- .securityhub$update_security_hub_configuration_output()
@@ -3981,7 +4170,8 @@ securityhub_update_standards_control <- function(StandardsControlArn, ControlSta
     http_path = "/standards/control/{StandardsControlArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .securityhub$update_standards_control_input(StandardsControlArn = StandardsControlArn, ControlStatus = ControlStatus, DisabledReason = DisabledReason)
   output <- .securityhub$update_standards_control_output()

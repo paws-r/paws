@@ -120,6 +120,7 @@ NULL
 #'  \link[=health_describe_events_for_organization]{describe_events_for_organization} \tab Returns information about events across your organization in Organizations\cr
 #'  \link[=health_describe_event_types]{describe_event_types} \tab Returns the event types that meet the specified filter criteria\cr
 #'  \link[=health_describe_health_service_status_for_organization]{describe_health_service_status_for_organization} \tab This operation provides status information on enabling or disabling Health to work with your organization\cr
+#'  \link[=health_describe_service_lifecycle]{describe_service_lifecycle} \tab Returns lifecycle information for Amazon Web Services services, including end-of-life dates, version recommendations, and lifecycle events\cr
 #'  \link[=health_disable_health_service_access_for_organization]{disable_health_service_access_for_organization} \tab Disables Health from working with Organizations\cr
 #'  \link[=health_enable_health_service_access_for_organization]{enable_health_service_access_for_organization} \tab Enables Health to work with Organizations
 #' }

@@ -161,7 +161,8 @@ serverlessapplicationrepository_create_application <- function(Author, Descripti
     http_path = "/applications",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .serverlessapplicationrepository$create_application_input(Author = Author, Description = Description, HomePageUrl = HomePageUrl, Labels = Labels, LicenseBody = LicenseBody, LicenseUrl = LicenseUrl, Name = Name, ReadmeBody = ReadmeBody, ReadmeUrl = ReadmeUrl, SemanticVersion = SemanticVersion, SourceCodeArchiveUrl = SourceCodeArchiveUrl, SourceCodeUrl = SourceCodeUrl, SpdxLicenseId = SpdxLicenseId, TemplateBody = TemplateBody, TemplateUrl = TemplateUrl)
   output <- .serverlessapplicationrepository$create_application_output()
@@ -254,7 +255,8 @@ serverlessapplicationrepository_create_application_version <- function(Applicati
     http_path = "/applications/{applicationId}/versions/{semanticVersion}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .serverlessapplicationrepository$create_application_version_input(ApplicationId = ApplicationId, SemanticVersion = SemanticVersion, SourceCodeArchiveUrl = SourceCodeArchiveUrl, SourceCodeUrl = SourceCodeUrl, TemplateBody = TemplateBody, TemplateUrl = TemplateUrl)
   output <- .serverlessapplicationrepository$create_application_version_output()
@@ -401,7 +403,8 @@ serverlessapplicationrepository_create_cloud_formation_change_set <- function(Ap
     http_path = "/applications/{applicationId}/changesets",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .serverlessapplicationrepository$create_cloud_formation_change_set_input(ApplicationId = ApplicationId, Capabilities = Capabilities, ChangeSetName = ChangeSetName, ClientToken = ClientToken, Description = Description, NotificationArns = NotificationArns, ParameterOverrides = ParameterOverrides, ResourceTypes = ResourceTypes, RollbackConfiguration = RollbackConfiguration, SemanticVersion = SemanticVersion, StackName = StackName, Tags = Tags, TemplateId = TemplateId)
   output <- .serverlessapplicationrepository$create_cloud_formation_change_set_output()
@@ -461,7 +464,8 @@ serverlessapplicationrepository_create_cloud_formation_template <- function(Appl
     http_path = "/applications/{applicationId}/templates",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .serverlessapplicationrepository$create_cloud_formation_template_input(ApplicationId = ApplicationId, SemanticVersion = SemanticVersion)
   output <- .serverlessapplicationrepository$create_cloud_formation_template_output()
@@ -505,7 +509,8 @@ serverlessapplicationrepository_delete_application <- function(ApplicationId) {
     http_path = "/applications/{applicationId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .serverlessapplicationrepository$delete_application_input(ApplicationId = ApplicationId)
   output <- .serverlessapplicationrepository$delete_application_output()
@@ -603,7 +608,8 @@ serverlessapplicationrepository_get_application <- function(ApplicationId, Seman
     http_path = "/applications/{applicationId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .serverlessapplicationrepository$get_application_input(ApplicationId = ApplicationId, SemanticVersion = SemanticVersion)
   output <- .serverlessapplicationrepository$get_application_output()
@@ -665,7 +671,8 @@ serverlessapplicationrepository_get_application_policy <- function(ApplicationId
     http_path = "/applications/{applicationId}/policy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .serverlessapplicationrepository$get_application_policy_input(ApplicationId = ApplicationId)
   output <- .serverlessapplicationrepository$get_application_policy_output()
@@ -725,7 +732,8 @@ serverlessapplicationrepository_get_cloud_formation_template <- function(Applica
     http_path = "/applications/{applicationId}/templates/{templateId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .serverlessapplicationrepository$get_cloud_formation_template_input(ApplicationId = ApplicationId, TemplateId = TemplateId)
   output <- .serverlessapplicationrepository$get_cloud_formation_template_output()
@@ -787,7 +795,8 @@ serverlessapplicationrepository_list_application_dependencies <- function(Applic
     http_path = "/applications/{applicationId}/dependencies",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxItems", output_token = "NextToken", result_key = "Dependencies"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .serverlessapplicationrepository$list_application_dependencies_input(ApplicationId = ApplicationId, MaxItems = MaxItems, NextToken = NextToken, SemanticVersion = SemanticVersion)
   output <- .serverlessapplicationrepository$list_application_dependencies_output()
@@ -849,7 +858,8 @@ serverlessapplicationrepository_list_application_versions <- function(Applicatio
     http_path = "/applications/{applicationId}/versions",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxItems", output_token = "NextToken", result_key = "Versions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .serverlessapplicationrepository$list_application_versions_input(ApplicationId = ApplicationId, MaxItems = MaxItems, NextToken = NextToken)
   output <- .serverlessapplicationrepository$list_application_versions_output()
@@ -914,7 +924,8 @@ serverlessapplicationrepository_list_applications <- function(MaxItems = NULL, N
     http_path = "/applications",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxItems", output_token = "NextToken", result_key = "Applications"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .serverlessapplicationrepository$list_applications_input(MaxItems = MaxItems, NextToken = NextToken)
   output <- .serverlessapplicationrepository$list_applications_output()
@@ -995,7 +1006,8 @@ serverlessapplicationrepository_put_application_policy <- function(ApplicationId
     http_path = "/applications/{applicationId}/policy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .serverlessapplicationrepository$put_application_policy_input(ApplicationId = ApplicationId, Statements = Statements)
   output <- .serverlessapplicationrepository$put_application_policy_output()
@@ -1044,7 +1056,8 @@ serverlessapplicationrepository_unshare_application <- function(ApplicationId, O
     http_path = "/applications/{applicationId}/unshare",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .serverlessapplicationrepository$unshare_application_input(ApplicationId = ApplicationId, OrganizationId = OrganizationId)
   output <- .serverlessapplicationrepository$unshare_application_output()
@@ -1168,7 +1181,8 @@ serverlessapplicationrepository_update_application <- function(ApplicationId, Au
     http_path = "/applications/{applicationId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .serverlessapplicationrepository$update_application_input(ApplicationId = ApplicationId, Author = Author, Description = Description, HomePageUrl = HomePageUrl, Labels = Labels, ReadmeBody = ReadmeBody, ReadmeUrl = ReadmeUrl)
   output <- .serverlessapplicationrepository$update_application_output()

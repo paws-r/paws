@@ -20,13 +20,15 @@ imagebuilder_import_component(
 )
 }
 \arguments{
-\item{name}{[required] The name of the component.}
+\item{name}{[required] The name of the component. Image Builder generates the component ARN from a normalized form of the name, so names that differ only in case, spaces, or underscores count as the same name. If a component with the same name and semantic version already exists in your account in the same Amazon Web Services Region, the request creates a new build version for it. If the content is also identical to the latest build version, the request fails because the component already exists.}
 
 \item{semanticVersion}{[required] The semantic version of the component. This version follows the semantic version syntax.
 
 The semantic version has four nodes: \<major\>.\<minor\>.\<patch\>/\<build\>. You can assign values for the first three, and can filter on all of them.
 
-\strong{Filtering:} You can use wildcards (x) to specify the most recent versions or nodes when selecting the base image or components for your recipe. When you use a wildcard in any node, all nodes to the right of the first wildcard must also be wildcards.}
+\strong{Assignment:} For the first three nodes, you can assign any positive integer value, including zero. The upper limit is 2^30-1, or 1073741823, for each node. Image Builder automatically assigns the build number to the fourth node.
+
+\strong{Patterns:} You can use any numeric pattern that adheres to the assignment requirements for the nodes that you can assign. For example, you might choose a software version pattern, such as 1.0.0, or a date, such as 2021.01.01.}
 
 \item{description}{The description of the component. Describes the contents of the component.}
 
@@ -38,18 +40,18 @@ The semantic version has four nodes: \<major\>.\<minor\>.\<patch\>/\<build\>. Yo
 
 \item{platform}{[required] The platform of the component.}
 
-\item{data}{The data of the component. Used to specify the data inline. Either \code{data} or \code{uri} can be used to specify the data within the component.}
+\item{data}{The data of the component. For the \code{SHELL} format, this is the plain script content. You must specify exactly one of the \code{data} or \code{uri} properties. For scripts that exceed the inline length constraint, use the \code{uri} property.}
 
 \item{uri}{The uri of the component. Must be an Amazon S3 URL and you must have permission to access the Amazon S3 bucket. If you use Amazon S3, you can specify component content up to your service quota. Either \code{data} or \code{uri} can be used to specify the data within the component.}
 
-\item{kmsKeyId}{The Amazon Resource Name (ARN) that uniquely identifies the KMS key used to encrypt this component. This can be either the Key ARN or the Alias ARN. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN}{Key identifiers (KeyId)} in the \emph{Key Management Service Developer Guide}.}
+\item{kmsKeyId}{The Amazon Resource Name (ARN) of the KMS key that is used to encrypt this component. This can be either the Key ARN or the Alias ARN. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN}{Key identifiers (KeyId)} in the \emph{Key Management Service Developer Guide}. If you don't specify a key, Image Builder encrypts the component data with a KMS key that Image Builder owns.}
 
 \item{tags}{The tags of the component.}
 
-\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
+\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
 }
 \description{
-Imports a component and transforms its data into a component document.
+Imports a component and transforms its data into a component document. For the \code{SHELL} format, Image Builder wraps your script in a component document with a single step that runs the script.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_import_component/} for full documentation.
 }

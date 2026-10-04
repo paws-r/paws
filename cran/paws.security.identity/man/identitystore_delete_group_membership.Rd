@@ -7,9 +7,13 @@
 identitystore_delete_group_membership(IdentityStoreId, MembershipId)
 }
 \arguments{
-\item{IdentityStoreId}{[required] The globally unique identifier for the identity store.}
+\item{IdentityStoreId}{[required] The globally unique identifier for the identity store.
 
-\item{MembershipId}{[required] The identifier for a \code{GroupMembership} in an identity store.}
+You can specify the identity store by ID or by Amazon Resource Name (ARN). For example, identity store ID \code{d-1234567890} or identity store ARN \verb{arn:aws:identitystore::111122223333:identitystore/d-1234567890}.}
+
+\item{MembershipId}{[required] The identifier for a \code{GroupMembership} in an identity store.
+
+You can specify the group membership by ID or by Amazon Resource Name (ARN). For example, membership ID \verb{a1b2c3d4-5678-90ab-cdef-EXAMPLE33333} or membership ARN \verb{arn:aws:identitystore:::membership/a1b2c3d4-5678-90ab-cdef-EXAMPLE33333}.}
 }
 \description{
 Delete a membership within a group given \code{MembershipId}.

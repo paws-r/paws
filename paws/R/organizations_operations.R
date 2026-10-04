@@ -97,7 +97,8 @@ organizations_accept_handshake <- function(HandshakeId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$accept_handshake_input(HandshakeId = HandshakeId)
   output <- .organizations$accept_handshake_output()
@@ -140,6 +141,8 @@ organizations_accept_handshake <- function(HandshakeId) {
 #' -   [S3_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_s3.html)
 #' 
 #' -   [NETWORK_SECURITY_DIRECTOR_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_network_security_director.html)
+#' 
+#' -   [GUARDDUTY_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_guardduty.html)
 #' 
 #' You can only call this operation from the management account or a member account that is a delegated administrator.
 #'
@@ -201,7 +204,8 @@ organizations_attach_policy <- function(PolicyId, TargetId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$attach_policy_input(PolicyId = PolicyId, TargetId = TargetId)
   output <- .organizations$attach_policy_output()
@@ -292,7 +296,8 @@ organizations_cancel_handshake <- function(HandshakeId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$cancel_handshake_input(HandshakeId = HandshakeId)
   output <- .organizations$cancel_handshake_output()
@@ -353,7 +358,8 @@ organizations_close_account <- function(AccountId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$close_account_input(AccountId = AccountId)
   output <- .organizations$close_account_output()
@@ -509,7 +515,8 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$create_account_input(Email = Email, AccountName = AccountName, RoleName = RoleName, IamUserAccessToBilling = IamUserAccessToBilling, Tags = Tags)
   output <- .organizations$create_account_output()
@@ -673,7 +680,8 @@ organizations_create_gov_cloud_account <- function(Email, AccountName, RoleName 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$create_gov_cloud_account_input(Email = Email, AccountName = AccountName, RoleName = RoleName, IamUserAccessToBilling = IamUserAccessToBilling, Tags = Tags)
   output <- .organizations$create_gov_cloud_account_output()
@@ -720,7 +728,7 @@ organizations_create_gov_cloud_account <- function(Email, AccountName, RoleName 
 #'     MasterAccountEmail = "string",
 #'     AvailablePolicyTypes = list(
 #'       list(
-#'         Type = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY",
+#'         Type = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY"|"GUARDDUTY_POLICY",
 #'         Status = "ENABLED"|"PENDING_ENABLE"|"PENDING_DISABLE"
 #'       )
 #'     )
@@ -768,7 +776,8 @@ organizations_create_organization <- function(FeatureSet = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$create_organization_input(FeatureSet = FeatureSet)
   output <- .organizations$create_organization_output()
@@ -857,7 +866,8 @@ organizations_create_organizational_unit <- function(ParentId, Name, Tags = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$create_organizational_unit_input(ParentId = ParentId, Name = Name, Tags = Tags)
   output <- .organizations$create_organizational_unit_output()
@@ -918,6 +928,8 @@ organizations_create_organizational_unit <- function(ParentId, Name, Tags = NULL
 #' -   [S3_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_s3.html)
 #' 
 #' -   [NETWORK_SECURITY_DIRECTOR_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_network_security_director.html)
+#' 
+#' -   [GUARDDUTY_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_guardduty.html)
 #' @param Tags A list of tags that you want to attach to the newly created policy. For each tag in the list, you must specify both a tag key and a value. You can set the value to an empty string, but you can't set it to `null`. For more information about tagging, see [Tagging Organizations resources](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html) in the Organizations User Guide.
 #' 
 #' If any one of the tags is not valid or if you exceed the allowed number of tags for a policy, then the entire request fails and the policy is not created.
@@ -932,7 +944,7 @@ organizations_create_organizational_unit <- function(ParentId, Name, Tags = NULL
 #'       Arn = "string",
 #'       Name = "string",
 #'       Description = "string",
-#'       Type = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY",
+#'       Type = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY"|"GUARDDUTY_POLICY",
 #'       AwsManaged = TRUE|FALSE
 #'     ),
 #'     Content = "string"
@@ -946,7 +958,7 @@ organizations_create_organizational_unit <- function(ParentId, Name, Tags = NULL
 #'   Content = "string",
 #'   Description = "string",
 #'   Name = "string",
-#'   Type = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY",
+#'   Type = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY"|"GUARDDUTY_POLICY",
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
@@ -986,7 +998,8 @@ organizations_create_policy <- function(Content, Description, Name, Type, Tags =
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$create_policy_input(Content = Content, Description = Description, Name = Name, Type = Type, Tags = Tags)
   output <- .organizations$create_policy_output()
@@ -1075,7 +1088,8 @@ organizations_decline_handshake <- function(HandshakeId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$decline_handshake_input(HandshakeId = HandshakeId)
   output <- .organizations$decline_handshake_output()
@@ -1116,7 +1130,8 @@ organizations_delete_organization <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$delete_organization_input()
   output <- .organizations$delete_organization_output()
@@ -1175,7 +1190,8 @@ organizations_delete_organizational_unit <- function(OrganizationalUnitId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$delete_organizational_unit_input(OrganizationalUnitId = OrganizationalUnitId)
   output <- .organizations$delete_organizational_unit_output()
@@ -1235,7 +1251,8 @@ organizations_delete_policy <- function(PolicyId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$delete_policy_input(PolicyId = PolicyId)
   output <- .organizations$delete_policy_output()
@@ -1276,7 +1293,8 @@ organizations_delete_resource_policy <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$delete_resource_policy_input()
   output <- .organizations$delete_resource_policy_output()
@@ -1332,7 +1350,8 @@ organizations_deregister_delegated_administrator <- function(AccountId, ServiceP
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$deregister_delegated_administrator_input(AccountId = AccountId, ServicePrincipal = ServicePrincipal)
   output <- .organizations$deregister_delegated_administrator_output()
@@ -1408,7 +1427,8 @@ organizations_describe_account <- function(AccountId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$describe_account_input(AccountId = AccountId)
   output <- .organizations$describe_account_output()
@@ -1487,7 +1507,8 @@ organizations_describe_create_account_status <- function(CreateAccountRequestId)
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$describe_create_account_status_input(CreateAccountRequestId = CreateAccountRequestId)
   output <- .organizations$describe_create_account_status_output()
@@ -1537,6 +1558,8 @@ organizations_describe_create_account_status <- function(CreateAccountRequestId)
 #' -   [S3_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_s3.html)
 #' 
 #' -   [NETWORK_SECURITY_DIRECTOR_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_network_security_director.html)
+#' 
+#' -   [GUARDDUTY_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_guardduty.html)
 #' @param TargetId When you're signed in as the management account, specify the ID of the account that you want details about. Specifying an organization root or organizational unit (OU) as the target is not supported.
 #'
 #' @return
@@ -1549,7 +1572,7 @@ organizations_describe_create_account_status <- function(CreateAccountRequestId)
 #'       "2015-01-01"
 #'     ),
 #'     TargetId = "string",
-#'     PolicyType = "TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY"
+#'     PolicyType = "TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY"|"GUARDDUTY_POLICY"
 #'   )
 #' )
 #' ```
@@ -1557,7 +1580,7 @@ organizations_describe_create_account_status <- function(CreateAccountRequestId)
 #' @section Request syntax:
 #' ```
 #' svc$describe_effective_policy(
-#'   PolicyType = "TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY",
+#'   PolicyType = "TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY"|"GUARDDUTY_POLICY",
 #'   TargetId = "string"
 #' )
 #' ```
@@ -1574,7 +1597,8 @@ organizations_describe_effective_policy <- function(PolicyType, TargetId = NULL)
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$describe_effective_policy_input(PolicyType = PolicyType, TargetId = TargetId)
   output <- .organizations$describe_effective_policy_output()
@@ -1664,7 +1688,8 @@ organizations_describe_handshake <- function(HandshakeId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$describe_handshake_input(HandshakeId = HandshakeId)
   output <- .organizations$describe_handshake_output()
@@ -1704,7 +1729,7 @@ organizations_describe_handshake <- function(HandshakeId) {
 #'     MasterAccountEmail = "string",
 #'     AvailablePolicyTypes = list(
 #'       list(
-#'         Type = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY",
+#'         Type = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY"|"GUARDDUTY_POLICY",
 #'         Status = "ENABLED"|"PENDING_ENABLE"|"PENDING_DISABLE"
 #'       )
 #'     )
@@ -1733,7 +1758,8 @@ organizations_describe_organization <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$describe_organization_input()
   output <- .organizations$describe_organization_output()
@@ -1799,7 +1825,8 @@ organizations_describe_organizational_unit <- function(OrganizationalUnitId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$describe_organizational_unit_input(OrganizationalUnitId = OrganizationalUnitId)
   output <- .organizations$describe_organizational_unit_output()
@@ -1835,7 +1862,7 @@ organizations_describe_organizational_unit <- function(OrganizationalUnitId) {
 #'       Arn = "string",
 #'       Name = "string",
 #'       Description = "string",
-#'       Type = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY",
+#'       Type = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY"|"GUARDDUTY_POLICY",
 #'       AwsManaged = TRUE|FALSE
 #'     ),
 #'     Content = "string"
@@ -1871,7 +1898,8 @@ organizations_describe_policy <- function(PolicyId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$describe_policy_input(PolicyId = PolicyId)
   output <- .organizations$describe_policy_output()
@@ -1923,7 +1951,8 @@ organizations_describe_resource_policy <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$describe_resource_policy_input()
   output <- .organizations$describe_resource_policy_output()
@@ -1993,7 +2022,8 @@ organizations_describe_responsibility_transfer <- function(Id) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$describe_responsibility_transfer_input(Id = Id)
   output <- .organizations$describe_responsibility_transfer_output()
@@ -2065,7 +2095,8 @@ organizations_detach_policy <- function(PolicyId, TargetId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$detach_policy_input(PolicyId = PolicyId, TargetId = TargetId)
   output <- .organizations$detach_policy_output()
@@ -2130,7 +2161,8 @@ organizations_disable_aws_service_access <- function(ServicePrincipal) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$disable_aws_service_access_input(ServicePrincipal = ServicePrincipal)
   output <- .organizations$disable_aws_service_access_output()
@@ -2186,6 +2218,8 @@ organizations_disable_aws_service_access <- function(ServicePrincipal) {
 #' -   [S3_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_s3.html)
 #' 
 #' -   [NETWORK_SECURITY_DIRECTOR_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_network_security_director.html)
+#' 
+#' -   [GUARDDUTY_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_guardduty.html)
 #'
 #' @return
 #' A list with the following syntax:
@@ -2197,7 +2231,7 @@ organizations_disable_aws_service_access <- function(ServicePrincipal) {
 #'     Name = "string",
 #'     PolicyTypes = list(
 #'       list(
-#'         Type = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY",
+#'         Type = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY"|"GUARDDUTY_POLICY",
 #'         Status = "ENABLED"|"PENDING_ENABLE"|"PENDING_DISABLE"
 #'       )
 #'     )
@@ -2209,7 +2243,7 @@ organizations_disable_aws_service_access <- function(ServicePrincipal) {
 #' ```
 #' svc$disable_policy_type(
 #'   RootId = "string",
-#'   PolicyType = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY"
+#'   PolicyType = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY"|"GUARDDUTY_POLICY"
 #' )
 #' ```
 #'
@@ -2236,7 +2270,8 @@ organizations_disable_policy_type <- function(RootId, PolicyType) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$disable_policy_type_input(RootId = RootId, PolicyType = PolicyType)
   output <- .organizations$disable_policy_type_output()
@@ -2290,7 +2325,8 @@ organizations_enable_aws_service_access <- function(ServicePrincipal) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$enable_aws_service_access_input(ServicePrincipal = ServicePrincipal)
   output <- .organizations$enable_aws_service_access_output()
@@ -2384,7 +2420,8 @@ organizations_enable_all_features <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$enable_all_features_input()
   output <- .organizations$enable_all_features_output()
@@ -2440,6 +2477,8 @@ organizations_enable_all_features <- function() {
 #' -   [S3_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_s3.html)
 #' 
 #' -   [NETWORK_SECURITY_DIRECTOR_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_network_security_director.html)
+#' 
+#' -   [GUARDDUTY_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_guardduty.html)
 #'
 #' @return
 #' A list with the following syntax:
@@ -2451,7 +2490,7 @@ organizations_enable_all_features <- function() {
 #'     Name = "string",
 #'     PolicyTypes = list(
 #'       list(
-#'         Type = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY",
+#'         Type = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY"|"GUARDDUTY_POLICY",
 #'         Status = "ENABLED"|"PENDING_ENABLE"|"PENDING_DISABLE"
 #'       )
 #'     )
@@ -2463,7 +2502,7 @@ organizations_enable_all_features <- function() {
 #' ```
 #' svc$enable_policy_type(
 #'   RootId = "string",
-#'   PolicyType = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY"
+#'   PolicyType = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY"|"GUARDDUTY_POLICY"
 #' )
 #' ```
 #'
@@ -2490,7 +2529,8 @@ organizations_enable_policy_type <- function(RootId, PolicyType) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$enable_policy_type_input(RootId = RootId, PolicyType = PolicyType)
   output <- .organizations$enable_policy_type_output()
@@ -2610,7 +2650,8 @@ organizations_invite_account_to_organization <- function(Target, Notes = NULL, T
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$invite_account_to_organization_input(Target = Target, Notes = Notes, Tags = Tags)
   output <- .organizations$invite_account_to_organization_output()
@@ -2712,7 +2753,8 @@ organizations_invite_organization_to_transfer_responsibility <- function(Type, T
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$invite_organization_to_transfer_responsibility_input(Type = Type, Target = Target, Notes = Notes, StartTimestamp = StartTimestamp, SourceName = SourceName, Tags = Tags)
   output <- .organizations$invite_organization_to_transfer_responsibility_output()
@@ -2782,7 +2824,8 @@ organizations_leave_organization <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$leave_organization_input()
   output <- .organizations$leave_organization_output()
@@ -2847,7 +2890,8 @@ organizations_list_aws_service_access_for_organization <- function(NextToken = N
     http_path = "/",
     host_prefix = "",
     paginator = list(result_key = "EnabledServicePrincipals", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$list_aws_service_access_for_organization_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_aws_service_access_for_organization_output()
@@ -2926,7 +2970,8 @@ organizations_list_accounts <- function(NextToken = NULL, MaxResults = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Accounts"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$list_accounts_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_accounts_output()
@@ -3010,7 +3055,8 @@ organizations_list_accounts_for_parent <- function(ParentId, NextToken = NULL, M
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Accounts"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$list_accounts_for_parent_input(ParentId = ParentId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_accounts_for_parent_output()
@@ -3057,6 +3103,8 @@ organizations_list_accounts_for_parent <- function(ParentId, NextToken = NULL, M
 #' -   [S3_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_s3.html)
 #' 
 #' -   [NETWORK_SECURITY_DIRECTOR_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_network_security_director.html)
+#' 
+#' -   [GUARDDUTY_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_guardduty.html)
 #' @param NextToken The parameter for receiving additional results if you receive a `NextToken` response in a previous request. A `NextToken` response indicates that more output is available. Set this parameter to the value of the previous call's `NextToken` response to indicate where the output should continue from.
 #' @param MaxResults The maximum number of items to return in the response. If more results exist than the specified `MaxResults` value, a token is included in the response so that you can retrieve the remaining results.
 #'
@@ -3081,7 +3129,7 @@ organizations_list_accounts_for_parent <- function(ParentId, NextToken = NULL, M
 #'       )
 #'     )
 #'   ),
-#'   PolicyType = "TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY",
+#'   PolicyType = "TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY"|"GUARDDUTY_POLICY",
 #'   NextToken = "string"
 #' )
 #' ```
@@ -3089,7 +3137,7 @@ organizations_list_accounts_for_parent <- function(ParentId, NextToken = NULL, M
 #' @section Request syntax:
 #' ```
 #' svc$list_accounts_with_invalid_effective_policy(
-#'   PolicyType = "TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY",
+#'   PolicyType = "TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY"|"GUARDDUTY_POLICY",
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -3107,7 +3155,8 @@ organizations_list_accounts_with_invalid_effective_policy <- function(PolicyType
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Accounts"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$list_accounts_with_invalid_effective_policy_input(PolicyType = PolicyType, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_accounts_with_invalid_effective_policy_output()
@@ -3189,7 +3238,8 @@ organizations_list_children <- function(ParentId, ChildType, NextToken = NULL, M
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Children"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$list_children_input(ParentId = ParentId, ChildType = ChildType, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_children_output()
@@ -3284,7 +3334,8 @@ organizations_list_create_account_status <- function(States = NULL, NextToken = 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CreateAccountStatuses"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$list_create_account_status_input(States = States, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_create_account_status_output()
@@ -3360,7 +3411,8 @@ organizations_list_delegated_administrators <- function(ServicePrincipal = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DelegatedAdministrators"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$list_delegated_administrators_input(ServicePrincipal = ServicePrincipal, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_delegated_administrators_output()
@@ -3425,7 +3477,8 @@ organizations_list_delegated_services_for_account <- function(AccountId, NextTok
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DelegatedServices"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$list_delegated_services_for_account_input(AccountId = AccountId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_delegated_services_for_account_output()
@@ -3473,6 +3526,8 @@ organizations_list_delegated_services_for_account <- function(AccountId, NextTok
 #' -   [S3_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_s3.html)
 #' 
 #' -   [NETWORK_SECURITY_DIRECTOR_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_network_security_director.html)
+#' 
+#' -   [GUARDDUTY_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_guardduty.html)
 #' @param NextToken The parameter for receiving additional results if you receive a `NextToken` response in a previous request. A `NextToken` response indicates that more output is available. Set this parameter to the value of the previous call's `NextToken` response to indicate where the output should continue from.
 #' @param MaxResults The maximum number of items to return in the response. If more results exist than the specified `MaxResults` value, a token is included in the response so that you can retrieve the remaining results.
 #'
@@ -3481,7 +3536,7 @@ organizations_list_delegated_services_for_account <- function(AccountId, NextTok
 #' ```
 #' list(
 #'   AccountId = "string",
-#'   PolicyType = "TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY",
+#'   PolicyType = "TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY"|"GUARDDUTY_POLICY",
 #'   Path = "string",
 #'   EvaluationTimestamp = as.POSIXct(
 #'     "2015-01-01"
@@ -3504,7 +3559,7 @@ organizations_list_delegated_services_for_account <- function(AccountId, NextTok
 #' ```
 #' svc$list_effective_policy_validation_errors(
 #'   AccountId = "string",
-#'   PolicyType = "TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY",
+#'   PolicyType = "TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY"|"GUARDDUTY_POLICY",
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -3522,7 +3577,8 @@ organizations_list_effective_policy_validation_errors <- function(AccountId, Pol
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "EffectivePolicyValidationErrors"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$list_effective_policy_validation_errors_input(AccountId = AccountId, PolicyType = PolicyType, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_effective_policy_validation_errors_output()
@@ -3619,7 +3675,8 @@ organizations_list_handshakes_for_account <- function(Filter = NULL, NextToken =
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Handshakes"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$list_handshakes_for_account_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_handshakes_for_account_output()
@@ -3716,7 +3773,8 @@ organizations_list_handshakes_for_organization <- function(Filter = NULL, NextTo
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Handshakes"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$list_handshakes_for_organization_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_handshakes_for_organization_output()
@@ -3799,7 +3857,8 @@ organizations_list_inbound_responsibility_transfers <- function(Type, Id = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$list_inbound_responsibility_transfers_input(Type = Type, Id = Id, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_inbound_responsibility_transfers_output()
@@ -3881,7 +3940,8 @@ organizations_list_organizational_units_for_parent <- function(ParentId, NextTok
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "OrganizationalUnits"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$list_organizational_units_for_parent_input(ParentId = ParentId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_organizational_units_for_parent_output()
@@ -3962,7 +4022,8 @@ organizations_list_outbound_responsibility_transfers <- function(Type, NextToken
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$list_outbound_responsibility_transfers_input(Type = Type, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_outbound_responsibility_transfers_output()
@@ -4043,7 +4104,8 @@ organizations_list_parents <- function(ChildId, NextToken = NULL, MaxResults = N
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Parents"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$list_parents_input(ChildId = ChildId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_parents_output()
@@ -4095,6 +4157,8 @@ organizations_list_parents <- function(ChildId, NextToken = NULL, MaxResults = N
 #' -   [S3_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_s3.html)
 #' 
 #' -   [NETWORK_SECURITY_DIRECTOR_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_network_security_director.html)
+#' 
+#' -   [GUARDDUTY_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_guardduty.html)
 #' @param NextToken The parameter for receiving additional results if you receive a `NextToken` response in a previous request. A `NextToken` response indicates that more output is available. Set this parameter to the value of the previous call's `NextToken` response to indicate where the output should continue from.
 #' @param MaxResults The maximum number of items to return in the response. If more results exist than the specified `MaxResults` value, a token is included in the response so that you can retrieve the remaining results.
 #'
@@ -4108,7 +4172,7 @@ organizations_list_parents <- function(ChildId, NextToken = NULL, MaxResults = N
 #'       Arn = "string",
 #'       Name = "string",
 #'       Description = "string",
-#'       Type = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY",
+#'       Type = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY"|"GUARDDUTY_POLICY",
 #'       AwsManaged = TRUE|FALSE
 #'     )
 #'   ),
@@ -4119,7 +4183,7 @@ organizations_list_parents <- function(ChildId, NextToken = NULL, MaxResults = N
 #' @section Request syntax:
 #' ```
 #' svc$list_policies(
-#'   Filter = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY",
+#'   Filter = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY"|"GUARDDUTY_POLICY",
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -4146,7 +4210,8 @@ organizations_list_policies <- function(Filter, NextToken = NULL, MaxResults = N
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Policies"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$list_policies_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_policies_output()
@@ -4208,6 +4273,8 @@ organizations_list_policies <- function(Filter, NextToken = NULL, MaxResults = N
 #' -   [S3_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_s3.html)
 #' 
 #' -   [NETWORK_SECURITY_DIRECTOR_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_network_security_director.html)
+#' 
+#' -   [GUARDDUTY_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_guardduty.html)
 #' @param NextToken The parameter for receiving additional results if you receive a `NextToken` response in a previous request. A `NextToken` response indicates that more output is available. Set this parameter to the value of the previous call's `NextToken` response to indicate where the output should continue from.
 #' @param MaxResults The maximum number of items to return in the response. If more results exist than the specified `MaxResults` value, a token is included in the response so that you can retrieve the remaining results.
 #'
@@ -4221,7 +4288,7 @@ organizations_list_policies <- function(Filter, NextToken = NULL, MaxResults = N
 #'       Arn = "string",
 #'       Name = "string",
 #'       Description = "string",
-#'       Type = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY",
+#'       Type = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY"|"GUARDDUTY_POLICY",
 #'       AwsManaged = TRUE|FALSE
 #'     )
 #'   ),
@@ -4233,7 +4300,7 @@ organizations_list_policies <- function(Filter, NextToken = NULL, MaxResults = N
 #' ```
 #' svc$list_policies_for_target(
 #'   TargetId = "string",
-#'   Filter = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY",
+#'   Filter = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY"|"GUARDDUTY_POLICY",
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -4264,7 +4331,8 @@ organizations_list_policies_for_target <- function(TargetId, Filter, NextToken =
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Policies"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$list_policies_for_target_input(TargetId = TargetId, Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_policies_for_target_output()
@@ -4304,7 +4372,7 @@ organizations_list_policies_for_target <- function(TargetId, Filter, NextToken =
 #'       Name = "string",
 #'       PolicyTypes = list(
 #'         list(
-#'           Type = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY",
+#'           Type = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY"|"GUARDDUTY_POLICY",
 #'           Status = "ENABLED"|"PENDING_ENABLE"|"PENDING_DISABLE"
 #'         )
 #'       )
@@ -4341,7 +4409,8 @@ organizations_list_roots <- function(NextToken = NULL, MaxResults = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Roots"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$list_roots_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_roots_output()
@@ -4420,7 +4489,8 @@ organizations_list_tags_for_resource <- function(ResourceId, NextToken = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Tags"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$list_tags_for_resource_input(ResourceId = ResourceId, NextToken = NextToken)
   output <- .organizations$list_tags_for_resource_output()
@@ -4497,7 +4567,8 @@ organizations_list_targets_for_policy <- function(PolicyId, NextToken = NULL, Ma
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Targets"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$list_targets_for_policy_input(PolicyId = PolicyId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .organizations$list_targets_for_policy_output()
@@ -4574,7 +4645,8 @@ organizations_move_account <- function(AccountId, SourceParentId, DestinationPar
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$move_account_input(AccountId = AccountId, SourceParentId = SourceParentId, DestinationParentId = DestinationParentId)
   output <- .organizations$move_account_output()
@@ -4640,7 +4712,8 @@ organizations_put_resource_policy <- function(Content, Tags = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$put_resource_policy_input(Content = Content, Tags = Tags)
   output <- .organizations$put_resource_policy_output()
@@ -4692,7 +4765,8 @@ organizations_register_delegated_administrator <- function(AccountId, ServicePri
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$register_delegated_administrator_input(AccountId = AccountId, ServicePrincipal = ServicePrincipal)
   output <- .organizations$register_delegated_administrator_output()
@@ -4759,7 +4833,8 @@ organizations_remove_account_from_organization <- function(AccountId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$remove_account_from_organization_input(AccountId = AccountId)
   output <- .organizations$remove_account_from_organization_output()
@@ -4836,7 +4911,8 @@ organizations_tag_resource <- function(ResourceId, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$tag_resource_input(ResourceId = ResourceId, Tags = Tags)
   output <- .organizations$tag_resource_output()
@@ -4912,7 +4988,8 @@ organizations_terminate_responsibility_transfer <- function(Id, EndTimestamp = N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$terminate_responsibility_transfer_input(Id = Id, EndTimestamp = EndTimestamp)
   output <- .organizations$terminate_responsibility_transfer_output()
@@ -4982,7 +5059,8 @@ organizations_untag_resource <- function(ResourceId, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$untag_resource_input(ResourceId = ResourceId, TagKeys = TagKeys)
   output <- .organizations$untag_resource_output()
@@ -5054,7 +5132,8 @@ organizations_update_organizational_unit <- function(OrganizationalUnitId, Name 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$update_organizational_unit_input(OrganizationalUnitId = OrganizationalUnitId, Name = Name)
   output <- .organizations$update_organizational_unit_output()
@@ -5097,7 +5176,7 @@ organizations_update_organizational_unit <- function(OrganizationalUnitId, Name 
 #'       Arn = "string",
 #'       Name = "string",
 #'       Description = "string",
-#'       Type = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY",
+#'       Type = "SERVICE_CONTROL_POLICY"|"RESOURCE_CONTROL_POLICY"|"TAG_POLICY"|"BACKUP_POLICY"|"AISERVICES_OPT_OUT_POLICY"|"CHATBOT_POLICY"|"DECLARATIVE_POLICY_EC2"|"SECURITYHUB_POLICY"|"INSPECTOR_POLICY"|"UPGRADE_ROLLOUT_POLICY"|"BEDROCK_POLICY"|"S3_POLICY"|"NETWORK_SECURITY_DIRECTOR_POLICY"|"GUARDDUTY_POLICY",
 #'       AwsManaged = TRUE|FALSE
 #'     ),
 #'     Content = "string"
@@ -5147,7 +5226,8 @@ organizations_update_policy <- function(PolicyId, Name = NULL, Description = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$update_policy_input(PolicyId = PolicyId, Name = Name, Description = Description, Content = Content)
   output <- .organizations$update_policy_output()
@@ -5221,7 +5301,8 @@ organizations_update_responsibility_transfer <- function(Id, Name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .organizations$update_responsibility_transfer_input(Id = Id, Name = Name)
   output <- .organizations$update_responsibility_transfer_output()

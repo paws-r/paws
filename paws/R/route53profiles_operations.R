@@ -65,7 +65,8 @@ route53profiles_associate_profile <- function(Name, ProfileId, ResourceId, Tags 
     http_path = "/profileassociation",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53profiles$associate_profile_input(Name = Name, ProfileId = ProfileId, ResourceId = ResourceId, Tags = Tags)
   output <- .route53profiles$associate_profile_output()
@@ -139,7 +140,8 @@ route53profiles_associate_resource_to_profile <- function(Name, ProfileId, Resou
     http_path = "/profileresourceassociation",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53profiles$associate_resource_to_profile_input(Name = Name, ProfileId = ProfileId, ResourceArn = ResourceArn, ResourceProperties = ResourceProperties)
   output <- .route53profiles$associate_resource_to_profile_output()
@@ -212,7 +214,8 @@ route53profiles_create_profile <- function(ClientToken, Name, Tags = NULL) {
     http_path = "/profile",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53profiles$create_profile_input(ClientToken = ClientToken, Name = Name, Tags = Tags)
   output <- .route53profiles$create_profile_output()
@@ -276,7 +279,8 @@ route53profiles_delete_profile <- function(ProfileId) {
     http_path = "/profile/{ProfileId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53profiles$delete_profile_input(ProfileId = ProfileId)
   output <- .route53profiles$delete_profile_output()
@@ -341,7 +345,8 @@ route53profiles_disassociate_profile <- function(ProfileId, ResourceId) {
     http_path = "/profileassociation/Profileid/{ProfileId}/resourceid/{ResourceId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53profiles$disassociate_profile_input(ProfileId = ProfileId, ResourceId = ResourceId)
   output <- .route53profiles$disassociate_profile_output()
@@ -409,7 +414,8 @@ route53profiles_disassociate_resource_from_profile <- function(ProfileId, Resour
     http_path = "/profileresourceassociation/profileid/{ProfileId}/resourcearn/{ResourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53profiles$disassociate_resource_from_profile_input(ProfileId = ProfileId, ResourceArn = ResourceArn)
   output <- .route53profiles$disassociate_resource_from_profile_output()
@@ -474,7 +480,8 @@ route53profiles_get_profile <- function(ProfileId) {
     http_path = "/profile/{ProfileId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53profiles$get_profile_input(ProfileId = ProfileId)
   output <- .route53profiles$get_profile_output()
@@ -537,7 +544,8 @@ route53profiles_get_profile_association <- function(ProfileAssociationId) {
     http_path = "/profileassociation/{ProfileAssociationId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53profiles$get_profile_association_input(ProfileAssociationId = ProfileAssociationId)
   output <- .route53profiles$get_profile_association_output()
@@ -604,7 +612,8 @@ route53profiles_get_profile_resource_association <- function(ProfileResourceAsso
     http_path = "/profileresourceassociation/{ProfileResourceAssociationId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53profiles$get_profile_resource_association_input(ProfileResourceAssociationId = ProfileResourceAssociationId)
   output <- .route53profiles$get_profile_resource_association_output()
@@ -682,7 +691,8 @@ route53profiles_list_profile_associations <- function(MaxResults = NULL, NextTok
     http_path = "/profileassociations",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ProfileAssociations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53profiles$list_profile_associations_input(MaxResults = MaxResults, NextToken = NextToken, ProfileId = ProfileId, ResourceId = ResourceId)
   output <- .route53profiles$list_profile_associations_output()
@@ -761,7 +771,8 @@ route53profiles_list_profile_resource_associations <- function(MaxResults = NULL
     http_path = "/profileresourceassociations/profileid/{ProfileId}",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ProfileResourceAssociations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53profiles$list_profile_resource_associations_input(MaxResults = MaxResults, NextToken = NextToken, ProfileId = ProfileId, ResourceType = ResourceType)
   output <- .route53profiles$list_profile_resource_associations_output()
@@ -825,7 +836,8 @@ route53profiles_list_profiles <- function(MaxResults = NULL, NextToken = NULL) {
     http_path = "/profiles",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ProfileSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53profiles$list_profiles_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53profiles$list_profiles_output()
@@ -876,7 +888,8 @@ route53profiles_list_tags_for_resource <- function(ResourceArn) {
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53profiles$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .route53profiles$list_tags_for_resource_output()
@@ -924,7 +937,8 @@ route53profiles_tag_resource <- function(ResourceArn, Tags) {
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53profiles$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .route53profiles$tag_resource_output()
@@ -972,7 +986,8 @@ route53profiles_untag_resource <- function(ResourceArn, TagKeys) {
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53profiles$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .route53profiles$untag_resource_output()
@@ -1044,7 +1059,8 @@ route53profiles_update_profile_resource_association <- function(Name = NULL, Pro
     http_path = "/profileresourceassociation/{ProfileResourceAssociationId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .route53profiles$update_profile_resource_association_input(Name = Name, ProfileResourceAssociationId = ProfileResourceAssociationId, ResourceProperties = ResourceProperties)
   output <- .route53profiles$update_profile_resource_association_output()

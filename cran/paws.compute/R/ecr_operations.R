@@ -24,7 +24,8 @@ ecr_batch_check_layer_availability <- function(registryId = NULL, repositoryName
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$batch_check_layer_availability_input(registryId = registryId, repositoryName = repositoryName, layerDigests = layerDigests)
   output <- .ecr$batch_check_layer_availability_output()
@@ -57,7 +58,8 @@ ecr_batch_delete_image <- function(registryId = NULL, repositoryName, imageIds) 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$batch_delete_image_input(registryId = registryId, repositoryName = repositoryName, imageIds = imageIds)
   output <- .ecr$batch_delete_image_output()
@@ -93,7 +95,8 @@ ecr_batch_get_image <- function(registryId = NULL, repositoryName, imageIds, acc
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$batch_get_image_input(registryId = registryId, repositoryName = repositoryName, imageIds = imageIds, acceptedMediaTypes = acceptedMediaTypes)
   output <- .ecr$batch_get_image_output()
@@ -124,7 +127,8 @@ ecr_batch_get_repository_scanning_configuration <- function(repositoryNames) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$batch_get_repository_scanning_configuration_input(repositoryNames = repositoryNames)
   output <- .ecr$batch_get_repository_scanning_configuration_output()
@@ -159,7 +163,8 @@ ecr_complete_layer_upload <- function(registryId = NULL, repositoryName, uploadI
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$complete_layer_upload_input(registryId = registryId, repositoryName = repositoryName, uploadId = uploadId, layerDigests = layerDigests)
   output <- .ecr$complete_layer_upload_output()
@@ -214,7 +219,8 @@ ecr_create_pull_through_cache_rule <- function(ecrRepositoryPrefix, upstreamRegi
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$create_pull_through_cache_rule_input(ecrRepositoryPrefix = ecrRepositoryPrefix, upstreamRegistryUrl = upstreamRegistryUrl, registryId = registryId, upstreamRegistry = upstreamRegistry, credentialArn = credentialArn, customRoleArn = customRoleArn, upstreamRepositoryPrefix = upstreamRepositoryPrefix)
   output <- .ecr$create_pull_through_cache_rule_output()
@@ -255,7 +261,8 @@ ecr_create_repository <- function(registryId = NULL, repositoryName, tags = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$create_repository_input(registryId = registryId, repositoryName = repositoryName, tags = tags, imageTagMutability = imageTagMutability, imageTagMutabilityExclusionFilters = imageTagMutabilityExclusionFilters, imageScanningConfiguration = imageScanningConfiguration, encryptionConfiguration = encryptionConfiguration)
   output <- .ecr$create_repository_output()
@@ -299,7 +306,8 @@ ecr_create_repository_creation_template <- function(prefix, description = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$create_repository_creation_template_input(prefix = prefix, description = description, encryptionConfiguration = encryptionConfiguration, resourceTags = resourceTags, imageTagMutability = imageTagMutability, imageTagMutabilityExclusionFilters = imageTagMutabilityExclusionFilters, repositoryPolicy = repositoryPolicy, lifecyclePolicy = lifecyclePolicy, appliedFor = appliedFor, customRoleArn = customRoleArn)
   output <- .ecr$create_repository_creation_template_output()
@@ -331,7 +339,8 @@ ecr_delete_lifecycle_policy <- function(registryId = NULL, repositoryName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$delete_lifecycle_policy_input(registryId = registryId, repositoryName = repositoryName)
   output <- .ecr$delete_lifecycle_policy_output()
@@ -363,7 +372,8 @@ ecr_delete_pull_through_cache_rule <- function(ecrRepositoryPrefix, registryId =
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$delete_pull_through_cache_rule_input(ecrRepositoryPrefix = ecrRepositoryPrefix, registryId = registryId)
   output <- .ecr$delete_pull_through_cache_rule_output()
@@ -394,7 +404,8 @@ ecr_delete_registry_policy <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$delete_registry_policy_input()
   output <- .ecr$delete_registry_policy_output()
@@ -427,7 +438,8 @@ ecr_delete_repository <- function(registryId = NULL, repositoryName, force = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$delete_repository_input(registryId = registryId, repositoryName = repositoryName, force = force)
   output <- .ecr$delete_repository_output()
@@ -458,7 +470,8 @@ ecr_delete_repository_creation_template <- function(prefix) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$delete_repository_creation_template_input(prefix = prefix)
   output <- .ecr$delete_repository_creation_template_output()
@@ -490,7 +503,8 @@ ecr_delete_repository_policy <- function(registryId = NULL, repositoryName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$delete_repository_policy_input(registryId = registryId, repositoryName = repositoryName)
   output <- .ecr$delete_repository_policy_output()
@@ -521,7 +535,8 @@ ecr_delete_signing_configuration <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$delete_signing_configuration_input()
   output <- .ecr$delete_signing_configuration_output()
@@ -553,7 +568,8 @@ ecr_deregister_pull_time_update_exclusion <- function(principalArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$deregister_pull_time_update_exclusion_input(principalArn = principalArn)
   output <- .ecr$deregister_pull_time_update_exclusion_output()
@@ -586,7 +602,8 @@ ecr_describe_image_replication_status <- function(repositoryName, imageId, regis
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$describe_image_replication_status_input(repositoryName = repositoryName, imageId = imageId, registryId = registryId)
   output <- .ecr$describe_image_replication_status_output()
@@ -621,7 +638,8 @@ ecr_describe_image_scan_findings <- function(registryId = NULL, repositoryName, 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", non_aggregate_keys = list( "registryId", "repositoryName", "imageId", "imageScanStatus", "imageScanFindings"), output_token = "nextToken", result_key = list( "imageScanFindings.findings", "imageScanFindings.enhancedFindings")),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$describe_image_scan_findings_input(registryId = registryId, repositoryName = repositoryName, imageId = imageId, nextToken = nextToken, maxResults = maxResults)
   output <- .ecr$describe_image_scan_findings_output()
@@ -654,7 +672,8 @@ ecr_describe_image_signing_status <- function(repositoryName, imageId, registryI
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$describe_image_signing_status_input(repositoryName = repositoryName, imageId = imageId, registryId = registryId)
   output <- .ecr$describe_image_signing_status_output()
@@ -690,7 +709,8 @@ ecr_describe_images <- function(registryId = NULL, repositoryName, imageIds = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imageDetails"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$describe_images_input(registryId = registryId, repositoryName = repositoryName, imageIds = imageIds, nextToken = nextToken, maxResults = maxResults, filter = filter)
   output <- .ecr$describe_images_output()
@@ -724,7 +744,8 @@ ecr_describe_pull_through_cache_rules <- function(registryId = NULL, ecrReposito
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "pullThroughCacheRules"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$describe_pull_through_cache_rules_input(registryId = registryId, ecrRepositoryPrefixes = ecrRepositoryPrefixes, nextToken = nextToken, maxResults = maxResults)
   output <- .ecr$describe_pull_through_cache_rules_output()
@@ -755,7 +776,8 @@ ecr_describe_registry <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$describe_registry_input()
   output <- .ecr$describe_registry_output()
@@ -791,7 +813,8 @@ ecr_describe_repositories <- function(registryId = NULL, repositoryNames = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "repositories"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$describe_repositories_input(registryId = registryId, repositoryNames = repositoryNames, nextToken = nextToken, maxResults = maxResults)
   output <- .ecr$describe_repositories_output()
@@ -826,7 +849,8 @@ ecr_describe_repository_creation_templates <- function(prefixes = NULL, nextToke
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", non_aggregate_keys = list( "registryId"), output_token = "nextToken", result_key = "repositoryCreationTemplates"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$describe_repository_creation_templates_input(prefixes = prefixes, nextToken = nextToken, maxResults = maxResults)
   output <- .ecr$describe_repository_creation_templates_output()
@@ -857,7 +881,8 @@ ecr_get_account_setting <- function(name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$get_account_setting_input(name = name)
   output <- .ecr$get_account_setting_output()
@@ -888,7 +913,8 @@ ecr_get_authorization_token <- function(registryIds = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$get_authorization_token_input(registryIds = registryIds)
   output <- .ecr$get_authorization_token_output()
@@ -922,7 +948,8 @@ ecr_get_download_url_for_layer <- function(registryId = NULL, repositoryName, la
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$get_download_url_for_layer_input(registryId = registryId, repositoryName = repositoryName, layerDigest = layerDigest)
   output <- .ecr$get_download_url_for_layer_output()
@@ -954,7 +981,8 @@ ecr_get_lifecycle_policy <- function(registryId = NULL, repositoryName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$get_lifecycle_policy_input(registryId = registryId, repositoryName = repositoryName)
   output <- .ecr$get_lifecycle_policy_output()
@@ -991,7 +1019,8 @@ ecr_get_lifecycle_policy_preview <- function(registryId = NULL, repositoryName, 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", non_aggregate_keys = list( "registryId", "repositoryName", "lifecyclePolicyText", "status", "summary"), output_token = "nextToken", result_key = "previewResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$get_lifecycle_policy_preview_input(registryId = registryId, repositoryName = repositoryName, imageIds = imageIds, nextToken = nextToken, maxResults = maxResults, filter = filter)
   output <- .ecr$get_lifecycle_policy_preview_output()
@@ -1022,7 +1051,8 @@ ecr_get_registry_policy <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$get_registry_policy_input()
   output <- .ecr$get_registry_policy_output()
@@ -1053,7 +1083,8 @@ ecr_get_registry_scanning_configuration <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$get_registry_scanning_configuration_input()
   output <- .ecr$get_registry_scanning_configuration_output()
@@ -1085,7 +1116,8 @@ ecr_get_repository_policy <- function(registryId = NULL, repositoryName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$get_repository_policy_input(registryId = registryId, repositoryName = repositoryName)
   output <- .ecr$get_repository_policy_output()
@@ -1117,7 +1149,8 @@ ecr_get_signing_configuration <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$get_signing_configuration_input()
   output <- .ecr$get_signing_configuration_output()
@@ -1149,7 +1182,8 @@ ecr_initiate_layer_upload <- function(registryId = NULL, repositoryName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$initiate_layer_upload_input(registryId = registryId, repositoryName = repositoryName)
   output <- .ecr$initiate_layer_upload_output()
@@ -1187,7 +1221,8 @@ ecr_list_image_referrers <- function(registryId = NULL, repositoryName, subjectI
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$list_image_referrers_input(registryId = registryId, repositoryName = repositoryName, subjectId = subjectId, filter = filter, nextToken = nextToken, maxResults = maxResults)
   output <- .ecr$list_image_referrers_output()
@@ -1224,7 +1259,8 @@ ecr_list_images <- function(registryId = NULL, repositoryName, nextToken = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imageIds"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$list_images_input(registryId = registryId, repositoryName = repositoryName, nextToken = nextToken, maxResults = maxResults, filter = filter)
   output <- .ecr$list_images_output()
@@ -1259,7 +1295,8 @@ ecr_list_pull_time_update_exclusions <- function(maxResults = NULL, nextToken = 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$list_pull_time_update_exclusions_input(maxResults = maxResults, nextToken = nextToken)
   output <- .ecr$list_pull_time_update_exclusions_output()
@@ -1290,7 +1327,8 @@ ecr_list_tags_for_resource <- function(resourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .ecr$list_tags_for_resource_output()
@@ -1323,7 +1361,8 @@ ecr_put_account_setting <- function(name, value) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$put_account_setting_input(name = name, value = value)
   output <- .ecr$put_account_setting_output()
@@ -1359,7 +1398,8 @@ ecr_put_image <- function(registryId = NULL, repositoryName, imageManifest, imag
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$put_image_input(registryId = registryId, repositoryName = repositoryName, imageManifest = imageManifest, imageManifestMediaType = imageManifestMediaType, imageTag = imageTag, imageDigest = imageDigest)
   output <- .ecr$put_image_output()
@@ -1393,7 +1433,8 @@ ecr_put_image_scanning_configuration <- function(registryId = NULL, repositoryNa
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$put_image_scanning_configuration_input(registryId = registryId, repositoryName = repositoryName, imageScanningConfiguration = imageScanningConfiguration)
   output <- .ecr$put_image_scanning_configuration_output()
@@ -1427,7 +1468,8 @@ ecr_put_image_tag_mutability <- function(registryId = NULL, repositoryName, imag
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$put_image_tag_mutability_input(registryId = registryId, repositoryName = repositoryName, imageTagMutability = imageTagMutability, imageTagMutabilityExclusionFilters = imageTagMutabilityExclusionFilters)
   output <- .ecr$put_image_tag_mutability_output()
@@ -1460,7 +1502,8 @@ ecr_put_lifecycle_policy <- function(registryId = NULL, repositoryName, lifecycl
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$put_lifecycle_policy_input(registryId = registryId, repositoryName = repositoryName, lifecyclePolicyText = lifecyclePolicyText)
   output <- .ecr$put_lifecycle_policy_output()
@@ -1491,7 +1534,8 @@ ecr_put_registry_policy <- function(policyText) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$put_registry_policy_input(policyText = policyText)
   output <- .ecr$put_registry_policy_output()
@@ -1527,7 +1571,8 @@ ecr_put_registry_scanning_configuration <- function(scanType = NULL, rules = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$put_registry_scanning_configuration_input(scanType = scanType, rules = rules)
   output <- .ecr$put_registry_scanning_configuration_output()
@@ -1558,7 +1603,8 @@ ecr_put_replication_configuration <- function(replicationConfiguration) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$put_replication_configuration_input(replicationConfiguration = replicationConfiguration)
   output <- .ecr$put_replication_configuration_output()
@@ -1590,7 +1636,8 @@ ecr_put_signing_configuration <- function(signingConfiguration) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$put_signing_configuration_input(signingConfiguration = signingConfiguration)
   output <- .ecr$put_signing_configuration_output()
@@ -1622,7 +1669,8 @@ ecr_register_pull_time_update_exclusion <- function(principalArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$register_pull_time_update_exclusion_input(principalArn = principalArn)
   output <- .ecr$register_pull_time_update_exclusion_output()
@@ -1657,7 +1705,8 @@ ecr_set_repository_policy <- function(registryId = NULL, repositoryName, policyT
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$set_repository_policy_input(registryId = registryId, repositoryName = repositoryName, policyText = policyText, force = force)
   output <- .ecr$set_repository_policy_output()
@@ -1690,7 +1739,8 @@ ecr_start_image_scan <- function(registryId = NULL, repositoryName, imageId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$start_image_scan_input(registryId = registryId, repositoryName = repositoryName, imageId = imageId)
   output <- .ecr$start_image_scan_output()
@@ -1723,7 +1773,8 @@ ecr_start_lifecycle_policy_preview <- function(registryId = NULL, repositoryName
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$start_lifecycle_policy_preview_input(registryId = registryId, repositoryName = repositoryName, lifecyclePolicyText = lifecyclePolicyText)
   output <- .ecr$start_lifecycle_policy_preview_output()
@@ -1755,7 +1806,8 @@ ecr_tag_resource <- function(resourceArn, tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .ecr$tag_resource_output()
@@ -1787,7 +1839,8 @@ ecr_untag_resource <- function(resourceArn, tagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .ecr$untag_resource_output()
@@ -1821,7 +1874,8 @@ ecr_update_image_storage_class <- function(registryId = NULL, repositoryName, im
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$update_image_storage_class_input(registryId = registryId, repositoryName = repositoryName, imageId = imageId, targetStorageClass = targetStorageClass)
   output <- .ecr$update_image_storage_class_output()
@@ -1855,7 +1909,8 @@ ecr_update_pull_through_cache_rule <- function(registryId = NULL, ecrRepositoryP
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$update_pull_through_cache_rule_input(registryId = registryId, ecrRepositoryPrefix = ecrRepositoryPrefix, credentialArn = credentialArn, customRoleArn = customRoleArn)
   output <- .ecr$update_pull_through_cache_rule_output()
@@ -1897,7 +1952,8 @@ ecr_update_repository_creation_template <- function(prefix, description = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$update_repository_creation_template_input(prefix = prefix, description = description, encryptionConfiguration = encryptionConfiguration, resourceTags = resourceTags, imageTagMutability = imageTagMutability, imageTagMutabilityExclusionFilters = imageTagMutabilityExclusionFilters, repositoryPolicy = repositoryPolicy, lifecyclePolicy = lifecyclePolicy, appliedFor = appliedFor, customRoleArn = customRoleArn)
   output <- .ecr$update_repository_creation_template_output()
@@ -1933,7 +1989,8 @@ ecr_upload_layer_part <- function(registryId = NULL, repositoryName, uploadId, p
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$upload_layer_part_input(registryId = registryId, repositoryName = repositoryName, uploadId = uploadId, partFirstByte = partFirstByte, partLastByte = partLastByte, layerPartBlob = layerPartBlob)
   output <- .ecr$upload_layer_part_output()
@@ -1966,7 +2023,8 @@ ecr_validate_pull_through_cache_rule <- function(ecrRepositoryPrefix, registryId
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ecr$validate_pull_through_cache_rule_input(ecrRepositoryPrefix = ecrRepositoryPrefix, registryId = registryId)
   output <- .ecr$validate_pull_through_cache_rule_output()

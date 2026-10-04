@@ -186,7 +186,8 @@ dax_create_cluster <- function(ClusterName, NodeType, Description = NULL, Replic
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .dax$create_cluster_input(ClusterName = ClusterName, NodeType = NodeType, Description = Description, ReplicationFactor = ReplicationFactor, AvailabilityZones = AvailabilityZones, SubnetGroupName = SubnetGroupName, SecurityGroupIds = SecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, NotificationTopicArn = NotificationTopicArn, IamRoleArn = IamRoleArn, ParameterGroupName = ParameterGroupName, Tags = Tags, SSESpecification = SSESpecification, ClusterEndpointEncryptionType = ClusterEndpointEncryptionType, NetworkType = NetworkType)
   output <- .dax$create_cluster_output()
@@ -240,7 +241,8 @@ dax_create_parameter_group <- function(ParameterGroupName, Description = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .dax$create_parameter_group_input(ParameterGroupName = ParameterGroupName, Description = Description)
   output <- .dax$create_parameter_group_output()
@@ -311,7 +313,8 @@ dax_create_subnet_group <- function(SubnetGroupName, Description = NULL, SubnetI
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .dax$create_subnet_group_input(SubnetGroupName = SubnetGroupName, Description = Description, SubnetIds = SubnetIds)
   output <- .dax$create_subnet_group_output()
@@ -430,7 +433,8 @@ dax_decrease_replication_factor <- function(ClusterName, NewReplicationFactor, A
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .dax$decrease_replication_factor_input(ClusterName = ClusterName, NewReplicationFactor = NewReplicationFactor, AvailabilityZones = AvailabilityZones, NodeIdsToRemove = NodeIdsToRemove)
   output <- .dax$decrease_replication_factor_output()
@@ -536,7 +540,8 @@ dax_delete_cluster <- function(ClusterName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .dax$delete_cluster_input(ClusterName = ClusterName)
   output <- .dax$delete_cluster_output()
@@ -585,7 +590,8 @@ dax_delete_parameter_group <- function(ParameterGroupName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .dax$delete_parameter_group_input(ParameterGroupName = ParameterGroupName)
   output <- .dax$delete_parameter_group_output()
@@ -636,7 +642,8 @@ dax_delete_subnet_group <- function(SubnetGroupName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .dax$delete_subnet_group_input(SubnetGroupName = SubnetGroupName)
   output <- .dax$delete_subnet_group_output()
@@ -763,7 +770,8 @@ dax_describe_clusters <- function(ClusterNames = NULL, MaxResults = NULL, NextTo
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Clusters"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .dax$describe_clusters_input(ClusterNames = ClusterNames, MaxResults = MaxResults, NextToken = NextToken)
   output <- .dax$describe_clusters_output()
@@ -836,7 +844,8 @@ dax_describe_default_parameters <- function(MaxResults = NULL, NextToken = NULL)
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Parameters"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .dax$describe_default_parameters_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .dax$describe_default_parameters_output()
@@ -916,7 +925,8 @@ dax_describe_events <- function(SourceName = NULL, SourceType = NULL, StartTime 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Events"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .dax$describe_events_input(SourceName = SourceName, SourceType = SourceType, StartTime = StartTime, EndTime = EndTime, Duration = Duration, MaxResults = MaxResults, NextToken = NextToken)
   output <- .dax$describe_events_output()
@@ -980,7 +990,8 @@ dax_describe_parameter_groups <- function(ParameterGroupNames = NULL, MaxResults
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ParameterGroups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .dax$describe_parameter_groups_input(ParameterGroupNames = ParameterGroupNames, MaxResults = MaxResults, NextToken = NextToken)
   output <- .dax$describe_parameter_groups_output()
@@ -1057,7 +1068,8 @@ dax_describe_parameters <- function(ParameterGroupName, Source = NULL, MaxResult
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Parameters"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .dax$describe_parameters_input(ParameterGroupName = ParameterGroupName, Source = Source, MaxResults = MaxResults, NextToken = NextToken)
   output <- .dax$describe_parameters_output()
@@ -1133,7 +1145,8 @@ dax_describe_subnet_groups <- function(SubnetGroupNames = NULL, MaxResults = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SubnetGroups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .dax$describe_subnet_groups_input(SubnetGroupNames = SubnetGroupNames, MaxResults = MaxResults, NextToken = NextToken)
   output <- .dax$describe_subnet_groups_output()
@@ -1246,7 +1259,8 @@ dax_increase_replication_factor <- function(ClusterName, NewReplicationFactor, A
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .dax$increase_replication_factor_input(ClusterName = ClusterName, NewReplicationFactor = NewReplicationFactor, AvailabilityZones = AvailabilityZones)
   output <- .dax$increase_replication_factor_output()
@@ -1303,7 +1317,8 @@ dax_list_tags <- function(ResourceName, NextToken = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Tags"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .dax$list_tags_input(ResourceName = ResourceName, NextToken = NextToken)
   output <- .dax$list_tags_output()
@@ -1413,7 +1428,8 @@ dax_reboot_node <- function(ClusterName, NodeId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .dax$reboot_node_input(ClusterName = ClusterName, NodeId = NodeId)
   output <- .dax$reboot_node_output()
@@ -1474,7 +1490,8 @@ dax_tag_resource <- function(ResourceName, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .dax$tag_resource_input(ResourceName = ResourceName, Tags = Tags)
   output <- .dax$tag_resource_output()
@@ -1532,7 +1549,8 @@ dax_untag_resource <- function(ResourceName, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .dax$untag_resource_input(ResourceName = ResourceName, TagKeys = TagKeys)
   output <- .dax$untag_resource_output()
@@ -1654,7 +1672,8 @@ dax_update_cluster <- function(ClusterName, Description = NULL, PreferredMainten
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .dax$update_cluster_input(ClusterName = ClusterName, Description = Description, PreferredMaintenanceWindow = PreferredMaintenanceWindow, NotificationTopicArn = NotificationTopicArn, NotificationTopicStatus = NotificationTopicStatus, ParameterGroupName = ParameterGroupName, SecurityGroupIds = SecurityGroupIds)
   output <- .dax$update_cluster_output()
@@ -1715,7 +1734,8 @@ dax_update_parameter_group <- function(ParameterGroupName, ParameterNameValues) 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .dax$update_parameter_group_input(ParameterGroupName = ParameterGroupName, ParameterNameValues = ParameterNameValues)
   output <- .dax$update_parameter_group_output()
@@ -1786,7 +1806,8 @@ dax_update_subnet_group <- function(SubnetGroupName, Description = NULL, SubnetI
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .dax$update_subnet_group_input(SubnetGroupName = SubnetGroupName, Description = Description, SubnetIds = SubnetIds)
   output <- .dax$update_subnet_group_output()

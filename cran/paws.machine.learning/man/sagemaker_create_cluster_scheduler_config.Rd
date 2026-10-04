@@ -13,7 +13,7 @@ sagemaker_create_cluster_scheduler_config(
 )
 }
 \arguments{
-\item{Name}{[required] Name for the cluster policy.}
+\item{Name}{[required] The name for the cluster policy. The name must be unique within the SageMaker AI HyperPod cluster specified by \code{ClusterArn}. You can use the same name in other clusters within a Region or across Regions.}
 
 \item{ClusterArn}{[required] ARN of the cluster.}
 

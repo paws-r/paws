@@ -83,7 +83,7 @@ If a conflicting operation occurs during the upload S3 returns a \verb{409 Condi
 
 Expects the ETag value as a string.
 
-For more information about conditional requests, see \href{https://datatracker.ietf.org/doc/html/rfc7232}{RFC 7232}, or \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/conditional-requests.html}{Conditional requests} in the \emph{Amazon S3 User Guide}.}
+For more information about conditional requests, see \href{https://www.rfc-editor.org/info/rfc7232/}{RFC 7232}, or \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/conditional-requests.html}{Conditional requests} in the \emph{Amazon S3 User Guide}.}
 
 \item{IfNoneMatch}{Uploads the object only if the object key name does not already exist in the bucket specified. Otherwise, Amazon S3 returns a \verb{412 Precondition Failed} error.
 
@@ -91,7 +91,7 @@ If a conflicting operation occurs during the upload S3 returns a \verb{409 Condi
 
 Expects the '*' (asterisk) character.
 
-For more information about conditional requests, see \href{https://datatracker.ietf.org/doc/html/rfc7232}{RFC 7232}, or \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/conditional-requests.html}{Conditional requests} in the \emph{Amazon S3 User Guide}.}
+For more information about conditional requests, see \href{https://www.rfc-editor.org/info/rfc7232/}{RFC 7232}, or \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/conditional-requests.html}{Conditional requests} in the \emph{Amazon S3 User Guide}.}
 
 \item{SSECustomerAlgorithm}{The server-side encryption (SSE) algorithm used to encrypt the object. This parameter is required only when the object was created using a checksum algorithm or if your bucket policy requires the use of SSE-C. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html#ssec-require-condition-key}{Protecting data using SSE-C keys} in the \emph{Amazon S3 User Guide}.
 

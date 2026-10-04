@@ -28,36 +28,36 @@ imagebuilder_update_image_pipeline(
 
 \item{description}{The description of the image pipeline.}
 
-\item{imageRecipeArn}{The Amazon Resource Name (ARN) of the image recipe that configures images updated by this image pipeline.}
+\item{imageRecipeArn}{The Amazon Resource Name (ARN) of the image recipe that configures images created by this image pipeline. You must specify either this property or \code{containerRecipeArn}, but not both.}
 
-\item{containerRecipeArn}{The Amazon Resource Name (ARN) of the container pipeline to update.}
+\item{containerRecipeArn}{The Amazon Resource Name (ARN) of the container recipe that is used to configure images created by this container pipeline. You must specify either this property or \code{imageRecipeArn}, but not both.}
 
-\item{infrastructureConfigurationArn}{[required] The Amazon Resource Name (ARN) of the infrastructure configuration that Image Builder uses to build images that this image pipeline has updated.}
+\item{infrastructureConfigurationArn}{[required] The Amazon Resource Name (ARN) of the infrastructure configuration that Image Builder uses to build images created by this image pipeline.}
 
-\item{distributionConfigurationArn}{The Amazon Resource Name (ARN) of the distribution configuration that Image Builder uses to configure and distribute images that this image pipeline has updated.}
+\item{distributionConfigurationArn}{The Amazon Resource Name (ARN) of the distribution configuration that Image Builder uses to configure and distribute images created by this image pipeline.}
 
-\item{imageTestsConfiguration}{The image test configuration of the image pipeline.}
+\item{imageTestsConfiguration}{Specifies the test settings that Image Builder applies to images that this pipeline creates. If you don't provide test settings, Image Builder stores a default configuration with image tests enabled.}
 
 \item{enhancedImageMetadataEnabled}{Specifies whether to collect additional information about the image being created, including the operating system (OS) version and package list. Defaults to \code{true}.}
 
-\item{schedule}{The schedule of the image pipeline.}
+\item{schedule}{The schedule of the image pipeline. Because the update replaces the entire configuration, omitting this property removes any existing schedule. The pipeline then runs only when you call \code{\link[=imagebuilder_start_image_pipeline_execution]{start_image_pipeline_execution}}.}
 
-\item{status}{The status of the image pipeline.}
+\item{status}{The status of the image pipeline. Defaults to \code{ENABLED} when omitted. To keep a pipeline disabled, include this property set to \code{DISABLED} in your update request.}
 
-\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
+\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
 
-\item{imageScanningConfiguration}{Contains settings for vulnerability scans.}
+\item{imageScanningConfiguration}{Contains settings for vulnerability scans that Amazon Inspector runs against the test instance during image creation.}
 
-\item{workflows}{Contains the workflows to run for the pipeline.}
+\item{workflows}{The array of workflow configuration objects for builds that this pipeline starts. You must also specify \code{executionRole} when you provide workflows.}
 
-\item{loggingConfiguration}{Update logging configuration for the output image that's created when the pipeline runs.}
+\item{loggingConfiguration}{Specifies the logging configuration for the image pipeline. Use this to define custom CloudWatch Logs log groups for your pipeline execution logs and image build logs. The service manages log groups with names starting with \verb{/aws/imagebuilder/} using the service-linked role. For custom log group names outside of this prefix, you must also provide an \code{executionRole}.}
 
-\item{executionRole}{The name or Amazon Resource Name (ARN) for the IAM role you create that grants Image Builder access to perform workflow actions.}
+\item{executionRole}{The name or Amazon Resource Name (ARN) for the IAM role you create that grants Image Builder access to perform workflow actions. If you omit this property, the pipeline reverts to the Image Builder service-linked role.}
 
-\item{imageTags}{The tags to be applied to the images produced by this pipeline.}
+\item{imageTags}{The tags that Image Builder applies to the Image Builder image resource that this pipeline's scheduled executions create. These tags don't apply to the output AMI. To tag output AMIs, use \code{amiTags} in the pipeline's distribution configuration.}
 }
 \description{
-Updates an image pipeline. Use image pipelines to automate the creation and distribution of images. You must specify exactly one recipe for your image, using either a \code{containerRecipeArn} or an \code{imageRecipeArn}.
+Updates an image pipeline. Use image pipelines to automate the creation and distribution of images. You must specify exactly one recipe for your image, using either a \code{containerRecipeArn} or an \code{imageRecipeArn}. The recipe must be the same type, image or container, as the pipeline's current recipe.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_update_image_pipeline/} for full documentation.
 }

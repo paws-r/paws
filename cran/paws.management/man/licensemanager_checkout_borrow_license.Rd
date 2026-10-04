@@ -18,7 +18,7 @@ licensemanager_checkout_borrow_license(
 
 \item{Entitlements}{[required] License entitlements. Partial checkouts are not supported.}
 
-\item{DigitalSignatureMethod}{[required] Digital signature method. The possible value is JSON Web Signature (JWS) algorithm PS384. For more information, see \href{https://datatracker.ietf.org/doc/html/rfc7518#section-3.5}{RFC 7518 Digital Signature with RSASSA-PSS}.}
+\item{DigitalSignatureMethod}{[required] Digital signature method. The possible value is JSON Web Signature (JWS) algorithm PS384. For more information, see \href{https://www.rfc-editor.org/info/rfc7518/#section-3.5}{RFC 7518 Digital Signature with RSASSA-PSS}.}
 
 \item{NodeId}{Node ID.}
 

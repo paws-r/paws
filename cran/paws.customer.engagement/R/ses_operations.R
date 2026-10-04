@@ -29,7 +29,8 @@ ses_clone_receipt_rule_set <- function(RuleSetName, OriginalRuleSetName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$clone_receipt_rule_set_input(RuleSetName = RuleSetName, OriginalRuleSetName = OriginalRuleSetName)
   output <- .ses$clone_receipt_rule_set_output()
@@ -60,7 +61,8 @@ ses_create_configuration_set <- function(ConfigurationSet) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$create_configuration_set_input(ConfigurationSet = ConfigurationSet)
   output <- .ses$create_configuration_set_output()
@@ -92,7 +94,8 @@ ses_create_configuration_set_event_destination <- function(ConfigurationSetName,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$create_configuration_set_event_destination_input(ConfigurationSetName = ConfigurationSetName, EventDestination = EventDestination)
   output <- .ses$create_configuration_set_event_destination_output()
@@ -127,7 +130,8 @@ ses_create_configuration_set_tracking_options <- function(ConfigurationSetName, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$create_configuration_set_tracking_options_input(ConfigurationSetName = ConfigurationSetName, TrackingOptions = TrackingOptions)
   output <- .ses$create_configuration_set_tracking_options_output()
@@ -163,7 +167,8 @@ ses_create_custom_verification_email_template <- function(TemplateName, FromEmai
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$create_custom_verification_email_template_input(TemplateName = TemplateName, FromEmailAddress = FromEmailAddress, TemplateSubject = TemplateSubject, TemplateContent = TemplateContent, SuccessRedirectionURL = SuccessRedirectionURL, FailureRedirectionURL = FailureRedirectionURL)
   output <- .ses$create_custom_verification_email_template_output()
@@ -194,7 +199,8 @@ ses_create_receipt_filter <- function(Filter) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$create_receipt_filter_input(Filter = Filter)
   output <- .ses$create_receipt_filter_output()
@@ -227,7 +233,8 @@ ses_create_receipt_rule <- function(RuleSetName, After = NULL, Rule) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$create_receipt_rule_input(RuleSetName = RuleSetName, After = After, Rule = Rule)
   output <- .ses$create_receipt_rule_output()
@@ -264,7 +271,8 @@ ses_create_receipt_rule_set <- function(RuleSetName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$create_receipt_rule_set_input(RuleSetName = RuleSetName)
   output <- .ses$create_receipt_rule_set_output()
@@ -295,7 +303,8 @@ ses_create_template <- function(Template) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$create_template_input(Template = Template)
   output <- .ses$create_template_output()
@@ -326,7 +335,8 @@ ses_delete_configuration_set <- function(ConfigurationSetName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$delete_configuration_set_input(ConfigurationSetName = ConfigurationSetName)
   output <- .ses$delete_configuration_set_output()
@@ -358,7 +368,8 @@ ses_delete_configuration_set_event_destination <- function(ConfigurationSetName,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$delete_configuration_set_event_destination_input(ConfigurationSetName = ConfigurationSetName, EventDestinationName = EventDestinationName)
   output <- .ses$delete_configuration_set_event_destination_output()
@@ -390,7 +401,8 @@ ses_delete_configuration_set_tracking_options <- function(ConfigurationSetName) 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$delete_configuration_set_tracking_options_input(ConfigurationSetName = ConfigurationSetName)
   output <- .ses$delete_configuration_set_tracking_options_output()
@@ -421,7 +433,8 @@ ses_delete_custom_verification_email_template <- function(TemplateName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$delete_custom_verification_email_template_input(TemplateName = TemplateName)
   output <- .ses$delete_custom_verification_email_template_output()
@@ -453,7 +466,8 @@ ses_delete_identity <- function(Identity) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$delete_identity_input(Identity = Identity)
   output <- .ses$delete_identity_output()
@@ -488,7 +502,8 @@ ses_delete_identity_policy <- function(Identity, PolicyName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$delete_identity_policy_input(Identity = Identity, PolicyName = PolicyName)
   output <- .ses$delete_identity_policy_output()
@@ -519,7 +534,8 @@ ses_delete_receipt_filter <- function(FilterName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$delete_receipt_filter_input(FilterName = FilterName)
   output <- .ses$delete_receipt_filter_output()
@@ -551,7 +567,8 @@ ses_delete_receipt_rule <- function(RuleSetName, RuleName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$delete_receipt_rule_input(RuleSetName = RuleSetName, RuleName = RuleName)
   output <- .ses$delete_receipt_rule_output()
@@ -583,7 +600,8 @@ ses_delete_receipt_rule_set <- function(RuleSetName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$delete_receipt_rule_set_input(RuleSetName = RuleSetName)
   output <- .ses$delete_receipt_rule_set_output()
@@ -614,7 +632,8 @@ ses_delete_template <- function(TemplateName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$delete_template_input(TemplateName = TemplateName)
   output <- .ses$delete_template_output()
@@ -645,7 +664,8 @@ ses_delete_verified_email_address <- function(EmailAddress) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$delete_verified_email_address_input(EmailAddress = EmailAddress)
   output <- .ses$delete_verified_email_address_output()
@@ -677,7 +697,8 @@ ses_describe_active_receipt_rule_set <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$describe_active_receipt_rule_set_input()
   output <- .ses$describe_active_receipt_rule_set_output()
@@ -709,7 +730,8 @@ ses_describe_configuration_set <- function(ConfigurationSetName, ConfigurationSe
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$describe_configuration_set_input(ConfigurationSetName = ConfigurationSetName, ConfigurationSetAttributeNames = ConfigurationSetAttributeNames)
   output <- .ses$describe_configuration_set_output()
@@ -741,7 +763,8 @@ ses_describe_receipt_rule <- function(RuleSetName, RuleName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$describe_receipt_rule_input(RuleSetName = RuleSetName, RuleName = RuleName)
   output <- .ses$describe_receipt_rule_output()
@@ -772,7 +795,8 @@ ses_describe_receipt_rule_set <- function(RuleSetName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$describe_receipt_rule_set_input(RuleSetName = RuleSetName)
   output <- .ses$describe_receipt_rule_set_output()
@@ -804,7 +828,8 @@ ses_get_account_sending_enabled <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$get_account_sending_enabled_input()
   output <- .ses$get_account_sending_enabled_output()
@@ -836,7 +861,8 @@ ses_get_custom_verification_email_template <- function(TemplateName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$get_custom_verification_email_template_input(TemplateName = TemplateName)
   output <- .ses$get_custom_verification_email_template_output()
@@ -867,7 +893,8 @@ ses_get_identity_dkim_attributes <- function(Identities) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$get_identity_dkim_attributes_input(Identities = Identities)
   output <- .ses$get_identity_dkim_attributes_output()
@@ -899,7 +926,8 @@ ses_get_identity_mail_from_domain_attributes <- function(Identities) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$get_identity_mail_from_domain_attributes_input(Identities = Identities)
   output <- .ses$get_identity_mail_from_domain_attributes_output()
@@ -931,7 +959,8 @@ ses_get_identity_notification_attributes <- function(Identities) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$get_identity_notification_attributes_input(Identities = Identities)
   output <- .ses$get_identity_notification_attributes_output()
@@ -966,7 +995,8 @@ ses_get_identity_policies <- function(Identity, PolicyNames) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$get_identity_policies_input(Identity = Identity, PolicyNames = PolicyNames)
   output <- .ses$get_identity_policies_output()
@@ -999,7 +1029,8 @@ ses_get_identity_verification_attributes <- function(Identities) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$get_identity_verification_attributes_input(Identities = Identities)
   output <- .ses$get_identity_verification_attributes_output()
@@ -1030,7 +1061,8 @@ ses_get_send_quota <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$get_send_quota_input()
   output <- .ses$get_send_quota_output()
@@ -1061,7 +1093,8 @@ ses_get_send_statistics <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$get_send_statistics_input()
   output <- .ses$get_send_statistics_output()
@@ -1093,7 +1126,8 @@ ses_get_template <- function(TemplateName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$get_template_input(TemplateName = TemplateName)
   output <- .ses$get_template_output()
@@ -1126,7 +1160,8 @@ ses_list_configuration_sets <- function(NextToken = NULL, MaxItems = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxItems", output_token = "NextToken", result_key = "ConfigurationSets"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$list_configuration_sets_input(NextToken = NextToken, MaxItems = MaxItems)
   output <- .ses$list_configuration_sets_output()
@@ -1159,7 +1194,8 @@ ses_list_custom_verification_email_templates <- function(NextToken = NULL, MaxRe
     http_path = "/",
     host_prefix = "",
     paginator = list(result_key = "CustomVerificationEmailTemplates", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$list_custom_verification_email_templates_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .ses$list_custom_verification_email_templates_output()
@@ -1194,7 +1230,8 @@ ses_list_identities <- function(IdentityType = NULL, NextToken = NULL, MaxItems 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxItems", result_key = "Identities"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$list_identities_input(IdentityType = IdentityType, NextToken = NextToken, MaxItems = MaxItems)
   output <- .ses$list_identities_output()
@@ -1228,7 +1265,8 @@ ses_list_identity_policies <- function(Identity) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$list_identity_policies_input(Identity = Identity)
   output <- .ses$list_identity_policies_output()
@@ -1260,7 +1298,8 @@ ses_list_receipt_filters <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$list_receipt_filters_input()
   output <- .ses$list_receipt_filters_output()
@@ -1292,7 +1331,8 @@ ses_list_receipt_rule_sets <- function(NextToken = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "RuleSets"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$list_receipt_rule_sets_input(NextToken = NextToken)
   output <- .ses$list_receipt_rule_sets_output()
@@ -1325,7 +1365,8 @@ ses_list_templates <- function(NextToken = NULL, MaxItems = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxItems", output_token = "NextToken", result_key = "TemplatesMetadata"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$list_templates_input(NextToken = NextToken, MaxItems = MaxItems)
   output <- .ses$list_templates_output()
@@ -1356,7 +1397,8 @@ ses_list_verified_email_addresses <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$list_verified_email_addresses_input()
   output <- .ses$list_verified_email_addresses_output()
@@ -1388,7 +1430,8 @@ ses_put_configuration_set_delivery_options <- function(ConfigurationSetName, Del
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$put_configuration_set_delivery_options_input(ConfigurationSetName = ConfigurationSetName, DeliveryOptions = DeliveryOptions)
   output <- .ses$put_configuration_set_delivery_options_output()
@@ -1428,7 +1471,8 @@ ses_put_identity_policy <- function(Identity, PolicyName, Policy) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$put_identity_policy_input(Identity = Identity, PolicyName = PolicyName, Policy = Policy)
   output <- .ses$put_identity_policy_output()
@@ -1460,7 +1504,8 @@ ses_reorder_receipt_rule_set <- function(RuleSetName, RuleNames) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$reorder_receipt_rule_set_input(RuleSetName = RuleSetName, RuleNames = RuleNames)
   output <- .ses$reorder_receipt_rule_set_output()
@@ -1497,7 +1542,8 @@ ses_send_bounce <- function(OriginalMessageId, BounceSender, Explanation = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$send_bounce_input(OriginalMessageId = OriginalMessageId, BounceSender = BounceSender, Explanation = Explanation, MessageDsn = MessageDsn, BouncedRecipientInfoList = BouncedRecipientInfoList, BounceSenderArn = BounceSenderArn)
   output <- .ses$send_bounce_output()
@@ -1520,7 +1566,7 @@ ses_send_bounce <- function(OriginalMessageId, BounceSender, Explanation = NULL,
 #' 
 #' If you are sending on behalf of another user and have been permitted to do so by a sending authorization policy, then you must also specify the `SourceArn` parameter. For more information about sending authorization, see the [Amazon SES Developer Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html).
 #' 
-#' Amazon SES does not support the SMTPUTF8 extension, as described in [RFC6531](https://datatracker.ietf.org/doc/html/rfc6531). For this reason, the email address string must be 7-bit ASCII. If you want to send to or from email addresses that contain Unicode characters in the domain part of an address, you must encode the domain using Punycode. Punycode is not permitted in the local part of the email address (the part before the @@ sign) nor in the "friendly from" name. If you want to use Unicode characters in the "friendly from" name, you must encode the "friendly from" name using MIME encoded-word syntax, as described in [Sending raw email using the Amazon SES API](https://docs.aws.amazon.com/ses/latest/dg/send-email-raw.html). For more information about Punycode, see [RFC 3492](https://datatracker.ietf.org/doc/html/rfc3492).
+#' Amazon SES does not support the SMTPUTF8 extension, as described in [RFC6531](https://www.rfc-editor.org/info/rfc6531/). For this reason, the email address string must be 7-bit ASCII. If you want to send to or from email addresses that contain Unicode characters in the domain part of an address, you must encode the domain using Punycode. Punycode is not permitted in the local part of the email address (the part before the @@ sign) nor in the "friendly from" name. If you want to use Unicode characters in the "friendly from" name, you must encode the "friendly from" name using MIME encoded-word syntax, as described in [Sending raw email using the Amazon SES API](https://docs.aws.amazon.com/ses/latest/dg/send-email-raw.html). For more information about Punycode, see [RFC 3492](https://www.rfc-editor.org/info/rfc3492/).
 #' @param SourceArn This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to send for the email address specified in the `Source` parameter.
 #' 
 #' For example, if the owner of `example.com` (which has ARN `arn:aws:ses:us-east-1:123456789012:identity/example.com`) attaches a policy to it that authorizes you to send from `user@@example.com`, then you would specify the `SourceArn` to be `arn:aws:ses:us-east-1:123456789012:identity/example.com`, and the `Source` to be `user@@example.com`.
@@ -1552,7 +1598,8 @@ ses_send_bulk_templated_email <- function(Source, SourceArn = NULL, ReplyToAddre
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$send_bulk_templated_email_input(Source = Source, SourceArn = SourceArn, ReplyToAddresses = ReplyToAddresses, ReturnPath = ReturnPath, ReturnPathArn = ReturnPathArn, ConfigurationSetName = ConfigurationSetName, DefaultTags = DefaultTags, Template = Template, TemplateArn = TemplateArn, DefaultTemplateData = DefaultTemplateData, Destinations = Destinations)
   output <- .ses$send_bulk_templated_email_output()
@@ -1587,7 +1634,8 @@ ses_send_custom_verification_email <- function(EmailAddress, TemplateName, Confi
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$send_custom_verification_email_input(EmailAddress = EmailAddress, TemplateName = TemplateName, ConfigurationSetName = ConfigurationSetName)
   output <- .ses$send_custom_verification_email_output()
@@ -1610,7 +1658,7 @@ ses_send_custom_verification_email <- function(EmailAddress, TemplateName, Confi
 #' 
 #' If you are sending on behalf of another user and have been permitted to do so by a sending authorization policy, then you must also specify the `SourceArn` parameter. For more information about sending authorization, see the [Amazon SES Developer Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html).
 #' 
-#' Amazon SES does not support the SMTPUTF8 extension, as described in [RFC6531](https://datatracker.ietf.org/doc/html/rfc6531). For this reason, the email address string must be 7-bit ASCII. If you want to send to or from email addresses that contain Unicode characters in the domain part of an address, you must encode the domain using Punycode. Punycode is not permitted in the local part of the email address (the part before the @@ sign) nor in the "friendly from" name. If you want to use Unicode characters in the "friendly from" name, you must encode the "friendly from" name using MIME encoded-word syntax, as described in [Sending raw email using the Amazon SES API](https://docs.aws.amazon.com/ses/latest/dg/send-email-raw.html). For more information about Punycode, see [RFC 3492](https://datatracker.ietf.org/doc/html/rfc3492).
+#' Amazon SES does not support the SMTPUTF8 extension, as described in [RFC6531](https://www.rfc-editor.org/info/rfc6531/). For this reason, the email address string must be 7-bit ASCII. If you want to send to or from email addresses that contain Unicode characters in the domain part of an address, you must encode the domain using Punycode. Punycode is not permitted in the local part of the email address (the part before the @@ sign) nor in the "friendly from" name. If you want to use Unicode characters in the "friendly from" name, you must encode the "friendly from" name using MIME encoded-word syntax, as described in [Sending raw email using the Amazon SES API](https://docs.aws.amazon.com/ses/latest/dg/send-email-raw.html). For more information about Punycode, see [RFC 3492](https://www.rfc-editor.org/info/rfc3492/).
 #' @param Destination &#91;required&#93; The destination for this email, composed of To:, CC:, and BCC: fields.
 #' @param Message &#91;required&#93; The message to be sent.
 #' @param ReplyToAddresses The reply-to email address(es) for the message. If the recipient replies to the message, each reply-to address receives the reply.
@@ -1638,7 +1686,8 @@ ses_send_email <- function(Source, Destination, Message, ReplyToAddresses = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$send_email_input(Source = Source, Destination = Destination, Message = Message, ReplyToAddresses = ReplyToAddresses, ReturnPath = ReturnPath, SourceArn = SourceArn, ReturnPathArn = ReturnPathArn, Tags = Tags, ConfigurationSetName = ConfigurationSetName)
   output <- .ses$send_email_output()
@@ -1659,7 +1708,7 @@ ses_send_email <- function(Source, Destination, Message, ReplyToAddresses = NULL
 #'
 #' @param Source The identity's email address. If you do not provide a value for this parameter, you must specify a "From" address in the raw text of the message. (You can also specify both.)
 #' 
-#' Amazon SES does not support the SMTPUTF8 extension, as described in[RFC6531](https://datatracker.ietf.org/doc/html/rfc6531). For this reason, the email address string must be 7-bit ASCII. If you want to send to or from email addresses that contain Unicode characters in the domain part of an address, you must encode the domain using Punycode. Punycode is not permitted in the local part of the email address (the part before the @@ sign) nor in the "friendly from" name. If you want to use Unicode characters in the "friendly from" name, you must encode the "friendly from" name using MIME encoded-word syntax, as described in [Sending raw email using the Amazon SES API](https://docs.aws.amazon.com/ses/latest/dg/send-email-raw.html). For more information about Punycode, see [RFC 3492](https://datatracker.ietf.org/doc/html/rfc3492).
+#' Amazon SES does not support the SMTPUTF8 extension, as described in[RFC6531](https://www.rfc-editor.org/info/rfc6531/). For this reason, the email address string must be 7-bit ASCII. If you want to send to or from email addresses that contain Unicode characters in the domain part of an address, you must encode the domain using Punycode. Punycode is not permitted in the local part of the email address (the part before the @@ sign) nor in the "friendly from" name. If you want to use Unicode characters in the "friendly from" name, you must encode the "friendly from" name using MIME encoded-word syntax, as described in [Sending raw email using the Amazon SES API](https://docs.aws.amazon.com/ses/latest/dg/send-email-raw.html). For more information about Punycode, see [RFC 3492](https://www.rfc-editor.org/info/rfc3492/).
 #' 
 #' If you specify the `Source` parameter and have feedback forwarding enabled, then bounces and complaints are sent to this email address. This takes precedence over any Return-Path header that you might include in the raw text of the message.
 #' @param Destinations A list of destinations for the message, consisting of To:, CC:, and BCC: addresses.
@@ -1677,7 +1726,7 @@ ses_send_email <- function(Source, Destination, Message, ReplyToAddresses = NULL
 #' 
 #' -   If any of the MIME parts in your message contain content that is outside of the 7-bit ASCII character range, we highly recommend that you encode that content. For more information, see [Sending Raw Email](https://docs.aws.amazon.com/ses/latest/dg/send-email-raw.html) in the *Amazon SES Developer Guide*.
 #' 
-#' -   Per [RFC 5321](https://datatracker.ietf.org/doc/html/rfc5321#section-4.5.3.1.6), the maximum length of each line of text, including the \<CRLF\>, must not exceed 1,000 characters.
+#' -   Per [RFC 5321](https://www.rfc-editor.org/info/rfc5321/#section-4.5.3.1.6), the maximum length of each line of text, including the \<CRLF\>, must not exceed 1,000 characters.
 #' @param FromArn This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to specify a particular "From" address in the header of the raw email.
 #' 
 #' Instead of using this parameter, you can use the X-header `X-SES-FROM-ARN` in the raw message of the email. If you use both the `FromArn` parameter and the corresponding X-header, Amazon SES uses the value of the `FromArn` parameter.
@@ -1710,7 +1759,8 @@ ses_send_raw_email <- function(Source = NULL, Destinations = NULL, RawMessage, F
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$send_raw_email_input(Source = Source, Destinations = Destinations, RawMessage = RawMessage, FromArn = FromArn, SourceArn = SourceArn, ReturnPathArn = ReturnPathArn, Tags = Tags, ConfigurationSetName = ConfigurationSetName)
   output <- .ses$send_raw_email_output()
@@ -1734,7 +1784,7 @@ ses_send_raw_email <- function(Source = NULL, Destinations = NULL, RawMessage, F
 #' 
 #' If you are sending on behalf of another user and have been permitted to do so by a sending authorization policy, then you must also specify the `SourceArn` parameter. For more information about sending authorization, see the [Amazon SES Developer Guide](https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html).
 #' 
-#' Amazon SES does not support the SMTPUTF8 extension, as described in [RFC6531](https://datatracker.ietf.org/doc/html/rfc6531). for this reason, The email address string must be 7-bit ASCII. If you want to send to or from email addresses that contain Unicode characters in the domain part of an address, you must encode the domain using Punycode. Punycode is not permitted in the local part of the email address (the part before the @@ sign) nor in the "friendly from" name. If you want to use Unicode characters in the "friendly from" name, you must encode the "friendly from" name using MIME encoded-word syntax, as described in [Sending raw email using the Amazon SES API](https://docs.aws.amazon.com/ses/latest/dg/send-email-raw.html). For more information about Punycode, see [RFC 3492](https://datatracker.ietf.org/doc/html/rfc3492).
+#' Amazon SES does not support the SMTPUTF8 extension, as described in [RFC6531](https://www.rfc-editor.org/info/rfc6531/). for this reason, The email address string must be 7-bit ASCII. If you want to send to or from email addresses that contain Unicode characters in the domain part of an address, you must encode the domain using Punycode. Punycode is not permitted in the local part of the email address (the part before the @@ sign) nor in the "friendly from" name. If you want to use Unicode characters in the "friendly from" name, you must encode the "friendly from" name using MIME encoded-word syntax, as described in [Sending raw email using the Amazon SES API](https://docs.aws.amazon.com/ses/latest/dg/send-email-raw.html). For more information about Punycode, see [RFC 3492](https://www.rfc-editor.org/info/rfc3492/).
 #' @param Destination &#91;required&#93; The destination for this email, composed of To:, CC:, and BCC: fields. A Destination can include up to 50 recipients across these three fields.
 #' @param ReplyToAddresses The reply-to email address(es) for the message. If the recipient replies to the message, each reply-to address receives the reply.
 #' @param ReturnPath The email address that bounces and complaints are forwarded to when feedback forwarding is enabled. If the message cannot be delivered to the recipient, then an error message is returned from the recipient's ISP; this message is forwarded to the email address specified by the `ReturnPath` parameter. The `ReturnPath` parameter is never overwritten. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES.
@@ -1764,7 +1814,8 @@ ses_send_templated_email <- function(Source, Destination, ReplyToAddresses = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$send_templated_email_input(Source = Source, Destination = Destination, ReplyToAddresses = ReplyToAddresses, ReturnPath = ReturnPath, SourceArn = SourceArn, ReturnPathArn = ReturnPathArn, Tags = Tags, ConfigurationSetName = ConfigurationSetName, Template = Template, TemplateArn = TemplateArn, TemplateData = TemplateData)
   output <- .ses$send_templated_email_output()
@@ -1795,7 +1846,8 @@ ses_set_active_receipt_rule_set <- function(RuleSetName = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$set_active_receipt_rule_set_input(RuleSetName = RuleSetName)
   output <- .ses$set_active_receipt_rule_set_output()
@@ -1827,7 +1879,8 @@ ses_set_identity_dkim_enabled <- function(Identity, DkimEnabled) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$set_identity_dkim_enabled_input(Identity = Identity, DkimEnabled = DkimEnabled)
   output <- .ses$set_identity_dkim_enabled_output()
@@ -1860,7 +1913,8 @@ ses_set_identity_feedback_forwarding_enabled <- function(Identity, ForwardingEna
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$set_identity_feedback_forwarding_enabled_input(Identity = Identity, ForwardingEnabled = ForwardingEnabled)
   output <- .ses$set_identity_feedback_forwarding_enabled_output()
@@ -1897,7 +1951,8 @@ ses_set_identity_headers_in_notifications_enabled <- function(Identity, Notifica
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$set_identity_headers_in_notifications_enabled_input(Identity = Identity, NotificationType = NotificationType, Enabled = Enabled)
   output <- .ses$set_identity_headers_in_notifications_enabled_output()
@@ -1933,7 +1988,8 @@ ses_set_identity_mail_from_domain <- function(Identity, MailFromDomain = NULL, B
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$set_identity_mail_from_domain_input(Identity = Identity, MailFromDomain = MailFromDomain, BehaviorOnMXFailure = BehaviorOnMXFailure)
   output <- .ses$set_identity_mail_from_domain_output()
@@ -1971,7 +2027,8 @@ ses_set_identity_notification_topic <- function(Identity, NotificationType, SnsT
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$set_identity_notification_topic_input(Identity = Identity, NotificationType = NotificationType, SnsTopic = SnsTopic)
   output <- .ses$set_identity_notification_topic_output()
@@ -2004,7 +2061,8 @@ ses_set_receipt_rule_position <- function(RuleSetName, RuleName, After = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$set_receipt_rule_position_input(RuleSetName = RuleSetName, RuleName = RuleName, After = After)
   output <- .ses$set_receipt_rule_position_output()
@@ -2037,7 +2095,8 @@ ses_test_render_template <- function(TemplateName, TemplateData) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$test_render_template_input(TemplateName = TemplateName, TemplateData = TemplateData)
   output <- .ses$test_render_template_output()
@@ -2069,7 +2128,8 @@ ses_update_account_sending_enabled <- function(Enabled = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$update_account_sending_enabled_input(Enabled = Enabled)
   output <- .ses$update_account_sending_enabled_output()
@@ -2101,7 +2161,8 @@ ses_update_configuration_set_event_destination <- function(ConfigurationSetName,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$update_configuration_set_event_destination_input(ConfigurationSetName = ConfigurationSetName, EventDestination = EventDestination)
   output <- .ses$update_configuration_set_event_destination_output()
@@ -2134,7 +2195,8 @@ ses_update_configuration_set_reputation_metrics_enabled <- function(Configuratio
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$update_configuration_set_reputation_metrics_enabled_input(ConfigurationSetName = ConfigurationSetName, Enabled = Enabled)
   output <- .ses$update_configuration_set_reputation_metrics_enabled_output()
@@ -2167,7 +2229,8 @@ ses_update_configuration_set_sending_enabled <- function(ConfigurationSetName, E
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$update_configuration_set_sending_enabled_input(ConfigurationSetName = ConfigurationSetName, Enabled = Enabled)
   output <- .ses$update_configuration_set_sending_enabled_output()
@@ -2202,7 +2265,8 @@ ses_update_configuration_set_tracking_options <- function(ConfigurationSetName, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$update_configuration_set_tracking_options_input(ConfigurationSetName = ConfigurationSetName, TrackingOptions = TrackingOptions)
   output <- .ses$update_configuration_set_tracking_options_output()
@@ -2238,7 +2302,8 @@ ses_update_custom_verification_email_template <- function(TemplateName, FromEmai
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$update_custom_verification_email_template_input(TemplateName = TemplateName, FromEmailAddress = FromEmailAddress, TemplateSubject = TemplateSubject, TemplateContent = TemplateContent, SuccessRedirectionURL = SuccessRedirectionURL, FailureRedirectionURL = FailureRedirectionURL)
   output <- .ses$update_custom_verification_email_template_output()
@@ -2270,7 +2335,8 @@ ses_update_receipt_rule <- function(RuleSetName, Rule) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$update_receipt_rule_input(RuleSetName = RuleSetName, Rule = Rule)
   output <- .ses$update_receipt_rule_output()
@@ -2301,7 +2367,8 @@ ses_update_template <- function(Template) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$update_template_input(Template = Template)
   output <- .ses$update_template_output()
@@ -2332,7 +2399,8 @@ ses_verify_domain_dkim <- function(Domain) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$verify_domain_dkim_input(Domain = Domain)
   output <- .ses$verify_domain_dkim_output()
@@ -2364,7 +2432,8 @@ ses_verify_domain_identity <- function(Domain) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$verify_domain_identity_input(Domain = Domain)
   output <- .ses$verify_domain_identity_output()
@@ -2395,7 +2464,8 @@ ses_verify_email_address <- function(EmailAddress) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$verify_email_address_input(EmailAddress = EmailAddress)
   output <- .ses$verify_email_address_output()
@@ -2428,7 +2498,8 @@ ses_verify_email_identity <- function(EmailAddress) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .ses$verify_email_identity_input(EmailAddress = EmailAddress)
   output <- .ses$verify_email_identity_output()

@@ -23,7 +23,8 @@ s3tables_create_namespace <- function(tableBucketARN, namespace) {
     http_path = "/namespaces/{tableBucketARN}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$create_namespace_input(tableBucketARN = tableBucketARN, namespace = namespace)
   output <- .s3tables$create_namespace_output()
@@ -66,7 +67,8 @@ s3tables_create_table <- function(tableBucketARN, namespace, name, format, metad
     http_path = "/tables/{tableBucketARN}/{namespace}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$create_table_input(tableBucketARN = tableBucketARN, namespace = namespace, name = name, format = format, metadata = metadata, encryptionConfiguration = encryptionConfiguration, storageClassConfiguration = storageClassConfiguration, tags = tags)
   output <- .s3tables$create_table_output()
@@ -102,7 +104,8 @@ s3tables_create_table_bucket <- function(name, encryptionConfiguration = NULL, s
     http_path = "/buckets",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$create_table_bucket_input(name = name, encryptionConfiguration = encryptionConfiguration, storageClassConfiguration = storageClassConfiguration, tags = tags)
   output <- .s3tables$create_table_bucket_output()
@@ -134,7 +137,8 @@ s3tables_delete_namespace <- function(tableBucketARN, namespace) {
     http_path = "/namespaces/{tableBucketARN}/{namespace}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$delete_namespace_input(tableBucketARN = tableBucketARN, namespace = namespace)
   output <- .s3tables$delete_namespace_output()
@@ -168,7 +172,8 @@ s3tables_delete_table <- function(tableBucketARN, namespace, name, versionToken 
     http_path = "/tables/{tableBucketARN}/{namespace}/{name}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$delete_table_input(tableBucketARN = tableBucketARN, namespace = namespace, name = name, versionToken = versionToken)
   output <- .s3tables$delete_table_output()
@@ -199,7 +204,8 @@ s3tables_delete_table_bucket <- function(tableBucketARN) {
     http_path = "/buckets/{tableBucketARN}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$delete_table_bucket_input(tableBucketARN = tableBucketARN)
   output <- .s3tables$delete_table_bucket_output()
@@ -230,7 +236,8 @@ s3tables_delete_table_bucket_encryption <- function(tableBucketARN) {
     http_path = "/buckets/{tableBucketARN}/encryption",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$delete_table_bucket_encryption_input(tableBucketARN = tableBucketARN)
   output <- .s3tables$delete_table_bucket_encryption_output()
@@ -261,7 +268,8 @@ s3tables_delete_table_bucket_metrics_configuration <- function(tableBucketARN) {
     http_path = "/buckets/{tableBucketARN}/metrics",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$delete_table_bucket_metrics_configuration_input(tableBucketARN = tableBucketARN)
   output <- .s3tables$delete_table_bucket_metrics_configuration_output()
@@ -292,7 +300,8 @@ s3tables_delete_table_bucket_policy <- function(tableBucketARN) {
     http_path = "/buckets/{tableBucketARN}/policy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$delete_table_bucket_policy_input(tableBucketARN = tableBucketARN)
   output <- .s3tables$delete_table_bucket_policy_output()
@@ -324,7 +333,8 @@ s3tables_delete_table_bucket_replication <- function(tableBucketARN, versionToke
     http_path = "/table-bucket-replication",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$delete_table_bucket_replication_input(tableBucketARN = tableBucketARN, versionToken = versionToken)
   output <- .s3tables$delete_table_bucket_replication_output()
@@ -357,7 +367,8 @@ s3tables_delete_table_policy <- function(tableBucketARN, namespace, name) {
     http_path = "/tables/{tableBucketARN}/{namespace}/{name}/policy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$delete_table_policy_input(tableBucketARN = tableBucketARN, namespace = namespace, name = name)
   output <- .s3tables$delete_table_policy_output()
@@ -389,7 +400,8 @@ s3tables_delete_table_replication <- function(tableArn, versionToken) {
     http_path = "/table-replication",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$delete_table_replication_input(tableArn = tableArn, versionToken = versionToken)
   output <- .s3tables$delete_table_replication_output()
@@ -421,7 +433,8 @@ s3tables_get_namespace <- function(tableBucketARN, namespace) {
     http_path = "/namespaces/{tableBucketARN}/{namespace}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$get_namespace_input(tableBucketARN = tableBucketARN, namespace = namespace)
   output <- .s3tables$get_namespace_output()
@@ -455,7 +468,8 @@ s3tables_get_table <- function(tableBucketARN = NULL, namespace = NULL, name = N
     http_path = "/get-table",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$get_table_input(tableBucketARN = tableBucketARN, namespace = namespace, name = name, tableArn = tableArn)
   output <- .s3tables$get_table_output()
@@ -486,7 +500,8 @@ s3tables_get_table_bucket <- function(tableBucketARN) {
     http_path = "/buckets/{tableBucketARN}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$get_table_bucket_input(tableBucketARN = tableBucketARN)
   output <- .s3tables$get_table_bucket_output()
@@ -517,7 +532,8 @@ s3tables_get_table_bucket_encryption <- function(tableBucketARN) {
     http_path = "/buckets/{tableBucketARN}/encryption",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$get_table_bucket_encryption_input(tableBucketARN = tableBucketARN)
   output <- .s3tables$get_table_bucket_encryption_output()
@@ -548,7 +564,8 @@ s3tables_get_table_bucket_maintenance_configuration <- function(tableBucketARN) 
     http_path = "/buckets/{tableBucketARN}/maintenance",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$get_table_bucket_maintenance_configuration_input(tableBucketARN = tableBucketARN)
   output <- .s3tables$get_table_bucket_maintenance_configuration_output()
@@ -579,7 +596,8 @@ s3tables_get_table_bucket_metrics_configuration <- function(tableBucketARN) {
     http_path = "/buckets/{tableBucketARN}/metrics",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$get_table_bucket_metrics_configuration_input(tableBucketARN = tableBucketARN)
   output <- .s3tables$get_table_bucket_metrics_configuration_output()
@@ -610,7 +628,8 @@ s3tables_get_table_bucket_policy <- function(tableBucketARN) {
     http_path = "/buckets/{tableBucketARN}/policy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$get_table_bucket_policy_input(tableBucketARN = tableBucketARN)
   output <- .s3tables$get_table_bucket_policy_output()
@@ -641,7 +660,8 @@ s3tables_get_table_bucket_replication <- function(tableBucketARN) {
     http_path = "/table-bucket-replication",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$get_table_bucket_replication_input(tableBucketARN = tableBucketARN)
   output <- .s3tables$get_table_bucket_replication_output()
@@ -672,7 +692,8 @@ s3tables_get_table_bucket_storage_class <- function(tableBucketARN) {
     http_path = "/buckets/{tableBucketARN}/storage-class",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$get_table_bucket_storage_class_input(tableBucketARN = tableBucketARN)
   output <- .s3tables$get_table_bucket_storage_class_output()
@@ -705,7 +726,8 @@ s3tables_get_table_encryption <- function(tableBucketARN, namespace, name) {
     http_path = "/tables/{tableBucketARN}/{namespace}/{name}/encryption",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$get_table_encryption_input(tableBucketARN = tableBucketARN, namespace = namespace, name = name)
   output <- .s3tables$get_table_encryption_output()
@@ -738,7 +760,8 @@ s3tables_get_table_maintenance_configuration <- function(tableBucketARN, namespa
     http_path = "/tables/{tableBucketARN}/{namespace}/{name}/maintenance",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$get_table_maintenance_configuration_input(tableBucketARN = tableBucketARN, namespace = namespace, name = name)
   output <- .s3tables$get_table_maintenance_configuration_output()
@@ -771,7 +794,8 @@ s3tables_get_table_maintenance_job_status <- function(tableBucketARN, namespace,
     http_path = "/tables/{tableBucketARN}/{namespace}/{name}/maintenance-job-status",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$get_table_maintenance_job_status_input(tableBucketARN = tableBucketARN, namespace = namespace, name = name)
   output <- .s3tables$get_table_maintenance_job_status_output()
@@ -804,7 +828,8 @@ s3tables_get_table_metadata_location <- function(tableBucketARN, namespace, name
     http_path = "/tables/{tableBucketARN}/{namespace}/{name}/metadata-location",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$get_table_metadata_location_input(tableBucketARN = tableBucketARN, namespace = namespace, name = name)
   output <- .s3tables$get_table_metadata_location_output()
@@ -837,7 +862,8 @@ s3tables_get_table_policy <- function(tableBucketARN, namespace, name) {
     http_path = "/tables/{tableBucketARN}/{namespace}/{name}/policy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$get_table_policy_input(tableBucketARN = tableBucketARN, namespace = namespace, name = name)
   output <- .s3tables$get_table_policy_output()
@@ -869,7 +895,8 @@ s3tables_get_table_record_expiration_configuration <- function(tableArn) {
     http_path = "/table-record-expiration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$get_table_record_expiration_configuration_input(tableArn = tableArn)
   output <- .s3tables$get_table_record_expiration_configuration_output()
@@ -901,7 +928,8 @@ s3tables_get_table_record_expiration_job_status <- function(tableArn) {
     http_path = "/table-record-expiration-job-status",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$get_table_record_expiration_job_status_input(tableArn = tableArn)
   output <- .s3tables$get_table_record_expiration_job_status_output()
@@ -932,7 +960,8 @@ s3tables_get_table_replication <- function(tableArn) {
     http_path = "/table-replication",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$get_table_replication_input(tableArn = tableArn)
   output <- .s3tables$get_table_replication_output()
@@ -964,7 +993,8 @@ s3tables_get_table_replication_status <- function(tableArn) {
     http_path = "/replication-status",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$get_table_replication_status_input(tableArn = tableArn)
   output <- .s3tables$get_table_replication_status_output()
@@ -997,7 +1027,8 @@ s3tables_get_table_storage_class <- function(tableBucketARN, namespace, name) {
     http_path = "/tables/{tableBucketARN}/{namespace}/{name}/storage-class",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$get_table_storage_class_input(tableBucketARN = tableBucketARN, namespace = namespace, name = name)
   output <- .s3tables$get_table_storage_class_output()
@@ -1031,7 +1062,8 @@ s3tables_list_namespaces <- function(tableBucketARN, prefix = NULL, continuation
     http_path = "/namespaces/{tableBucketARN}",
     host_prefix = "",
     paginator = list(input_token = "continuationToken", output_token = "continuationToken", limit_key = "maxNamespaces", result_key = "namespaces"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$list_namespaces_input(tableBucketARN = tableBucketARN, prefix = prefix, continuationToken = continuationToken, maxNamespaces = maxNamespaces)
   output <- .s3tables$list_namespaces_output()
@@ -1065,7 +1097,8 @@ s3tables_list_table_buckets <- function(prefix = NULL, continuationToken = NULL,
     http_path = "/buckets",
     host_prefix = "",
     paginator = list(input_token = "continuationToken", output_token = "continuationToken", limit_key = "maxBuckets", result_key = "tableBuckets"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$list_table_buckets_input(prefix = prefix, continuationToken = continuationToken, maxBuckets = maxBuckets, type = type)
   output <- .s3tables$list_table_buckets_output()
@@ -1100,7 +1133,8 @@ s3tables_list_tables <- function(tableBucketARN, namespace = NULL, prefix = NULL
     http_path = "/tables/{tableBucketARN}",
     host_prefix = "",
     paginator = list(input_token = "continuationToken", output_token = "continuationToken", limit_key = "maxTables", result_key = "tables"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$list_tables_input(tableBucketARN = tableBucketARN, namespace = namespace, prefix = prefix, continuationToken = continuationToken, maxTables = maxTables)
   output <- .s3tables$list_tables_output()
@@ -1131,7 +1165,8 @@ s3tables_list_tags_for_resource <- function(resourceArn) {
     http_path = "/tag/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .s3tables$list_tags_for_resource_output()
@@ -1163,7 +1198,8 @@ s3tables_put_table_bucket_encryption <- function(tableBucketARN, encryptionConfi
     http_path = "/buckets/{tableBucketARN}/encryption",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$put_table_bucket_encryption_input(tableBucketARN = tableBucketARN, encryptionConfiguration = encryptionConfiguration)
   output <- .s3tables$put_table_bucket_encryption_output()
@@ -1197,7 +1233,8 @@ s3tables_put_table_bucket_maintenance_configuration <- function(tableBucketARN, 
     http_path = "/buckets/{tableBucketARN}/maintenance/{type}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$put_table_bucket_maintenance_configuration_input(tableBucketARN = tableBucketARN, type = type, value = value)
   output <- .s3tables$put_table_bucket_maintenance_configuration_output()
@@ -1228,7 +1265,8 @@ s3tables_put_table_bucket_metrics_configuration <- function(tableBucketARN) {
     http_path = "/buckets/{tableBucketARN}/metrics",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$put_table_bucket_metrics_configuration_input(tableBucketARN = tableBucketARN)
   output <- .s3tables$put_table_bucket_metrics_configuration_output()
@@ -1261,7 +1299,8 @@ s3tables_put_table_bucket_policy <- function(tableBucketARN, resourcePolicy) {
     http_path = "/buckets/{tableBucketARN}/policy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$put_table_bucket_policy_input(tableBucketARN = tableBucketARN, resourcePolicy = resourcePolicy)
   output <- .s3tables$put_table_bucket_policy_output()
@@ -1294,7 +1333,8 @@ s3tables_put_table_bucket_replication <- function(tableBucketARN, versionToken =
     http_path = "/table-bucket-replication",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$put_table_bucket_replication_input(tableBucketARN = tableBucketARN, versionToken = versionToken, configuration = configuration)
   output <- .s3tables$put_table_bucket_replication_output()
@@ -1326,7 +1366,8 @@ s3tables_put_table_bucket_storage_class <- function(tableBucketARN, storageClass
     http_path = "/buckets/{tableBucketARN}/storage-class",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$put_table_bucket_storage_class_input(tableBucketARN = tableBucketARN, storageClassConfiguration = storageClassConfiguration)
   output <- .s3tables$put_table_bucket_storage_class_output()
@@ -1362,7 +1403,8 @@ s3tables_put_table_maintenance_configuration <- function(tableBucketARN, namespa
     http_path = "/tables/{tableBucketARN}/{namespace}/{name}/maintenance/{type}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$put_table_maintenance_configuration_input(tableBucketARN = tableBucketARN, namespace = namespace, name = name, type = type, value = value)
   output <- .s3tables$put_table_maintenance_configuration_output()
@@ -1397,7 +1439,8 @@ s3tables_put_table_policy <- function(tableBucketARN, namespace, name, resourceP
     http_path = "/tables/{tableBucketARN}/{namespace}/{name}/policy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$put_table_policy_input(tableBucketARN = tableBucketARN, namespace = namespace, name = name, resourcePolicy = resourcePolicy)
   output <- .s3tables$put_table_policy_output()
@@ -1430,7 +1473,8 @@ s3tables_put_table_record_expiration_configuration <- function(tableArn, value) 
     http_path = "/table-record-expiration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$put_table_record_expiration_configuration_input(tableArn = tableArn, value = value)
   output <- .s3tables$put_table_record_expiration_configuration_output()
@@ -1463,7 +1507,8 @@ s3tables_put_table_replication <- function(tableArn, versionToken = NULL, config
     http_path = "/table-replication",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$put_table_replication_input(tableArn = tableArn, versionToken = versionToken, configuration = configuration)
   output <- .s3tables$put_table_replication_output()
@@ -1499,7 +1544,8 @@ s3tables_rename_table <- function(tableBucketARN, namespace, name, newNamespaceN
     http_path = "/tables/{tableBucketARN}/{namespace}/{name}/rename",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$rename_table_input(tableBucketARN = tableBucketARN, namespace = namespace, name = name, newNamespaceName = newNamespaceName, newName = newName, versionToken = versionToken)
   output <- .s3tables$rename_table_output()
@@ -1532,7 +1578,8 @@ s3tables_tag_resource <- function(resourceArn, tags) {
     http_path = "/tag/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .s3tables$tag_resource_output()
@@ -1565,7 +1612,8 @@ s3tables_untag_resource <- function(resourceArn, tagKeys) {
     http_path = "/tag/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .s3tables$untag_resource_output()
@@ -1600,7 +1648,8 @@ s3tables_update_table_metadata_location <- function(tableBucketARN, namespace, n
     http_path = "/tables/{tableBucketARN}/{namespace}/{name}/metadata-location",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .s3tables$update_table_metadata_location_input(tableBucketARN = tableBucketARN, namespace = namespace, name = name, versionToken = versionToken, metadataLocation = metadataLocation)
   output <- .s3tables$update_table_metadata_location_output()

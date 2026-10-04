@@ -18,7 +18,8 @@ elasticache_create_serverless_cache(
   SubnetIds = NULL,
   SnapshotRetentionLimit = NULL,
   DailySnapshotTime = NULL,
-  NetworkType = NULL
+  NetworkType = NULL,
+  ConnectionType = NULL
 )
 }
 \arguments{
@@ -49,6 +50,8 @@ elasticache_create_serverless_cache(
 \item{DailySnapshotTime}{The daily time that snapshots will be created from the new serverless cache. By default this number is populated with 0, i.e. no snapshots will be created on an automatic daily basis. Available for Valkey, Redis OSS and Serverless Memcached only.}
 
 \item{NetworkType}{The IP protocol version used by the serverless cache. Must be either \code{ipv4} | \code{ipv6} | \code{dual_stack}. \code{ipv6} is only supported with IPv6-only subnets. If not specified, defaults to \code{ipv4}, unless all provided subnets are IPv6-only, in which case it defaults to \code{ipv6}.}
+
+\item{ConnectionType}{The connection type for the serverless cache. Must be either \code{vpc} | \code{public}. Use \code{vpc} to access the cache through a VPC endpoint, or \code{public} to access the cache over the internet. If not specified, defaults to \code{vpc}. This value cannot be changed after the serverless cache is created. Setting this to \code{public} requires Valkey 9 or above.}
 }
 \description{
 Creates a serverless cache.

@@ -43,7 +43,8 @@ emrcontainers_cancel_job_run <- function(id, virtualClusterId) {
     http_path = "/virtualclusters/{virtualClusterId}/jobruns/{jobRunId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .emrcontainers$cancel_job_run_input(id = id, virtualClusterId = virtualClusterId)
   output <- .emrcontainers$cancel_job_run_output()
@@ -154,7 +155,8 @@ emrcontainers_create_job_template <- function(name, clientToken, jobTemplateData
     http_path = "/jobtemplates",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .emrcontainers$create_job_template_input(name = name, clientToken = clientToken, jobTemplateData = jobTemplateData, tags = tags, kmsKeyArn = kmsKeyArn)
   output <- .emrcontainers$create_job_template_output()
@@ -257,7 +259,8 @@ emrcontainers_create_managed_endpoint <- function(name, virtualClusterId, type, 
     http_path = "/virtualclusters/{virtualClusterId}/endpoints",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .emrcontainers$create_managed_endpoint_input(name = name, virtualClusterId = virtualClusterId, type = type, releaseLabel = releaseLabel, executionRoleArn = executionRoleArn, certificateArn = certificateArn, configurationOverrides = configurationOverrides, clientToken = clientToken, tags = tags, sessionIdleTimeoutInMinutes = sessionIdleTimeoutInMinutes)
   output <- .emrcontainers$create_managed_endpoint_output()
@@ -359,7 +362,8 @@ emrcontainers_create_security_configuration <- function(clientToken, name, conta
     http_path = "/securityconfigurations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .emrcontainers$create_security_configuration_input(clientToken = clientToken, name = name, containerProvider = containerProvider, securityConfigurationData = securityConfigurationData, tags = tags)
   output <- .emrcontainers$create_security_configuration_output()
@@ -438,7 +442,8 @@ emrcontainers_create_virtual_cluster <- function(name, containerProvider, client
     http_path = "/virtualclusters",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .emrcontainers$create_virtual_cluster_input(name = name, containerProvider = containerProvider, clientToken = clientToken, tags = tags, securityConfigurationId = securityConfigurationId, sessionEnabled = sessionEnabled, schedulerConfiguration = schedulerConfiguration)
   output <- .emrcontainers$create_virtual_cluster_output()
@@ -487,7 +492,8 @@ emrcontainers_delete_job_template <- function(id) {
     http_path = "/jobtemplates/{templateId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .emrcontainers$delete_job_template_input(id = id)
   output <- .emrcontainers$delete_job_template_output()
@@ -539,7 +545,8 @@ emrcontainers_delete_managed_endpoint <- function(id, virtualClusterId) {
     http_path = "/virtualclusters/{virtualClusterId}/endpoints/{endpointId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .emrcontainers$delete_managed_endpoint_input(id = id, virtualClusterId = virtualClusterId)
   output <- .emrcontainers$delete_managed_endpoint_output()
@@ -588,7 +595,8 @@ emrcontainers_delete_security_configuration <- function(id) {
     http_path = "/securityconfigurations/{securityConfigurationId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .emrcontainers$delete_security_configuration_input(id = id)
   output <- .emrcontainers$delete_security_configuration_output()
@@ -637,7 +645,8 @@ emrcontainers_delete_virtual_cluster <- function(id) {
     http_path = "/virtualclusters/{virtualClusterId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .emrcontainers$delete_virtual_cluster_input(id = id)
   output <- .emrcontainers$delete_virtual_cluster_output()
@@ -758,7 +767,8 @@ emrcontainers_describe_job_run <- function(id, virtualClusterId) {
     http_path = "/virtualclusters/{virtualClusterId}/jobruns/{jobRunId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .emrcontainers$describe_job_run_input(id = id, virtualClusterId = virtualClusterId)
   output <- .emrcontainers$describe_job_run_output()
@@ -867,7 +877,8 @@ emrcontainers_describe_job_template <- function(id) {
     http_path = "/jobtemplates/{templateId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .emrcontainers$describe_job_template_input(id = id)
   output <- .emrcontainers$describe_job_template_output()
@@ -976,7 +987,8 @@ emrcontainers_describe_managed_endpoint <- function(id, virtualClusterId) {
     http_path = "/virtualclusters/{virtualClusterId}/endpoints/{endpointId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .emrcontainers$describe_managed_endpoint_input(id = id, virtualClusterId = virtualClusterId)
   output <- .emrcontainers$describe_managed_endpoint_output()
@@ -1068,7 +1080,8 @@ emrcontainers_describe_security_configuration <- function(id) {
     http_path = "/securityconfigurations/{securityConfigurationId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .emrcontainers$describe_security_configuration_input(id = id)
   output <- .emrcontainers$describe_security_configuration_output()
@@ -1148,7 +1161,8 @@ emrcontainers_describe_virtual_cluster <- function(id) {
     http_path = "/virtualclusters/{virtualClusterId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .emrcontainers$describe_virtual_cluster_input(id = id)
   output <- .emrcontainers$describe_virtual_cluster_output()
@@ -1220,7 +1234,8 @@ emrcontainers_get_managed_endpoint_session_credentials <- function(endpointIdent
     http_path = "/virtualclusters/{virtualClusterId}/endpoints/{endpointId}/credentials",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .emrcontainers$get_managed_endpoint_session_credentials_input(endpointIdentifier = endpointIdentifier, virtualClusterIdentifier = virtualClusterIdentifier, executionRoleArn = executionRoleArn, credentialType = credentialType, durationInSeconds = durationInSeconds, logContext = logContext, clientToken = clientToken)
   output <- .emrcontainers$get_managed_endpoint_session_credentials_output()
@@ -1361,7 +1376,8 @@ emrcontainers_list_job_runs <- function(virtualClusterId, createdBefore = NULL, 
     http_path = "/virtualclusters/{virtualClusterId}/jobruns",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobRuns"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .emrcontainers$list_job_runs_input(virtualClusterId = virtualClusterId, createdBefore = createdBefore, createdAfter = createdAfter, name = name, states = states, maxResults = maxResults, nextToken = nextToken)
   output <- .emrcontainers$list_job_runs_output()
@@ -1484,7 +1500,8 @@ emrcontainers_list_job_templates <- function(createdAfter = NULL, createdBefore 
     http_path = "/jobtemplates",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "templates"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .emrcontainers$list_job_templates_input(createdAfter = createdAfter, createdBefore = createdBefore, maxResults = maxResults, nextToken = nextToken)
   output <- .emrcontainers$list_job_templates_output()
@@ -1615,7 +1632,8 @@ emrcontainers_list_managed_endpoints <- function(virtualClusterId, createdBefore
     http_path = "/virtualclusters/{virtualClusterId}/endpoints",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "endpoints"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .emrcontainers$list_managed_endpoints_input(virtualClusterId = virtualClusterId, createdBefore = createdBefore, createdAfter = createdAfter, types = types, states = states, maxResults = maxResults, nextToken = nextToken)
   output <- .emrcontainers$list_managed_endpoints_output()
@@ -1721,7 +1739,8 @@ emrcontainers_list_security_configurations <- function(createdAfter = NULL, crea
     http_path = "/securityconfigurations",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "securityConfigurations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .emrcontainers$list_security_configurations_input(createdAfter = createdAfter, createdBefore = createdBefore, maxResults = maxResults, nextToken = nextToken)
   output <- .emrcontainers$list_security_configurations_output()
@@ -1772,7 +1791,8 @@ emrcontainers_list_tags_for_resource <- function(resourceArn) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .emrcontainers$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .emrcontainers$list_tags_for_resource_output()
@@ -1877,7 +1897,8 @@ emrcontainers_list_virtual_clusters <- function(containerProviderId = NULL, cont
     http_path = "/virtualclusters",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "virtualClusters"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .emrcontainers$list_virtual_clusters_input(containerProviderId = containerProviderId, containerProviderType = containerProviderType, createdAfter = createdAfter, createdBefore = createdBefore, states = states, maxResults = maxResults, nextToken = nextToken, eksAccessEntryIntegrated = eksAccessEntryIntegrated)
   output <- .emrcontainers$list_virtual_clusters_output()
@@ -1998,7 +2019,8 @@ emrcontainers_start_job_run <- function(name = NULL, virtualClusterId, clientTok
     http_path = "/virtualclusters/{virtualClusterId}/jobruns",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .emrcontainers$start_job_run_input(name = name, virtualClusterId = virtualClusterId, clientToken = clientToken, executionRoleArn = executionRoleArn, releaseLabel = releaseLabel, jobDriver = jobDriver, configurationOverrides = configurationOverrides, tags = tags, jobTemplateId = jobTemplateId, jobTemplateParameters = jobTemplateParameters, retryPolicyConfiguration = retryPolicyConfiguration)
   output <- .emrcontainers$start_job_run_output()
@@ -2046,7 +2068,8 @@ emrcontainers_tag_resource <- function(resourceArn, tags) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .emrcontainers$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .emrcontainers$tag_resource_output()
@@ -2094,7 +2117,8 @@ emrcontainers_untag_resource <- function(resourceArn, tagKeys) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .emrcontainers$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .emrcontainers$untag_resource_output()
@@ -2182,7 +2206,8 @@ emrcontainers_update_virtual_cluster <- function(id, schedulerConfiguration = NU
     http_path = "/virtualclusters/{virtualClusterId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .emrcontainers$update_virtual_cluster_input(id = id, schedulerConfiguration = schedulerConfiguration, clientToken = clientToken)
   output <- .emrcontainers$update_virtual_cluster_output()

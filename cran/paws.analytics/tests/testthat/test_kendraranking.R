@@ -1,4 +1,4 @@
-svc <- paws.analytics::kendraranking()
+svc <- paws::kendraranking()
 
 test_that("list_rescore_execution_plans", {
   skip_on_cran()

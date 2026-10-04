@@ -22,7 +22,8 @@ braket_cancel_job <- function(jobArn) {
     http_path = "/job/{jobArn}/cancel",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .braket$cancel_job_input(jobArn = jobArn)
   output <- .braket$cancel_job_output()
@@ -54,7 +55,8 @@ braket_cancel_quantum_task <- function(quantumTaskArn, clientToken) {
     http_path = "/quantum-task/{quantumTaskArn}/cancel",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .braket$cancel_quantum_task_input(quantumTaskArn = quantumTaskArn, clientToken = clientToken)
   output <- .braket$cancel_quantum_task_output()
@@ -99,7 +101,8 @@ braket_create_job <- function(clientToken, algorithmSpecification, inputDataConf
     http_path = "/job",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .braket$create_job_input(clientToken = clientToken, algorithmSpecification = algorithmSpecification, inputDataConfig = inputDataConfig, outputDataConfig = outputDataConfig, checkpointConfig = checkpointConfig, jobName = jobName, roleArn = roleArn, stoppingCondition = stoppingCondition, instanceConfig = instanceConfig, hyperParameters = hyperParameters, deviceConfig = deviceConfig, tags = tags, associations = associations)
   output <- .braket$create_job_output()
@@ -140,7 +143,8 @@ braket_create_quantum_task <- function(clientToken, deviceArn, deviceParameters 
     http_path = "/quantum-task",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .braket$create_quantum_task_input(clientToken = clientToken, deviceArn = deviceArn, deviceParameters = deviceParameters, shots = shots, outputS3Bucket = outputS3Bucket, outputS3KeyPrefix = outputS3KeyPrefix, action = action, tags = tags, jobToken = jobToken, associations = associations, experimentalCapabilities = experimentalCapabilities)
   output <- .braket$create_quantum_task_output()
@@ -175,7 +179,8 @@ braket_create_spending_limit <- function(clientToken, deviceArn, spendingLimit, 
     http_path = "/spending-limit",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .braket$create_spending_limit_input(clientToken = clientToken, deviceArn = deviceArn, spendingLimit = spendingLimit, timePeriod = timePeriod, tags = tags)
   output <- .braket$create_spending_limit_output()
@@ -206,7 +211,8 @@ braket_delete_spending_limit <- function(spendingLimitArn) {
     http_path = "/spending-limit/{spendingLimitArn}/delete",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .braket$delete_spending_limit_input(spendingLimitArn = spendingLimitArn)
   output <- .braket$delete_spending_limit_output()
@@ -237,7 +243,8 @@ braket_get_device <- function(deviceArn) {
     http_path = "/device/{deviceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .braket$get_device_input(deviceArn = deviceArn)
   output <- .braket$get_device_output()
@@ -269,7 +276,8 @@ braket_get_job <- function(jobArn, additionalAttributeNames = NULL) {
     http_path = "/job/{jobArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .braket$get_job_input(jobArn = jobArn, additionalAttributeNames = additionalAttributeNames)
   output <- .braket$get_job_output()
@@ -301,7 +309,8 @@ braket_get_quantum_task <- function(quantumTaskArn, additionalAttributeNames = N
     http_path = "/quantum-task/{quantumTaskArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .braket$get_quantum_task_input(quantumTaskArn = quantumTaskArn, additionalAttributeNames = additionalAttributeNames)
   output <- .braket$get_quantum_task_output()
@@ -332,7 +341,8 @@ braket_list_tags_for_resource <- function(resourceArn) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .braket$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .braket$list_tags_for_resource_output()
@@ -365,7 +375,8 @@ braket_search_devices <- function(nextToken = NULL, maxResults = NULL, filters) 
     http_path = "/devices",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "devices"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .braket$search_devices_input(nextToken = nextToken, maxResults = maxResults, filters = filters)
   output <- .braket$search_devices_output()
@@ -399,7 +410,8 @@ braket_search_jobs <- function(nextToken = NULL, maxResults = NULL, filters) {
     http_path = "/jobs",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobs"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .braket$search_jobs_input(nextToken = nextToken, maxResults = maxResults, filters = filters)
   output <- .braket$search_jobs_output()
@@ -432,7 +444,8 @@ braket_search_quantum_tasks <- function(nextToken = NULL, maxResults = NULL, fil
     http_path = "/quantum-tasks",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "quantumTasks"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .braket$search_quantum_tasks_input(nextToken = nextToken, maxResults = maxResults, filters = filters)
   output <- .braket$search_quantum_tasks_output()
@@ -465,7 +478,8 @@ braket_search_spending_limits <- function(nextToken = NULL, maxResults = NULL, f
     http_path = "/spending-limits",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "spendingLimits"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .braket$search_spending_limits_input(nextToken = nextToken, maxResults = maxResults, filters = filters)
   output <- .braket$search_spending_limits_output()
@@ -497,7 +511,8 @@ braket_tag_resource <- function(resourceArn, tags) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .braket$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .braket$tag_resource_output()
@@ -529,7 +544,8 @@ braket_untag_resource <- function(resourceArn, tagKeys) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .braket$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .braket$untag_resource_output()
@@ -563,7 +579,8 @@ braket_update_spending_limit <- function(spendingLimitArn, clientToken, spending
     http_path = "/spending-limit/{spendingLimitArn}/update",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .braket$update_spending_limit_input(spendingLimitArn = spendingLimitArn, clientToken = clientToken, spendingLimit = spendingLimit, timePeriod = timePeriod)
   output <- .braket$update_spending_limit_output()

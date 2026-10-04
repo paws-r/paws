@@ -2,8 +2,8 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_list_component_build_versions}
 \alias{imagebuilder_list_component_build_versions}
-\title{Returns the list of component build versions for the specified component
-version Amazon Resource Name (ARN)}
+\title{Returns a list of component build versions for the specified component
+version ARN}
 \usage{
 imagebuilder_list_component_build_versions(
   componentVersionArn = NULL,
@@ -12,14 +12,14 @@ imagebuilder_list_component_build_versions(
 )
 }
 \arguments{
-\item{componentVersionArn}{The component version Amazon Resource Name (ARN) whose versions you want to list.}
+\item{componentVersionArn}{The component version ARN whose build versions you want to list. The ARN must specify an exact version, without a build number suffix. If you don't specify an ARN, Image Builder returns build versions for the components that your account owns.}
 
 \item{maxResults}{The maximum number of items to return in a single request.}
 
 \item{nextToken}{A token to specify where to start paginating. Use the \code{nextToken} value from a previously truncated response.}
 }
 \description{
-Returns the list of component build versions for the specified component version Amazon Resource Name (ARN).
+Returns a list of component build versions for the specified component version ARN. You can only list build versions for components that your account owns. Deprecated build versions aren't included in the results.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_list_component_build_versions/} for full documentation.
 }

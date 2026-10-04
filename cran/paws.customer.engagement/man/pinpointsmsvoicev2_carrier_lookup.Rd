@@ -5,10 +5,12 @@
 \title{Returns information about a destination phone number, including whether
 the number type and whether it is valid, the carrier, and more}
 \usage{
-pinpointsmsvoicev2_carrier_lookup(PhoneNumber)
+pinpointsmsvoicev2_carrier_lookup(PhoneNumber, EnableCleansing = NULL)
 }
 \arguments{
 \item{PhoneNumber}{[required] The phone number that you want to retrieve information about. You can provide the phone number in various formats including special characters such as parentheses, brackets, spaces, hyphens, periods, and commas. The service automatically converts the input to E164 format for processing.}
+
+\item{EnableCleansing}{Specifies whether the service cleanses the phone number that you provide. When set to \code{true}, the service normalizes the phone number according to the destination country's national numbering plan and dialing rules. The service returns the cleansed number in E.164 format in the \code{E164PhoneNumber} field and returns the number that you provided in the \code{OriginalPhoneNumber} field.}
 }
 \description{
 Returns information about a destination phone number, including whether the number type and whether it is valid, the carrier, and more.

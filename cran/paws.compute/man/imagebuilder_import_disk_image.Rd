@@ -22,7 +22,7 @@ imagebuilder_import_disk_image(
 )
 }
 \arguments{
-\item{name}{[required] The name of the image resource that's created from the import.}
+\item{name}{[required] The name of the image resource that's created from the import. Image Builder generates the image ARN from a normalized form of the name, so names that differ only in case, spaces, or underscores count as the same name. If an image with the same name and semantic version already exists in your account in the same Amazon Web Services Region, the import creates a new build version for it.}
 
 \item{semanticVersion}{[required] The semantic version to attach to the image that's created during the import process. This version follows the semantic version syntax.}
 
@@ -30,15 +30,15 @@ imagebuilder_import_disk_image(
 
 \item{platform}{[required] The operating system platform for the imported image. Allowed values include the following: \code{Windows}.}
 
-\item{osVersion}{[required] The operating system version for the imported image. Allowed values include the following: \verb{Microsoft Windows 11}.}
+\item{osVersion}{[required] The operating system version for the imported image. The only supported value is \verb{Microsoft Windows 11}.}
 
-\item{executionRole}{The name or Amazon Resource Name (ARN) for the IAM role you create that grants Image Builder access to perform workflow actions to import an image from a Microsoft ISO file.}
+\item{executionRole}{The name or Amazon Resource Name (ARN) for the IAM role you create that grants Image Builder access to perform workflow actions to import an image from a Microsoft ISO file. If you don't provide a role, Image Builder uses the Image Builder service-linked role in your account, and creates it if it doesn't exist.}
 
 \item{infrastructureConfigurationArn}{[required] The Amazon Resource Name (ARN) of the infrastructure configuration resource that's used for launching the EC2 instance on which the ISO image is built.}
 
-\item{uri}{[required] The \code{uri} of the ISO disk file that's stored in Amazon S3.}
+\item{uri}{[required] The \code{uri} of the ISO disk file that's stored in Amazon S3, in \verb{s3://bucket/key} format. The key must end with the \code{.iso}, \code{.ISO}, or \code{.Iso} extension, and the bucket must be owned by the account that makes the request.}
 
-\item{loggingConfiguration}{The logging configuration for the image build process.}
+\item{loggingConfiguration}{The CloudWatch Logs log group where Image Builder sends the import logs. If you specify a log group name outside of the \verb{/aws/imagebuilder/} namespace, you must also provide an \code{executionRole} that has permission to write to that log group.}
 
 \item{tags}{Tags that are attached to image resources created from the import.}
 
@@ -46,7 +46,7 @@ imagebuilder_import_disk_image(
 
 \item{windowsConfiguration}{Specifies Windows settings for ISO imports.}
 
-\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
+\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
 }
 \description{
 Imports a Windows operating system image from a verified Microsoft ISO disk file. The following disk images are supported:

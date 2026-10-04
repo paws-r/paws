@@ -35,7 +35,7 @@ ecs_update_express_gateway_service(
 
 \item{memory}{The amount of memory (in MiB) used by the task.}
 
-\item{cpuArchitecture}{The CPU architecture that the tasks in the Express service run on. Amazon ECS applies this value to the task definition revision that it registers for the service. If you don't specify a value, the service keeps the architecture that it currently runs on.
+\item{cpuArchitecture}{The CPU architecture that the task runs on. If you don't specify a value, the service keeps its current architecture.
 
 Valid values:
 \itemize{
@@ -43,9 +43,9 @@ Valid values:
 \item \code{ARM64} - The 64-bit ARM architecture.
 }
 
-Changing the architecture starts a new deployment that replaces the running tasks. Make sure that the container image that the service uses supports the architecture that you choose. The operating system family for an Express service is always \code{LINUX}.
+Changing the architecture starts a new deployment that replaces the running tasks. Ensure that the container image you specify supports the architecture you choose. The operating system family for an Express service is always \code{LINUX}.
 
-You can't specify \code{cpuArchitecture} when you also specify \code{taskDefinitionArn}, because this value applies only to a task definition that Amazon ECS registers on your behalf.}
+You can't specify \code{cpuArchitecture} together with \code{taskDefinitionArn}.}
 
 \item{scalingTarget}{The auto-scaling configuration for the Express service.}
 

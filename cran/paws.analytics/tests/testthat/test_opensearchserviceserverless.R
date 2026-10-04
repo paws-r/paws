@@ -1,4 +1,4 @@
-svc <- paws.analytics::opensearchserviceserverless()
+svc <- paws::opensearchserviceserverless()
 
 test_that("list_collection_groups", {
   skip_on_cran()

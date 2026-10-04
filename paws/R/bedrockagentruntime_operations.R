@@ -186,7 +186,13 @@ NULL
 #'           modelArn = "string"
 #'         )
 #'       ),
-#'       type = "BEDROCK_FOUNDATION_MODEL"
+#'       mantleFoundationModelConfiguration = list(
+#'         modelConfiguration = list(
+#'           modelArn = "string",
+#'           projectId = "string"
+#'         )
+#'       ),
+#'       type = "BEDROCK_FOUNDATION_MODEL"|"MANTLE_FOUNDATION_MODEL"
 #'     ),
 #'     foundationModelType = "CUSTOM"|"MANAGED",
 #'     maxAgentIteration = 123,
@@ -334,7 +340,8 @@ bedrockagentruntime_agentic_retrieve_stream <- function(agenticRetrieveConfigura
     http_path = "/agenticRetrieveStream",
     host_prefix = "",
     paginator = list(),
-    stream_api = TRUE
+    stream_api = TRUE,
+    http_checksum = NULL
   )
   input <- .bedrockagentruntime$agentic_retrieve_stream_input(agenticRetrieveConfiguration = agenticRetrieveConfiguration, generateResponse = generateResponse, memoryConfiguration = memoryConfiguration, messages = messages, nextToken = nextToken, policyConfiguration = policyConfiguration, retrievers = retrievers, userContext = userContext)
   output <- .bedrockagentruntime$agentic_retrieve_stream_output()
@@ -393,7 +400,8 @@ bedrockagentruntime_check_ingested_document_acl <- function(dataSourceId, docume
     http_path = "/knowledgebases/{knowledgeBaseId}/datasources/{dataSourceId}/check-ingested-document-acl",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentruntime$check_ingested_document_acl_input(dataSourceId = dataSourceId, documentId = documentId, knowledgeBaseId = knowledgeBaseId, userContext = userContext)
   output <- .bedrockagentruntime$check_ingested_document_acl_output()
@@ -459,7 +467,8 @@ bedrockagentruntime_create_invocation <- function(description = NULL, invocation
     http_path = "/sessions/{sessionIdentifier}/invocations/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentruntime$create_invocation_input(description = description, invocationId = invocationId, sessionIdentifier = sessionIdentifier)
   output <- .bedrockagentruntime$create_invocation_output()
@@ -538,7 +547,8 @@ bedrockagentruntime_create_session <- function(encryptionKeyArn = NULL, sessionM
     http_path = "/sessions/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentruntime$create_session_input(encryptionKeyArn = encryptionKeyArn, sessionMetadata = sessionMetadata, tags = tags)
   output <- .bedrockagentruntime$create_session_output()
@@ -589,7 +599,8 @@ bedrockagentruntime_delete_agent_memory <- function(agentAliasId, agentId, memor
     http_path = "/agents/{agentId}/agentAliases/{agentAliasId}/memories",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentruntime$delete_agent_memory_input(agentAliasId = agentAliasId, agentId = agentId, memoryId = memoryId, sessionId = sessionId)
   output <- .bedrockagentruntime$delete_agent_memory_output()
@@ -633,7 +644,8 @@ bedrockagentruntime_delete_session <- function(sessionIdentifier) {
     http_path = "/sessions/{sessionIdentifier}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentruntime$delete_session_input(sessionIdentifier = sessionIdentifier)
   output <- .bedrockagentruntime$delete_session_output()
@@ -684,7 +696,8 @@ bedrockagentruntime_end_session <- function(sessionIdentifier) {
     http_path = "/sessions/{sessionIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentruntime$end_session_input(sessionIdentifier = sessionIdentifier)
   output <- .bedrockagentruntime$end_session_output()
@@ -752,7 +765,8 @@ bedrockagentruntime_generate_query <- function(queryGenerationInput, transformat
     http_path = "/generateQuery",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentruntime$generate_query_input(queryGenerationInput = queryGenerationInput, transformationConfiguration = transformationConfiguration)
   output <- .bedrockagentruntime$generate_query_output()
@@ -827,7 +841,8 @@ bedrockagentruntime_get_agent_memory <- function(agentAliasId, agentId, maxItems
     http_path = "/agents/{agentId}/agentAliases/{agentAliasId}/memories",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxItems", result_key = "memoryContents"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentruntime$get_agent_memory_input(agentAliasId = agentAliasId, agentId = agentId, maxItems = maxItems, memoryId = memoryId, memoryType = memoryType, nextToken = nextToken)
   output <- .bedrockagentruntime$get_agent_memory_output()
@@ -889,7 +904,8 @@ bedrockagentruntime_get_document_content <- function(dataSourceId, documentId, k
     http_path = "/knowledgebases/{knowledgeBaseId}/datasources/{dataSourceId}/documents/{documentId}/content",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentruntime$get_document_content_input(dataSourceId = dataSourceId, documentId = documentId, knowledgeBaseId = knowledgeBaseId, outputFormat = outputFormat, userContext = userContext)
   output <- .bedrockagentruntime$get_document_content_output()
@@ -950,7 +966,8 @@ bedrockagentruntime_get_execution_flow_snapshot <- function(executionIdentifier,
     http_path = "/flows/{flowIdentifier}/aliases/{flowAliasIdentifier}/executions/{executionIdentifier}/flowsnapshot",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentruntime$get_execution_flow_snapshot_input(executionIdentifier = executionIdentifier, flowAliasIdentifier = flowAliasIdentifier, flowIdentifier = flowIdentifier)
   output <- .bedrockagentruntime$get_execution_flow_snapshot_output()
@@ -1022,7 +1039,8 @@ bedrockagentruntime_get_flow_execution <- function(executionIdentifier, flowAlia
     http_path = "/flows/{flowIdentifier}/aliases/{flowAliasIdentifier}/executions/{executionIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentruntime$get_flow_execution_input(executionIdentifier = executionIdentifier, flowAliasIdentifier = flowAliasIdentifier, flowIdentifier = flowIdentifier)
   output <- .bedrockagentruntime$get_flow_execution_output()
@@ -1118,7 +1136,8 @@ bedrockagentruntime_get_ingested_document_acl <- function(dataSourceId, document
     http_path = "/knowledgebases/{knowledgeBaseId}/datasources/{dataSourceId}/get-ingested-document-acl",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentruntime$get_ingested_document_acl_input(dataSourceId = dataSourceId, documentId = documentId, knowledgeBaseId = knowledgeBaseId)
   output <- .bedrockagentruntime$get_ingested_document_acl_output()
@@ -1196,7 +1215,8 @@ bedrockagentruntime_get_invocation_step <- function(invocationIdentifier, invoca
     http_path = "/sessions/{sessionIdentifier}/invocationSteps/{invocationStepId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentruntime$get_invocation_step_input(invocationIdentifier = invocationIdentifier, invocationStepId = invocationStepId, sessionIdentifier = sessionIdentifier)
   output <- .bedrockagentruntime$get_invocation_step_output()
@@ -1257,7 +1277,8 @@ bedrockagentruntime_get_session <- function(sessionIdentifier) {
     http_path = "/sessions/{sessionIdentifier}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentruntime$get_session_input(sessionIdentifier = sessionIdentifier)
   output <- .bedrockagentruntime$get_session_output()
@@ -2800,7 +2821,8 @@ bedrockagentruntime_invoke_agent <- function(agentAliasId, agentId, bedrockModel
     http_path = "/agents/{agentId}/agentAliases/{agentAliasId}/sessions/{sessionId}/text",
     host_prefix = "",
     paginator = list(),
-    stream_api = TRUE
+    stream_api = TRUE,
+    http_checksum = NULL
   )
   input <- .bedrockagentruntime$invoke_agent_input(agentAliasId = agentAliasId, agentId = agentId, bedrockModelConfigurations = bedrockModelConfigurations, enableTrace = enableTrace, endSession = endSession, inputText = inputText, memoryId = memoryId, promptCreationConfigurations = promptCreationConfigurations, sessionId = sessionId, sessionState = sessionState, sourceArn = sourceArn, streamingConfigurations = streamingConfigurations)
   output <- .bedrockagentruntime$invoke_agent_output()
@@ -2816,7 +2838,7 @@ bedrockagentruntime_invoke_agent <- function(agentAliasId, agentId, bedrockModel
 #' the output of each node as a stream
 #'
 #' @description
-#' Invokes an alias of a flow to run the inputs that you specify and return the output of each node as a stream. If there's an error, the error is returned. For more information, see [Test a flow in Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/flows-test.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?trkcampaign=podcast_ep46_es).
+#' Invokes an alias of a flow to run the inputs that you specify and return the output of each node as a stream. If there's an error, the error is returned. For more information, see [Test a flow in Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/flows-test.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
 #' 
 #' The CLI doesn't support streaming operations in Amazon Bedrock, including [`invoke_flow`][bedrockagentruntime_invoke_flow].
 #'
@@ -4003,7 +4025,8 @@ bedrockagentruntime_invoke_flow <- function(enableTrace = NULL, executionId = NU
     http_path = "/flows/{flowIdentifier}/aliases/{flowAliasIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = TRUE
+    stream_api = TRUE,
+    http_checksum = NULL
   )
   input <- .bedrockagentruntime$invoke_flow_input(enableTrace = enableTrace, executionId = executionId, flowAliasIdentifier = flowAliasIdentifier, flowIdentifier = flowIdentifier, inputs = inputs, modelPerformanceConfiguration = modelPerformanceConfiguration)
   output <- .bedrockagentruntime$invoke_flow_output()
@@ -5890,7 +5913,8 @@ bedrockagentruntime_invoke_inline_agent <- function(actionGroups = NULL, agentCo
     http_path = "/agents/{sessionId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = TRUE
+    stream_api = TRUE,
+    http_checksum = NULL
   )
   input <- .bedrockagentruntime$invoke_inline_agent_input(actionGroups = actionGroups, agentCollaboration = agentCollaboration, agentName = agentName, bedrockModelConfigurations = bedrockModelConfigurations, collaboratorConfigurations = collaboratorConfigurations, collaborators = collaborators, customOrchestration = customOrchestration, customerEncryptionKeyArn = customerEncryptionKeyArn, enableTrace = enableTrace, endSession = endSession, foundationModel = foundationModel, guardrailConfiguration = guardrailConfiguration, idleSessionTTLInSeconds = idleSessionTTLInSeconds, inlineSessionState = inlineSessionState, inputText = inputText, instruction = instruction, knowledgeBases = knowledgeBases, orchestrationType = orchestrationType, promptCreationConfigurations = promptCreationConfigurations, promptOverrideConfiguration = promptOverrideConfiguration, sessionId = sessionId, streamingConfigurations = streamingConfigurations)
   output <- .bedrockagentruntime$invoke_inline_agent_output()
@@ -7073,7 +7097,8 @@ bedrockagentruntime_list_flow_execution_events <- function(eventType, executionI
     http_path = "/flows/{flowIdentifier}/aliases/{flowAliasIdentifier}/executions/{executionIdentifier}/events",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "flowExecutionEvents"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentruntime$list_flow_execution_events_input(eventType = eventType, executionIdentifier = executionIdentifier, flowAliasIdentifier = flowAliasIdentifier, flowIdentifier = flowIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagentruntime$list_flow_execution_events_output()
@@ -7146,7 +7171,8 @@ bedrockagentruntime_list_flow_executions <- function(flowAliasIdentifier = NULL,
     http_path = "/flows/{flowIdentifier}/executions",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "flowExecutionSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentruntime$list_flow_executions_input(flowAliasIdentifier = flowAliasIdentifier, flowIdentifier = flowIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagentruntime$list_flow_executions_output()
@@ -7213,7 +7239,8 @@ bedrockagentruntime_list_invocation_steps <- function(invocationIdentifier = NUL
     http_path = "/sessions/{sessionIdentifier}/invocationSteps/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "invocationStepSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentruntime$list_invocation_steps_input(invocationIdentifier = invocationIdentifier, maxResults = maxResults, nextToken = nextToken, sessionIdentifier = sessionIdentifier)
   output <- .bedrockagentruntime$list_invocation_steps_output()
@@ -7276,7 +7303,8 @@ bedrockagentruntime_list_invocations <- function(maxResults = NULL, nextToken = 
     http_path = "/sessions/{sessionIdentifier}/invocations/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "invocationSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentruntime$list_invocations_input(maxResults = maxResults, nextToken = nextToken, sessionIdentifier = sessionIdentifier)
   output <- .bedrockagentruntime$list_invocations_output()
@@ -7340,7 +7368,8 @@ bedrockagentruntime_list_sessions <- function(maxResults = NULL, nextToken = NUL
     http_path = "/sessions/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "sessionSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentruntime$list_sessions_input(maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagentruntime$list_sessions_output()
@@ -7391,7 +7420,8 @@ bedrockagentruntime_list_tags_for_resource <- function(resourceArn) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentruntime$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .bedrockagentruntime$list_tags_for_resource_output()
@@ -7406,7 +7436,7 @@ bedrockagentruntime_list_tags_for_resource <- function(resourceArn) {
 #' Optimizes a prompt for the task that you specify
 #'
 #' @description
-#' Optimizes a prompt for the task that you specify. For more information, see [Optimize a prompt](https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-management-optimize.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?trkcampaign=podcast_ep46_es).
+#' Optimizes a prompt for the task that you specify. For more information, see [Optimize a prompt](https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-management-optimize.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
 #'
 #' @usage
 #' bedrockagentruntime_optimize_prompt(input, targetModelId)
@@ -7478,7 +7508,8 @@ bedrockagentruntime_optimize_prompt <- function(input, targetModelId) {
     http_path = "/optimize-prompt",
     host_prefix = "",
     paginator = list(),
-    stream_api = TRUE
+    stream_api = TRUE,
+    http_checksum = NULL
   )
   input <- .bedrockagentruntime$optimize_prompt_input(input = input, targetModelId = targetModelId)
   output <- .bedrockagentruntime$optimize_prompt_output()
@@ -7563,7 +7594,8 @@ bedrockagentruntime_put_invocation_step <- function(invocationIdentifier, invoca
     http_path = "/sessions/{sessionIdentifier}/invocationSteps/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentruntime$put_invocation_step_input(invocationIdentifier = invocationIdentifier, invocationStepId = invocationStepId, invocationStepTime = invocationStepTime, payload = payload, sessionIdentifier = sessionIdentifier)
   output <- .bedrockagentruntime$put_invocation_step_output()
@@ -7661,7 +7693,8 @@ bedrockagentruntime_rerank <- function(nextToken = NULL, queries, rerankingConfi
     http_path = "/rerank",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "results"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentruntime$rerank_input(nextToken = nextToken, queries = queries, rerankingConfiguration = rerankingConfiguration, sources = sources)
   output <- .bedrockagentruntime$rerank_output()
@@ -7973,7 +8006,8 @@ bedrockagentruntime_retrieve <- function(guardrailConfiguration = NULL, knowledg
     http_path = "/knowledgebases/{knowledgeBaseId}/retrieve",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "retrievalResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentruntime$retrieve_input(guardrailConfiguration = guardrailConfiguration, knowledgeBaseId = knowledgeBaseId, nextToken = nextToken, retrievalConfiguration = retrievalConfiguration, retrievalQuery = retrievalQuery, userContext = userContext)
   output <- .bedrockagentruntime$retrieve_output()
@@ -8392,7 +8426,8 @@ bedrockagentruntime_retrieve_and_generate <- function(input, retrieveAndGenerate
     http_path = "/retrieveAndGenerate",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentruntime$retrieve_and_generate_input(input = input, retrieveAndGenerateConfiguration = retrieveAndGenerateConfiguration, sessionConfiguration = sessionConfiguration, sessionId = sessionId, userContext = userContext)
   output <- .bedrockagentruntime$retrieve_and_generate_output()
@@ -8918,7 +8953,8 @@ bedrockagentruntime_retrieve_and_generate_stream <- function(input, retrieveAndG
     http_path = "/retrieveAndGenerateStream",
     host_prefix = "",
     paginator = list(),
-    stream_api = TRUE
+    stream_api = TRUE,
+    http_checksum = NULL
   )
   input <- .bedrockagentruntime$retrieve_and_generate_stream_input(input = input, retrieveAndGenerateConfiguration = retrieveAndGenerateConfiguration, sessionConfiguration = sessionConfiguration, sessionId = sessionId, userContext = userContext)
   output <- .bedrockagentruntime$retrieve_and_generate_stream_output()
@@ -8994,7 +9030,8 @@ bedrockagentruntime_start_flow_execution <- function(flowAliasIdentifier, flowEx
     http_path = "/flows/{flowIdentifier}/aliases/{flowAliasIdentifier}/executions",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentruntime$start_flow_execution_input(flowAliasIdentifier = flowAliasIdentifier, flowExecutionName = flowExecutionName, flowIdentifier = flowIdentifier, inputs = inputs, modelPerformanceConfiguration = modelPerformanceConfiguration)
   output <- .bedrockagentruntime$start_flow_execution_output()
@@ -9049,7 +9086,8 @@ bedrockagentruntime_stop_flow_execution <- function(executionIdentifier, flowAli
     http_path = "/flows/{flowIdentifier}/aliases/{flowAliasIdentifier}/executions/{executionIdentifier}/stop",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentruntime$stop_flow_execution_input(executionIdentifier = executionIdentifier, flowAliasIdentifier = flowAliasIdentifier, flowIdentifier = flowIdentifier)
   output <- .bedrockagentruntime$stop_flow_execution_output()
@@ -9064,7 +9102,7 @@ bedrockagentruntime_stop_flow_execution <- function(executionIdentifier, flowAli
 #' Associate tags with a resource
 #'
 #' @description
-#' Associate tags with a resource. For more information, see [Tagging resources](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?trkcampaign=podcast_ep46_es) in the Amazon Bedrock User Guide.
+#' Associate tags with a resource. For more information, see [Tagging resources](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html) in the Amazon Bedrock User Guide.
 #'
 #' @usage
 #' bedrockagentruntime_tag_resource(resourceArn, tags)
@@ -9097,7 +9135,8 @@ bedrockagentruntime_tag_resource <- function(resourceArn, tags) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentruntime$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .bedrockagentruntime$tag_resource_output()
@@ -9145,7 +9184,8 @@ bedrockagentruntime_untag_resource <- function(resourceArn, tagKeys) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentruntime$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .bedrockagentruntime$untag_resource_output()
@@ -9206,7 +9246,8 @@ bedrockagentruntime_update_session <- function(sessionIdentifier, sessionMetadat
     http_path = "/sessions/{sessionIdentifier}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagentruntime$update_session_input(sessionIdentifier = sessionIdentifier, sessionMetadata = sessionMetadata)
   output <- .bedrockagentruntime$update_session_output()

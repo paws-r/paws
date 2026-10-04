@@ -4,7 +4,12 @@
 \alias{ssm_delete_resource_policy}
 \title{Deletes a Systems Manager resource policy}
 \usage{
-ssm_delete_resource_policy(ResourceArn, PolicyId, PolicyHash)
+ssm_delete_resource_policy(
+  ResourceArn,
+  PolicyId,
+  PolicyHash,
+  DeletionMode = NULL
+)
 }
 \arguments{
 \item{ResourceArn}{[required] Amazon Resource Name (ARN) of the resource to which the policies are attached.}
@@ -12,6 +17,12 @@ ssm_delete_resource_policy(ResourceArn, PolicyId, PolicyHash)
 \item{PolicyId}{[required] The policy ID.}
 
 \item{PolicyHash}{[required] ID of the current policy version. The hash helps to prevent multiple calls from attempting to overwrite a policy.}
+
+\item{DeletionMode}{Specifies the intended outcome of the operation. Applies only to the \code{Document} resource type. The operation ignores this parameter for other resource types. Optional. Defaults to \code{RemoveSharing}.
+\itemize{
+\item \code{RemoveSharing} – Deletes the resource policy and removes sharing of the document.
+\item \code{RollbackMigration} – Reverts the document to Custom sharing, preserving existing consumer access, instead of removing the policy.
+}}
 }
 \description{
 Deletes a Systems Manager resource policy. A resource policy helps you to define the IAM entity (for example, an Amazon Web Services account) that can manage your Systems Manager resources. The following resources support Systems Manager resource policies.

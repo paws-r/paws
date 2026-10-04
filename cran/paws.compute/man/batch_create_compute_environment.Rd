@@ -56,7 +56,7 @@ These tags can be updated or removed using the \code{\link[=batch_tag_resource]{
 
 \item{eksConfiguration}{The details for the Amazon EKS cluster that supports the compute environment.
 
-To create a compute environment that uses EKS resources, the caller must have permissions to call \code{eks:DescribeCluster}.}
+To create a compute environment that uses EKS resources, the caller must have permissions to call \code{eks:DescribeCluster}. Additional Amazon EKS permissions are required for Batch to manage an access entry on the cluster; see \href{https://docs.aws.amazon.com/batch/latest/userguide/eks-access-entries.html}{Amazon EKS access entry authentication} in the \emph{Batch User Guide}.}
 
 \item{context}{Reserved.}
 

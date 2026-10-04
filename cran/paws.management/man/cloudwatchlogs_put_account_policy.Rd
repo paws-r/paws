@@ -100,7 +100,7 @@ The \code{selectionCriteria} string can be up to 25KB in length. The length is d
 Using the \code{selectionCriteria} parameter with \code{SUBSCRIPTION_FILTER_POLICY} is useful to help prevent infinite loops. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Subscriptions-recursion-prevention.html}{Log recursion prevention}.}
 }
 \description{
-Creates an account-level data protection policy, subscription filter policy, field index policy, transformer policy, or metric extraction policy that applies to all log groups, a subset of log groups, or a data source name and type combination in the account.
+Creates an account-level data protection policy, subscription filter policy, field index policy, transformer policy, or metric extraction policy that applies to all log groups, a subset of log groups, or a data source name and type combination in the account. Account-level policies are Region-specific: a policy applies only to log groups in the Region where you create it. To apply a policy across multiple Regions, create the policy separately in each Region.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_put_account_policy/} for full documentation.
 }

@@ -289,7 +289,8 @@ dlm_create_lifecycle_policy <- function(ExecutionRoleArn, Description, State, Po
     http_path = "/policies",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .dlm$create_lifecycle_policy_input(ExecutionRoleArn = ExecutionRoleArn, Description = Description, State = State, PolicyDetails = PolicyDetails, Tags = Tags, DefaultPolicy = DefaultPolicy, CreateInterval = CreateInterval, RetainInterval = RetainInterval, CopyTags = CopyTags, ExtendDeletion = ExtendDeletion, CrossRegionCopyTargets = CrossRegionCopyTargets, Exclusions = Exclusions)
   output <- .dlm$create_lifecycle_policy_output()
@@ -336,7 +337,8 @@ dlm_delete_lifecycle_policy <- function(PolicyId) {
     http_path = "/policies/{policyId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .dlm$delete_lifecycle_policy_input(PolicyId = PolicyId)
   output <- .dlm$delete_lifecycle_policy_output()
@@ -430,7 +432,8 @@ dlm_get_lifecycle_policies <- function(PolicyIds = NULL, State = NULL, ResourceT
     http_path = "/policies",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .dlm$get_lifecycle_policies_input(PolicyIds = PolicyIds, State = State, ResourceTypes = ResourceTypes, TargetTags = TargetTags, TagsToAdd = TagsToAdd, DefaultPolicyType = DefaultPolicyType)
   output <- .dlm$get_lifecycle_policies_output()
@@ -667,7 +670,8 @@ dlm_get_lifecycle_policy <- function(PolicyId) {
     http_path = "/policies/{policyId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .dlm$get_lifecycle_policy_input(PolicyId = PolicyId)
   output <- .dlm$get_lifecycle_policy_output()
@@ -718,7 +722,8 @@ dlm_list_tags_for_resource <- function(ResourceArn) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .dlm$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .dlm$list_tags_for_resource_output()
@@ -766,7 +771,8 @@ dlm_tag_resource <- function(ResourceArn, Tags) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .dlm$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .dlm$tag_resource_output()
@@ -814,7 +820,8 @@ dlm_untag_resource <- function(ResourceArn, TagKeys) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .dlm$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .dlm$untag_resource_output()
@@ -1077,7 +1084,8 @@ dlm_update_lifecycle_policy <- function(PolicyId, ExecutionRoleArn = NULL, State
     http_path = "/policies/{policyId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .dlm$update_lifecycle_policy_input(PolicyId = PolicyId, ExecutionRoleArn = ExecutionRoleArn, State = State, Description = Description, PolicyDetails = PolicyDetails, CreateInterval = CreateInterval, RetainInterval = RetainInterval, CopyTags = CopyTags, ExtendDeletion = ExtendDeletion, CrossRegionCopyTargets = CrossRegionCopyTargets, Exclusions = Exclusions)
   output <- .dlm$update_lifecycle_policy_output()

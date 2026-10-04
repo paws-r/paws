@@ -14,20 +14,20 @@ imagebuilder_create_distribution_configuration(
 )
 }
 \arguments{
-\item{name}{[required] The name of the distribution configuration.}
+\item{name}{[required] The name of the distribution configuration. Distribution configuration names must be unique to your account in each Amazon Web Services Region. Image Builder generates the distribution configuration ARN from a normalized form of the name, so names that differ only in case, spaces, or underscores count as the same name.}
 
 \item{description}{The description of the distribution configuration.}
 
-\item{distributions}{[required] The distributions of the distribution configuration.}
+\item{distributions}{[required] The distribution settings for the configuration. Each entry defines how output images are distributed in one target Amazon Web Services Region. A Region can appear at most once in the list.}
 
 \item{tags}{The tags of the distribution configuration.}
 
-\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
+\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
 
-\item{dryRun}{Validates the required permissions and request parameters without making the request. If validation succeeds, the operation returns a \code{DryRunOperationException} error response.}
+\item{dryRun}{Validates the required permissions and request parameters without performing the operation. If validation succeeds, the operation returns a \code{DryRunOperationException} error response.}
 }
 \description{
-Creates a new distribution configuration. Distribution configurations define and configure the outputs of your pipeline.
+Creates a new distribution configuration. Distribution configurations define and configure the outputs for your images, including the target Regions, accounts, and settings for each Region.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_create_distribution_configuration/} for full documentation.
 }

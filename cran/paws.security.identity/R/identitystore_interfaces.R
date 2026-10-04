@@ -83,6 +83,16 @@ NULL
   return(populate(args, .identitystore_shapes[["describe_group_membership_output"]]))
 }
 
+.identitystore$describe_identity_store_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .identitystore_shapes[["describe_identity_store_input"]]))
+}
+
+.identitystore$describe_identity_store_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .identitystore_shapes[["describe_identity_store_output"]]))
+}
+
 .identitystore$describe_user_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   return(populate(args, .identitystore_shapes[["describe_user_input"]]))
@@ -163,6 +173,16 @@ NULL
   return(populate(args, .identitystore_shapes[["list_groups_output"]]))
 }
 
+.identitystore$list_identity_stores_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .identitystore_shapes[["list_identity_stores_input"]]))
+}
+
+.identitystore$list_identity_stores_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .identitystore_shapes[["list_identity_stores_output"]]))
+}
+
 .identitystore$list_users_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   return(populate(args, .identitystore_shapes[["list_users_input"]]))
@@ -181,6 +201,16 @@ NULL
 .identitystore$update_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   return(populate(args, .identitystore_shapes[["update_group_output"]]))
+}
+
+.identitystore$update_identity_store_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .identitystore_shapes[["update_identity_store_input"]]))
+}
+
+.identitystore$update_identity_store_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .identitystore_shapes[["update_identity_store_output"]]))
 }
 
 .identitystore$update_user_input <- function(...) {

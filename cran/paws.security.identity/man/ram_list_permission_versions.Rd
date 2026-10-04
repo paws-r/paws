@@ -11,7 +11,7 @@ ram_list_permission_versions(
 )
 }
 \arguments{
-\item{permissionArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)} of the RAM permission whose versions you want to list. You can use the \code{permissionVersion} parameter on the \code{\link[=ram_associate_resource_share_permission]{associate_resource_share_permission}} operation to specify a non-default version to attach.}
+\item{permissionArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Name (ARN)} of the RAM permission whose versions you want to list. You can use the \code{permissionVersion} parameter on the \code{\link[=ram_associate_resource_share_permission]{associate_resource_share_permission}} operation to specify a non-default version to attach.}
 
 \item{nextToken}{Specifies that you want to receive the next page of results. Valid only if you received a \code{NextToken} response in the previous request. If you did, it indicates that more output is available. Set this parameter to the value provided by the previous call's \code{NextToken} response to request the next page of results.}
 

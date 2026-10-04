@@ -261,7 +261,8 @@ connectcampaignservicev2_create_campaign <- function(name, connectInstanceId, ch
     http_path = "/v2/campaigns",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcampaignservicev2$create_campaign_input(name = name, connectInstanceId = connectInstanceId, channelSubtypeConfig = channelSubtypeConfig, type = type, source = source, connectCampaignFlowArn = connectCampaignFlowArn, schedule = schedule, entryLimitsConfig = entryLimitsConfig, communicationTimeConfig = communicationTimeConfig, communicationLimitsOverride = communicationLimitsOverride, tags = tags)
   output <- .connectcampaignservicev2$create_campaign_output()
@@ -305,7 +306,8 @@ connectcampaignservicev2_delete_campaign <- function(id) {
     http_path = "/v2/campaigns/{id}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcampaignservicev2$delete_campaign_input(id = id)
   output <- .connectcampaignservicev2$delete_campaign_output()
@@ -352,7 +354,8 @@ connectcampaignservicev2_delete_campaign_channel_subtype_config <- function(id, 
     http_path = "/v2/campaigns/{id}/channel-subtype-config",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcampaignservicev2$delete_campaign_channel_subtype_config_input(id = id, channelSubtype = channelSubtype)
   output <- .connectcampaignservicev2$delete_campaign_channel_subtype_config_output()
@@ -399,7 +402,8 @@ connectcampaignservicev2_delete_campaign_communication_limits <- function(id, co
     http_path = "/v2/campaigns/{id}/communication-limits",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcampaignservicev2$delete_campaign_communication_limits_input(id = id, config = config)
   output <- .connectcampaignservicev2$delete_campaign_communication_limits_output()
@@ -445,7 +449,8 @@ connectcampaignservicev2_delete_campaign_communication_time <- function(id, conf
     http_path = "/v2/campaigns/{id}/communication-time",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcampaignservicev2$delete_campaign_communication_time_input(id = id, config = config)
   output <- .connectcampaignservicev2$delete_campaign_communication_time_output()
@@ -489,7 +494,8 @@ connectcampaignservicev2_delete_campaign_entry_limits <- function(id) {
     http_path = "/v2/campaigns/{id}/entry-limits",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcampaignservicev2$delete_campaign_entry_limits_input(id = id)
   output <- .connectcampaignservicev2$delete_campaign_entry_limits_output()
@@ -536,7 +542,8 @@ connectcampaignservicev2_delete_connect_instance_config <- function(connectInsta
     http_path = "/v2/connect-instance/{connectInstanceId}/config",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcampaignservicev2$delete_connect_instance_config_input(connectInstanceId = connectInstanceId, campaignDeletionPolicy = campaignDeletionPolicy)
   output <- .connectcampaignservicev2$delete_connect_instance_config_output()
@@ -593,7 +600,8 @@ connectcampaignservicev2_delete_connect_instance_integration <- function(connect
     http_path = "/v2/connect-instance/{connectInstanceId}/integrations/delete",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcampaignservicev2$delete_connect_instance_integration_input(connectInstanceId = connectInstanceId, integrationIdentifier = integrationIdentifier)
   output <- .connectcampaignservicev2$delete_connect_instance_integration_output()
@@ -639,7 +647,8 @@ connectcampaignservicev2_delete_instance_onboarding_job <- function(connectInsta
     http_path = "/v2/connect-instance/{connectInstanceId}/onboarding",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcampaignservicev2$delete_instance_onboarding_job_input(connectInstanceId = connectInstanceId)
   output <- .connectcampaignservicev2$delete_instance_onboarding_job_output()
@@ -896,7 +905,8 @@ connectcampaignservicev2_describe_campaign <- function(id) {
     http_path = "/v2/campaigns/{id}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcampaignservicev2$describe_campaign_input(id = id)
   output <- .connectcampaignservicev2$describe_campaign_output()
@@ -945,7 +955,8 @@ connectcampaignservicev2_get_campaign_state <- function(id) {
     http_path = "/v2/campaigns/{id}/state",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcampaignservicev2$get_campaign_state_input(id = id)
   output <- .connectcampaignservicev2$get_campaign_state_output()
@@ -1007,7 +1018,8 @@ connectcampaignservicev2_get_campaign_state_batch <- function(campaignIds) {
     http_path = "/v2/campaigns-state",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcampaignservicev2$get_campaign_state_batch_input(campaignIds = campaignIds)
   output <- .connectcampaignservicev2$get_campaign_state_batch_output()
@@ -1064,7 +1076,8 @@ connectcampaignservicev2_get_connect_instance_config <- function(connectInstance
     http_path = "/v2/connect-instance/{connectInstanceId}/config",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcampaignservicev2$get_connect_instance_config_input(connectInstanceId = connectInstanceId)
   output <- .connectcampaignservicev2$get_connect_instance_config_output()
@@ -1124,7 +1137,8 @@ connectcampaignservicev2_get_instance_communication_limits <- function(connectIn
     http_path = "/v2/connect-instance/{connectInstanceId}/communication-limits",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcampaignservicev2$get_instance_communication_limits_input(connectInstanceId = connectInstanceId)
   output <- .connectcampaignservicev2$get_instance_communication_limits_output()
@@ -1178,7 +1192,8 @@ connectcampaignservicev2_get_instance_onboarding_job_status <- function(connectI
     http_path = "/v2/connect-instance/{connectInstanceId}/onboarding",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcampaignservicev2$get_instance_onboarding_job_status_input(connectInstanceId = connectInstanceId)
   output <- .connectcampaignservicev2$get_instance_onboarding_job_status_output()
@@ -1263,7 +1278,8 @@ connectcampaignservicev2_list_campaigns <- function(maxResults = NULL, nextToken
     http_path = "/v2/campaigns-summary",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "campaignSummaryList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcampaignservicev2$list_campaigns_input(maxResults = maxResults, nextToken = nextToken, filters = filters)
   output <- .connectcampaignservicev2$list_campaigns_output()
@@ -1334,7 +1350,8 @@ connectcampaignservicev2_list_connect_instance_integrations <- function(connectI
     http_path = "/v2/connect-instance/{connectInstanceId}/integrations",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "integrationSummaryList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcampaignservicev2$list_connect_instance_integrations_input(connectInstanceId = connectInstanceId, maxResults = maxResults, nextToken = nextToken)
   output <- .connectcampaignservicev2$list_connect_instance_integrations_output()
@@ -1385,7 +1402,8 @@ connectcampaignservicev2_list_tags_for_resource <- function(arn) {
     http_path = "/v2/tags/{arn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcampaignservicev2$list_tags_for_resource_input(arn = arn)
   output <- .connectcampaignservicev2$list_tags_for_resource_output()
@@ -1429,7 +1447,8 @@ connectcampaignservicev2_pause_campaign <- function(id) {
     http_path = "/v2/campaigns/{id}/pause",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcampaignservicev2$pause_campaign_input(id = id)
   output <- .connectcampaignservicev2$pause_campaign_output()
@@ -1489,7 +1508,8 @@ connectcampaignservicev2_put_connect_instance_integration <- function(connectIns
     http_path = "/v2/connect-instance/{connectInstanceId}/integrations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcampaignservicev2$put_connect_instance_integration_input(connectInstanceId = connectInstanceId, integrationConfig = integrationConfig)
   output <- .connectcampaignservicev2$put_connect_instance_integration_output()
@@ -1546,7 +1566,8 @@ connectcampaignservicev2_put_instance_communication_limits <- function(connectIn
     http_path = "/v2/connect-instance/{connectInstanceId}/communication-limits",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcampaignservicev2$put_instance_communication_limits_input(connectInstanceId = connectInstanceId, communicationLimitsConfig = communicationLimitsConfig)
   output <- .connectcampaignservicev2$put_instance_communication_limits_output()
@@ -1656,7 +1677,8 @@ connectcampaignservicev2_put_outbound_request_batch <- function(id, outboundRequ
     http_path = "/v2/campaigns/{id}/outbound-requests",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcampaignservicev2$put_outbound_request_batch_input(id = id, outboundRequests = outboundRequests)
   output <- .connectcampaignservicev2$put_outbound_request_batch_output()
@@ -1738,7 +1760,8 @@ connectcampaignservicev2_put_profile_outbound_request_batch <- function(id, prof
     http_path = "/v2/campaigns/{id}/profile-outbound-requests",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcampaignservicev2$put_profile_outbound_request_batch_input(id = id, profileOutboundRequests = profileOutboundRequests)
   output <- .connectcampaignservicev2$put_profile_outbound_request_batch_output()
@@ -1782,7 +1805,8 @@ connectcampaignservicev2_resume_campaign <- function(id) {
     http_path = "/v2/campaigns/{id}/resume",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcampaignservicev2$resume_campaign_input(id = id)
   output <- .connectcampaignservicev2$resume_campaign_output()
@@ -1826,7 +1850,8 @@ connectcampaignservicev2_start_campaign <- function(id) {
     http_path = "/v2/campaigns/{id}/start",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcampaignservicev2$start_campaign_input(id = id)
   output <- .connectcampaignservicev2$start_campaign_output()
@@ -1886,7 +1911,8 @@ connectcampaignservicev2_start_instance_onboarding_job <- function(connectInstan
     http_path = "/v2/connect-instance/{connectInstanceId}/onboarding",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcampaignservicev2$start_instance_onboarding_job_input(connectInstanceId = connectInstanceId, encryptionConfig = encryptionConfig)
   output <- .connectcampaignservicev2$start_instance_onboarding_job_output()
@@ -1930,7 +1956,8 @@ connectcampaignservicev2_stop_campaign <- function(id) {
     http_path = "/v2/campaigns/{id}/stop",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcampaignservicev2$stop_campaign_input(id = id)
   output <- .connectcampaignservicev2$stop_campaign_output()
@@ -1978,7 +2005,8 @@ connectcampaignservicev2_tag_resource <- function(arn, tags) {
     http_path = "/v2/tags/{arn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcampaignservicev2$tag_resource_input(arn = arn, tags = tags)
   output <- .connectcampaignservicev2$tag_resource_output()
@@ -2026,7 +2054,8 @@ connectcampaignservicev2_untag_resource <- function(arn, tagKeys) {
     http_path = "/v2/tags/{arn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcampaignservicev2$untag_resource_input(arn = arn, tagKeys = tagKeys)
   output <- .connectcampaignservicev2$untag_resource_output()
@@ -2146,7 +2175,8 @@ connectcampaignservicev2_update_campaign_channel_subtype_config <- function(id, 
     http_path = "/v2/campaigns/{id}/channel-subtype-config",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcampaignservicev2$update_campaign_channel_subtype_config_input(id = id, channelSubtypeConfig = channelSubtypeConfig)
   output <- .connectcampaignservicev2$update_campaign_channel_subtype_config_output()
@@ -2204,7 +2234,8 @@ connectcampaignservicev2_update_campaign_communication_limits <- function(id, co
     http_path = "/v2/campaigns/{id}/communication-limits",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcampaignservicev2$update_campaign_communication_limits_input(id = id, communicationLimitsOverride = communicationLimitsOverride)
   output <- .connectcampaignservicev2$update_campaign_communication_limits_output()
@@ -2343,7 +2374,8 @@ connectcampaignservicev2_update_campaign_communication_time <- function(id, comm
     http_path = "/v2/campaigns/{id}/communication-time",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcampaignservicev2$update_campaign_communication_time_input(id = id, communicationTimeConfig = communicationTimeConfig)
   output <- .connectcampaignservicev2$update_campaign_communication_time_output()
@@ -2393,7 +2425,8 @@ connectcampaignservicev2_update_campaign_entry_limits <- function(id, entryLimit
     http_path = "/v2/campaigns/{id}/entry-limits",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcampaignservicev2$update_campaign_entry_limits_input(id = id, entryLimitsConfig = entryLimitsConfig)
   output <- .connectcampaignservicev2$update_campaign_entry_limits_output()
@@ -2440,7 +2473,8 @@ connectcampaignservicev2_update_campaign_flow_association <- function(id, connec
     http_path = "/v2/campaigns/{id}/flow",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcampaignservicev2$update_campaign_flow_association_input(id = id, connectCampaignFlowArn = connectCampaignFlowArn)
   output <- .connectcampaignservicev2$update_campaign_flow_association_output()
@@ -2486,7 +2520,8 @@ connectcampaignservicev2_update_campaign_name <- function(id, name) {
     http_path = "/v2/campaigns/{id}/name",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcampaignservicev2$update_campaign_name_input(id = id, name = name)
   output <- .connectcampaignservicev2$update_campaign_name_output()
@@ -2540,7 +2575,8 @@ connectcampaignservicev2_update_campaign_schedule <- function(id, schedule) {
     http_path = "/v2/campaigns/{id}/schedule",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcampaignservicev2$update_campaign_schedule_input(id = id, schedule = schedule)
   output <- .connectcampaignservicev2$update_campaign_schedule_output()
@@ -2591,7 +2627,8 @@ connectcampaignservicev2_update_campaign_source <- function(id, source) {
     http_path = "/v2/campaigns/{id}/source",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .connectcampaignservicev2$update_campaign_source_input(id = id, source = source)
   output <- .connectcampaignservicev2$update_campaign_source_output()

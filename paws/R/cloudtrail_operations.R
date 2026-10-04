@@ -51,7 +51,8 @@ cloudtrail_add_tags <- function(ResourceId, TagsList) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$add_tags_input(ResourceId = ResourceId, TagsList = TagsList)
   output <- .cloudtrail$add_tags_output()
@@ -110,7 +111,8 @@ cloudtrail_cancel_query <- function(EventDataStore = NULL, QueryId, EventDataSto
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$cancel_query_input(EventDataStore = EventDataStore, QueryId = QueryId, EventDataStoreOwnerAccountId = EventDataStoreOwnerAccountId)
   output <- .cloudtrail$cancel_query_output()
@@ -194,7 +196,8 @@ cloudtrail_create_channel <- function(Name, Source, Destinations, Tags = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$create_channel_input(Name = Name, Source = Source, Destinations = Destinations, Tags = Tags)
   output <- .cloudtrail$create_channel_output()
@@ -322,7 +325,8 @@ cloudtrail_create_dashboard <- function(Name, RefreshSchedule = NULL, TagsList =
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$create_dashboard_input(Name = Name, RefreshSchedule = RefreshSchedule, TagsList = TagsList, TerminationProtectionEnabled = TerminationProtectionEnabled, Widgets = Widgets)
   output <- .cloudtrail$create_dashboard_output()
@@ -509,7 +513,8 @@ cloudtrail_create_event_data_store <- function(Name, AdvancedEventSelectors = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$create_event_data_store_input(Name = Name, AdvancedEventSelectors = AdvancedEventSelectors, MultiRegionEnabled = MultiRegionEnabled, OrganizationEnabled = OrganizationEnabled, RetentionPeriod = RetentionPeriod, TerminationProtectionEnabled = TerminationProtectionEnabled, TagsList = TagsList, KmsKeyId = KmsKeyId, StartIngestion = StartIngestion, BillingMode = BillingMode)
   output <- .cloudtrail$create_event_data_store_output()
@@ -630,7 +635,8 @@ cloudtrail_create_trail <- function(Name, S3BucketName, S3KeyPrefix = NULL, SnsT
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$create_trail_input(Name = Name, S3BucketName = S3BucketName, S3KeyPrefix = S3KeyPrefix, SnsTopicName = SnsTopicName, IncludeGlobalServiceEvents = IncludeGlobalServiceEvents, IsMultiRegionTrail = IsMultiRegionTrail, EnableLogFileValidation = EnableLogFileValidation, CloudWatchLogsLogGroupArn = CloudWatchLogsLogGroupArn, CloudWatchLogsRoleArn = CloudWatchLogsRoleArn, KmsKeyId = KmsKeyId, IsOrganizationTrail = IsOrganizationTrail, TagsList = TagsList, RecursiveLogging = RecursiveLogging)
   output <- .cloudtrail$create_trail_output()
@@ -677,7 +683,8 @@ cloudtrail_delete_channel <- function(Channel) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$delete_channel_input(Channel = Channel)
   output <- .cloudtrail$delete_channel_output()
@@ -724,7 +731,8 @@ cloudtrail_delete_dashboard <- function(DashboardId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$delete_dashboard_input(DashboardId = DashboardId)
   output <- .cloudtrail$delete_dashboard_output()
@@ -773,7 +781,8 @@ cloudtrail_delete_event_data_store <- function(EventDataStore) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$delete_event_data_store_input(EventDataStore = EventDataStore)
   output <- .cloudtrail$delete_event_data_store_output()
@@ -824,7 +833,8 @@ cloudtrail_delete_resource_policy <- function(ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$delete_resource_policy_input(ResourceArn = ResourceArn)
   output <- .cloudtrail$delete_resource_policy_output()
@@ -872,7 +882,8 @@ cloudtrail_delete_trail <- function(Name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$delete_trail_input(Name = Name)
   output <- .cloudtrail$delete_trail_output()
@@ -918,7 +929,8 @@ cloudtrail_deregister_organization_delegated_admin <- function(DelegatedAdminAcc
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$deregister_organization_delegated_admin_input(DelegatedAdminAccountId = DelegatedAdminAccountId)
   output <- .cloudtrail$deregister_organization_delegated_admin_output()
@@ -997,7 +1009,8 @@ cloudtrail_describe_query <- function(EventDataStore = NULL, QueryId = NULL, Que
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$describe_query_input(EventDataStore = EventDataStore, QueryId = QueryId, QueryAlias = QueryAlias, RefreshId = RefreshId, EventDataStoreOwnerAccountId = EventDataStoreOwnerAccountId)
   output <- .cloudtrail$describe_query_output()
@@ -1081,7 +1094,8 @@ cloudtrail_describe_trails <- function(trailNameList = NULL, includeShadowTrails
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$describe_trails_input(trailNameList = trailNameList, includeShadowTrails = includeShadowTrails)
   output <- .cloudtrail$describe_trails_output()
@@ -1136,7 +1150,8 @@ cloudtrail_disable_federation <- function(EventDataStore) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$disable_federation_input(EventDataStore = EventDataStore)
   output <- .cloudtrail$disable_federation_output()
@@ -1196,7 +1211,8 @@ cloudtrail_enable_federation <- function(EventDataStore, FederationRoleArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$enable_federation_input(EventDataStore = EventDataStore, FederationRoleArn = FederationRoleArn)
   output <- .cloudtrail$enable_federation_output()
@@ -1262,7 +1278,8 @@ cloudtrail_generate_query <- function(EventDataStores, Prompt) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$generate_query_input(EventDataStores = EventDataStores, Prompt = Prompt)
   output <- .cloudtrail$generate_query_output()
@@ -1364,7 +1381,8 @@ cloudtrail_get_channel <- function(Channel) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$get_channel_input(Channel = Channel)
   output <- .cloudtrail$get_channel_output()
@@ -1447,7 +1465,8 @@ cloudtrail_get_dashboard <- function(DashboardId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$get_dashboard_input(DashboardId = DashboardId)
   output <- .cloudtrail$get_dashboard_output()
@@ -1517,7 +1536,8 @@ cloudtrail_get_event_configuration <- function(TrailName = NULL, EventDataStore 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$get_event_configuration_input(TrailName = TrailName, EventDataStore = EventDataStore)
   output <- .cloudtrail$get_event_configuration_output()
@@ -1619,7 +1639,8 @@ cloudtrail_get_event_data_store <- function(EventDataStore) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$get_event_data_store_input(EventDataStore = EventDataStore)
   output <- .cloudtrail$get_event_data_store_output()
@@ -1744,7 +1765,8 @@ cloudtrail_get_event_selectors <- function(TrailName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$get_event_selectors_input(TrailName = TrailName)
   output <- .cloudtrail$get_event_selectors_output()
@@ -1826,7 +1848,8 @@ cloudtrail_get_import <- function(ImportId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$get_import_input(ImportId = ImportId)
   output <- .cloudtrail$get_import_output()
@@ -1910,7 +1933,8 @@ cloudtrail_get_insight_selectors <- function(TrailName = NULL, EventDataStore = 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$get_insight_selectors_input(TrailName = TrailName, EventDataStore = EventDataStore)
   output <- .cloudtrail$get_insight_selectors_output()
@@ -1985,7 +2009,8 @@ cloudtrail_get_query_results <- function(EventDataStore = NULL, QueryId, NextTok
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$get_query_results_input(EventDataStore = EventDataStore, QueryId = QueryId, NextToken = NextToken, MaxQueryResults = MaxQueryResults, EventDataStoreOwnerAccountId = EventDataStoreOwnerAccountId)
   output <- .cloudtrail$get_query_results_output()
@@ -2043,7 +2068,8 @@ cloudtrail_get_resource_policy <- function(ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$get_resource_policy_input(ResourceArn = ResourceArn)
   output <- .cloudtrail$get_resource_policy_output()
@@ -2110,7 +2136,8 @@ cloudtrail_get_trail <- function(Name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$get_trail_input(Name = Name)
   output <- .cloudtrail$get_trail_output()
@@ -2191,7 +2218,8 @@ cloudtrail_get_trail_status <- function(Name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$get_trail_status_input(Name = Name)
   output <- .cloudtrail$get_trail_status_output()
@@ -2251,7 +2279,8 @@ cloudtrail_list_channels <- function(MaxResults = NULL, NextToken = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$list_channels_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudtrail$list_channels_output()
@@ -2315,7 +2344,8 @@ cloudtrail_list_dashboards <- function(NamePrefix = NULL, Type = NULL, NextToken
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$list_dashboards_input(NamePrefix = NamePrefix, Type = Type, NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudtrail$list_dashboards_output()
@@ -2414,7 +2444,8 @@ cloudtrail_list_event_data_stores <- function(NextToken = NULL, MaxResults = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$list_event_data_stores_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudtrail$list_event_data_stores_output()
@@ -2481,7 +2512,8 @@ cloudtrail_list_import_failures <- function(ImportId, MaxResults = NULL, NextTok
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Failures"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$list_import_failures_input(ImportId = ImportId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudtrail$list_import_failures_output()
@@ -2555,7 +2587,8 @@ cloudtrail_list_imports <- function(MaxResults = NULL, Destination = NULL, Impor
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Imports"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$list_imports_input(MaxResults = MaxResults, Destination = Destination, ImportStatus = ImportStatus, NextToken = NextToken)
   output <- .cloudtrail$list_imports_output()
@@ -2657,7 +2690,8 @@ cloudtrail_list_insights_data <- function(InsightSource, DataType, Dimensions = 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Events"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$list_insights_data_input(InsightSource = InsightSource, DataType = DataType, Dimensions = Dimensions, StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudtrail$list_insights_data_output()
@@ -2771,7 +2805,8 @@ cloudtrail_list_insights_metric_data <- function(TrailName = NULL, EventSource, 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$list_insights_metric_data_input(TrailName = TrailName, EventSource = EventSource, EventName = EventName, InsightType = InsightType, ErrorCode = ErrorCode, StartTime = StartTime, EndTime = EndTime, Period = Period, DataType = DataType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudtrail$list_insights_metric_data_output()
@@ -2843,7 +2878,8 @@ cloudtrail_list_public_keys <- function(StartTime = NULL, EndTime = NULL, NextTo
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "PublicKeyList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$list_public_keys_input(StartTime = StartTime, EndTime = EndTime, NextToken = NextToken)
   output <- .cloudtrail$list_public_keys_output()
@@ -2919,7 +2955,8 @@ cloudtrail_list_queries <- function(EventDataStore, NextToken = NULL, MaxResults
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$list_queries_input(EventDataStore = EventDataStore, NextToken = NextToken, MaxResults = MaxResults, StartTime = StartTime, EndTime = EndTime, QueryStatus = QueryStatus)
   output <- .cloudtrail$list_queries_output()
@@ -2992,7 +3029,8 @@ cloudtrail_list_tags <- function(ResourceIdList, NextToken = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "ResourceTagList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$list_tags_input(ResourceIdList = ResourceIdList, NextToken = NextToken)
   output <- .cloudtrail$list_tags_output()
@@ -3048,7 +3086,8 @@ cloudtrail_list_trails <- function(NextToken = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Trails"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$list_trails_input(NextToken = NextToken)
   output <- .cloudtrail$list_trails_output()
@@ -3170,7 +3209,8 @@ cloudtrail_lookup_events <- function(LookupAttributes = NULL, StartTime = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Events"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$lookup_events_input(LookupAttributes = LookupAttributes, StartTime = StartTime, EndTime = EndTime, EventCategory = EventCategory, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudtrail$lookup_events_output()
@@ -3261,7 +3301,8 @@ cloudtrail_put_event_configuration <- function(TrailName = NULL, EventDataStore 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$put_event_configuration_input(TrailName = TrailName, EventDataStore = EventDataStore, MaxEventSize = MaxEventSize, ContextKeySelectors = ContextKeySelectors, AggregationConfigurations = AggregationConfigurations)
   output <- .cloudtrail$put_event_configuration_output()
@@ -3464,7 +3505,8 @@ cloudtrail_put_event_selectors <- function(TrailName, EventSelectors = NULL, Adv
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$put_event_selectors_input(TrailName = TrailName, EventSelectors = EventSelectors, AdvancedEventSelectors = AdvancedEventSelectors)
   output <- .cloudtrail$put_event_selectors_output()
@@ -3563,7 +3605,8 @@ cloudtrail_put_insight_selectors <- function(TrailName = NULL, InsightSelectors,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$put_insight_selectors_input(TrailName = TrailName, InsightSelectors = InsightSelectors, EventDataStore = EventDataStore, InsightsDestination = InsightsDestination)
   output <- .cloudtrail$put_insight_selectors_output()
@@ -3625,7 +3668,8 @@ cloudtrail_put_resource_policy <- function(ResourceArn, ResourcePolicy) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$put_resource_policy_input(ResourceArn = ResourceArn, ResourcePolicy = ResourcePolicy)
   output <- .cloudtrail$put_resource_policy_output()
@@ -3670,7 +3714,8 @@ cloudtrail_register_organization_delegated_admin <- function(MemberAccountId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$register_organization_delegated_admin_input(MemberAccountId = MemberAccountId)
   output <- .cloudtrail$register_organization_delegated_admin_output()
@@ -3730,7 +3775,8 @@ cloudtrail_remove_tags <- function(ResourceId, TagsList) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$remove_tags_input(ResourceId = ResourceId, TagsList = TagsList)
   output <- .cloudtrail$remove_tags_output()
@@ -3824,7 +3870,8 @@ cloudtrail_restore_event_data_store <- function(EventDataStore) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$restore_event_data_store_input(EventDataStore = EventDataStore)
   output <- .cloudtrail$restore_event_data_store_output()
@@ -3888,7 +3935,8 @@ cloudtrail_search_sample_queries <- function(SearchPhrase, MaxResults = NULL, Ne
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$search_sample_queries_input(SearchPhrase = SearchPhrase, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudtrail$search_sample_queries_output()
@@ -3950,7 +3998,8 @@ cloudtrail_start_dashboard_refresh <- function(DashboardId, QueryParameterValues
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$start_dashboard_refresh_input(DashboardId = DashboardId, QueryParameterValues = QueryParameterValues)
   output <- .cloudtrail$start_dashboard_refresh_output()
@@ -3997,7 +4046,8 @@ cloudtrail_start_event_data_store_ingestion <- function(EventDataStore) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$start_event_data_store_ingestion_input(EventDataStore = EventDataStore)
   output <- .cloudtrail$start_event_data_store_ingestion_output()
@@ -4099,7 +4149,8 @@ cloudtrail_start_import <- function(Destinations = NULL, ImportSource = NULL, St
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$start_import_input(Destinations = Destinations, ImportSource = ImportSource, StartEventTime = StartEventTime, EndEventTime = EndEventTime, ImportId = ImportId)
   output <- .cloudtrail$start_import_output()
@@ -4146,7 +4197,8 @@ cloudtrail_start_logging <- function(Name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$start_logging_input(Name = Name)
   output <- .cloudtrail$start_logging_output()
@@ -4212,7 +4264,8 @@ cloudtrail_start_query <- function(QueryStatement = NULL, DeliveryS3Uri = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$start_query_input(QueryStatement = QueryStatement, DeliveryS3Uri = DeliveryS3Uri, QueryAlias = QueryAlias, QueryParameters = QueryParameters, EventDataStoreOwnerAccountId = EventDataStoreOwnerAccountId)
   output <- .cloudtrail$start_query_output()
@@ -4259,7 +4312,8 @@ cloudtrail_stop_event_data_store_ingestion <- function(EventDataStore) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$stop_event_data_store_ingestion_input(EventDataStore = EventDataStore)
   output <- .cloudtrail$stop_event_data_store_ingestion_output()
@@ -4341,7 +4395,8 @@ cloudtrail_stop_import <- function(ImportId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$stop_import_input(ImportId = ImportId)
   output <- .cloudtrail$stop_import_output()
@@ -4388,7 +4443,8 @@ cloudtrail_stop_logging <- function(Name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$stop_logging_input(Name = Name)
   output <- .cloudtrail$stop_logging_output()
@@ -4457,7 +4513,8 @@ cloudtrail_update_channel <- function(Channel, Destinations = NULL, Name = NULL)
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$update_channel_input(Channel = Channel, Destinations = Destinations, Name = Name)
   output <- .cloudtrail$update_channel_output()
@@ -4570,7 +4627,8 @@ cloudtrail_update_dashboard <- function(DashboardId, Widgets = NULL, RefreshSche
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$update_dashboard_input(DashboardId = DashboardId, Widgets = Widgets, RefreshSchedule = RefreshSchedule, TerminationProtectionEnabled = TerminationProtectionEnabled)
   output <- .cloudtrail$update_dashboard_output()
@@ -4745,7 +4803,8 @@ cloudtrail_update_event_data_store <- function(EventDataStore, Name = NULL, Adva
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$update_event_data_store_input(EventDataStore = EventDataStore, Name = Name, AdvancedEventSelectors = AdvancedEventSelectors, MultiRegionEnabled = MultiRegionEnabled, OrganizationEnabled = OrganizationEnabled, RetentionPeriod = RetentionPeriod, TerminationProtectionEnabled = TerminationProtectionEnabled, KmsKeyId = KmsKeyId, BillingMode = BillingMode)
   output <- .cloudtrail$update_event_data_store_output()
@@ -4865,7 +4924,8 @@ cloudtrail_update_trail <- function(Name, S3BucketName = NULL, S3KeyPrefix = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudtrail$update_trail_input(Name = Name, S3BucketName = S3BucketName, S3KeyPrefix = S3KeyPrefix, SnsTopicName = SnsTopicName, IncludeGlobalServiceEvents = IncludeGlobalServiceEvents, IsMultiRegionTrail = IsMultiRegionTrail, EnableLogFileValidation = EnableLogFileValidation, CloudWatchLogsLogGroupArn = CloudWatchLogsLogGroupArn, CloudWatchLogsRoleArn = CloudWatchLogsRoleArn, KmsKeyId = KmsKeyId, IsOrganizationTrail = IsOrganizationTrail, RecursiveLogging = RecursiveLogging)
   output <- .cloudtrail$update_trail_output()

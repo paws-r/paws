@@ -1,4 +1,4 @@
-svc <- paws.management::ssmcontacts()
+svc <- paws::ssmcontacts()
 
 test_that("list_contacts", {
   skip_on_cran()

@@ -10,7 +10,7 @@ imagebuilder_delete_component(componentBuildVersionArn)
 \item{componentBuildVersionArn}{[required] The Amazon Resource Name (ARN) of the component build version to delete.}
 }
 \description{
-Deletes a component build version.
+Deletes a component build version. The request fails with \code{ResourceDependencyException} if an image recipe or container recipe references this component version. It also fails if the component build version is shared with other accounts.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_delete_component/} for full documentation.
 }

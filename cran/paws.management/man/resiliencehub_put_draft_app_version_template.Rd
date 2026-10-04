@@ -8,7 +8,7 @@ version}
 resiliencehub_put_draft_app_version_template(appArn, appTemplateBody)
 }
 \arguments{
-\item{appArn}{[required] Amazon Resource Name (ARN) of the Resilience Hub application. The format for this ARN is: arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}. For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} in the \emph{Amazon Web Services General Reference} guide.}
+\item{appArn}{[required] Amazon Resource Name (ARN) of the Resilience Hub application. The format for this ARN is: arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}. For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Names (ARNs)} in the \emph{Amazon Web Services General Reference} guide.}
 
 \item{appTemplateBody}{[required] A JSON string that provides information about your application structure. To learn more about the \code{appTemplateBody} template, see the sample template provided in the \emph{Examples} section.
 

@@ -22,7 +22,8 @@ cloudwatchapplicationsignals_batch_delete_instrumentation_configurations <- func
     http_path = "/batch-delete-instrumentation-configurations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatchapplicationsignals$batch_delete_instrumentation_configurations_input(DeletionTarget = DeletionTarget)
   output <- .cloudwatchapplicationsignals$batch_delete_instrumentation_configurations_output()
@@ -55,7 +56,8 @@ cloudwatchapplicationsignals_batch_get_service_level_objective_budget_report <- 
     http_path = "/budget-report",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatchapplicationsignals$batch_get_service_level_objective_budget_report_input(Timestamp = Timestamp, SloIds = SloIds)
   output <- .cloudwatchapplicationsignals$batch_get_service_level_objective_budget_report_output()
@@ -89,7 +91,8 @@ cloudwatchapplicationsignals_batch_update_exclusion_windows <- function(SloIds, 
     http_path = "/exclusion-windows",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatchapplicationsignals$batch_update_exclusion_windows_input(SloIds = SloIds, AddExclusionWindows = AddExclusionWindows, RemoveExclusionWindows = RemoveExclusionWindows)
   output <- .cloudwatchapplicationsignals$batch_update_exclusion_windows_output()
@@ -130,7 +133,8 @@ cloudwatchapplicationsignals_create_instrumentation_configuration <- function(In
     http_path = "/create-instrumentation-configuration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatchapplicationsignals$create_instrumentation_configuration_input(InstrumentationType = InstrumentationType, Service = Service, Environment = Environment, SignalType = SignalType, Location = Location, Description = Description, ExpiresAt = ExpiresAt, AttributeFilters = AttributeFilters, CaptureConfiguration = CaptureConfiguration, Tags = Tags)
   output <- .cloudwatchapplicationsignals$create_instrumentation_configuration_output()
@@ -178,7 +182,8 @@ cloudwatchapplicationsignals_create_service_level_objective <- function(Name, De
     http_path = "/slo",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatchapplicationsignals$create_service_level_objective_input(Name = Name, Description = Description, SliConfig = SliConfig, RequestBasedSliConfig = RequestBasedSliConfig, Goal = Goal, Tags = Tags, BurnRateConfigurations = BurnRateConfigurations, CreateRecommendedSlo = CreateRecommendedSlo, AutoInvestigationEnabled = AutoInvestigationEnabled)
   output <- .cloudwatchapplicationsignals$create_service_level_objective_output()
@@ -209,7 +214,8 @@ cloudwatchapplicationsignals_delete_grouping_configuration <- function() {
     http_path = "/grouping-configuration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatchapplicationsignals$delete_grouping_configuration_input()
   output <- .cloudwatchapplicationsignals$delete_grouping_configuration_output()
@@ -244,7 +250,8 @@ cloudwatchapplicationsignals_delete_instrumentation_configuration <- function(In
     http_path = "/delete-instrumentation-configuration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatchapplicationsignals$delete_instrumentation_configuration_input(InstrumentationType = InstrumentationType, Service = Service, Environment = Environment, SignalType = SignalType, LocationIdentifier = LocationIdentifier)
   output <- .cloudwatchapplicationsignals$delete_instrumentation_configuration_output()
@@ -275,7 +282,8 @@ cloudwatchapplicationsignals_delete_service_level_objective <- function(Id) {
     http_path = "/slo/{Id}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatchapplicationsignals$delete_service_level_objective_input(Id = Id)
   output <- .cloudwatchapplicationsignals$delete_service_level_objective_output()
@@ -311,7 +319,8 @@ cloudwatchapplicationsignals_get_instrumentation_configuration <- function(Instr
     http_path = "/get-instrumentation-configuration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatchapplicationsignals$get_instrumentation_configuration_input(InstrumentationType = InstrumentationType, Service = Service, Environment = Environment, SignalType = SignalType, LocationIdentifier = LocationIdentifier)
   output <- .cloudwatchapplicationsignals$get_instrumentation_configuration_output()
@@ -352,7 +361,8 @@ cloudwatchapplicationsignals_get_instrumentation_configuration_status <- functio
     http_path = "/get-instrumentation-configuration-status",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Events"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatchapplicationsignals$get_instrumentation_configuration_status_input(InstrumentationType = InstrumentationType, Service = Service, Environment = Environment, SignalType = SignalType, LocationIdentifier = LocationIdentifier, Status = Status, StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudwatchapplicationsignals$get_instrumentation_configuration_status_output()
@@ -401,7 +411,8 @@ cloudwatchapplicationsignals_get_service <- function(StartTime, EndTime, KeyAttr
     http_path = "/service",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatchapplicationsignals$get_service_input(StartTime = StartTime, EndTime = EndTime, KeyAttributes = KeyAttributes)
   output <- .cloudwatchapplicationsignals$get_service_output()
@@ -432,7 +443,8 @@ cloudwatchapplicationsignals_get_service_level_objective <- function(Id) {
     http_path = "/slo/{Id}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatchapplicationsignals$get_service_level_objective_input(Id = Id)
   output <- .cloudwatchapplicationsignals$get_service_level_objective_output()
@@ -492,7 +504,8 @@ cloudwatchapplicationsignals_list_audit_findings <- function(StartTime, EndTime,
     http_path = "/auditFindings",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatchapplicationsignals$list_audit_findings_input(StartTime = StartTime, EndTime = EndTime, Auditors = Auditors, AuditTargets = AuditTargets, DetailLevel = DetailLevel, NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudwatchapplicationsignals$list_audit_findings_output()
@@ -550,7 +563,8 @@ cloudwatchapplicationsignals_list_entity_events <- function(Entity, StartTime, E
     http_path = "/events",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ChangeEvents"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatchapplicationsignals$list_entity_events_input(Entity = Entity, StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudwatchapplicationsignals$list_entity_events_output()
@@ -584,7 +598,8 @@ cloudwatchapplicationsignals_list_grouping_attribute_definitions <- function(Nex
     http_path = "/grouping-attribute-definitions",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatchapplicationsignals$list_grouping_attribute_definitions_input(NextToken = NextToken, AwsAccountId = AwsAccountId, IncludeLinkedAccounts = IncludeLinkedAccounts)
   output <- .cloudwatchapplicationsignals$list_grouping_attribute_definitions_output()
@@ -621,7 +636,8 @@ cloudwatchapplicationsignals_list_instrumentation_configurations <- function(Ser
     http_path = "/list-instrumentation-configurations",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "LatestConfigurations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatchapplicationsignals$list_instrumentation_configurations_input(Service = Service, Environment = Environment, InstrumentationType = InstrumentationType, SyncedAt = SyncedAt, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudwatchapplicationsignals$list_instrumentation_configurations_output()
@@ -672,7 +688,8 @@ cloudwatchapplicationsignals_list_service_dependencies <- function(StartTime, En
     http_path = "/service-dependencies",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ServiceDependencies"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatchapplicationsignals$list_service_dependencies_input(StartTime = StartTime, EndTime = EndTime, KeyAttributes = KeyAttributes, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudwatchapplicationsignals$list_service_dependencies_output()
@@ -724,7 +741,8 @@ cloudwatchapplicationsignals_list_service_dependents <- function(StartTime, EndT
     http_path = "/service-dependents",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ServiceDependents"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatchapplicationsignals$list_service_dependents_input(StartTime = StartTime, EndTime = EndTime, KeyAttributes = KeyAttributes, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudwatchapplicationsignals$list_service_dependents_output()
@@ -757,7 +775,8 @@ cloudwatchapplicationsignals_list_service_level_objective_exclusion_windows <- f
     http_path = "/slo/{Id}/exclusion-windows",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ExclusionWindows"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatchapplicationsignals$list_service_level_objective_exclusion_windows_input(Id = Id, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudwatchapplicationsignals$list_service_level_objective_exclusion_windows_output()
@@ -822,7 +841,8 @@ cloudwatchapplicationsignals_list_service_level_objectives <- function(KeyAttrib
     http_path = "/slos",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "SloSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatchapplicationsignals$list_service_level_objectives_input(KeyAttributes = KeyAttributes, OperationName = OperationName, DependencyConfig = DependencyConfig, MaxResults = MaxResults, NextToken = NextToken, MetricSourceTypes = MetricSourceTypes, IncludeLinkedAccounts = IncludeLinkedAccounts, SloOwnerAwsAccountId = SloOwnerAwsAccountId, MetricSource = MetricSource)
   output <- .cloudwatchapplicationsignals$list_service_level_objectives_output()
@@ -874,7 +894,8 @@ cloudwatchapplicationsignals_list_service_operations <- function(StartTime, EndT
     http_path = "/service-operations",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ServiceOperations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatchapplicationsignals$list_service_operations_input(StartTime = StartTime, EndTime = EndTime, KeyAttributes = KeyAttributes, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudwatchapplicationsignals$list_service_operations_output()
@@ -912,7 +933,8 @@ cloudwatchapplicationsignals_list_service_states <- function(StartTime, EndTime,
     http_path = "/service/states",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ServiceStates"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatchapplicationsignals$list_service_states_input(StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken, IncludeLinkedAccounts = IncludeLinkedAccounts, AwsAccountId = AwsAccountId, AttributeFilters = AttributeFilters)
   output <- .cloudwatchapplicationsignals$list_service_states_output()
@@ -953,7 +975,8 @@ cloudwatchapplicationsignals_list_services <- function(StartTime, EndTime, MaxRe
     http_path = "/services",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ServiceSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatchapplicationsignals$list_services_input(StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken, IncludeLinkedAccounts = IncludeLinkedAccounts, AwsAccountId = AwsAccountId)
   output <- .cloudwatchapplicationsignals$list_services_output()
@@ -988,7 +1011,8 @@ cloudwatchapplicationsignals_list_tags_for_resource <- function(ResourceArn) {
     http_path = "/tags",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatchapplicationsignals$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .cloudwatchapplicationsignals$list_tags_for_resource_output()
@@ -1019,7 +1043,8 @@ cloudwatchapplicationsignals_put_grouping_configuration <- function(GroupingAttr
     http_path = "/grouping-configuration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatchapplicationsignals$put_grouping_configuration_input(GroupingAttributeDefinitions = GroupingAttributeDefinitions)
   output <- .cloudwatchapplicationsignals$put_grouping_configuration_output()
@@ -1053,7 +1078,8 @@ cloudwatchapplicationsignals_report_instrumentation_configuration_status <- func
     http_path = "/report-instrumentation-configuration-status",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatchapplicationsignals$report_instrumentation_configuration_status_input(Service = Service, Environment = Environment, Configurations = Configurations)
   output <- .cloudwatchapplicationsignals$report_instrumentation_configuration_status_output()
@@ -1086,7 +1112,8 @@ cloudwatchapplicationsignals_start_discovery <- function() {
     http_path = "/start-discovery",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatchapplicationsignals$start_discovery_input()
   output <- .cloudwatchapplicationsignals$start_discovery_output()
@@ -1123,7 +1150,8 @@ cloudwatchapplicationsignals_tag_resource <- function(ResourceArn, Tags) {
     http_path = "/tag-resource",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatchapplicationsignals$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .cloudwatchapplicationsignals$tag_resource_output()
@@ -1159,7 +1187,8 @@ cloudwatchapplicationsignals_untag_resource <- function(ResourceArn, TagKeys) {
     http_path = "/untag-resource",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatchapplicationsignals$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .cloudwatchapplicationsignals$untag_resource_output()
@@ -1198,7 +1227,8 @@ cloudwatchapplicationsignals_update_service_level_objective <- function(Id, Desc
     http_path = "/slo/{Id}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudwatchapplicationsignals$update_service_level_objective_input(Id = Id, Description = Description, SliConfig = SliConfig, RequestBasedSliConfig = RequestBasedSliConfig, Goal = Goal, BurnRateConfigurations = BurnRateConfigurations, AutoInvestigationEnabled = AutoInvestigationEnabled)
   output <- .cloudwatchapplicationsignals$update_service_level_objective_output()

@@ -10,7 +10,14 @@ imagebuilder_list_image_scan_finding_aggregations(
 )
 }
 \arguments{
-\item{filter}{A filter name and value pair that is used to return a more specific list of results from a list operation. Filters can be used to match a set of resources by specific criteria, such as tags, attributes, or IDs.}
+\item{filter}{A filter name and value pair that determines the type of aggregation that Image Builder returns. Use one of the following filter names:
+\itemize{
+\item \code{imageBuildVersionArn}
+\item \code{imagePipelineArn}
+\item \code{vulnerabilityId}
+}
+
+If you don't specify a filter, Image Builder returns an aggregation for your account.}
 
 \item{nextToken}{A token to specify where to start paginating. Use the \code{nextToken} value from a previously truncated response.}
 }

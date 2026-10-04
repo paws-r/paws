@@ -14,9 +14,9 @@ ram_associate_resource_share(
 )
 }
 \arguments{
-\item{resourceShareArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)} of the resource share that you want to add principals or resources to.}
+\item{resourceShareArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Name (ARN)} of the resource share that you want to add principals or resources to.}
 
-\item{resourceArns}{Specifies a list of \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} of the resources that you want to share. This can be \code{null} if you want to add only principals.}
+\item{resourceArns}{Specifies a list of \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Names (ARNs)} of the resources that you want to share. This can be \code{null} if you want to add only principals.}
 
 \item{principals}{Specifies a list of principals to whom you want to the resource share. This can be \code{null} if you want to add only resources.
 
@@ -25,7 +25,7 @@ What the principals can do with the resources in the share is determined by the 
 You can include the following values:
 \itemize{
 \item An Amazon Web Services account ID, for example: \code{123456789012}
-\item An \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)} of an organization in Organizations, for example: \verb{organizations::123456789012:organization/o-exampleorgid}
+\item An \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Name (ARN)} of an organization in Organizations, for example: \verb{organizations::123456789012:organization/o-exampleorgid}
 \item An ARN of an organizational unit (OU) in Organizations, for example: \verb{organizations::123456789012:ou/o-exampleorgid/ou-examplerootid-exampleouid123}
 \item An ARN of an IAM role, for example: \verb{iam::123456789012:role/rolename}
 \item An ARN of an IAM user, for example: \verb{iam::123456789012user/username}

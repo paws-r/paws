@@ -19,6 +19,7 @@ bedrockagentcorecontrol_update_harness(
   allowedTools = NULL,
   memory = NULL,
   truncation = NULL,
+  hooks = NULL,
   maxIterations = NULL,
   maxTokens = NULL,
   timeoutSeconds = NULL
@@ -52,6 +53,8 @@ bedrockagentcorecontrol_update_harness(
 \item{memory}{The AgentCore Memory configuration. Use the optionalValue wrapper to set a new value, or set it to null to clear the existing configuration.}
 
 \item{truncation}{The truncation configuration for managing conversation context. If not specified, the existing value is retained.}
+
+\item{hooks}{The lifecycle hooks to run at defined points in the agent loop. If specified, this replaces all existing hooks. If not specified, the existing hooks are retained.}
 
 \item{maxIterations}{The maximum number of iterations the agent loop can execute per invocation. If not specified, the existing value is retained.}
 

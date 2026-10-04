@@ -45,7 +45,8 @@ codeartifact_associate_external_connection <- function(domain, domainOwner = NUL
     http_path = "/v1/repository/external-connection",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$associate_external_connection_input(domain = domain, domainOwner = domainOwner, repository = repository, externalConnection = externalConnection)
   output <- .codeartifact$associate_external_connection_output()
@@ -108,7 +109,8 @@ codeartifact_copy_package_versions <- function(domain, domainOwner = NULL, sourc
     http_path = "/v1/package/versions/copy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$copy_package_versions_input(domain = domain, domainOwner = domainOwner, sourceRepository = sourceRepository, destinationRepository = destinationRepository, format = format, namespace = namespace, package = package, versions = versions, versionRevisions = versionRevisions, allowOverwrite = allowOverwrite, includeFromUpstream = includeFromUpstream)
   output <- .codeartifact$copy_package_versions_output()
@@ -143,7 +145,8 @@ codeartifact_create_domain <- function(domain, encryptionKey = NULL, tags = NULL
     http_path = "/v1/domain",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$create_domain_input(domain = domain, encryptionKey = encryptionKey, tags = tags)
   output <- .codeartifact$create_domain_output()
@@ -179,7 +182,8 @@ codeartifact_create_package_group <- function(domain, domainOwner = NULL, packag
     http_path = "/v1/package-group",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$create_package_group_input(domain = domain, domainOwner = domainOwner, packageGroup = packageGroup, contactInfo = contactInfo, description = description, tags = tags)
   output <- .codeartifact$create_package_group_output()
@@ -215,7 +219,8 @@ codeartifact_create_repository <- function(domain, domainOwner = NULL, repositor
     http_path = "/v1/repository",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$create_repository_input(domain = domain, domainOwner = domainOwner, repository = repository, description = description, upstreams = upstreams, tags = tags)
   output <- .codeartifact$create_repository_output()
@@ -247,7 +252,8 @@ codeartifact_delete_domain <- function(domain, domainOwner = NULL) {
     http_path = "/v1/domain",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$delete_domain_input(domain = domain, domainOwner = domainOwner)
   output <- .codeartifact$delete_domain_output()
@@ -280,7 +286,8 @@ codeartifact_delete_domain_permissions_policy <- function(domain, domainOwner = 
     http_path = "/v1/domain/permissions/policy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$delete_domain_permissions_policy_input(domain = domain, domainOwner = domainOwner, policyRevision = policyRevision)
   output <- .codeartifact$delete_domain_permissions_policy_output()
@@ -333,7 +340,8 @@ codeartifact_delete_package <- function(domain, domainOwner = NULL, repository, 
     http_path = "/v1/package",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$delete_package_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, package = package)
   output <- .codeartifact$delete_package_output()
@@ -366,7 +374,8 @@ codeartifact_delete_package_group <- function(domain, domainOwner = NULL, packag
     http_path = "/v1/package-group",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$delete_package_group_input(domain = domain, domainOwner = domainOwner, packageGroup = packageGroup)
   output <- .codeartifact$delete_package_group_output()
@@ -421,7 +430,8 @@ codeartifact_delete_package_versions <- function(domain, domainOwner = NULL, rep
     http_path = "/v1/package/versions/delete",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$delete_package_versions_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, package = package, versions = versions, expectedStatus = expectedStatus)
   output <- .codeartifact$delete_package_versions_output()
@@ -454,7 +464,8 @@ codeartifact_delete_repository <- function(domain, domainOwner = NULL, repositor
     http_path = "/v1/repository",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$delete_repository_input(domain = domain, domainOwner = domainOwner, repository = repository)
   output <- .codeartifact$delete_repository_output()
@@ -488,7 +499,8 @@ codeartifact_delete_repository_permissions_policy <- function(domain, domainOwne
     http_path = "/v1/repository/permissions/policies",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$delete_repository_permissions_policy_input(domain = domain, domainOwner = domainOwner, repository = repository, policyRevision = policyRevision)
   output <- .codeartifact$delete_repository_permissions_policy_output()
@@ -521,7 +533,8 @@ codeartifact_describe_domain <- function(domain, domainOwner = NULL) {
     http_path = "/v1/domain",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$describe_domain_input(domain = domain, domainOwner = domainOwner)
   output <- .codeartifact$describe_domain_output()
@@ -575,7 +588,8 @@ codeartifact_describe_package <- function(domain, domainOwner = NULL, repository
     http_path = "/v1/package",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$describe_package_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, package = package)
   output <- .codeartifact$describe_package_output()
@@ -609,7 +623,8 @@ codeartifact_describe_package_group <- function(domain, domainOwner = NULL, pack
     http_path = "/v1/package-group",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$describe_package_group_input(domain = domain, domainOwner = domainOwner, packageGroup = packageGroup)
   output <- .codeartifact$describe_package_group_output()
@@ -664,7 +679,8 @@ codeartifact_describe_package_version <- function(domain, domainOwner = NULL, re
     http_path = "/v1/package/version",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$describe_package_version_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, package = package, packageVersion = packageVersion)
   output <- .codeartifact$describe_package_version_output()
@@ -698,7 +714,8 @@ codeartifact_describe_repository <- function(domain, domainOwner = NULL, reposit
     http_path = "/v1/repository",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$describe_repository_input(domain = domain, domainOwner = domainOwner, repository = repository)
   output <- .codeartifact$describe_repository_output()
@@ -732,7 +749,8 @@ codeartifact_disassociate_external_connection <- function(domain, domainOwner = 
     http_path = "/v1/repository/external-connection",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$disassociate_external_connection_input(domain = domain, domainOwner = domainOwner, repository = repository, externalConnection = externalConnection)
   output <- .codeartifact$disassociate_external_connection_output()
@@ -789,7 +807,8 @@ codeartifact_dispose_package_versions <- function(domain, domainOwner = NULL, re
     http_path = "/v1/package/versions/dispose",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$dispose_package_versions_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, package = package, versions = versions, versionRevisions = versionRevisions, expectedStatus = expectedStatus)
   output <- .codeartifact$dispose_package_versions_output()
@@ -842,7 +861,8 @@ codeartifact_get_associated_package_group <- function(domain, domainOwner = NULL
     http_path = "/v1/get-associated-package-group",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$get_associated_package_group_input(domain = domain, domainOwner = domainOwner, format = format, namespace = namespace, package = package)
   output <- .codeartifact$get_associated_package_group_output()
@@ -876,7 +896,8 @@ codeartifact_get_authorization_token <- function(domain, domainOwner = NULL, dur
     http_path = "/v1/authorization-token",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$get_authorization_token_input(domain = domain, domainOwner = domainOwner, durationSeconds = durationSeconds)
   output <- .codeartifact$get_authorization_token_output()
@@ -908,7 +929,8 @@ codeartifact_get_domain_permissions_policy <- function(domain, domainOwner = NUL
     http_path = "/v1/domain/permissions/policy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$get_domain_permissions_policy_input(domain = domain, domainOwner = domainOwner)
   output <- .codeartifact$get_domain_permissions_policy_output()
@@ -964,7 +986,8 @@ codeartifact_get_package_version_asset <- function(domain, domainOwner = NULL, r
     http_path = "/v1/package/version/asset",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$get_package_version_asset_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, package = package, packageVersion = packageVersion, asset = asset, packageVersionRevision = packageVersionRevision)
   output <- .codeartifact$get_package_version_asset_output()
@@ -1018,7 +1041,8 @@ codeartifact_get_package_version_readme <- function(domain, domainOwner = NULL, 
     http_path = "/v1/package/version/readme",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$get_package_version_readme_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, package = package, packageVersion = packageVersion)
   output <- .codeartifact$get_package_version_readme_output()
@@ -1053,7 +1077,8 @@ codeartifact_get_repository_endpoint <- function(domain, domainOwner = NULL, rep
     http_path = "/v1/repository/endpoint",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$get_repository_endpoint_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, endpointType = endpointType)
   output <- .codeartifact$get_repository_endpoint_output()
@@ -1086,7 +1111,8 @@ codeartifact_get_repository_permissions_policy <- function(domain, domainOwner =
     http_path = "/v1/repository/permissions/policy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$get_repository_permissions_policy_input(domain = domain, domainOwner = domainOwner, repository = repository)
   output <- .codeartifact$get_repository_permissions_policy_output()
@@ -1123,7 +1149,8 @@ codeartifact_list_allowed_repositories_for_group <- function(domain, domainOwner
     http_path = "/v1/package-group-allowed-repositories",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "allowedRepositories"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$list_allowed_repositories_for_group_input(domain = domain, domainOwner = domainOwner, packageGroup = packageGroup, originRestrictionType = originRestrictionType, maxResults = maxResults, nextToken = nextToken)
   output <- .codeartifact$list_allowed_repositories_for_group_output()
@@ -1159,7 +1186,8 @@ codeartifact_list_associated_packages <- function(domain, domainOwner = NULL, pa
     http_path = "/v1/list-associated-packages",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "packages"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$list_associated_packages_input(domain = domain, domainOwner = domainOwner, packageGroup = packageGroup, maxResults = maxResults, nextToken = nextToken, preview = preview)
   output <- .codeartifact$list_associated_packages_output()
@@ -1192,7 +1220,8 @@ codeartifact_list_domains <- function(maxResults = NULL, nextToken = NULL) {
     http_path = "/v1/domains",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "domains"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$list_domains_input(maxResults = maxResults, nextToken = nextToken)
   output <- .codeartifact$list_domains_output()
@@ -1227,7 +1256,8 @@ codeartifact_list_package_groups <- function(domain, domainOwner = NULL, maxResu
     http_path = "/v1/package-groups",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "packageGroups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$list_package_groups_input(domain = domain, domainOwner = domainOwner, maxResults = maxResults, nextToken = nextToken, prefix = prefix)
   output <- .codeartifact$list_package_groups_output()
@@ -1283,7 +1313,8 @@ codeartifact_list_package_version_assets <- function(domain, domainOwner = NULL,
     http_path = "/v1/package/version/assets",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "assets"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$list_package_version_assets_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, package = package, packageVersion = packageVersion, maxResults = maxResults, nextToken = nextToken)
   output <- .codeartifact$list_package_version_assets_output()
@@ -1332,7 +1363,8 @@ codeartifact_list_package_version_dependencies <- function(domain, domainOwner =
     http_path = "/v1/package/version/dependencies",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$list_package_version_dependencies_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, package = package, packageVersion = packageVersion, nextToken = nextToken)
   output <- .codeartifact$list_package_version_dependencies_output()
@@ -1391,7 +1423,8 @@ codeartifact_list_package_versions <- function(domain, domainOwner = NULL, repos
     http_path = "/v1/package/versions",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "versions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$list_package_versions_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, package = package, status = status, sortBy = sortBy, maxResults = maxResults, nextToken = nextToken, originType = originType)
   output <- .codeartifact$list_package_versions_output()
@@ -1442,7 +1475,8 @@ codeartifact_list_packages <- function(domain, domainOwner = NULL, repository, f
     http_path = "/v1/packages",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "packages"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$list_packages_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, packagePrefix = packagePrefix, maxResults = maxResults, nextToken = nextToken, publish = publish, upstream = upstream)
   output <- .codeartifact$list_packages_output()
@@ -1475,7 +1509,8 @@ codeartifact_list_repositories <- function(repositoryPrefix = NULL, maxResults =
     http_path = "/v1/repositories",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "repositories"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$list_repositories_input(repositoryPrefix = repositoryPrefix, maxResults = maxResults, nextToken = nextToken)
   output <- .codeartifact$list_repositories_output()
@@ -1511,7 +1546,8 @@ codeartifact_list_repositories_in_domain <- function(domain, domainOwner = NULL,
     http_path = "/v1/domain/repositories",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "repositories"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$list_repositories_in_domain_input(domain = domain, domainOwner = domainOwner, administratorAccount = administratorAccount, repositoryPrefix = repositoryPrefix, maxResults = maxResults, nextToken = nextToken)
   output <- .codeartifact$list_repositories_in_domain_output()
@@ -1546,7 +1582,8 @@ codeartifact_list_sub_package_groups <- function(domain, domainOwner = NULL, pac
     http_path = "/v1/package-groups/sub-groups",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "packageGroups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$list_sub_package_groups_input(domain = domain, domainOwner = domainOwner, packageGroup = packageGroup, maxResults = maxResults, nextToken = nextToken)
   output <- .codeartifact$list_sub_package_groups_output()
@@ -1578,7 +1615,8 @@ codeartifact_list_tags_for_resource <- function(resourceArn) {
     http_path = "/v1/tags",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .codeartifact$list_tags_for_resource_output()
@@ -1625,7 +1663,8 @@ codeartifact_publish_package_version <- function(domain, domainOwner = NULL, rep
     http_path = "/v1/package/version/publish",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$publish_package_version_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, package = package, packageVersion = packageVersion, assetContent = assetContent, assetName = assetName, assetSHA256 = assetSHA256, unfinished = unfinished)
   output <- .codeartifact$publish_package_version_output()
@@ -1660,7 +1699,8 @@ codeartifact_put_domain_permissions_policy <- function(domain, domainOwner = NUL
     http_path = "/v1/domain/permissions/policy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$put_domain_permissions_policy_input(domain = domain, domainOwner = domainOwner, policyRevision = policyRevision, policyDocument = policyDocument)
   output <- .codeartifact$put_domain_permissions_policy_output()
@@ -1707,7 +1747,8 @@ codeartifact_put_package_origin_configuration <- function(domain, domainOwner = 
     http_path = "/v1/package",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$put_package_origin_configuration_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, package = package, restrictions = restrictions)
   output <- .codeartifact$put_package_origin_configuration_output()
@@ -1743,7 +1784,8 @@ codeartifact_put_repository_permissions_policy <- function(domain, domainOwner =
     http_path = "/v1/repository/permissions/policy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$put_repository_permissions_policy_input(domain = domain, domainOwner = domainOwner, repository = repository, policyRevision = policyRevision, policyDocument = policyDocument)
   output <- .codeartifact$put_repository_permissions_policy_output()
@@ -1775,7 +1817,8 @@ codeartifact_tag_resource <- function(resourceArn, tags) {
     http_path = "/v1/tag",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .codeartifact$tag_resource_output()
@@ -1807,7 +1850,8 @@ codeartifact_untag_resource <- function(resourceArn, tagKeys) {
     http_path = "/v1/untag",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .codeartifact$untag_resource_output()
@@ -1842,7 +1886,8 @@ codeartifact_update_package_group <- function(domain, domainOwner = NULL, packag
     http_path = "/v1/package-group",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$update_package_group_input(domain = domain, domainOwner = domainOwner, packageGroup = packageGroup, contactInfo = contactInfo, description = description)
   output <- .codeartifact$update_package_group_output()
@@ -1878,7 +1923,8 @@ codeartifact_update_package_group_origin_configuration <- function(domain, domai
     http_path = "/v1/package-group-origin-configuration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$update_package_group_origin_configuration_input(domain = domain, domainOwner = domainOwner, packageGroup = packageGroup, restrictions = restrictions, addAllowedRepositories = addAllowedRepositories, removeAllowedRepositories = removeAllowedRepositories)
   output <- .codeartifact$update_package_group_origin_configuration_output()
@@ -1926,7 +1972,8 @@ codeartifact_update_package_versions_status <- function(domain, domainOwner = NU
     http_path = "/v1/package/versions/update_status",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$update_package_versions_status_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, package = package, versions = versions, versionRevisions = versionRevisions, expectedStatus = expectedStatus, targetStatus = targetStatus)
   output <- .codeartifact$update_package_versions_status_output()
@@ -1961,7 +2008,8 @@ codeartifact_update_repository <- function(domain, domainOwner = NULL, repositor
     http_path = "/v1/repository",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codeartifact$update_repository_input(domain = domain, domainOwner = domainOwner, repository = repository, description = description, upstreams = upstreams)
   output <- .codeartifact$update_repository_output()

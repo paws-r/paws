@@ -1,3 +1,3 @@
-svc <- paws.machine.learning::personalizeevents()
+svc <- paws::personalizeevents()
 
 

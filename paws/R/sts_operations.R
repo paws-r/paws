@@ -62,7 +62,7 @@ NULL
 #' The regex used to validate this parameter is a string of characters consisting of upper- and lower-case alphanumeric characters with no spaces. You can also include underscores or any of the following characters: +=,.@@-
 #' @param PolicyArns The Amazon Resource Names (ARNs) of the IAM managed policies that you want to use as managed session policies. The policies must exist in the same account as the role.
 #' 
-#' This parameter is optional. You can provide up to 10 managed policy ARNs. However, the plaintext that you use for both inline and managed session policies can't exceed 2,048 characters. For more information about ARNs, see [Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) in the Amazon Web Services General Reference.
+#' This parameter is optional. You can provide up to 10 managed policy ARNs. However, the plaintext that you use for both inline and managed session policies can't exceed 2,048 characters. For more information about ARNs, see [Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) in the Amazon Web Services General Reference.
 #' 
 #' An Amazon Web Services conversion compresses the passed inline session policy, managed policy ARNs, and session tags into a packed binary format that has a separate limit. Your request can fail for this limit even if your plaintext meets the other requirements. The `PackedPolicySize` response element indicates by percentage how close the policies and tags for your request are to the upper size limit.
 #' 
@@ -219,7 +219,8 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sts$assume_role_input(RoleArn = RoleArn, RoleSessionName = RoleSessionName, PolicyArns = PolicyArns, Policy = Policy, DurationSeconds = DurationSeconds, Tags = Tags, TransitiveTagKeys = TransitiveTagKeys, ExternalId = ExternalId, SerialNumber = SerialNumber, TokenCode = TokenCode, SourceIdentity = SourceIdentity, ProvidedContexts = ProvidedContexts, MinimumSessionTokenSize = MinimumSessionTokenSize)
   output <- .sts$assume_role_output()
@@ -296,7 +297,7 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #' For more information, see [Configuring a Relying Party and Adding Claims](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_saml_relying-party.html) in the *IAM User Guide*.
 #' @param PolicyArns The Amazon Resource Names (ARNs) of the IAM managed policies that you want to use as managed session policies. The policies must exist in the same account as the role.
 #' 
-#' This parameter is optional. You can provide up to 10 managed policy ARNs. However, the plaintext that you use for both inline and managed session policies can't exceed 2,048 characters. For more information about ARNs, see [Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) in the Amazon Web Services General Reference.
+#' This parameter is optional. You can provide up to 10 managed policy ARNs. However, the plaintext that you use for both inline and managed session policies can't exceed 2,048 characters. For more information about ARNs, see [Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) in the Amazon Web Services General Reference.
 #' 
 #' An Amazon Web Services conversion compresses the passed inline session policy, managed policy ARNs, and session tags into a packed binary format that has a separate limit. Your request can fail for this limit even if your plaintext meets the other requirements. The `PackedPolicySize` response element indicates by percentage how close the policies and tags for your request are to the upper size limit.
 #' 
@@ -385,7 +386,8 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sts$assume_role_with_saml_input(RoleArn = RoleArn, PrincipalArn = PrincipalArn, SAMLAssertion = SAMLAssertion, PolicyArns = PolicyArns, Policy = Policy, DurationSeconds = DurationSeconds, MinimumSessionTokenSize = MinimumSessionTokenSize)
   output <- .sts$assume_role_with_saml_output()
@@ -469,7 +471,7 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' Do not specify this value for OpenID Connect ID tokens.
 #' @param PolicyArns The Amazon Resource Names (ARNs) of the IAM managed policies that you want to use as managed session policies. The policies must exist in the same account as the role.
 #' 
-#' This parameter is optional. You can provide up to 10 managed policy ARNs. However, the plaintext that you use for both inline and managed session policies can't exceed 2,048 characters. For more information about ARNs, see [Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) in the Amazon Web Services General Reference.
+#' This parameter is optional. You can provide up to 10 managed policy ARNs. However, the plaintext that you use for both inline and managed session policies can't exceed 2,048 characters. For more information about ARNs, see [Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) in the Amazon Web Services General Reference.
 #' 
 #' An Amazon Web Services conversion compresses the passed inline session policy, managed policy ARNs, and session tags into a packed binary format that has a separate limit. Your request can fail for this limit even if your plaintext meets the other requirements. The `PackedPolicySize` response element indicates by percentage how close the policies and tags for your request are to the upper size limit.
 #' 
@@ -559,7 +561,8 @@ sts_assume_role_with_web_identity <- function(RoleArn, RoleSessionName, WebIdent
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sts$assume_role_with_web_identity_input(RoleArn = RoleArn, RoleSessionName = RoleSessionName, WebIdentityToken = WebIdentityToken, ProviderId = ProviderId, PolicyArns = PolicyArns, Policy = Policy, DurationSeconds = DurationSeconds, MinimumSessionTokenSize = MinimumSessionTokenSize)
   output <- .sts$assume_role_with_web_identity_output()
@@ -648,7 +651,8 @@ sts_assume_root <- function(TargetPrincipal, TaskPolicyArn, DurationSeconds = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sts$assume_root_input(TargetPrincipal = TargetPrincipal, TaskPolicyArn = TaskPolicyArn, DurationSeconds = DurationSeconds, MinimumSessionTokenSize = MinimumSessionTokenSize)
   output <- .sts$assume_root_output()
@@ -725,7 +729,8 @@ sts_decode_authorization_message <- function(EncodedMessage) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sts$decode_authorization_message_input(EncodedMessage = EncodedMessage)
   output <- .sts$decode_authorization_message_output()
@@ -782,7 +787,8 @@ sts_get_access_key_info <- function(AccessKeyId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sts$get_access_key_info_input(AccessKeyId = AccessKeyId)
   output <- .sts$get_access_key_info_output()
@@ -851,7 +857,8 @@ sts_get_caller_identity <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sts$get_caller_identity_input()
   output <- .sts$get_caller_identity_output()
@@ -910,7 +917,8 @@ sts_get_delegated_access_token <- function(TradeInToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sts$get_delegated_access_token_input(TradeInToken = TradeInToken)
   output <- .sts$get_delegated_access_token_output()
@@ -986,7 +994,7 @@ sts_get_delegated_access_token <- function(TradeInToken) {
 #' An Amazon Web Services conversion compresses the passed inline session policy, managed policy ARNs, and session tags into a packed binary format that has a separate limit. Your request can fail for this limit even if your plaintext meets the other requirements. The `PackedPolicySize` response element indicates by percentage how close the policies and tags for your request are to the upper size limit.
 #' @param PolicyArns The Amazon Resource Names (ARNs) of the IAM managed policies that you want to use as a managed session policy. The policies must exist in the same account as the IAM user that is requesting federated access.
 #' 
-#' You must pass an inline or managed [session policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session) to this operation. You can pass a single JSON policy document to use as an inline session policy. You can also specify up to 10 managed policy Amazon Resource Names (ARNs) to use as managed session policies. The plaintext that you use for both inline and managed session policies can't exceed 2,048 characters. You can provide up to 10 managed policy ARNs. For more information about ARNs, see [Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) in the Amazon Web Services General Reference.
+#' You must pass an inline or managed [session policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session) to this operation. You can pass a single JSON policy document to use as an inline session policy. You can also specify up to 10 managed policy Amazon Resource Names (ARNs) to use as managed session policies. The plaintext that you use for both inline and managed session policies can't exceed 2,048 characters. You can provide up to 10 managed policy ARNs. For more information about ARNs, see [Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) in the Amazon Web Services General Reference.
 #' 
 #' This parameter is optional. However, if you do not pass any session policies, then the resulting federated user session has no permissions.
 #' 
@@ -1082,7 +1090,8 @@ sts_get_federation_token <- function(Name, Policy = NULL, PolicyArns = NULL, Dur
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sts$get_federation_token_input(Name = Name, Policy = Policy, PolicyArns = PolicyArns, DurationSeconds = DurationSeconds, Tags = Tags, MinimumSessionTokenSize = MinimumSessionTokenSize)
   output <- .sts$get_federation_token_output()
@@ -1184,7 +1193,8 @@ sts_get_session_token <- function(DurationSeconds = NULL, SerialNumber = NULL, T
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sts$get_session_token_input(DurationSeconds = DurationSeconds, SerialNumber = SerialNumber, TokenCode = TokenCode, MinimumSessionTokenSize = MinimumSessionTokenSize)
   output <- .sts$get_session_token_output()
@@ -1253,7 +1263,8 @@ sts_get_web_identity_token <- function(Audience, DurationSeconds = NULL, Signing
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sts$get_web_identity_token_input(Audience = Audience, DurationSeconds = DurationSeconds, SigningAlgorithm = SigningAlgorithm, Tags = Tags)
   output <- .sts$get_web_identity_token_output()

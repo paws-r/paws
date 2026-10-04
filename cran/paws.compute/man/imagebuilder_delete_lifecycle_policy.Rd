@@ -10,7 +10,7 @@ imagebuilder_delete_lifecycle_policy(lifecyclePolicyArn)
 \item{lifecyclePolicyArn}{[required] The Amazon Resource Name (ARN) of the lifecycle policy resource to delete.}
 }
 \description{
-Deletes the specified lifecycle policy resource.
+Deletes the specified lifecycle policy resource. Deleting the policy removes its schedule, so no further lifecycle runs occur for that policy. If a lifecycle execution is in progress for the policy, Image Builder cancels it. Deletion doesn't revert actions that the policy already applied to your resources.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_delete_lifecycle_policy/} for full documentation.
 }

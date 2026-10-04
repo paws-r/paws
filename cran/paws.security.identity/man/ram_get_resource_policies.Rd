@@ -13,7 +13,7 @@ ram_get_resource_policies(
 )
 }
 \arguments{
-\item{resourceArns}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} of the resources whose policies you want to retrieve.}
+\item{resourceArns}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Names (ARNs)} of the resources whose policies you want to retrieve.}
 
 \item{principal}{Specifies the principal.}
 

@@ -48,7 +48,8 @@ networkfirewall_accept_network_firewall_transit_gateway_attachment <- function(T
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$accept_network_firewall_transit_gateway_attachment_input(TransitGatewayAttachmentId = TransitGatewayAttachmentId)
   output <- .networkfirewall$accept_network_firewall_transit_gateway_attachment_output()
@@ -126,7 +127,8 @@ networkfirewall_associate_availability_zones <- function(UpdateToken = NULL, Fir
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$associate_availability_zones_input(UpdateToken = UpdateToken, FirewallArn = FirewallArn, FirewallName = FirewallName, AvailabilityZoneMappings = AvailabilityZoneMappings)
   output <- .networkfirewall$associate_availability_zones_output()
@@ -195,7 +197,8 @@ networkfirewall_associate_firewall_policy <- function(UpdateToken = NULL, Firewa
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$associate_firewall_policy_input(UpdateToken = UpdateToken, FirewallArn = FirewallArn, FirewallName = FirewallName, FirewallPolicyArn = FirewallPolicyArn)
   output <- .networkfirewall$associate_firewall_policy_output()
@@ -274,7 +277,8 @@ networkfirewall_associate_subnets <- function(UpdateToken = NULL, FirewallArn = 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$associate_subnets_input(UpdateToken = UpdateToken, FirewallArn = FirewallArn, FirewallName = FirewallName, SubnetMappings = SubnetMappings)
   output <- .networkfirewall$associate_subnets_output()
@@ -373,7 +377,8 @@ networkfirewall_attach_rule_groups_to_proxy_configuration <- function(ProxyConfi
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$attach_rule_groups_to_proxy_configuration_input(ProxyConfigurationName = ProxyConfigurationName, ProxyConfigurationArn = ProxyConfigurationArn, RuleGroups = RuleGroups, UpdateToken = UpdateToken)
   output <- .networkfirewall$attach_rule_groups_to_proxy_configuration_output()
@@ -472,7 +477,8 @@ networkfirewall_create_container_association <- function(ContainerAssociationNam
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$create_container_association_input(ContainerAssociationName = ContainerAssociationName, Description = Description, Type = Type, ContainerMonitoringConfigurations = ContainerMonitoringConfigurations, Tags = Tags)
   output <- .networkfirewall$create_container_association_output()
@@ -735,7 +741,8 @@ networkfirewall_create_firewall <- function(FirewallName, FirewallPolicyArn, Vpc
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$create_firewall_input(FirewallName = FirewallName, FirewallPolicyArn = FirewallPolicyArn, VpcId = VpcId, SubnetMappings = SubnetMappings, DeleteProtection = DeleteProtection, SubnetChangeProtection = SubnetChangeProtection, FirewallPolicyChangeProtection = FirewallPolicyChangeProtection, Description = Description, Tags = Tags, EncryptionConfiguration = EncryptionConfiguration, EnabledAnalysisTypes = EnabledAnalysisTypes, TransitGatewayId = TransitGatewayId, AvailabilityZoneMappings = AvailabilityZoneMappings, AvailabilityZoneChangeProtection = AvailabilityZoneChangeProtection, NatGatewayMappings = NatGatewayMappings, ProxySettings = ProxySettings, NoSourcePreservation = NoSourcePreservation, VpcEndpoint = VpcEndpoint)
   output <- .networkfirewall$create_firewall_output()
@@ -892,7 +899,8 @@ networkfirewall_create_firewall_policy <- function(FirewallPolicyName, FirewallP
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$create_firewall_policy_input(FirewallPolicyName = FirewallPolicyName, FirewallPolicy = FirewallPolicy, Description = Description, Tags = Tags, DryRun = DryRun, EncryptionConfiguration = EncryptionConfiguration)
   output <- .networkfirewall$create_firewall_policy_output()
@@ -1014,7 +1022,8 @@ networkfirewall_create_proxy <- function(ProxyName, NatGatewayId, ProxyConfigura
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$create_proxy_input(ProxyName = ProxyName, NatGatewayId = NatGatewayId, ProxyConfigurationName = ProxyConfigurationName, ProxyConfigurationArn = ProxyConfigurationArn, ListenerProperties = ListenerProperties, TlsInterceptProperties = TlsInterceptProperties, Tags = Tags)
   output <- .networkfirewall$create_proxy_output()
@@ -1128,7 +1137,8 @@ networkfirewall_create_proxy_configuration <- function(ProxyConfigurationName, D
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$create_proxy_configuration_input(ProxyConfigurationName = ProxyConfigurationName, Description = Description, RuleGroupNames = RuleGroupNames, RuleGroupArns = RuleGroupArns, DefaultRulePhaseActions = DefaultRulePhaseActions, Tags = Tags)
   output <- .networkfirewall$create_proxy_configuration_output()
@@ -1313,7 +1323,8 @@ networkfirewall_create_proxy_rule_group <- function(ProxyRuleGroupName, Descript
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$create_proxy_rule_group_input(ProxyRuleGroupName = ProxyRuleGroupName, Description = Description, Rules = Rules, Tags = Tags)
   output <- .networkfirewall$create_proxy_rule_group_output()
@@ -1494,7 +1505,8 @@ networkfirewall_create_proxy_rules <- function(ProxyRuleGroupArn = NULL, ProxyRu
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$create_proxy_rules_input(ProxyRuleGroupArn = ProxyRuleGroupArn, ProxyRuleGroupName = ProxyRuleGroupName, Rules = Rules)
   output <- .networkfirewall$create_proxy_rules_output()
@@ -1789,7 +1801,8 @@ networkfirewall_create_rule_group <- function(RuleGroupName, RuleGroup = NULL, R
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$create_rule_group_input(RuleGroupName = RuleGroupName, RuleGroup = RuleGroup, Rules = Rules, Type = Type, Description = Description, Capacity = Capacity, Tags = Tags, DryRun = DryRun, EncryptionConfiguration = EncryptionConfiguration, SourceMetadata = SourceMetadata, AnalyzeRuleGroup = AnalyzeRuleGroup, SummaryConfiguration = SummaryConfiguration)
   output <- .networkfirewall$create_rule_group_output()
@@ -1947,7 +1960,8 @@ networkfirewall_create_tls_inspection_configuration <- function(TLSInspectionCon
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$create_tls_inspection_configuration_input(TLSInspectionConfigurationName = TLSInspectionConfigurationName, TLSInspectionConfiguration = TLSInspectionConfiguration, Description = Description, Tags = Tags, EncryptionConfiguration = EncryptionConfiguration)
   output <- .networkfirewall$create_tls_inspection_configuration_output()
@@ -2043,7 +2057,8 @@ networkfirewall_create_vpc_endpoint_association <- function(FirewallArn, VpcId, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$create_vpc_endpoint_association_input(FirewallArn = FirewallArn, VpcId = VpcId, SubnetMapping = SubnetMapping, Description = Description, Tags = Tags)
   output <- .networkfirewall$create_vpc_endpoint_association_output()
@@ -2101,7 +2116,8 @@ networkfirewall_delete_container_association <- function(ContainerAssociationNam
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$delete_container_association_input(ContainerAssociationName = ContainerAssociationName, ContainerAssociationArn = ContainerAssociationArn)
   output <- .networkfirewall$delete_container_association_output()
@@ -2266,7 +2282,8 @@ networkfirewall_delete_firewall <- function(FirewallName = NULL, FirewallArn = N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$delete_firewall_input(FirewallName = FirewallName, FirewallArn = FirewallArn)
   output <- .networkfirewall$delete_firewall_output()
@@ -2345,7 +2362,8 @@ networkfirewall_delete_firewall_policy <- function(FirewallPolicyName = NULL, Fi
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$delete_firewall_policy_input(FirewallPolicyName = FirewallPolicyName, FirewallPolicyArn = FirewallPolicyArn)
   output <- .networkfirewall$delete_firewall_policy_output()
@@ -2400,7 +2418,8 @@ networkfirewall_delete_network_firewall_transit_gateway_attachment <- function(T
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$delete_network_firewall_transit_gateway_attachment_input(TransitGatewayAttachmentId = TransitGatewayAttachmentId)
   output <- .networkfirewall$delete_network_firewall_transit_gateway_attachment_output()
@@ -2461,7 +2480,8 @@ networkfirewall_delete_proxy <- function(NatGatewayId, ProxyName = NULL, ProxyAr
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$delete_proxy_input(NatGatewayId = NatGatewayId, ProxyName = ProxyName, ProxyArn = ProxyArn)
   output <- .networkfirewall$delete_proxy_output()
@@ -2518,7 +2538,8 @@ networkfirewall_delete_proxy_configuration <- function(ProxyConfigurationName = 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$delete_proxy_configuration_input(ProxyConfigurationName = ProxyConfigurationName, ProxyConfigurationArn = ProxyConfigurationArn)
   output <- .networkfirewall$delete_proxy_configuration_output()
@@ -2575,7 +2596,8 @@ networkfirewall_delete_proxy_rule_group <- function(ProxyRuleGroupName = NULL, P
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$delete_proxy_rule_group_input(ProxyRuleGroupName = ProxyRuleGroupName, ProxyRuleGroupArn = ProxyRuleGroupArn)
   output <- .networkfirewall$delete_proxy_rule_group_output()
@@ -2701,7 +2723,8 @@ networkfirewall_delete_proxy_rules <- function(ProxyRuleGroupArn = NULL, ProxyRu
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$delete_proxy_rules_input(ProxyRuleGroupArn = ProxyRuleGroupArn, ProxyRuleGroupName = ProxyRuleGroupName, Rules = Rules)
   output <- .networkfirewall$delete_proxy_rules_output()
@@ -2746,7 +2769,8 @@ networkfirewall_delete_resource_policy <- function(ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$delete_resource_policy_input(ResourceArn = ResourceArn)
   output <- .networkfirewall$delete_resource_policy_output()
@@ -2847,7 +2871,8 @@ networkfirewall_delete_rule_group <- function(RuleGroupName = NULL, RuleGroupArn
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$delete_rule_group_input(RuleGroupName = RuleGroupName, RuleGroupArn = RuleGroupArn, Type = Type)
   output <- .networkfirewall$delete_rule_group_output()
@@ -2937,7 +2962,8 @@ networkfirewall_delete_tls_inspection_configuration <- function(TLSInspectionCon
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$delete_tls_inspection_configuration_input(TLSInspectionConfigurationArn = TLSInspectionConfigurationArn, TLSInspectionConfigurationName = TLSInspectionConfigurationName)
   output <- .networkfirewall$delete_tls_inspection_configuration_output()
@@ -3019,7 +3045,8 @@ networkfirewall_delete_vpc_endpoint_association <- function(VpcEndpointAssociati
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$delete_vpc_endpoint_association_input(VpcEndpointAssociationArn = VpcEndpointAssociationArn)
   output <- .networkfirewall$delete_vpc_endpoint_association_output()
@@ -3101,7 +3128,8 @@ networkfirewall_describe_container_association <- function(ContainerAssociationN
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$describe_container_association_input(ContainerAssociationName = ContainerAssociationName, ContainerAssociationArn = ContainerAssociationArn)
   output <- .networkfirewall$describe_container_association_output()
@@ -3263,7 +3291,8 @@ networkfirewall_describe_firewall <- function(FirewallName = NULL, FirewallArn =
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$describe_firewall_input(FirewallName = FirewallName, FirewallArn = FirewallArn)
   output <- .networkfirewall$describe_firewall_output()
@@ -3322,7 +3351,8 @@ networkfirewall_describe_firewall_metadata <- function(FirewallArn = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$describe_firewall_metadata_input(FirewallArn = FirewallArn)
   output <- .networkfirewall$describe_firewall_metadata_output()
@@ -3461,7 +3491,8 @@ networkfirewall_describe_firewall_policy <- function(FirewallPolicyName = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$describe_firewall_policy_input(FirewallPolicyName = FirewallPolicyName, FirewallPolicyArn = FirewallPolicyArn)
   output <- .networkfirewall$describe_firewall_policy_output()
@@ -3549,7 +3580,8 @@ networkfirewall_describe_flow_operation <- function(FirewallArn, AvailabilityZon
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$describe_flow_operation_input(FirewallArn = FirewallArn, AvailabilityZone = AvailabilityZone, VpcEndpointAssociationArn = VpcEndpointAssociationArn, VpcEndpointId = VpcEndpointId, FlowOperationId = FlowOperationId)
   output <- .networkfirewall$describe_flow_operation_output()
@@ -3617,7 +3649,8 @@ networkfirewall_describe_logging_configuration <- function(FirewallArn = NULL, F
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$describe_logging_configuration_input(FirewallArn = FirewallArn, FirewallName = FirewallName)
   output <- .networkfirewall$describe_logging_configuration_output()
@@ -3710,7 +3743,8 @@ networkfirewall_describe_proxy <- function(ProxyName = NULL, ProxyArn = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$describe_proxy_input(ProxyName = ProxyName, ProxyArn = ProxyArn)
   output <- .networkfirewall$describe_proxy_output()
@@ -3796,7 +3830,8 @@ networkfirewall_describe_proxy_configuration <- function(ProxyConfigurationName 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$describe_proxy_configuration_input(ProxyConfigurationName = ProxyConfigurationName, ProxyConfigurationArn = ProxyConfigurationArn)
   output <- .networkfirewall$describe_proxy_configuration_output()
@@ -3869,7 +3904,8 @@ networkfirewall_describe_proxy_rule <- function(ProxyRuleName, ProxyRuleGroupNam
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$describe_proxy_rule_input(ProxyRuleName = ProxyRuleName, ProxyRuleGroupName = ProxyRuleGroupName, ProxyRuleGroupArn = ProxyRuleGroupArn)
   output <- .networkfirewall$describe_proxy_rule_output()
@@ -3992,7 +4028,8 @@ networkfirewall_describe_proxy_rule_group <- function(ProxyRuleGroupName = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$describe_proxy_rule_group_input(ProxyRuleGroupName = ProxyRuleGroupName, ProxyRuleGroupArn = ProxyRuleGroupArn)
   output <- .networkfirewall$describe_proxy_rule_group_output()
@@ -4042,7 +4079,8 @@ networkfirewall_describe_resource_policy <- function(ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$describe_resource_policy_input(ResourceArn = ResourceArn)
   output <- .networkfirewall$describe_resource_policy_output()
@@ -4271,7 +4309,8 @@ networkfirewall_describe_rule_group <- function(RuleGroupName = NULL, RuleGroupA
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$describe_rule_group_input(RuleGroupName = RuleGroupName, RuleGroupArn = RuleGroupArn, Type = Type, AnalyzeRuleGroup = AnalyzeRuleGroup)
   output <- .networkfirewall$describe_rule_group_output()
@@ -4345,7 +4384,8 @@ networkfirewall_describe_rule_group_metadata <- function(RuleGroupName = NULL, R
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$describe_rule_group_metadata_input(RuleGroupName = RuleGroupName, RuleGroupArn = RuleGroupArn, Type = Type)
   output <- .networkfirewall$describe_rule_group_metadata_output()
@@ -4421,7 +4461,8 @@ networkfirewall_describe_rule_group_summary <- function(RuleGroupName = NULL, Ru
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$describe_rule_group_summary_input(RuleGroupName = RuleGroupName, RuleGroupArn = RuleGroupArn, Type = Type)
   output <- .networkfirewall$describe_rule_group_summary_output()
@@ -4557,7 +4598,8 @@ networkfirewall_describe_tls_inspection_configuration <- function(TLSInspectionC
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$describe_tls_inspection_configuration_input(TLSInspectionConfigurationArn = TLSInspectionConfigurationArn, TLSInspectionConfigurationName = TLSInspectionConfigurationName)
   output <- .networkfirewall$describe_tls_inspection_configuration_output()
@@ -4637,7 +4679,8 @@ networkfirewall_describe_vpc_endpoint_association <- function(VpcEndpointAssocia
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$describe_vpc_endpoint_association_input(VpcEndpointAssociationArn = VpcEndpointAssociationArn)
   output <- .networkfirewall$describe_vpc_endpoint_association_output()
@@ -4738,7 +4781,8 @@ networkfirewall_detach_rule_groups_from_proxy_configuration <- function(ProxyCon
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$detach_rule_groups_from_proxy_configuration_input(ProxyConfigurationName = ProxyConfigurationName, ProxyConfigurationArn = ProxyConfigurationArn, RuleGroupNames = RuleGroupNames, RuleGroupArns = RuleGroupArns, UpdateToken = UpdateToken)
   output <- .networkfirewall$detach_rule_groups_from_proxy_configuration_output()
@@ -4818,7 +4862,8 @@ networkfirewall_disassociate_availability_zones <- function(UpdateToken = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$disassociate_availability_zones_input(UpdateToken = UpdateToken, FirewallArn = FirewallArn, FirewallName = FirewallName, AvailabilityZoneMappings = AvailabilityZoneMappings)
   output <- .networkfirewall$disassociate_availability_zones_output()
@@ -4892,7 +4937,8 @@ networkfirewall_disassociate_subnets <- function(UpdateToken = NULL, FirewallArn
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$disassociate_subnets_input(UpdateToken = UpdateToken, FirewallArn = FirewallArn, FirewallName = FirewallName, SubnetIds = SubnetIds)
   output <- .networkfirewall$disassociate_subnets_output()
@@ -4986,7 +5032,8 @@ networkfirewall_get_analysis_report_results <- function(FirewallName = NULL, Ana
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AnalysisReportResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$get_analysis_report_results_input(FirewallName = FirewallName, AnalysisReportId = AnalysisReportId, FirewallArn = FirewallArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .networkfirewall$get_analysis_report_results_output()
@@ -5057,7 +5104,8 @@ networkfirewall_list_analysis_reports <- function(FirewallName = NULL, FirewallA
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AnalysisReports"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$list_analysis_reports_input(FirewallName = FirewallName, FirewallArn = FirewallArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .networkfirewall$list_analysis_reports_output()
@@ -5114,7 +5162,8 @@ networkfirewall_list_container_associations <- function(MaxResults = NULL, NextT
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ContainerAssociations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$list_container_associations_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkfirewall$list_container_associations_output()
@@ -5171,7 +5220,8 @@ networkfirewall_list_firewall_policies <- function(NextToken = NULL, MaxResults 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FirewallPolicies"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$list_firewall_policies_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .networkfirewall$list_firewall_policies_output()
@@ -5235,7 +5285,8 @@ networkfirewall_list_firewalls <- function(NextToken = NULL, VpcIds = NULL, MaxR
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Firewalls"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$list_firewalls_input(NextToken = NextToken, VpcIds = VpcIds, MaxResults = MaxResults)
   output <- .networkfirewall$list_firewalls_output()
@@ -5330,7 +5381,8 @@ networkfirewall_list_flow_operation_results <- function(FirewallArn, FlowOperati
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Flows"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$list_flow_operation_results_input(FirewallArn = FirewallArn, FlowOperationId = FlowOperationId, NextToken = NextToken, MaxResults = MaxResults, AvailabilityZone = AvailabilityZone, VpcEndpointId = VpcEndpointId, VpcEndpointAssociationArn = VpcEndpointAssociationArn)
   output <- .networkfirewall$list_flow_operation_results_output()
@@ -5409,7 +5461,8 @@ networkfirewall_list_flow_operations <- function(FirewallArn, AvailabilityZone =
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FlowOperations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$list_flow_operations_input(FirewallArn = FirewallArn, AvailabilityZone = AvailabilityZone, VpcEndpointAssociationArn = VpcEndpointAssociationArn, VpcEndpointId = VpcEndpointId, FlowOperationType = FlowOperationType, NextToken = NextToken, MaxResults = MaxResults)
   output <- .networkfirewall$list_flow_operations_output()
@@ -5466,7 +5519,8 @@ networkfirewall_list_proxies <- function(NextToken = NULL, MaxResults = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Proxies"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$list_proxies_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .networkfirewall$list_proxies_output()
@@ -5523,7 +5577,8 @@ networkfirewall_list_proxy_configurations <- function(NextToken = NULL, MaxResul
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ProxyConfigurations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$list_proxy_configurations_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .networkfirewall$list_proxy_configurations_output()
@@ -5580,7 +5635,8 @@ networkfirewall_list_proxy_rule_groups <- function(NextToken = NULL, MaxResults 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ProxyRuleGroups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$list_proxy_rule_groups_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .networkfirewall$list_proxy_rule_groups_output()
@@ -5647,7 +5703,8 @@ networkfirewall_list_rule_groups <- function(NextToken = NULL, MaxResults = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RuleGroups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$list_rule_groups_input(NextToken = NextToken, MaxResults = MaxResults, Scope = Scope, ManagedType = ManagedType, SubscriptionStatus = SubscriptionStatus, Type = Type)
   output <- .networkfirewall$list_rule_groups_output()
@@ -5706,7 +5763,8 @@ networkfirewall_list_tls_inspection_configurations <- function(NextToken = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TLSInspectionConfigurations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$list_tls_inspection_configurations_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .networkfirewall$list_tls_inspection_configurations_output()
@@ -5768,7 +5826,8 @@ networkfirewall_list_tags_for_resource <- function(NextToken = NULL, MaxResults 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Tags"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$list_tags_for_resource_input(NextToken = NextToken, MaxResults = MaxResults, ResourceArn = ResourceArn)
   output <- .networkfirewall$list_tags_for_resource_output()
@@ -5832,7 +5891,8 @@ networkfirewall_list_vpc_endpoint_associations <- function(NextToken = NULL, Max
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "VpcEndpointAssociations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$list_vpc_endpoint_associations_input(NextToken = NextToken, MaxResults = MaxResults, FirewallArn = FirewallArn)
   output <- .networkfirewall$list_vpc_endpoint_associations_output()
@@ -5915,7 +5975,8 @@ networkfirewall_put_resource_policy <- function(ResourceArn, Policy) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$put_resource_policy_input(ResourceArn = ResourceArn, Policy = Policy)
   output <- .networkfirewall$put_resource_policy_output()
@@ -5972,7 +6033,8 @@ networkfirewall_reject_network_firewall_transit_gateway_attachment <- function(T
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$reject_network_firewall_transit_gateway_attachment_input(TransitGatewayAttachmentId = TransitGatewayAttachmentId)
   output <- .networkfirewall$reject_network_firewall_transit_gateway_attachment_output()
@@ -6033,7 +6095,8 @@ networkfirewall_start_analysis_report <- function(FirewallName = NULL, FirewallA
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$start_analysis_report_input(FirewallName = FirewallName, FirewallArn = FirewallArn, AnalysisType = AnalysisType)
   output <- .networkfirewall$start_analysis_report_output()
@@ -6119,7 +6182,8 @@ networkfirewall_start_flow_capture <- function(FirewallArn, AvailabilityZone = N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$start_flow_capture_input(FirewallArn = FirewallArn, AvailabilityZone = AvailabilityZone, VpcEndpointAssociationArn = VpcEndpointAssociationArn, VpcEndpointId = VpcEndpointId, MinimumFlowAgeInSeconds = MinimumFlowAgeInSeconds, FlowFilters = FlowFilters)
   output <- .networkfirewall$start_flow_capture_output()
@@ -6201,7 +6265,8 @@ networkfirewall_start_flow_flush <- function(FirewallArn, AvailabilityZone = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$start_flow_flush_input(FirewallArn = FirewallArn, AvailabilityZone = AvailabilityZone, VpcEndpointAssociationArn = VpcEndpointAssociationArn, VpcEndpointId = VpcEndpointId, MinimumFlowAgeInSeconds = MinimumFlowAgeInSeconds, FlowFilters = FlowFilters)
   output <- .networkfirewall$start_flow_flush_output()
@@ -6254,7 +6319,8 @@ networkfirewall_tag_resource <- function(ResourceArn, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .networkfirewall$tag_resource_output()
@@ -6304,7 +6370,8 @@ networkfirewall_untag_resource <- function(ResourceArn, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .networkfirewall$untag_resource_output()
@@ -6374,7 +6441,8 @@ networkfirewall_update_availability_zone_change_protection <- function(UpdateTok
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$update_availability_zone_change_protection_input(UpdateToken = UpdateToken, FirewallArn = FirewallArn, FirewallName = FirewallName, AvailabilityZoneChangeProtection = AvailabilityZoneChangeProtection)
   output <- .networkfirewall$update_availability_zone_change_protection_output()
@@ -6485,7 +6553,8 @@ networkfirewall_update_container_association <- function(ContainerAssociationNam
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$update_container_association_input(ContainerAssociationName = ContainerAssociationName, ContainerAssociationArn = ContainerAssociationArn, Description = Description, Type = Type, ContainerMonitoringConfigurations = ContainerMonitoringConfigurations, Tags = Tags, UpdateToken = UpdateToken)
   output <- .networkfirewall$update_container_association_output()
@@ -6557,7 +6626,8 @@ networkfirewall_update_firewall_analysis_settings <- function(EnabledAnalysisTyp
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$update_firewall_analysis_settings_input(EnabledAnalysisTypes = EnabledAnalysisTypes, FirewallArn = FirewallArn, FirewallName = FirewallName, UpdateToken = UpdateToken)
   output <- .networkfirewall$update_firewall_analysis_settings_output()
@@ -6625,7 +6695,8 @@ networkfirewall_update_firewall_delete_protection <- function(UpdateToken = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$update_firewall_delete_protection_input(UpdateToken = UpdateToken, FirewallArn = FirewallArn, FirewallName = FirewallName, DeleteProtection = DeleteProtection)
   output <- .networkfirewall$update_firewall_delete_protection_output()
@@ -6692,7 +6763,8 @@ networkfirewall_update_firewall_description <- function(UpdateToken = NULL, Fire
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$update_firewall_description_input(UpdateToken = UpdateToken, FirewallArn = FirewallArn, FirewallName = FirewallName, Description = Description)
   output <- .networkfirewall$update_firewall_description_output()
@@ -6762,7 +6834,8 @@ networkfirewall_update_firewall_encryption_configuration <- function(UpdateToken
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$update_firewall_encryption_configuration_input(UpdateToken = UpdateToken, FirewallArn = FirewallArn, FirewallName = FirewallName, EncryptionConfiguration = EncryptionConfiguration)
   output <- .networkfirewall$update_firewall_encryption_configuration_output()
@@ -6920,7 +6993,8 @@ networkfirewall_update_firewall_policy <- function(UpdateToken, FirewallPolicyAr
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$update_firewall_policy_input(UpdateToken = UpdateToken, FirewallPolicyArn = FirewallPolicyArn, FirewallPolicyName = FirewallPolicyName, FirewallPolicy = FirewallPolicy, Description = Description, DryRun = DryRun, EncryptionConfiguration = EncryptionConfiguration)
   output <- .networkfirewall$update_firewall_policy_output()
@@ -6988,7 +7062,8 @@ networkfirewall_update_firewall_policy_change_protection <- function(UpdateToken
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$update_firewall_policy_change_protection_input(UpdateToken = UpdateToken, FirewallArn = FirewallArn, FirewallName = FirewallName, FirewallPolicyChangeProtection = FirewallPolicyChangeProtection)
   output <- .networkfirewall$update_firewall_policy_change_protection_output()
@@ -7087,7 +7162,8 @@ networkfirewall_update_logging_configuration <- function(FirewallArn = NULL, Fir
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$update_logging_configuration_input(FirewallArn = FirewallArn, FirewallName = FirewallName, LoggingConfiguration = LoggingConfiguration, EnableMonitoringDashboard = EnableMonitoringDashboard)
   output <- .networkfirewall$update_logging_configuration_output()
@@ -7205,7 +7281,8 @@ networkfirewall_update_proxy <- function(NatGatewayId, ProxyName = NULL, ProxyAr
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$update_proxy_input(NatGatewayId = NatGatewayId, ProxyName = ProxyName, ProxyArn = ProxyArn, ListenerPropertiesToAdd = ListenerPropertiesToAdd, ListenerPropertiesToRemove = ListenerPropertiesToRemove, TlsInterceptProperties = TlsInterceptProperties, UpdateToken = UpdateToken)
   output <- .networkfirewall$update_proxy_output()
@@ -7301,7 +7378,8 @@ networkfirewall_update_proxy_configuration <- function(ProxyConfigurationName = 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$update_proxy_configuration_input(ProxyConfigurationName = ProxyConfigurationName, ProxyConfigurationArn = ProxyConfigurationArn, DefaultRulePhaseActions = DefaultRulePhaseActions, UpdateToken = UpdateToken)
   output <- .networkfirewall$update_proxy_configuration_output()
@@ -7411,7 +7489,8 @@ networkfirewall_update_proxy_rule <- function(ProxyRuleGroupName = NULL, ProxyRu
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$update_proxy_rule_input(ProxyRuleGroupName = ProxyRuleGroupName, ProxyRuleGroupArn = ProxyRuleGroupArn, ProxyRuleName = ProxyRuleName, Description = Description, Action = Action, AddConditions = AddConditions, RemoveConditions = RemoveConditions, UpdateToken = UpdateToken)
   output <- .networkfirewall$update_proxy_rule_output()
@@ -7484,7 +7563,8 @@ networkfirewall_update_proxy_rule_group_priorities <- function(ProxyConfiguratio
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$update_proxy_rule_group_priorities_input(ProxyConfigurationName = ProxyConfigurationName, ProxyConfigurationArn = ProxyConfigurationArn, RuleGroups = RuleGroups, UpdateToken = UpdateToken)
   output <- .networkfirewall$update_proxy_rule_group_priorities_output()
@@ -7562,7 +7642,8 @@ networkfirewall_update_proxy_rule_priorities <- function(ProxyRuleGroupName = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$update_proxy_rule_priorities_input(ProxyRuleGroupName = ProxyRuleGroupName, ProxyRuleGroupArn = ProxyRuleGroupArn, RuleGroupRequestPhase = RuleGroupRequestPhase, Rules = Rules, UpdateToken = UpdateToken)
   output <- .networkfirewall$update_proxy_rule_priorities_output()
@@ -7643,7 +7724,8 @@ networkfirewall_update_proxy_settings <- function(FirewallArn = NULL, FirewallNa
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$update_proxy_settings_input(FirewallArn = FirewallArn, FirewallName = FirewallName, UpdateToken = UpdateToken, ProxySettings = ProxySettings)
   output <- .networkfirewall$update_proxy_settings_output()
@@ -7915,7 +7997,8 @@ networkfirewall_update_rule_group <- function(UpdateToken, RuleGroupArn = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$update_rule_group_input(UpdateToken = UpdateToken, RuleGroupArn = RuleGroupArn, RuleGroupName = RuleGroupName, RuleGroup = RuleGroup, Rules = Rules, Type = Type, Description = Description, DryRun = DryRun, EncryptionConfiguration = EncryptionConfiguration, SourceMetadata = SourceMetadata, AnalyzeRuleGroup = AnalyzeRuleGroup, SummaryConfiguration = SummaryConfiguration)
   output <- .networkfirewall$update_rule_group_output()
@@ -7982,7 +8065,8 @@ networkfirewall_update_subnet_change_protection <- function(UpdateToken = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$update_subnet_change_protection_input(UpdateToken = UpdateToken, FirewallArn = FirewallArn, FirewallName = FirewallName, SubnetChangeProtection = SubnetChangeProtection)
   output <- .networkfirewall$update_subnet_change_protection_output()
@@ -8135,7 +8219,8 @@ networkfirewall_update_tls_inspection_configuration <- function(TLSInspectionCon
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .networkfirewall$update_tls_inspection_configuration_input(TLSInspectionConfigurationArn = TLSInspectionConfigurationArn, TLSInspectionConfigurationName = TLSInspectionConfigurationName, TLSInspectionConfiguration = TLSInspectionConfiguration, Description = Description, EncryptionConfiguration = EncryptionConfiguration, UpdateToken = UpdateToken)
   output <- .networkfirewall$update_tls_inspection_configuration_output()

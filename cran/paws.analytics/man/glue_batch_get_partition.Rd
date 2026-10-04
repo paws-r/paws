@@ -24,7 +24,9 @@ glue_batch_get_partition(
 
 \item{AuditContext}{A structure containing the Lake Formation audit context.}
 
-\item{QuerySessionContext}{A structure used as a protocol between query engines and Lake Formation or Glue. Contains both a Lake Formation generated authorization identifier and information from the request's authorization context.}
+\item{QuerySessionContext}{A structure used as a protocol between query engines and Lake Formation or Glue. Contains both a Lake Formation generated authorization identifier and information from the request's authorization context.
+
+For more information about how to utilize QuerySessionContext, see \href{https://docs.aws.amazon.com/lake-formation/latest/dg/api-overview.html}{Lake Formation workflow for application integration API operations} in the developer guide.}
 }
 \description{
 Retrieves partitions in a batch request.

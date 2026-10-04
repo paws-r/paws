@@ -13,7 +13,7 @@ bedrockagentcorecontrol_update_configuration_bundle(
   components = NULL,
   parentVersionIds,
   branchName = NULL,
-  commitMessage = NULL,
+  commitMessage,
   createdBy = NULL,
   kmsKeyArn = NULL
 )
@@ -33,7 +33,7 @@ bedrockagentcorecontrol_update_configuration_bundle(
 
 \item{branchName}{The branch name for this version. If not specified, inherits the parent's branch or defaults to \code{mainline}.}
 
-\item{commitMessage}{A commit message describing the changes in this version.}
+\item{commitMessage}{[required] A commit message describing the changes in this version.}
 
 \item{createdBy}{The source that created this version, including the source name and optional ARN.}
 

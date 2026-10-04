@@ -231,7 +231,8 @@ fis_create_experiment_template <- function(clientToken, description, stopConditi
     http_path = "/experimentTemplates",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fis$create_experiment_template_input(clientToken = clientToken, description = description, stopConditions = stopConditions, targets = targets, actions = actions, roleArn = roleArn, tags = tags, logConfiguration = logConfiguration, experimentOptions = experimentOptions, experimentReportConfiguration = experimentReportConfiguration)
   output <- .fis$create_experiment_template_output()
@@ -293,7 +294,8 @@ fis_create_target_account_configuration <- function(clientToken = NULL, experime
     http_path = "/experimentTemplates/{id}/targetAccountConfigurations/{accountId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fis$create_target_account_configuration_input(clientToken = clientToken, experimentTemplateId = experimentTemplateId, accountId = accountId, roleArn = roleArn, description = description)
   output <- .fis$create_target_account_configuration_output()
@@ -432,7 +434,8 @@ fis_delete_experiment_template <- function(id) {
     http_path = "/experimentTemplates/{id}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fis$delete_experiment_template_input(id = id)
   output <- .fis$delete_experiment_template_output()
@@ -488,7 +491,8 @@ fis_delete_target_account_configuration <- function(experimentTemplateId, accoun
     http_path = "/experimentTemplates/{id}/targetAccountConfigurations/{accountId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fis$delete_target_account_configuration_input(experimentTemplateId = experimentTemplateId, accountId = accountId)
   output <- .fis$delete_target_account_configuration_output()
@@ -555,7 +559,8 @@ fis_get_action <- function(id) {
     http_path = "/actions/{id}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fis$get_action_input(id = id)
   output <- .fis$get_action_output()
@@ -732,7 +737,8 @@ fis_get_experiment <- function(id) {
     http_path = "/experiments/{id}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fis$get_experiment_input(id = id)
   output <- .fis$get_experiment_output()
@@ -788,7 +794,8 @@ fis_get_experiment_target_account_configuration <- function(experimentId, accoun
     http_path = "/experiments/{id}/targetAccountConfigurations/{accountId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fis$get_experiment_target_account_configuration_input(experimentId = experimentId, accountId = accountId)
   output <- .fis$get_experiment_target_account_configuration_output()
@@ -927,7 +934,8 @@ fis_get_experiment_template <- function(id) {
     http_path = "/experimentTemplates/{id}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fis$get_experiment_template_input(id = id)
   output <- .fis$get_experiment_template_output()
@@ -983,7 +991,8 @@ fis_get_safety_lever <- function(id) {
     http_path = "/safetyLevers/{id}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fis$get_safety_lever_input(id = id)
   output <- .fis$get_safety_lever_output()
@@ -1039,7 +1048,8 @@ fis_get_target_account_configuration <- function(experimentTemplateId, accountId
     http_path = "/experimentTemplates/{id}/targetAccountConfigurations/{accountId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fis$get_target_account_configuration_input(experimentTemplateId = experimentTemplateId, accountId = accountId)
   output <- .fis$get_target_account_configuration_output()
@@ -1097,7 +1107,8 @@ fis_get_target_resource_type <- function(resourceType) {
     http_path = "/targetResourceTypes/{resourceType}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fis$get_target_resource_type_input(resourceType = resourceType)
   output <- .fis$get_target_resource_type_output()
@@ -1163,7 +1174,8 @@ fis_list_actions <- function(maxResults = NULL, nextToken = NULL) {
     http_path = "/actions",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "actions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fis$list_actions_input(maxResults = maxResults, nextToken = nextToken)
   output <- .fis$list_actions_output()
@@ -1228,7 +1240,8 @@ fis_list_experiment_resolved_targets <- function(experimentId, maxResults = NULL
     http_path = "/experiments/{id}/resolvedTargets",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "resolvedTargets"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fis$list_experiment_resolved_targets_input(experimentId = experimentId, maxResults = maxResults, nextToken = nextToken, targetName = targetName)
   output <- .fis$list_experiment_resolved_targets_output()
@@ -1287,7 +1300,8 @@ fis_list_experiment_target_account_configurations <- function(experimentId, next
     http_path = "/experiments/{id}/targetAccountConfigurations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fis$list_experiment_target_account_configurations_input(experimentId = experimentId, nextToken = nextToken)
   output <- .fis$list_experiment_target_account_configurations_output()
@@ -1354,7 +1368,8 @@ fis_list_experiment_templates <- function(maxResults = NULL, nextToken = NULL) {
     http_path = "/experimentTemplates",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "experimentTemplates"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fis$list_experiment_templates_input(maxResults = maxResults, nextToken = nextToken)
   output <- .fis$list_experiment_templates_output()
@@ -1434,7 +1449,8 @@ fis_list_experiments <- function(maxResults = NULL, nextToken = NULL, experiment
     http_path = "/experiments",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "experiments"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fis$list_experiments_input(maxResults = maxResults, nextToken = nextToken, experimentTemplateId = experimentTemplateId)
   output <- .fis$list_experiments_output()
@@ -1485,7 +1501,8 @@ fis_list_tags_for_resource <- function(resourceArn) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fis$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .fis$list_tags_for_resource_output()
@@ -1547,7 +1564,8 @@ fis_list_target_account_configurations <- function(experimentTemplateId, maxResu
     http_path = "/experimentTemplates/{id}/targetAccountConfigurations",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "targetAccountConfigurations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fis$list_target_account_configurations_input(experimentTemplateId = experimentTemplateId, maxResults = maxResults, nextToken = nextToken)
   output <- .fis$list_target_account_configurations_output()
@@ -1604,7 +1622,8 @@ fis_list_target_resource_types <- function(maxResults = NULL, nextToken = NULL) 
     http_path = "/targetResourceTypes",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "targetResourceTypes"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fis$list_target_resource_types_input(maxResults = maxResults, nextToken = nextToken)
   output <- .fis$list_target_resource_types_output()
@@ -1792,7 +1811,8 @@ fis_start_experiment <- function(clientToken, experimentTemplateId, experimentOp
     http_path = "/experiments",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fis$start_experiment_input(clientToken = clientToken, experimentTemplateId = experimentTemplateId, experimentOptions = experimentOptions, tags = tags)
   output <- .fis$start_experiment_output()
@@ -1969,7 +1989,8 @@ fis_stop_experiment <- function(id) {
     http_path = "/experiments/{id}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fis$stop_experiment_input(id = id)
   output <- .fis$stop_experiment_output()
@@ -2017,7 +2038,8 @@ fis_tag_resource <- function(resourceArn, tags) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fis$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .fis$tag_resource_output()
@@ -2065,7 +2087,8 @@ fis_untag_resource <- function(resourceArn, tagKeys = NULL) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fis$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .fis$untag_resource_output()
@@ -2290,7 +2313,8 @@ fis_update_experiment_template <- function(id, description = NULL, stopCondition
     http_path = "/experimentTemplates/{id}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fis$update_experiment_template_input(id = id, description = description, stopConditions = stopConditions, targets = targets, actions = actions, roleArn = roleArn, logConfiguration = logConfiguration, experimentOptions = experimentOptions, experimentReportConfiguration = experimentReportConfiguration)
   output <- .fis$update_experiment_template_output()
@@ -2351,7 +2375,8 @@ fis_update_safety_lever_state <- function(id, state) {
     http_path = "/safetyLevers/{id}/state",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fis$update_safety_lever_state_input(id = id, state = state)
   output <- .fis$update_safety_lever_state_output()
@@ -2412,7 +2437,8 @@ fis_update_target_account_configuration <- function(experimentTemplateId, accoun
     http_path = "/experimentTemplates/{id}/targetAccountConfigurations/{accountId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .fis$update_target_account_configuration_input(experimentTemplateId = experimentTemplateId, accountId = accountId, roleArn = roleArn, description = description)
   output <- .fis$update_target_account_configuration_output()

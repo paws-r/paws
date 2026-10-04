@@ -28,7 +28,8 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
     http_path = "/guardrail/{guardrailIdentifier}/version/{guardrailVersion}/apply",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockruntime$apply_guardrail_input(guardrailIdentifier = guardrailIdentifier, guardrailVersion = guardrailVersion, source = source, content = content, outputScope = outputScope)
   output <- .bedrockruntime$apply_guardrail_output()
@@ -91,7 +92,8 @@ bedrockruntime_converse <- function(modelId, messages = NULL, system = NULL, inf
     http_path = "/model/{modelId}/converse",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockruntime$converse_input(modelId = modelId, messages = messages, system = system, inferenceConfig = inferenceConfig, toolConfig = toolConfig, guardrailConfig = guardrailConfig, additionalModelRequestFields = additionalModelRequestFields, promptVariables = promptVariables, additionalModelResponseFieldPaths = additionalModelResponseFieldPaths, requestMetadata = requestMetadata, performanceConfig = performanceConfig, serviceTier = serviceTier, outputConfig = outputConfig)
   output <- .bedrockruntime$converse_output()
@@ -155,7 +157,8 @@ bedrockruntime_converse_stream <- function(modelId, messages = NULL, system = NU
     http_path = "/model/{modelId}/converse-stream",
     host_prefix = "",
     paginator = list(),
-    stream_api = TRUE
+    stream_api = TRUE,
+    http_checksum = NULL
   )
   input <- .bedrockruntime$converse_stream_input(modelId = modelId, messages = messages, system = system, inferenceConfig = inferenceConfig, toolConfig = toolConfig, guardrailConfig = guardrailConfig, additionalModelRequestFields = additionalModelRequestFields, promptVariables = promptVariables, additionalModelResponseFieldPaths = additionalModelResponseFieldPaths, requestMetadata = requestMetadata, performanceConfig = performanceConfig, serviceTier = serviceTier, outputConfig = outputConfig)
   output <- .bedrockruntime$converse_stream_output()
@@ -193,7 +196,8 @@ bedrockruntime_count_tokens <- function(modelId, input) {
     http_path = "/model/{modelId}/count-tokens",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockruntime$count_tokens_input(modelId = modelId, input = input)
   output <- .bedrockruntime$count_tokens_output()
@@ -224,7 +228,8 @@ bedrockruntime_get_async_invoke <- function(invocationArn) {
     http_path = "/async-invoke/{invocationArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockruntime$get_async_invoke_input(invocationArn = invocationArn)
   output <- .bedrockruntime$get_async_invoke_output()
@@ -256,7 +261,8 @@ bedrockruntime_invoke_guardrail_checks <- function(messages, checks) {
     http_path = "/guardrail-checks/invoke",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockruntime$invoke_guardrail_checks_input(messages = messages, checks = checks)
   output <- .bedrockruntime$invoke_guardrail_checks_output()
@@ -317,7 +323,8 @@ bedrockruntime_invoke_model <- function(body = NULL, contentType = NULL, accept 
     http_path = "/model/{modelId}/invoke",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockruntime$invoke_model_input(body = body, contentType = contentType, accept = accept, modelId = modelId, trace = trace, guardrailIdentifier = guardrailIdentifier, guardrailVersion = guardrailVersion, performanceConfigLatency = performanceConfigLatency, serviceTier = serviceTier, requestMetadata = requestMetadata)
   output <- .bedrockruntime$invoke_model_output()
@@ -350,7 +357,8 @@ bedrockruntime_invoke_model_with_bidirectional_stream <- function(modelId, body)
     http_path = "/model/{modelId}/invoke-with-bidirectional-stream",
     host_prefix = "",
     paginator = list(),
-    stream_api = TRUE
+    stream_api = TRUE,
+    http_checksum = NULL
   )
   input <- .bedrockruntime$invoke_model_with_bidirectional_stream_input(modelId = modelId, body = body)
   output <- .bedrockruntime$invoke_model_with_bidirectional_stream_output()
@@ -411,7 +419,8 @@ bedrockruntime_invoke_model_with_response_stream <- function(body = NULL, conten
     http_path = "/model/{modelId}/invoke-with-response-stream",
     host_prefix = "",
     paginator = list(),
-    stream_api = TRUE
+    stream_api = TRUE,
+    http_checksum = NULL
   )
   input <- .bedrockruntime$invoke_model_with_response_stream_input(body = body, contentType = contentType, accept = accept, modelId = modelId, trace = trace, guardrailIdentifier = guardrailIdentifier, guardrailVersion = guardrailVersion, performanceConfigLatency = performanceConfigLatency, serviceTier = serviceTier, requestMetadata = requestMetadata)
   output <- .bedrockruntime$invoke_model_with_response_stream_output()
@@ -448,7 +457,8 @@ bedrockruntime_list_async_invokes <- function(submitTimeAfter = NULL, submitTime
     http_path = "/async-invoke",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "asyncInvokeSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockruntime$list_async_invokes_input(submitTimeAfter = submitTimeAfter, submitTimeBefore = submitTimeBefore, statusEquals = statusEquals, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
   output <- .bedrockruntime$list_async_invokes_output()
@@ -483,7 +493,8 @@ bedrockruntime_start_async_invoke <- function(clientRequestToken = NULL, modelId
     http_path = "/async-invoke",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockruntime$start_async_invoke_input(clientRequestToken = clientRequestToken, modelId = modelId, modelInput = modelInput, outputDataConfig = outputDataConfig, tags = tags)
   output <- .bedrockruntime$start_async_invoke_output()

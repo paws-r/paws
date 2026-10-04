@@ -4,12 +4,18 @@
 \alias{identitystore_delete_user}
 \title{Deletes a user within an identity store given UserId}
 \usage{
-identitystore_delete_user(IdentityStoreId, UserId)
+identitystore_delete_user(IdentityStoreId, UserId, Revision = NULL)
 }
 \arguments{
-\item{IdentityStoreId}{[required] The globally unique identifier for the identity store.}
+\item{IdentityStoreId}{[required] The globally unique identifier for the identity store.
 
-\item{UserId}{[required] The identifier for a user in the identity store.}
+You can specify the identity store by ID or by Amazon Resource Name (ARN). For example, identity store ID \code{d-1234567890} or identity store ARN \verb{arn:aws:identitystore::111122223333:identitystore/d-1234567890}.}
+
+\item{UserId}{[required] The identifier for a user in the identity store.
+
+You can specify the user by ID or by Amazon Resource Name (ARN). For example, user ID \verb{a1b2c3d4-5678-90ab-cdef-EXAMPLE11111} or user ARN \verb{arn:aws:identitystore:::user/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111}.}
+
+\item{Revision}{The expected current revision of the user. When you provide this value, the user is deleted only if it matches the current revision of the user in the identity store. If the value doesn't match, the operation fails with a \code{ConflictException}. If you don't provide this value, the user is deleted regardless of its current revision.}
 }
 \description{
 Deletes a user within an identity store given \code{UserId}.

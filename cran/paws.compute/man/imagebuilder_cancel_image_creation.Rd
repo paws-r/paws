@@ -9,10 +9,10 @@ imagebuilder_cancel_image_creation(imageBuildVersionArn, clientToken)
 \arguments{
 \item{imageBuildVersionArn}{[required] The Amazon Resource Name (ARN) of the image that you want to cancel creation for.}
 
-\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
+\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
 }
 \description{
-Cancels the creation of an image. This operation can only be used on images in a non-terminal state.
+Cancels the creation of an image. This operation can only be used on images in a non-terminal state. Cancellation is asynchronous: the request returns immediately, then Image Builder stops the running build and moves the image to the \code{CANCELLED} state. Output resources that the build already created, such as AMIs and snapshots, aren't removed.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_cancel_image_creation/} for full documentation.
 }

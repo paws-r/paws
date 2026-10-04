@@ -1,3 +1,3 @@
-svc <- paws.machine.learning::personalizeruntime()
+svc <- paws::personalizeruntime()
 
 

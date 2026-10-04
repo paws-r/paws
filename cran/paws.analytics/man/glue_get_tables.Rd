@@ -14,6 +14,7 @@ glue_get_tables(
   TransactionId = NULL,
   QueryAsOfTime = NULL,
   AuditContext = NULL,
+  ResourceShareType = NULL,
   IncludeStatusDetails = NULL,
   AttributesToGet = NULL
 )
@@ -34,6 +35,12 @@ glue_get_tables(
 \item{QueryAsOfTime}{The time as of when to read the table contents. If not set, the most recent transaction commit time will be used. Cannot be specified along with \code{TransactionId}.}
 
 \item{AuditContext}{A structure containing the Lake Formation \href{https://docs.aws.amazon.com/glue/latest/webapi/API_AuditContext.html}{audit context}.}
+
+\item{ResourceShareType}{Specifies which tables the \code{\link[=glue_get_tables]{get_tables}} call returns. The allowable values are \code{FEDERATED} or \code{ALL}.
+\itemize{
+\item If set to \code{FEDERATED}, returns only federated tables, which reference an entity outside the Glue Data Catalog.
+\item If set to \code{ALL}, returns all tables in the database, both federated and non-federated.
+}}
 
 \item{IncludeStatusDetails}{Specifies whether to include status details related to a request to create or update an Glue Data Catalog view.}
 

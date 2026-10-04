@@ -1,3 +1,3 @@
-svc <- paws.management::applicationautoscaling()
+svc <- paws::applicationautoscaling()
 
 

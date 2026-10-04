@@ -31,7 +31,8 @@ sqs_add_permission <- function(QueueUrl, Label, AWSAccountIds, Actions) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sqs$add_permission_input(QueueUrl = QueueUrl, Label = Label, AWSAccountIds = AWSAccountIds, Actions = Actions)
   output <- .sqs$add_permission_output()
@@ -62,7 +63,8 @@ sqs_cancel_message_move_task <- function(TaskHandle) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sqs$cancel_message_move_task_input(TaskHandle = TaskHandle)
   output <- .sqs$cancel_message_move_task_output()
@@ -98,7 +100,8 @@ sqs_change_message_visibility <- function(QueueUrl, ReceiptHandle, VisibilityTim
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sqs$change_message_visibility_input(QueueUrl = QueueUrl, ReceiptHandle = ReceiptHandle, VisibilityTimeout = VisibilityTimeout)
   output <- .sqs$change_message_visibility_output()
@@ -132,7 +135,8 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sqs$change_message_visibility_batch_input(QueueUrl = QueueUrl, Entries = Entries)
   output <- .sqs$change_message_visibility_batch_output()
@@ -271,7 +275,8 @@ sqs_create_queue <- function(QueueName, Attributes = NULL, tags = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sqs$create_queue_input(QueueName = QueueName, Attributes = Attributes, tags = tags)
   output <- .sqs$create_queue_output()
@@ -305,7 +310,8 @@ sqs_delete_message <- function(QueueUrl, ReceiptHandle) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sqs$delete_message_input(QueueUrl = QueueUrl, ReceiptHandle = ReceiptHandle)
   output <- .sqs$delete_message_output()
@@ -339,7 +345,8 @@ sqs_delete_message_batch <- function(QueueUrl, Entries) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sqs$delete_message_batch_input(QueueUrl = QueueUrl, Entries = Entries)
   output <- .sqs$delete_message_batch_output()
@@ -373,7 +380,8 @@ sqs_delete_queue <- function(QueueUrl) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sqs$delete_queue_input(QueueUrl = QueueUrl)
   output <- .sqs$delete_queue_output()
@@ -495,7 +503,8 @@ sqs_get_queue_attributes <- function(QueueUrl, AttributeNames = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sqs$get_queue_attributes_input(QueueUrl = QueueUrl, AttributeNames = AttributeNames)
   output <- .sqs$get_queue_attributes_output()
@@ -527,7 +536,8 @@ sqs_get_queue_url <- function(QueueName, QueueOwnerAWSAccountId = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sqs$get_queue_url_input(QueueName = QueueName, QueueOwnerAWSAccountId = QueueOwnerAWSAccountId)
   output <- .sqs$get_queue_url_output()
@@ -563,7 +573,8 @@ sqs_list_dead_letter_source_queues <- function(QueueUrl, NextToken = NULL, MaxRe
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "queueUrls"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sqs$list_dead_letter_source_queues_input(QueueUrl = QueueUrl, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sqs$list_dead_letter_source_queues_output()
@@ -596,7 +607,8 @@ sqs_list_message_move_tasks <- function(SourceArn, MaxResults = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sqs$list_message_move_tasks_input(SourceArn = SourceArn, MaxResults = MaxResults)
   output <- .sqs$list_message_move_tasks_output()
@@ -627,7 +639,8 @@ sqs_list_queue_tags <- function(QueueUrl) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sqs$list_queue_tags_input(QueueUrl = QueueUrl)
   output <- .sqs$list_queue_tags_output()
@@ -662,7 +675,8 @@ sqs_list_queues <- function(QueueNamePrefix = NULL, NextToken = NULL, MaxResults
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "QueueUrls"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sqs$list_queues_input(QueueNamePrefix = QueueNamePrefix, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sqs$list_queues_output()
@@ -696,7 +710,8 @@ sqs_purge_queue <- function(QueueUrl) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sqs$purge_queue_input(QueueUrl = QueueUrl)
   output <- .sqs$purge_queue_output()
@@ -834,7 +849,8 @@ sqs_receive_message <- function(QueueUrl, AttributeNames = NULL, MessageSystemAt
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sqs$receive_message_input(QueueUrl = QueueUrl, AttributeNames = AttributeNames, MessageSystemAttributeNames = MessageSystemAttributeNames, MessageAttributeNames = MessageAttributeNames, MaxNumberOfMessages = MaxNumberOfMessages, VisibilityTimeout = VisibilityTimeout, WaitTimeSeconds = WaitTimeSeconds, ReceiveRequestAttemptId = ReceiveRequestAttemptId)
   output <- .sqs$receive_message_output()
@@ -869,7 +885,8 @@ sqs_remove_permission <- function(QueueUrl, Label) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sqs$remove_permission_input(QueueUrl = QueueUrl, Label = Label)
   output <- .sqs$remove_permission_output()
@@ -958,7 +975,8 @@ sqs_send_message <- function(QueueUrl, MessageBody, DelaySeconds = NULL, Message
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sqs$send_message_input(QueueUrl = QueueUrl, MessageBody = MessageBody, DelaySeconds = DelaySeconds, MessageAttributes = MessageAttributes, MessageSystemAttributes = MessageSystemAttributes, MessageDeduplicationId = MessageDeduplicationId, MessageGroupId = MessageGroupId)
   output <- .sqs$send_message_output()
@@ -994,7 +1012,8 @@ sqs_send_message_batch <- function(QueueUrl, Entries) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sqs$send_message_batch_input(QueueUrl = QueueUrl, Entries = Entries)
   output <- .sqs$send_message_batch_output()
@@ -1106,7 +1125,8 @@ sqs_set_queue_attributes <- function(QueueUrl, Attributes) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sqs$set_queue_attributes_input(QueueUrl = QueueUrl, Attributes = Attributes)
   output <- .sqs$set_queue_attributes_output()
@@ -1140,7 +1160,8 @@ sqs_start_message_move_task <- function(SourceArn, DestinationArn = NULL, MaxNum
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sqs$start_message_move_task_input(SourceArn = SourceArn, DestinationArn = DestinationArn, MaxNumberOfMessagesPerSecond = MaxNumberOfMessagesPerSecond)
   output <- .sqs$start_message_move_task_output()
@@ -1172,7 +1193,8 @@ sqs_tag_queue <- function(QueueUrl, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sqs$tag_queue_input(QueueUrl = QueueUrl, Tags = Tags)
   output <- .sqs$tag_queue_output()
@@ -1204,7 +1226,8 @@ sqs_untag_queue <- function(QueueUrl, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sqs$untag_queue_input(QueueUrl = QueueUrl, TagKeys = TagKeys)
   output <- .sqs$untag_queue_output()

@@ -13,6 +13,16 @@ NULL
   return(populate(args, .cloudwatch_shapes[["associate_dataset_kms_key_output"]]))
 }
 
+.cloudwatch$create_resource_metrics_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .cloudwatch_shapes[["create_resource_metrics_configuration_input"]]))
+}
+
+.cloudwatch$create_resource_metrics_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .cloudwatch_shapes[["create_resource_metrics_configuration_output"]]))
+}
+
 .cloudwatch$delete_alarm_mute_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   return(populate(args, .cloudwatch_shapes[["delete_alarm_mute_rule_input"]]))
@@ -69,6 +79,16 @@ NULL
 .cloudwatch$delete_metric_stream_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   return(populate(args, .cloudwatch_shapes[["delete_metric_stream_output"]]))
+}
+
+.cloudwatch$delete_resource_metrics_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .cloudwatch_shapes[["delete_resource_metrics_configuration_input"]]))
+}
+
+.cloudwatch$delete_resource_metrics_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .cloudwatch_shapes[["delete_resource_metrics_configuration_output"]]))
 }
 
 .cloudwatch$describe_alarm_contributors_input <- function(...) {
@@ -267,6 +287,16 @@ NULL
 .cloudwatch$get_o_tel_enrichment_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   return(populate(args, .cloudwatch_shapes[["get_o_tel_enrichment_output"]]))
+}
+
+.cloudwatch$get_resource_metrics_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .cloudwatch_shapes[["get_resource_metrics_configuration_input"]]))
+}
+
+.cloudwatch$get_resource_metrics_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .cloudwatch_shapes[["get_resource_metrics_configuration_output"]]))
 }
 
 .cloudwatch$list_alarm_mute_rules_input <- function(...) {
@@ -491,4 +521,24 @@ NULL
 .cloudwatch$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   return(populate(args, .cloudwatch_shapes[["untag_resource_output"]]))
+}
+
+.cloudwatch$update_o_tel_enrichment_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .cloudwatch_shapes[["update_o_tel_enrichment_input"]]))
+}
+
+.cloudwatch$update_o_tel_enrichment_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .cloudwatch_shapes[["update_o_tel_enrichment_output"]]))
+}
+
+.cloudwatch$update_resource_metrics_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .cloudwatch_shapes[["update_resource_metrics_configuration_input"]]))
+}
+
+.cloudwatch$update_resource_metrics_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .cloudwatch_shapes[["update_resource_metrics_configuration_output"]]))
 }

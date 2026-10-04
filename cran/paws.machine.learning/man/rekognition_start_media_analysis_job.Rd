@@ -2,7 +2,8 @@
 % Please edit documentation in R/rekognition_operations.R
 \name{rekognition_start_media_analysis_job}
 \alias{rekognition_start_media_analysis_job}
-\title{Initiates a new media analysis job}
+\title{Service availability notice: Streaming Video and Bulk Image Analysis is
+no longer available to new customers}
 \usage{
 rekognition_start_media_analysis_job(
   ClientRequestToken = NULL,
@@ -27,7 +28,7 @@ rekognition_start_media_analysis_job(
 \item{KmsKeyId}{The identifier of customer managed AWS KMS key (name or ARN). The key is used to encrypt images copied into the service. The key is also used to encrypt results and manifest files written to the output Amazon S3 bucket.}
 }
 \description{
-Initiates a new media analysis job. Accepts a manifest file in an Amazon S3 bucket. The output is a manifest file and a summary of the manifest stored in the Amazon S3 bucket.
+Service availability notice: Streaming Video and Bulk Image Analysis is no longer available to new customers. For more information, see \href{https://docs.aws.amazon.com/rekognition/latest/dg/rekognition-availability-changes.html}{Rekognition feature availability changes}.
 
 See \url{https://www.paws-r-sdk.com/docs/rekognition_start_media_analysis_job/} for full documentation.
 }

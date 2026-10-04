@@ -1,3 +1,3 @@
-svc <- paws.cost.management::paymentcryptographydataplane()
+svc <- paws::paymentcryptographydataplane()
 
 

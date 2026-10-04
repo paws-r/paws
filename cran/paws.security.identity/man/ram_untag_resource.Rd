@@ -8,11 +8,11 @@ resource share or managed permission}
 ram_untag_resource(resourceShareArn = NULL, tagKeys, resourceArn = NULL)
 }
 \arguments{
-\item{resourceShareArn}{Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)} of the resource share that you want to remove tags from. The tags are removed from the resource share, not the resources in the resource share. You must specify either \code{resourceShareArn}, or \code{resourceArn}, but not both.}
+\item{resourceShareArn}{Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Name (ARN)} of the resource share that you want to remove tags from. The tags are removed from the resource share, not the resources in the resource share. You must specify either \code{resourceShareArn}, or \code{resourceArn}, but not both.}
 
 \item{tagKeys}{[required] Specifies a list of one or more tag keys that you want to remove.}
 
-\item{resourceArn}{Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)} of the managed permission that you want to remove tags from. You must specify either \code{resourceArn}, or \code{resourceShareArn}, but not both.}
+\item{resourceArn}{Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Name (ARN)} of the managed permission that you want to remove tags from. You must specify either \code{resourceArn}, or \code{resourceShareArn}, but not both.}
 }
 \description{
 Removes the specified tag key and value pairs from the specified resource share or managed permission.

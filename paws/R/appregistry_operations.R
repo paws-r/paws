@@ -44,7 +44,8 @@ appregistry_associate_attribute_group <- function(application, attributeGroup) {
     http_path = "/applications/{application}/attribute-groups/{attributeGroup}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appregistry$associate_attribute_group_input(application = application, attributeGroup = attributeGroup)
   output <- .appregistry$associate_attribute_group_output()
@@ -124,7 +125,8 @@ appregistry_associate_resource <- function(application, resourceType, resource, 
     http_path = "/applications/{application}/resources/{resourceType}/{resource}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appregistry$associate_resource_input(application = application, resourceType = resourceType, resource = resource, options = options)
   output <- .appregistry$associate_resource_output()
@@ -199,7 +201,8 @@ appregistry_create_application <- function(name, description = NULL, tags = NULL
     http_path = "/applications",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appregistry$create_application_input(name = name, description = description, tags = tags, clientToken = clientToken)
   output <- .appregistry$create_application_output()
@@ -273,7 +276,8 @@ appregistry_create_attribute_group <- function(name, description = NULL, attribu
     http_path = "/attribute-groups",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appregistry$create_attribute_group_input(name = name, description = description, attributes = attributes, tags = tags, clientToken = clientToken)
   output <- .appregistry$create_attribute_group_output()
@@ -334,7 +338,8 @@ appregistry_delete_application <- function(application) {
     http_path = "/applications/{application}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appregistry$delete_application_input(application = application)
   output <- .appregistry$delete_application_output()
@@ -396,7 +401,8 @@ appregistry_delete_attribute_group <- function(attributeGroup) {
     http_path = "/attribute-groups/{attributeGroup}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appregistry$delete_attribute_group_input(attributeGroup = attributeGroup)
   output <- .appregistry$delete_attribute_group_output()
@@ -450,7 +456,8 @@ appregistry_disassociate_attribute_group <- function(application, attributeGroup
     http_path = "/applications/{application}/attribute-groups/{attributeGroup}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appregistry$disassociate_attribute_group_input(application = application, attributeGroup = attributeGroup)
   output <- .appregistry$disassociate_attribute_group_output()
@@ -522,7 +529,8 @@ appregistry_disassociate_resource <- function(application, resourceType, resourc
     http_path = "/applications/{application}/resources/{resourceType}/{resource}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appregistry$disassociate_resource_input(application = application, resourceType = resourceType, resource = resource)
   output <- .appregistry$disassociate_resource_output()
@@ -599,7 +607,8 @@ appregistry_get_application <- function(application) {
     http_path = "/applications/{application}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appregistry$get_application_input(application = application)
   output <- .appregistry$get_application_output()
@@ -690,7 +699,8 @@ appregistry_get_associated_resource <- function(application, resourceType, resou
     http_path = "/applications/{application}/resources/{resourceType}/{resource}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appregistry$get_associated_resource_input(application = application, resourceType = resourceType, resource = resource, nextToken = nextToken, resourceTagStatus = resourceTagStatus, maxResults = maxResults)
   output <- .appregistry$get_associated_resource_output()
@@ -753,7 +763,8 @@ appregistry_get_attribute_group <- function(attributeGroup) {
     http_path = "/attribute-groups/{attributeGroup}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appregistry$get_attribute_group_input(attributeGroup = attributeGroup)
   output <- .appregistry$get_attribute_group_output()
@@ -801,7 +812,8 @@ appregistry_get_configuration <- function() {
     http_path = "/configuration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appregistry$get_configuration_input()
   output <- .appregistry$get_configuration_output()
@@ -866,7 +878,8 @@ appregistry_list_applications <- function(nextToken = NULL, maxResults = NULL) {
     http_path = "/applications",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "applications"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appregistry$list_applications_input(nextToken = nextToken, maxResults = maxResults)
   output <- .appregistry$list_applications_output()
@@ -924,7 +937,8 @@ appregistry_list_associated_attribute_groups <- function(application, nextToken 
     http_path = "/applications/{application}/attribute-groups",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "attributeGroups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appregistry$list_associated_attribute_groups_input(application = application, nextToken = nextToken, maxResults = maxResults)
   output <- .appregistry$list_associated_attribute_groups_output()
@@ -994,7 +1008,8 @@ appregistry_list_associated_resources <- function(application, nextToken = NULL,
     http_path = "/applications/{application}/resources",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "resources"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appregistry$list_associated_resources_input(application = application, nextToken = nextToken, maxResults = maxResults)
   output <- .appregistry$list_associated_resources_output()
@@ -1060,7 +1075,8 @@ appregistry_list_attribute_groups <- function(nextToken = NULL, maxResults = NUL
     http_path = "/attribute-groups",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "attributeGroups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appregistry$list_attribute_groups_input(nextToken = nextToken, maxResults = maxResults)
   output <- .appregistry$list_attribute_groups_output()
@@ -1123,7 +1139,8 @@ appregistry_list_attribute_groups_for_application <- function(application, nextT
     http_path = "/applications/{application}/attribute-group-details",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "attributeGroupsDetails"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appregistry$list_attribute_groups_for_application_input(application = application, nextToken = nextToken, maxResults = maxResults)
   output <- .appregistry$list_attribute_groups_for_application_output()
@@ -1174,7 +1191,8 @@ appregistry_list_tags_for_resource <- function(resourceArn) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appregistry$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .appregistry$list_tags_for_resource_output()
@@ -1222,7 +1240,8 @@ appregistry_put_configuration <- function(configuration) {
     http_path = "/configuration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appregistry$put_configuration_input(configuration = configuration)
   output <- .appregistry$put_configuration_output()
@@ -1277,7 +1296,8 @@ appregistry_sync_resource <- function(resourceType, resource) {
     http_path = "/sync/{resourceType}/{resource}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appregistry$sync_resource_input(resourceType = resourceType, resource = resource)
   output <- .appregistry$sync_resource_output()
@@ -1329,7 +1349,8 @@ appregistry_tag_resource <- function(resourceArn, tags) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appregistry$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .appregistry$tag_resource_output()
@@ -1379,7 +1400,8 @@ appregistry_untag_resource <- function(resourceArn, tagKeys) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appregistry$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .appregistry$untag_resource_output()
@@ -1449,7 +1471,8 @@ appregistry_update_application <- function(application, name = NULL, description
     http_path = "/applications/{application}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appregistry$update_application_input(application = application, name = name, description = description)
   output <- .appregistry$update_application_output()
@@ -1519,7 +1542,8 @@ appregistry_update_attribute_group <- function(attributeGroup, name = NULL, desc
     http_path = "/attribute-groups/{attributeGroup}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .appregistry$update_attribute_group_input(attributeGroup = attributeGroup, name = name, description = description, attributes = attributes)
   output <- .appregistry$update_attribute_group_output()

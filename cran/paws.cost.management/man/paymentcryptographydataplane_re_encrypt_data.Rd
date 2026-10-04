@@ -2,7 +2,8 @@
 % Please edit documentation in R/paymentcryptographydataplane_operations.R
 \name{paymentcryptographydataplane_re_encrypt_data}
 \alias{paymentcryptographydataplane_re_encrypt_data}
-\title{Re-encrypt ciphertext using DUKPT or Symmetric data encryption keys}
+\title{Re-encrypts ciphertext using DUKPT, symmetric, or asymmetric data
+encryption keys}
 \usage{
 paymentcryptographydataplane_re_encrypt_data(
   IncomingKeyIdentifier,
@@ -32,7 +33,7 @@ When a WrappedKeyBlock is provided, this value will be the identifier to the key
 \item{OutgoingWrappedKey}{The WrappedKeyBlock containing the encryption key of outgoing ciphertext data after encryption by Amazon Web Services Payment Cryptography.}
 }
 \description{
-Re-encrypt ciphertext using DUKPT or Symmetric data encryption keys.
+Re-encrypts ciphertext using DUKPT, symmetric, or asymmetric data encryption keys.
 
 See \url{https://www.paws-r-sdk.com/docs/paymentcryptographydataplane_re_encrypt_data/} for full documentation.
 }

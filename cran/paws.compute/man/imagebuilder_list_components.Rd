@@ -2,8 +2,7 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_list_components}
 \alias{imagebuilder_list_components}
-\title{Returns the list of components that can be filtered by name, or by using
-the listed filters to streamline results}
+\title{Returns the list of components that you have access to}
 \usage{
 imagebuilder_list_components(
   owner = NULL,
@@ -14,26 +13,28 @@ imagebuilder_list_components(
 )
 }
 \arguments{
-\item{owner}{Filters results based on the type of owner for the component. By default, this request returns a list of components that your account owns. To see results for other types of owners, you can specify components that Amazon manages, third party components, or components that other accounts have shared with you.}
+\item{owner}{Filters results based on the type of owner for the component. By default, this request returns a list of components that your account owns. To see results for other types of owners, you can specify components that Amazon manages, components from the Amazon Web Services Marketplace, third party components, or components that other accounts have shared with you.}
 
 \item{filters}{Use the following filters to streamline results:
 \itemize{
 \item \code{description}
 \item \code{name}
 \item \code{platform}
+\item \code{productCodes}
+\item \code{status}
 \item \code{supportedOsVersion}
 \item \code{type}
 \item \code{version}
 }}
 
-\item{byName}{Returns the list of components for the specified name.}
+\item{byName}{Specifies whether to return one entry per component name, with all versions of each component aggregated. Defaults to \code{false}, which returns one entry per component version. You can't combine this option with the \code{version} filter.}
 
 \item{maxResults}{The maximum number of items to return in a single request.}
 
 \item{nextToken}{A token to specify where to start paginating. Use the \code{nextToken} value from a previously truncated response.}
 }
 \description{
-Returns the list of components that can be filtered by name, or by using the listed \code{filters} to streamline results. Newly created components can take up to two minutes to appear in the ListComponents API Results.
+Returns the list of components that you have access to. By default, the response doesn't include components in the \code{DEPRECATED} state. To list deprecated components, use the \code{status} filter with the value \code{DEPRECATED}.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_list_components/} for full documentation.
 }

@@ -31,7 +31,8 @@ iamrolesanywhere_create_profile <- function(name, requireInstanceProperties = NU
     http_path = "/profiles",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iamrolesanywhere$create_profile_input(name = name, requireInstanceProperties = requireInstanceProperties, sessionPolicy = sessionPolicy, roleArns = roleArns, managedPolicyArns = managedPolicyArns, durationSeconds = durationSeconds, enabled = enabled, tags = tags, acceptRoleSessionName = acceptRoleSessionName)
   output <- .iamrolesanywhere$create_profile_output()
@@ -67,7 +68,8 @@ iamrolesanywhere_create_trust_anchor <- function(name, source, enabled = NULL, t
     http_path = "/trustanchors",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iamrolesanywhere$create_trust_anchor_input(name = name, source = source, enabled = enabled, tags = tags, notificationSettings = notificationSettings)
   output <- .iamrolesanywhere$create_trust_anchor_output()
@@ -101,7 +103,8 @@ iamrolesanywhere_delete_attribute_mapping <- function(profileId, certificateFiel
     http_path = "/profiles/{profileId}/mappings",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iamrolesanywhere$delete_attribute_mapping_input(profileId = profileId, certificateField = certificateField, specifiers = specifiers)
   output <- .iamrolesanywhere$delete_attribute_mapping_output()
@@ -132,7 +135,8 @@ iamrolesanywhere_delete_crl <- function(crlId) {
     http_path = "/crl/{crlId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iamrolesanywhere$delete_crl_input(crlId = crlId)
   output <- .iamrolesanywhere$delete_crl_output()
@@ -163,7 +167,8 @@ iamrolesanywhere_delete_profile <- function(profileId) {
     http_path = "/profile/{profileId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iamrolesanywhere$delete_profile_input(profileId = profileId)
   output <- .iamrolesanywhere$delete_profile_output()
@@ -194,7 +199,8 @@ iamrolesanywhere_delete_trust_anchor <- function(trustAnchorId) {
     http_path = "/trustanchor/{trustAnchorId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iamrolesanywhere$delete_trust_anchor_input(trustAnchorId = trustAnchorId)
   output <- .iamrolesanywhere$delete_trust_anchor_output()
@@ -225,7 +231,8 @@ iamrolesanywhere_disable_crl <- function(crlId) {
     http_path = "/crl/{crlId}/disable",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iamrolesanywhere$disable_crl_input(crlId = crlId)
   output <- .iamrolesanywhere$disable_crl_output()
@@ -256,7 +263,8 @@ iamrolesanywhere_disable_profile <- function(profileId) {
     http_path = "/profile/{profileId}/disable",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iamrolesanywhere$disable_profile_input(profileId = profileId)
   output <- .iamrolesanywhere$disable_profile_output()
@@ -287,7 +295,8 @@ iamrolesanywhere_disable_trust_anchor <- function(trustAnchorId) {
     http_path = "/trustanchor/{trustAnchorId}/disable",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iamrolesanywhere$disable_trust_anchor_input(trustAnchorId = trustAnchorId)
   output <- .iamrolesanywhere$disable_trust_anchor_output()
@@ -318,7 +327,8 @@ iamrolesanywhere_enable_crl <- function(crlId) {
     http_path = "/crl/{crlId}/enable",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iamrolesanywhere$enable_crl_input(crlId = crlId)
   output <- .iamrolesanywhere$enable_crl_output()
@@ -349,7 +359,8 @@ iamrolesanywhere_enable_profile <- function(profileId) {
     http_path = "/profile/{profileId}/enable",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iamrolesanywhere$enable_profile_input(profileId = profileId)
   output <- .iamrolesanywhere$enable_profile_output()
@@ -380,7 +391,8 @@ iamrolesanywhere_enable_trust_anchor <- function(trustAnchorId) {
     http_path = "/trustanchor/{trustAnchorId}/enable",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iamrolesanywhere$enable_trust_anchor_input(trustAnchorId = trustAnchorId)
   output <- .iamrolesanywhere$enable_trust_anchor_output()
@@ -411,7 +423,8 @@ iamrolesanywhere_get_crl <- function(crlId) {
     http_path = "/crl/{crlId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iamrolesanywhere$get_crl_input(crlId = crlId)
   output <- .iamrolesanywhere$get_crl_output()
@@ -442,7 +455,8 @@ iamrolesanywhere_get_profile <- function(profileId) {
     http_path = "/profile/{profileId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iamrolesanywhere$get_profile_input(profileId = profileId)
   output <- .iamrolesanywhere$get_profile_output()
@@ -474,7 +488,8 @@ iamrolesanywhere_get_subject <- function(subjectId) {
     http_path = "/subject/{subjectId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iamrolesanywhere$get_subject_input(subjectId = subjectId)
   output <- .iamrolesanywhere$get_subject_output()
@@ -505,7 +520,8 @@ iamrolesanywhere_get_trust_anchor <- function(trustAnchorId) {
     http_path = "/trustanchor/{trustAnchorId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iamrolesanywhere$get_trust_anchor_input(trustAnchorId = trustAnchorId)
   output <- .iamrolesanywhere$get_trust_anchor_output()
@@ -540,7 +556,8 @@ iamrolesanywhere_import_crl <- function(name, crlData, enabled = NULL, tags = NU
     http_path = "/crls",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iamrolesanywhere$import_crl_input(name = name, crlData = crlData, enabled = enabled, tags = tags, trustAnchorArn = trustAnchorArn)
   output <- .iamrolesanywhere$import_crl_output()
@@ -573,7 +590,8 @@ iamrolesanywhere_list_crls <- function(nextToken = NULL, pageSize = NULL) {
     http_path = "/crls",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "crls"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iamrolesanywhere$list_crls_input(nextToken = nextToken, pageSize = pageSize)
   output <- .iamrolesanywhere$list_crls_output()
@@ -606,7 +624,8 @@ iamrolesanywhere_list_profiles <- function(nextToken = NULL, pageSize = NULL) {
     http_path = "/profiles",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "profiles"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iamrolesanywhere$list_profiles_input(nextToken = nextToken, pageSize = pageSize)
   output <- .iamrolesanywhere$list_profiles_output()
@@ -639,7 +658,8 @@ iamrolesanywhere_list_subjects <- function(nextToken = NULL, pageSize = NULL) {
     http_path = "/subjects",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "subjects"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iamrolesanywhere$list_subjects_input(nextToken = nextToken, pageSize = pageSize)
   output <- .iamrolesanywhere$list_subjects_output()
@@ -670,7 +690,8 @@ iamrolesanywhere_list_tags_for_resource <- function(resourceArn) {
     http_path = "/ListTagsForResource",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iamrolesanywhere$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .iamrolesanywhere$list_tags_for_resource_output()
@@ -703,7 +724,8 @@ iamrolesanywhere_list_trust_anchors <- function(nextToken = NULL, pageSize = NUL
     http_path = "/trustanchors",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "trustAnchors"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iamrolesanywhere$list_trust_anchors_input(nextToken = nextToken, pageSize = pageSize)
   output <- .iamrolesanywhere$list_trust_anchors_output()
@@ -737,7 +759,8 @@ iamrolesanywhere_put_attribute_mapping <- function(profileId, certificateField, 
     http_path = "/profiles/{profileId}/mappings",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iamrolesanywhere$put_attribute_mapping_input(profileId = profileId, certificateField = certificateField, mappingRules = mappingRules)
   output <- .iamrolesanywhere$put_attribute_mapping_output()
@@ -769,7 +792,8 @@ iamrolesanywhere_put_notification_settings <- function(trustAnchorId, notificati
     http_path = "/put-notifications-settings",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iamrolesanywhere$put_notification_settings_input(trustAnchorId = trustAnchorId, notificationSettings = notificationSettings)
   output <- .iamrolesanywhere$put_notification_settings_output()
@@ -802,7 +826,8 @@ iamrolesanywhere_reset_notification_settings <- function(trustAnchorId, notifica
     http_path = "/reset-notifications-settings",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iamrolesanywhere$reset_notification_settings_input(trustAnchorId = trustAnchorId, notificationSettingKeys = notificationSettingKeys)
   output <- .iamrolesanywhere$reset_notification_settings_output()
@@ -834,7 +859,8 @@ iamrolesanywhere_tag_resource <- function(resourceArn, tags) {
     http_path = "/TagResource",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iamrolesanywhere$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .iamrolesanywhere$tag_resource_output()
@@ -866,7 +892,8 @@ iamrolesanywhere_untag_resource <- function(resourceArn, tagKeys) {
     http_path = "/UntagResource",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iamrolesanywhere$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .iamrolesanywhere$untag_resource_output()
@@ -899,7 +926,8 @@ iamrolesanywhere_update_crl <- function(crlId, name = NULL, crlData = NULL) {
     http_path = "/crl/{crlId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iamrolesanywhere$update_crl_input(crlId = crlId, name = name, crlData = crlData)
   output <- .iamrolesanywhere$update_crl_output()
@@ -937,7 +965,8 @@ iamrolesanywhere_update_profile <- function(profileId, name = NULL, sessionPolic
     http_path = "/profile/{profileId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iamrolesanywhere$update_profile_input(profileId = profileId, name = name, sessionPolicy = sessionPolicy, roleArns = roleArns, managedPolicyArns = managedPolicyArns, durationSeconds = durationSeconds, acceptRoleSessionName = acceptRoleSessionName)
   output <- .iamrolesanywhere$update_profile_output()
@@ -970,7 +999,8 @@ iamrolesanywhere_update_trust_anchor <- function(trustAnchorId, name = NULL, sou
     http_path = "/trustanchor/{trustAnchorId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .iamrolesanywhere$update_trust_anchor_input(trustAnchorId = trustAnchorId, name = name, source = source)
   output <- .iamrolesanywhere$update_trust_anchor_output()

@@ -73,7 +73,8 @@ waf_create_byte_match_set <- function(Name, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$create_byte_match_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .waf$create_byte_match_set_output()
@@ -150,7 +151,8 @@ waf_create_geo_match_set <- function(Name, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$create_geo_match_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .waf$create_geo_match_set_output()
@@ -236,7 +238,8 @@ waf_create_ip_set <- function(Name, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$create_ip_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .waf$create_ip_set_output()
@@ -357,7 +360,8 @@ waf_create_rate_based_rule <- function(Name, MetricName, RateKey, RateLimit, Cha
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$create_rate_based_rule_input(Name = Name, MetricName = MetricName, RateKey = RateKey, RateLimit = RateLimit, ChangeToken = ChangeToken, Tags = Tags)
   output <- .waf$create_rate_based_rule_output()
@@ -438,7 +442,8 @@ waf_create_regex_match_set <- function(Name, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$create_regex_match_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .waf$create_regex_match_set_output()
@@ -512,7 +517,8 @@ waf_create_regex_pattern_set <- function(Name, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$create_regex_pattern_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .waf$create_regex_pattern_set_output()
@@ -620,7 +626,8 @@ waf_create_rule <- function(Name, MetricName, ChangeToken, Tags = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$create_rule_input(Name = Name, MetricName = MetricName, ChangeToken = ChangeToken, Tags = Tags)
   output <- .waf$create_rule_output()
@@ -699,7 +706,8 @@ waf_create_rule_group <- function(Name, MetricName, ChangeToken, Tags = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$create_rule_group_input(Name = Name, MetricName = MetricName, ChangeToken = ChangeToken, Tags = Tags)
   output <- .waf$create_rule_group_output()
@@ -791,7 +799,8 @@ waf_create_size_constraint_set <- function(Name, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$create_size_constraint_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .waf$create_size_constraint_set_output()
@@ -881,7 +890,8 @@ waf_create_sql_injection_match_set <- function(Name, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$create_sql_injection_match_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .waf$create_sql_injection_match_set_output()
@@ -1007,7 +1017,8 @@ waf_create_web_acl <- function(Name, MetricName, DefaultAction, ChangeToken, Tag
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$create_web_acl_input(Name = Name, MetricName = MetricName, DefaultAction = DefaultAction, ChangeToken = ChangeToken, Tags = Tags)
   output <- .waf$create_web_acl_output()
@@ -1070,7 +1081,8 @@ waf_create_web_acl_migration_stack <- function(WebACLId, S3BucketName, IgnoreUns
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$create_web_acl_migration_stack_input(WebACLId = WebACLId, S3BucketName = S3BucketName, IgnoreUnsupportedType = IgnoreUnsupportedType)
   output <- .waf$create_web_acl_migration_stack_output()
@@ -1160,7 +1172,8 @@ waf_create_xss_match_set <- function(Name, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$create_xss_match_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .waf$create_xss_match_set_output()
@@ -1235,7 +1248,8 @@ waf_delete_byte_match_set <- function(ByteMatchSetId, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$delete_byte_match_set_input(ByteMatchSetId = ByteMatchSetId, ChangeToken = ChangeToken)
   output <- .waf$delete_byte_match_set_output()
@@ -1300,7 +1314,8 @@ waf_delete_geo_match_set <- function(GeoMatchSetId, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$delete_geo_match_set_input(GeoMatchSetId = GeoMatchSetId, ChangeToken = ChangeToken)
   output <- .waf$delete_geo_match_set_output()
@@ -1375,7 +1390,8 @@ waf_delete_ip_set <- function(IPSetId, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$delete_ip_set_input(IPSetId = IPSetId, ChangeToken = ChangeToken)
   output <- .waf$delete_ip_set_output()
@@ -1423,7 +1439,8 @@ waf_delete_logging_configuration <- function(ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$delete_logging_configuration_input(ResourceArn = ResourceArn)
   output <- .waf$delete_logging_configuration_output()
@@ -1475,7 +1492,8 @@ waf_delete_permission_policy <- function(ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$delete_permission_policy_input(ResourceArn = ResourceArn)
   output <- .waf$delete_permission_policy_output()
@@ -1540,7 +1558,8 @@ waf_delete_rate_based_rule <- function(RuleId, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$delete_rate_based_rule_input(RuleId = RuleId, ChangeToken = ChangeToken)
   output <- .waf$delete_rate_based_rule_output()
@@ -1605,7 +1624,8 @@ waf_delete_regex_match_set <- function(RegexMatchSetId, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$delete_regex_match_set_input(RegexMatchSetId = RegexMatchSetId, ChangeToken = ChangeToken)
   output <- .waf$delete_regex_match_set_output()
@@ -1660,7 +1680,8 @@ waf_delete_regex_pattern_set <- function(RegexPatternSetId, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$delete_regex_pattern_set_input(RegexPatternSetId = RegexPatternSetId, ChangeToken = ChangeToken)
   output <- .waf$delete_regex_pattern_set_output()
@@ -1734,7 +1755,8 @@ waf_delete_rule <- function(RuleId, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$delete_rule_input(RuleId = RuleId, ChangeToken = ChangeToken)
   output <- .waf$delete_rule_output()
@@ -1799,7 +1821,8 @@ waf_delete_rule_group <- function(RuleGroupId, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$delete_rule_group_input(RuleGroupId = RuleGroupId, ChangeToken = ChangeToken)
   output <- .waf$delete_rule_group_output()
@@ -1874,7 +1897,8 @@ waf_delete_size_constraint_set <- function(SizeConstraintSetId, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$delete_size_constraint_set_input(SizeConstraintSetId = SizeConstraintSetId, ChangeToken = ChangeToken)
   output <- .waf$delete_size_constraint_set_output()
@@ -1949,7 +1973,8 @@ waf_delete_sql_injection_match_set <- function(SqlInjectionMatchSetId, ChangeTok
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$delete_sql_injection_match_set_input(SqlInjectionMatchSetId = SqlInjectionMatchSetId, ChangeToken = ChangeToken)
   output <- .waf$delete_sql_injection_match_set_output()
@@ -2022,7 +2047,8 @@ waf_delete_web_acl <- function(WebACLId, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$delete_web_acl_input(WebACLId = WebACLId, ChangeToken = ChangeToken)
   output <- .waf$delete_web_acl_output()
@@ -2097,7 +2123,8 @@ waf_delete_xss_match_set <- function(XssMatchSetId, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$delete_xss_match_set_input(XssMatchSetId = XssMatchSetId, ChangeToken = ChangeToken)
   output <- .waf$delete_xss_match_set_output()
@@ -2173,7 +2200,8 @@ waf_get_byte_match_set <- function(ByteMatchSetId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$get_byte_match_set_input(ByteMatchSetId = ByteMatchSetId)
   output <- .waf$get_byte_match_set_output()
@@ -2235,7 +2263,8 @@ waf_get_change_token <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$get_change_token_input()
   output <- .waf$get_change_token_output()
@@ -2303,7 +2332,8 @@ waf_get_change_token_status <- function(ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$get_change_token_status_input(ChangeToken = ChangeToken)
   output <- .waf$get_change_token_status_output()
@@ -2365,7 +2395,8 @@ waf_get_geo_match_set <- function(GeoMatchSetId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$get_geo_match_set_input(GeoMatchSetId = GeoMatchSetId)
   output <- .waf$get_geo_match_set_output()
@@ -2436,7 +2467,8 @@ waf_get_ip_set <- function(IPSetId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$get_ip_set_input(IPSetId = IPSetId)
   output <- .waf$get_ip_set_output()
@@ -2500,7 +2532,8 @@ waf_get_logging_configuration <- function(ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$get_logging_configuration_input(ResourceArn = ResourceArn)
   output <- .waf$get_logging_configuration_output()
@@ -2553,7 +2586,8 @@ waf_get_permission_policy <- function(ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$get_permission_policy_input(ResourceArn = ResourceArn)
   output <- .waf$get_permission_policy_output()
@@ -2619,7 +2653,8 @@ waf_get_rate_based_rule <- function(RuleId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$get_rate_based_rule_input(RuleId = RuleId)
   output <- .waf$get_rate_based_rule_output()
@@ -2677,7 +2712,8 @@ waf_get_rate_based_rule_managed_keys <- function(RuleId, NextMarker = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextMarker", output_token = "NextMarker", result_key = "ManagedKeys"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$get_rate_based_rule_managed_keys_input(RuleId = RuleId, NextMarker = NextMarker)
   output <- .waf$get_rate_based_rule_managed_keys_output()
@@ -2743,7 +2779,8 @@ waf_get_regex_match_set <- function(RegexMatchSetId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$get_regex_match_set_input(RegexMatchSetId = RegexMatchSetId)
   output <- .waf$get_regex_match_set_output()
@@ -2802,7 +2839,8 @@ waf_get_regex_pattern_set <- function(RegexPatternSetId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$get_regex_pattern_set_input(RegexPatternSetId = RegexPatternSetId)
   output <- .waf$get_regex_pattern_set_output()
@@ -2875,7 +2913,8 @@ waf_get_rule <- function(RuleId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$get_rule_input(RuleId = RuleId)
   output <- .waf$get_rule_output()
@@ -2934,7 +2973,8 @@ waf_get_rule_group <- function(RuleGroupId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$get_rule_group_input(RuleGroupId = RuleGroupId)
   output <- .waf$get_rule_group_output()
@@ -3054,7 +3094,8 @@ waf_get_sampled_requests <- function(WebAclId, RuleId, TimeWindow, MaxItems) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$get_sampled_requests_input(WebAclId = WebAclId, RuleId = RuleId, TimeWindow = TimeWindow, MaxItems = MaxItems)
   output <- .waf$get_sampled_requests_output()
@@ -3130,7 +3171,8 @@ waf_get_size_constraint_set <- function(SizeConstraintSetId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$get_size_constraint_set_input(SizeConstraintSetId = SizeConstraintSetId)
   output <- .waf$get_size_constraint_set_output()
@@ -3204,7 +3246,8 @@ waf_get_sql_injection_match_set <- function(SqlInjectionMatchSetId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$get_sql_injection_match_set_input(SqlInjectionMatchSetId = SqlInjectionMatchSetId)
   output <- .waf$get_sql_injection_match_set_output()
@@ -3292,7 +3335,8 @@ waf_get_web_acl <- function(WebACLId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$get_web_acl_input(WebACLId = WebACLId)
   output <- .waf$get_web_acl_output()
@@ -3366,7 +3410,8 @@ waf_get_xss_match_set <- function(XssMatchSetId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$get_xss_match_set_input(XssMatchSetId = XssMatchSetId)
   output <- .waf$get_xss_match_set_output()
@@ -3441,7 +3486,8 @@ waf_list_activated_rules_in_rule_group <- function(RuleGroupId = NULL, NextMarke
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextMarker", limit_key = "Limit", output_token = "NextMarker", result_key = "ActivatedRules"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$list_activated_rules_in_rule_group_input(RuleGroupId = RuleGroupId, NextMarker = NextMarker, Limit = Limit)
   output <- .waf$list_activated_rules_in_rule_group_output()
@@ -3502,7 +3548,8 @@ waf_list_byte_match_sets <- function(NextMarker = NULL, Limit = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextMarker", output_token = "NextMarker", limit_key = "Limit", result_key = "ByteMatchSets"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$list_byte_match_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .waf$list_byte_match_sets_output()
@@ -3563,7 +3610,8 @@ waf_list_geo_match_sets <- function(NextMarker = NULL, Limit = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextMarker", limit_key = "Limit", output_token = "NextMarker", result_key = "GeoMatchSets"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$list_geo_match_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .waf$list_geo_match_sets_output()
@@ -3632,7 +3680,8 @@ waf_list_ip_sets <- function(NextMarker = NULL, Limit = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextMarker", output_token = "NextMarker", limit_key = "Limit", result_key = "IPSets"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$list_ip_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .waf$list_ip_sets_output()
@@ -3701,7 +3750,8 @@ waf_list_logging_configurations <- function(NextMarker = NULL, Limit = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextMarker", limit_key = "Limit", output_token = "NextMarker", result_key = "LoggingConfigurations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$list_logging_configurations_input(NextMarker = NextMarker, Limit = Limit)
   output <- .waf$list_logging_configurations_output()
@@ -3762,7 +3812,8 @@ waf_list_rate_based_rules <- function(NextMarker = NULL, Limit = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextMarker", limit_key = "Limit", output_token = "NextMarker", result_key = "Rules"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$list_rate_based_rules_input(NextMarker = NextMarker, Limit = Limit)
   output <- .waf$list_rate_based_rules_output()
@@ -3823,7 +3874,8 @@ waf_list_regex_match_sets <- function(NextMarker = NULL, Limit = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextMarker", limit_key = "Limit", output_token = "NextMarker", result_key = "RegexMatchSets"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$list_regex_match_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .waf$list_regex_match_sets_output()
@@ -3884,7 +3936,8 @@ waf_list_regex_pattern_sets <- function(NextMarker = NULL, Limit = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextMarker", limit_key = "Limit", output_token = "NextMarker", result_key = "RegexPatternSets"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$list_regex_pattern_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .waf$list_regex_pattern_sets_output()
@@ -3945,7 +3998,8 @@ waf_list_rule_groups <- function(NextMarker = NULL, Limit = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextMarker", limit_key = "Limit", output_token = "NextMarker", result_key = "RuleGroups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$list_rule_groups_input(NextMarker = NextMarker, Limit = Limit)
   output <- .waf$list_rule_groups_output()
@@ -4014,7 +4068,8 @@ waf_list_rules <- function(NextMarker = NULL, Limit = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextMarker", output_token = "NextMarker", limit_key = "Limit", result_key = "Rules"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$list_rules_input(NextMarker = NextMarker, Limit = Limit)
   output <- .waf$list_rules_output()
@@ -4084,7 +4139,8 @@ waf_list_size_constraint_sets <- function(NextMarker = NULL, Limit = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextMarker", output_token = "NextMarker", limit_key = "Limit", result_key = "SizeConstraintSets"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$list_size_constraint_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .waf$list_size_constraint_sets_output()
@@ -4154,7 +4210,8 @@ waf_list_sql_injection_match_sets <- function(NextMarker = NULL, Limit = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextMarker", output_token = "NextMarker", limit_key = "Limit", result_key = "SqlInjectionMatchSets"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$list_sql_injection_match_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .waf$list_sql_injection_match_sets_output()
@@ -4216,7 +4273,8 @@ waf_list_subscribed_rule_groups <- function(NextMarker = NULL, Limit = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextMarker", limit_key = "Limit", output_token = "NextMarker", result_key = "RuleGroups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$list_subscribed_rule_groups_input(NextMarker = NextMarker, Limit = Limit)
   output <- .waf$list_subscribed_rule_groups_output()
@@ -4284,7 +4342,8 @@ waf_list_tags_for_resource <- function(NextMarker = NULL, Limit = NULL, Resource
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$list_tags_for_resource_input(NextMarker = NextMarker, Limit = Limit, ResourceARN = ResourceARN)
   output <- .waf$list_tags_for_resource_output()
@@ -4353,7 +4412,8 @@ waf_list_web_ac_ls <- function(NextMarker = NULL, Limit = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextMarker", output_token = "NextMarker", limit_key = "Limit", result_key = "WebACLs"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$list_web_ac_ls_input(NextMarker = NextMarker, Limit = Limit)
   output <- .waf$list_web_ac_ls_output()
@@ -4422,7 +4482,8 @@ waf_list_xss_match_sets <- function(NextMarker = NULL, Limit = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextMarker", output_token = "NextMarker", limit_key = "Limit", result_key = "XssMatchSets"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$list_xss_match_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .waf$list_xss_match_sets_output()
@@ -4511,7 +4572,8 @@ waf_put_logging_configuration <- function(LoggingConfiguration) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$put_logging_configuration_input(LoggingConfiguration = LoggingConfiguration)
   output <- .waf$put_logging_configuration_output()
@@ -4583,7 +4645,8 @@ waf_put_permission_policy <- function(ResourceArn, Policy) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$put_permission_policy_input(ResourceArn = ResourceArn, Policy = Policy)
   output <- .waf$put_permission_policy_output()
@@ -4640,7 +4703,8 @@ waf_tag_resource <- function(ResourceARN, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .waf$tag_resource_output()
@@ -4690,7 +4754,8 @@ waf_untag_resource <- function(ResourceARN, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .waf$untag_resource_output()
@@ -4812,7 +4877,8 @@ waf_update_byte_match_set <- function(ByteMatchSetId, ChangeToken, Updates) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$update_byte_match_set_input(ByteMatchSetId = ByteMatchSetId, ChangeToken = ChangeToken, Updates = Updates)
   output <- .waf$update_byte_match_set_output()
@@ -4901,7 +4967,8 @@ waf_update_geo_match_set <- function(GeoMatchSetId, ChangeToken, Updates) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$update_geo_match_set_input(GeoMatchSetId = GeoMatchSetId, ChangeToken = ChangeToken, Updates = Updates)
   output <- .waf$update_geo_match_set_output()
@@ -5025,7 +5092,8 @@ waf_update_ip_set <- function(IPSetId, ChangeToken, Updates) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$update_ip_set_input(IPSetId = IPSetId, ChangeToken = ChangeToken, Updates = Updates)
   output <- .waf$update_ip_set_output()
@@ -5117,7 +5185,8 @@ waf_update_rate_based_rule <- function(RuleId, ChangeToken, Updates, RateLimit) 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$update_rate_based_rule_input(RuleId = RuleId, ChangeToken = ChangeToken, Updates = Updates, RateLimit = RateLimit)
   output <- .waf$update_rate_based_rule_output()
@@ -5206,7 +5275,8 @@ waf_update_regex_match_set <- function(RegexMatchSetId, Updates, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$update_regex_match_set_input(RegexMatchSetId = RegexMatchSetId, Updates = Updates, ChangeToken = ChangeToken)
   output <- .waf$update_regex_match_set_output()
@@ -5292,7 +5362,8 @@ waf_update_regex_pattern_set <- function(RegexPatternSetId, Updates, ChangeToken
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$update_regex_pattern_set_input(RegexPatternSetId = RegexPatternSetId, Updates = Updates, ChangeToken = ChangeToken)
   output <- .waf$update_regex_pattern_set_output()
@@ -5406,7 +5477,8 @@ waf_update_rule <- function(RuleId, ChangeToken, Updates) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$update_rule_input(RuleId = RuleId, ChangeToken = ChangeToken, Updates = Updates)
   output <- .waf$update_rule_output()
@@ -5505,7 +5577,8 @@ waf_update_rule_group <- function(RuleGroupId, Updates, ChangeToken) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$update_rule_group_input(RuleGroupId = RuleGroupId, Updates = Updates, ChangeToken = ChangeToken)
   output <- .waf$update_rule_group_output()
@@ -5630,7 +5703,8 @@ waf_update_size_constraint_set <- function(SizeConstraintSetId, ChangeToken, Upd
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$update_size_constraint_set_input(SizeConstraintSetId = SizeConstraintSetId, ChangeToken = ChangeToken, Updates = Updates)
   output <- .waf$update_size_constraint_set_output()
@@ -5747,7 +5821,8 @@ waf_update_sql_injection_match_set <- function(SqlInjectionMatchSetId, ChangeTok
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$update_sql_injection_match_set_input(SqlInjectionMatchSetId = SqlInjectionMatchSetId, ChangeToken = ChangeToken, Updates = Updates)
   output <- .waf$update_sql_injection_match_set_output()
@@ -5889,7 +5964,8 @@ waf_update_web_acl <- function(WebACLId, ChangeToken, Updates = NULL, DefaultAct
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$update_web_acl_input(WebACLId = WebACLId, ChangeToken = ChangeToken, Updates = Updates, DefaultAction = DefaultAction)
   output <- .waf$update_web_acl_output()
@@ -6004,7 +6080,8 @@ waf_update_xss_match_set <- function(XssMatchSetId, ChangeToken, Updates) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .waf$update_xss_match_set_input(XssMatchSetId = XssMatchSetId, ChangeToken = ChangeToken, Updates = Updates)
   output <- .waf$update_xss_match_set_output()

@@ -8,9 +8,13 @@ identity store}
 identitystore_describe_user(IdentityStoreId, UserId, Extensions = NULL)
 }
 \arguments{
-\item{IdentityStoreId}{[required] The globally unique identifier for the identity store, such as \code{d-1234567890}. In this example, \verb{d-} is a fixed prefix, and \code{1234567890} is a randomly generated string that contains numbers and lower case letters. This value is generated at the time that a new identity store is created.}
+\item{IdentityStoreId}{[required] The globally unique identifier for the identity store, such as \code{d-1234567890}. In this example, \verb{d-} is a fixed prefix, and \code{1234567890} is a randomly generated string that contains numbers and lower case letters. This value is generated at the time that a new identity store is created.
 
-\item{UserId}{[required] The identifier for a user in the identity store.}
+You can specify the identity store by ID or by Amazon Resource Name (ARN). For example, identity store ID \code{d-1234567890} or identity store ARN \verb{arn:aws:identitystore::111122223333:identitystore/d-1234567890}.}
+
+\item{UserId}{[required] The identifier for a user in the identity store.
+
+You can specify the user by ID or by Amazon Resource Name (ARN). For example, user ID \verb{a1b2c3d4-5678-90ab-cdef-EXAMPLE11111} or user ARN \verb{arn:aws:identitystore:::user/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111}.}
 
 \item{Extensions}{A collection of extension names indicating what extensions the service should retrieve alongside other user attributes. \code{aws:identitystore:enterprise} is the only supported extension name.}
 }

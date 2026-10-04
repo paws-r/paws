@@ -1,3 +1,3 @@
-svc <- paws.security.identity::cognitoidentityprovider()
+svc <- paws::cognitoidentityprovider()
 
 

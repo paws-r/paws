@@ -1,4 +1,4 @@
-svc <- paws.storage::finspacedata()
+svc <- paws::finspacedata()
 
 test_that("list_datasets", {
   skip_on_cran()

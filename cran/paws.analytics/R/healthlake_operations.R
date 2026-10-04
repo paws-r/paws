@@ -28,7 +28,8 @@ healthlake_create_data_transformation_profile <- function(SourceFormat, Source, 
     http_path = "/",
     host_prefix = "datatransformation.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .healthlake$create_data_transformation_profile_input(SourceFormat = SourceFormat, Source = Source, KmsKeyId = KmsKeyId, ProfileDescription = ProfileDescription, ProfileName = ProfileName, Tags = Tags, ClientToken = ClientToken)
   output <- .healthlake$create_data_transformation_profile_output()
@@ -69,7 +70,8 @@ healthlake_create_fhir_datastore <- function(DatastoreName = NULL, DatastoreType
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .healthlake$create_fhir_datastore_input(DatastoreName = DatastoreName, DatastoreTypeVersion = DatastoreTypeVersion, SseConfiguration = SseConfiguration, PreloadDataConfig = PreloadDataConfig, ClientToken = ClientToken, Tags = Tags, IdentityProviderConfiguration = IdentityProviderConfiguration, AnalyticsConfiguration = AnalyticsConfiguration, NlpConfiguration = NlpConfiguration, ProfileConfiguration = ProfileConfiguration, BackupConfiguration = BackupConfiguration)
   output <- .healthlake$create_fhir_datastore_output()
@@ -101,7 +103,8 @@ healthlake_delete_data_transformation_profile <- function(ProfileId) {
     http_path = "/",
     host_prefix = "datatransformation.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .healthlake$delete_data_transformation_profile_input(ProfileId = ProfileId)
   output <- .healthlake$delete_data_transformation_profile_output()
@@ -132,7 +135,8 @@ healthlake_delete_fhir_datastore <- function(DatastoreId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .healthlake$delete_fhir_datastore_input(DatastoreId = DatastoreId)
   output <- .healthlake$delete_fhir_datastore_output()
@@ -164,7 +168,8 @@ healthlake_describe_data_transformation_job <- function(JobId) {
     http_path = "/",
     host_prefix = "datatransformation.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .healthlake$describe_data_transformation_job_input(JobId = JobId)
   output <- .healthlake$describe_data_transformation_job_output()
@@ -195,7 +200,8 @@ healthlake_describe_fhir_datastore <- function(DatastoreId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .healthlake$describe_fhir_datastore_input(DatastoreId = DatastoreId)
   output <- .healthlake$describe_fhir_datastore_output()
@@ -227,7 +233,8 @@ healthlake_describe_fhir_export_job <- function(DatastoreId, JobId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .healthlake$describe_fhir_export_job_input(DatastoreId = DatastoreId, JobId = JobId)
   output <- .healthlake$describe_fhir_export_job_output()
@@ -260,7 +267,8 @@ healthlake_describe_fhir_import_job <- function(DatastoreId, JobId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .healthlake$describe_fhir_import_job_input(DatastoreId = DatastoreId, JobId = JobId)
   output <- .healthlake$describe_fhir_import_job_output()
@@ -293,7 +301,8 @@ healthlake_get_data_transformation_profile <- function(ProfileId, ProfileVersion
     http_path = "/",
     host_prefix = "datatransformation.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .healthlake$get_data_transformation_profile_input(ProfileId = ProfileId, ProfileVersion = ProfileVersion)
   output <- .healthlake$get_data_transformation_profile_output()
@@ -329,7 +338,8 @@ healthlake_list_data_transformation_jobs <- function(MaxResults = NULL, NextToke
     http_path = "/",
     host_prefix = "datatransformation.",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .healthlake$list_data_transformation_jobs_input(MaxResults = MaxResults, NextToken = NextToken, JobStatus = JobStatus, JobName = JobName, SubmittedAfter = SubmittedAfter, SubmittedBefore = SubmittedBefore)
   output <- .healthlake$list_data_transformation_jobs_output()
@@ -363,7 +373,8 @@ healthlake_list_data_transformation_profile_versions <- function(ProfileId, MaxR
     http_path = "/",
     host_prefix = "datatransformation.",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .healthlake$list_data_transformation_profile_versions_input(ProfileId = ProfileId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .healthlake$list_data_transformation_profile_versions_output()
@@ -397,7 +408,8 @@ healthlake_list_data_transformation_profiles <- function(SourceFormat, MaxResult
     http_path = "/",
     host_prefix = "datatransformation.",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .healthlake$list_data_transformation_profiles_input(SourceFormat = SourceFormat, MaxResults = MaxResults, NextToken = NextToken)
   output <- .healthlake$list_data_transformation_profiles_output()
@@ -431,7 +443,8 @@ healthlake_list_fhir_datastores <- function(Filter = NULL, NextToken = NULL, Max
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .healthlake$list_fhir_datastores_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .healthlake$list_fhir_datastores_output()
@@ -468,7 +481,8 @@ healthlake_list_fhir_export_jobs <- function(DatastoreId, NextToken = NULL, MaxR
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .healthlake$list_fhir_export_jobs_input(DatastoreId = DatastoreId, NextToken = NextToken, MaxResults = MaxResults, JobName = JobName, JobStatus = JobStatus, SubmittedBefore = SubmittedBefore, SubmittedAfter = SubmittedAfter)
   output <- .healthlake$list_fhir_export_jobs_output()
@@ -505,7 +519,8 @@ healthlake_list_fhir_import_jobs <- function(DatastoreId, NextToken = NULL, MaxR
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .healthlake$list_fhir_import_jobs_input(DatastoreId = DatastoreId, NextToken = NextToken, MaxResults = MaxResults, JobName = JobName, JobStatus = JobStatus, SubmittedBefore = SubmittedBefore, SubmittedAfter = SubmittedAfter)
   output <- .healthlake$list_fhir_import_jobs_output()
@@ -536,7 +551,8 @@ healthlake_list_tags_for_resource <- function(ResourceARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .healthlake$list_tags_for_resource_input(ResourceARN = ResourceARN)
   output <- .healthlake$list_tags_for_resource_output()
@@ -571,7 +587,8 @@ healthlake_publish_data_transformation_profile <- function(ProfileId, SourceForm
     http_path = "/",
     host_prefix = "datatransformation.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .healthlake$publish_data_transformation_profile_input(ProfileId = ProfileId, SourceFormat = SourceFormat, FromExistingVersion = FromExistingVersion, ChangeDescription = ChangeDescription)
   output <- .healthlake$publish_data_transformation_profile_output()
@@ -611,7 +628,8 @@ healthlake_restore_fhir_datastore <- function(SourceDatastoreId, RestoreConfigur
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .healthlake$restore_fhir_datastore_input(SourceDatastoreId = SourceDatastoreId, RestoreConfiguration = RestoreConfiguration, DatastoreName = DatastoreName, SseConfiguration = SseConfiguration, ClientToken = ClientToken, Tags = Tags, IdentityProviderConfiguration = IdentityProviderConfiguration, AnalyticsConfiguration = AnalyticsConfiguration, NlpConfiguration = NlpConfiguration, ProfileConfiguration = ProfileConfiguration)
   output <- .healthlake$restore_fhir_datastore_output()
@@ -651,7 +669,8 @@ healthlake_start_data_transformation_job <- function(InputDataConfig, OutputData
     http_path = "/",
     host_prefix = "datatransformation.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .healthlake$start_data_transformation_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, ClientToken = ClientToken, JobName = JobName, ProfileId = ProfileId, DriftDetectionEnabled = DriftDetectionEnabled, ProvenanceEnabled = ProvenanceEnabled)
   output <- .healthlake$start_data_transformation_job_output()
@@ -686,7 +705,8 @@ healthlake_start_fhir_export_job <- function(JobName = NULL, OutputDataConfig, D
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .healthlake$start_fhir_export_job_input(JobName = JobName, OutputDataConfig = OutputDataConfig, DatastoreId = DatastoreId, DataAccessRoleArn = DataAccessRoleArn, ClientToken = ClientToken)
   output <- .healthlake$start_fhir_export_job_output()
@@ -727,7 +747,8 @@ healthlake_start_fhir_import_job <- function(JobName = NULL, InputDataConfig, Jo
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .healthlake$start_fhir_import_job_input(JobName = JobName, InputDataConfig = InputDataConfig, JobOutputDataConfig = JobOutputDataConfig, DatastoreId = DatastoreId, DataAccessRoleArn = DataAccessRoleArn, ClientToken = ClientToken, ValidationLevel = ValidationLevel, ProfileId = ProfileId, InputFormat = InputFormat, DriftDetectionEnabled = DriftDetectionEnabled, ProvenanceEnabled = ProvenanceEnabled)
   output <- .healthlake$start_fhir_import_job_output()
@@ -759,7 +780,8 @@ healthlake_tag_resource <- function(ResourceARN, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .healthlake$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .healthlake$tag_resource_output()
@@ -791,7 +813,8 @@ healthlake_untag_resource <- function(ResourceARN, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .healthlake$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .healthlake$untag_resource_output()
@@ -825,7 +848,8 @@ healthlake_update_data_transformation_profile <- function(ProfileId, ProfileMapp
     http_path = "/",
     host_prefix = "datatransformation.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .healthlake$update_data_transformation_profile_input(ProfileId = ProfileId, ProfileMapping = ProfileMapping, ChangeDescription = ChangeDescription)
   output <- .healthlake$update_data_transformation_profile_output()
@@ -862,7 +886,8 @@ healthlake_update_fhir_datastore <- function(DatastoreId, DatastoreName = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .healthlake$update_fhir_datastore_input(DatastoreId = DatastoreId, DatastoreName = DatastoreName, AnalyticsConfiguration = AnalyticsConfiguration, NlpConfiguration = NlpConfiguration, ProfileConfiguration = ProfileConfiguration, IdentityProviderConfiguration = IdentityProviderConfiguration, BackupConfiguration = BackupConfiguration)
   output <- .healthlake$update_fhir_datastore_output()
@@ -897,7 +922,8 @@ healthlake_update_profile_with_agent <- function(ProfileId, SourceFormat, InputM
     http_path = "/",
     host_prefix = "datatransformation.",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .healthlake$update_profile_with_agent_input(ProfileId = ProfileId, SourceFormat = SourceFormat, InputMessage = InputMessage, ConversationId = ConversationId)
   output <- .healthlake$update_profile_with_agent_output()

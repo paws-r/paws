@@ -2,7 +2,8 @@
 % Please edit documentation in R/rekognition_operations.R
 \name{rekognition_update_stream_processor}
 \alias{rekognition_update_stream_processor}
-\title{Allows you to update a stream processor}
+\title{Service availability notice: Streaming Video and Bulk Image Analysis is
+no longer available to new customers}
 \usage{
 rekognition_update_stream_processor(
   Name,
@@ -24,7 +25,7 @@ rekognition_update_stream_processor(
 \item{ParametersToDelete}{A list of parameters you want to delete from the stream processor.}
 }
 \description{
-Allows you to update a stream processor. You can change some settings and regions of interest and delete certain parameters.
+Service availability notice: Streaming Video and Bulk Image Analysis is no longer available to new customers. For more information, see \href{https://docs.aws.amazon.com/rekognition/latest/dg/rekognition-availability-changes.html}{Rekognition feature availability changes}.
 
 See \url{https://www.paws-r-sdk.com/docs/rekognition_update_stream_processor/} for full documentation.
 }

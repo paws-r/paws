@@ -32,7 +32,7 @@ When you use the \code{ClientMetadata} parameter, note that Amazon Cognito won't
 }}
 }
 \description{
-Issues an access token for machine-to-machine (M2M) authorization. Your app client provides its client ID and secret, and receives an access token that authorizes requests to your resource servers. \code{\link[=cognitoidentityprovider_get_client_token]{get_client_token}} provides the same functionality as the OAuth2 client-credentials grant; both authorize an application rather than a user.
+Issues an access token for machine-to-machine (M2M) authorization. Your app client provides its client ID and secret, and receives an access token that authorizes requests to your resource servers.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_get_client_token/} for full documentation.
 }

@@ -1,3 +1,3 @@
-svc <- paws.cost.management::marketplaceentitlementservice()
+svc <- paws::marketplaceentitlementservice()
 
 

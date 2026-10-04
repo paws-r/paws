@@ -11,7 +11,8 @@ cognitoidentityprovider_create_identity_provider(
   ProviderType,
   ProviderDetails,
   AttributeMapping = NULL,
-  IdpIdentifiers = NULL
+  IdpIdentifiers = NULL,
+  AcrMapping = NULL
 )
 }
 \arguments{
@@ -68,6 +69,10 @@ Describe response: \verb{"ProviderDetails": \{ "api_version": "v17.0", "attribut
 \item{AttributeMapping}{A mapping of IdP attributes to standard and custom user pool attributes. Specify a user pool attribute as the key of the key-value pair, and the IdP attribute claim name as the value.}
 
 \item{IdpIdentifiers}{An array of IdP identifiers, for example \verb{"IdPIdentifiers": [ "MyIdP", "MyIdP2" ]}. Identifiers are friendly names that you can pass in the \code{idp_identifier} query parameter of requests to the \href{https://docs.aws.amazon.com/cognito/latest/developerguide/authorization-endpoint.html}{Authorize endpoint} to silently redirect to sign-in with the associated IdP. Identifiers in a domain format also enable the use of \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-managing-saml-idp-naming.html}{email-address matching with SAML providers}.}
+
+\item{AcrMapping}{A mapping between the authentication context class reference (ACR) levels of your user pool and the ACR values of the external OpenID Connect (OIDC) identity provider (IdP). The map is keyed by level, from \code{Level1} through \code{Level4}, and each value is the ACR value that the IdP uses for the corresponding level. Amazon Cognito uses this mapping to translate a requested user pool ACR level to the value that the IdP expects, and to map an ACR value that the IdP returns back to a user pool level. When the IdP returns an ACR value that isn't mapped, Amazon Cognito resolves it to the lowest level. Only OIDC IdPs support ACR mapping.
+
+Setting \code{AcrMapping} is available in all feature plans. It isn't restricted to the Essentials or Plus feature plan.}
 }
 \description{
 Adds a configuration and trust relationship between a third-party identity provider (IdP) and a user pool. Amazon Cognito accepts sign-in with third-party identity providers through managed login and OIDC relying-party libraries. For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-identity-federation.html}{Third-party IdP sign-in}.

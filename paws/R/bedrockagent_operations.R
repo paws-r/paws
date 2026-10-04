@@ -73,7 +73,8 @@ bedrockagent_associate_agent_collaborator <- function(agentId, agentVersion, age
     http_path = "/agents/{agentId}/agentversions/{agentVersion}/agentcollaborators/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$associate_agent_collaborator_input(agentId = agentId, agentVersion = agentVersion, agentDescriptor = agentDescriptor, collaboratorName = collaboratorName, collaborationInstruction = collaborationInstruction, relayConversationHistory = relayConversationHistory, clientToken = clientToken)
   output <- .bedrockagent$associate_agent_collaborator_output()
@@ -143,7 +144,8 @@ bedrockagent_associate_agent_knowledge_base <- function(agentId, agentVersion, k
     http_path = "/agents/{agentId}/agentversions/{agentVersion}/knowledgebases/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$associate_agent_knowledge_base_input(agentId = agentId, agentVersion = agentVersion, knowledgeBaseId = knowledgeBaseId, description = description, knowledgeBaseState = knowledgeBaseState)
   output <- .bedrockagent$associate_agent_knowledge_base_output()
@@ -367,7 +369,8 @@ bedrockagent_create_agent <- function(agentName, clientToken = NULL, instruction
     http_path = "/agents/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$create_agent_input(agentName = agentName, clientToken = clientToken, instruction = instruction, foundationModel = foundationModel, description = description, orchestrationType = orchestrationType, customOrchestration = customOrchestration, idleSessionTTLInSeconds = idleSessionTTLInSeconds, agentResourceRoleArn = agentResourceRoleArn, customerEncryptionKeyArn = customerEncryptionKeyArn, tags = tags, promptOverrideConfiguration = promptOverrideConfiguration, guardrailConfiguration = guardrailConfiguration, memoryConfiguration = memoryConfiguration, agentCollaboration = agentCollaboration)
   output <- .bedrockagent$create_agent_output()
@@ -532,7 +535,8 @@ bedrockagent_create_agent_action_group <- function(agentId, agentVersion, action
     http_path = "/agents/{agentId}/agentversions/{agentVersion}/actiongroups/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$create_agent_action_group_input(agentId = agentId, agentVersion = agentVersion, actionGroupName = actionGroupName, clientToken = clientToken, description = description, parentActionGroupSignature = parentActionGroupSignature, parentActionGroupSignatureParams = parentActionGroupSignatureParams, actionGroupExecutor = actionGroupExecutor, apiSchema = apiSchema, actionGroupState = actionGroupState, functionSchema = functionSchema)
   output <- .bedrockagent$create_agent_action_group_output()
@@ -639,7 +643,8 @@ bedrockagent_create_agent_alias <- function(agentId, agentAliasName, clientToken
     http_path = "/agents/{agentId}/agentaliases/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$create_agent_alias_input(agentId = agentId, agentAliasName = agentAliasName, clientToken = clientToken, description = description, routingConfiguration = routingConfiguration, tags = tags)
   output <- .bedrockagent$create_agent_alias_output()
@@ -1149,7 +1154,8 @@ bedrockagent_create_data_source <- function(knowledgeBaseId, clientToken = NULL,
     http_path = "/knowledgebases/{knowledgeBaseId}/datasources/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$create_data_source_input(knowledgeBaseId = knowledgeBaseId, clientToken = clientToken, name = name, description = description, dataSourceConfiguration = dataSourceConfiguration, dataDeletionPolicy = dataDeletionPolicy, serverSideEncryptionConfiguration = serverSideEncryptionConfiguration, vectorIngestionConfiguration = vectorIngestionConfiguration)
   output <- .bedrockagent$create_data_source_output()
@@ -1732,7 +1738,8 @@ bedrockagent_create_flow <- function(name, description = NULL, executionRoleArn,
     http_path = "/flows/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$create_flow_input(name = name, description = description, executionRoleArn = executionRoleArn, customerEncryptionKeyArn = customerEncryptionKeyArn, definition = definition, clientToken = clientToken, tags = tags)
   output <- .bedrockagent$create_flow_output()
@@ -1822,7 +1829,8 @@ bedrockagent_create_flow_alias <- function(name, description = NULL, routingConf
     http_path = "/flows/{flowIdentifier}/aliases",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$create_flow_alias_input(name = name, description = description, routingConfiguration = routingConfiguration, concurrencyConfiguration = concurrencyConfiguration, flowIdentifier = flowIdentifier, clientToken = clientToken, tags = tags)
   output <- .bedrockagent$create_flow_alias_output()
@@ -2139,7 +2147,8 @@ bedrockagent_create_flow_version <- function(flowIdentifier, description = NULL,
     http_path = "/flows/{flowIdentifier}/versions",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$create_flow_version_input(flowIdentifier = flowIdentifier, description = description, clientToken = clientToken)
   output <- .bedrockagent$create_flow_version_output()
@@ -2675,7 +2684,8 @@ bedrockagent_create_knowledge_base <- function(clientToken = NULL, name, descrip
     http_path = "/knowledgebases/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$create_knowledge_base_input(clientToken = clientToken, name = name, description = description, roleArn = roleArn, knowledgeBaseConfiguration = knowledgeBaseConfiguration, storageConfiguration = storageConfiguration, tags = tags)
   output <- .bedrockagent$create_knowledge_base_output()
@@ -2938,7 +2948,8 @@ bedrockagent_create_prompt <- function(name, description = NULL, customerEncrypt
     http_path = "/prompts/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$create_prompt_input(name = name, description = description, customerEncryptionKeyArn = customerEncryptionKeyArn, defaultVariant = defaultVariant, variants = variants, clientToken = clientToken, tags = tags)
   output <- .bedrockagent$create_prompt_output()
@@ -3103,7 +3114,8 @@ bedrockagent_create_prompt_version <- function(promptIdentifier, description = N
     http_path = "/prompts/{promptIdentifier}/versions",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$create_prompt_version_input(promptIdentifier = promptIdentifier, description = description, clientToken = clientToken, tags = tags)
   output <- .bedrockagent$create_prompt_version_output()
@@ -3114,6 +3126,100 @@ bedrockagent_create_prompt_version <- function(promptIdentifier, description = N
   return(response)
 }
 .bedrockagent$operations$create_prompt_version <- bedrockagent_create_prompt_version
+
+#' Creates a VPC configuration that lets a knowledge base connect to a
+#' resource in your private VPC
+#'
+#' @description
+#' Creates a VPC configuration that lets a knowledge base connect to a resource in your private VPC. This operation is asynchronous: it returns a `vpcConfigurationId` with status `CREATING`. Poll [`get_vpc_configuration`][bedrockagent_get_vpc_configuration] until the status becomes `CREATED` or `CREATE_FAILED`.
+#'
+#' @usage
+#' bedrockagent_create_vpc_configuration(knowledgeBaseId, clientToken,
+#'   vpcId, subnetIds, resourceTarget, port, protocol, resolutionMode,
+#'   hostHeader, tlsServerName, name, description)
+#'
+#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base to associate this VPC configuration with.
+#' @param clientToken A unique, case-sensitive identifier to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request but does not return an error.
+#' @param vpcId &#91;required&#93; The identifier of the VPC that the knowledge base connects through to reach the resource.
+#' @param subnetIds &#91;required&#93; The subnets, in the VPC identified by `vpcId`, that the knowledge base uses to connect to the resource.
+#' @param resourceTarget &#91;required&#93; The private IPv4 address or DNS name of the resource you want the knowledge base to reach. The target must be privately reachable from inside your VPC, such as an internal load balancer or a private IP. The following are not supported:
+#' 
+#' -   Internet-facing endpoints
+#' 
+#' -   Loopback addresses
+#' 
+#' -   Link-local addresses
+#' 
+#' -   Wildcard addresses
+#' 
+#' -   Multicast addresses
+#' 
+#' -   IPv6 literals
+#' @param port &#91;required&#93; The port on which to reach the resource.
+#' @param protocol &#91;required&#93; The protocol used to connect to the resource. Specify `HTTP` for plaintext or `HTTPS` for TLS. When you specify `HTTPS`, you must also provide `tlsServerName`.
+#' @param resolutionMode &#91;required&#93; Controls how a domain-name `resourceTarget` is resolved. This applies only when the target is a domain name; it has no effect for IP-address targets, which have no name to resolve. In all cases the resolved address must be reachable from inside your VPC. Valid values:
+#' 
+#' -   `IN_VPC` (default, recommended) – The target domain name is resolved privately, using the DNS resolvers of the VPC, such as private Route 53 hosted zones or on-premises DNS reachable from the VPC. Use this for targets that are private to your VPC, such as internal load balancers, private hosted-zone names, or on-premises hosts.
+#' 
+#' -   `PUBLIC` – The target domain name is resolved against public DNS resolvers. Select this only when the target's domain name must be resolved through public DNS and the resulting address is still reachable from the VPC, an uncommon split-horizon configuration. If you are unsure, use `IN_VPC`.
+#' @param hostHeader An optional HTTP `Host` header value to send when invoking the resource. Set this only if your resource (or an upstream router or ingress) routes by the `Host` header and that host differs from the target. This setting is independent of `tlsServerName`.
+#' @param tlsServerName The expected TLS server name. The service matches this value against the Subject Alternative Names on your resource's TLS certificate during invocation. This field is required when `protocol` is `HTTPS`. Set it to a hostname on your certificate, such as `app.internal.example.com`. You can use a single leftmost wildcard, such as `*.example.com`. The value must be a hostname without a port.
+#' @param name An optional human-readable name for the VPC configuration. If you don't specify a name, the VPC configuration has no name.
+#' @param description An optional description of the VPC configuration. If you don't specify a description, the VPC configuration has no description.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   vpcConfigurationId = "string",
+#'   status = "CREATING"|"CREATED"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_vpc_configuration(
+#'   knowledgeBaseId = "string",
+#'   clientToken = "string",
+#'   vpcId = "string",
+#'   subnetIds = list(
+#'     "string"
+#'   ),
+#'   resourceTarget = "string",
+#'   port = 123,
+#'   protocol = "HTTP"|"HTTPS",
+#'   resolutionMode = "PUBLIC"|"IN_VPC",
+#'   hostHeader = "string",
+#'   tlsServerName = "string",
+#'   name = "string",
+#'   description = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagent_create_vpc_configuration
+#'
+#' @aliases bedrockagent_create_vpc_configuration
+bedrockagent_create_vpc_configuration <- function(knowledgeBaseId, clientToken = NULL, vpcId, subnetIds, resourceTarget, port, protocol, resolutionMode, hostHeader = NULL, tlsServerName = NULL, name = NULL, description = NULL) {
+  op <- new_operation(
+    name = "CreateVpcConfiguration",
+    http_method = "POST",
+    http_path = "/knowledgebases/{knowledgeBaseId}/vpcconfigurations/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .bedrockagent$create_vpc_configuration_input(knowledgeBaseId = knowledgeBaseId, clientToken = clientToken, vpcId = vpcId, subnetIds = subnetIds, resourceTarget = resourceTarget, port = port, protocol = protocol, resolutionMode = resolutionMode, hostHeader = hostHeader, tlsServerName = tlsServerName, name = name, description = description)
+  output <- .bedrockagent$create_vpc_configuration_output()
+  config <- get_config()
+  svc <- .bedrockagent$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagent$operations$create_vpc_configuration <- bedrockagent_create_vpc_configuration
 
 #' Deletes an agent
 #'
@@ -3155,7 +3261,8 @@ bedrockagent_delete_agent <- function(agentId, skipResourceInUseCheck = NULL) {
     http_path = "/agents/{agentId}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$delete_agent_input(agentId = agentId, skipResourceInUseCheck = skipResourceInUseCheck)
   output <- .bedrockagent$delete_agent_output()
@@ -3206,7 +3313,8 @@ bedrockagent_delete_agent_action_group <- function(agentId, agentVersion, action
     http_path = "/agents/{agentId}/agentversions/{agentVersion}/actiongroups/{actionGroupId}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$delete_agent_action_group_input(agentId = agentId, agentVersion = agentVersion, actionGroupId = actionGroupId, skipResourceInUseCheck = skipResourceInUseCheck)
   output <- .bedrockagent$delete_agent_action_group_output()
@@ -3259,7 +3367,8 @@ bedrockagent_delete_agent_alias <- function(agentId, agentAliasId) {
     http_path = "/agents/{agentId}/agentaliases/{agentAliasId}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$delete_agent_alias_input(agentId = agentId, agentAliasId = agentAliasId)
   output <- .bedrockagent$delete_agent_alias_output()
@@ -3315,7 +3424,8 @@ bedrockagent_delete_agent_version <- function(agentId, agentVersion, skipResourc
     http_path = "/agents/{agentId}/agentversions/{agentVersion}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$delete_agent_version_input(agentId = agentId, agentVersion = agentVersion, skipResourceInUseCheck = skipResourceInUseCheck)
   output <- .bedrockagent$delete_agent_version_output()
@@ -3368,7 +3478,8 @@ bedrockagent_delete_data_source <- function(knowledgeBaseId, dataSourceId) {
     http_path = "/knowledgebases/{knowledgeBaseId}/datasources/{dataSourceId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$delete_data_source_input(knowledgeBaseId = knowledgeBaseId, dataSourceId = dataSourceId)
   output <- .bedrockagent$delete_data_source_output()
@@ -3419,7 +3530,8 @@ bedrockagent_delete_flow <- function(flowIdentifier, skipResourceInUseCheck = NU
     http_path = "/flows/{flowIdentifier}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$delete_flow_input(flowIdentifier = flowIdentifier, skipResourceInUseCheck = skipResourceInUseCheck)
   output <- .bedrockagent$delete_flow_output()
@@ -3471,7 +3583,8 @@ bedrockagent_delete_flow_alias <- function(flowIdentifier, aliasIdentifier) {
     http_path = "/flows/{flowIdentifier}/aliases/{aliasIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$delete_flow_alias_input(flowIdentifier = flowIdentifier, aliasIdentifier = aliasIdentifier)
   output <- .bedrockagent$delete_flow_alias_output()
@@ -3526,7 +3639,8 @@ bedrockagent_delete_flow_version <- function(flowIdentifier, flowVersion, skipRe
     http_path = "/flows/{flowIdentifier}/versions/{flowVersion}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$delete_flow_version_input(flowIdentifier = flowIdentifier, flowVersion = flowVersion, skipResourceInUseCheck = skipResourceInUseCheck)
   output <- .bedrockagent$delete_flow_version_output()
@@ -3576,7 +3690,8 @@ bedrockagent_delete_knowledge_base <- function(knowledgeBaseId) {
     http_path = "/knowledgebases/{knowledgeBaseId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$delete_knowledge_base_input(knowledgeBaseId = knowledgeBaseId)
   output <- .bedrockagent$delete_knowledge_base_output()
@@ -3662,7 +3777,8 @@ bedrockagent_delete_knowledge_base_documents <- function(knowledgeBaseId, dataSo
     http_path = "/knowledgebases/{knowledgeBaseId}/datasources/{dataSourceId}/documents/deleteDocuments",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$delete_knowledge_base_documents_input(knowledgeBaseId = knowledgeBaseId, dataSourceId = dataSourceId, clientToken = clientToken, documentIdentifiers = documentIdentifiers)
   output <- .bedrockagent$delete_knowledge_base_documents_output()
@@ -3715,7 +3831,8 @@ bedrockagent_delete_prompt <- function(promptIdentifier, promptVersion = NULL) {
     http_path = "/prompts/{promptIdentifier}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$delete_prompt_input(promptIdentifier = promptIdentifier, promptVersion = promptVersion)
   output <- .bedrockagent$delete_prompt_output()
@@ -3767,7 +3884,8 @@ bedrockagent_delete_resource_policy <- function(resourceArn, expectedRevisionId 
     http_path = "/resourcepolicy/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$delete_resource_policy_input(resourceArn = resourceArn, expectedRevisionId = expectedRevisionId)
   output <- .bedrockagent$delete_resource_policy_output()
@@ -3778,6 +3896,60 @@ bedrockagent_delete_resource_policy <- function(resourceArn, expectedRevisionId 
   return(response)
 }
 .bedrockagent$operations$delete_resource_policy <- bedrockagent_delete_resource_policy
+
+#' Deletes a VPC configuration
+#'
+#' @description
+#' Deletes a VPC configuration. This operation is asynchronous: it returns status `DELETING`. Poll [`get_vpc_configuration`][bedrockagent_get_vpc_configuration] until it returns a `ResourceNotFoundException`, indicating the configuration is deleted. Delete requests are idempotent and safe to retry.
+#'
+#' @usage
+#' bedrockagent_delete_vpc_configuration(knowledgeBaseId,
+#'   vpcConfigurationId)
+#'
+#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base that owns the VPC configuration.
+#' @param vpcConfigurationId &#91;required&#93; The unique identifier of the VPC configuration to delete.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   vpcConfigurationId = "string",
+#'   status = "CREATING"|"CREATED"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_vpc_configuration(
+#'   knowledgeBaseId = "string",
+#'   vpcConfigurationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagent_delete_vpc_configuration
+#'
+#' @aliases bedrockagent_delete_vpc_configuration
+bedrockagent_delete_vpc_configuration <- function(knowledgeBaseId, vpcConfigurationId) {
+  op <- new_operation(
+    name = "DeleteVpcConfiguration",
+    http_method = "DELETE",
+    http_path = "/knowledgebases/{knowledgeBaseId}/vpcconfigurations/{vpcConfigurationId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .bedrockagent$delete_vpc_configuration_input(knowledgeBaseId = knowledgeBaseId, vpcConfigurationId = vpcConfigurationId)
+  output <- .bedrockagent$delete_vpc_configuration_output()
+  config <- get_config()
+  svc <- .bedrockagent$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagent$operations$delete_vpc_configuration <- bedrockagent_delete_vpc_configuration
 
 #' Disassociates an agent collaborator
 #'
@@ -3816,7 +3988,8 @@ bedrockagent_disassociate_agent_collaborator <- function(agentId, agentVersion, 
     http_path = "/agents/{agentId}/agentversions/{agentVersion}/agentcollaborators/{collaboratorId}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$disassociate_agent_collaborator_input(agentId = agentId, agentVersion = agentVersion, collaboratorId = collaboratorId)
   output <- .bedrockagent$disassociate_agent_collaborator_output()
@@ -3865,7 +4038,8 @@ bedrockagent_disassociate_agent_knowledge_base <- function(agentId, agentVersion
     http_path = "/agents/{agentId}/agentversions/{agentVersion}/knowledgebases/{knowledgeBaseId}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$disassociate_agent_knowledge_base_input(agentId = agentId, agentVersion = agentVersion, knowledgeBaseId = knowledgeBaseId)
   output <- .bedrockagent$disassociate_agent_knowledge_base_output()
@@ -3985,7 +4159,8 @@ bedrockagent_get_agent <- function(agentId) {
     http_path = "/agents/{agentId}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$get_agent_input(agentId = agentId)
   output <- .bedrockagent$get_agent_output()
@@ -4084,7 +4259,8 @@ bedrockagent_get_agent_action_group <- function(agentId, agentVersion, actionGro
     http_path = "/agents/{agentId}/agentversions/{agentVersion}/actiongroups/{actionGroupId}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$get_agent_action_group_input(agentId = agentId, agentVersion = agentVersion, actionGroupId = actionGroupId)
   output <- .bedrockagent$get_agent_action_group_output()
@@ -4175,7 +4351,8 @@ bedrockagent_get_agent_alias <- function(agentId, agentAliasId) {
     http_path = "/agents/{agentId}/agentaliases/{agentAliasId}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$get_agent_alias_input(agentId = agentId, agentAliasId = agentAliasId)
   output <- .bedrockagent$get_agent_alias_output()
@@ -4246,7 +4423,8 @@ bedrockagent_get_agent_collaborator <- function(agentId, agentVersion, collabora
     http_path = "/agents/{agentId}/agentversions/{agentVersion}/agentcollaborators/{collaboratorId}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$get_agent_collaborator_input(agentId = agentId, agentVersion = agentVersion, collaboratorId = collaboratorId)
   output <- .bedrockagent$get_agent_collaborator_output()
@@ -4312,7 +4490,8 @@ bedrockagent_get_agent_knowledge_base <- function(agentId, agentVersion, knowled
     http_path = "/agents/{agentId}/agentversions/{agentVersion}/knowledgebases/{knowledgeBaseId}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$get_agent_knowledge_base_input(agentId = agentId, agentVersion = agentVersion, knowledgeBaseId = knowledgeBaseId)
   output <- .bedrockagent$get_agent_knowledge_base_output()
@@ -4424,7 +4603,8 @@ bedrockagent_get_agent_version <- function(agentId, agentVersion) {
     http_path = "/agents/{agentId}/agentversions/{agentVersion}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$get_agent_version_input(agentId = agentId, agentVersion = agentVersion)
   output <- .bedrockagent$get_agent_version_output()
@@ -4702,7 +4882,8 @@ bedrockagent_get_data_source <- function(knowledgeBaseId, dataSourceId) {
     http_path = "/knowledgebases/{knowledgeBaseId}/datasources/{dataSourceId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$get_data_source_input(knowledgeBaseId = knowledgeBaseId, dataSourceId = dataSourceId)
   output <- .bedrockagent$get_data_source_output()
@@ -5141,7 +5322,8 @@ bedrockagent_get_flow <- function(flowIdentifier, includedData = NULL) {
     http_path = "/flows/{flowIdentifier}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$get_flow_input(flowIdentifier = flowIdentifier, includedData = includedData)
   output <- .bedrockagent$get_flow_output()
@@ -5211,7 +5393,8 @@ bedrockagent_get_flow_alias <- function(flowIdentifier, aliasIdentifier) {
     http_path = "/flows/{flowIdentifier}/aliases/{aliasIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$get_flow_alias_input(flowIdentifier = flowIdentifier, aliasIdentifier = aliasIdentifier)
   output <- .bedrockagent$get_flow_alias_output()
@@ -5527,7 +5710,8 @@ bedrockagent_get_flow_version <- function(flowIdentifier, flowVersion, includedD
     http_path = "/flows/{flowIdentifier}/versions/{flowVersion}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$get_flow_version_input(flowIdentifier = flowIdentifier, flowVersion = flowVersion, includedData = includedData)
   output <- .bedrockagent$get_flow_version_output()
@@ -5580,6 +5764,9 @@ bedrockagent_get_flow_version <- function(flowIdentifier, flowVersion, includedD
 #'     ),
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     textReadyAt = as.POSIXct(
+#'       "2015-01-01"
 #'     )
 #'   )
 #' )
@@ -5606,7 +5793,8 @@ bedrockagent_get_ingestion_job <- function(knowledgeBaseId, dataSourceId, ingest
     http_path = "/knowledgebases/{knowledgeBaseId}/datasources/{dataSourceId}/ingestionjobs/{ingestionJobId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$get_ingestion_job_input(knowledgeBaseId = knowledgeBaseId, dataSourceId = dataSourceId, ingestionJobId = ingestionJobId)
   output <- .bedrockagent$get_ingestion_job_output()
@@ -5890,7 +6078,8 @@ bedrockagent_get_knowledge_base <- function(knowledgeBaseId) {
     http_path = "/knowledgebases/{knowledgeBaseId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$get_knowledge_base_input(knowledgeBaseId = knowledgeBaseId)
   output <- .bedrockagent$get_knowledge_base_output()
@@ -5974,7 +6163,8 @@ bedrockagent_get_knowledge_base_documents <- function(knowledgeBaseId, dataSourc
     http_path = "/knowledgebases/{knowledgeBaseId}/datasources/{dataSourceId}/documents/getDocuments",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$get_knowledge_base_documents_input(knowledgeBaseId = knowledgeBaseId, dataSourceId = dataSourceId, documentIdentifiers = documentIdentifiers)
   output <- .bedrockagent$get_knowledge_base_documents_output()
@@ -6135,7 +6325,8 @@ bedrockagent_get_prompt <- function(promptIdentifier, promptVersion = NULL, incl
     http_path = "/prompts/{promptIdentifier}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$get_prompt_input(promptIdentifier = promptIdentifier, promptVersion = promptVersion, includedData = includedData)
   output <- .bedrockagent$get_prompt_output()
@@ -6186,7 +6377,8 @@ bedrockagent_get_resource_policy <- function(resourceArn) {
     http_path = "/resourcepolicy/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$get_resource_policy_input(resourceArn = resourceArn)
   output <- .bedrockagent$get_resource_policy_output()
@@ -6197,6 +6389,80 @@ bedrockagent_get_resource_policy <- function(resourceArn) {
   return(response)
 }
 .bedrockagent$operations$get_resource_policy <- bedrockagent_get_resource_policy
+
+#' Returns the details and current status of a single VPC configuration
+#'
+#' @description
+#' Returns the details and current status of a single VPC configuration. Use this operation to poll for the outcome of an asynchronous create or delete.
+#'
+#' @usage
+#' bedrockagent_get_vpc_configuration(knowledgeBaseId, vpcConfigurationId)
+#'
+#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base that owns the VPC configuration.
+#' @param vpcConfigurationId &#91;required&#93; The unique identifier of the VPC configuration to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   vpcConfiguration = list(
+#'     vpcConfigurationId = "string",
+#'     status = "CREATING"|"CREATED"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED",
+#'     statusMessage = "string",
+#'     vpcId = "string",
+#'     subnetIds = list(
+#'       "string"
+#'     ),
+#'     resourceTarget = "string",
+#'     port = 123,
+#'     protocol = "HTTP"|"HTTPS",
+#'     resolutionMode = "PUBLIC"|"IN_VPC",
+#'     hostHeader = "string",
+#'     tlsServerName = "string",
+#'     name = "string",
+#'     description = "string",
+#'     createdAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     updatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_vpc_configuration(
+#'   knowledgeBaseId = "string",
+#'   vpcConfigurationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagent_get_vpc_configuration
+#'
+#' @aliases bedrockagent_get_vpc_configuration
+bedrockagent_get_vpc_configuration <- function(knowledgeBaseId, vpcConfigurationId) {
+  op <- new_operation(
+    name = "GetVpcConfiguration",
+    http_method = "GET",
+    http_path = "/knowledgebases/{knowledgeBaseId}/vpcconfigurations/{vpcConfigurationId}",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .bedrockagent$get_vpc_configuration_input(knowledgeBaseId = knowledgeBaseId, vpcConfigurationId = vpcConfigurationId)
+  output <- .bedrockagent$get_vpc_configuration_output()
+  config <- get_config()
+  svc <- .bedrockagent$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagent$operations$get_vpc_configuration <- bedrockagent_get_vpc_configuration
 
 #' Ingests documents directly into the knowledge base that is connected to
 #' the data source
@@ -6321,7 +6587,8 @@ bedrockagent_ingest_knowledge_base_documents <- function(knowledgeBaseId, dataSo
     http_path = "/knowledgebases/{knowledgeBaseId}/datasources/{dataSourceId}/documents",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$ingest_knowledge_base_documents_input(knowledgeBaseId = knowledgeBaseId, dataSourceId = dataSourceId, clientToken = clientToken, documents = documents)
   output <- .bedrockagent$ingest_knowledge_base_documents_output()
@@ -6388,7 +6655,8 @@ bedrockagent_list_agent_action_groups <- function(agentId, agentVersion, maxResu
     http_path = "/agents/{agentId}/agentversions/{agentVersion}/actiongroups/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "actionGroupSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$list_agent_action_groups_input(agentId = agentId, agentVersion = agentVersion, maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagent$list_agent_action_groups_output()
@@ -6462,7 +6730,8 @@ bedrockagent_list_agent_aliases <- function(agentId, maxResults = NULL, nextToke
     http_path = "/agents/{agentId}/agentaliases/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "agentAliasSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$list_agent_aliases_input(agentId = agentId, maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagent$list_agent_aliases_output()
@@ -6537,7 +6806,8 @@ bedrockagent_list_agent_collaborators <- function(agentId, agentVersion, maxResu
     http_path = "/agents/{agentId}/agentversions/{agentVersion}/agentcollaborators/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "agentCollaboratorSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$list_agent_collaborators_input(agentId = agentId, agentVersion = agentVersion, maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagent$list_agent_collaborators_output()
@@ -6604,7 +6874,8 @@ bedrockagent_list_agent_knowledge_bases <- function(agentId, agentVersion, maxRe
     http_path = "/agents/{agentId}/agentversions/{agentVersion}/knowledgebases/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "agentKnowledgeBaseSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$list_agent_knowledge_bases_input(agentId = agentId, agentVersion = agentVersion, maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagent$list_agent_knowledge_bases_output()
@@ -6675,7 +6946,8 @@ bedrockagent_list_agent_versions <- function(agentId, maxResults = NULL, nextTok
     http_path = "/agents/{agentId}/agentversions/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "agentVersionSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$list_agent_versions_input(agentId = agentId, maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagent$list_agent_versions_output()
@@ -6743,7 +7015,8 @@ bedrockagent_list_agents <- function(maxResults = NULL, nextToken = NULL) {
     http_path = "/agents/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "agentSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$list_agents_input(maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagent$list_agents_output()
@@ -6809,7 +7082,8 @@ bedrockagent_list_data_sources <- function(knowledgeBaseId, maxResults = NULL, n
     http_path = "/knowledgebases/{knowledgeBaseId}/datasources/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "dataSourceSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$list_data_sources_input(knowledgeBaseId = knowledgeBaseId, maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagent$list_data_sources_output()
@@ -6886,7 +7160,8 @@ bedrockagent_list_flow_aliases <- function(flowIdentifier, maxResults = NULL, ne
     http_path = "/flows/{flowIdentifier}/aliases",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "flowAliasSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$list_flow_aliases_input(flowIdentifier = flowIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagent$list_flow_aliases_output()
@@ -6950,7 +7225,8 @@ bedrockagent_list_flow_versions <- function(flowIdentifier, maxResults = NULL, n
     http_path = "/flows/{flowIdentifier}/versions",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "flowVersionSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$list_flow_versions_input(flowIdentifier = flowIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagent$list_flow_versions_output()
@@ -7017,7 +7293,8 @@ bedrockagent_list_flows <- function(maxResults = NULL, nextToken = NULL) {
     http_path = "/flows/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "flowSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$list_flows_input(maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagent$list_flows_output()
@@ -7060,6 +7337,9 @@ bedrockagent_list_flows <- function(maxResults = NULL, nextToken = NULL) {
 #'         "2015-01-01"
 #'       ),
 #'       updatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       textReadyAt = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
 #'       statistics = list(
@@ -7113,7 +7393,8 @@ bedrockagent_list_ingestion_jobs <- function(knowledgeBaseId, dataSourceId, filt
     http_path = "/knowledgebases/{knowledgeBaseId}/datasources/{dataSourceId}/ingestionjobs/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "ingestionJobSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$list_ingestion_jobs_input(knowledgeBaseId = knowledgeBaseId, dataSourceId = dataSourceId, filters = filters, sortBy = sortBy, maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagent$list_ingestion_jobs_output()
@@ -7190,7 +7471,8 @@ bedrockagent_list_knowledge_base_documents <- function(knowledgeBaseId, dataSour
     http_path = "/knowledgebases/{knowledgeBaseId}/datasources/{dataSourceId}/documents",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "documentDetails"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$list_knowledge_base_documents_input(knowledgeBaseId = knowledgeBaseId, dataSourceId = dataSourceId, maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagent$list_knowledge_base_documents_output()
@@ -7252,7 +7534,8 @@ bedrockagent_list_knowledge_bases <- function(maxResults = NULL, nextToken = NUL
     http_path = "/knowledgebases/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "knowledgeBaseSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$list_knowledge_bases_input(maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagent$list_knowledge_bases_output()
@@ -7323,7 +7606,8 @@ bedrockagent_list_prompts <- function(promptIdentifier = NULL, maxResults = NULL
     http_path = "/prompts/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "promptSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$list_prompts_input(promptIdentifier = promptIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .bedrockagent$list_prompts_output()
@@ -7374,7 +7658,8 @@ bedrockagent_list_tags_for_resource <- function(resourceArn) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .bedrockagent$list_tags_for_resource_output()
@@ -7385,6 +7670,82 @@ bedrockagent_list_tags_for_resource <- function(resourceArn) {
   return(response)
 }
 .bedrockagent$operations$list_tags_for_resource <- bedrockagent_list_tags_for_resource
+
+#' Returns a paginated list of the VPC configurations for a knowledge base
+#'
+#' @description
+#' Returns a paginated list of the VPC configurations for a knowledge base. You can optionally filter by status. Use the `nextToken` parameter to retrieve additional results.
+#'
+#' @usage
+#' bedrockagent_list_vpc_configurations(knowledgeBaseId, statusFilter,
+#'   maxResults, nextToken)
+#'
+#' @param knowledgeBaseId &#91;required&#93; The unique identifier of the knowledge base whose VPC configurations you want to list.
+#' @param statusFilter The status to filter the results by. Only VPC configurations with the specified status are returned.
+#' @param maxResults The maximum number of results to return in the response. If more results are available, the response returns a `nextToken`.
+#' @param nextToken A pagination token to retrieve the next page of results, returned in a previous response when more results are available.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   items = list(
+#'     list(
+#'       vpcConfigurationId = "string",
+#'       status = "CREATING"|"CREATED"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED",
+#'       statusMessage = "string",
+#'       vpcId = "string",
+#'       resourceTarget = "string",
+#'       port = 123,
+#'       protocol = "HTTP"|"HTTPS",
+#'       resolutionMode = "PUBLIC"|"IN_VPC",
+#'       hostHeader = "string",
+#'       tlsServerName = "string",
+#'       name = "string",
+#'       description = "string",
+#'       createdAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_vpc_configurations(
+#'   knowledgeBaseId = "string",
+#'   statusFilter = "CREATING"|"CREATED"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED",
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname bedrockagent_list_vpc_configurations
+#'
+#' @aliases bedrockagent_list_vpc_configurations
+bedrockagent_list_vpc_configurations <- function(knowledgeBaseId, statusFilter = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListVpcConfigurations",
+    http_method = "GET",
+    http_path = "/knowledgebases/{knowledgeBaseId}/vpcconfigurations/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .bedrockagent$list_vpc_configurations_input(knowledgeBaseId = knowledgeBaseId, statusFilter = statusFilter, maxResults = maxResults, nextToken = nextToken)
+  output <- .bedrockagent$list_vpc_configurations_output()
+  config <- get_config()
+  svc <- .bedrockagent$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.bedrockagent$operations$list_vpc_configurations <- bedrockagent_list_vpc_configurations
 
 #' Creates a DRAFT version of the agent that can be used for internal
 #' testing
@@ -7429,7 +7790,8 @@ bedrockagent_prepare_agent <- function(agentId) {
     http_path = "/agents/{agentId}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$prepare_agent_input(agentId = agentId)
   output <- .bedrockagent$prepare_agent_output()
@@ -7479,7 +7841,8 @@ bedrockagent_prepare_flow <- function(flowIdentifier) {
     http_path = "/flows/{flowIdentifier}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$prepare_flow_input(flowIdentifier = flowIdentifier)
   output <- .bedrockagent$prepare_flow_output()
@@ -7534,7 +7897,8 @@ bedrockagent_put_resource_policy <- function(resourceArn, policy, expectedRevisi
     http_path = "/resourcepolicy/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$put_resource_policy_input(resourceArn = resourceArn, policy = policy, expectedRevisionId = expectedRevisionId)
   output <- .bedrockagent$put_resource_policy_output()
@@ -7588,6 +7952,9 @@ bedrockagent_put_resource_policy <- function(resourceArn, policy, expectedRevisi
 #'     ),
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     textReadyAt = as.POSIXct(
+#'       "2015-01-01"
 #'     )
 #'   )
 #' )
@@ -7615,7 +7982,8 @@ bedrockagent_start_ingestion_job <- function(knowledgeBaseId, dataSourceId, clie
     http_path = "/knowledgebases/{knowledgeBaseId}/datasources/{dataSourceId}/ingestionjobs/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$start_ingestion_job_input(knowledgeBaseId = knowledgeBaseId, dataSourceId = dataSourceId, clientToken = clientToken, description = description)
   output <- .bedrockagent$start_ingestion_job_output()
@@ -7668,6 +8036,9 @@ bedrockagent_start_ingestion_job <- function(knowledgeBaseId, dataSourceId, clie
 #'     ),
 #'     updatedAt = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     textReadyAt = as.POSIXct(
+#'       "2015-01-01"
 #'     )
 #'   )
 #' )
@@ -7694,7 +8065,8 @@ bedrockagent_stop_ingestion_job <- function(knowledgeBaseId, dataSourceId, inges
     http_path = "/knowledgebases/{knowledgeBaseId}/datasources/{dataSourceId}/ingestionjobs/{ingestionJobId}/stop",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$stop_ingestion_job_input(knowledgeBaseId = knowledgeBaseId, dataSourceId = dataSourceId, ingestionJobId = ingestionJobId)
   output <- .bedrockagent$stop_ingestion_job_output()
@@ -7709,7 +8081,7 @@ bedrockagent_stop_ingestion_job <- function(knowledgeBaseId, dataSourceId, inges
 #' Associate tags with a resource
 #'
 #' @description
-#' Associate tags with a resource. For more information, see [Tagging resources](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html?trkcampaign=podcast_ep46_es) in the Amazon Bedrock User Guide.
+#' Associate tags with a resource. For more information, see [Tagging resources](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html) in the Amazon Bedrock User Guide.
 #'
 #' @usage
 #' bedrockagent_tag_resource(resourceArn, tags)
@@ -7742,7 +8114,8 @@ bedrockagent_tag_resource <- function(resourceArn, tags) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .bedrockagent$tag_resource_output()
@@ -7790,7 +8163,8 @@ bedrockagent_untag_resource <- function(resourceArn, tagKeys) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .bedrockagent$untag_resource_output()
@@ -7991,7 +8365,8 @@ bedrockagent_update_agent <- function(agentId, agentName, instruction = NULL, fo
     http_path = "/agents/{agentId}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$update_agent_input(agentId = agentId, agentName = agentName, instruction = instruction, foundationModel = foundationModel, description = description, orchestrationType = orchestrationType, customOrchestration = customOrchestration, idleSessionTTLInSeconds = idleSessionTTLInSeconds, agentResourceRoleArn = agentResourceRoleArn, customerEncryptionKeyArn = customerEncryptionKeyArn, promptOverrideConfiguration = promptOverrideConfiguration, guardrailConfiguration = guardrailConfiguration, memoryConfiguration = memoryConfiguration, agentCollaboration = agentCollaboration)
   output <- .bedrockagent$update_agent_output()
@@ -8152,7 +8527,8 @@ bedrockagent_update_agent_action_group <- function(agentId, agentVersion, action
     http_path = "/agents/{agentId}/agentversions/{agentVersion}/actiongroups/{actionGroupId}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$update_agent_action_group_input(agentId = agentId, agentVersion = agentVersion, actionGroupId = actionGroupId, actionGroupName = actionGroupName, description = description, parentActionGroupSignature = parentActionGroupSignature, parentActionGroupSignatureParams = parentActionGroupSignatureParams, actionGroupExecutor = actionGroupExecutor, actionGroupState = actionGroupState, apiSchema = apiSchema, functionSchema = functionSchema)
   output <- .bedrockagent$update_agent_action_group_output()
@@ -8257,7 +8633,8 @@ bedrockagent_update_agent_alias <- function(agentId, agentAliasId, agentAliasNam
     http_path = "/agents/{agentId}/agentaliases/{agentAliasId}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$update_agent_alias_input(agentId = agentId, agentAliasId = agentAliasId, agentAliasName = agentAliasName, description = description, routingConfiguration = routingConfiguration, aliasInvocationState = aliasInvocationState)
   output <- .bedrockagent$update_agent_alias_output()
@@ -8339,7 +8716,8 @@ bedrockagent_update_agent_collaborator <- function(agentId, agentVersion, collab
     http_path = "/agents/{agentId}/agentversions/{agentVersion}/agentcollaborators/{collaboratorId}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$update_agent_collaborator_input(agentId = agentId, agentVersion = agentVersion, collaboratorId = collaboratorId, agentDescriptor = agentDescriptor, collaboratorName = collaboratorName, collaborationInstruction = collaborationInstruction, relayConversationHistory = relayConversationHistory)
   output <- .bedrockagent$update_agent_collaborator_output()
@@ -8410,7 +8788,8 @@ bedrockagent_update_agent_knowledge_base <- function(agentId, agentVersion, know
     http_path = "/agents/{agentId}/agentversions/{agentVersion}/knowledgebases/{knowledgeBaseId}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$update_agent_knowledge_base_input(agentId = agentId, agentVersion = agentVersion, knowledgeBaseId = knowledgeBaseId, description = description, knowledgeBaseState = knowledgeBaseState)
   output <- .bedrockagent$update_agent_knowledge_base_output()
@@ -8912,7 +9291,8 @@ bedrockagent_update_data_source <- function(knowledgeBaseId, dataSourceId, name,
     http_path = "/knowledgebases/{knowledgeBaseId}/datasources/{dataSourceId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$update_data_source_input(knowledgeBaseId = knowledgeBaseId, dataSourceId = dataSourceId, name = name, description = description, dataSourceConfiguration = dataSourceConfiguration, dataDeletionPolicy = dataDeletionPolicy, serverSideEncryptionConfiguration = serverSideEncryptionConfiguration, vectorIngestionConfiguration = vectorIngestionConfiguration)
   output <- .bedrockagent$update_data_source_output()
@@ -9490,7 +9870,8 @@ bedrockagent_update_flow <- function(name, description = NULL, executionRoleArn,
     http_path = "/flows/{flowIdentifier}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$update_flow_input(name = name, description = description, executionRoleArn = executionRoleArn, customerEncryptionKeyArn = customerEncryptionKeyArn, definition = definition, flowIdentifier = flowIdentifier)
   output <- .bedrockagent$update_flow_output()
@@ -9576,7 +9957,8 @@ bedrockagent_update_flow_alias <- function(name, description = NULL, routingConf
     http_path = "/flows/{flowIdentifier}/aliases/{aliasIdentifier}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$update_flow_alias_input(name = name, description = description, routingConfiguration = routingConfiguration, concurrencyConfiguration = concurrencyConfiguration, flowIdentifier = flowIdentifier, aliasIdentifier = aliasIdentifier)
   output <- .bedrockagent$update_flow_alias_output()
@@ -10099,7 +10481,8 @@ bedrockagent_update_knowledge_base <- function(knowledgeBaseId, name, descriptio
     http_path = "/knowledgebases/{knowledgeBaseId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$update_knowledge_base_input(knowledgeBaseId = knowledgeBaseId, name = name, description = description, roleArn = roleArn, knowledgeBaseConfiguration = knowledgeBaseConfiguration, storageConfiguration = storageConfiguration)
   output <- .bedrockagent$update_knowledge_base_output()
@@ -10358,7 +10741,8 @@ bedrockagent_update_prompt <- function(name, description = NULL, customerEncrypt
     http_path = "/prompts/{promptIdentifier}/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$update_prompt_input(name = name, description = description, customerEncryptionKeyArn = customerEncryptionKeyArn, defaultVariant = defaultVariant, variants = variants, promptIdentifier = promptIdentifier)
   output <- .bedrockagent$update_prompt_output()
@@ -10780,7 +11164,8 @@ bedrockagent_validate_flow_definition <- function(definition) {
     http_path = "/flows/validate-definition",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .bedrockagent$validate_flow_definition_input(definition = definition)
   output <- .bedrockagent$validate_flow_definition_output()

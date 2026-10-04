@@ -25,7 +25,8 @@ lexruntimev2_delete_session <- function(botId, botAliasId, localeId, sessionId) 
     http_path = "/bots/{botId}/botAliases/{botAliasId}/botLocales/{localeId}/sessions/{sessionId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexruntimev2$delete_session_input(botId = botId, botAliasId = botAliasId, localeId = localeId, sessionId = sessionId)
   output <- .lexruntimev2$delete_session_output()
@@ -59,7 +60,8 @@ lexruntimev2_get_session <- function(botId, botAliasId, localeId, sessionId) {
     http_path = "/bots/{botId}/botAliases/{botAliasId}/botLocales/{localeId}/sessions/{sessionId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexruntimev2$get_session_input(botId = botId, botAliasId = botAliasId, localeId = localeId, sessionId = sessionId)
   output <- .lexruntimev2$get_session_output()
@@ -102,7 +104,8 @@ lexruntimev2_put_session <- function(botId, botAliasId, localeId, sessionId, mes
     http_path = "/bots/{botId}/botAliases/{botAliasId}/botLocales/{localeId}/sessions/{sessionId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexruntimev2$put_session_input(botId = botId, botAliasId = botAliasId, localeId = localeId, sessionId = sessionId, messages = messages, sessionState = sessionState, requestAttributes = requestAttributes, responseContentType = responseContentType)
   output <- .lexruntimev2$put_session_output()
@@ -141,7 +144,8 @@ lexruntimev2_recognize_text <- function(botId, botAliasId, localeId, sessionId, 
     http_path = "/bots/{botId}/botAliases/{botAliasId}/botLocales/{localeId}/sessions/{sessionId}/text",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexruntimev2$recognize_text_input(botId = botId, botAliasId = botAliasId, localeId = localeId, sessionId = sessionId, text = text, sessionState = sessionState, requestAttributes = requestAttributes)
   output <- .lexruntimev2$recognize_text_output()
@@ -220,7 +224,8 @@ lexruntimev2_recognize_utterance <- function(botId, botAliasId, localeId, sessio
     http_path = "/bots/{botId}/botAliases/{botAliasId}/botLocales/{localeId}/sessions/{sessionId}/utterance",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .lexruntimev2$recognize_utterance_input(botId = botId, botAliasId = botAliasId, localeId = localeId, sessionId = sessionId, sessionState = sessionState, requestAttributes = requestAttributes, requestContentType = requestContentType, responseContentType = responseContentType, inputStream = inputStream)
   output <- .lexruntimev2$recognize_utterance_output()
@@ -257,7 +262,8 @@ lexruntimev2_start_conversation <- function(botId, botAliasId, localeId, session
     http_path = "/bots/{botId}/botAliases/{botAliasId}/botLocales/{localeId}/sessions/{sessionId}/conversation",
     host_prefix = "",
     paginator = list(),
-    stream_api = TRUE
+    stream_api = TRUE,
+    http_checksum = NULL
   )
   input <- .lexruntimev2$start_conversation_input(botId = botId, botAliasId = botAliasId, localeId = localeId, sessionId = sessionId, conversationMode = conversationMode, requestEventStream = requestEventStream)
   output <- .lexruntimev2$start_conversation_output()

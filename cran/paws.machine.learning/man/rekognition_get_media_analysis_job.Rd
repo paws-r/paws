@@ -2,7 +2,8 @@
 % Please edit documentation in R/rekognition_operations.R
 \name{rekognition_get_media_analysis_job}
 \alias{rekognition_get_media_analysis_job}
-\title{Retrieves the results for a given media analysis job}
+\title{Service availability notice: Streaming Video and Bulk Image Analysis is
+no longer available to new customers}
 \usage{
 rekognition_get_media_analysis_job(JobId)
 }
@@ -10,7 +11,7 @@ rekognition_get_media_analysis_job(JobId)
 \item{JobId}{[required] Unique identifier for the media analysis job for which you want to retrieve results.}
 }
 \description{
-Retrieves the results for a given media analysis job. Takes a \code{JobId} returned by StartMediaAnalysisJob.
+Service availability notice: Streaming Video and Bulk Image Analysis is no longer available to new customers. For more information, see \href{https://docs.aws.amazon.com/rekognition/latest/dg/rekognition-availability-changes.html}{Rekognition feature availability changes}.
 
 See \url{https://www.paws-r-sdk.com/docs/rekognition_get_media_analysis_job/} for full documentation.
 }

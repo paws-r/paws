@@ -82,7 +82,7 @@ NULL
 #' Amazon CloudSearch supports four query parsers:
 #' 
 #' -   `simple`: perform simple searches of `text` and `text-array` fields. By default, the `simple` query parser searches all `text` and `text-array` fields. You can specify which fields to search by with the `queryOptions` parameter. If you prefix a search term with a plus sign (+) documents must contain the term to be considered a match. (This is the default, unless you configure the default operator with the `queryOptions` parameter.) You can use the `-` (NOT), `|` (OR), and `*` (wildcard) operators to exclude particular terms, find results that match any of the specified terms, or search for a prefix. To search for a phrase rather than individual terms, enclose the phrase in double quotes. For more information, see [Searching for Text](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching-text.html) in the *Amazon CloudSearch Developer Guide*.
-#' -   `structured`: perform advanced searches by combining multiple expressions to define the search criteria. You can also search within particular fields, search for values and ranges of values, and use advanced options such as term boosting, `matchall`, and `near`. For more information, see [Constructing Compound Queries](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching-compound-queries.html) in the *Amazon CloudSearch Developer Guide*.
+#' -   `structured`: perform advanced searches by combining multiple expressions to define the search criteria. You can also search within particular fields, search for values and ranges of values, and use advanced options such as term boosting, `matchall`, and `near`. For more information, see Constructing Compound Queries in the *Amazon CloudSearch Developer Guide*.
 #' -   `lucene`: search using the Apache Lucene query parser syntax. For more information, see [Apache Lucene Query Parser Syntax](https://lucene.apache.org/core/4_6_0/queryparser/org/apache/lucene/queryparser/classic/package-summary.html#package_description).
 #' -   `dismax`: search using the simplified subset of the Apache Lucene query parser syntax defined by the DisMax query parser. For more information, see [DisMax Query Parser Syntax](https://cwiki.apache.org/confluence/spaces/SOLR/pages/120722804/DisMaxQParserPlugin#Query_Syntax).
 #' @param return Specifies the field and expression values to include in the response. Multiple fields or expressions are specified as a comma-separated list. By default, a search response includes all return enabled fields (`_all_fields`). To return only the document IDs for the matching documents, specify `_no_fields`. To retrieve the relevance score calculated for each document, specify `_score`.
@@ -109,7 +109,8 @@ cloudsearchdomain_search <- function(cursor = NULL, expr = NULL, facet = NULL, f
     http_path = "/2013-01-01/search?format=sdk&pretty=true",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudsearchdomain$search_input(cursor = cursor, expr = expr, facet = facet, filterQuery = filterQuery, highlight = highlight, partial = partial, query = query, queryOptions = queryOptions, queryParser = queryParser, return = return, size = size, sort = sort, start = start, stats = stats)
   output <- .cloudsearchdomain$search_output()
@@ -142,7 +143,8 @@ cloudsearchdomain_suggest <- function(query, suggester, size = NULL) {
     http_path = "/2013-01-01/suggest?format=sdk&pretty=true",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudsearchdomain$suggest_input(query = query, suggester = suggester, size = size)
   output <- .cloudsearchdomain$suggest_output()
@@ -177,7 +179,8 @@ cloudsearchdomain_upload_documents <- function(documents, contentType) {
     http_path = "/2013-01-01/documents/batch?format=sdk",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .cloudsearchdomain$upload_documents_input(documents = documents, contentType = contentType)
   output <- .cloudsearchdomain$upload_documents_output()

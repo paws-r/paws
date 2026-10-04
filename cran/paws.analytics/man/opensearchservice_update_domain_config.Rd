@@ -30,7 +30,8 @@ opensearchservice_update_domain_config(
   DeploymentStrategyOptions = NULL,
   AutomatedSnapshotPauseOptions = NULL,
   UseCase = NULL,
-  EngineMode = NULL
+  EngineMode = NULL,
+  AcceptedWarnings = NULL
 )
 }
 \arguments{
@@ -98,6 +99,8 @@ Maximum suspension duration: 3 days.}
 \item{UseCase}{The primary use case for the domain. For valid values, see \code{DomainUseCase}.}
 
 \item{EngineMode}{The engine mode for the domain. The engine mode can't be changed after the domain is created. For valid values, see \code{EngineMode}.}
+
+\item{AcceptedWarnings}{A list of advisory warning codes to accept for this configuration change. By default, any advisory warning blocks the change. Include the code of each warning you want to accept so the change can proceed. You can find warning codes in the\code{ValidationFailures} list returned by \code{\link[=opensearchservice_describe_domain_change_progress]{describe_domain_change_progress}}and \code{\link[=opensearchservice_describe_dry_run_progress]{describe_dry_run_progress}}. Critical validation failures cannot be accepted and always block the change. If you omit this parameter or pass an empty list, all warnings block the change. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-configuration-changes.html#validation-check}{Validating a domain update}.}
 }
 \description{
 Modifies the cluster configuration of the specified Amazon OpenSearch Service domain.

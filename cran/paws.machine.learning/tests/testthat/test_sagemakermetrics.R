@@ -1,3 +1,3 @@
-svc <- paws.machine.learning::sagemakermetrics()
+svc <- paws::sagemakermetrics()
 
 

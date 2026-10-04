@@ -19,7 +19,7 @@ resiliencehub_create_app(
 \arguments{
 \item{assessmentSchedule}{Assessment execution schedule with 'Daily' or 'Disabled' values.}
 
-\item{awsApplicationArn}{Amazon Resource Name (ARN) of Resource Groups group that is integrated with an AppRegistry application. For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} in the \emph{Amazon Web Services General Reference} guide.}
+\item{awsApplicationArn}{Amazon Resource Name (ARN) of Resource Groups group that is integrated with an AppRegistry application. For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Names (ARNs)} in the \emph{Amazon Web Services General Reference} guide.}
 
 \item{clientToken}{Used for an idempotency token. A client token is a unique, case-sensitive string of up to 64 ASCII characters. You should not reuse the same client token for other API requests.}
 
@@ -31,7 +31,7 @@ resiliencehub_create_app(
 
 \item{permissionModel}{Defines the roles and credentials that Resilience Hub would use while creating the application, importing its resources, and running an assessment.}
 
-\item{policyArn}{Amazon Resource Name (ARN) of the resiliency policy. The format for this ARN is: arn:\code{partition}:resiliencehub:\code{region}:\code{account}:resiliency-policy/\code{policy-id}. For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} in the \emph{Amazon Web Services General Reference} guide.}
+\item{policyArn}{Amazon Resource Name (ARN) of the resiliency policy. The format for this ARN is: arn:\code{partition}:resiliencehub:\code{region}:\code{account}:resiliency-policy/\code{policy-id}. For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Names (ARNs)} in the \emph{Amazon Web Services General Reference} guide.}
 
 \item{tags}{Tags assigned to the resource. A tag is a label that you assign to an Amazon Web Services resource. Each tag consists of a key/value pair.}
 }

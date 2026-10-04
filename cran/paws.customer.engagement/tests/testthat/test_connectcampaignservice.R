@@ -1,4 +1,4 @@
-svc <- paws.customer.engagement::connectcampaignservice()
+svc <- paws::connectcampaignservice()
 
 test_that("list_campaigns", {
   skip_on_cran()

@@ -1,4 +1,4 @@
-svc <- paws.management::cloudwatchrum()
+svc <- paws::cloudwatchrum()
 
 test_that("list_app_monitors", {
   skip_on_cran()

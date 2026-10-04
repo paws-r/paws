@@ -18,7 +18,7 @@ ses_send_raw_email(
 \arguments{
 \item{Source}{The identity's email address. If you do not provide a value for this parameter, you must specify a "From" address in the raw text of the message. (You can also specify both.)
 
-Amazon SES does not support the SMTPUTF8 extension, as described in\href{https://datatracker.ietf.org/doc/html/rfc6531}{RFC6531}. For this reason, the email address string must be 7-bit ASCII. If you want to send to or from email addresses that contain Unicode characters in the domain part of an address, you must encode the domain using Punycode. Punycode is not permitted in the local part of the email address (the part before the @ sign) nor in the "friendly from" name. If you want to use Unicode characters in the "friendly from" name, you must encode the "friendly from" name using MIME encoded-word syntax, as described in \href{https://docs.aws.amazon.com/ses/latest/dg/send-email-raw.html}{Sending raw email using the Amazon SES API}. For more information about Punycode, see \href{https://datatracker.ietf.org/doc/html/rfc3492}{RFC 3492}.
+Amazon SES does not support the SMTPUTF8 extension, as described in\href{https://www.rfc-editor.org/info/rfc6531/}{RFC6531}. For this reason, the email address string must be 7-bit ASCII. If you want to send to or from email addresses that contain Unicode characters in the domain part of an address, you must encode the domain using Punycode. Punycode is not permitted in the local part of the email address (the part before the @ sign) nor in the "friendly from" name. If you want to use Unicode characters in the "friendly from" name, you must encode the "friendly from" name using MIME encoded-word syntax, as described in \href{https://docs.aws.amazon.com/ses/latest/dg/send-email-raw.html}{Sending raw email using the Amazon SES API}. For more information about Punycode, see \href{https://www.rfc-editor.org/info/rfc3492/}{RFC 3492}.
 
 If you specify the \code{Source} parameter and have feedback forwarding enabled, then bounces and complaints are sent to this email address. This takes precedence over any Return-Path header that you might include in the raw text of the message.}
 
@@ -32,7 +32,7 @@ If you specify the \code{Source} parameter and have feedback forwarding enabled,
 \item Attachments must be of a content type that Amazon SES supports. For a list on unsupported content types, see \href{https://docs.aws.amazon.com/ses/latest/dg/}{Unsupported Attachment Types} in the \emph{Amazon SES Developer Guide}.
 \item The entire message must be base64-encoded.
 \item If any of the MIME parts in your message contain content that is outside of the 7-bit ASCII character range, we highly recommend that you encode that content. For more information, see \href{https://docs.aws.amazon.com/ses/latest/dg/send-email-raw.html}{Sending Raw Email} in the \emph{Amazon SES Developer Guide}.
-\item Per \href{https://datatracker.ietf.org/doc/html/rfc5321#section-4.5.3.1.6}{RFC 5321}, the maximum length of each line of text, including the \<CRLF\>, must not exceed 1,000 characters.
+\item Per \href{https://www.rfc-editor.org/info/rfc5321/#section-4.5.3.1.6}{RFC 5321}, the maximum length of each line of text, including the \<CRLF\>, must not exceed 1,000 characters.
 }}
 
 \item{FromArn}{This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to specify a particular "From" address in the header of the raw email.

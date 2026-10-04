@@ -33,6 +33,7 @@ The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} that is used to va
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_bedrock.html}{BEDROCK_POLICY}
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_s3.html}{S3_POLICY}
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_network_security_director.html}{NETWORK_SECURITY_DIRECTOR_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_guardduty.html}{GUARDDUTY_POLICY}
 }}
 
 \item{Tags}{A list of tags that you want to attach to the newly created policy. For each tag in the list, you must specify both a tag key and a value. You can set the value to an empty string, but you can't set it to \code{null}. For more information about tagging, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html}{Tagging Organizations resources} in the Organizations User Guide.

@@ -21,7 +21,8 @@ ec2_modify_client_vpn_endpoint(
   ClientLoginBannerOptions = NULL,
   ClientRouteEnforcementOptions = NULL,
   DisconnectOnSessionTimeout = NULL,
-  TransitGatewayConfiguration = NULL
+  TransitGatewayConfiguration = NULL,
+  DevicePostureOptions = NULL
 )
 }
 \arguments{
@@ -78,6 +79,8 @@ Client route enforcement works by monitoring the route table of a connected devi
 \item{DisconnectOnSessionTimeout}{Indicates whether the client VPN session is disconnected after the maximum timeout specified in \code{sessionTimeoutHours} is reached. If \code{true}, users are prompted to reconnect client VPN. If \code{false}, client VPN attempts to reconnect automatically. The default value is \code{true}.}
 
 \item{TransitGatewayConfiguration}{The Transit Gateway configuration for the Client VPN endpoint. This option is currently not supported.}
+
+\item{DevicePostureOptions}{The device posture options for the Client VPN endpoint. Specifying this parameter replaces the entire device posture configuration for the endpoint. To remove all device trust providers, specify an empty list.}
 }
 \description{
 Modifies the specified Client VPN endpoint. Modifying the DNS server resets existing client connections.

@@ -15,7 +15,8 @@ dynamodb_export_table_to_point_in_time(
   S3SseKmsKeyId = NULL,
   ExportFormat = NULL,
   ExportType = NULL,
-  IncrementalExportSpecification = NULL
+  IncrementalExportSpecification = NULL,
+  FilterSpecification = NULL
 )
 }
 \arguments{
@@ -50,6 +51,8 @@ S3BucketOwner is a required parameter when exporting to a S3 bucket in another a
 \item{ExportType}{Choice of whether to execute as a full export or incremental export. Valid values are FULL_EXPORT or INCREMENTAL_EXPORT. The default value is FULL_EXPORT. If INCREMENTAL_EXPORT is provided, the IncrementalExportSpecification must also be used.}
 
 \item{IncrementalExportSpecification}{Optional object containing the parameters specific to an incremental export.}
+
+\item{FilterSpecification}{The criteria used to filter which items are included in the point-in-time export. When you specify this parameter, only items that match the key conditions and filter expressions are exported.}
 }
 \description{
 Exports table data to an S3 bucket. The table must have point in time recovery enabled, and you can export data from any time within the point in time recovery window.

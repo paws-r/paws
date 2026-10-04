@@ -29,7 +29,8 @@ health_describe_affected_accounts_for_organization <- function(eventArn, nextTok
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "affectedAccounts", non_aggregate_keys = list( "eventScopeCode")),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .health$describe_affected_accounts_for_organization_input(eventArn = eventArn, nextToken = nextToken, maxResults = maxResults)
   output <- .health$describe_affected_accounts_for_organization_output()
@@ -64,7 +65,8 @@ health_describe_affected_entities <- function(filter, locale = NULL, nextToken =
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "entities"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .health$describe_affected_entities_input(filter = filter, locale = locale, nextToken = nextToken, maxResults = maxResults)
   output <- .health$describe_affected_entities_output()
@@ -101,7 +103,8 @@ health_describe_affected_entities_for_organization <- function(organizationEntit
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", non_aggregate_keys = list( "failedSet"), output_token = "nextToken", result_key = "entities"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .health$describe_affected_entities_for_organization_input(organizationEntityFilters = organizationEntityFilters, locale = locale, nextToken = nextToken, maxResults = maxResults, organizationEntityAccountFilters = organizationEntityAccountFilters)
   output <- .health$describe_affected_entities_for_organization_output()
@@ -133,7 +136,8 @@ health_describe_entity_aggregates <- function(eventArns = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .health$describe_entity_aggregates_input(eventArns = eventArns)
   output <- .health$describe_entity_aggregates_output()
@@ -166,7 +170,8 @@ health_describe_entity_aggregates_for_organization <- function(eventArns, awsAcc
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .health$describe_entity_aggregates_for_organization_input(eventArns = eventArns, awsAccountIds = awsAccountIds)
   output <- .health$describe_entity_aggregates_for_organization_output()
@@ -201,7 +206,8 @@ health_describe_event_aggregates <- function(filter = NULL, aggregateField, maxR
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "eventAggregates"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .health$describe_event_aggregates_input(filter = filter, aggregateField = aggregateField, maxResults = maxResults, nextToken = nextToken)
   output <- .health$describe_event_aggregates_output()
@@ -233,7 +239,8 @@ health_describe_event_details <- function(eventArns, locale = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .health$describe_event_details_input(eventArns = eventArns, locale = locale)
   output <- .health$describe_event_details_output()
@@ -266,7 +273,8 @@ health_describe_event_details_for_organization <- function(organizationEventDeta
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .health$describe_event_details_for_organization_input(organizationEventDetailFilters = organizationEventDetailFilters, locale = locale)
   output <- .health$describe_event_details_for_organization_output()
@@ -302,7 +310,8 @@ health_describe_event_types <- function(filter = NULL, locale = NULL, nextToken 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "eventTypes"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .health$describe_event_types_input(filter = filter, locale = locale, nextToken = nextToken, maxResults = maxResults)
   output <- .health$describe_event_types_output()
@@ -336,7 +345,8 @@ health_describe_events <- function(filter = NULL, nextToken = NULL, maxResults =
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "events"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .health$describe_events_input(filter = filter, nextToken = nextToken, maxResults = maxResults, locale = locale)
   output <- .health$describe_events_output()
@@ -371,7 +381,8 @@ health_describe_events_for_organization <- function(filter = NULL, nextToken = N
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "events"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .health$describe_events_for_organization_input(filter = filter, nextToken = nextToken, maxResults = maxResults, locale = locale)
   output <- .health$describe_events_for_organization_output()
@@ -403,7 +414,8 @@ health_describe_health_service_status_for_organization <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .health$describe_health_service_status_for_organization_input()
   output <- .health$describe_health_service_status_for_organization_output()
@@ -414,6 +426,42 @@ health_describe_health_service_status_for_organization <- function() {
   return(response)
 }
 .health$operations$describe_health_service_status_for_organization <- health_describe_health_service_status_for_organization
+
+#' Returns lifecycle information for Amazon Web Services services,
+#' including end-of-life dates, version recommendations, and lifecycle
+#' events
+#'
+#' @description
+#' Returns lifecycle information for Amazon Web Services services, including end-of-life dates, version recommendations, and lifecycle events.
+#'
+#' See [https://www.paws-r-sdk.com/docs/health_describe_service_lifecycle/](https://www.paws-r-sdk.com/docs/health_describe_service_lifecycle/) for full documentation.
+#'
+#' @param filter Values to narrow the results returned.
+#' @param nextToken If the results of a search are large, only a portion of the results are returned, and a `nextToken` pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.
+#' @param maxResults The maximum number of items to return in one batch, between 1 and 20, inclusive.
+#'
+#' @keywords internal
+#'
+#' @rdname health_describe_service_lifecycle
+health_describe_service_lifecycle <- function(filter = NULL, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeServiceLifecycle",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "serviceLifecycles"),
+    stream_api = FALSE,
+    http_checksum = NULL
+  )
+  input <- .health$describe_service_lifecycle_input(filter = filter, nextToken = nextToken, maxResults = maxResults)
+  output <- .health$describe_service_lifecycle_output()
+  config <- get_config()
+  svc <- .health$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.health$operations$describe_service_lifecycle <- health_describe_service_lifecycle
 
 #' Disables Health from working with Organizations
 #'
@@ -434,7 +482,8 @@ health_disable_health_service_access_for_organization <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .health$disable_health_service_access_for_organization_input()
   output <- .health$disable_health_service_access_for_organization_output()
@@ -465,7 +514,8 @@ health_enable_health_service_access_for_organization <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .health$enable_health_service_access_for_organization_input()
   output <- .health$enable_health_service_access_for_organization_output()

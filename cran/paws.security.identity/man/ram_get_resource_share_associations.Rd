@@ -22,13 +22,13 @@ ram_get_resource_share_associations(
 \item \code{RESOURCE} – list the resources whose associations you want to see.
 }}
 
-\item{resourceShareArns}{Specifies a list of \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} of the resource share whose associations you want to retrieve.}
+\item{resourceShareArns}{Specifies a list of \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Names (ARNs)} of the resource share whose associations you want to retrieve.}
 
-\item{resourceArn}{Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)} of a resource whose resource shares you want to retrieve.
+\item{resourceArn}{Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Name (ARN)} of a resource whose resource shares you want to retrieve.
 
 You cannot specify this parameter if the association type is \code{PRINCIPAL}.}
 
-\item{principal}{Specifies the ID of the principal whose resource shares you want to retrieve. This can be an Amazon Web Services account ID, an organization ID, an organizational unit ID, or the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)} of an individual IAM role or user.
+\item{principal}{Specifies the ID of the principal whose resource shares you want to retrieve. This can be an Amazon Web Services account ID, an organization ID, an organizational unit ID, or the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Name (ARN)} of an individual IAM role or user.
 
 You cannot specify this parameter if the association type is \code{RESOURCE}.}
 

@@ -7,7 +7,7 @@
 imagebuilder_get_workflow(workflowBuildVersionArn)
 }
 \arguments{
-\item{workflowBuildVersionArn}{[required] The Amazon Resource Name (ARN) of the workflow resource that you want to get.}
+\item{workflowBuildVersionArn}{[required] The Amazon Resource Name (ARN) of the workflow resource that you want to get. You can specify a build version ARN, or a version ARN with or without wildcards (\code{x}) in its version segments. Image Builder resolves version and wildcard ARNs to the most recent matching build version.}
 }
 \description{
 Retrieves a workflow resource object.

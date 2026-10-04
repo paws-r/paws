@@ -54,7 +54,8 @@ batch_cancel_job <- function(jobId, reason) {
     http_path = "/v1/canceljob",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$cancel_job_input(jobId = jobId, reason = reason)
   output <- .batch$cancel_job_output()
@@ -78,6 +79,8 @@ batch_cancel_job <- function(jobId, reason) {
 #' Jobs that progressed to the `STARTING` or `RUNNING` state aren't cancelled. These jobs must be terminated with the [`terminate_job`][batch_terminate_job] or [`terminate_jobs`][batch_terminate_jobs] operation.
 #' 
 #' Batch reports the result for each job individually in the response. Jobs that were processed successfully are reported in the `successful` list. Jobs that encountered errors are reported in the `errors` list. The response returns an HTTP status code of `200` even when some jobs encountered errors, so check the `errors` list. Jobs that can't be found are treated as successfully processed.
+#' 
+#' This operation requires `batch:CancelJob` permission for each job in the request. There is no separate `batch:CancelJobs` IAM action. If a caller's IAM policy grants `batch:CancelJob`, they can use both the singular [`cancel_job`][batch_cancel_job] and bulk [`cancel_jobs`][batch_cancel_jobs] operations.
 #'
 #' @usage
 #' batch_cancel_jobs(jobs, reason)
@@ -126,7 +129,8 @@ batch_cancel_jobs <- function(jobs, reason) {
     http_path = "/v1/canceljobs",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$cancel_jobs_input(jobs = jobs, reason = reason)
   output <- .batch$cancel_jobs_output()
@@ -185,7 +189,7 @@ batch_cancel_jobs <- function(jobs, reason) {
 #' These tags can be updated or removed using the [`tag_resource`][batch_tag_resource] and [`untag_resource`][batch_untag_resource] API operations. These tags don't propagate to the underlying compute resources.
 #' @param eksConfiguration The details for the Amazon EKS cluster that supports the compute environment.
 #' 
-#' To create a compute environment that uses EKS resources, the caller must have permissions to call `eks:DescribeCluster`.
+#' To create a compute environment that uses EKS resources, the caller must have permissions to call `eks:DescribeCluster`. Additional Amazon EKS permissions are required for Batch to manage an access entry on the cluster; see [Amazon EKS access entry authentication](https://docs.aws.amazon.com/batch/latest/userguide/eks-access-entries.html) in the *Batch User Guide*.
 #' @param context Reserved.
 #' @param ecsSettings The Amazon ECS settings for the compute environment. These settings control CloudWatch Container Insights collection for the compute environment.
 #'
@@ -304,7 +308,11 @@ batch_cancel_jobs <- function(jobs, reason) {
 #'   ),
 #'   eksConfiguration = list(
 #'     eksClusterArn = "string",
-#'     kubernetesNamespace = "string"
+#'     kubernetesNamespace = "string",
+#'     accessEntry = list(
+#'       desiredState = "ENABLED"|"DISABLED"|"INHERIT_FROM_CLUSTER",
+#'       status = "ACTIVE"|"INACTIVE"
+#'     )
 #'   ),
 #'   context = "string",
 #'   ecsSettings = list(
@@ -399,7 +407,8 @@ batch_create_compute_environment <- function(computeEnvironmentName, type, state
     http_path = "/v1/createcomputeenvironment",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$create_compute_environment_input(computeEnvironmentName = computeEnvironmentName, type = type, state = state, unmanagedvCpus = unmanagedvCpus, computeResources = computeResources, serviceRole = serviceRole, tags = tags, eksConfiguration = eksConfiguration, context = context, ecsSettings = ecsSettings)
   output <- .batch$create_compute_environment_output()
@@ -462,7 +471,8 @@ batch_create_consumable_resource <- function(consumableResourceName, totalQuanti
     http_path = "/v1/createconsumableresource",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$create_consumable_resource_input(consumableResourceName = consumableResourceName, totalQuantity = totalQuantity, resourceType = resourceType, tags = tags)
   output <- .batch$create_consumable_resource_output()
@@ -595,7 +605,8 @@ batch_create_job_queue <- function(jobQueueName, state = NULL, schedulingPolicyA
     http_path = "/v1/createjobqueue",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$create_job_queue_input(jobQueueName = jobQueueName, state = state, schedulingPolicyArn = schedulingPolicyArn, priority = priority, computeEnvironmentOrder = computeEnvironmentOrder, serviceEnvironmentOrder = serviceEnvironmentOrder, jobQueueType = jobQueueType, tags = tags, jobStateTimeLimitActions = jobStateTimeLimitActions)
   output <- .batch$create_job_queue_output()
@@ -670,7 +681,8 @@ batch_create_quota_share <- function(quotaShareName, jobQueue, capacityLimits, r
     http_path = "/v1/createquotashare",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$create_quota_share_input(quotaShareName = quotaShareName, jobQueue = jobQueue, capacityLimits = capacityLimits, resourceSharingConfiguration = resourceSharingConfiguration, preemptionConfiguration = preemptionConfiguration, state = state, tags = tags)
   output <- .batch$create_quota_share_output()
@@ -742,7 +754,8 @@ batch_create_scheduling_policy <- function(name, quotaSharePolicy = NULL, fairsh
     http_path = "/v1/createschedulingpolicy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$create_scheduling_policy_input(name = name, quotaSharePolicy = quotaSharePolicy, fairsharePolicy = fairsharePolicy, tags = tags)
   output <- .batch$create_scheduling_policy_output()
@@ -808,7 +821,8 @@ batch_create_service_environment <- function(serviceEnvironmentName, serviceEnvi
     http_path = "/v1/createserviceenvironment",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$create_service_environment_input(serviceEnvironmentName = serviceEnvironmentName, serviceEnvironmentType = serviceEnvironmentType, state = state, capacityLimits = capacityLimits, tags = tags)
   output <- .batch$create_service_environment_output()
@@ -862,7 +876,8 @@ batch_delete_compute_environment <- function(computeEnvironment) {
     http_path = "/v1/deletecomputeenvironment",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$delete_compute_environment_input(computeEnvironment = computeEnvironment)
   output <- .batch$delete_compute_environment_output()
@@ -906,7 +921,8 @@ batch_delete_consumable_resource <- function(consumableResource) {
     http_path = "/v1/deleteconsumableresource",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$delete_consumable_resource_input(consumableResource = consumableResource)
   output <- .batch$delete_consumable_resource_output()
@@ -960,7 +976,8 @@ batch_delete_job_queue <- function(jobQueue) {
     http_path = "/v1/deletejobqueue",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$delete_job_queue_input(jobQueue = jobQueue)
   output <- .batch$delete_job_queue_output()
@@ -1004,7 +1021,8 @@ batch_delete_quota_share <- function(quotaShareArn) {
     http_path = "/v1/deletequotashare",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$delete_quota_share_input(quotaShareArn = quotaShareArn)
   output <- .batch$delete_quota_share_output()
@@ -1050,7 +1068,8 @@ batch_delete_scheduling_policy <- function(arn) {
     http_path = "/v1/deleteschedulingpolicy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$delete_scheduling_policy_input(arn = arn)
   output <- .batch$delete_scheduling_policy_output()
@@ -1094,7 +1113,8 @@ batch_delete_service_environment <- function(serviceEnvironment) {
     http_path = "/v1/deleteserviceenvironment",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$delete_service_environment_input(serviceEnvironment = serviceEnvironment)
   output <- .batch$delete_service_environment_output()
@@ -1146,7 +1166,8 @@ batch_deregister_job_definition <- function(jobDefinition) {
     http_path = "/v1/deregisterjobdefinition",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$deregister_job_definition_input(jobDefinition = jobDefinition)
   output <- .batch$deregister_job_definition_output()
@@ -1292,7 +1313,11 @@ batch_deregister_job_definition <- function(jobDefinition) {
 #'       ),
 #'       eksConfiguration = list(
 #'         eksClusterArn = "string",
-#'         kubernetesNamespace = "string"
+#'         kubernetesNamespace = "string",
+#'         accessEntry = list(
+#'           desiredState = "ENABLED"|"DISABLED"|"INHERIT_FROM_CLUSTER",
+#'           status = "ACTIVE"|"INACTIVE"
+#'         )
 #'       ),
 #'       containerOrchestrationType = "ECS"|"EKS",
 #'       uuid = "string",
@@ -1339,7 +1364,8 @@ batch_describe_compute_environments <- function(computeEnvironments = NULL, maxR
     http_path = "/v1/describecomputeenvironments",
     host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "computeEnvironments"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$describe_compute_environments_input(computeEnvironments = computeEnvironments, maxResults = maxResults, nextToken = nextToken)
   output <- .batch$describe_compute_environments_output()
@@ -1397,7 +1423,8 @@ batch_describe_consumable_resource <- function(consumableResource) {
     http_path = "/v1/describeconsumableresource",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$describe_consumable_resource_input(consumableResource = consumableResource)
   output <- .batch$describe_consumable_resource_output()
@@ -2322,7 +2349,8 @@ batch_describe_job_definitions <- function(jobDefinitions = NULL, maxResults = N
     http_path = "/v1/describejobdefinitions",
     host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "jobDefinitions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$describe_job_definitions_input(jobDefinitions = jobDefinitions, maxResults = maxResults, jobDefinitionName = jobDefinitionName, status = status, nextToken = nextToken)
   output <- .batch$describe_job_definitions_output()
@@ -2424,7 +2452,8 @@ batch_describe_job_queues <- function(jobQueues = NULL, maxResults = NULL, nextT
     http_path = "/v1/describejobqueues",
     host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "jobQueues"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$describe_job_queues_input(jobQueues = jobQueues, maxResults = maxResults, nextToken = nextToken)
   output <- .batch$describe_job_queues_output()
@@ -3463,7 +3492,8 @@ batch_describe_jobs <- function(jobs) {
     http_path = "/v1/describejobs",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$describe_jobs_input(jobs = jobs)
   output <- .batch$describe_jobs_output()
@@ -3532,7 +3562,8 @@ batch_describe_quota_share <- function(quotaShareArn) {
     http_path = "/v1/describequotashare",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$describe_quota_share_input(quotaShareArn = quotaShareArn)
   output <- .batch$describe_quota_share_output()
@@ -3604,7 +3635,8 @@ batch_describe_scheduling_policies <- function(arns) {
     http_path = "/v1/describeschedulingpolicies",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$describe_scheduling_policies_input(arns = arns)
   output <- .batch$describe_scheduling_policies_output()
@@ -3680,7 +3712,8 @@ batch_describe_service_environments <- function(serviceEnvironments = NULL, maxR
     http_path = "/v1/describeserviceenvironments",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "serviceEnvironments"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$describe_service_environments_input(serviceEnvironments = serviceEnvironments, maxResults = maxResults, nextToken = nextToken)
   output <- .batch$describe_service_environments_output()
@@ -3799,7 +3832,8 @@ batch_describe_service_job <- function(jobId) {
     http_path = "/v1/describeservicejob",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$describe_service_job_input(jobId = jobId)
   output <- .batch$describe_service_job_output()
@@ -3904,7 +3938,8 @@ batch_get_job_queue_snapshot <- function(jobQueue) {
     http_path = "/v1/getjobqueuesnapshot",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$get_job_queue_snapshot_input(jobQueue = jobQueue)
   output <- .batch$get_job_queue_snapshot_output()
@@ -3979,7 +4014,8 @@ batch_list_consumable_resources <- function(filters = NULL, maxResults = NULL, n
     http_path = "/v1/listconsumableresources",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "consumableResources"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$list_consumable_resources_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .batch$list_consumable_resources_output()
@@ -4147,7 +4183,8 @@ batch_list_jobs <- function(jobQueue = NULL, arrayJobId = NULL, multiNodeJobId =
     http_path = "/v1/listjobs",
     host_prefix = "",
     paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "jobSummaryList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$list_jobs_input(jobQueue = jobQueue, arrayJobId = arrayJobId, multiNodeJobId = multiNodeJobId, jobStatus = jobStatus, maxResults = maxResults, nextToken = nextToken, filters = filters)
   output <- .batch$list_jobs_output()
@@ -4242,7 +4279,8 @@ batch_list_jobs_by_consumable_resource <- function(consumableResource, filters =
     http_path = "/v1/listjobsbyconsumableresource",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobs"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$list_jobs_by_consumable_resource_input(consumableResource = consumableResource, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .batch$list_jobs_by_consumable_resource_output()
@@ -4319,7 +4357,8 @@ batch_list_quota_shares <- function(jobQueue, maxResults = NULL, nextToken = NUL
     http_path = "/v1/listquotashares",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "quotaShares"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$list_quota_shares_input(jobQueue = jobQueue, maxResults = maxResults, nextToken = nextToken)
   output <- .batch$list_quota_shares_output()
@@ -4377,7 +4416,8 @@ batch_list_scheduling_policies <- function(maxResults = NULL, nextToken = NULL) 
     http_path = "/v1/listschedulingpolicies",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "schedulingPolicies"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$list_scheduling_policies_input(maxResults = maxResults, nextToken = nextToken)
   output <- .batch$list_scheduling_policies_output()
@@ -4497,7 +4537,8 @@ batch_list_service_jobs <- function(jobQueue = NULL, jobStatus = NULL, maxResult
     http_path = "/v1/listservicejobs",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobSummaryList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$list_service_jobs_input(jobQueue = jobQueue, jobStatus = jobStatus, maxResults = maxResults, nextToken = nextToken, filters = filters)
   output <- .batch$list_service_jobs_output()
@@ -4556,7 +4597,8 @@ batch_list_tags_for_resource <- function(resourceArn) {
     http_path = "/v1/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .batch$list_tags_for_resource_output()
@@ -5543,7 +5585,8 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
     http_path = "/v1/registerjobdefinition",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$register_job_definition_input(jobDefinitionName = jobDefinitionName, type = type, parameters = parameters, schedulingPriority = schedulingPriority, containerProperties = containerProperties, nodeProperties = nodeProperties, retryStrategy = retryStrategy, propagateTags = propagateTags, timeout = timeout, tags = tags, platformCapabilities = platformCapabilities, eksProperties = eksProperties, ecsProperties = ecsProperties, consumableResourceProperties = consumableResourceProperties)
   output <- .batch$register_job_definition_output()
@@ -5920,7 +5963,8 @@ batch_submit_job <- function(jobName, jobQueue, shareIdentifier = NULL, scheduli
     http_path = "/v1/submitjob",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$submit_job_input(jobName = jobName, jobQueue = jobQueue, shareIdentifier = shareIdentifier, schedulingPriorityOverride = schedulingPriorityOverride, arrayProperties = arrayProperties, dependsOn = dependsOn, jobDefinition = jobDefinition, parameters = parameters, containerOverrides = containerOverrides, nodeOverrides = nodeOverrides, retryStrategy = retryStrategy, propagateTags = propagateTags, timeout = timeout, tags = tags, eksPropertiesOverride = eksPropertiesOverride, ecsPropertiesOverride = ecsPropertiesOverride, consumableResourcePropertiesOverride = consumableResourcePropertiesOverride)
   output <- .batch$submit_job_output()
@@ -6010,7 +6054,8 @@ batch_submit_service_job <- function(jobName, jobQueue, retryStrategy = NULL, sc
     http_path = "/v1/submitservicejob",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$submit_service_job_input(jobName = jobName, jobQueue = jobQueue, retryStrategy = retryStrategy, schedulingPriority = schedulingPriority, serviceRequestPayload = serviceRequestPayload, serviceJobType = serviceJobType, shareIdentifier = shareIdentifier, quotaShareName = quotaShareName, preemptionConfiguration = preemptionConfiguration, timeoutConfig = timeoutConfig, tags = tags, clientToken = clientToken)
   output <- .batch$submit_service_job_output()
@@ -6070,7 +6115,8 @@ batch_tag_resource <- function(resourceArn, tags) {
     http_path = "/v1/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .batch$tag_resource_output()
@@ -6127,7 +6173,8 @@ batch_terminate_job <- function(jobId, reason) {
     http_path = "/v1/terminatejob",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$terminate_job_input(jobId = jobId, reason = reason)
   output <- .batch$terminate_job_output()
@@ -6145,6 +6192,8 @@ batch_terminate_job <- function(jobId, reason) {
 #' Terminates up to 50 jobs in a job queue. This is a bulk version of [`terminate_job`][batch_terminate_job]. Jobs that are in the `STARTING` or `RUNNING` state are terminated, which causes them to transition to `FAILED`. Jobs that have not progressed to the `STARTING` state are cancelled.
 #' 
 #' Batch reports the result for each job individually in the response. Jobs that were processed successfully are reported in the `successful` list. Jobs that encountered errors are reported in the `errors` list. The response returns an HTTP status code of `200` even when some jobs encountered errors, so check the `errors` list. Jobs that can't be found are treated as successfully processed.
+#' 
+#' This operation requires `batch:TerminateJob` permission for each job in the request. There is no separate `batch:TerminateJobs` IAM action. If a caller's IAM policy grants `batch:TerminateJob`, they can use both the singular [`terminate_job`][batch_terminate_job] and bulk [`terminate_jobs`][batch_terminate_jobs] operations.
 #'
 #' @usage
 #' batch_terminate_jobs(jobs, reason)
@@ -6193,7 +6242,8 @@ batch_terminate_jobs <- function(jobs, reason) {
     http_path = "/v1/terminatejobs",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$terminate_jobs_input(jobs = jobs, reason = reason)
   output <- .batch$terminate_jobs_output()
@@ -6239,7 +6289,8 @@ batch_terminate_service_job <- function(jobId, reason) {
     http_path = "/v1/terminateservicejob",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$terminate_service_job_input(jobId = jobId, reason = reason)
   output <- .batch$terminate_service_job_output()
@@ -6257,6 +6308,8 @@ batch_terminate_service_job <- function(jobId, reason) {
 #' Terminates up to 50 service jobs in a job queue. This is a bulk version of [`terminate_service_job`][batch_terminate_service_job].
 #' 
 #' Batch reports the result for each service job individually in the response. Service jobs that were processed successfully are reported in the `successful` list. Service jobs that encountered errors are reported in the `errors` list. The response returns an HTTP status code of `200` even when some service jobs encountered errors, so check the `errors` list. Service jobs that can't be found are treated as successfully processed.
+#' 
+#' This operation requires `batch:TerminateServiceJob` permission for each service job in the request. There is no separate `batch:TerminateServiceJobs` IAM action. If a caller's IAM policy grants `batch:TerminateServiceJob`, they can use both the singular [`terminate_service_job`][batch_terminate_service_job] and bulk [`terminate_service_jobs`][batch_terminate_service_jobs] operations.
 #'
 #' @usage
 #' batch_terminate_service_jobs(jobs, reason)
@@ -6303,7 +6356,8 @@ batch_terminate_service_jobs <- function(jobs, reason) {
     http_path = "/v1/terminateservicejobs",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$terminate_service_jobs_input(jobs = jobs, reason = reason)
   output <- .batch$terminate_service_jobs_output()
@@ -6362,7 +6416,8 @@ batch_untag_resource <- function(resourceArn, tagKeys) {
     http_path = "/v1/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .batch$untag_resource_output()
@@ -6382,7 +6437,7 @@ batch_untag_resource <- function(resourceArn, tagKeys) {
 #' @usage
 #' batch_update_compute_environment(computeEnvironment, state,
 #'   unmanagedvCpus, computeResources, serviceRole, updatePolicy, context,
-#'   ecsSettings)
+#'   ecsSettings, eksConfiguration)
 #'
 #' @param computeEnvironment &#91;required&#93; The name or full Amazon Resource Name (ARN) of the compute environment to update.
 #' @param state The state of the compute environment. Compute environments in the `ENABLED` state can accept jobs from a queue and scale in or out automatically based on the workload demand of its associated queues.
@@ -6406,6 +6461,7 @@ batch_untag_resource <- function(resourceArn, tagKeys) {
 #' @param updatePolicy Specifies the updated infrastructure update policy for the compute environment. For more information about infrastructure updates, see [Updating compute environments](https://docs.aws.amazon.com/batch/latest/userguide/updating-compute-environments.html) in the *Batch User Guide*.
 #' @param context Reserved.
 #' @param ecsSettings The Amazon ECS settings for the compute environment. These settings control CloudWatch Container Insights collection for the compute environment.
+#' @param eksConfiguration Updates the Amazon EKS configuration for the compute environment. Only specify this parameter if the compute environment's `containerOrchestrationType` is `EKS`. Currently, the `accessEntry` setting is the only Amazon EKS configuration that you can change after the compute environment is created. For more information, see [Amazon EKS access entry authentication](https://docs.aws.amazon.com/batch/latest/userguide/eks-access-entries.html) in the *Batch User Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6521,6 +6577,12 @@ batch_untag_resource <- function(resourceArn, tagKeys) {
 #'   context = "string",
 #'   ecsSettings = list(
 #'     containerInsights = "ENABLED"|"ENHANCED"|"DISABLED"
+#'   ),
+#'   eksConfiguration = list(
+#'     accessEntry = list(
+#'       desiredState = "ENABLED"|"DISABLED"|"INHERIT_FROM_CLUSTER",
+#'       status = "ACTIVE"|"INACTIVE"
+#'     )
 #'   )
 #' )
 #' ```
@@ -6540,16 +6602,17 @@ batch_untag_resource <- function(resourceArn, tagKeys) {
 #' @rdname batch_update_compute_environment
 #'
 #' @aliases batch_update_compute_environment
-batch_update_compute_environment <- function(computeEnvironment, state = NULL, unmanagedvCpus = NULL, computeResources = NULL, serviceRole = NULL, updatePolicy = NULL, context = NULL, ecsSettings = NULL) {
+batch_update_compute_environment <- function(computeEnvironment, state = NULL, unmanagedvCpus = NULL, computeResources = NULL, serviceRole = NULL, updatePolicy = NULL, context = NULL, ecsSettings = NULL, eksConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateComputeEnvironment",
     http_method = "POST",
     http_path = "/v1/updatecomputeenvironment",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
-  input <- .batch$update_compute_environment_input(computeEnvironment = computeEnvironment, state = state, unmanagedvCpus = unmanagedvCpus, computeResources = computeResources, serviceRole = serviceRole, updatePolicy = updatePolicy, context = context, ecsSettings = ecsSettings)
+  input <- .batch$update_compute_environment_input(computeEnvironment = computeEnvironment, state = state, unmanagedvCpus = unmanagedvCpus, computeResources = computeResources, serviceRole = serviceRole, updatePolicy = updatePolicy, context = context, ecsSettings = ecsSettings, eksConfiguration = eksConfiguration)
   output <- .batch$update_compute_environment_output()
   config <- get_config()
   svc <- .batch$service(config, op)
@@ -6617,7 +6680,8 @@ batch_update_consumable_resource <- function(consumableResource, operation = NUL
     http_path = "/v1/updateconsumableresource",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$update_consumable_resource_input(consumableResource = consumableResource, operation = operation, quantity = quantity, clientToken = clientToken)
   output <- .batch$update_consumable_resource_output()
@@ -6709,7 +6773,8 @@ batch_update_job_queue <- function(jobQueue, state = NULL, schedulingPolicyArn =
     http_path = "/v1/updatejobqueue",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$update_job_queue_input(jobQueue = jobQueue, state = state, schedulingPolicyArn = schedulingPolicyArn, priority = priority, computeEnvironmentOrder = computeEnvironmentOrder, serviceEnvironmentOrder = serviceEnvironmentOrder, jobStateTimeLimitActions = jobStateTimeLimitActions)
   output <- .batch$update_job_queue_output()
@@ -6778,7 +6843,8 @@ batch_update_quota_share <- function(quotaShareArn, capacityLimits = NULL, resou
     http_path = "/v1/updatequotashare",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$update_quota_share_input(quotaShareArn = quotaShareArn, capacityLimits = capacityLimits, resourceSharingConfiguration = resourceSharingConfiguration, preemptionConfiguration = preemptionConfiguration, state = state)
   output <- .batch$update_quota_share_output()
@@ -6837,7 +6903,8 @@ batch_update_scheduling_policy <- function(arn, quotaSharePolicy = NULL, fairsha
     http_path = "/v1/updateschedulingpolicy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$update_scheduling_policy_input(arn = arn, quotaSharePolicy = quotaSharePolicy, fairsharePolicy = fairsharePolicy)
   output <- .batch$update_scheduling_policy_output()
@@ -6897,7 +6964,8 @@ batch_update_service_environment <- function(serviceEnvironment, state = NULL, c
     http_path = "/v1/updateserviceenvironment",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$update_service_environment_input(serviceEnvironment = serviceEnvironment, state = state, capacityLimits = capacityLimits)
   output <- .batch$update_service_environment_output()
@@ -6952,7 +7020,8 @@ batch_update_service_job <- function(jobId, schedulingPriority) {
     http_path = "/v1/updateservicejob",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .batch$update_service_job_input(jobId = jobId, schedulingPriority = schedulingPriority)
   output <- .batch$update_service_job_output()

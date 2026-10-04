@@ -52,7 +52,8 @@ computeoptimizer_delete_recommendation_preferences <- function(resourceType, sco
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .computeoptimizer$delete_recommendation_preferences_input(resourceType = resourceType, scope = scope, recommendationPreferenceNames = recommendationPreferenceNames)
   output <- .computeoptimizer$delete_recommendation_preferences_output()
@@ -146,7 +147,8 @@ computeoptimizer_describe_recommendation_export_jobs <- function(jobIds = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "recommendationExportJobs"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .computeoptimizer$describe_recommendation_export_jobs_input(jobIds = jobIds, filters = filters, nextToken = nextToken, maxResults = maxResults)
   output <- .computeoptimizer$describe_recommendation_export_jobs_output()
@@ -256,7 +258,8 @@ computeoptimizer_export_auto_scaling_group_recommendations <- function(accountId
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .computeoptimizer$export_auto_scaling_group_recommendations_input(accountIds = accountIds, filters = filters, fieldsToExport = fieldsToExport, s3DestinationConfig = s3DestinationConfig, fileFormat = fileFormat, includeMemberAccounts = includeMemberAccounts, recommendationPreferences = recommendationPreferences)
   output <- .computeoptimizer$export_auto_scaling_group_recommendations_output()
@@ -359,7 +362,8 @@ computeoptimizer_export_ebs_volume_recommendations <- function(accountIds = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .computeoptimizer$export_ebs_volume_recommendations_input(accountIds = accountIds, filters = filters, fieldsToExport = fieldsToExport, s3DestinationConfig = s3DestinationConfig, fileFormat = fileFormat, includeMemberAccounts = includeMemberAccounts)
   output <- .computeoptimizer$export_ebs_volume_recommendations_output()
@@ -467,7 +471,8 @@ computeoptimizer_export_ec2_instance_recommendations <- function(accountIds = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .computeoptimizer$export_ec2_instance_recommendations_input(accountIds = accountIds, filters = filters, fieldsToExport = fieldsToExport, s3DestinationConfig = s3DestinationConfig, fileFormat = fileFormat, includeMemberAccounts = includeMemberAccounts, recommendationPreferences = recommendationPreferences)
   output <- .computeoptimizer$export_ec2_instance_recommendations_output()
@@ -568,7 +573,8 @@ computeoptimizer_export_ecs_service_recommendations <- function(accountIds = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .computeoptimizer$export_ecs_service_recommendations_input(accountIds = accountIds, filters = filters, fieldsToExport = fieldsToExport, s3DestinationConfig = s3DestinationConfig, fileFormat = fileFormat, includeMemberAccounts = includeMemberAccounts)
   output <- .computeoptimizer$export_ecs_service_recommendations_output()
@@ -667,7 +673,8 @@ computeoptimizer_export_idle_recommendations <- function(accountIds = NULL, filt
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .computeoptimizer$export_idle_recommendations_input(accountIds = accountIds, filters = filters, fieldsToExport = fieldsToExport, s3DestinationConfig = s3DestinationConfig, fileFormat = fileFormat, includeMemberAccounts = includeMemberAccounts)
   output <- .computeoptimizer$export_idle_recommendations_output()
@@ -771,7 +778,8 @@ computeoptimizer_export_lambda_function_recommendations <- function(accountIds =
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .computeoptimizer$export_lambda_function_recommendations_input(accountIds = accountIds, filters = filters, fieldsToExport = fieldsToExport, s3DestinationConfig = s3DestinationConfig, fileFormat = fileFormat, includeMemberAccounts = includeMemberAccounts)
   output <- .computeoptimizer$export_lambda_function_recommendations_output()
@@ -872,7 +880,8 @@ computeoptimizer_export_license_recommendations <- function(accountIds = NULL, f
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .computeoptimizer$export_license_recommendations_input(accountIds = accountIds, filters = filters, fieldsToExport = fieldsToExport, s3DestinationConfig = s3DestinationConfig, fileFormat = fileFormat, includeMemberAccounts = includeMemberAccounts)
   output <- .computeoptimizer$export_license_recommendations_output()
@@ -981,7 +990,8 @@ computeoptimizer_export_rds_database_recommendations <- function(accountIds = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .computeoptimizer$export_rds_database_recommendations_input(accountIds = accountIds, filters = filters, fieldsToExport = fieldsToExport, s3DestinationConfig = s3DestinationConfig, fileFormat = fileFormat, includeMemberAccounts = includeMemberAccounts, recommendationPreferences = recommendationPreferences)
   output <- .computeoptimizer$export_rds_database_recommendations_output()
@@ -1200,7 +1210,8 @@ computeoptimizer_get_auto_scaling_group_recommendations <- function(accountIds =
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .computeoptimizer$get_auto_scaling_group_recommendations_input(accountIds = accountIds, autoScalingGroupArns = autoScalingGroupArns, nextToken = nextToken, maxResults = maxResults, filters = filters, recommendationPreferences = recommendationPreferences)
   output <- .computeoptimizer$get_auto_scaling_group_recommendations_output()
@@ -1353,7 +1364,8 @@ computeoptimizer_get_ebs_volume_recommendations <- function(volumeArns = NULL, n
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .computeoptimizer$get_ebs_volume_recommendations_input(volumeArns = volumeArns, nextToken = nextToken, maxResults = maxResults, filters = filters, accountIds = accountIds)
   output <- .computeoptimizer$get_ebs_volume_recommendations_output()
@@ -1573,7 +1585,8 @@ computeoptimizer_get_ec2_instance_recommendations <- function(instanceArns = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .computeoptimizer$get_ec2_instance_recommendations_input(instanceArns = instanceArns, nextToken = nextToken, maxResults = maxResults, filters = filters, accountIds = accountIds, recommendationPreferences = recommendationPreferences)
   output <- .computeoptimizer$get_ec2_instance_recommendations_output()
@@ -1662,7 +1675,8 @@ computeoptimizer_get_ec2_recommendation_projected_metrics <- function(instanceAr
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .computeoptimizer$get_ec2_recommendation_projected_metrics_input(instanceArn = instanceArn, stat = stat, period = period, startTime = startTime, endTime = endTime, recommendationPreferences = recommendationPreferences)
   output <- .computeoptimizer$get_ec2_recommendation_projected_metrics_output()
@@ -1749,7 +1763,8 @@ computeoptimizer_get_ecs_service_recommendation_projected_metrics <- function(se
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .computeoptimizer$get_ecs_service_recommendation_projected_metrics_input(serviceArn = serviceArn, stat = stat, period = period, startTime = startTime, endTime = endTime)
   output <- .computeoptimizer$get_ecs_service_recommendation_projected_metrics_output()
@@ -1926,7 +1941,8 @@ computeoptimizer_get_ecs_service_recommendations <- function(serviceArns = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .computeoptimizer$get_ecs_service_recommendations_input(serviceArns = serviceArns, nextToken = nextToken, maxResults = maxResults, filters = filters, accountIds = accountIds)
   output <- .computeoptimizer$get_ecs_service_recommendations_output()
@@ -2005,7 +2021,8 @@ computeoptimizer_get_effective_recommendation_preferences <- function(resourceAr
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .computeoptimizer$get_effective_recommendation_preferences_input(resourceArn = resourceArn)
   output <- .computeoptimizer$get_effective_recommendation_preferences_output()
@@ -2061,7 +2078,8 @@ computeoptimizer_get_enrollment_status <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .computeoptimizer$get_enrollment_status_input()
   output <- .computeoptimizer$get_enrollment_status_output()
@@ -2137,7 +2155,8 @@ computeoptimizer_get_enrollment_statuses_for_organization <- function(filters = 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "accountEnrollmentStatuses"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .computeoptimizer$get_enrollment_statuses_for_organization_input(filters = filters, nextToken = nextToken, maxResults = maxResults)
   output <- .computeoptimizer$get_enrollment_statuses_for_organization_output()
@@ -2274,7 +2293,8 @@ computeoptimizer_get_idle_recommendations <- function(resourceArns = NULL, nextT
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .computeoptimizer$get_idle_recommendations_input(resourceArns = resourceArns, nextToken = nextToken, maxResults = maxResults, filters = filters, accountIds = accountIds, orderBy = orderBy)
   output <- .computeoptimizer$get_idle_recommendations_output()
@@ -2416,7 +2436,8 @@ computeoptimizer_get_lambda_function_recommendations <- function(functionArns = 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "lambdaFunctionRecommendations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .computeoptimizer$get_lambda_function_recommendations_input(functionArns = functionArns, accountIds = accountIds, filters = filters, nextToken = nextToken, maxResults = maxResults)
   output <- .computeoptimizer$get_lambda_function_recommendations_output()
@@ -2555,7 +2576,8 @@ computeoptimizer_get_license_recommendations <- function(resourceArns = NULL, ne
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .computeoptimizer$get_license_recommendations_input(resourceArns = resourceArns, nextToken = nextToken, maxResults = maxResults, filters = filters, accountIds = accountIds)
   output <- .computeoptimizer$get_license_recommendations_output()
@@ -2646,7 +2668,8 @@ computeoptimizer_get_rds_database_recommendation_projected_metrics <- function(r
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .computeoptimizer$get_rds_database_recommendation_projected_metrics_input(resourceArn = resourceArn, stat = stat, period = period, startTime = startTime, endTime = endTime, recommendationPreferences = recommendationPreferences)
   output <- .computeoptimizer$get_rds_database_recommendation_projected_metrics_output()
@@ -2855,7 +2878,8 @@ computeoptimizer_get_rds_database_recommendations <- function(resourceArns = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .computeoptimizer$get_rds_database_recommendations_input(resourceArns = resourceArns, nextToken = nextToken, maxResults = maxResults, filters = filters, accountIds = accountIds, recommendationPreferences = recommendationPreferences)
   output <- .computeoptimizer$get_rds_database_recommendations_output()
@@ -2964,7 +2988,8 @@ computeoptimizer_get_recommendation_preferences <- function(resourceType, scope 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "recommendationPreferencesDetails"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .computeoptimizer$get_recommendation_preferences_input(resourceType = resourceType, scope = scope, nextToken = nextToken, maxResults = maxResults)
   output <- .computeoptimizer$get_recommendation_preferences_output()
@@ -3104,7 +3129,8 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "recommendationSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .computeoptimizer$get_recommendation_summaries_input(accountIds = accountIds, nextToken = nextToken, maxResults = maxResults)
   output <- .computeoptimizer$get_recommendation_summaries_output()
@@ -3254,7 +3280,8 @@ computeoptimizer_put_recommendation_preferences <- function(resourceType, scope 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .computeoptimizer$put_recommendation_preferences_input(resourceType = resourceType, scope = scope, enhancedInfrastructureMetrics = enhancedInfrastructureMetrics, inferredWorkloadTypes = inferredWorkloadTypes, externalMetricsPreference = externalMetricsPreference, lookBackPeriod = lookBackPeriod, utilizationPreferences = utilizationPreferences, preferredResources = preferredResources, savingsEstimationMode = savingsEstimationMode)
   output <- .computeoptimizer$put_recommendation_preferences_output()
@@ -3321,7 +3348,8 @@ computeoptimizer_update_enrollment_status <- function(status, includeMemberAccou
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .computeoptimizer$update_enrollment_status_input(status = status, includeMemberAccounts = includeMemberAccounts)
   output <- .computeoptimizer$update_enrollment_status_output()

@@ -46,7 +46,8 @@ codedeploy_add_tags_to_on_premises_instances <- function(tags, instanceNames) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$add_tags_to_on_premises_instances_input(tags = tags, instanceNames = instanceNames)
   output <- .codedeploy$add_tags_to_on_premises_instances_output()
@@ -162,7 +163,8 @@ codedeploy_batch_get_application_revisions <- function(applicationName, revision
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$batch_get_application_revisions_input(applicationName = applicationName, revisions = revisions)
   output <- .codedeploy$batch_get_application_revisions_output()
@@ -224,7 +226,8 @@ codedeploy_batch_get_applications <- function(applicationNames) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$batch_get_applications_input(applicationNames = applicationNames)
   output <- .codedeploy$batch_get_applications_output()
@@ -453,7 +456,8 @@ codedeploy_batch_get_deployment_groups <- function(applicationName, deploymentGr
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$batch_get_deployment_groups_input(applicationName = applicationName, deploymentGroupNames = deploymentGroupNames)
   output <- .codedeploy$batch_get_deployment_groups_output()
@@ -537,7 +541,8 @@ codedeploy_batch_get_deployment_instances <- function(deploymentId, instanceIds)
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$batch_get_deployment_instances_input(deploymentId = deploymentId, instanceIds = instanceIds)
   output <- .codedeploy$batch_get_deployment_instances_output()
@@ -743,7 +748,8 @@ codedeploy_batch_get_deployment_targets <- function(deploymentId, targetIds) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$batch_get_deployment_targets_input(deploymentId = deploymentId, targetIds = targetIds)
   output <- .codedeploy$batch_get_deployment_targets_output()
@@ -977,7 +983,8 @@ codedeploy_batch_get_deployments <- function(deploymentIds) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$batch_get_deployments_input(deploymentIds = deploymentIds)
   output <- .codedeploy$batch_get_deployments_output()
@@ -1047,7 +1054,8 @@ codedeploy_batch_get_on_premises_instances <- function(instanceNames) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$batch_get_on_premises_instances_input(instanceNames = instanceNames)
   output <- .codedeploy$batch_get_on_premises_instances_output()
@@ -1096,7 +1104,8 @@ codedeploy_continue_deployment <- function(deploymentId = NULL, deploymentWaitTy
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$continue_deployment_input(deploymentId = deploymentId, deploymentWaitType = deploymentWaitType)
   output <- .codedeploy$continue_deployment_output()
@@ -1154,7 +1163,8 @@ codedeploy_create_application <- function(applicationName, computePlatform = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$create_application_input(applicationName = applicationName, computePlatform = computePlatform, tags = tags)
   output <- .codedeploy$create_application_output()
@@ -1315,7 +1325,8 @@ codedeploy_create_deployment <- function(applicationName, deploymentGroupName = 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$create_deployment_input(applicationName = applicationName, deploymentGroupName = deploymentGroupName, revision = revision, deploymentConfigName = deploymentConfigName, description = description, ignoreApplicationStopFailures = ignoreApplicationStopFailures, targetInstances = targetInstances, autoRollbackConfiguration = autoRollbackConfiguration, updateOutdatedInstancesOnly = updateOutdatedInstancesOnly, fileExistsBehavior = fileExistsBehavior, deploymentMode = deploymentMode, overrideAlarmConfiguration = overrideAlarmConfiguration)
   output <- .codedeploy$create_deployment_output()
@@ -1405,7 +1416,8 @@ codedeploy_create_deployment_config <- function(deploymentConfigName, minimumHea
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$create_deployment_config_input(deploymentConfigName = deploymentConfigName, minimumHealthyHosts = minimumHealthyHosts, trafficRoutingConfig = trafficRoutingConfig, computePlatform = computePlatform, zonalConfig = zonalConfig)
   output <- .codedeploy$create_deployment_config_output()
@@ -1620,7 +1632,8 @@ codedeploy_create_deployment_group <- function(applicationName, deploymentGroupN
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$create_deployment_group_input(applicationName = applicationName, deploymentGroupName = deploymentGroupName, deploymentConfigName = deploymentConfigName, ec2TagFilters = ec2TagFilters, onPremisesInstanceTagFilters = onPremisesInstanceTagFilters, autoScalingGroups = autoScalingGroups, serviceRoleArn = serviceRoleArn, triggerConfigurations = triggerConfigurations, alarmConfiguration = alarmConfiguration, autoRollbackConfiguration = autoRollbackConfiguration, outdatedInstancesStrategy = outdatedInstancesStrategy, deploymentStyle = deploymentStyle, blueGreenDeploymentConfiguration = blueGreenDeploymentConfiguration, loadBalancerInfo = loadBalancerInfo, ec2TagSet = ec2TagSet, ecsServices = ecsServices, onPremisesTagSet = onPremisesTagSet, tags = tags, terminationHookEnabled = terminationHookEnabled)
   output <- .codedeploy$create_deployment_group_output()
@@ -1664,7 +1677,8 @@ codedeploy_delete_application <- function(applicationName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$delete_application_input(applicationName = applicationName)
   output <- .codedeploy$delete_application_output()
@@ -1710,7 +1724,8 @@ codedeploy_delete_deployment_config <- function(deploymentConfigName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$delete_deployment_config_input(deploymentConfigName = deploymentConfigName)
   output <- .codedeploy$delete_deployment_config_output()
@@ -1767,7 +1782,8 @@ codedeploy_delete_deployment_group <- function(applicationName, deploymentGroupN
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$delete_deployment_group_input(applicationName = applicationName, deploymentGroupName = deploymentGroupName)
   output <- .codedeploy$delete_deployment_group_output()
@@ -1816,7 +1832,8 @@ codedeploy_delete_git_hub_account_token <- function(tokenName = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$delete_git_hub_account_token_input(tokenName = tokenName)
   output <- .codedeploy$delete_git_hub_account_token_output()
@@ -1862,7 +1879,8 @@ codedeploy_delete_resources_by_external_id <- function(externalId = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$delete_resources_by_external_id_input(externalId = externalId)
   output <- .codedeploy$delete_resources_by_external_id_output()
@@ -1906,7 +1924,8 @@ codedeploy_deregister_on_premises_instance <- function(instanceName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$deregister_on_premises_instance_input(instanceName = instanceName)
   output <- .codedeploy$deregister_on_premises_instance_output()
@@ -1964,7 +1983,8 @@ codedeploy_get_application <- function(applicationName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$get_application_input(applicationName = applicationName)
   output <- .codedeploy$get_application_output()
@@ -2073,7 +2093,8 @@ codedeploy_get_application_revision <- function(applicationName, revision) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$get_application_revision_input(applicationName = applicationName, revision = revision)
   output <- .codedeploy$get_application_revision_output()
@@ -2305,7 +2326,8 @@ codedeploy_get_deployment <- function(deploymentId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$get_deployment_input(deploymentId = deploymentId)
   output <- .codedeploy$get_deployment_output()
@@ -2384,7 +2406,8 @@ codedeploy_get_deployment_config <- function(deploymentConfigName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$get_deployment_config_input(deploymentConfigName = deploymentConfigName)
   output <- .codedeploy$get_deployment_config_output()
@@ -2607,7 +2630,8 @@ codedeploy_get_deployment_group <- function(applicationName, deploymentGroupName
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$get_deployment_group_input(applicationName = applicationName, deploymentGroupName = deploymentGroupName)
   output <- .codedeploy$get_deployment_group_output()
@@ -2684,7 +2708,8 @@ codedeploy_get_deployment_instance <- function(deploymentId, instanceId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$get_deployment_instance_input(deploymentId = deploymentId, instanceId = instanceId)
   output <- .codedeploy$get_deployment_instance_output()
@@ -2868,7 +2893,8 @@ codedeploy_get_deployment_target <- function(deploymentId, targetId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$get_deployment_target_input(deploymentId = deploymentId, targetId = targetId)
   output <- .codedeploy$get_deployment_target_output()
@@ -2934,7 +2960,8 @@ codedeploy_get_on_premises_instance <- function(instanceName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$get_on_premises_instance_input(instanceName = instanceName)
   output <- .codedeploy$get_on_premises_instance_output()
@@ -3044,7 +3071,8 @@ codedeploy_list_application_revisions <- function(applicationName, sortBy = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "revisions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$list_application_revisions_input(applicationName = applicationName, sortBy = sortBy, sortOrder = sortOrder, s3Bucket = s3Bucket, s3KeyPrefix = s3KeyPrefix, deployed = deployed, nextToken = nextToken)
   output <- .codedeploy$list_application_revisions_output()
@@ -3097,7 +3125,8 @@ codedeploy_list_applications <- function(nextToken = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "applications"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$list_applications_input(nextToken = nextToken)
   output <- .codedeploy$list_applications_output()
@@ -3150,7 +3179,8 @@ codedeploy_list_deployment_configs <- function(nextToken = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "deploymentConfigsList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$list_deployment_configs_input(nextToken = nextToken)
   output <- .codedeploy$list_deployment_configs_output()
@@ -3206,7 +3236,8 @@ codedeploy_list_deployment_groups <- function(applicationName, nextToken = NULL)
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "deploymentGroups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$list_deployment_groups_input(applicationName = applicationName, nextToken = nextToken)
   output <- .codedeploy$list_deployment_groups_output()
@@ -3284,7 +3315,8 @@ codedeploy_list_deployment_instances <- function(deploymentId, nextToken = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "instancesList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$list_deployment_instances_input(deploymentId = deploymentId, nextToken = nextToken, instanceStatusFilter = instanceStatusFilter, instanceTypeFilter = instanceTypeFilter)
   output <- .codedeploy$list_deployment_instances_output()
@@ -3349,7 +3381,8 @@ codedeploy_list_deployment_targets <- function(deploymentId, nextToken = NULL, t
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "targetIds"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$list_deployment_targets_input(deploymentId = deploymentId, nextToken = nextToken, targetFilters = targetFilters)
   output <- .codedeploy$list_deployment_targets_output()
@@ -3438,7 +3471,8 @@ codedeploy_list_deployments <- function(applicationName = NULL, deploymentGroupN
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "deployments"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$list_deployments_input(applicationName = applicationName, deploymentGroupName = deploymentGroupName, externalId = externalId, includeOnlyStatuses = includeOnlyStatuses, createTimeRange = createTimeRange, nextToken = nextToken)
   output <- .codedeploy$list_deployments_output()
@@ -3490,7 +3524,8 @@ codedeploy_list_git_hub_account_token_names <- function(nextToken = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "tokenNameList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$list_git_hub_account_token_names_input(nextToken = nextToken)
   output <- .codedeploy$list_git_hub_account_token_names_output()
@@ -3559,7 +3594,8 @@ codedeploy_list_on_premises_instances <- function(registrationStatus = NULL, tag
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "instanceNames"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$list_on_premises_instances_input(registrationStatus = registrationStatus, tagFilters = tagFilters, nextToken = nextToken)
   output <- .codedeploy$list_on_premises_instances_output()
@@ -3617,7 +3653,8 @@ codedeploy_list_tags_for_resource <- function(ResourceArn, NextToken = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$list_tags_for_resource_input(ResourceArn = ResourceArn, NextToken = NextToken)
   output <- .codedeploy$list_tags_for_resource_output()
@@ -3671,7 +3708,8 @@ codedeploy_put_lifecycle_event_hook_execution_status <- function(deploymentId = 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$put_lifecycle_event_hook_execution_status_input(deploymentId = deploymentId, lifecycleEventHookExecutionId = lifecycleEventHookExecutionId, status = status)
   output <- .codedeploy$put_lifecycle_event_hook_execution_status_output()
@@ -3741,7 +3779,8 @@ codedeploy_register_application_revision <- function(applicationName, descriptio
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$register_application_revision_input(applicationName = applicationName, description = description, revision = revision)
   output <- .codedeploy$register_application_revision_output()
@@ -3792,7 +3831,8 @@ codedeploy_register_on_premises_instance <- function(instanceName, iamSessionArn
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$register_on_premises_instance_input(instanceName = instanceName, iamSessionArn = iamSessionArn, iamUserArn = iamUserArn)
   output <- .codedeploy$register_on_premises_instance_output()
@@ -3845,7 +3885,8 @@ codedeploy_remove_tags_from_on_premises_instances <- function(tags, instanceName
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$remove_tags_from_on_premises_instances_input(tags = tags, instanceNames = instanceNames)
   output <- .codedeploy$remove_tags_from_on_premises_instances_output()
@@ -3890,7 +3931,8 @@ codedeploy_skip_wait_time_for_instance_termination <- function(deploymentId = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$skip_wait_time_for_instance_termination_input(deploymentId = deploymentId)
   output <- .codedeploy$skip_wait_time_for_instance_termination_output()
@@ -3942,7 +3984,8 @@ codedeploy_stop_deployment <- function(deploymentId, autoRollbackEnabled = NULL)
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$stop_deployment_input(deploymentId = deploymentId, autoRollbackEnabled = autoRollbackEnabled)
   output <- .codedeploy$stop_deployment_output()
@@ -3994,7 +4037,8 @@ codedeploy_tag_resource <- function(ResourceArn, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .codedeploy$tag_resource_output()
@@ -4042,7 +4086,8 @@ codedeploy_untag_resource <- function(ResourceArn, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .codedeploy$untag_resource_output()
@@ -4088,7 +4133,8 @@ codedeploy_update_application <- function(applicationName = NULL, newApplication
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$update_application_input(applicationName = applicationName, newApplicationName = newApplicationName)
   output <- .codedeploy$update_application_output()
@@ -4305,7 +4351,8 @@ codedeploy_update_deployment_group <- function(applicationName, currentDeploymen
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codedeploy$update_deployment_group_input(applicationName = applicationName, currentDeploymentGroupName = currentDeploymentGroupName, newDeploymentGroupName = newDeploymentGroupName, deploymentConfigName = deploymentConfigName, ec2TagFilters = ec2TagFilters, onPremisesInstanceTagFilters = onPremisesInstanceTagFilters, autoScalingGroups = autoScalingGroups, serviceRoleArn = serviceRoleArn, triggerConfigurations = triggerConfigurations, alarmConfiguration = alarmConfiguration, autoRollbackConfiguration = autoRollbackConfiguration, outdatedInstancesStrategy = outdatedInstancesStrategy, deploymentStyle = deploymentStyle, blueGreenDeploymentConfiguration = blueGreenDeploymentConfiguration, loadBalancerInfo = loadBalancerInfo, ec2TagSet = ec2TagSet, ecsServices = ecsServices, onPremisesTagSet = onPremisesTagSet, terminationHookEnabled = terminationHookEnabled)
   output <- .codedeploy$update_deployment_group_output()

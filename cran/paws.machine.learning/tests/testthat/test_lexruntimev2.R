@@ -1,3 +1,3 @@
-svc <- paws.machine.learning::lexruntimev2()
+svc <- paws::lexruntimev2()
 
 

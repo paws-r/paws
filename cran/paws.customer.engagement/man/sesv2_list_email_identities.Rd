@@ -5,9 +5,11 @@
 \title{Returns a list of all of the email identities that are associated with
 your Amazon Web Services account}
 \usage{
-sesv2_list_email_identities(NextToken = NULL, PageSize = NULL)
+sesv2_list_email_identities(Filter = NULL, NextToken = NULL, PageSize = NULL)
 }
 \arguments{
+\item{Filter}{An object that contains filters to apply when listing email identities. You can filter by identity name, identity type, or verification status.}
+
 \item{NextToken}{A token returned from a previous call to \code{\link[=sesv2_list_email_identities]{list_email_identities}} to indicate the position in the list of identities.}
 
 \item{PageSize}{The number of results to show in a single call to \code{\link[=sesv2_list_email_identities]{list_email_identities}}. If the number of results is larger than the number you specified in this parameter, then the response includes a \code{NextToken} element, which you can use to obtain additional results.

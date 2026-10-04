@@ -1,3 +1,3 @@
-svc <- paws.customer.engagement::pinpointsmsvoice()
+svc <- paws::pinpointsmsvoice()
 
 

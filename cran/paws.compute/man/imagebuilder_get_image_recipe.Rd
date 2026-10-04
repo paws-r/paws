@@ -7,7 +7,7 @@
 imagebuilder_get_image_recipe(imageRecipeArn)
 }
 \arguments{
-\item{imageRecipeArn}{[required] The Amazon Resource Name (ARN) of the image recipe that you want to retrieve.}
+\item{imageRecipeArn}{[required] The Amazon Resource Name (ARN) of the image recipe that you want to retrieve. You can use the \code{x} wildcard in trailing version positions to retrieve the latest matching version, for example \code{x.x.x} or \verb{1.x.x}.}
 }
 \description{
 Retrieves an image recipe.

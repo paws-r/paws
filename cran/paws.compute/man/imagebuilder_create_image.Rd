@@ -21,32 +21,32 @@ imagebuilder_create_image(
 )
 }
 \arguments{
-\item{imageRecipeArn}{The Amazon Resource Name (ARN) of the image recipe that defines how images are configured, tested, and assessed.}
+\item{imageRecipeArn}{The Amazon Resource Name (ARN) of the image recipe that defines how images are configured, tested, and assessed. You must specify either this property or \code{containerRecipeArn}, but not both.}
 
-\item{containerRecipeArn}{The Amazon Resource Name (ARN) of the container recipe that defines how images are configured and tested.}
+\item{containerRecipeArn}{The Amazon Resource Name (ARN) of the container recipe that defines how images are configured and tested. You must specify either this property or \code{imageRecipeArn}, but not both.}
 
-\item{distributionConfigurationArn}{The Amazon Resource Name (ARN) of the distribution configuration that defines and configures the outputs of your pipeline.}
+\item{distributionConfigurationArn}{The Amazon Resource Name (ARN) of the distribution configuration that defines and configures the outputs of the image build. If you don't specify a distribution configuration, Image Builder creates the output image only in the account and Amazon Web Services Region where the build runs.}
 
 \item{infrastructureConfigurationArn}{[required] The Amazon Resource Name (ARN) of the infrastructure configuration that defines the environment in which your image will be built and tested.}
 
-\item{imageTestsConfiguration}{The image tests configuration of the image.}
+\item{imageTestsConfiguration}{Settings that determine whether Image Builder runs tests on the image after building it. Image tests are enabled by default.}
 
 \item{enhancedImageMetadataEnabled}{Specifies whether to collect additional information about the image being created, including the operating system (OS) version and package list. Defaults to \code{true}.}
 
 \item{tags}{The tags of the image.}
 
-\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
+\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
 
-\item{imageScanningConfiguration}{Contains settings for vulnerability scans.}
+\item{imageScanningConfiguration}{Settings for vulnerability scans that Amazon Inspector runs during image creation. For AMI output, Amazon Inspector scans the test instance. For container output, Amazon Inspector scans the container image that Image Builder pushes to the Amazon ECR repository specified in \code{ecrConfiguration}.}
 
-\item{workflows}{Contains an array of workflow configuration objects.}
+\item{workflows}{The array of workflow configuration objects for the build. If you specify workflows, they replace the default workflows that Image Builder otherwise runs for the build, and you must also provide an \code{executionRole}.}
 
-\item{executionRole}{The name or Amazon Resource Name (ARN) for the IAM role you create that grants Image Builder access to perform workflow actions.}
+\item{executionRole}{The name or Amazon Resource Name (ARN) for the IAM role you create that grants Image Builder access to perform workflow actions. This property is required if you specify \code{workflows}. If you don't provide a role, Image Builder uses the Image Builder service-linked role in your account, and creates it if it doesn't exist.}
 
-\item{loggingConfiguration}{The logging configuration for the image build process.}
+\item{loggingConfiguration}{The CloudWatch Logs log group where Image Builder sends the image build logs. If you specify a log group name outside of the \verb{/aws/imagebuilder/} namespace, you must also provide an \code{executionRole} that has permission to write to that log group.}
 }
 \description{
-Creates a new image along with all configured output resources defined in the distribution configuration. You must specify exactly one recipe for your image, using either a ContainerRecipeArn or an ImageRecipeArn.
+Creates a new image along with all configured output resources defined in the distribution configuration. You must specify exactly one recipe for your image, using either a \code{containerRecipeArn} or an \code{imageRecipeArn}.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_create_image/} for full documentation.
 }

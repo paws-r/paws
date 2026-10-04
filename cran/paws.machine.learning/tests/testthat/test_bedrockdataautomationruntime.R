@@ -1,3 +1,3 @@
-svc <- paws.machine.learning::bedrockdataautomationruntime()
+svc <- paws::bedrockdataautomationruntime()
 
 

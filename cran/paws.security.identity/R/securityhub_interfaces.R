@@ -783,6 +783,16 @@ NULL
   return(populate(args, .securityhub_shapes[["get_recommended_policy_v2_output"]]))
 }
 
+.securityhub$get_remediations_v2_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .securityhub_shapes[["get_remediations_v2_input"]]))
+}
+
+.securityhub$get_remediations_v2_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .securityhub_shapes[["get_remediations_v2_output"]]))
+}
+
 .securityhub$get_resources_statistics_v2_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   return(populate(args, .securityhub_shapes[["get_resources_statistics_v2_input"]]))
@@ -911,6 +921,16 @@ NULL
 .securityhub$list_enabled_products_for_import_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   return(populate(args, .securityhub_shapes[["list_enabled_products_for_import_output"]]))
+}
+
+.securityhub$list_exposures_by_remediation_v2_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .securityhub_shapes[["list_exposures_by_remediation_v2_input"]]))
+}
+
+.securityhub$list_exposures_by_remediation_v2_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  return(populate(args, .securityhub_shapes[["list_exposures_by_remediation_v2_output"]]))
 }
 
 .securityhub$list_finding_aggregators_input <- function(...) {

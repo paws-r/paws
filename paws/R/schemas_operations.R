@@ -56,7 +56,8 @@ schemas_create_discoverer <- function(Description = NULL, SourceArn, CrossAccoun
     http_path = "/v1/discoverers",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .schemas$create_discoverer_input(Description = Description, SourceArn = SourceArn, CrossAccount = CrossAccount, Tags = Tags)
   output <- .schemas$create_discoverer_output()
@@ -116,7 +117,8 @@ schemas_create_registry <- function(Description = NULL, RegistryName, Tags = NUL
     http_path = "/v1/registries/name/{registryName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .schemas$create_registry_input(Description = Description, RegistryName = RegistryName, Tags = Tags)
   output <- .schemas$create_registry_output()
@@ -193,7 +195,8 @@ schemas_create_schema <- function(Content, Description = NULL, RegistryName, Sch
     http_path = "/v1/registries/name/{registryName}/schemas/name/{schemaName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .schemas$create_schema_input(Content = Content, Description = Description, RegistryName = RegistryName, SchemaName = SchemaName, Tags = Tags, Type = Type)
   output <- .schemas$create_schema_output()
@@ -237,7 +240,8 @@ schemas_delete_discoverer <- function(DiscovererId) {
     http_path = "/v1/discoverers/id/{discovererId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .schemas$delete_discoverer_input(DiscovererId = DiscovererId)
   output <- .schemas$delete_discoverer_output()
@@ -281,7 +285,8 @@ schemas_delete_registry <- function(RegistryName) {
     http_path = "/v1/registries/name/{registryName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .schemas$delete_registry_input(RegistryName = RegistryName)
   output <- .schemas$delete_registry_output()
@@ -325,7 +330,8 @@ schemas_delete_resource_policy <- function(RegistryName = NULL) {
     http_path = "/v1/policy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .schemas$delete_resource_policy_input(RegistryName = RegistryName)
   output <- .schemas$delete_resource_policy_output()
@@ -371,7 +377,8 @@ schemas_delete_schema <- function(RegistryName, SchemaName) {
     http_path = "/v1/registries/name/{registryName}/schemas/name/{schemaName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .schemas$delete_schema_input(RegistryName = RegistryName, SchemaName = SchemaName)
   output <- .schemas$delete_schema_output()
@@ -419,7 +426,8 @@ schemas_delete_schema_version <- function(RegistryName, SchemaName, SchemaVersio
     http_path = "/v1/registries/name/{registryName}/schemas/name/{schemaName}/version/{schemaVersion}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .schemas$delete_schema_version_input(RegistryName = RegistryName, SchemaName = SchemaName, SchemaVersion = SchemaVersion)
   output <- .schemas$delete_schema_version_output()
@@ -482,7 +490,8 @@ schemas_describe_code_binding <- function(Language, RegistryName, SchemaName, Sc
     http_path = "/v1/registries/name/{registryName}/schemas/name/{schemaName}/language/{language}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .schemas$describe_code_binding_input(Language = Language, RegistryName = RegistryName, SchemaName = SchemaName, SchemaVersion = SchemaVersion)
   output <- .schemas$describe_code_binding_output()
@@ -539,7 +548,8 @@ schemas_describe_discoverer <- function(DiscovererId) {
     http_path = "/v1/discoverers/id/{discovererId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .schemas$describe_discoverer_input(DiscovererId = DiscovererId)
   output <- .schemas$describe_discoverer_output()
@@ -593,7 +603,8 @@ schemas_describe_registry <- function(RegistryName) {
     http_path = "/v1/registries/name/{registryName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .schemas$describe_registry_input(RegistryName = RegistryName)
   output <- .schemas$describe_registry_output()
@@ -660,7 +671,8 @@ schemas_describe_schema <- function(RegistryName, SchemaName, SchemaVersion = NU
     http_path = "/v1/registries/name/{registryName}/schemas/name/{schemaName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .schemas$describe_schema_input(RegistryName = RegistryName, SchemaName = SchemaName, SchemaVersion = SchemaVersion)
   output <- .schemas$describe_schema_output()
@@ -719,7 +731,8 @@ schemas_export_schema <- function(RegistryName, SchemaName, SchemaVersion = NULL
     http_path = "/v1/registries/name/{registryName}/schemas/name/{schemaName}/export",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .schemas$export_schema_input(RegistryName = RegistryName, SchemaName = SchemaName, SchemaVersion = SchemaVersion, Type = Type)
   output <- .schemas$export_schema_output()
@@ -775,7 +788,8 @@ schemas_get_code_binding_source <- function(Language, RegistryName, SchemaName, 
     http_path = "/v1/registries/name/{registryName}/schemas/name/{schemaName}/language/{language}/source",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .schemas$get_code_binding_source_input(Language = Language, RegistryName = RegistryName, SchemaName = SchemaName, SchemaVersion = SchemaVersion)
   output <- .schemas$get_code_binding_source_output()
@@ -828,7 +842,8 @@ schemas_get_discovered_schema <- function(Events, Type) {
     http_path = "/v1/discover",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .schemas$get_discovered_schema_input(Events = Events, Type = Type)
   output <- .schemas$get_discovered_schema_output()
@@ -878,7 +893,8 @@ schemas_get_resource_policy <- function(RegistryName = NULL) {
     http_path = "/v1/policy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .schemas$get_resource_policy_input(RegistryName = RegistryName)
   output <- .schemas$get_resource_policy_output()
@@ -946,7 +962,8 @@ schemas_list_discoverers <- function(DiscovererIdPrefix = NULL, Limit = NULL, Ne
     http_path = "/v1/discoverers",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "Limit", result_key = "Discoverers"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .schemas$list_discoverers_input(DiscovererIdPrefix = DiscovererIdPrefix, Limit = Limit, NextToken = NextToken, SourceArnPrefix = SourceArnPrefix)
   output <- .schemas$list_discoverers_output()
@@ -1010,7 +1027,8 @@ schemas_list_registries <- function(Limit = NULL, NextToken = NULL, RegistryName
     http_path = "/v1/registries",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "Limit", result_key = "Registries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .schemas$list_registries_input(Limit = Limit, NextToken = NextToken, RegistryNamePrefix = RegistryNamePrefix, Scope = Scope)
   output <- .schemas$list_registries_output()
@@ -1073,7 +1091,8 @@ schemas_list_schema_versions <- function(Limit = NULL, NextToken = NULL, Registr
     http_path = "/v1/registries/name/{registryName}/schemas/name/{schemaName}/versions",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "Limit", result_key = "SchemaVersions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .schemas$list_schema_versions_input(Limit = Limit, NextToken = NextToken, RegistryName = RegistryName, SchemaName = SchemaName)
   output <- .schemas$list_schema_versions_output()
@@ -1141,7 +1160,8 @@ schemas_list_schemas <- function(Limit = NULL, NextToken = NULL, RegistryName, S
     http_path = "/v1/registries/name/{registryName}/schemas",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "Limit", result_key = "Schemas"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .schemas$list_schemas_input(Limit = Limit, NextToken = NextToken, RegistryName = RegistryName, SchemaNamePrefix = SchemaNamePrefix)
   output <- .schemas$list_schemas_output()
@@ -1192,7 +1212,8 @@ schemas_list_tags_for_resource <- function(ResourceArn) {
     http_path = "/tags/{resource-arn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .schemas$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .schemas$list_tags_for_resource_output()
@@ -1255,7 +1276,8 @@ schemas_put_code_binding <- function(Language, RegistryName, SchemaName, SchemaV
     http_path = "/v1/registries/name/{registryName}/schemas/name/{schemaName}/language/{language}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .schemas$put_code_binding_input(Language = Language, RegistryName = RegistryName, SchemaName = SchemaName, SchemaVersion = SchemaVersion)
   output <- .schemas$put_code_binding_output()
@@ -1309,7 +1331,8 @@ schemas_put_resource_policy <- function(Policy, RegistryName = NULL, RevisionId 
     http_path = "/v1/policy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .schemas$put_resource_policy_input(Policy = Policy, RegistryName = RegistryName, RevisionId = RevisionId)
   output <- .schemas$put_resource_policy_output()
@@ -1380,7 +1403,8 @@ schemas_search_schemas <- function(Keywords, Limit = NULL, NextToken = NULL, Reg
     http_path = "/v1/registries/name/{registryName}/schemas/search",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "Limit", result_key = "Schemas"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .schemas$search_schemas_input(Keywords = Keywords, Limit = Limit, NextToken = NextToken, RegistryName = RegistryName)
   output <- .schemas$search_schemas_output()
@@ -1430,7 +1454,8 @@ schemas_start_discoverer <- function(DiscovererId) {
     http_path = "/v1/discoverers/id/{discovererId}/start",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .schemas$start_discoverer_input(DiscovererId = DiscovererId)
   output <- .schemas$start_discoverer_output()
@@ -1480,7 +1505,8 @@ schemas_stop_discoverer <- function(DiscovererId) {
     http_path = "/v1/discoverers/id/{discovererId}/stop",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .schemas$stop_discoverer_input(DiscovererId = DiscovererId)
   output <- .schemas$stop_discoverer_output()
@@ -1528,7 +1554,8 @@ schemas_tag_resource <- function(ResourceArn, Tags) {
     http_path = "/tags/{resource-arn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .schemas$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .schemas$tag_resource_output()
@@ -1576,7 +1603,8 @@ schemas_untag_resource <- function(ResourceArn, TagKeys) {
     http_path = "/tags/{resource-arn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .schemas$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .schemas$untag_resource_output()
@@ -1637,7 +1665,8 @@ schemas_update_discoverer <- function(Description = NULL, DiscovererId, CrossAcc
     http_path = "/v1/discoverers/id/{discovererId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .schemas$update_discoverer_input(Description = Description, DiscovererId = DiscovererId, CrossAccount = CrossAccount)
   output <- .schemas$update_discoverer_output()
@@ -1693,7 +1722,8 @@ schemas_update_registry <- function(Description = NULL, RegistryName) {
     http_path = "/v1/registries/name/{registryName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .schemas$update_registry_input(Description = Description, RegistryName = RegistryName)
   output <- .schemas$update_registry_output()
@@ -1768,7 +1798,8 @@ schemas_update_schema <- function(ClientTokenId = NULL, Content = NULL, Descript
     http_path = "/v1/registries/name/{registryName}/schemas/name/{schemaName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .schemas$update_schema_input(ClientTokenId = ClientTokenId, Content = Content, Description = Description, RegistryName = RegistryName, SchemaName = SchemaName, Type = Type)
   output <- .schemas$update_schema_output()

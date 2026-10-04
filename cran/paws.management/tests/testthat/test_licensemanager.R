@@ -1,3 +1,3 @@
-svc <- paws.management::licensemanager()
+svc <- paws::licensemanager()
 
 

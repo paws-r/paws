@@ -1,3 +1,3 @@
-svc <- paws.networking::cloudfrontkeyvaluestore()
+svc <- paws::cloudfrontkeyvaluestore()
 
 

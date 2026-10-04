@@ -1,4 +1,4 @@
-svc <- paws.networking::backupgateway()
+svc <- paws::backupgateway()
 
 test_that("list_gateways", {
   skip_on_cran()

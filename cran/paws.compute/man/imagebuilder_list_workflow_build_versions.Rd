@@ -11,7 +11,7 @@ imagebuilder_list_workflow_build_versions(
 )
 }
 \arguments{
-\item{workflowVersionArn}{The Amazon Resource Name (ARN) of the workflow resource for which to get a list of build versions.}
+\item{workflowVersionArn}{The Amazon Resource Name (ARN) of the workflow resource for which to get a list of build versions. The version segments can contain wildcards (\code{x}) to match multiple versions of the workflow. If you don't specify an ARN, the response lists build versions for all of the workflows in your account.}
 
 \item{maxResults}{The maximum number of items to return in a single request.}
 

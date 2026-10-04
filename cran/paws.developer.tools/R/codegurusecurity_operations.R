@@ -22,7 +22,8 @@ codegurusecurity_batch_get_findings <- function(findingIdentifiers) {
     http_path = "/batchGetFindings",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codegurusecurity$batch_get_findings_input(findingIdentifiers = findingIdentifiers)
   output <- .codegurusecurity$batch_get_findings_output()
@@ -64,7 +65,8 @@ codegurusecurity_create_scan <- function(clientToken = NULL, resourceId, scanNam
     http_path = "/scans",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codegurusecurity$create_scan_input(clientToken = clientToken, resourceId = resourceId, scanName = scanName, scanType = scanType, analysisType = analysisType, tags = tags)
   output <- .codegurusecurity$create_scan_output()
@@ -96,7 +98,8 @@ codegurusecurity_create_upload_url <- function(scanName) {
     http_path = "/uploadUrl",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codegurusecurity$create_upload_url_input(scanName = scanName)
   output <- .codegurusecurity$create_upload_url_output()
@@ -127,7 +130,8 @@ codegurusecurity_get_account_configuration <- function() {
     http_path = "/accountConfiguration/get",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codegurusecurity$get_account_configuration_input()
   output <- .codegurusecurity$get_account_configuration_output()
@@ -161,7 +165,8 @@ codegurusecurity_get_findings <- function(scanName, nextToken = NULL, maxResults
     http_path = "/findings/{scanName}",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findings"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codegurusecurity$get_findings_input(scanName = scanName, nextToken = nextToken, maxResults = maxResults, status = status)
   output <- .codegurusecurity$get_findings_output()
@@ -195,7 +200,8 @@ codegurusecurity_get_metrics_summary <- function(date) {
     http_path = "/metrics/summary",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codegurusecurity$get_metrics_summary_input(date = date)
   output <- .codegurusecurity$get_metrics_summary_output()
@@ -228,7 +234,8 @@ codegurusecurity_get_scan <- function(scanName, runId = NULL) {
     http_path = "/scans/{scanName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codegurusecurity$get_scan_input(scanName = scanName, runId = runId)
   output <- .codegurusecurity$get_scan_output()
@@ -263,7 +270,8 @@ codegurusecurity_list_findings_metrics <- function(nextToken = NULL, maxResults 
     http_path = "/metrics/findings",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findingsMetrics"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codegurusecurity$list_findings_metrics_input(nextToken = nextToken, maxResults = maxResults, startDate = startDate, endDate = endDate)
   output <- .codegurusecurity$list_findings_metrics_output()
@@ -295,7 +303,8 @@ codegurusecurity_list_scans <- function(nextToken = NULL, maxResults = NULL) {
     http_path = "/scans",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "summaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codegurusecurity$list_scans_input(nextToken = nextToken, maxResults = maxResults)
   output <- .codegurusecurity$list_scans_output()
@@ -326,7 +335,8 @@ codegurusecurity_list_tags_for_resource <- function(resourceArn) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codegurusecurity$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .codegurusecurity$list_tags_for_resource_output()
@@ -362,7 +372,8 @@ codegurusecurity_tag_resource <- function(resourceArn, tags) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codegurusecurity$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .codegurusecurity$tag_resource_output()
@@ -394,7 +405,8 @@ codegurusecurity_untag_resource <- function(resourceArn, tagKeys) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codegurusecurity$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .codegurusecurity$untag_resource_output()
@@ -425,7 +437,8 @@ codegurusecurity_update_account_configuration <- function(encryptionConfig) {
     http_path = "/updateAccountConfiguration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .codegurusecurity$update_account_configuration_input(encryptionConfig = encryptionConfig)
   output <- .codegurusecurity$update_account_configuration_output()

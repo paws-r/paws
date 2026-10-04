@@ -41,7 +41,8 @@ neptune_add_role_to_db_cluster <- function(DBClusterIdentifier, RoleArn, Feature
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$add_role_to_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, RoleArn = RoleArn, FeatureName = FeatureName)
   output <- .neptune$add_role_to_db_cluster_output()
@@ -118,7 +119,8 @@ neptune_add_source_identifier_to_subscription <- function(SubscriptionName, Sour
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$add_source_identifier_to_subscription_input(SubscriptionName = SubscriptionName, SourceIdentifier = SourceIdentifier)
   output <- .neptune$add_source_identifier_to_subscription_output()
@@ -169,7 +171,8 @@ neptune_add_tags_to_resource <- function(ResourceName, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$add_tags_to_resource_input(ResourceName = ResourceName, Tags = Tags)
   output <- .neptune$add_tags_to_resource_output()
@@ -252,7 +255,8 @@ neptune_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyAc
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$apply_pending_maintenance_action_input(ResourceIdentifier = ResourceIdentifier, ApplyAction = ApplyAction, OptInType = OptInType)
   output <- .neptune$apply_pending_maintenance_action_output()
@@ -340,7 +344,8 @@ neptune_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGrou
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$copy_db_cluster_parameter_group_input(SourceDBClusterParameterGroupIdentifier = SourceDBClusterParameterGroupIdentifier, TargetDBClusterParameterGroupIdentifier = TargetDBClusterParameterGroupIdentifier, TargetDBClusterParameterGroupDescription = TargetDBClusterParameterGroupDescription, Tags = Tags)
   output <- .neptune$copy_db_cluster_parameter_group_output()
@@ -462,7 +467,8 @@ neptune_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$copy_db_cluster_snapshot_input(SourceDBClusterSnapshotIdentifier = SourceDBClusterSnapshotIdentifier, TargetDBClusterSnapshotIdentifier = TargetDBClusterSnapshotIdentifier, KmsKeyId = KmsKeyId, PreSignedUrl = PreSignedUrl, CopyTags = CopyTags, Tags = Tags)
   output <- .neptune$copy_db_cluster_snapshot_output()
@@ -549,7 +555,8 @@ neptune_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Ta
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$copy_db_parameter_group_input(SourceDBParameterGroupIdentifier = SourceDBParameterGroupIdentifier, TargetDBParameterGroupIdentifier = TargetDBParameterGroupIdentifier, TargetDBParameterGroupDescription = TargetDBParameterGroupDescription, Tags = Tags)
   output <- .neptune$copy_db_parameter_group_output()
@@ -867,7 +874,8 @@ neptune_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionP
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$create_db_cluster_input(AvailabilityZones = AvailabilityZones, BackupRetentionPeriod = BackupRetentionPeriod, CharacterSetName = CharacterSetName, CopyTagsToSnapshot = CopyTagsToSnapshot, DatabaseName = DatabaseName, DBClusterIdentifier = DBClusterIdentifier, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, DBSubnetGroupName = DBSubnetGroupName, Engine = Engine, EngineVersion = EngineVersion, Port = Port, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, OptionGroupName = OptionGroupName, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, ReplicationSourceIdentifier = ReplicationSourceIdentifier, Tags = Tags, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, PreSignedUrl = PreSignedUrl, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection, ServerlessV2ScalingConfiguration = ServerlessV2ScalingConfiguration, GlobalClusterIdentifier = GlobalClusterIdentifier, StorageType = StorageType, NetworkType = NetworkType)
   output <- .neptune$create_db_cluster_output()
@@ -951,7 +959,8 @@ neptune_create_db_cluster_endpoint <- function(DBClusterIdentifier, DBClusterEnd
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$create_db_cluster_endpoint_input(DBClusterIdentifier = DBClusterIdentifier, DBClusterEndpointIdentifier = DBClusterEndpointIdentifier, EndpointType = EndpointType, StaticMembers = StaticMembers, ExcludedMembers = ExcludedMembers, Tags = Tags)
   output <- .neptune$create_db_cluster_endpoint_output()
@@ -1029,7 +1038,8 @@ neptune_create_db_cluster_parameter_group <- function(DBClusterParameterGroupNam
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$create_db_cluster_parameter_group_input(DBClusterParameterGroupName = DBClusterParameterGroupName, DBParameterGroupFamily = DBParameterGroupFamily, Description = Description, Tags = Tags)
   output <- .neptune$create_db_cluster_parameter_group_output()
@@ -1132,7 +1142,8 @@ neptune_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCl
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$create_db_cluster_snapshot_input(DBClusterSnapshotIdentifier = DBClusterSnapshotIdentifier, DBClusterIdentifier = DBClusterIdentifier, Tags = Tags)
   output <- .neptune$create_db_cluster_snapshot_output()
@@ -1526,7 +1537,8 @@ neptune_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allo
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$create_db_instance_input(DBName = DBName, DBInstanceIdentifier = DBInstanceIdentifier, AllocatedStorage = AllocatedStorage, DBInstanceClass = DBInstanceClass, Engine = Engine, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, DBSecurityGroups = DBSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, AvailabilityZone = AvailabilityZone, DBSubnetGroupName = DBSubnetGroupName, PreferredMaintenanceWindow = PreferredMaintenanceWindow, DBParameterGroupName = DBParameterGroupName, BackupRetentionPeriod = BackupRetentionPeriod, PreferredBackupWindow = PreferredBackupWindow, Port = Port, MultiAZ = MultiAZ, EngineVersion = EngineVersion, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, LicenseModel = LicenseModel, Iops = Iops, OptionGroupName = OptionGroupName, CharacterSetName = CharacterSetName, PubliclyAccessible = PubliclyAccessible, Tags = Tags, DBClusterIdentifier = DBClusterIdentifier, StorageType = StorageType, TdeCredentialArn = TdeCredentialArn, TdeCredentialPassword = TdeCredentialPassword, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, Domain = Domain, CopyTagsToSnapshot = CopyTagsToSnapshot, MonitoringInterval = MonitoringInterval, MonitoringRoleArn = MonitoringRoleArn, DomainIAMRoleName = DomainIAMRoleName, PromotionTier = PromotionTier, Timezone = Timezone, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection)
   output <- .neptune$create_db_instance_output()
@@ -1606,7 +1618,8 @@ neptune_create_db_parameter_group <- function(DBParameterGroupName, DBParameterG
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$create_db_parameter_group_input(DBParameterGroupName = DBParameterGroupName, DBParameterGroupFamily = DBParameterGroupFamily, Description = Description, Tags = Tags)
   output <- .neptune$create_db_parameter_group_output()
@@ -1691,7 +1704,8 @@ neptune_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescr
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$create_db_subnet_group_input(DBSubnetGroupName = DBSubnetGroupName, DBSubnetGroupDescription = DBSubnetGroupDescription, SubnetIds = SubnetIds, Tags = Tags)
   output <- .neptune$create_db_subnet_group_output()
@@ -1797,7 +1811,8 @@ neptune_create_event_subscription <- function(SubscriptionName, SnsTopicArn, Sou
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$create_event_subscription_input(SubscriptionName = SubscriptionName, SnsTopicArn = SnsTopicArn, SourceType = SourceType, EventCategories = EventCategories, SourceIds = SourceIds, Enabled = Enabled, Tags = Tags)
   output <- .neptune$create_event_subscription_output()
@@ -1904,7 +1919,8 @@ neptune_create_global_cluster <- function(GlobalClusterIdentifier, SourceDBClust
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$create_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, SourceDBClusterIdentifier = SourceDBClusterIdentifier, Engine = Engine, EngineVersion = EngineVersion, DeletionProtection = DeletionProtection, DatabaseName = DatabaseName, Tags = Tags, StorageEncrypted = StorageEncrypted)
   output <- .neptune$create_global_cluster_output()
@@ -2084,7 +2100,8 @@ neptune_delete_db_cluster <- function(DBClusterIdentifier, SkipFinalSnapshot = N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$delete_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, SkipFinalSnapshot = SkipFinalSnapshot, FinalDBSnapshotIdentifier = FinalDBSnapshotIdentifier)
   output <- .neptune$delete_db_cluster_output()
@@ -2147,7 +2164,8 @@ neptune_delete_db_cluster_endpoint <- function(DBClusterEndpointIdentifier) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$delete_db_cluster_endpoint_input(DBClusterEndpointIdentifier = DBClusterEndpointIdentifier)
   output <- .neptune$delete_db_cluster_endpoint_output()
@@ -2199,7 +2217,8 @@ neptune_delete_db_cluster_parameter_group <- function(DBClusterParameterGroupNam
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$delete_db_cluster_parameter_group_input(DBClusterParameterGroupName = DBClusterParameterGroupName)
   output <- .neptune$delete_db_cluster_parameter_group_output()
@@ -2280,7 +2299,8 @@ neptune_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$delete_db_cluster_snapshot_input(DBClusterSnapshotIdentifier = DBClusterSnapshotIdentifier)
   output <- .neptune$delete_db_cluster_snapshot_output()
@@ -2507,7 +2527,8 @@ neptune_delete_db_instance <- function(DBInstanceIdentifier, SkipFinalSnapshot =
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$delete_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, SkipFinalSnapshot = SkipFinalSnapshot, FinalDBSnapshotIdentifier = FinalDBSnapshotIdentifier)
   output <- .neptune$delete_db_instance_output()
@@ -2559,7 +2580,8 @@ neptune_delete_db_parameter_group <- function(DBParameterGroupName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$delete_db_parameter_group_input(DBParameterGroupName = DBParameterGroupName)
   output <- .neptune$delete_db_parameter_group_output()
@@ -2613,7 +2635,8 @@ neptune_delete_db_subnet_group <- function(DBSubnetGroupName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$delete_db_subnet_group_input(DBSubnetGroupName = DBSubnetGroupName)
   output <- .neptune$delete_db_subnet_group_output()
@@ -2677,7 +2700,8 @@ neptune_delete_event_subscription <- function(SubscriptionName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$delete_event_subscription_input(SubscriptionName = SubscriptionName)
   output <- .neptune$delete_event_subscription_output()
@@ -2757,7 +2781,8 @@ neptune_delete_global_cluster <- function(GlobalClusterIdentifier) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$delete_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier)
   output <- .neptune$delete_global_cluster_output()
@@ -2846,7 +2871,8 @@ neptune_describe_db_cluster_endpoints <- function(DBClusterIdentifier = NULL, DB
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBClusterEndpoints"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$describe_db_cluster_endpoints_input(DBClusterIdentifier = DBClusterIdentifier, DBClusterEndpointIdentifier = DBClusterEndpointIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_db_cluster_endpoints_output()
@@ -2925,7 +2951,8 @@ neptune_describe_db_cluster_parameter_groups <- function(DBClusterParameterGroup
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBClusterParameterGroups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$describe_db_cluster_parameter_groups_input(DBClusterParameterGroupName = DBClusterParameterGroupName, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_db_cluster_parameter_groups_output()
@@ -3013,7 +3040,8 @@ neptune_describe_db_cluster_parameters <- function(DBClusterParameterGroupName, 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Parameters"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$describe_db_cluster_parameters_input(DBClusterParameterGroupName = DBClusterParameterGroupName, Source = Source, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_db_cluster_parameters_output()
@@ -3078,7 +3106,8 @@ neptune_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIde
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$describe_db_cluster_snapshot_attributes_input(DBClusterSnapshotIdentifier = DBClusterSnapshotIdentifier)
   output <- .neptune$describe_db_cluster_snapshot_attributes_output()
@@ -3211,7 +3240,8 @@ neptune_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DB
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBClusterSnapshots"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$describe_db_cluster_snapshots_input(DBClusterIdentifier = DBClusterIdentifier, DBClusterSnapshotIdentifier = DBClusterSnapshotIdentifier, SnapshotType = SnapshotType, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker, IncludeShared = IncludeShared, IncludePublic = IncludePublic)
   output <- .neptune$describe_db_cluster_snapshots_output()
@@ -3402,7 +3432,8 @@ neptune_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = N
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBClusters"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$describe_db_clusters_input(DBClusterIdentifier = DBClusterIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_db_clusters_output()
@@ -3526,7 +3557,8 @@ neptune_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = N
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBEngineVersions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$describe_db_engine_versions_input(Engine = Engine, EngineVersion = EngineVersion, DBParameterGroupFamily = DBParameterGroupFamily, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker, DefaultOnly = DefaultOnly, ListSupportedCharacterSets = ListSupportedCharacterSets, ListSupportedTimezones = ListSupportedTimezones)
   output <- .neptune$describe_db_engine_versions_output()
@@ -3753,7 +3785,8 @@ neptune_describe_db_instances <- function(DBInstanceIdentifier = NULL, Filters =
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBInstances"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$describe_db_instances_input(DBInstanceIdentifier = DBInstanceIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_db_instances_output()
@@ -3832,7 +3865,8 @@ neptune_describe_db_parameter_groups <- function(DBParameterGroupName = NULL, Fi
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBParameterGroups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$describe_db_parameter_groups_input(DBParameterGroupName = DBParameterGroupName, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_db_parameter_groups_output()
@@ -3923,7 +3957,8 @@ neptune_describe_db_parameters <- function(DBParameterGroupName, Source = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Parameters"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$describe_db_parameters_input(DBParameterGroupName = DBParameterGroupName, Source = Source, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_db_parameters_output()
@@ -4013,7 +4048,8 @@ neptune_describe_db_subnet_groups <- function(DBSubnetGroupName = NULL, Filters 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBSubnetGroups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$describe_db_subnet_groups_input(DBSubnetGroupName = DBSubnetGroupName, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_db_subnet_groups_output()
@@ -4098,7 +4134,8 @@ neptune_describe_engine_default_cluster_parameters <- function(DBParameterGroupF
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$describe_engine_default_cluster_parameters_input(DBParameterGroupFamily = DBParameterGroupFamily, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_engine_default_cluster_parameters_output()
@@ -4183,7 +4220,8 @@ neptune_describe_engine_default_parameters <- function(DBParameterGroupFamily, F
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "EngineDefaults.Marker", result_key = "EngineDefaults.Parameters"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$describe_engine_default_parameters_input(DBParameterGroupFamily = DBParameterGroupFamily, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_engine_default_parameters_output()
@@ -4251,7 +4289,8 @@ neptune_describe_event_categories <- function(SourceType = NULL, Filters = NULL)
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$describe_event_categories_input(SourceType = SourceType, Filters = Filters)
   output <- .neptune$describe_event_categories_output()
@@ -4338,7 +4377,8 @@ neptune_describe_event_subscriptions <- function(SubscriptionName = NULL, Filter
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "EventSubscriptionsList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$describe_event_subscriptions_input(SubscriptionName = SubscriptionName, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_event_subscriptions_output()
@@ -4456,7 +4496,8 @@ neptune_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Events"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$describe_events_input(SourceIdentifier = SourceIdentifier, SourceType = SourceType, StartTime = StartTime, EndTime = EndTime, Duration = Duration, EventCategories = EventCategories, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_events_output()
@@ -4550,7 +4591,8 @@ neptune_describe_global_clusters <- function(GlobalClusterIdentifier = NULL, Max
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "GlobalClusters"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$describe_global_clusters_input(GlobalClusterIdentifier = GlobalClusterIdentifier, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_global_clusters_output()
@@ -4657,7 +4699,8 @@ neptune_describe_orderable_db_instance_options <- function(Engine, EngineVersion
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "OrderableDBInstanceOptions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$describe_orderable_db_instance_options_input(Engine = Engine, EngineVersion = EngineVersion, DBInstanceClass = DBInstanceClass, LicenseModel = LicenseModel, Vpc = Vpc, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_orderable_db_instance_options_output()
@@ -4752,7 +4795,8 @@ neptune_describe_pending_maintenance_actions <- function(ResourceIdentifier = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "PendingMaintenanceActions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$describe_pending_maintenance_actions_input(ResourceIdentifier = ResourceIdentifier, Filters = Filters, Marker = Marker, MaxRecords = MaxRecords)
   output <- .neptune$describe_pending_maintenance_actions_output()
@@ -4828,7 +4872,8 @@ neptune_describe_valid_db_instance_modifications <- function(DBInstanceIdentifie
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$describe_valid_db_instance_modifications_input(DBInstanceIdentifier = DBInstanceIdentifier)
   output <- .neptune$describe_valid_db_instance_modifications_output()
@@ -4996,7 +5041,8 @@ neptune_failover_db_cluster <- function(DBClusterIdentifier = NULL, TargetDBInst
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$failover_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, TargetDBInstanceIdentifier = TargetDBInstanceIdentifier)
   output <- .neptune$failover_db_cluster_output()
@@ -5095,7 +5141,8 @@ neptune_failover_global_cluster <- function(GlobalClusterIdentifier, TargetDbClu
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$failover_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, TargetDbClusterIdentifier = TargetDbClusterIdentifier, AllowDataLoss = AllowDataLoss, Switchover = Switchover)
   output <- .neptune$failover_global_cluster_output()
@@ -5158,7 +5205,8 @@ neptune_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$list_tags_for_resource_input(ResourceName = ResourceName, Filters = Filters)
   output <- .neptune$list_tags_for_resource_output()
@@ -5452,7 +5500,8 @@ neptune_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifie
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$modify_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, NewDBClusterIdentifier = NewDBClusterIdentifier, ApplyImmediately = ApplyImmediately, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Port = Port, MasterUserPassword = MasterUserPassword, OptionGroupName = OptionGroupName, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, CloudwatchLogsExportConfiguration = CloudwatchLogsExportConfiguration, EngineVersion = EngineVersion, AllowMajorVersionUpgrade = AllowMajorVersionUpgrade, DBInstanceParameterGroupName = DBInstanceParameterGroupName, DeletionProtection = DeletionProtection, CopyTagsToSnapshot = CopyTagsToSnapshot, ServerlessV2ScalingConfiguration = ServerlessV2ScalingConfiguration, StorageType = StorageType, NetworkType = NetworkType)
   output <- .neptune$modify_db_cluster_output()
@@ -5525,7 +5574,8 @@ neptune_modify_db_cluster_endpoint <- function(DBClusterEndpointIdentifier, Endp
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$modify_db_cluster_endpoint_input(DBClusterEndpointIdentifier = DBClusterEndpointIdentifier, EndpointType = EndpointType, StaticMembers = StaticMembers, ExcludedMembers = ExcludedMembers)
   output <- .neptune$modify_db_cluster_endpoint_output()
@@ -5594,7 +5644,8 @@ neptune_modify_db_cluster_parameter_group <- function(DBClusterParameterGroupNam
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$modify_db_cluster_parameter_group_input(DBClusterParameterGroupName = DBClusterParameterGroupName, Parameters = Parameters)
   output <- .neptune$modify_db_cluster_parameter_group_output()
@@ -5675,7 +5726,8 @@ neptune_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdenti
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$modify_db_cluster_snapshot_attribute_input(DBClusterSnapshotIdentifier = DBClusterSnapshotIdentifier, AttributeName = AttributeName, ValuesToAdd = ValuesToAdd, ValuesToRemove = ValuesToRemove)
   output <- .neptune$modify_db_cluster_snapshot_attribute_output()
@@ -6056,7 +6108,8 @@ neptune_modify_db_instance <- function(DBInstanceIdentifier, AllocatedStorage = 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$modify_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, AllocatedStorage = AllocatedStorage, DBInstanceClass = DBInstanceClass, DBSubnetGroupName = DBSubnetGroupName, DBSecurityGroups = DBSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, ApplyImmediately = ApplyImmediately, MasterUserPassword = MasterUserPassword, DBParameterGroupName = DBParameterGroupName, BackupRetentionPeriod = BackupRetentionPeriod, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, MultiAZ = MultiAZ, EngineVersion = EngineVersion, AllowMajorVersionUpgrade = AllowMajorVersionUpgrade, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, LicenseModel = LicenseModel, Iops = Iops, OptionGroupName = OptionGroupName, NewDBInstanceIdentifier = NewDBInstanceIdentifier, StorageType = StorageType, TdeCredentialArn = TdeCredentialArn, TdeCredentialPassword = TdeCredentialPassword, CACertificateIdentifier = CACertificateIdentifier, Domain = Domain, CopyTagsToSnapshot = CopyTagsToSnapshot, MonitoringInterval = MonitoringInterval, DBPortNumber = DBPortNumber, PubliclyAccessible = PubliclyAccessible, MonitoringRoleArn = MonitoringRoleArn, DomainIAMRoleName = DomainIAMRoleName, PromotionTier = PromotionTier, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, CloudwatchLogsExportConfiguration = CloudwatchLogsExportConfiguration, DeletionProtection = DeletionProtection)
   output <- .neptune$modify_db_instance_output()
@@ -6132,7 +6185,8 @@ neptune_modify_db_parameter_group <- function(DBParameterGroupName, Parameters) 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$modify_db_parameter_group_input(DBParameterGroupName = DBParameterGroupName, Parameters = Parameters)
   output <- .neptune$modify_db_parameter_group_output()
@@ -6210,7 +6264,8 @@ neptune_modify_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescr
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$modify_db_subnet_group_input(DBSubnetGroupName = DBSubnetGroupName, DBSubnetGroupDescription = DBSubnetGroupDescription, SubnetIds = SubnetIds)
   output <- .neptune$modify_db_subnet_group_output()
@@ -6289,7 +6344,8 @@ neptune_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$modify_event_subscription_input(SubscriptionName = SubscriptionName, SnsTopicArn = SnsTopicArn, SourceType = SourceType, EventCategories = EventCategories, Enabled = Enabled)
   output <- .neptune$modify_event_subscription_output()
@@ -6397,7 +6453,8 @@ neptune_modify_global_cluster <- function(GlobalClusterIdentifier, NewGlobalClus
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$modify_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, NewGlobalClusterIdentifier = NewGlobalClusterIdentifier, DeletionProtection = DeletionProtection, EngineVersion = EngineVersion, AllowMajorVersionUpgrade = AllowMajorVersionUpgrade)
   output <- .neptune$modify_global_cluster_output()
@@ -6552,7 +6609,8 @@ neptune_promote_read_replica_db_cluster <- function(DBClusterIdentifier) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$promote_read_replica_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier)
   output <- .neptune$promote_read_replica_db_cluster_output()
@@ -6755,7 +6813,8 @@ neptune_reboot_db_instance <- function(DBInstanceIdentifier, ForceFailover = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$reboot_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, ForceFailover = ForceFailover)
   output <- .neptune$reboot_db_instance_output()
@@ -6838,7 +6897,8 @@ neptune_remove_from_global_cluster <- function(GlobalClusterIdentifier, DbCluste
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$remove_from_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, DbClusterIdentifier = DbClusterIdentifier)
   output <- .neptune$remove_from_global_cluster_output()
@@ -6888,7 +6948,8 @@ neptune_remove_role_from_db_cluster <- function(DBClusterIdentifier, RoleArn, Fe
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$remove_role_from_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, RoleArn = RoleArn, FeatureName = FeatureName)
   output <- .neptune$remove_role_from_db_cluster_output()
@@ -6956,7 +7017,8 @@ neptune_remove_source_identifier_from_subscription <- function(SubscriptionName,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$remove_source_identifier_from_subscription_input(SubscriptionName = SubscriptionName, SourceIdentifier = SourceIdentifier)
   output <- .neptune$remove_source_identifier_from_subscription_output()
@@ -7004,7 +7066,8 @@ neptune_remove_tags_from_resource <- function(ResourceName, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$remove_tags_from_resource_input(ResourceName = ResourceName, TagKeys = TagKeys)
   output <- .neptune$remove_tags_from_resource_output()
@@ -7074,7 +7137,8 @@ neptune_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$reset_db_cluster_parameter_group_input(DBClusterParameterGroupName = DBClusterParameterGroupName, ResetAllParameters = ResetAllParameters, Parameters = Parameters)
   output <- .neptune$reset_db_cluster_parameter_group_output()
@@ -7150,7 +7214,8 @@ neptune_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParam
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$reset_db_parameter_group_input(DBParameterGroupName = DBParameterGroupName, ResetAllParameters = ResetAllParameters, Parameters = Parameters)
   output <- .neptune$reset_db_parameter_group_output()
@@ -7421,7 +7486,8 @@ neptune_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, D
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$restore_db_cluster_from_snapshot_input(AvailabilityZones = AvailabilityZones, DBClusterIdentifier = DBClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, Engine = Engine, EngineVersion = EngineVersion, Port = Port, DBSubnetGroupName = DBSubnetGroupName, DatabaseName = DatabaseName, OptionGroupName = OptionGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DBClusterParameterGroupName = DBClusterParameterGroupName, DeletionProtection = DeletionProtection, CopyTagsToSnapshot = CopyTagsToSnapshot, ServerlessV2ScalingConfiguration = ServerlessV2ScalingConfiguration, StorageType = StorageType, NetworkType = NetworkType)
   output <- .neptune$restore_db_cluster_from_snapshot_output()
@@ -7706,7 +7772,8 @@ neptune_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Res
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$restore_db_cluster_to_point_in_time_input(DBClusterIdentifier = DBClusterIdentifier, RestoreType = RestoreType, SourceDBClusterIdentifier = SourceDBClusterIdentifier, RestoreToTime = RestoreToTime, UseLatestRestorableTime = UseLatestRestorableTime, Port = Port, DBSubnetGroupName = DBSubnetGroupName, OptionGroupName = OptionGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DBClusterParameterGroupName = DBClusterParameterGroupName, DeletionProtection = DeletionProtection, ServerlessV2ScalingConfiguration = ServerlessV2ScalingConfiguration, StorageType = StorageType, NetworkType = NetworkType)
   output <- .neptune$restore_db_cluster_to_point_in_time_output()
@@ -7863,7 +7930,8 @@ neptune_start_db_cluster <- function(DBClusterIdentifier) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$start_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier)
   output <- .neptune$start_db_cluster_output()
@@ -8020,7 +8088,8 @@ neptune_stop_db_cluster <- function(DBClusterIdentifier) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$stop_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier)
   output <- .neptune$stop_db_cluster_output()
@@ -8110,7 +8179,8 @@ neptune_switchover_global_cluster <- function(GlobalClusterIdentifier, TargetDbC
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .neptune$switchover_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, TargetDbClusterIdentifier = TargetDbClusterIdentifier)
   output <- .neptune$switchover_global_cluster_output()

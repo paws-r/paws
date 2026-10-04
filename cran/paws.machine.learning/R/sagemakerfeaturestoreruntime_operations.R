@@ -23,7 +23,8 @@ sagemakerfeaturestoreruntime_batch_get_record <- function(Identifiers, Expiratio
     http_path = "/BatchGetRecord",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sagemakerfeaturestoreruntime$batch_get_record_input(Identifiers = Identifiers, ExpirationTimeResponse = ExpirationTimeResponse)
   output <- .sagemakerfeaturestoreruntime$batch_get_record_output()
@@ -55,7 +56,8 @@ sagemakerfeaturestoreruntime_batch_write_record <- function(Entries, TtlDuration
     http_path = "/BatchWriteRecord",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sagemakerfeaturestoreruntime$batch_write_record_input(Entries = Entries, TtlDuration = TtlDuration)
   output <- .sagemakerfeaturestoreruntime$batch_write_record_output()
@@ -90,7 +92,8 @@ sagemakerfeaturestoreruntime_delete_record <- function(FeatureGroupName, RecordI
     http_path = "/FeatureGroup/{FeatureGroupName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sagemakerfeaturestoreruntime$delete_record_input(FeatureGroupName = FeatureGroupName, RecordIdentifierValueAsString = RecordIdentifierValueAsString, EventTime = EventTime, TargetStores = TargetStores, DeletionMode = DeletionMode)
   output <- .sagemakerfeaturestoreruntime$delete_record_output()
@@ -124,7 +127,8 @@ sagemakerfeaturestoreruntime_get_record <- function(FeatureGroupName, RecordIden
     http_path = "/FeatureGroup/{FeatureGroupName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sagemakerfeaturestoreruntime$get_record_input(FeatureGroupName = FeatureGroupName, RecordIdentifierValueAsString = RecordIdentifierValueAsString, FeatureNames = FeatureNames, ExpirationTimeResponse = ExpirationTimeResponse)
   output <- .sagemakerfeaturestoreruntime$get_record_output()
@@ -159,7 +163,8 @@ sagemakerfeaturestoreruntime_list_records <- function(FeatureGroupName, MaxResul
     http_path = "/FeatureGroup/{FeatureGroupName}/ListRecords",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RecordIdentifiers"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sagemakerfeaturestoreruntime$list_records_input(FeatureGroupName = FeatureGroupName, MaxResults = MaxResults, NextToken = NextToken, IncludeSoftDeletedRecords = IncludeSoftDeletedRecords)
   output <- .sagemakerfeaturestoreruntime$list_records_output()
@@ -200,7 +205,8 @@ sagemakerfeaturestoreruntime_put_record <- function(FeatureGroupName, Record, Ta
     http_path = "/FeatureGroup/{FeatureGroupName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sagemakerfeaturestoreruntime$put_record_input(FeatureGroupName = FeatureGroupName, Record = Record, TargetStores = TargetStores, TtlDuration = TtlDuration)
   output <- .sagemakerfeaturestoreruntime$put_record_output()
@@ -240,7 +246,8 @@ sagemakerfeaturestoreruntime_update_record <- function(FeatureGroupName, RecordI
     http_path = "/FeatureGroup/{FeatureGroupName}/Record",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .sagemakerfeaturestoreruntime$update_record_input(FeatureGroupName = FeatureGroupName, RecordIdentifierValueAsString = RecordIdentifierValueAsString, Features = Features, TargetStores = TargetStores, TtlDuration = TtlDuration)
   output <- .sagemakerfeaturestoreruntime$update_record_output()

@@ -33,7 +33,8 @@ servicequotas_associate_service_quota_template <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .servicequotas$associate_service_quota_template_input()
   output <- .servicequotas$associate_service_quota_template_output()
@@ -77,7 +78,8 @@ servicequotas_create_support_case <- function(RequestId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .servicequotas$create_support_case_input(RequestId = RequestId)
   output <- .servicequotas$create_support_case_output()
@@ -127,7 +129,8 @@ servicequotas_delete_service_quota_increase_request_from_template <- function(Se
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .servicequotas$delete_service_quota_increase_request_from_template_input(ServiceCode = ServiceCode, QuotaCode = QuotaCode, AwsRegion = AwsRegion)
   output <- .servicequotas$delete_service_quota_increase_request_from_template_output()
@@ -169,7 +172,8 @@ servicequotas_disassociate_service_quota_template <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .servicequotas$disassociate_service_quota_template_input()
   output <- .servicequotas$disassociate_service_quota_template_output()
@@ -254,7 +258,8 @@ servicequotas_get_aws_default_service_quota <- function(ServiceCode, QuotaCode) 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .servicequotas$get_aws_default_service_quota_input(ServiceCode = ServiceCode, QuotaCode = QuotaCode)
   output <- .servicequotas$get_aws_default_service_quota_output()
@@ -301,7 +306,8 @@ servicequotas_get_association_for_service_quota_template <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .servicequotas$get_association_for_service_quota_template_input()
   output <- .servicequotas$get_association_for_service_quota_template_output()
@@ -360,7 +366,8 @@ servicequotas_get_auto_management_configuration <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .servicequotas$get_auto_management_configuration_input()
   output <- .servicequotas$get_auto_management_configuration_output()
@@ -440,7 +447,8 @@ servicequotas_get_quota_utilization_report <- function(ReportId, NextToken = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .servicequotas$get_quota_utilization_report_input(ReportId = ReportId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .servicequotas$get_quota_utilization_report_output()
@@ -516,7 +524,8 @@ servicequotas_get_requested_service_quota_change <- function(RequestId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .servicequotas$get_requested_service_quota_change_input(RequestId = RequestId)
   output <- .servicequotas$get_requested_service_quota_change_output()
@@ -604,7 +613,8 @@ servicequotas_get_service_quota <- function(ServiceCode, QuotaCode, ContextId = 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .servicequotas$get_service_quota_input(ServiceCode = ServiceCode, QuotaCode = QuotaCode, ContextId = ContextId)
   output <- .servicequotas$get_service_quota_output()
@@ -668,7 +678,8 @@ servicequotas_get_service_quota_increase_request_from_template <- function(Servi
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .servicequotas$get_service_quota_increase_request_from_template_input(ServiceCode = ServiceCode, QuotaCode = QuotaCode, AwsRegion = AwsRegion)
   output <- .servicequotas$get_service_quota_increase_request_from_template_output()
@@ -762,7 +773,8 @@ servicequotas_list_aws_default_service_quotas <- function(ServiceCode, NextToken
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Quotas"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .servicequotas$list_aws_default_service_quotas_input(ServiceCode = ServiceCode, NextToken = NextToken, MaxResults = MaxResults)
   output <- .servicequotas$list_aws_default_service_quotas_output()
@@ -853,7 +865,8 @@ servicequotas_list_requested_service_quota_change_history <- function(ServiceCod
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "RequestedQuotas"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .servicequotas$list_requested_service_quota_change_history_input(ServiceCode = ServiceCode, Status = Status, NextToken = NextToken, MaxResults = MaxResults, QuotaRequestedAtLevel = QuotaRequestedAtLevel)
   output <- .servicequotas$list_requested_service_quota_change_history_output()
@@ -946,7 +959,8 @@ servicequotas_list_requested_service_quota_change_history_by_quota <- function(S
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "RequestedQuotas"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .servicequotas$list_requested_service_quota_change_history_by_quota_input(ServiceCode = ServiceCode, QuotaCode = QuotaCode, Status = Status, NextToken = NextToken, MaxResults = MaxResults, QuotaRequestedAtLevel = QuotaRequestedAtLevel)
   output <- .servicequotas$list_requested_service_quota_change_history_by_quota_output()
@@ -1017,7 +1031,8 @@ servicequotas_list_service_quota_increase_requests_in_template <- function(Servi
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ServiceQuotaIncreaseRequestInTemplateList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .servicequotas$list_service_quota_increase_requests_in_template_input(ServiceCode = ServiceCode, AwsRegion = AwsRegion, NextToken = NextToken, MaxResults = MaxResults)
   output <- .servicequotas$list_service_quota_increase_requests_in_template_output()
@@ -1115,7 +1130,8 @@ servicequotas_list_service_quotas <- function(ServiceCode, NextToken = NULL, Max
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Quotas"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .servicequotas$list_service_quotas_input(ServiceCode = ServiceCode, NextToken = NextToken, MaxResults = MaxResults, QuotaCode = QuotaCode, QuotaAppliedAtLevel = QuotaAppliedAtLevel)
   output <- .servicequotas$list_service_quotas_output()
@@ -1175,7 +1191,8 @@ servicequotas_list_services <- function(NextToken = NULL, MaxResults = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Services"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .servicequotas$list_services_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .servicequotas$list_services_output()
@@ -1229,7 +1246,8 @@ servicequotas_list_tags_for_resource <- function(ResourceARN) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .servicequotas$list_tags_for_resource_input(ResourceARN = ResourceARN)
   output <- .servicequotas$list_tags_for_resource_output()
@@ -1294,7 +1312,8 @@ servicequotas_put_service_quota_increase_request_into_template <- function(Quota
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .servicequotas$put_service_quota_increase_request_into_template_input(QuotaCode = QuotaCode, ServiceCode = ServiceCode, AwsRegion = AwsRegion, DesiredValue = DesiredValue)
   output <- .servicequotas$put_service_quota_increase_request_into_template_output()
@@ -1382,7 +1401,8 @@ servicequotas_request_service_quota_increase <- function(ServiceCode, QuotaCode,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .servicequotas$request_service_quota_increase_input(ServiceCode = ServiceCode, QuotaCode = QuotaCode, DesiredValue = DesiredValue, ContextId = ContextId, SupportCaseAllowed = SupportCaseAllowed)
   output <- .servicequotas$request_service_quota_increase_output()
@@ -1439,7 +1459,8 @@ servicequotas_start_auto_management <- function(OptInLevel, OptInType, Notificat
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .servicequotas$start_auto_management_input(OptInLevel = OptInLevel, OptInType = OptInType, NotificationArn = NotificationArn, ExclusionList = ExclusionList)
   output <- .servicequotas$start_auto_management_output()
@@ -1491,7 +1512,8 @@ servicequotas_start_quota_utilization_report <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .servicequotas$start_quota_utilization_report_input()
   output <- .servicequotas$start_quota_utilization_report_output()
@@ -1534,7 +1556,8 @@ servicequotas_stop_auto_management <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .servicequotas$stop_auto_management_input()
   output <- .servicequotas$stop_auto_management_output()
@@ -1585,7 +1608,8 @@ servicequotas_tag_resource <- function(ResourceARN, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .servicequotas$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .servicequotas$tag_resource_output()
@@ -1633,7 +1657,8 @@ servicequotas_untag_resource <- function(ResourceARN, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .servicequotas$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .servicequotas$untag_resource_output()
@@ -1687,7 +1712,8 @@ servicequotas_update_auto_management <- function(OptInType = NULL, NotificationA
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .servicequotas$update_auto_management_input(OptInType = OptInType, NotificationArn = NotificationArn, ExclusionList = ExclusionList)
   output <- .servicequotas$update_auto_management_output()

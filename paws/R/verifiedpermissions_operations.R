@@ -85,7 +85,8 @@ verifiedpermissions_batch_get_policy <- function(requests) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .verifiedpermissions$batch_get_policy_input(requests = requests)
   output <- .verifiedpermissions$batch_get_policy_output()
@@ -305,7 +306,8 @@ verifiedpermissions_batch_is_authorized <- function(policyStoreId, entities = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .verifiedpermissions$batch_is_authorized_input(policyStoreId = policyStoreId, entities = entities, requests = requests)
   output <- .verifiedpermissions$batch_is_authorized_output()
@@ -533,7 +535,8 @@ verifiedpermissions_batch_is_authorized_with_token <- function(policyStoreId, id
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .verifiedpermissions$batch_is_authorized_with_token_input(policyStoreId = policyStoreId, identityToken = identityToken, accessToken = accessToken, entities = entities, requests = requests)
   output <- .verifiedpermissions$batch_is_authorized_with_token_output()
@@ -561,7 +564,7 @@ verifiedpermissions_batch_is_authorized_with_token <- function(policyStoreId, id
 #' 
 #' -   OpenID Connect (OIDC) provider: `Namespace::[Entity type]::[entityIdPrefix]|[user principal attribute]`, for example `MyCorp::User::MyOIDCProvider|a1b2c3d4-5678-90ab-cdef-EXAMPLE22222`.
 #' 
-#' Verified Permissions is \emph{\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}} . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
+#' Verified Permissions is *\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}* . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
 #'
 #' @usage
 #' verifiedpermissions_create_identity_source(clientToken, policyStoreId,
@@ -655,7 +658,8 @@ verifiedpermissions_create_identity_source <- function(clientToken = NULL, polic
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .verifiedpermissions$create_identity_source_input(clientToken = clientToken, policyStoreId = policyStoreId, configuration = configuration, principalEntityType = principalEntityType)
   output <- .verifiedpermissions$create_identity_source_output()
@@ -678,7 +682,7 @@ verifiedpermissions_create_identity_source <- function(clientToken = NULL, polic
 #' 
 #' Creating a policy causes it to be validated against the schema in the policy store. If the policy doesn't pass validation, the operation fails and the policy isn't stored.
 #' 
-#' Verified Permissions is \emph{\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}} . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
+#' Verified Permissions is *\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}* . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
 #'
 #' @usage
 #' verifiedpermissions_create_policy(clientToken, policyStoreId,
@@ -774,7 +778,8 @@ verifiedpermissions_create_policy <- function(clientToken = NULL, policyStoreId,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .verifiedpermissions$create_policy_input(clientToken = clientToken, policyStoreId = policyStoreId, definition = definition, name = name)
   output <- .verifiedpermissions$create_policy_output()
@@ -793,7 +798,7 @@ verifiedpermissions_create_policy <- function(clientToken = NULL, policyStoreId,
 #' 
 #' As of May 2026, Verified Permissions has aligned with Cedar and now supports multiple namespaces.
 #' 
-#' Verified Permissions is \emph{\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}} . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
+#' Verified Permissions is *\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}* . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
 #'
 #' @usage
 #' verifiedpermissions_create_policy_store(clientToken, validationSettings,
@@ -871,7 +876,8 @@ verifiedpermissions_create_policy_store <- function(clientToken = NULL, validati
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .verifiedpermissions$create_policy_store_input(clientToken = clientToken, validationSettings = validationSettings, description = description, deletionProtection = deletionProtection, encryptionSettings = encryptionSettings, tags = tags)
   output <- .verifiedpermissions$create_policy_store_output()
@@ -890,7 +896,7 @@ verifiedpermissions_create_policy_store <- function(clientToken = NULL, validati
 #' 
 #' This operation is idempotent. If multiple CreatePolicyStoreAlias requests are made where the `aliasName` and `policyStoreId` fields are the same between the requests, subsequent requests will be ignored. For each duplicate CreatePolicyStoreAlias request, a Success response will be returned and a new policy store alias will not be created.
 #' 
-#' Verified Permissions is \emph{\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}} . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
+#' Verified Permissions is *\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}* . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
 #'
 #' @usage
 #' verifiedpermissions_create_policy_store_alias(aliasName, policyStoreId)
@@ -935,7 +941,8 @@ verifiedpermissions_create_policy_store_alias <- function(aliasName, policyStore
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .verifiedpermissions$create_policy_store_alias_input(aliasName = aliasName, policyStoreId = policyStoreId)
   output <- .verifiedpermissions$create_policy_store_alias_output()
@@ -952,7 +959,7 @@ verifiedpermissions_create_policy_store_alias <- function(aliasName, policyStore
 #' @description
 #' Creates a policy template. A template can use placeholders for the principal and resource. A template must be instantiated into a policy by associating it with specific principals and resources to use for the placeholders. That instantiated policy can then be considered in authorization decisions. The instantiated policy works identically to any other policy, except that it is dynamically linked to the template. If the template changes, then any policies that are linked to that template are immediately updated as well.
 #' 
-#' Verified Permissions is \emph{\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}} . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
+#' Verified Permissions is *\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}* . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
 #'
 #' @usage
 #' verifiedpermissions_create_policy_template(clientToken, policyStoreId,
@@ -1018,7 +1025,8 @@ verifiedpermissions_create_policy_template <- function(clientToken = NULL, polic
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .verifiedpermissions$create_policy_template_input(clientToken = clientToken, policyStoreId = policyStoreId, description = description, statement = statement, name = name)
   output <- .verifiedpermissions$create_policy_template_output()
@@ -1074,7 +1082,8 @@ verifiedpermissions_delete_identity_source <- function(policyStoreId, identitySo
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .verifiedpermissions$delete_identity_source_input(policyStoreId = policyStoreId, identitySourceId = identitySourceId)
   output <- .verifiedpermissions$delete_identity_source_output()
@@ -1136,7 +1145,8 @@ verifiedpermissions_delete_policy <- function(policyStoreId, policyId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .verifiedpermissions$delete_policy_input(policyStoreId = policyStoreId, policyId = policyId)
   output <- .verifiedpermissions$delete_policy_output()
@@ -1184,7 +1194,8 @@ verifiedpermissions_delete_policy_store <- function(policyStoreId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .verifiedpermissions$delete_policy_store_input(policyStoreId = policyStoreId)
   output <- .verifiedpermissions$delete_policy_store_output()
@@ -1244,7 +1255,8 @@ verifiedpermissions_delete_policy_store_alias <- function(aliasName, deletionMod
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .verifiedpermissions$delete_policy_store_alias_input(aliasName = aliasName, deletionMode = deletionMode)
   output <- .verifiedpermissions$delete_policy_store_alias_output()
@@ -1307,7 +1319,8 @@ verifiedpermissions_delete_policy_template <- function(policyStoreId, policyTemp
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .verifiedpermissions$delete_policy_template_input(policyStoreId = policyStoreId, policyTemplateId = policyTemplateId)
   output <- .verifiedpermissions$delete_policy_template_output()
@@ -1416,7 +1429,8 @@ verifiedpermissions_get_identity_source <- function(policyStoreId, identitySourc
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .verifiedpermissions$get_identity_source_input(policyStoreId = policyStoreId, identitySourceId = identitySourceId)
   output <- .verifiedpermissions$get_identity_source_output()
@@ -1522,7 +1536,8 @@ verifiedpermissions_get_policy <- function(policyStoreId, policyId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .verifiedpermissions$get_policy_input(policyStoreId = policyStoreId, policyId = policyId)
   output <- .verifiedpermissions$get_policy_output()
@@ -1608,7 +1623,8 @@ verifiedpermissions_get_policy_store <- function(policyStoreId, tags = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .verifiedpermissions$get_policy_store_input(policyStoreId = policyStoreId, tags = tags)
   output <- .verifiedpermissions$get_policy_store_output()
@@ -1665,7 +1681,8 @@ verifiedpermissions_get_policy_store_alias <- function(aliasName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .verifiedpermissions$get_policy_store_alias_input(aliasName = aliasName)
   output <- .verifiedpermissions$get_policy_store_alias_output()
@@ -1741,7 +1758,8 @@ verifiedpermissions_get_policy_template <- function(policyStoreId, policyTemplat
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .verifiedpermissions$get_policy_template_input(policyStoreId = policyStoreId, policyTemplateId = policyTemplateId)
   output <- .verifiedpermissions$get_policy_template_output()
@@ -1809,7 +1827,8 @@ verifiedpermissions_get_schema <- function(policyStoreId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .verifiedpermissions$get_schema_input(policyStoreId = policyStoreId)
   output <- .verifiedpermissions$get_schema_output()
@@ -1980,7 +1999,8 @@ verifiedpermissions_is_authorized <- function(policyStoreId, principal = NULL, a
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .verifiedpermissions$is_authorized_input(policyStoreId = policyStoreId, principal = principal, action = action, resource = resource, context = context, entities = entities)
   output <- .verifiedpermissions$is_authorized_output()
@@ -2166,7 +2186,8 @@ verifiedpermissions_is_authorized_with_token <- function(policyStoreId, identity
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .verifiedpermissions$is_authorized_with_token_input(policyStoreId = policyStoreId, identityToken = identityToken, accessToken = accessToken, action = action, resource = resource, context = context, entities = entities)
   output <- .verifiedpermissions$is_authorized_with_token_output()
@@ -2292,7 +2313,8 @@ verifiedpermissions_list_identity_sources <- function(policyStoreId, nextToken =
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "identitySources"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .verifiedpermissions$list_identity_sources_input(policyStoreId = policyStoreId, nextToken = nextToken, maxResults = maxResults, filters = filters)
   output <- .verifiedpermissions$list_identity_sources_output()
@@ -2421,7 +2443,8 @@ verifiedpermissions_list_policies <- function(policyStoreId, nextToken = NULL, m
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "policies"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .verifiedpermissions$list_policies_input(policyStoreId = policyStoreId, nextToken = nextToken, maxResults = maxResults, filter = filter)
   output <- .verifiedpermissions$list_policies_output()
@@ -2491,7 +2514,8 @@ verifiedpermissions_list_policy_store_aliases <- function(nextToken = NULL, maxR
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "policyStoreAliases"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .verifiedpermissions$list_policy_store_aliases_input(nextToken = nextToken, maxResults = maxResults, filter = filter)
   output <- .verifiedpermissions$list_policy_store_aliases_output()
@@ -2558,7 +2582,8 @@ verifiedpermissions_list_policy_stores <- function(nextToken = NULL, maxResults 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "policyStores"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .verifiedpermissions$list_policy_stores_input(nextToken = nextToken, maxResults = maxResults)
   output <- .verifiedpermissions$list_policy_stores_output()
@@ -2637,7 +2662,8 @@ verifiedpermissions_list_policy_templates <- function(policyStoreId, nextToken =
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "policyTemplates"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .verifiedpermissions$list_policy_templates_input(policyStoreId = policyStoreId, nextToken = nextToken, maxResults = maxResults)
   output <- .verifiedpermissions$list_policy_templates_output()
@@ -2689,7 +2715,8 @@ verifiedpermissions_list_tags_for_resource <- function(resourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .verifiedpermissions$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .verifiedpermissions$list_tags_for_resource_output()
@@ -2706,7 +2733,7 @@ verifiedpermissions_list_tags_for_resource <- function(resourceArn) {
 #' @description
 #' Creates or updates the policy schema in the specified policy store. The schema is used to validate any Cedar policies and policy templates submitted to the policy store. Any changes to the schema validate only policies and templates submitted after the schema change. Existing policies and templates are not re-evaluated against the changed schema. If you later update a policy, then it is evaluated against the new schema at that time.
 #' 
-#' Verified Permissions is \emph{\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}} . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
+#' Verified Permissions is *\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}* . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
 #'
 #' @usage
 #' verifiedpermissions_put_schema(policyStoreId, definition)
@@ -2761,7 +2788,8 @@ verifiedpermissions_put_schema <- function(policyStoreId, definition) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .verifiedpermissions$put_schema_input(policyStoreId = policyStoreId, definition = definition)
   output <- .verifiedpermissions$put_schema_output()
@@ -2816,7 +2844,8 @@ verifiedpermissions_tag_resource <- function(resourceArn, tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .verifiedpermissions$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .verifiedpermissions$tag_resource_output()
@@ -2865,7 +2894,8 @@ verifiedpermissions_untag_resource <- function(resourceArn, tagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .verifiedpermissions$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .verifiedpermissions$untag_resource_output()
@@ -2884,7 +2914,7 @@ verifiedpermissions_untag_resource <- function(resourceArn, tagKeys) {
 #' @description
 #' Updates the specified identity source to use a new identity provider (IdP), or to change the mapping of identities from the IdP to a different principal entity type.
 #' 
-#' Verified Permissions is \emph{\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}} . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
+#' Verified Permissions is *\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}* . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
 #'
 #' @usage
 #' verifiedpermissions_update_identity_source(policyStoreId,
@@ -2972,7 +3002,8 @@ verifiedpermissions_update_identity_source <- function(policyStoreId, identitySo
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .verifiedpermissions$update_identity_source_input(policyStoreId = policyStoreId, identitySourceId = identitySourceId, updateConfiguration = updateConfiguration, principalEntityType = principalEntityType)
   output <- .verifiedpermissions$update_identity_source_output()
@@ -3009,7 +3040,7 @@ verifiedpermissions_update_identity_source <- function(policyStoreId, identitySo
 #' 
 #' -   To update a template-linked policy, you must update the template instead.
 #' 
-#' Verified Permissions is \emph{\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}} . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
+#' Verified Permissions is *\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}* . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
 #'
 #' @usage
 #' verifiedpermissions_update_policy(policyStoreId, policyId, definition,
@@ -3114,7 +3145,8 @@ verifiedpermissions_update_policy <- function(policyStoreId, policyId, definitio
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .verifiedpermissions$update_policy_input(policyStoreId = policyStoreId, policyId = policyId, definition = definition, name = name)
   output <- .verifiedpermissions$update_policy_output()
@@ -3131,7 +3163,7 @@ verifiedpermissions_update_policy <- function(policyStoreId, policyId, definitio
 #' @description
 #' Modifies the validation setting for a policy store.
 #' 
-#' Verified Permissions is \emph{\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}} . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
+#' Verified Permissions is *\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}* . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
 #'
 #' @usage
 #' verifiedpermissions_update_policy_store(policyStoreId,
@@ -3191,7 +3223,8 @@ verifiedpermissions_update_policy_store <- function(policyStoreId, validationSet
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .verifiedpermissions$update_policy_store_input(policyStoreId = policyStoreId, validationSettings = validationSettings, deletionProtection = deletionProtection, description = description)
   output <- .verifiedpermissions$update_policy_store_output()
@@ -3210,7 +3243,7 @@ verifiedpermissions_update_policy_store <- function(policyStoreId, validationSet
 #' 
 #' Changes you make to the policy template content are immediately (within the constraints of eventual consistency) reflected in authorization decisions that involve all template-linked policies instantiated from this template.
 #' 
-#' Verified Permissions is \emph{\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}} . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
+#' Verified Permissions is *\href{https://wikipedia.org/wiki/Eventual_consistency}{eventually consistent}* . It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
 #'
 #' @usage
 #' verifiedpermissions_update_policy_template(policyStoreId,
@@ -3292,7 +3325,8 @@ verifiedpermissions_update_policy_template <- function(policyStoreId, policyTemp
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .verifiedpermissions$update_policy_template_input(policyStoreId = policyStoreId, policyTemplateId = policyTemplateId, description = description, statement = statement, name = name)
   output <- .verifiedpermissions$update_policy_template_output()

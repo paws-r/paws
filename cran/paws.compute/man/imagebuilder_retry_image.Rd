@@ -2,17 +2,18 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_retry_image}
 \alias{imagebuilder_retry_image}
-\title{Retries an image distribution or test without rebuilding the image}
+\title{Retries a failed or canceled image build without rebuilding the phases
+that already completed}
 \usage{
 imagebuilder_retry_image(imageBuildVersionArn, clientToken)
 }
 \arguments{
-\item{imageBuildVersionArn}{[required] The source image Amazon Resource Name (ARN) to retry.}
+\item{imageBuildVersionArn}{[required] The Amazon Resource Name (ARN) of the image build version that you want to retry. The image must be in the \code{FAILED} or \code{CANCELLED} state.}
 
-\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
+\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
 }
 \description{
-Retries an image distribution or test without rebuilding the image.
+Retries a failed or canceled image build without rebuilding the phases that already completed. The image re-runs asynchronously in place: the same build version returns to the test or distribution phase where it failed and continues from there. No new image build version is created. Retry is only supported for AMI-based images.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_retry_image/} for full documentation.
 }

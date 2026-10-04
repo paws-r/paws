@@ -127,12 +127,14 @@ Developers in the Amazon Web Services developer community also provide their own
 
 \tabular{ll}{
 \link[=cloudwatch_associate_dataset_kms_key]{associate_dataset_kms_key} \tab Associates an Amazon Web Services Key Management Service (Amazon Web Services KMS) customer managed key with the specified dataset\cr
+\link[=cloudwatch_create_resource_metrics_configuration]{create_resource_metrics_configuration} \tab Creates a resource metrics configuration for an Amazon Web Services resource\cr
 \link[=cloudwatch_delete_alarm_mute_rule]{delete_alarm_mute_rule} \tab Deletes a specific alarm mute rule\cr
 \link[=cloudwatch_delete_alarms]{delete_alarms} \tab Deletes the specified alarms\cr
 \link[=cloudwatch_delete_anomaly_detector]{delete_anomaly_detector} \tab Deletes the specified anomaly detection model from your account\cr
 \link[=cloudwatch_delete_dashboards]{delete_dashboards} \tab Deletes all dashboards that you specify\cr
 \link[=cloudwatch_delete_insight_rules]{delete_insight_rules} \tab Permanently deletes the specified Contributor Insights rules\cr
 \link[=cloudwatch_delete_metric_stream]{delete_metric_stream} \tab Permanently deletes the metric stream that you specify\cr
+\link[=cloudwatch_delete_resource_metrics_configuration]{delete_resource_metrics_configuration} \tab Deletes the resource metrics configuration for an Amazon Web Services resource\cr
 \link[=cloudwatch_describe_alarm_contributors]{describe_alarm_contributors} \tab Returns the information of the current alarm contributors that are in ALARM state\cr
 \link[=cloudwatch_describe_alarm_history]{describe_alarm_history} \tab Retrieves the history for the specified alarm\cr
 \link[=cloudwatch_describe_alarms]{describe_alarms} \tab Retrieves the specified alarms\cr
@@ -153,6 +155,7 @@ Developers in the Amazon Web Services developer community also provide their own
 \link[=cloudwatch_get_metric_stream]{get_metric_stream} \tab Returns information about the metric stream that you specify\cr
 \link[=cloudwatch_get_metric_widget_image]{get_metric_widget_image} \tab You can use the GetMetricWidgetImage API to retrieve a snapshot graph of one or more Amazon CloudWatch metrics as a bitmap image\cr
 \link[=cloudwatch_get_o_tel_enrichment]{get_o_tel_enrichment} \tab Returns the current status of vended metric enrichment for the account, including whether CloudWatch vended metrics are enriched with resource ARN and resource tag labels and queryable using PromQL\cr
+\link[=cloudwatch_get_resource_metrics_configuration]{get_resource_metrics_configuration} \tab Retrieves the current resource metrics configuration for an Amazon Web Services resource\cr
 \link[=cloudwatch_list_alarm_mute_rules]{list_alarm_mute_rules} \tab Lists alarm mute rules in your Amazon Web Services account and region\cr
 \link[=cloudwatch_list_dashboards]{list_dashboards} \tab Returns a list of the dashboards for your account\cr
 \link[=cloudwatch_list_managed_insight_rules]{list_managed_insight_rules} \tab Returns a list that contains the number of managed Contributor Insights rules in your account\cr
@@ -175,7 +178,9 @@ Developers in the Amazon Web Services developer community also provide their own
 \link[=cloudwatch_stop_metric_streams]{stop_metric_streams} \tab Stops the streaming of metrics for one or more of your metric streams\cr
 \link[=cloudwatch_stop_o_tel_enrichment]{stop_o_tel_enrichment} \tab Disables enrichment and PromQL access for CloudWatch vended metrics for supported Amazon Web Services resources in the account\cr
 \link[=cloudwatch_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified CloudWatch resource\cr
-\link[=cloudwatch_untag_resource]{untag_resource} \tab Removes one or more tags from the specified resource
+\link[=cloudwatch_untag_resource]{untag_resource} \tab Removes one or more tags from the specified resource\cr
+\link[=cloudwatch_update_o_tel_enrichment]{update_o_tel_enrichment} \tab Replaces the filters that determine which CloudWatch vended metrics are enriched with resource ARN and resource tag labels for the account\cr
+\link[=cloudwatch_update_resource_metrics_configuration]{update_resource_metrics_configuration} \tab Updates the resource metrics configuration for an Amazon Web Services resource
 }
 }
 

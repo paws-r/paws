@@ -2,17 +2,18 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_cancel_lifecycle_execution}
 \alias{imagebuilder_cancel_lifecycle_execution}
-\title{Cancels a specific image lifecycle policy runtime instance}
+\title{Cancels a lifecycle execution – a single run of lifecycle actions that a
+lifecycle policy or a StartResourceStateUpdate request started}
 \usage{
 imagebuilder_cancel_lifecycle_execution(lifecycleExecutionId, clientToken)
 }
 \arguments{
 \item{lifecycleExecutionId}{[required] Identifies the specific runtime instance of the image lifecycle to cancel.}
 
-\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation completes no more than one time. If this token matches a previous request, the service ignores the request, but does not return an error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
+\item{clientToken}{[required] A unique, case-sensitive identifier you provide to ensure that the operation runs no more than one time. If you retry a request with the same client token, Image Builder returns the original response without running the operation again. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency} in the \emph{Amazon EC2 API Reference}.}
 }
 \description{
-Cancels a specific image lifecycle policy runtime instance.
+Cancels a lifecycle execution – a single run of lifecycle actions that a lifecycle policy or a \code{\link[=imagebuilder_start_resource_state_update]{start_resource_state_update}} request started. You can only cancel an execution that hasn't reached a terminal state. Cancellation is asynchronous and doesn't undo completed lifecycle actions.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_cancel_lifecycle_execution/} for full documentation.
 }

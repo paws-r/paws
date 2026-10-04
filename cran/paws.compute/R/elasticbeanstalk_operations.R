@@ -24,7 +24,8 @@ elasticbeanstalk_abort_environment_update <- function(EnvironmentId = NULL, Envi
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$abort_environment_update_input(EnvironmentId = EnvironmentId, EnvironmentName = EnvironmentName)
   output <- .elasticbeanstalk$abort_environment_update_output()
@@ -57,7 +58,8 @@ elasticbeanstalk_apply_environment_managed_action <- function(EnvironmentName = 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$apply_environment_managed_action_input(EnvironmentName = EnvironmentName, EnvironmentId = EnvironmentId, ActionId = ActionId)
   output <- .elasticbeanstalk$apply_environment_managed_action_output()
@@ -90,7 +92,8 @@ elasticbeanstalk_associate_environment_operations_role <- function(EnvironmentNa
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$associate_environment_operations_role_input(EnvironmentName = EnvironmentName, OperationsRole = OperationsRole)
   output <- .elasticbeanstalk$associate_environment_operations_role_output()
@@ -121,7 +124,8 @@ elasticbeanstalk_check_dns_availability <- function(CNAMEPrefix) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$check_dns_availability_input(CNAMEPrefix = CNAMEPrefix)
   output <- .elasticbeanstalk$check_dns_availability_output()
@@ -155,7 +159,8 @@ elasticbeanstalk_compose_environments <- function(ApplicationName = NULL, GroupN
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$compose_environments_input(ApplicationName = ApplicationName, GroupName = GroupName, VersionLabels = VersionLabels)
   output <- .elasticbeanstalk$compose_environments_output()
@@ -192,7 +197,8 @@ elasticbeanstalk_create_application <- function(ApplicationName, Description = N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$create_application_input(ApplicationName = ApplicationName, Description = Description, ResourceLifecycleConfig = ResourceLifecycleConfig, Tags = Tags)
   output <- .elasticbeanstalk$create_application_output()
@@ -250,7 +256,8 @@ elasticbeanstalk_create_application_version <- function(ApplicationName, Version
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$create_application_version_input(ApplicationName = ApplicationName, VersionLabel = VersionLabel, Description = Description, SourceBuildInformation = SourceBuildInformation, SourceBundle = SourceBundle, BuildConfiguration = BuildConfiguration, AutoCreateApplication = AutoCreateApplication, Process = Process, Tags = Tags, ImageConfiguration = ImageConfiguration)
   output <- .elasticbeanstalk$create_application_version_output()
@@ -304,7 +311,8 @@ elasticbeanstalk_create_configuration_template <- function(ApplicationName, Temp
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$create_configuration_template_input(ApplicationName = ApplicationName, TemplateName = TemplateName, SolutionStackName = SolutionStackName, PlatformArn = PlatformArn, SourceConfiguration = SourceConfiguration, EnvironmentId = EnvironmentId, Description = Description, OptionSettings = OptionSettings, Tags = Tags)
   output <- .elasticbeanstalk$create_configuration_template_output()
@@ -363,7 +371,8 @@ elasticbeanstalk_create_environment <- function(ApplicationName, EnvironmentName
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$create_environment_input(ApplicationName = ApplicationName, EnvironmentName = EnvironmentName, GroupName = GroupName, Description = Description, CNAMEPrefix = CNAMEPrefix, Tier = Tier, Tags = Tags, VersionLabel = VersionLabel, TemplateName = TemplateName, SolutionStackName = SolutionStackName, PlatformArn = PlatformArn, OptionSettings = OptionSettings, OptionsToRemove = OptionsToRemove, OperationsRole = OperationsRole)
   output <- .elasticbeanstalk$create_environment_output()
@@ -401,7 +410,8 @@ elasticbeanstalk_create_platform_version <- function(PlatformName, PlatformVersi
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$create_platform_version_input(PlatformName = PlatformName, PlatformVersion = PlatformVersion, PlatformDefinitionBundle = PlatformDefinitionBundle, EnvironmentName = EnvironmentName, OptionSettings = OptionSettings, Tags = Tags)
   output <- .elasticbeanstalk$create_platform_version_output()
@@ -433,7 +443,8 @@ elasticbeanstalk_create_storage_location <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$create_storage_location_input()
   output <- .elasticbeanstalk$create_storage_location_output()
@@ -466,7 +477,8 @@ elasticbeanstalk_delete_application <- function(ApplicationName, TerminateEnvByF
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$delete_application_input(ApplicationName = ApplicationName, TerminateEnvByForce = TerminateEnvByForce)
   output <- .elasticbeanstalk$delete_application_output()
@@ -499,7 +511,8 @@ elasticbeanstalk_delete_application_version <- function(ApplicationName, Version
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$delete_application_version_input(ApplicationName = ApplicationName, VersionLabel = VersionLabel, DeleteSourceBundle = DeleteSourceBundle)
   output <- .elasticbeanstalk$delete_application_version_output()
@@ -531,7 +544,8 @@ elasticbeanstalk_delete_configuration_template <- function(ApplicationName, Temp
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$delete_configuration_template_input(ApplicationName = ApplicationName, TemplateName = TemplateName)
   output <- .elasticbeanstalk$delete_configuration_template_output()
@@ -563,7 +577,8 @@ elasticbeanstalk_delete_environment_configuration <- function(ApplicationName, E
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$delete_environment_configuration_input(ApplicationName = ApplicationName, EnvironmentName = EnvironmentName)
   output <- .elasticbeanstalk$delete_environment_configuration_output()
@@ -594,7 +609,8 @@ elasticbeanstalk_delete_platform_version <- function(PlatformArn = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$delete_platform_version_input(PlatformArn = PlatformArn)
   output <- .elasticbeanstalk$delete_platform_version_output()
@@ -626,7 +642,8 @@ elasticbeanstalk_describe_account_attributes <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$describe_account_attributes_input()
   output <- .elasticbeanstalk$describe_account_attributes_output()
@@ -664,7 +681,8 @@ elasticbeanstalk_describe_application_versions <- function(ApplicationName = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "ApplicationVersions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$describe_application_versions_input(ApplicationName = ApplicationName, VersionLabels = VersionLabels, MaxRecords = MaxRecords, NextToken = NextToken)
   output <- .elasticbeanstalk$describe_application_versions_output()
@@ -695,7 +713,8 @@ elasticbeanstalk_describe_applications <- function(ApplicationNames = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$describe_applications_input(ApplicationNames = ApplicationNames)
   output <- .elasticbeanstalk$describe_applications_output()
@@ -733,7 +752,8 @@ elasticbeanstalk_describe_configuration_options <- function(ApplicationName = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$describe_configuration_options_input(ApplicationName = ApplicationName, TemplateName = TemplateName, EnvironmentName = EnvironmentName, SolutionStackName = SolutionStackName, PlatformArn = PlatformArn, Options = Options)
   output <- .elasticbeanstalk$describe_configuration_options_output()
@@ -772,7 +792,8 @@ elasticbeanstalk_describe_configuration_settings <- function(ApplicationName, Te
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$describe_configuration_settings_input(ApplicationName = ApplicationName, TemplateName = TemplateName, EnvironmentName = EnvironmentName)
   output <- .elasticbeanstalk$describe_configuration_settings_output()
@@ -810,7 +831,8 @@ elasticbeanstalk_describe_environment_health <- function(EnvironmentName = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$describe_environment_health_input(EnvironmentName = EnvironmentName, EnvironmentId = EnvironmentId, AttributeNames = AttributeNames)
   output <- .elasticbeanstalk$describe_environment_health_output()
@@ -844,7 +866,8 @@ elasticbeanstalk_describe_environment_managed_action_history <- function(Environ
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxItems", output_token = "NextToken", result_key = "ManagedActionHistoryItems"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$describe_environment_managed_action_history_input(EnvironmentId = EnvironmentId, EnvironmentName = EnvironmentName, NextToken = NextToken, MaxItems = MaxItems)
   output <- .elasticbeanstalk$describe_environment_managed_action_history_output()
@@ -877,7 +900,8 @@ elasticbeanstalk_describe_environment_managed_actions <- function(EnvironmentNam
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$describe_environment_managed_actions_input(EnvironmentName = EnvironmentName, EnvironmentId = EnvironmentId, Status = Status)
   output <- .elasticbeanstalk$describe_environment_managed_actions_output()
@@ -913,7 +937,8 @@ elasticbeanstalk_describe_environment_resources <- function(EnvironmentId = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$describe_environment_resources_input(EnvironmentId = EnvironmentId, EnvironmentName = EnvironmentName)
   output <- .elasticbeanstalk$describe_environment_resources_output()
@@ -959,7 +984,8 @@ elasticbeanstalk_describe_environments <- function(ApplicationName = NULL, Versi
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "Environments"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$describe_environments_input(ApplicationName = ApplicationName, VersionLabel = VersionLabel, EnvironmentIds = EnvironmentIds, EnvironmentNames = EnvironmentNames, IncludeDeleted = IncludeDeleted, IncludedDeletedBackTo = IncludedDeletedBackTo, MaxRecords = MaxRecords, NextToken = NextToken)
   output <- .elasticbeanstalk$describe_environments_output()
@@ -1002,7 +1028,8 @@ elasticbeanstalk_describe_events <- function(ApplicationName = NULL, VersionLabe
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxRecords", result_key = "Events"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$describe_events_input(ApplicationName = ApplicationName, VersionLabel = VersionLabel, TemplateName = TemplateName, EnvironmentId = EnvironmentId, EnvironmentName = EnvironmentName, PlatformArn = PlatformArn, RequestId = RequestId, Severity = Severity, StartTime = StartTime, EndTime = EndTime, MaxRecords = MaxRecords, NextToken = NextToken)
   output <- .elasticbeanstalk$describe_events_output()
@@ -1037,7 +1064,8 @@ elasticbeanstalk_describe_instances_health <- function(EnvironmentName = NULL, E
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$describe_instances_health_input(EnvironmentName = EnvironmentName, EnvironmentId = EnvironmentId, AttributeNames = AttributeNames, NextToken = NextToken)
   output <- .elasticbeanstalk$describe_instances_health_output()
@@ -1068,7 +1096,8 @@ elasticbeanstalk_describe_platform_version <- function(PlatformArn = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$describe_platform_version_input(PlatformArn = PlatformArn)
   output <- .elasticbeanstalk$describe_platform_version_output()
@@ -1100,7 +1129,8 @@ elasticbeanstalk_disassociate_environment_operations_role <- function(Environmen
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$disassociate_environment_operations_role_input(EnvironmentName = EnvironmentName)
   output <- .elasticbeanstalk$disassociate_environment_operations_role_output()
@@ -1132,7 +1162,8 @@ elasticbeanstalk_list_available_solution_stacks <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$list_available_solution_stacks_input()
   output <- .elasticbeanstalk$list_available_solution_stacks_output()
@@ -1194,7 +1225,8 @@ elasticbeanstalk_list_platform_branches <- function(Filters = NULL, MaxRecords =
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$list_platform_branches_input(Filters = Filters, MaxRecords = MaxRecords, NextToken = NextToken)
   output <- .elasticbeanstalk$list_platform_branches_output()
@@ -1230,7 +1262,8 @@ elasticbeanstalk_list_platform_versions <- function(Filters = NULL, MaxRecords =
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "PlatformSummaryList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$list_platform_versions_input(Filters = Filters, MaxRecords = MaxRecords, NextToken = NextToken)
   output <- .elasticbeanstalk$list_platform_versions_output()
@@ -1263,7 +1296,8 @@ elasticbeanstalk_list_tags_for_resource <- function(ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .elasticbeanstalk$list_tags_for_resource_output()
@@ -1300,7 +1334,8 @@ elasticbeanstalk_rebuild_environment <- function(EnvironmentId = NULL, Environme
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$rebuild_environment_input(EnvironmentId = EnvironmentId, EnvironmentName = EnvironmentName)
   output <- .elasticbeanstalk$rebuild_environment_output()
@@ -1342,7 +1377,8 @@ elasticbeanstalk_request_environment_info <- function(EnvironmentId = NULL, Envi
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$request_environment_info_input(EnvironmentId = EnvironmentId, EnvironmentName = EnvironmentName, InfoType = InfoType)
   output <- .elasticbeanstalk$request_environment_info_output()
@@ -1379,7 +1415,8 @@ elasticbeanstalk_restart_app_server <- function(EnvironmentId = NULL, Environmen
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$restart_app_server_input(EnvironmentId = EnvironmentId, EnvironmentName = EnvironmentName)
   output <- .elasticbeanstalk$restart_app_server_output()
@@ -1420,7 +1457,8 @@ elasticbeanstalk_retrieve_environment_info <- function(EnvironmentId = NULL, Env
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$retrieve_environment_info_input(EnvironmentId = EnvironmentId, EnvironmentName = EnvironmentName, InfoType = InfoType)
   output <- .elasticbeanstalk$retrieve_environment_info_output()
@@ -1462,7 +1500,8 @@ elasticbeanstalk_swap_environment_cnam_es <- function(SourceEnvironmentId = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$swap_environment_cnam_es_input(SourceEnvironmentId = SourceEnvironmentId, SourceEnvironmentName = SourceEnvironmentName, DestinationEnvironmentId = DestinationEnvironmentId, DestinationEnvironmentName = DestinationEnvironmentName)
   output <- .elasticbeanstalk$swap_environment_cnam_es_output()
@@ -1510,7 +1549,8 @@ elasticbeanstalk_terminate_environment <- function(EnvironmentId = NULL, Environ
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$terminate_environment_input(EnvironmentId = EnvironmentId, EnvironmentName = EnvironmentName, TerminateResources = TerminateResources, ForceTerminate = ForceTerminate)
   output <- .elasticbeanstalk$terminate_environment_output()
@@ -1544,7 +1584,8 @@ elasticbeanstalk_update_application <- function(ApplicationName, Description = N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$update_application_input(ApplicationName = ApplicationName, Description = Description)
   output <- .elasticbeanstalk$update_application_output()
@@ -1576,7 +1617,8 @@ elasticbeanstalk_update_application_resource_lifecycle <- function(ApplicationNa
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$update_application_resource_lifecycle_input(ApplicationName = ApplicationName, ResourceLifecycleConfig = ResourceLifecycleConfig)
   output <- .elasticbeanstalk$update_application_resource_lifecycle_output()
@@ -1614,7 +1656,8 @@ elasticbeanstalk_update_application_version <- function(ApplicationName, Version
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$update_application_version_input(ApplicationName = ApplicationName, VersionLabel = VersionLabel, Description = Description)
   output <- .elasticbeanstalk$update_application_version_output()
@@ -1656,7 +1699,8 @@ elasticbeanstalk_update_configuration_template <- function(ApplicationName, Temp
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$update_configuration_template_input(ApplicationName = ApplicationName, TemplateName = TemplateName, Description = Description, OptionSettings = OptionSettings, OptionsToRemove = OptionsToRemove)
   output <- .elasticbeanstalk$update_configuration_template_output()
@@ -1709,7 +1753,8 @@ elasticbeanstalk_update_environment <- function(ApplicationName = NULL, Environm
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$update_environment_input(ApplicationName = ApplicationName, EnvironmentId = EnvironmentId, EnvironmentName = EnvironmentName, GroupName = GroupName, Description = Description, Tier = Tier, VersionLabel = VersionLabel, TemplateName = TemplateName, SolutionStackName = SolutionStackName, PlatformArn = PlatformArn, OptionSettings = OptionSettings, OptionsToRemove = OptionsToRemove)
   output <- .elasticbeanstalk$update_environment_output()
@@ -1748,7 +1793,8 @@ elasticbeanstalk_update_tags_for_resource <- function(ResourceArn, TagsToAdd = N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$update_tags_for_resource_input(ResourceArn = ResourceArn, TagsToAdd = TagsToAdd, TagsToRemove = TagsToRemove)
   output <- .elasticbeanstalk$update_tags_for_resource_output()
@@ -1787,7 +1833,8 @@ elasticbeanstalk_validate_configuration_settings <- function(ApplicationName, Te
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticbeanstalk$validate_configuration_settings_input(ApplicationName = ApplicationName, TemplateName = TemplateName, EnvironmentName = EnvironmentName, OptionSettings = OptionSettings)
   output <- .elasticbeanstalk$validate_configuration_settings_output()

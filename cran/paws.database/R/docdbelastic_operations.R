@@ -37,7 +37,8 @@ docdbelastic_apply_pending_maintenance_action <- function(applyAction, applyOn =
     http_path = "/pending-action",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdbelastic$apply_pending_maintenance_action_input(applyAction = applyAction, applyOn = applyOn, optInType = optInType, resourceArn = resourceArn)
   output <- .docdbelastic$apply_pending_maintenance_action_output()
@@ -88,7 +89,8 @@ docdbelastic_copy_cluster_snapshot <- function(copyTags = NULL, kmsKeyId = NULL,
     http_path = "/cluster-snapshot/{snapshotArn}/copy",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdbelastic$copy_cluster_snapshot_input(copyTags = copyTags, kmsKeyId = kmsKeyId, snapshotArn = snapshotArn, tags = tags, targetSnapshotName = targetSnapshotName)
   output <- .docdbelastic$copy_cluster_snapshot_output()
@@ -170,7 +172,8 @@ docdbelastic_create_cluster <- function(adminUserName, adminUserPassword, authTy
     http_path = "/cluster",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdbelastic$create_cluster_input(adminUserName = adminUserName, adminUserPassword = adminUserPassword, authType = authType, backupRetentionPeriod = backupRetentionPeriod, clientToken = clientToken, clusterName = clusterName, kmsKeyId = kmsKeyId, preferredBackupWindow = preferredBackupWindow, preferredMaintenanceWindow = preferredMaintenanceWindow, shardCapacity = shardCapacity, shardCount = shardCount, shardInstanceCount = shardInstanceCount, subnetIds = subnetIds, tags = tags, vpcSecurityGroupIds = vpcSecurityGroupIds)
   output <- .docdbelastic$create_cluster_output()
@@ -203,7 +206,8 @@ docdbelastic_create_cluster_snapshot <- function(clusterArn, snapshotName, tags 
     http_path = "/cluster-snapshot",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdbelastic$create_cluster_snapshot_input(clusterArn = clusterArn, snapshotName = snapshotName, tags = tags)
   output <- .docdbelastic$create_cluster_snapshot_output()
@@ -234,7 +238,8 @@ docdbelastic_delete_cluster <- function(clusterArn) {
     http_path = "/cluster/{clusterArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdbelastic$delete_cluster_input(clusterArn = clusterArn)
   output <- .docdbelastic$delete_cluster_output()
@@ -265,7 +270,8 @@ docdbelastic_delete_cluster_snapshot <- function(snapshotArn) {
     http_path = "/cluster-snapshot/{snapshotArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdbelastic$delete_cluster_snapshot_input(snapshotArn = snapshotArn)
   output <- .docdbelastic$delete_cluster_snapshot_output()
@@ -296,7 +302,8 @@ docdbelastic_get_cluster <- function(clusterArn) {
     http_path = "/cluster/{clusterArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdbelastic$get_cluster_input(clusterArn = clusterArn)
   output <- .docdbelastic$get_cluster_output()
@@ -327,7 +334,8 @@ docdbelastic_get_cluster_snapshot <- function(snapshotArn) {
     http_path = "/cluster-snapshot/{snapshotArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdbelastic$get_cluster_snapshot_input(snapshotArn = snapshotArn)
   output <- .docdbelastic$get_cluster_snapshot_output()
@@ -358,7 +366,8 @@ docdbelastic_get_pending_maintenance_action <- function(resourceArn) {
     http_path = "/pending-action/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdbelastic$get_pending_maintenance_action_input(resourceArn = resourceArn)
   output <- .docdbelastic$get_pending_maintenance_action_output()
@@ -398,7 +407,8 @@ docdbelastic_list_cluster_snapshots <- function(clusterArn = NULL, maxResults = 
     http_path = "/cluster-snapshots",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "snapshots"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdbelastic$list_cluster_snapshots_input(clusterArn = clusterArn, maxResults = maxResults, nextToken = nextToken, snapshotType = snapshotType)
   output <- .docdbelastic$list_cluster_snapshots_output()
@@ -432,7 +442,8 @@ docdbelastic_list_clusters <- function(maxResults = NULL, nextToken = NULL) {
     http_path = "/clusters",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "clusters"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdbelastic$list_clusters_input(maxResults = maxResults, nextToken = nextToken)
   output <- .docdbelastic$list_clusters_output()
@@ -464,7 +475,8 @@ docdbelastic_list_pending_maintenance_actions <- function(maxResults = NULL, nex
     http_path = "/pending-actions",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "resourcePendingMaintenanceActions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdbelastic$list_pending_maintenance_actions_input(maxResults = maxResults, nextToken = nextToken)
   output <- .docdbelastic$list_pending_maintenance_actions_output()
@@ -495,7 +507,8 @@ docdbelastic_list_tags_for_resource <- function(resourceArn) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdbelastic$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .docdbelastic$list_tags_for_resource_output()
@@ -537,7 +550,8 @@ docdbelastic_restore_cluster_from_snapshot <- function(clusterName, kmsKeyId = N
     http_path = "/cluster-snapshot/{snapshotArn}/restore",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdbelastic$restore_cluster_from_snapshot_input(clusterName = clusterName, kmsKeyId = kmsKeyId, shardCapacity = shardCapacity, shardInstanceCount = shardInstanceCount, snapshotArn = snapshotArn, subnetIds = subnetIds, tags = tags, vpcSecurityGroupIds = vpcSecurityGroupIds)
   output <- .docdbelastic$restore_cluster_from_snapshot_output()
@@ -568,7 +582,8 @@ docdbelastic_start_cluster <- function(clusterArn) {
     http_path = "/cluster/{clusterArn}/start",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdbelastic$start_cluster_input(clusterArn = clusterArn)
   output <- .docdbelastic$start_cluster_output()
@@ -599,7 +614,8 @@ docdbelastic_stop_cluster <- function(clusterArn) {
     http_path = "/cluster/{clusterArn}/stop",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdbelastic$stop_cluster_input(clusterArn = clusterArn)
   output <- .docdbelastic$stop_cluster_output()
@@ -631,7 +647,8 @@ docdbelastic_tag_resource <- function(resourceArn, tags) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdbelastic$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .docdbelastic$tag_resource_output()
@@ -663,7 +680,8 @@ docdbelastic_untag_resource <- function(resourceArn, tagKeys) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdbelastic$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .docdbelastic$untag_resource_output()
@@ -715,7 +733,8 @@ docdbelastic_update_cluster <- function(adminUserPassword = NULL, authType = NUL
     http_path = "/cluster/{clusterArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .docdbelastic$update_cluster_input(adminUserPassword = adminUserPassword, authType = authType, backupRetentionPeriod = backupRetentionPeriod, clientToken = clientToken, clusterArn = clusterArn, preferredBackupWindow = preferredBackupWindow, preferredMaintenanceWindow = preferredMaintenanceWindow, shardCapacity = shardCapacity, shardCount = shardCount, shardInstanceCount = shardInstanceCount, subnetIds = subnetIds, vpcSecurityGroupIds = vpcSecurityGroupIds)
   output <- .docdbelastic$update_cluster_output()

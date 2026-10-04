@@ -43,7 +43,8 @@ resourcegroups_cancel_tag_sync_task <- function(TaskArn) {
     http_path = "/cancel-tag-sync-task",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourcegroups$cancel_tag_sync_task_input(TaskArn = TaskArn)
   output <- .resourcegroups$cancel_tag_sync_task_output()
@@ -181,7 +182,8 @@ resourcegroups_create_group <- function(Name, Description = NULL, ResourceQuery 
     http_path = "/groups",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourcegroups$create_group_input(Name = Name, Description = Description, ResourceQuery = ResourceQuery, Tags = Tags, Configuration = Configuration, Criticality = Criticality, Owner = Owner, DisplayName = DisplayName)
   output <- .resourcegroups$create_group_output()
@@ -248,7 +250,8 @@ resourcegroups_delete_group <- function(GroupName = NULL, Group = NULL) {
     http_path = "/delete-group",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourcegroups$delete_group_input(GroupName = GroupName, Group = Group)
   output <- .resourcegroups$delete_group_output()
@@ -296,7 +299,8 @@ resourcegroups_get_account_settings <- function() {
     http_path = "/get-account-settings",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourcegroups$get_account_settings_input()
   output <- .resourcegroups$get_account_settings_output()
@@ -363,7 +367,8 @@ resourcegroups_get_group <- function(GroupName = NULL, Group = NULL) {
     http_path = "/get-group",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourcegroups$get_group_input(GroupName = GroupName, Group = Group)
   output <- .resourcegroups$get_group_output()
@@ -448,7 +453,8 @@ resourcegroups_get_group_configuration <- function(Group = NULL) {
     http_path = "/get-group-configuration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourcegroups$get_group_configuration_input(Group = Group)
   output <- .resourcegroups$get_group_configuration_output()
@@ -512,7 +518,8 @@ resourcegroups_get_group_query <- function(GroupName = NULL, Group = NULL) {
     http_path = "/get-group-query",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourcegroups$get_group_query_input(GroupName = GroupName, Group = Group)
   output <- .resourcegroups$get_group_query_output()
@@ -581,7 +588,8 @@ resourcegroups_get_tag_sync_task <- function(TaskArn) {
     http_path = "/get-tag-sync-task",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourcegroups$get_tag_sync_task_input(TaskArn = TaskArn)
   output <- .resourcegroups$get_tag_sync_task_output()
@@ -640,7 +648,8 @@ resourcegroups_get_tags <- function(Arn) {
     http_path = "/resources/{Arn}/tags",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourcegroups$get_tags_input(Arn = Arn)
   output <- .resourcegroups$get_tags_output()
@@ -723,7 +732,8 @@ resourcegroups_group_resources <- function(Group, ResourceArns) {
     http_path = "/group-resources",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourcegroups$group_resources_input(Group = Group, ResourceArns = ResourceArns)
   output <- .resourcegroups$group_resources_output()
@@ -832,7 +842,8 @@ resourcegroups_list_group_resources <- function(GroupName = NULL, Group = NULL, 
     http_path = "/list-group-resources",
     host_prefix = "",
     paginator = list(result_key = list("ResourceIdentifiers", "Resources"), output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourcegroups$list_group_resources_input(GroupName = GroupName, Group = Group, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .resourcegroups$list_group_resources_output()
@@ -909,7 +920,8 @@ resourcegroups_list_grouping_statuses <- function(Group, MaxResults = NULL, Filt
     http_path = "/list-grouping-statuses",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "GroupingStatuses"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourcegroups$list_grouping_statuses_input(Group = Group, MaxResults = MaxResults, Filters = Filters, NextToken = NextToken)
   output <- .resourcegroups$list_grouping_statuses_output()
@@ -1016,7 +1028,8 @@ resourcegroups_list_groups <- function(Filters = NULL, MaxResults = NULL, NextTo
     http_path = "/groups-list",
     host_prefix = "",
     paginator = list(result_key = list("GroupIdentifiers", "Groups"), output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourcegroups$list_groups_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .resourcegroups$list_groups_output()
@@ -1099,7 +1112,8 @@ resourcegroups_list_tag_sync_tasks <- function(Filters = NULL, MaxResults = NULL
     http_path = "/list-tag-sync-tasks",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TagSyncTasks"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourcegroups$list_tag_sync_tasks_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .resourcegroups$list_tag_sync_tasks_output()
@@ -1167,7 +1181,8 @@ resourcegroups_put_group_configuration <- function(Group = NULL, Configuration =
     http_path = "/put-group-configuration",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourcegroups$put_group_configuration_input(Group = Group, Configuration = Configuration)
   output <- .resourcegroups$put_group_configuration_output()
@@ -1248,7 +1263,8 @@ resourcegroups_search_resources <- function(ResourceQuery, MaxResults = NULL, Ne
     http_path = "/resources/search",
     host_prefix = "",
     paginator = list(result_key = "ResourceIdentifiers", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourcegroups$search_resources_input(ResourceQuery = ResourceQuery, MaxResults = MaxResults, NextToken = NextToken)
   output <- .resourcegroups$search_resources_output()
@@ -1347,7 +1363,8 @@ resourcegroups_start_tag_sync_task <- function(Group, TagKey = NULL, TagValue = 
     http_path = "/start-tag-sync-task",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourcegroups$start_tag_sync_task_input(Group = Group, TagKey = TagKey, TagValue = TagValue, ResourceQuery = ResourceQuery, RoleArn = RoleArn)
   output <- .resourcegroups$start_tag_sync_task_output()
@@ -1412,7 +1429,8 @@ resourcegroups_tag <- function(Arn, Tags) {
     http_path = "/resources/{Arn}/tags",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourcegroups$tag_input(Arn = Arn, Tags = Tags)
   output <- .resourcegroups$tag_output()
@@ -1485,7 +1503,8 @@ resourcegroups_ungroup_resources <- function(Group, ResourceArns) {
     http_path = "/ungroup-resources",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourcegroups$ungroup_resources_input(Group = Group, ResourceArns = ResourceArns)
   output <- .resourcegroups$ungroup_resources_output()
@@ -1547,7 +1566,8 @@ resourcegroups_untag <- function(Arn, Keys) {
     http_path = "/resources/{Arn}/tags",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourcegroups$untag_input(Arn = Arn, Keys = Keys)
   output <- .resourcegroups$untag_output()
@@ -1605,7 +1625,8 @@ resourcegroups_update_account_settings <- function(GroupLifecycleEventsDesiredSt
     http_path = "/update-account-settings",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourcegroups$update_account_settings_input(GroupLifecycleEventsDesiredStatus = GroupLifecycleEventsDesiredStatus)
   output <- .resourcegroups$update_account_settings_output()
@@ -1681,7 +1702,8 @@ resourcegroups_update_group <- function(GroupName = NULL, Group = NULL, Descript
     http_path = "/update-group",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourcegroups$update_group_input(GroupName = GroupName, Group = Group, Description = Description, Criticality = Criticality, Owner = Owner, DisplayName = DisplayName)
   output <- .resourcegroups$update_group_output()
@@ -1751,7 +1773,8 @@ resourcegroups_update_group_query <- function(GroupName = NULL, Group = NULL, Re
     http_path = "/update-group-query",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .resourcegroups$update_group_query_input(GroupName = GroupName, Group = Group, ResourceQuery = ResourceQuery)
   output <- .resourcegroups$update_group_query_output()

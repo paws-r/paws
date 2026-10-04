@@ -25,7 +25,8 @@ voiceid_associate_fraudster <- function(DomainId, FraudsterId, WatchlistId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .voiceid$associate_fraudster_input(DomainId = DomainId, FraudsterId = FraudsterId, WatchlistId = WatchlistId)
   output <- .voiceid$associate_fraudster_output()
@@ -61,7 +62,8 @@ voiceid_create_domain <- function(ClientToken = NULL, Description = NULL, Name, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .voiceid$create_domain_input(ClientToken = ClientToken, Description = Description, Name = Name, ServerSideEncryptionConfiguration = ServerSideEncryptionConfiguration, Tags = Tags)
   output <- .voiceid$create_domain_output()
@@ -95,7 +97,8 @@ voiceid_create_watchlist <- function(ClientToken = NULL, Description = NULL, Dom
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .voiceid$create_watchlist_input(ClientToken = ClientToken, Description = Description, DomainId = DomainId, Name = Name)
   output <- .voiceid$create_watchlist_output()
@@ -126,7 +129,8 @@ voiceid_delete_domain <- function(DomainId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .voiceid$delete_domain_input(DomainId = DomainId)
   output <- .voiceid$delete_domain_output()
@@ -158,7 +162,8 @@ voiceid_delete_fraudster <- function(DomainId, FraudsterId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .voiceid$delete_fraudster_input(DomainId = DomainId, FraudsterId = FraudsterId)
   output <- .voiceid$delete_fraudster_output()
@@ -190,7 +195,8 @@ voiceid_delete_speaker <- function(DomainId, SpeakerId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .voiceid$delete_speaker_input(DomainId = DomainId, SpeakerId = SpeakerId)
   output <- .voiceid$delete_speaker_output()
@@ -222,7 +228,8 @@ voiceid_delete_watchlist <- function(DomainId, WatchlistId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .voiceid$delete_watchlist_input(DomainId = DomainId, WatchlistId = WatchlistId)
   output <- .voiceid$delete_watchlist_output()
@@ -253,7 +260,8 @@ voiceid_describe_domain <- function(DomainId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .voiceid$describe_domain_input(DomainId = DomainId)
   output <- .voiceid$describe_domain_output()
@@ -285,7 +293,8 @@ voiceid_describe_fraudster <- function(DomainId, FraudsterId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .voiceid$describe_fraudster_input(DomainId = DomainId, FraudsterId = FraudsterId)
   output <- .voiceid$describe_fraudster_output()
@@ -317,7 +326,8 @@ voiceid_describe_fraudster_registration_job <- function(DomainId, JobId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .voiceid$describe_fraudster_registration_job_input(DomainId = DomainId, JobId = JobId)
   output <- .voiceid$describe_fraudster_registration_job_output()
@@ -349,7 +359,8 @@ voiceid_describe_speaker <- function(DomainId, SpeakerId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .voiceid$describe_speaker_input(DomainId = DomainId, SpeakerId = SpeakerId)
   output <- .voiceid$describe_speaker_output()
@@ -381,7 +392,8 @@ voiceid_describe_speaker_enrollment_job <- function(DomainId, JobId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .voiceid$describe_speaker_enrollment_job_input(DomainId = DomainId, JobId = JobId)
   output <- .voiceid$describe_speaker_enrollment_job_output()
@@ -413,7 +425,8 @@ voiceid_describe_watchlist <- function(DomainId, WatchlistId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .voiceid$describe_watchlist_input(DomainId = DomainId, WatchlistId = WatchlistId)
   output <- .voiceid$describe_watchlist_output()
@@ -446,7 +459,8 @@ voiceid_disassociate_fraudster <- function(DomainId, FraudsterId, WatchlistId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .voiceid$disassociate_fraudster_input(DomainId = DomainId, FraudsterId = FraudsterId, WatchlistId = WatchlistId)
   output <- .voiceid$disassociate_fraudster_output()
@@ -479,7 +493,8 @@ voiceid_evaluate_session <- function(DomainId, SessionNameOrId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .voiceid$evaluate_session_input(DomainId = DomainId, SessionNameOrId = SessionNameOrId)
   output <- .voiceid$evaluate_session_output()
@@ -511,7 +526,8 @@ voiceid_list_domains <- function(MaxResults = NULL, NextToken = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "DomainSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .voiceid$list_domains_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .voiceid$list_domains_output()
@@ -546,7 +562,8 @@ voiceid_list_fraudster_registration_jobs <- function(DomainId, JobStatus = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "JobSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .voiceid$list_fraudster_registration_jobs_input(DomainId = DomainId, JobStatus = JobStatus, MaxResults = MaxResults, NextToken = NextToken)
   output <- .voiceid$list_fraudster_registration_jobs_output()
@@ -580,7 +597,8 @@ voiceid_list_fraudsters <- function(DomainId, MaxResults = NULL, NextToken = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FraudsterSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .voiceid$list_fraudsters_input(DomainId = DomainId, MaxResults = MaxResults, NextToken = NextToken, WatchlistId = WatchlistId)
   output <- .voiceid$list_fraudsters_output()
@@ -615,7 +633,8 @@ voiceid_list_speaker_enrollment_jobs <- function(DomainId, JobStatus = NULL, Max
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "JobSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .voiceid$list_speaker_enrollment_jobs_input(DomainId = DomainId, JobStatus = JobStatus, MaxResults = MaxResults, NextToken = NextToken)
   output <- .voiceid$list_speaker_enrollment_jobs_output()
@@ -648,7 +667,8 @@ voiceid_list_speakers <- function(DomainId, MaxResults = NULL, NextToken = NULL)
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "SpeakerSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .voiceid$list_speakers_input(DomainId = DomainId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .voiceid$list_speakers_output()
@@ -679,7 +699,8 @@ voiceid_list_tags_for_resource <- function(ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .voiceid$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .voiceid$list_tags_for_resource_output()
@@ -712,7 +733,8 @@ voiceid_list_watchlists <- function(DomainId, MaxResults = NULL, NextToken = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "WatchlistSummaries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .voiceid$list_watchlists_input(DomainId = DomainId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .voiceid$list_watchlists_output()
@@ -744,7 +766,8 @@ voiceid_opt_out_speaker <- function(DomainId, SpeakerId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .voiceid$opt_out_speaker_input(DomainId = DomainId, SpeakerId = SpeakerId)
   output <- .voiceid$opt_out_speaker_output()
@@ -781,7 +804,8 @@ voiceid_start_fraudster_registration_job <- function(ClientToken = NULL, DataAcc
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .voiceid$start_fraudster_registration_job_input(ClientToken = ClientToken, DataAccessRoleArn = DataAccessRoleArn, DomainId = DomainId, InputDataConfig = InputDataConfig, JobName = JobName, OutputDataConfig = OutputDataConfig, RegistrationConfig = RegistrationConfig)
   output <- .voiceid$start_fraudster_registration_job_output()
@@ -818,7 +842,8 @@ voiceid_start_speaker_enrollment_job <- function(ClientToken = NULL, DataAccessR
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .voiceid$start_speaker_enrollment_job_input(ClientToken = ClientToken, DataAccessRoleArn = DataAccessRoleArn, DomainId = DomainId, EnrollmentConfig = EnrollmentConfig, InputDataConfig = InputDataConfig, JobName = JobName, OutputDataConfig = OutputDataConfig)
   output <- .voiceid$start_speaker_enrollment_job_output()
@@ -850,7 +875,8 @@ voiceid_tag_resource <- function(ResourceArn, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .voiceid$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .voiceid$tag_resource_output()
@@ -882,7 +908,8 @@ voiceid_untag_resource <- function(ResourceArn, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .voiceid$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .voiceid$untag_resource_output()
@@ -916,7 +943,8 @@ voiceid_update_domain <- function(Description = NULL, DomainId, Name, ServerSide
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .voiceid$update_domain_input(Description = Description, DomainId = DomainId, Name = Name, ServerSideEncryptionConfiguration = ServerSideEncryptionConfiguration)
   output <- .voiceid$update_domain_output()
@@ -950,7 +978,8 @@ voiceid_update_watchlist <- function(Description = NULL, DomainId, Name = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .voiceid$update_watchlist_input(Description = Description, DomainId = DomainId, Name = Name, WatchlistId = WatchlistId)
   output <- .voiceid$update_watchlist_output()

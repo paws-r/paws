@@ -22,7 +22,8 @@ timestreamquery_cancel_query <- function(QueryId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .timestreamquery$cancel_query_input(QueryId = QueryId)
   output <- .timestreamquery$cancel_query_output()
@@ -71,7 +72,8 @@ timestreamquery_create_scheduled_query <- function(Name, QueryString, ScheduleCo
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .timestreamquery$create_scheduled_query_input(Name = Name, QueryString = QueryString, ScheduleConfiguration = ScheduleConfiguration, NotificationConfiguration = NotificationConfiguration, TargetConfiguration = TargetConfiguration, ClientToken = ClientToken, ScheduledQueryExecutionRoleArn = ScheduledQueryExecutionRoleArn, Tags = Tags, KmsKeyId = KmsKeyId, ErrorReportConfiguration = ErrorReportConfiguration)
   output <- .timestreamquery$create_scheduled_query_output()
@@ -102,7 +104,8 @@ timestreamquery_delete_scheduled_query <- function(ScheduledQueryArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .timestreamquery$delete_scheduled_query_input(ScheduledQueryArn = ScheduledQueryArn)
   output <- .timestreamquery$delete_scheduled_query_output()
@@ -135,7 +138,8 @@ timestreamquery_describe_account_settings <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .timestreamquery$describe_account_settings_input()
   output <- .timestreamquery$describe_account_settings_output()
@@ -167,7 +171,8 @@ timestreamquery_describe_endpoints <- function() {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .timestreamquery$describe_endpoints_input()
   output <- .timestreamquery$describe_endpoints_output()
@@ -198,7 +203,8 @@ timestreamquery_describe_scheduled_query <- function(ScheduledQueryArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .timestreamquery$describe_scheduled_query_input(ScheduledQueryArn = ScheduledQueryArn)
   output <- .timestreamquery$describe_scheduled_query_output()
@@ -234,7 +240,8 @@ timestreamquery_execute_scheduled_query <- function(ScheduledQueryArn, Invocatio
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .timestreamquery$execute_scheduled_query_input(ScheduledQueryArn = ScheduledQueryArn, InvocationTime = InvocationTime, ClientToken = ClientToken, QueryInsights = QueryInsights)
   output <- .timestreamquery$execute_scheduled_query_output()
@@ -267,7 +274,8 @@ timestreamquery_list_scheduled_queries <- function(MaxResults = NULL, NextToken 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScheduledQueries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .timestreamquery$list_scheduled_queries_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .timestreamquery$list_scheduled_queries_output()
@@ -300,7 +308,8 @@ timestreamquery_list_tags_for_resource <- function(ResourceARN, MaxResults = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Tags"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .timestreamquery$list_tags_for_resource_input(ResourceARN = ResourceARN, MaxResults = MaxResults, NextToken = NextToken)
   output <- .timestreamquery$list_tags_for_resource_output()
@@ -333,7 +342,8 @@ timestreamquery_prepare_query <- function(QueryString, ValidateOnly = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .timestreamquery$prepare_query_input(QueryString = QueryString, ValidateOnly = ValidateOnly)
   output <- .timestreamquery$prepare_query_output()
@@ -401,7 +411,8 @@ timestreamquery_query <- function(QueryString, ClientToken = NULL, NextToken = N
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxRows", non_aggregate_keys = list( "ColumnInfo", "QueryId", "QueryStatus", "QueryInsightsResponse"), output_token = "NextToken", result_key = "Rows"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .timestreamquery$query_input(QueryString = QueryString, ClientToken = ClientToken, NextToken = NextToken, MaxRows = MaxRows, QueryInsights = QueryInsights)
   output <- .timestreamquery$query_output()
@@ -433,7 +444,8 @@ timestreamquery_tag_resource <- function(ResourceARN, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .timestreamquery$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .timestreamquery$tag_resource_output()
@@ -465,7 +477,8 @@ timestreamquery_untag_resource <- function(ResourceARN, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .timestreamquery$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .timestreamquery$untag_resource_output()
@@ -505,7 +518,8 @@ timestreamquery_update_account_settings <- function(MaxQueryTCU = NULL, QueryPri
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .timestreamquery$update_account_settings_input(MaxQueryTCU = MaxQueryTCU, QueryPricingModel = QueryPricingModel, QueryCompute = QueryCompute)
   output <- .timestreamquery$update_account_settings_output()
@@ -537,7 +551,8 @@ timestreamquery_update_scheduled_query <- function(ScheduledQueryArn, State) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .timestreamquery$update_scheduled_query_input(ScheduledQueryArn = ScheduledQueryArn, State = State)
   output <- .timestreamquery$update_scheduled_query_output()

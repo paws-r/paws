@@ -80,7 +80,8 @@ rekognition_associate_faces <- function(CollectionId, UserId, FaceIds, UserMatch
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$associate_faces_input(CollectionId = CollectionId, UserId = UserId, FaceIds = FaceIds, UserMatchThreshold = UserMatchThreshold, ClientRequestToken = ClientRequestToken)
   output <- .rekognition$associate_faces_output()
@@ -289,7 +290,8 @@ rekognition_compare_faces <- function(SourceImage, TargetImage, SimilarityThresh
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$compare_faces_input(SourceImage = SourceImage, TargetImage = TargetImage, SimilarityThreshold = SimilarityThreshold, QualityFilter = QualityFilter)
   output <- .rekognition$compare_faces_output()
@@ -385,7 +387,8 @@ rekognition_copy_project_version <- function(SourceProjectArn, SourceProjectVers
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$copy_project_version_input(SourceProjectArn = SourceProjectArn, SourceProjectVersionArn = SourceProjectVersionArn, DestinationProjectArn = DestinationProjectArn, VersionName = VersionName, OutputConfig = OutputConfig, Tags = Tags, KmsKeyId = KmsKeyId)
   output <- .rekognition$copy_project_version_output()
@@ -456,7 +459,8 @@ rekognition_create_collection <- function(CollectionId, Tags = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$create_collection_input(CollectionId = CollectionId, Tags = Tags)
   output <- .rekognition$create_collection_output()
@@ -536,7 +540,8 @@ rekognition_create_dataset <- function(DatasetSource = NULL, DatasetType, Projec
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$create_dataset_input(DatasetSource = DatasetSource, DatasetType = DatasetType, ProjectArn = ProjectArn, Tags = Tags)
   output <- .rekognition$create_dataset_output()
@@ -556,6 +561,8 @@ rekognition_create_dataset <- function(DatasetSource = NULL, DatasetType, Projec
 #' You can use the `OutputConfig` option in the Settings parameter to provide an Amazon S3 bucket location. The Amazon S3 bucket stores reference images and audit images. If no Amazon S3 bucket is defined, raw bytes are sent instead.
 #' 
 #' You can use `AuditImagesLimit` to limit the number of audit images returned when [`get_face_liveness_session_results`][rekognition_get_face_liveness_session_results] is called. This number is between 0 and 4. By default, it is set to 0. The limit is best effort and based on the duration of the selfie-video.
+#' 
+#' You can use the `ChallengePreferences` option in the `Settings` parameter to choose between the 'FaceMovementAndLightChallenge' or FaceMovementChallenge' settings. See the [Shared Responsibility](https://docs.aws.amazon.com/rekognition/latest/dg/face-liveness-shared-responsibility-model.html) page for details on guidance for which setting to choose between these two settings depending on your use case and preferences. This parameter is optional and if no parameter is provided, then the 'FaceMovementAndLightChallenge' settings is applied by default.
 #'
 #' @usage
 #' rekognition_create_face_liveness_session(KmsKeyId, Settings,
@@ -609,7 +616,8 @@ rekognition_create_face_liveness_session <- function(KmsKeyId = NULL, Settings =
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$create_face_liveness_session_input(KmsKeyId = KmsKeyId, Settings = Settings, ClientRequestToken = ClientRequestToken)
   output <- .rekognition$create_face_liveness_session_output()
@@ -666,7 +674,8 @@ rekognition_create_project <- function(ProjectName, Feature = NULL, AutoUpdate =
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$create_project_input(ProjectName = ProjectName, Feature = Feature, AutoUpdate = AutoUpdate, Tags = Tags)
   output <- .rekognition$create_project_output()
@@ -792,7 +801,8 @@ rekognition_create_project_version <- function(ProjectArn, VersionName, OutputCo
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$create_project_version_input(ProjectArn = ProjectArn, VersionName = VersionName, OutputConfig = OutputConfig, TrainingData = TrainingData, TestingData = TestingData, Tags = Tags, KmsKeyId = KmsKeyId, VersionDescription = VersionDescription, FeatureConfig = FeatureConfig)
   output <- .rekognition$create_project_version_output()
@@ -804,10 +814,14 @@ rekognition_create_project_version <- function(ProjectArn, VersionName, OutputCo
 }
 .rekognition$operations$create_project_version <- rekognition_create_project_version
 
-#' Creates an Amazon Rekognition stream processor that you can use to
-#' detect and recognize faces or to detect labels in a streaming video
+#' Service availability notice: Streaming Video and Bulk Image Analysis is
+#' no longer available to new customers
 #'
 #' @description
+#' Service availability notice: Streaming Video and Bulk Image Analysis is no longer available to new customers. For more information, see [Rekognition feature availability changes](https://docs.aws.amazon.com/rekognition/latest/dg/rekognition-availability-changes.html).
+#' 
+#' **This change does not impact the availability of other Amazon Rekognition features.**
+#' 
 #' Creates an Amazon Rekognition stream processor that you can use to detect and recognize faces or to detect labels in a streaming video.
 #' 
 #' Amazon Rekognition Video is a consumer of live video from Amazon Kinesis Video Streams. There are two different settings for stream processors in Amazon Rekognition: detecting faces and detecting labels.
@@ -916,7 +930,8 @@ rekognition_create_stream_processor <- function(Input, Output, Name, Settings, R
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$create_stream_processor_input(Input = Input, Output = Output, Name = Name, Settings = Settings, RoleArn = RoleArn, Tags = Tags, NotificationChannel = NotificationChannel, KmsKeyId = KmsKeyId, RegionsOfInterest = RegionsOfInterest, DataSharingPreference = DataSharingPreference)
   output <- .rekognition$create_stream_processor_output()
@@ -966,7 +981,8 @@ rekognition_create_user <- function(CollectionId, UserId, ClientRequestToken = N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$create_user_input(CollectionId = CollectionId, UserId = UserId, ClientRequestToken = ClientRequestToken)
   output <- .rekognition$create_user_output()
@@ -1025,7 +1041,8 @@ rekognition_delete_collection <- function(CollectionId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$delete_collection_input(CollectionId = CollectionId)
   output <- .rekognition$delete_collection_output()
@@ -1075,7 +1092,8 @@ rekognition_delete_dataset <- function(DatasetArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$delete_dataset_input(DatasetArn = DatasetArn)
   output <- .rekognition$delete_dataset_output()
@@ -1152,7 +1170,8 @@ rekognition_delete_faces <- function(CollectionId, FaceIds) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$delete_faces_input(CollectionId = CollectionId, FaceIds = FaceIds)
   output <- .rekognition$delete_faces_output()
@@ -1205,7 +1224,8 @@ rekognition_delete_project <- function(ProjectArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$delete_project_input(ProjectArn = ProjectArn)
   output <- .rekognition$delete_project_output()
@@ -1260,7 +1280,8 @@ rekognition_delete_project_policy <- function(ProjectArn, PolicyName, PolicyRevi
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$delete_project_policy_input(ProjectArn = ProjectArn, PolicyName = PolicyName, PolicyRevisionId = PolicyRevisionId)
   output <- .rekognition$delete_project_policy_output()
@@ -1314,7 +1335,8 @@ rekognition_delete_project_version <- function(ProjectVersionArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$delete_project_version_input(ProjectVersionArn = ProjectVersionArn)
   output <- .rekognition$delete_project_version_output()
@@ -1326,9 +1348,14 @@ rekognition_delete_project_version <- function(ProjectVersionArn) {
 }
 .rekognition$operations$delete_project_version <- rekognition_delete_project_version
 
-#' Deletes the stream processor identified by Name
+#' Service availability notice: Streaming Video and Bulk Image Analysis is
+#' no longer available to new customers
 #'
 #' @description
+#' Service availability notice: Streaming Video and Bulk Image Analysis is no longer available to new customers. For more information, see [Rekognition feature availability changes](https://docs.aws.amazon.com/rekognition/latest/dg/rekognition-availability-changes.html).
+#' 
+#' **This change does not impact the availability of other Amazon Rekognition features.**
+#' 
 #' Deletes the stream processor identified by `Name`. You assign the value for `Name` when you create the stream processor with [`create_stream_processor`][rekognition_create_stream_processor]. You might not be able to use the same name for a stream processor for a few seconds after calling [`delete_stream_processor`][rekognition_delete_stream_processor].
 #'
 #' @usage
@@ -1358,7 +1385,8 @@ rekognition_delete_stream_processor <- function(Name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$delete_stream_processor_input(Name = Name)
   output <- .rekognition$delete_stream_processor_output()
@@ -1406,7 +1434,8 @@ rekognition_delete_user <- function(CollectionId, UserId, ClientRequestToken = N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$delete_user_input(CollectionId = CollectionId, UserId = UserId, ClientRequestToken = ClientRequestToken)
   output <- .rekognition$delete_user_output()
@@ -1463,7 +1492,8 @@ rekognition_describe_collection <- function(CollectionId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$describe_collection_input(CollectionId = CollectionId)
   output <- .rekognition$describe_collection_output()
@@ -1532,7 +1562,8 @@ rekognition_describe_dataset <- function(DatasetArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$describe_dataset_input(DatasetArn = DatasetArn)
   output <- .rekognition$describe_dataset_output()
@@ -1723,7 +1754,8 @@ rekognition_describe_project_versions <- function(ProjectArn, VersionNames = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ProjectVersionDescriptions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$describe_project_versions_input(ProjectArn = ProjectArn, VersionNames = VersionNames, NextToken = NextToken, MaxResults = MaxResults)
   output <- .rekognition$describe_project_versions_output()
@@ -1808,7 +1840,8 @@ rekognition_describe_projects <- function(NextToken = NULL, MaxResults = NULL, P
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ProjectDescriptions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$describe_projects_input(NextToken = NextToken, MaxResults = MaxResults, ProjectNames = ProjectNames, Features = Features)
   output <- .rekognition$describe_projects_output()
@@ -1820,10 +1853,14 @@ rekognition_describe_projects <- function(NextToken = NULL, MaxResults = NULL, P
 }
 .rekognition$operations$describe_projects <- rekognition_describe_projects
 
-#' Provides information about a stream processor created by
-#' CreateStreamProcessor
+#' Service availability notice: Streaming Video and Bulk Image Analysis is
+#' no longer available to new customers
 #'
 #' @description
+#' Service availability notice: Streaming Video and Bulk Image Analysis is no longer available to new customers. For more information, see [Rekognition feature availability changes](https://docs.aws.amazon.com/rekognition/latest/dg/rekognition-availability-changes.html).
+#' 
+#' **This change does not impact the availability of other Amazon Rekognition features.**
+#' 
 #' Provides information about a stream processor created by [`create_stream_processor`][rekognition_create_stream_processor]. You can get information about the input and output streams, the input parameters for the face recognition being performed, and the current status of the stream processor.
 #'
 #' @usage
@@ -1917,7 +1954,8 @@ rekognition_describe_stream_processor <- function(Name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$describe_stream_processor_input(Name = Name)
   output <- .rekognition$describe_stream_processor_output()
@@ -2029,7 +2067,8 @@ rekognition_detect_custom_labels <- function(ProjectVersionArn, Image, MaxResult
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$detect_custom_labels_input(ProjectVersionArn = ProjectVersionArn, Image = Image, MaxResults = MaxResults, MinConfidence = MinConfidence)
   output <- .rekognition$detect_custom_labels_output()
@@ -2196,7 +2235,8 @@ rekognition_detect_faces <- function(Image, Attributes = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$detect_faces_input(Image = Image, Attributes = Attributes)
   output <- .rekognition$detect_faces_output()
@@ -2461,7 +2501,8 @@ rekognition_detect_labels <- function(Image, MaxLabels = NULL, MinConfidence = N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$detect_labels_input(Image = Image, MaxLabels = MaxLabels, MinConfidence = MinConfidence, Features = Features, Settings = Settings)
   output <- .rekognition$detect_labels_output()
@@ -2566,7 +2607,8 @@ rekognition_detect_moderation_labels <- function(Image, MinConfidence = NULL, Hu
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$detect_moderation_labels_input(Image = Image, MinConfidence = MinConfidence, HumanLoopConfig = HumanLoopConfig, ProjectVersion = ProjectVersion)
   output <- .rekognition$detect_moderation_labels_output()
@@ -2699,7 +2741,8 @@ rekognition_detect_protective_equipment <- function(Image, SummarizationAttribut
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$detect_protective_equipment_input(Image = Image, SummarizationAttributes = SummarizationAttributes)
   output <- .rekognition$detect_protective_equipment_output()
@@ -2819,7 +2862,8 @@ rekognition_detect_text <- function(Image, Filters = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$detect_text_input(Image = Image, Filters = Filters)
   output <- .rekognition$detect_text_output()
@@ -2892,7 +2936,8 @@ rekognition_disassociate_faces <- function(CollectionId, UserId, ClientRequestTo
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$disassociate_faces_input(CollectionId = CollectionId, UserId = UserId, ClientRequestToken = ClientRequestToken, FaceIds = FaceIds)
   output <- .rekognition$disassociate_faces_output()
@@ -2948,7 +2993,8 @@ rekognition_distribute_dataset_entries <- function(Datasets) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$distribute_dataset_entries_input(Datasets = Datasets)
   output <- .rekognition$distribute_dataset_entries_output()
@@ -3008,7 +3054,8 @@ rekognition_get_celebrity_info <- function(Id) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$get_celebrity_info_input(Id = Id)
   output <- .rekognition$get_celebrity_info_output()
@@ -3201,7 +3248,8 @@ rekognition_get_celebrity_recognition <- function(JobId, MaxResults = NULL, Next
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$get_celebrity_recognition_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy)
   output <- .rekognition$get_celebrity_recognition_output()
@@ -3318,7 +3366,8 @@ rekognition_get_content_moderation <- function(JobId, MaxResults = NULL, NextTok
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$get_content_moderation_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy, AggregateBy = AggregateBy)
   output <- .rekognition$get_content_moderation_output()
@@ -3481,7 +3530,8 @@ rekognition_get_face_detection <- function(JobId, MaxResults = NULL, NextToken =
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$get_face_detection_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .rekognition$get_face_detection_output()
@@ -3499,6 +3549,8 @@ rekognition_get_face_detection <- function(JobId, MaxResults = NULL, NextToken =
 #' Retrieves the results of a specific Face Liveness session. It requires the `sessionId` as input, which was created using [`create_face_liveness_session`][rekognition_create_face_liveness_session]. Returns the corresponding Face Liveness confidence score, a reference image that includes a face bounding box, and audit images that also contain face bounding boxes. The Face Liveness confidence score ranges from 0 to 100.
 #' 
 #' The number of audit images returned by [`get_face_liveness_session_results`][rekognition_get_face_liveness_session_results] is defined by the `AuditImagesLimit` paramater when calling [`create_face_liveness_session`][rekognition_create_face_liveness_session]. Reference images are always returned when possible.
+#' 
+#' For a session that has completed, the response can also include a `Feedback` list describing conditions that were detected in the selfie-video, such as low lighting or an obstructed face, and `Metadata` about the client that streamed the session.
 #'
 #' @usage
 #' rekognition_get_face_liveness_session_results(SessionId)
@@ -3545,6 +3597,15 @@ rekognition_get_face_detection <- function(JobId, MaxResults = NULL, NextToken =
 #'   Challenge = list(
 #'     Type = "FaceMovementAndLightChallenge"|"FaceMovementChallenge",
 #'     Version = "string"
+#'   ),
+#'   Feedback = list(
+#'     list(
+#'       Code = "FACE_NOT_VISIBLE"|"FACE_OBSTRUCTION_DETECTED"|"LOW_VIDEO_QUALITY_DETECTED"|"FACE_NOT_ALIGNED"|"EYES_CLOSED_DETECTED"|"LOW_LIGHTING_DETECTED"|"HIGH_LIGHTING_DETECTED",
+#'       Message = "string"
+#'     )
+#'   ),
+#'   Metadata = list(
+#'     SDKType = "string"
 #'   )
 #' )
 #' ```
@@ -3568,7 +3629,8 @@ rekognition_get_face_liveness_session_results <- function(SessionId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$get_face_liveness_session_results_input(SessionId = SessionId)
   output <- .rekognition$get_face_liveness_session_results_output()
@@ -3763,7 +3825,8 @@ rekognition_get_face_search <- function(JobId, MaxResults = NULL, NextToken = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$get_face_search_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy)
   output <- .rekognition$get_face_search_output()
@@ -3930,7 +3993,8 @@ rekognition_get_label_detection <- function(JobId, MaxResults = NULL, NextToken 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$get_label_detection_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy, AggregateBy = AggregateBy)
   output <- .rekognition$get_label_detection_output()
@@ -3942,9 +4006,14 @@ rekognition_get_label_detection <- function(JobId, MaxResults = NULL, NextToken 
 }
 .rekognition$operations$get_label_detection <- rekognition_get_label_detection
 
-#' Retrieves the results for a given media analysis job
+#' Service availability notice: Streaming Video and Bulk Image Analysis is
+#' no longer available to new customers
 #'
 #' @description
+#' Service availability notice: Streaming Video and Bulk Image Analysis is no longer available to new customers. For more information, see [Rekognition feature availability changes](https://docs.aws.amazon.com/rekognition/latest/dg/rekognition-availability-changes.html).
+#' 
+#' **This change does not impact the availability of other Amazon Rekognition features.**
+#' 
 #' Retrieves the results for a given media analysis job. Takes a `JobId` returned by StartMediaAnalysisJob.
 #'
 #' @usage
@@ -4026,7 +4095,8 @@ rekognition_get_media_analysis_job <- function(JobId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$get_media_analysis_job_input(JobId = JobId)
   output <- .rekognition$get_media_analysis_job_output()
@@ -4208,7 +4278,8 @@ rekognition_get_person_tracking <- function(JobId, MaxResults = NULL, NextToken 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$get_person_tracking_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy)
   output <- .rekognition$get_person_tracking_output()
@@ -4330,7 +4401,8 @@ rekognition_get_segment_detection <- function(JobId, MaxResults = NULL, NextToke
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$get_segment_detection_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .rekognition$get_segment_detection_output()
@@ -4439,7 +4511,8 @@ rekognition_get_text_detection <- function(JobId, MaxResults = NULL, NextToken =
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$get_text_detection_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .rekognition$get_text_detection_output()
@@ -4770,7 +4843,8 @@ rekognition_index_faces <- function(CollectionId, Image, ExternalImageId = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$index_faces_input(CollectionId = CollectionId, Image = Image, ExternalImageId = ExternalImageId, DetectionAttributes = DetectionAttributes, MaxFaces = MaxFaces, QualityFilter = QualityFilter)
   output <- .rekognition$index_faces_output()
@@ -4837,7 +4911,8 @@ rekognition_list_collections <- function(NextToken = NULL, MaxResults = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("CollectionIds", "FaceModelVersions")),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$list_collections_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .rekognition$list_collections_output()
@@ -4912,7 +4987,8 @@ rekognition_list_dataset_entries <- function(DatasetArn, ContainsLabels = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DatasetEntries"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$list_dataset_entries_input(DatasetArn = DatasetArn, ContainsLabels = ContainsLabels, Labeled = Labeled, SourceRefContains = SourceRefContains, HasErrors = HasErrors, NextToken = NextToken, MaxResults = MaxResults)
   output <- .rekognition$list_dataset_entries_output()
@@ -4978,7 +5054,8 @@ rekognition_list_dataset_labels <- function(DatasetArn, NextToken = NULL, MaxRes
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DatasetLabelDescriptions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$list_dataset_labels_input(DatasetArn = DatasetArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .rekognition$list_dataset_labels_output()
@@ -5066,7 +5143,8 @@ rekognition_list_faces <- function(CollectionId, NextToken = NULL, MaxResults = 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Faces", non_aggregate_keys = list("FaceModelVersion")),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$list_faces_input(CollectionId = CollectionId, NextToken = NextToken, MaxResults = MaxResults, UserId = UserId, FaceIds = FaceIds)
   output <- .rekognition$list_faces_output()
@@ -5078,9 +5156,14 @@ rekognition_list_faces <- function(CollectionId, NextToken = NULL, MaxResults = 
 }
 .rekognition$operations$list_faces <- rekognition_list_faces
 
-#' Returns a list of media analysis jobs
+#' Service availability notice: Streaming Video and Bulk Image Analysis is
+#' no longer available to new customers
 #'
 #' @description
+#' Service availability notice: Streaming Video and Bulk Image Analysis is no longer available to new customers. For more information, see [Rekognition feature availability changes](https://docs.aws.amazon.com/rekognition/latest/dg/rekognition-availability-changes.html).
+#' 
+#' **This change does not impact the availability of other Amazon Rekognition features.**
+#' 
 #' Returns a list of media analysis jobs. Results are sorted by `CreationTimestamp` in descending order.
 #'
 #' @usage
@@ -5169,7 +5252,8 @@ rekognition_list_media_analysis_jobs <- function(NextToken = NULL, MaxResults = 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$list_media_analysis_jobs_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .rekognition$list_media_analysis_jobs_output()
@@ -5242,7 +5326,8 @@ rekognition_list_project_policies <- function(ProjectArn, NextToken = NULL, MaxR
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ProjectPolicies"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$list_project_policies_input(ProjectArn = ProjectArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .rekognition$list_project_policies_output()
@@ -5254,10 +5339,14 @@ rekognition_list_project_policies <- function(ProjectArn, NextToken = NULL, MaxR
 }
 .rekognition$operations$list_project_policies <- rekognition_list_project_policies
 
-#' Gets a list of stream processors that you have created with
-#' CreateStreamProcessor
+#' Service availability notice: Streaming Video and Bulk Image Analysis is
+#' no longer available to new customers
 #'
 #' @description
+#' Service availability notice: Streaming Video and Bulk Image Analysis is no longer available to new customers. For more information, see [Rekognition feature availability changes](https://docs.aws.amazon.com/rekognition/latest/dg/rekognition-availability-changes.html).
+#' 
+#' **This change does not impact the availability of other Amazon Rekognition features.**
+#' 
 #' Gets a list of stream processors that you have created with [`create_stream_processor`][rekognition_create_stream_processor].
 #'
 #' @usage
@@ -5300,7 +5389,8 @@ rekognition_list_stream_processors <- function(NextToken = NULL, MaxResults = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(result_key = "StreamProcessors", output_token = "NextToken", input_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$list_stream_processors_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .rekognition$list_stream_processors_output()
@@ -5354,7 +5444,8 @@ rekognition_list_tags_for_resource <- function(ResourceArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .rekognition$list_tags_for_resource_output()
@@ -5413,7 +5504,8 @@ rekognition_list_users <- function(CollectionId, MaxResults = NULL, NextToken = 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Users"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$list_users_input(CollectionId = CollectionId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .rekognition$list_users_output()
@@ -5481,7 +5573,8 @@ rekognition_put_project_policy <- function(ProjectArn, PolicyName, PolicyRevisio
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$put_project_policy_input(ProjectArn = ProjectArn, PolicyName = PolicyName, PolicyRevisionId = PolicyRevisionId, PolicyDocument = PolicyDocument)
   output <- .rekognition$put_project_policy_output()
@@ -5636,7 +5729,8 @@ rekognition_recognize_celebrities <- function(Image) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$recognize_celebrities_input(Image = Image)
   output <- .rekognition$recognize_celebrities_output()
@@ -5733,7 +5827,8 @@ rekognition_search_faces <- function(CollectionId, FaceId, MaxFaces = NULL, Face
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$search_faces_input(CollectionId = CollectionId, FaceId = FaceId, MaxFaces = MaxFaces, FaceMatchThreshold = FaceMatchThreshold)
   output <- .rekognition$search_faces_output()
@@ -5864,7 +5959,8 @@ rekognition_search_faces_by_image <- function(CollectionId, Image, MaxFaces = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$search_faces_by_image_input(CollectionId = CollectionId, Image = Image, MaxFaces = MaxFaces, FaceMatchThreshold = FaceMatchThreshold, QualityFilter = QualityFilter)
   output <- .rekognition$search_faces_by_image_output()
@@ -5937,7 +6033,8 @@ rekognition_search_users <- function(CollectionId, UserId = NULL, FaceId = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$search_users_input(CollectionId = CollectionId, UserId = UserId, FaceId = FaceId, UserMatchThreshold = UserMatchThreshold, MaxUsers = MaxUsers)
   output <- .rekognition$search_users_output()
@@ -6188,7 +6285,8 @@ rekognition_search_users_by_image <- function(CollectionId, Image, UserMatchThre
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$search_users_by_image_input(CollectionId = CollectionId, Image = Image, UserMatchThreshold = UserMatchThreshold, MaxUsers = MaxUsers, QualityFilter = QualityFilter)
   output <- .rekognition$search_users_by_image_output()
@@ -6257,7 +6355,8 @@ rekognition_start_celebrity_recognition <- function(Video, ClientRequestToken = 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$start_celebrity_recognition_input(Video = Video, ClientRequestToken = ClientRequestToken, NotificationChannel = NotificationChannel, JobTag = JobTag)
   output <- .rekognition$start_celebrity_recognition_output()
@@ -6331,7 +6430,8 @@ rekognition_start_content_moderation <- function(Video, MinConfidence = NULL, Cl
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$start_content_moderation_input(Video = Video, MinConfidence = MinConfidence, ClientRequestToken = ClientRequestToken, NotificationChannel = NotificationChannel, JobTag = JobTag)
   output <- .rekognition$start_content_moderation_output()
@@ -6406,7 +6506,8 @@ rekognition_start_face_detection <- function(Video, ClientRequestToken = NULL, N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$start_face_detection_input(Video = Video, ClientRequestToken = ClientRequestToken, NotificationChannel = NotificationChannel, FaceAttributes = FaceAttributes, JobTag = JobTag)
   output <- .rekognition$start_face_detection_output()
@@ -6478,7 +6579,8 @@ rekognition_start_face_search <- function(Video, ClientRequestToken = NULL, Face
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$start_face_search_input(Video = Video, ClientRequestToken = ClientRequestToken, FaceMatchThreshold = FaceMatchThreshold, CollectionId = CollectionId, NotificationChannel = NotificationChannel, JobTag = JobTag)
   output <- .rekognition$start_face_search_output()
@@ -6580,7 +6682,8 @@ rekognition_start_label_detection <- function(Video, ClientRequestToken = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$start_label_detection_input(Video = Video, ClientRequestToken = ClientRequestToken, MinConfidence = MinConfidence, NotificationChannel = NotificationChannel, JobTag = JobTag, Features = Features, Settings = Settings)
   output <- .rekognition$start_label_detection_output()
@@ -6592,9 +6695,14 @@ rekognition_start_label_detection <- function(Video, ClientRequestToken = NULL, 
 }
 .rekognition$operations$start_label_detection <- rekognition_start_label_detection
 
-#' Initiates a new media analysis job
+#' Service availability notice: Streaming Video and Bulk Image Analysis is
+#' no longer available to new customers
 #'
 #' @description
+#' Service availability notice: Streaming Video and Bulk Image Analysis is no longer available to new customers. For more information, see [Rekognition feature availability changes](https://docs.aws.amazon.com/rekognition/latest/dg/rekognition-availability-changes.html).
+#' 
+#' **This change does not impact the availability of other Amazon Rekognition features.**
+#' 
 #' Initiates a new media analysis job. Accepts a manifest file in an Amazon S3 bucket. The output is a manifest file and a summary of the manifest stored in the Amazon S3 bucket.
 #'
 #' @usage
@@ -6654,7 +6762,8 @@ rekognition_start_media_analysis_job <- function(ClientRequestToken = NULL, JobN
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$start_media_analysis_job_input(ClientRequestToken = ClientRequestToken, JobName = JobName, OperationsConfig = OperationsConfig, Input = Input, OutputConfig = OutputConfig, KmsKeyId = KmsKeyId)
   output <- .rekognition$start_media_analysis_job_output()
@@ -6726,7 +6835,8 @@ rekognition_start_person_tracking <- function(Video, ClientRequestToken = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$start_person_tracking_input(Video = Video, ClientRequestToken = ClientRequestToken, NotificationChannel = NotificationChannel, JobTag = JobTag)
   output <- .rekognition$start_person_tracking_output()
@@ -6790,7 +6900,8 @@ rekognition_start_project_version <- function(ProjectVersionArn, MinInferenceUni
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$start_project_version_input(ProjectVersionArn = ProjectVersionArn, MinInferenceUnits = MinInferenceUnits, MaxInferenceUnits = MaxInferenceUnits)
   output <- .rekognition$start_project_version_output()
@@ -6880,7 +6991,8 @@ rekognition_start_segment_detection <- function(Video, ClientRequestToken = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$start_segment_detection_input(Video = Video, ClientRequestToken = ClientRequestToken, NotificationChannel = NotificationChannel, JobTag = JobTag, Filters = Filters, SegmentTypes = SegmentTypes)
   output <- .rekognition$start_segment_detection_output()
@@ -6892,9 +7004,14 @@ rekognition_start_segment_detection <- function(Video, ClientRequestToken = NULL
 }
 .rekognition$operations$start_segment_detection <- rekognition_start_segment_detection
 
-#' Starts processing a stream processor
+#' Service availability notice: Streaming Video and Bulk Image Analysis is
+#' no longer available to new customers
 #'
 #' @description
+#' Service availability notice: Streaming Video and Bulk Image Analysis is no longer available to new customers. For more information, see [Rekognition feature availability changes](https://docs.aws.amazon.com/rekognition/latest/dg/rekognition-availability-changes.html).
+#' 
+#' **This change does not impact the availability of other Amazon Rekognition features.**
+#' 
 #' Starts processing a stream processor. You create a stream processor by calling [`create_stream_processor`][rekognition_create_stream_processor]. To tell [`start_stream_processor`][rekognition_start_stream_processor] which stream processor to start, use the value of the `Name` field specified in the call to [`create_stream_processor`][rekognition_create_stream_processor].
 #' 
 #' If you are using a label detection stream processor to detect labels, you need to provide a `Start selector` and a `Stop selector` to determine the length of the stream processing time.
@@ -6946,7 +7063,8 @@ rekognition_start_stream_processor <- function(Name, StartSelector = NULL, StopS
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$start_stream_processor_input(Name = Name, StartSelector = StartSelector, StopSelector = StopSelector)
   output <- .rekognition$start_stream_processor_output()
@@ -7039,7 +7157,8 @@ rekognition_start_text_detection <- function(Video, ClientRequestToken = NULL, N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$start_text_detection_input(Video = Video, ClientRequestToken = ClientRequestToken, NotificationChannel = NotificationChannel, JobTag = JobTag, Filters = Filters)
   output <- .rekognition$start_text_detection_output()
@@ -7094,7 +7213,8 @@ rekognition_stop_project_version <- function(ProjectVersionArn) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$stop_project_version_input(ProjectVersionArn = ProjectVersionArn)
   output <- .rekognition$stop_project_version_output()
@@ -7106,10 +7226,14 @@ rekognition_stop_project_version <- function(ProjectVersionArn) {
 }
 .rekognition$operations$stop_project_version <- rekognition_stop_project_version
 
-#' Stops a running stream processor that was created by
-#' CreateStreamProcessor
+#' Service availability notice: Streaming Video and Bulk Image Analysis is
+#' no longer available to new customers
 #'
 #' @description
+#' Service availability notice: Streaming Video and Bulk Image Analysis is no longer available to new customers. For more information, see [Rekognition feature availability changes](https://docs.aws.amazon.com/rekognition/latest/dg/rekognition-availability-changes.html).
+#' 
+#' **This change does not impact the availability of other Amazon Rekognition features.**
+#' 
 #' Stops a running stream processor that was created by [`create_stream_processor`][rekognition_create_stream_processor].
 #'
 #' @usage
@@ -7139,7 +7263,8 @@ rekognition_stop_stream_processor <- function(Name) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$stop_stream_processor_input(Name = Name)
   output <- .rekognition$stop_stream_processor_output()
@@ -7190,7 +7315,8 @@ rekognition_tag_resource <- function(ResourceArn, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .rekognition$tag_resource_output()
@@ -7241,7 +7367,8 @@ rekognition_untag_resource <- function(ResourceArn, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .rekognition$untag_resource_output()
@@ -7303,7 +7430,8 @@ rekognition_update_dataset_entries <- function(DatasetArn, Changes) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$update_dataset_entries_input(DatasetArn = DatasetArn, Changes = Changes)
   output <- .rekognition$update_dataset_entries_output()
@@ -7315,9 +7443,14 @@ rekognition_update_dataset_entries <- function(DatasetArn, Changes) {
 }
 .rekognition$operations$update_dataset_entries <- rekognition_update_dataset_entries
 
-#' Allows you to update a stream processor
+#' Service availability notice: Streaming Video and Bulk Image Analysis is
+#' no longer available to new customers
 #'
 #' @description
+#' Service availability notice: Streaming Video and Bulk Image Analysis is no longer available to new customers. For more information, see [Rekognition feature availability changes](https://docs.aws.amazon.com/rekognition/latest/dg/rekognition-availability-changes.html).
+#' 
+#' **This change does not impact the availability of other Amazon Rekognition features.**
+#' 
 #' Allows you to update a stream processor. You can change some settings and regions of interest and delete certain parameters.
 #'
 #' @usage
@@ -7383,7 +7516,8 @@ rekognition_update_stream_processor <- function(Name, SettingsForUpdate = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .rekognition$update_stream_processor_input(Name = Name, SettingsForUpdate = SettingsForUpdate, RegionsOfInterestForUpdate = RegionsOfInterestForUpdate, DataSharingPreferenceForUpdate = DataSharingPreferenceForUpdate, ParametersToDelete = ParametersToDelete)
   output <- .rekognition$update_stream_processor_output()

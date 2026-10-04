@@ -8,7 +8,8 @@ glue_get_column_statistics_task_runs(
   DatabaseName,
   TableName,
   MaxResults = NULL,
-  NextToken = NULL
+  NextToken = NULL,
+  CatalogID = NULL
 )
 }
 \arguments{
@@ -19,6 +20,8 @@ glue_get_column_statistics_task_runs(
 \item{MaxResults}{The maximum size of the response.}
 
 \item{NextToken}{A continuation token, if this is a continuation call.}
+
+\item{CatalogID}{The ID of the Data Catalog where the table resides. If none is supplied, the Amazon Web Services account ID is used by default.}
 }
 \description{
 Retrieves information about all runs associated with the specified table.

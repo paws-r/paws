@@ -70,7 +70,8 @@ kms_cancel_key_deletion <- function(KeyId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$cancel_key_deletion_input(KeyId = KeyId)
   output <- .kms$cancel_key_deletion_output()
@@ -171,7 +172,8 @@ kms_connect_custom_key_store <- function(CustomKeyStoreId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$connect_custom_key_store_input(CustomKeyStoreId = CustomKeyStoreId)
   output <- .kms$connect_custom_key_store_output()
@@ -276,7 +278,8 @@ kms_create_alias <- function(AliasName, TargetKeyId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$create_alias_input(AliasName = AliasName, TargetKeyId = TargetKeyId)
   output <- .kms$create_alias_output()
@@ -452,7 +455,8 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId = 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$create_custom_key_store_input(CustomKeyStoreName = CustomKeyStoreName, CloudHsmClusterId = CloudHsmClusterId, TrustAnchorCertificate = TrustAnchorCertificate, KeyStorePassword = KeyStorePassword, CustomKeyStoreType = CustomKeyStoreType, XksProxyUriEndpoint = XksProxyUriEndpoint, XksProxyUriPath = XksProxyUriPath, XksProxyVpcEndpointServiceName = XksProxyVpcEndpointServiceName, XksProxyVpcEndpointServiceOwner = XksProxyVpcEndpointServiceOwner, XksProxyAuthenticationCredential = XksProxyAuthenticationCredential, XksProxyConnectivity = XksProxyConnectivity)
   output <- .kms$create_custom_key_store_output()
@@ -524,7 +528,7 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId = 
 #' You must specify either `GranteePrincipal` or `GranteeServicePrincipal`, but not both.
 #' @param RetiringPrincipal The principal that has permission to use the [`retire_grant`][kms_retire_grant] operation to retire the grant.
 #' 
-#' To specify the principal, use the [Amazon Resource Name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) of an Amazon Web Services principal. Valid principals include Amazon Web Services accounts, IAM users, IAM roles, federated users, and assumed role users. For help with the ARN syntax for a principal, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns) in the *Identity and Access Management User Guide* .
+#' To specify the principal, use the [Amazon Resource Name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) of an Amazon Web Services principal. Valid principals include Amazon Web Services accounts, IAM users, IAM roles, federated users, and assumed role users. For help with the ARN syntax for a principal, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns) in the *Identity and Access Management User Guide* .
 #' 
 #' The grant determines the retiring principal. Other principals might have permission to retire the grant or revoke the grant. For details, see [`revoke_grant`][kms_revoke_grant] and [Retiring and revoking grants](https://docs.aws.amazon.com/kms/latest/developerguide/grant-delete.html) in the *Key Management Service Developer Guide*.
 #' 
@@ -544,7 +548,7 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId = 
 #' 
 #'     Each constraint value can include up to 8 encryption context pairs. The encryption context value in each constraint cannot exceed 384 characters. For more information about encryption context, see [Encryption context](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context) in the *Key Management Service Developer Guide* .
 #' 
-#' -   `SourceArn` — This grant constraint allows the permissions in the grant only when the request is made on behalf of a specific Amazon Web Services resource, identified by its [Amazon Resource Name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html). This is effectively the same as having the [aws:SourceArn](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#condition-keys-sourcearn) global condition key in the grant. The SourceArn constraint is supported on grants for all types of KMS keys and can also be applied to the [`describe_key`][kms_describe_key] operation when specified in the request. However, it does not apply to [`retire_grant`][kms_retire_grant] operation.
+#' -   `SourceArn` — This grant constraint allows the permissions in the grant only when the request is made on behalf of a specific Amazon Web Services resource, identified by its [Amazon Resource Name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series). This is effectively the same as having the [aws:SourceArn](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#condition-keys-sourcearn) global condition key in the grant. The SourceArn constraint is supported on grants for all types of KMS keys and can also be applied to the [`describe_key`][kms_describe_key] operation when specified in the request. However, it does not apply to [`retire_grant`][kms_retire_grant] operation.
 #' 
 #' For information about grant constraints, see [Using grant constraints](https://docs.aws.amazon.com/kms/latest/developerguide/create-grant-overview.html#grant-constraints) in the *Key Management Service Developer Guide*.
 #' @param GrantTokens A list of grant tokens.
@@ -632,7 +636,8 @@ kms_create_grant <- function(KeyId, GranteePrincipal = NULL, RetiringPrincipal =
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$create_grant_input(KeyId = KeyId, GranteePrincipal = GranteePrincipal, RetiringPrincipal = RetiringPrincipal, Operations = Operations, Constraints = Constraints, GrantTokens = GrantTokens, Name = Name, DryRun = DryRun, GranteeServicePrincipal = GranteeServicePrincipal, RetiringServicePrincipal = RetiringServicePrincipal)
   output <- .kms$create_grant_output()
@@ -1032,7 +1037,8 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, C
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$create_key_input(Policy = Policy, Description = Description, KeyUsage = KeyUsage, CustomerMasterKeySpec = CustomerMasterKeySpec, KeySpec = KeySpec, Origin = Origin, CustomKeyStoreId = CustomKeyStoreId, BypassPolicyLockoutSafetyCheck = BypassPolicyLockoutSafetyCheck, Tags = Tags, MultiRegion = MultiRegion, XksKeyId = XksKeyId)
   output <- .kms$create_key_output()
@@ -1197,7 +1203,8 @@ kms_decrypt <- function(CiphertextBlob = NULL, EncryptionContext = NULL, GrantTo
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$decrypt_input(CiphertextBlob = CiphertextBlob, EncryptionContext = EncryptionContext, GrantTokens = GrantTokens, KeyId = KeyId, EncryptionAlgorithm = EncryptionAlgorithm, Recipient = Recipient, DryRun = DryRun, DryRunModifiers = DryRunModifiers)
   output <- .kms$decrypt_output()
@@ -1275,7 +1282,8 @@ kms_delete_alias <- function(AliasName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$delete_alias_input(AliasName = AliasName)
   output <- .kms$delete_alias_output()
@@ -1359,7 +1367,8 @@ kms_delete_custom_key_store <- function(CustomKeyStoreId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$delete_custom_key_store_input(CustomKeyStoreId = CustomKeyStoreId)
   output <- .kms$delete_custom_key_store_output()
@@ -1458,7 +1467,8 @@ kms_delete_imported_key_material <- function(KeyId, KeyMaterialId = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$delete_imported_key_material_input(KeyId = KeyId, KeyMaterialId = KeyMaterialId)
   output <- .kms$delete_imported_key_material_output()
@@ -1477,7 +1487,7 @@ kms_delete_imported_key_material <- function(KeyId, KeyMaterialId = NULL) {
 #' 
 #' You must use an asymmetric NIST-standard elliptic curve (ECC) or SM2 (China Regions only) KMS key pair with a `KeyUsage` value of `KEY_AGREEMENT` to call DeriveSharedSecret.
 #' 
-#' DeriveSharedSecret uses the Elliptic Curve Cryptography Cofactor Diffie-Hellman Primitive (ECDH) to establish a key agreement between two peers by deriving a shared secret from their elliptic curve public-private key pairs. You can use the raw shared secret that DeriveSharedSecret returns to derive a symmetric key that can encrypt and decrypt data that is sent between the two peers, or that can generate and verify HMACs. KMS recommends that you follow NIST recommendations for key derivation when using the raw shared secret to derive a symmetric key.
+#' DeriveSharedSecret uses the [Elliptic Curve Cryptography Cofactor Diffie-Hellman Primitive](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-56Ar3.pdf#page%3D60) (ECDH) to establish a key agreement between two peers by deriving a shared secret from their elliptic curve public-private key pairs. You can use the raw shared secret that DeriveSharedSecret returns to derive a symmetric key that can encrypt and decrypt data that is sent between the two peers, or that can generate and verify HMACs. KMS recommends that you follow NIST recommendations for key derivation when using the raw shared secret to derive a symmetric key.
 #' 
 #' The following workflow demonstrates how to establish key agreement over an insecure communication channel using DeriveSharedSecret.
 #' 
@@ -1541,7 +1551,7 @@ kms_delete_imported_key_material <- function(KeyId, KeyMaterialId = NULL) {
 #' @param KeyAgreementAlgorithm &#91;required&#93; Specifies the key agreement algorithm used to derive the shared secret. The only valid value is `ECDH`.
 #' @param PublicKey &#91;required&#93; Specifies the public key in your peer's NIST-standard elliptic curve (ECC) or SM2 (China Regions only) key pair.
 #' 
-#' The public key must be a DER-encoded X.509 public key, also known as `SubjectPublicKeyInfo` (SPKI), as defined in [RFC 5280](https://datatracker.ietf.org/doc/html/rfc5280).
+#' The public key must be a DER-encoded X.509 public key, also known as `SubjectPublicKeyInfo` (SPKI), as defined in [RFC 5280](https://www.rfc-editor.org/info/rfc5280/).
 #' 
 #' [`get_public_key`][kms_get_public_key] returns the public key of an asymmetric KMS key pair in the required DER-encoded format.
 #' 
@@ -1603,7 +1613,8 @@ kms_derive_shared_secret <- function(KeyId, KeyAgreementAlgorithm, PublicKey, Gr
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$derive_shared_secret_input(KeyId = KeyId, KeyAgreementAlgorithm = KeyAgreementAlgorithm, PublicKey = PublicKey, GrantTokens = GrantTokens, DryRun = DryRun, Recipient = Recipient)
   output <- .kms$derive_shared_secret_output()
@@ -1730,7 +1741,8 @@ kms_describe_custom_key_stores <- function(CustomKeyStoreId = NULL, CustomKeySto
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "CustomKeyStores"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$describe_custom_key_stores_input(CustomKeyStoreId = CustomKeyStoreId, CustomKeyStoreName = CustomKeyStoreName, Limit = Limit, Marker = Marker)
   output <- .kms$describe_custom_key_stores_output()
@@ -1920,7 +1932,8 @@ kms_describe_key <- function(KeyId, GrantTokens = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$describe_key_input(KeyId = KeyId, GrantTokens = GrantTokens)
   output <- .kms$describe_key_output()
@@ -1992,7 +2005,8 @@ kms_disable_key <- function(KeyId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$disable_key_input(KeyId = KeyId)
   output <- .kms$disable_key_output()
@@ -2080,7 +2094,8 @@ kms_disable_key_rotation <- function(KeyId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$disable_key_rotation_input(KeyId = KeyId)
   output <- .kms$disable_key_rotation_output()
@@ -2163,7 +2178,8 @@ kms_disconnect_custom_key_store <- function(CustomKeyStoreId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$disconnect_custom_key_store_input(CustomKeyStoreId = CustomKeyStoreId)
   output <- .kms$disconnect_custom_key_store_output()
@@ -2235,7 +2251,8 @@ kms_enable_key <- function(KeyId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$enable_key_input(KeyId = KeyId)
   output <- .kms$enable_key_output()
@@ -2339,7 +2356,8 @@ kms_enable_key_rotation <- function(KeyId, RotationPeriodInDays = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$enable_key_rotation_input(KeyId = KeyId, RotationPeriodInDays = RotationPeriodInDays)
   output <- .kms$enable_key_rotation_output()
@@ -2494,7 +2512,8 @@ kms_encrypt <- function(KeyId, Plaintext, EncryptionContext = NULL, GrantTokens 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$encrypt_input(KeyId = KeyId, Plaintext = Plaintext, EncryptionContext = EncryptionContext, GrantTokens = GrantTokens, EncryptionAlgorithm = EncryptionAlgorithm, DryRun = DryRun)
   output <- .kms$encrypt_output()
@@ -2662,7 +2681,8 @@ kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$generate_data_key_input(KeyId = KeyId, EncryptionContext = EncryptionContext, NumberOfBytes = NumberOfBytes, KeySpec = KeySpec, GrantTokens = GrantTokens, Recipient = Recipient, DryRun = DryRun)
   output <- .kms$generate_data_key_output()
@@ -2687,7 +2707,7 @@ kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes
 #' 
 #' If you are using the data key pair to encrypt data, or for any operation where you don't immediately need a private key, consider using the [`generate_data_key_pair_without_plaintext`][kms_generate_data_key_pair_without_plaintext] operation. [`generate_data_key_pair_without_plaintext`][kms_generate_data_key_pair_without_plaintext] returns a plaintext public key and an encrypted private key, but omits the plaintext private key that you need only to decrypt ciphertext or sign a message. Later, when you need to decrypt the data or sign a message, use the [`decrypt`][kms_decrypt] operation to decrypt the encrypted private key in the data key pair.
 #' 
-#' [`generate_data_key_pair`][kms_generate_data_key_pair] returns a unique data key pair for each request. The bytes in the keys are random; they are not related to the caller or the KMS key that is used to encrypt the private key. The public key is a DER-encoded X.509 SubjectPublicKeyInfo, as specified in [RFC 5280](https://datatracker.ietf.org/doc/html/rfc5280). The private key is a DER-encoded PKCS8 PrivateKeyInfo, as specified in [RFC 5958](https://datatracker.ietf.org/doc/html/rfc5958).
+#' [`generate_data_key_pair`][kms_generate_data_key_pair] returns a unique data key pair for each request. The bytes in the keys are random; they are not related to the caller or the KMS key that is used to encrypt the private key. The public key is a DER-encoded X.509 SubjectPublicKeyInfo, as specified in [RFC 5280](https://www.rfc-editor.org/info/rfc5280/). The private key is a DER-encoded PKCS8 PrivateKeyInfo, as specified in [RFC 5958](https://www.rfc-editor.org/info/rfc5958/).
 #' 
 #' [`generate_data_key_pair`][kms_generate_data_key_pair] also supports [Amazon Web Services Nitro Enclaves](https://docs.aws.amazon.com/enclaves/latest/user/nitro-enclave.html), which provide an isolated compute environment in Amazon EC2. To call [`generate_data_key_pair`][kms_generate_data_key_pair] for an Amazon Web Services Nitro enclave or NitroTPM, use the [Amazon Web Services Nitro Enclaves SDK](https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk) or any Amazon Web Services SDK. Use the `Recipient` parameter to provide the attestation document for the attested environment. [`generate_data_key_pair`][kms_generate_data_key_pair] returns the public data key and a copy of the private data key encrypted under the specified KMS key, as usual. But instead of a plaintext copy of the private data key (`PrivateKeyPlaintext`), the response includes a copy of the private data key encrypted under the public key from the attestation document (`CiphertextForRecipient`). For information about the interaction between KMS and Amazon Web Services Nitro Enclaves or Amazon Web Services NitroTPM, see [Cryptographic attestation support in KMS](https://docs.aws.amazon.com/kms/latest/developerguide/cryptographic-attestation.html) in the *Key Management Service Developer Guide*.
 #' 
@@ -2813,7 +2833,8 @@ kms_generate_data_key_pair <- function(EncryptionContext = NULL, KeyId, KeyPairS
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$generate_data_key_pair_input(EncryptionContext = EncryptionContext, KeyId = KeyId, KeyPairSpec = KeyPairSpec, GrantTokens = GrantTokens, Recipient = Recipient, DryRun = DryRun)
   output <- .kms$generate_data_key_pair_output()
@@ -2836,7 +2857,7 @@ kms_generate_data_key_pair <- function(EncryptionContext = NULL, KeyId, KeyPairS
 #' 
 #' Use the `KeyPairSpec` parameter to choose an RSA or Elliptic Curve (ECC) data key pair. In China Regions, you can also choose an SM2 data key pair. KMS recommends that you use ECC key pairs for signing, and use RSA and SM2 key pairs for either encryption or signing, but not both. However, KMS cannot enforce any restrictions on the use of data key pairs outside of KMS.
 #' 
-#' [`generate_data_key_pair_without_plaintext`][kms_generate_data_key_pair_without_plaintext] returns a unique data key pair for each request. The bytes in the key are not related to the caller or KMS key that is used to encrypt the private key. The public key is a DER-encoded X.509 SubjectPublicKeyInfo, as specified in [RFC 5280](https://datatracker.ietf.org/doc/html/rfc5280).
+#' [`generate_data_key_pair_without_plaintext`][kms_generate_data_key_pair_without_plaintext] returns a unique data key pair for each request. The bytes in the key are not related to the caller or KMS key that is used to encrypt the private key. The public key is a DER-encoded X.509 SubjectPublicKeyInfo, as specified in [RFC 5280](https://www.rfc-editor.org/info/rfc5280/).
 #' 
 #' You can use an optional encryption context to add additional security to the encryption operation. If you specify an `EncryptionContext`, you must specify the same encryption context (a case-sensitive exact match) when decrypting the encrypted data key. Otherwise, the request to decrypt fails with an `InvalidCiphertextException`. For more information, see [Encryption Context](https://docs.aws.amazon.com/kms/latest/developerguide/encrypt_context.html) in the *Key Management Service Developer Guide*.
 #' 
@@ -2947,7 +2968,8 @@ kms_generate_data_key_pair_without_plaintext <- function(EncryptionContext = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$generate_data_key_pair_without_plaintext_input(EncryptionContext = EncryptionContext, KeyId = KeyId, KeyPairSpec = KeyPairSpec, GrantTokens = GrantTokens, DryRun = DryRun)
   output <- .kms$generate_data_key_pair_without_plaintext_output()
@@ -3086,7 +3108,8 @@ kms_generate_data_key_without_plaintext <- function(KeyId, EncryptionContext = N
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$generate_data_key_without_plaintext_input(KeyId = KeyId, EncryptionContext = EncryptionContext, KeySpec = KeySpec, NumberOfBytes = NumberOfBytes, GrantTokens = GrantTokens, DryRun = DryRun)
   output <- .kms$generate_data_key_without_plaintext_output()
@@ -3184,7 +3207,8 @@ kms_generate_mac <- function(Message, KeyId, MacAlgorithm, GrantTokens = NULL, D
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$generate_mac_input(Message = Message, KeyId = KeyId, MacAlgorithm = MacAlgorithm, GrantTokens = GrantTokens, DryRun = DryRun)
   output <- .kms$generate_mac_output()
@@ -3271,7 +3295,8 @@ kms_generate_random <- function(NumberOfBytes = NULL, CustomKeyStoreId = NULL, R
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$generate_random_input(NumberOfBytes = NumberOfBytes, CustomKeyStoreId = CustomKeyStoreId, Recipient = Recipient)
   output <- .kms$generate_random_output()
@@ -3374,7 +3399,8 @@ kms_get_key_last_usage <- function(KeyId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$get_key_last_usage_input(KeyId = KeyId)
   output <- .kms$get_key_last_usage_output()
@@ -3454,7 +3480,8 @@ kms_get_key_policy <- function(KeyId, PolicyName = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$get_key_policy_input(KeyId = KeyId, PolicyName = PolicyName)
   output <- .kms$get_key_policy_output()
@@ -3563,7 +3590,8 @@ kms_get_key_rotation_status <- function(KeyId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$get_key_rotation_status_input(KeyId = KeyId)
   output <- .kms$get_key_rotation_status_output()
@@ -3705,7 +3733,8 @@ kms_get_parameters_for_import <- function(KeyId, WrappingAlgorithm, WrappingKeyS
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$get_parameters_for_import_input(KeyId = KeyId, WrappingAlgorithm = WrappingAlgorithm, WrappingKeySpec = WrappingKeySpec)
   output <- .kms$get_parameters_for_import_output()
@@ -3822,7 +3851,8 @@ kms_get_public_key <- function(KeyId, GrantTokens = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$get_public_key_input(KeyId = KeyId, GrantTokens = GrantTokens)
   output <- .kms$get_public_key_output()
@@ -3994,7 +4024,8 @@ kms_import_key_material <- function(KeyId, ImportToken, EncryptedKeyMaterial, Va
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$import_key_material_input(KeyId = KeyId, ImportToken = ImportToken, EncryptedKeyMaterial = EncryptedKeyMaterial, ValidTo = ValidTo, ExpirationModel = ExpirationModel, ImportType = ImportType, KeyMaterialDescription = KeyMaterialDescription, KeyMaterialId = KeyMaterialId)
   output <- .kms$import_key_material_output()
@@ -4104,7 +4135,8 @@ kms_list_aliases <- function(KeyId = NULL, Limit = NULL, Marker = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(limit_key = "Limit", input_token = "Marker", output_token = "NextMarker", more_results = "Truncated", result_key = "Aliases"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$list_aliases_input(KeyId = KeyId, Limit = Limit, Marker = Marker)
   output <- .kms$list_aliases_output()
@@ -4240,7 +4272,8 @@ kms_list_grants <- function(Limit = NULL, Marker = NULL, KeyId, GrantId = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(limit_key = "Limit", input_token = "Marker", output_token = "NextMarker", more_results = "Truncated", result_key = "Grants"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$list_grants_input(Limit = Limit, Marker = Marker, KeyId = KeyId, GrantId = GrantId, GranteePrincipal = GranteePrincipal, GranteeServicePrincipal = GranteeServicePrincipal)
   output <- .kms$list_grants_output()
@@ -4331,7 +4364,8 @@ kms_list_key_policies <- function(KeyId, Limit = NULL, Marker = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(limit_key = "Limit", input_token = "Marker", output_token = "NextMarker", more_results = "Truncated", result_key = "PolicyNames"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$list_key_policies_input(KeyId = KeyId, Limit = Limit, Marker = Marker)
   output <- .kms$list_key_policies_output()
@@ -4441,7 +4475,8 @@ kms_list_key_rotations <- function(KeyId, IncludeKeyMaterial = NULL, Limit = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "Rotations"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$list_key_rotations_input(KeyId = KeyId, IncludeKeyMaterial = IncludeKeyMaterial, Limit = Limit, Marker = Marker)
   output <- .kms$list_key_rotations_output()
@@ -4524,7 +4559,8 @@ kms_list_keys <- function(Limit = NULL, Marker = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(limit_key = "Limit", input_token = "Marker", output_token = "NextMarker", more_results = "Truncated", result_key = "Keys"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$list_keys_input(Limit = Limit, Marker = Marker)
   output <- .kms$list_keys_output()
@@ -4624,7 +4660,8 @@ kms_list_resource_tags <- function(KeyId, Limit = NULL, Marker = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "Tags"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$list_resource_tags_input(KeyId = KeyId, Limit = Limit, Marker = Marker)
   output <- .kms$list_resource_tags_output()
@@ -4677,7 +4714,7 @@ kms_list_resource_tags <- function(KeyId, Limit = NULL, Marker = NULL) {
 #' @param Marker Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of `NextMarker` from the truncated response you just received.
 #' @param RetiringPrincipal The retiring principal for which to list grants. Enter a principal in your Amazon Web Services account.
 #' 
-#' To specify the retiring principal, use the [Amazon Resource Name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) of an Amazon Web Services principal. Valid principals include Amazon Web Services accounts, IAM users, IAM roles, federated users, and assumed role users. For help with the ARN syntax for a principal, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns) in the *Identity and Access Management User Guide* .
+#' To specify the retiring principal, use the [Amazon Resource Name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) of an Amazon Web Services principal. Valid principals include Amazon Web Services accounts, IAM users, IAM roles, federated users, and assumed role users. For help with the ARN syntax for a principal, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns) in the *Identity and Access Management User Guide* .
 #' 
 #' You must specify either `RetiringPrincipal` or `RetiringServicePrincipal`, but not both.
 #' @param RetiringServicePrincipal The retiring service principal for which to list grants. This filter is only usable by callers in a service principal.
@@ -4751,7 +4788,8 @@ kms_list_retirable_grants <- function(Limit = NULL, Marker = NULL, RetiringPrinc
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "Limit", more_results = "Truncated", output_token = "NextMarker", result_key = "Grants"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$list_retirable_grants_input(Limit = Limit, Marker = Marker, RetiringPrincipal = RetiringPrincipal, RetiringServicePrincipal = RetiringServicePrincipal)
   output <- .kms$list_retirable_grants_output()
@@ -4860,7 +4898,8 @@ kms_put_key_policy <- function(KeyId, PolicyName = NULL, Policy, BypassPolicyLoc
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$put_key_policy_input(KeyId = KeyId, PolicyName = PolicyName, Policy = Policy, BypassPolicyLockoutSafetyCheck = BypassPolicyLockoutSafetyCheck)
   output <- .kms$put_key_policy_output()
@@ -5053,7 +5092,8 @@ kms_re_encrypt <- function(CiphertextBlob = NULL, SourceEncryptionContext = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$re_encrypt_input(CiphertextBlob = CiphertextBlob, SourceEncryptionContext = SourceEncryptionContext, SourceKeyId = SourceKeyId, DestinationKeyId = DestinationKeyId, DestinationEncryptionContext = DestinationEncryptionContext, SourceEncryptionAlgorithm = SourceEncryptionAlgorithm, DestinationEncryptionAlgorithm = DestinationEncryptionAlgorithm, GrantTokens = GrantTokens, DryRun = DryRun, DryRunModifiers = DryRunModifiers)
   output <- .kms$re_encrypt_output()
@@ -5123,7 +5163,7 @@ kms_re_encrypt <- function(CiphertextBlob = NULL, SourceEncryptionContext = NULL
 #' 
 #' Enter the Region ID, such as `us-east-1` or `ap-southeast-2`. For a list of Amazon Web Services Regions in which KMS is supported, see [KMS service endpoints](https://docs.aws.amazon.com/general/latest/gr/kms.html#kms_region) in the *Amazon Web Services General Reference*.
 #' 
-#' The replica must be in a different Amazon Web Services Region than its primary key and other replicas of that primary key, but in the same Amazon Web Services partition. KMS must be available in the replica Region. If the Region is not enabled by default, the Amazon Web Services account must be enabled in the Region. For information about Amazon Web Services partitions, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) in the *Amazon Web Services General Reference*. For information about enabling and disabling Regions, see [Enabling a Region](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html#rande-manage-enable) and [Disabling a Region](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html#rande-manage-disable) in the *Amazon Web Services General Reference*.
+#' The replica must be in a different Amazon Web Services Region than its primary key and other replicas of that primary key, but in the same Amazon Web Services partition. KMS must be available in the replica Region. If the Region is not enabled by default, the Amazon Web Services account must be enabled in the Region. For information about Amazon Web Services partitions, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) in the *Amazon Web Services General Reference*. For information about enabling and disabling Regions, see [Enabling a Region](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html#rande-manage-enable) and [Disabling a Region](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html#rande-manage-disable) in the *Amazon Web Services General Reference*.
 #' @param Policy The key policy to attach to the KMS key. This parameter is optional. If you do not provide a key policy, KMS attaches the [default key policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html) to the KMS key.
 #' 
 #' The key policy is not a shared property of multi-Region keys. You can specify the same key policy or a different key policy for each key in a set of related multi-Region keys. KMS does not synchronize this property.
@@ -5278,7 +5318,8 @@ kms_replicate_key <- function(KeyId, ReplicaRegion, Policy = NULL, BypassPolicyL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$replicate_key_input(KeyId = KeyId, ReplicaRegion = ReplicaRegion, Policy = Policy, BypassPolicyLockoutSafetyCheck = BypassPolicyLockoutSafetyCheck, Description = Description, Tags = Tags)
   output <- .kms$replicate_key_output()
@@ -5365,7 +5406,8 @@ kms_retire_grant <- function(GrantToken = NULL, KeyId = NULL, GrantId = NULL, Dr
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$retire_grant_input(GrantToken = GrantToken, KeyId = KeyId, GrantId = GrantId, DryRun = DryRun)
   output <- .kms$retire_grant_output()
@@ -5454,7 +5496,8 @@ kms_revoke_grant <- function(KeyId, GrantId, DryRun = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$revoke_grant_input(KeyId = KeyId, GrantId = GrantId, DryRun = DryRun)
   output <- .kms$revoke_grant_output()
@@ -5544,7 +5587,8 @@ kms_rotate_key_on_demand <- function(KeyId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$rotate_key_on_demand_input(KeyId = KeyId)
   output <- .kms$rotate_key_on_demand_output()
@@ -5645,7 +5689,8 @@ kms_schedule_key_deletion <- function(KeyId, PendingWindowInDays = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$schedule_key_deletion_input(KeyId = KeyId, PendingWindowInDays = PendingWindowInDays)
   output <- .kms$schedule_key_deletion_output()
@@ -5723,7 +5768,7 @@ kms_schedule_key_deletion <- function(KeyId, PendingWindowInDays = NULL) {
 #' 
 #' -   ED25519_PH_SHA_512 signing algorithm requires KMS `MessageType:DIGEST`
 #' 
-#' When you specify the ED25519_PH_SHA_512 signing algorithm with `MessageType:DIGEST`, KMS still performs the SHA-512 prehash described in Step 1 of Section 7.8.1 in FIPS 186-5. This means the input is hashed twice: once by you and once by KMS.
+#' When you specify the ED25519_PH_SHA_512 signing algorithm with `MessageType:DIGEST`, KMS still performs the SHA-512 prehash described in [Step 1 of Section 7.8.1 in FIPS 186-5](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-5.pdf#page%3D39). This means the input is hashed twice: once by you and once by KMS.
 #' 
 #' When the value of `MessageType` is `DIGEST`, the length of the `Message` value must match the length of hashed messages for the specified signing algorithm.
 #' 
@@ -5800,7 +5845,8 @@ kms_sign <- function(KeyId, Message, MessageType = NULL, GrantTokens = NULL, Sig
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$sign_input(KeyId = KeyId, Message = Message, MessageType = MessageType, GrantTokens = GrantTokens, SigningAlgorithm = SigningAlgorithm, DryRun = DryRun)
   output <- .kms$sign_output()
@@ -5907,7 +5953,8 @@ kms_tag_resource <- function(KeyId, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$tag_resource_input(KeyId = KeyId, Tags = Tags)
   output <- .kms$tag_resource_output()
@@ -6001,7 +6048,8 @@ kms_untag_resource <- function(KeyId, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$untag_resource_input(KeyId = KeyId, TagKeys = TagKeys)
   output <- .kms$untag_resource_output()
@@ -6105,7 +6153,8 @@ kms_update_alias <- function(AliasName, TargetKeyId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$update_alias_input(AliasName = AliasName, TargetKeyId = TargetKeyId)
   output <- .kms$update_alias_output()
@@ -6286,7 +6335,8 @@ kms_update_custom_key_store <- function(CustomKeyStoreId, NewCustomKeyStoreName 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$update_custom_key_store_input(CustomKeyStoreId = CustomKeyStoreId, NewCustomKeyStoreName = NewCustomKeyStoreName, KeyStorePassword = KeyStorePassword, CloudHsmClusterId = CloudHsmClusterId, XksProxyUriEndpoint = XksProxyUriEndpoint, XksProxyUriPath = XksProxyUriPath, XksProxyVpcEndpointServiceName = XksProxyVpcEndpointServiceName, XksProxyVpcEndpointServiceOwner = XksProxyVpcEndpointServiceOwner, XksProxyAuthenticationCredential = XksProxyAuthenticationCredential, XksProxyConnectivity = XksProxyConnectivity)
   output <- .kms$update_custom_key_store_output()
@@ -6367,7 +6417,8 @@ kms_update_key_description <- function(KeyId, Description) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$update_key_description_input(KeyId = KeyId, Description = Description)
   output <- .kms$update_key_description_output()
@@ -6455,7 +6506,8 @@ kms_update_primary_region <- function(KeyId, PrimaryRegion) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$update_primary_region_input(KeyId = KeyId, PrimaryRegion = PrimaryRegion)
   output <- .kms$update_primary_region_output()
@@ -6526,7 +6578,7 @@ kms_update_primary_region <- function(KeyId, PrimaryRegion) {
 #' 
 #' -   ED25519_PH_SHA_512 signing algorithm requires KMS `MessageType:DIGEST`
 #' 
-#' When you specify the ED25519_PH_SHA_512 signing algorithm with `MessageType:DIGEST`, KMS still performs the SHA-512 prehash described in Step 1 of Section 7.8.1 in FIPS 186-5. This means the input is hashed twice: once by you and once by KMS.
+#' When you specify the ED25519_PH_SHA_512 signing algorithm with `MessageType:DIGEST`, KMS still performs the SHA-512 prehash described in [Step 1 of Section 7.8.1 in FIPS 186-5](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-5.pdf#page%3D39). This means the input is hashed twice: once by you and once by KMS.
 #' 
 #' When the value of `MessageType` is `DIGEST`, the length of the `Message` value must match the length of hashed messages for the specified signing algorithm.
 #' 
@@ -6604,7 +6656,8 @@ kms_verify <- function(KeyId, Message, MessageType = NULL, Signature, SigningAlg
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$verify_input(KeyId = KeyId, Message = Message, MessageType = MessageType, Signature = Signature, SigningAlgorithm = SigningAlgorithm, GrantTokens = GrantTokens, DryRun = DryRun)
   output <- .kms$verify_output()
@@ -6703,7 +6756,8 @@ kms_verify_mac <- function(Message, KeyId, MacAlgorithm, Mac, GrantTokens = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .kms$verify_mac_input(Message = Message, KeyId = KeyId, MacAlgorithm = MacAlgorithm, Mac = Mac, GrantTokens = GrantTokens, DryRun = DryRun)
   output <- .kms$verify_mac_output()

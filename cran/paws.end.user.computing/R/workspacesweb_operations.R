@@ -23,7 +23,8 @@ workspacesweb_associate_browser_settings <- function(portalArn, browserSettingsA
     http_path = "/portals/{portalArn+}/browserSettings",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$associate_browser_settings_input(portalArn = portalArn, browserSettingsArn = browserSettingsArn)
   output <- .workspacesweb$associate_browser_settings_output()
@@ -55,7 +56,8 @@ workspacesweb_associate_data_protection_settings <- function(portalArn, dataProt
     http_path = "/portals/{portalArn+}/dataProtectionSettings",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$associate_data_protection_settings_input(portalArn = portalArn, dataProtectionSettingsArn = dataProtectionSettingsArn)
   output <- .workspacesweb$associate_data_protection_settings_output()
@@ -87,7 +89,8 @@ workspacesweb_associate_ip_access_settings <- function(portalArn, ipAccessSettin
     http_path = "/portals/{portalArn+}/ipAccessSettings",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$associate_ip_access_settings_input(portalArn = portalArn, ipAccessSettingsArn = ipAccessSettingsArn)
   output <- .workspacesweb$associate_ip_access_settings_output()
@@ -119,7 +122,8 @@ workspacesweb_associate_network_settings <- function(portalArn, networkSettingsA
     http_path = "/portals/{portalArn+}/networkSettings",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$associate_network_settings_input(portalArn = portalArn, networkSettingsArn = networkSettingsArn)
   output <- .workspacesweb$associate_network_settings_output()
@@ -151,7 +155,8 @@ workspacesweb_associate_session_logger <- function(portalArn, sessionLoggerArn) 
     http_path = "/portals/{portalArn+}/sessionLogger",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$associate_session_logger_input(portalArn = portalArn, sessionLoggerArn = sessionLoggerArn)
   output <- .workspacesweb$associate_session_logger_output()
@@ -183,7 +188,8 @@ workspacesweb_associate_trust_store <- function(portalArn, trustStoreArn) {
     http_path = "/portals/{portalArn+}/trustStores",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$associate_trust_store_input(portalArn = portalArn, trustStoreArn = trustStoreArn)
   output <- .workspacesweb$associate_trust_store_output()
@@ -215,7 +221,8 @@ workspacesweb_associate_user_access_logging_settings <- function(portalArn, user
     http_path = "/portals/{portalArn+}/userAccessLoggingSettings",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$associate_user_access_logging_settings_input(portalArn = portalArn, userAccessLoggingSettingsArn = userAccessLoggingSettingsArn)
   output <- .workspacesweb$associate_user_access_logging_settings_output()
@@ -247,7 +254,8 @@ workspacesweb_associate_user_settings <- function(portalArn, userSettingsArn) {
     http_path = "/portals/{portalArn+}/userSettings",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$associate_user_settings_input(portalArn = portalArn, userSettingsArn = userSettingsArn)
   output <- .workspacesweb$associate_user_settings_output()
@@ -286,7 +294,8 @@ workspacesweb_create_browser_settings <- function(tags = NULL, customerManagedKe
     http_path = "/browserSettings",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$create_browser_settings_input(tags = tags, customerManagedKey = customerManagedKey, additionalEncryptionContext = additionalEncryptionContext, browserPolicy = browserPolicy, clientToken = clientToken, webContentFilteringPolicy = webContentFilteringPolicy)
   output <- .workspacesweb$create_browser_settings_output()
@@ -326,7 +335,8 @@ workspacesweb_create_data_protection_settings <- function(displayName = NULL, de
     http_path = "/dataProtectionSettings",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$create_data_protection_settings_input(displayName = displayName, description = description, tags = tags, customerManagedKey = customerManagedKey, additionalEncryptionContext = additionalEncryptionContext, inlineRedactionConfiguration = inlineRedactionConfiguration, clientToken = clientToken)
   output <- .workspacesweb$create_data_protection_settings_output()
@@ -427,7 +437,8 @@ workspacesweb_create_identity_provider <- function(portalArn, identityProviderNa
     http_path = "/identityProviders",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$create_identity_provider_input(portalArn = portalArn, identityProviderName = identityProviderName, identityProviderType = identityProviderType, identityProviderDetails = identityProviderDetails, clientToken = clientToken, tags = tags)
   output <- .workspacesweb$create_identity_provider_output()
@@ -467,7 +478,8 @@ workspacesweb_create_ip_access_settings <- function(displayName = NULL, descript
     http_path = "/ipAccessSettings",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$create_ip_access_settings_input(displayName = displayName, description = description, tags = tags, customerManagedKey = customerManagedKey, additionalEncryptionContext = additionalEncryptionContext, ipRules = ipRules, clientToken = clientToken)
   output <- .workspacesweb$create_ip_access_settings_output()
@@ -505,7 +517,8 @@ workspacesweb_create_network_settings <- function(vpcId, subnetIds, securityGrou
     http_path = "/networkSettings",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$create_network_settings_input(vpcId = vpcId, subnetIds = subnetIds, securityGroupIds = securityGroupIds, tags = tags, clientToken = clientToken)
   output <- .workspacesweb$create_network_settings_output()
@@ -550,7 +563,8 @@ workspacesweb_create_portal <- function(displayName = NULL, tags = NULL, custome
     http_path = "/portals",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$create_portal_input(displayName = displayName, tags = tags, customerManagedKey = customerManagedKey, additionalEncryptionContext = additionalEncryptionContext, clientToken = clientToken, authenticationType = authenticationType, instanceType = instanceType, maxConcurrentSessions = maxConcurrentSessions, portalCustomDomain = portalCustomDomain)
   output <- .workspacesweb$create_portal_output()
@@ -587,7 +601,8 @@ workspacesweb_create_session_logger <- function(eventFilter, logConfiguration, d
     http_path = "/sessionLoggers",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$create_session_logger_input(eventFilter = eventFilter, logConfiguration = logConfiguration, displayName = displayName, customerManagedKey = customerManagedKey, additionalEncryptionContext = additionalEncryptionContext, tags = tags, clientToken = clientToken)
   output <- .workspacesweb$create_session_logger_output()
@@ -622,7 +637,8 @@ workspacesweb_create_trust_store <- function(certificateList, tags = NULL, clien
     http_path = "/trustStores",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$create_trust_store_input(certificateList = certificateList, tags = tags, clientToken = clientToken)
   output <- .workspacesweb$create_trust_store_output()
@@ -658,7 +674,8 @@ workspacesweb_create_user_access_logging_settings <- function(kinesisStreamArn, 
     http_path = "/userAccessLoggingSettings",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$create_user_access_logging_settings_input(kinesisStreamArn = kinesisStreamArn, tags = tags, clientToken = clientToken)
   output <- .workspacesweb$create_user_access_logging_settings_output()
@@ -707,7 +724,8 @@ workspacesweb_create_user_settings <- function(copyAllowed, pasteAllowed, downlo
     http_path = "/userSettings",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$create_user_settings_input(copyAllowed = copyAllowed, pasteAllowed = pasteAllowed, downloadAllowed = downloadAllowed, uploadAllowed = uploadAllowed, printAllowed = printAllowed, tags = tags, disconnectTimeoutInMinutes = disconnectTimeoutInMinutes, idleDisconnectTimeoutInMinutes = idleDisconnectTimeoutInMinutes, clientToken = clientToken, cookieSynchronizationConfiguration = cookieSynchronizationConfiguration, customerManagedKey = customerManagedKey, additionalEncryptionContext = additionalEncryptionContext, deepLinkAllowed = deepLinkAllowed, toolbarConfiguration = toolbarConfiguration, brandingConfigurationInput = brandingConfigurationInput, webAuthnAllowed = webAuthnAllowed)
   output <- .workspacesweb$create_user_settings_output()
@@ -738,7 +756,8 @@ workspacesweb_delete_browser_settings <- function(browserSettingsArn) {
     http_path = "/browserSettings/{browserSettingsArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$delete_browser_settings_input(browserSettingsArn = browserSettingsArn)
   output <- .workspacesweb$delete_browser_settings_output()
@@ -769,7 +788,8 @@ workspacesweb_delete_data_protection_settings <- function(dataProtectionSettings
     http_path = "/dataProtectionSettings/{dataProtectionSettingsArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$delete_data_protection_settings_input(dataProtectionSettingsArn = dataProtectionSettingsArn)
   output <- .workspacesweb$delete_data_protection_settings_output()
@@ -800,7 +820,8 @@ workspacesweb_delete_identity_provider <- function(identityProviderArn) {
     http_path = "/identityProviders/{identityProviderArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$delete_identity_provider_input(identityProviderArn = identityProviderArn)
   output <- .workspacesweb$delete_identity_provider_output()
@@ -831,7 +852,8 @@ workspacesweb_delete_ip_access_settings <- function(ipAccessSettingsArn) {
     http_path = "/ipAccessSettings/{ipAccessSettingsArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$delete_ip_access_settings_input(ipAccessSettingsArn = ipAccessSettingsArn)
   output <- .workspacesweb$delete_ip_access_settings_output()
@@ -862,7 +884,8 @@ workspacesweb_delete_network_settings <- function(networkSettingsArn) {
     http_path = "/networkSettings/{networkSettingsArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$delete_network_settings_input(networkSettingsArn = networkSettingsArn)
   output <- .workspacesweb$delete_network_settings_output()
@@ -893,7 +916,8 @@ workspacesweb_delete_portal <- function(portalArn) {
     http_path = "/portals/{portalArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$delete_portal_input(portalArn = portalArn)
   output <- .workspacesweb$delete_portal_output()
@@ -924,7 +948,8 @@ workspacesweb_delete_session_logger <- function(sessionLoggerArn) {
     http_path = "/sessionLoggers/{sessionLoggerArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$delete_session_logger_input(sessionLoggerArn = sessionLoggerArn)
   output <- .workspacesweb$delete_session_logger_output()
@@ -955,7 +980,8 @@ workspacesweb_delete_trust_store <- function(trustStoreArn) {
     http_path = "/trustStores/{trustStoreArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$delete_trust_store_input(trustStoreArn = trustStoreArn)
   output <- .workspacesweb$delete_trust_store_output()
@@ -986,7 +1012,8 @@ workspacesweb_delete_user_access_logging_settings <- function(userAccessLoggingS
     http_path = "/userAccessLoggingSettings/{userAccessLoggingSettingsArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$delete_user_access_logging_settings_input(userAccessLoggingSettingsArn = userAccessLoggingSettingsArn)
   output <- .workspacesweb$delete_user_access_logging_settings_output()
@@ -1017,7 +1044,8 @@ workspacesweb_delete_user_settings <- function(userSettingsArn) {
     http_path = "/userSettings/{userSettingsArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$delete_user_settings_input(userSettingsArn = userSettingsArn)
   output <- .workspacesweb$delete_user_settings_output()
@@ -1048,7 +1076,8 @@ workspacesweb_disassociate_browser_settings <- function(portalArn) {
     http_path = "/portals/{portalArn+}/browserSettings",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$disassociate_browser_settings_input(portalArn = portalArn)
   output <- .workspacesweb$disassociate_browser_settings_output()
@@ -1079,7 +1108,8 @@ workspacesweb_disassociate_data_protection_settings <- function(portalArn) {
     http_path = "/portals/{portalArn+}/dataProtectionSettings",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$disassociate_data_protection_settings_input(portalArn = portalArn)
   output <- .workspacesweb$disassociate_data_protection_settings_output()
@@ -1110,7 +1140,8 @@ workspacesweb_disassociate_ip_access_settings <- function(portalArn) {
     http_path = "/portals/{portalArn+}/ipAccessSettings",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$disassociate_ip_access_settings_input(portalArn = portalArn)
   output <- .workspacesweb$disassociate_ip_access_settings_output()
@@ -1141,7 +1172,8 @@ workspacesweb_disassociate_network_settings <- function(portalArn) {
     http_path = "/portals/{portalArn+}/networkSettings",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$disassociate_network_settings_input(portalArn = portalArn)
   output <- .workspacesweb$disassociate_network_settings_output()
@@ -1172,7 +1204,8 @@ workspacesweb_disassociate_session_logger <- function(portalArn) {
     http_path = "/portals/{portalArn+}/sessionLogger",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$disassociate_session_logger_input(portalArn = portalArn)
   output <- .workspacesweb$disassociate_session_logger_output()
@@ -1203,7 +1236,8 @@ workspacesweb_disassociate_trust_store <- function(portalArn) {
     http_path = "/portals/{portalArn+}/trustStores",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$disassociate_trust_store_input(portalArn = portalArn)
   output <- .workspacesweb$disassociate_trust_store_output()
@@ -1234,7 +1268,8 @@ workspacesweb_disassociate_user_access_logging_settings <- function(portalArn) {
     http_path = "/portals/{portalArn+}/userAccessLoggingSettings",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$disassociate_user_access_logging_settings_input(portalArn = portalArn)
   output <- .workspacesweb$disassociate_user_access_logging_settings_output()
@@ -1265,7 +1300,8 @@ workspacesweb_disassociate_user_settings <- function(portalArn) {
     http_path = "/portals/{portalArn+}/userSettings",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$disassociate_user_settings_input(portalArn = portalArn)
   output <- .workspacesweb$disassociate_user_settings_output()
@@ -1297,7 +1333,8 @@ workspacesweb_expire_session <- function(portalId, sessionId) {
     http_path = "/portals/{portalId}/sessions/{sessionId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$expire_session_input(portalId = portalId, sessionId = sessionId)
   output <- .workspacesweb$expire_session_output()
@@ -1328,7 +1365,8 @@ workspacesweb_get_browser_settings <- function(browserSettingsArn) {
     http_path = "/browserSettings/{browserSettingsArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$get_browser_settings_input(browserSettingsArn = browserSettingsArn)
   output <- .workspacesweb$get_browser_settings_output()
@@ -1359,7 +1397,8 @@ workspacesweb_get_data_protection_settings <- function(dataProtectionSettingsArn
     http_path = "/dataProtectionSettings/{dataProtectionSettingsArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$get_data_protection_settings_input(dataProtectionSettingsArn = dataProtectionSettingsArn)
   output <- .workspacesweb$get_data_protection_settings_output()
@@ -1390,7 +1429,8 @@ workspacesweb_get_identity_provider <- function(identityProviderArn) {
     http_path = "/identityProviders/{identityProviderArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$get_identity_provider_input(identityProviderArn = identityProviderArn)
   output <- .workspacesweb$get_identity_provider_output()
@@ -1421,7 +1461,8 @@ workspacesweb_get_ip_access_settings <- function(ipAccessSettingsArn) {
     http_path = "/ipAccessSettings/{ipAccessSettingsArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$get_ip_access_settings_input(ipAccessSettingsArn = ipAccessSettingsArn)
   output <- .workspacesweb$get_ip_access_settings_output()
@@ -1452,7 +1493,8 @@ workspacesweb_get_network_settings <- function(networkSettingsArn) {
     http_path = "/networkSettings/{networkSettingsArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$get_network_settings_input(networkSettingsArn = networkSettingsArn)
   output <- .workspacesweb$get_network_settings_output()
@@ -1483,7 +1525,8 @@ workspacesweb_get_portal <- function(portalArn) {
     http_path = "/portals/{portalArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$get_portal_input(portalArn = portalArn)
   output <- .workspacesweb$get_portal_output()
@@ -1514,7 +1557,8 @@ workspacesweb_get_portal_service_provider_metadata <- function(portalArn) {
     http_path = "/portalIdp/{portalArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$get_portal_service_provider_metadata_input(portalArn = portalArn)
   output <- .workspacesweb$get_portal_service_provider_metadata_output()
@@ -1546,7 +1590,8 @@ workspacesweb_get_session <- function(portalId, sessionId) {
     http_path = "/portals/{portalId}/sessions/{sessionId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$get_session_input(portalId = portalId, sessionId = sessionId)
   output <- .workspacesweb$get_session_output()
@@ -1577,7 +1622,8 @@ workspacesweb_get_session_logger <- function(sessionLoggerArn) {
     http_path = "/sessionLoggers/{sessionLoggerArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$get_session_logger_input(sessionLoggerArn = sessionLoggerArn)
   output <- .workspacesweb$get_session_logger_output()
@@ -1608,7 +1654,8 @@ workspacesweb_get_trust_store <- function(trustStoreArn) {
     http_path = "/trustStores/{trustStoreArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$get_trust_store_input(trustStoreArn = trustStoreArn)
   output <- .workspacesweb$get_trust_store_output()
@@ -1640,7 +1687,8 @@ workspacesweb_get_trust_store_certificate <- function(trustStoreArn, thumbprint)
     http_path = "/trustStores/{trustStoreArn+}/certificate",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$get_trust_store_certificate_input(trustStoreArn = trustStoreArn, thumbprint = thumbprint)
   output <- .workspacesweb$get_trust_store_certificate_output()
@@ -1671,7 +1719,8 @@ workspacesweb_get_user_access_logging_settings <- function(userAccessLoggingSett
     http_path = "/userAccessLoggingSettings/{userAccessLoggingSettingsArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$get_user_access_logging_settings_input(userAccessLoggingSettingsArn = userAccessLoggingSettingsArn)
   output <- .workspacesweb$get_user_access_logging_settings_output()
@@ -1702,7 +1751,8 @@ workspacesweb_get_user_settings <- function(userSettingsArn) {
     http_path = "/userSettings/{userSettingsArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$get_user_settings_input(userSettingsArn = userSettingsArn)
   output <- .workspacesweb$get_user_settings_output()
@@ -1734,7 +1784,8 @@ workspacesweb_list_browser_settings <- function(nextToken = NULL, maxResults = N
     http_path = "/browserSettings",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$list_browser_settings_input(nextToken = nextToken, maxResults = maxResults)
   output <- .workspacesweb$list_browser_settings_output()
@@ -1766,7 +1817,8 @@ workspacesweb_list_data_protection_settings <- function(nextToken = NULL, maxRes
     http_path = "/dataProtectionSettings",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "dataProtectionSettings"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$list_data_protection_settings_input(nextToken = nextToken, maxResults = maxResults)
   output <- .workspacesweb$list_data_protection_settings_output()
@@ -1799,7 +1851,8 @@ workspacesweb_list_identity_providers <- function(nextToken = NULL, maxResults =
     http_path = "/portals/{portalArn+}/identityProviders",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$list_identity_providers_input(nextToken = nextToken, maxResults = maxResults, portalArn = portalArn)
   output <- .workspacesweb$list_identity_providers_output()
@@ -1831,7 +1884,8 @@ workspacesweb_list_ip_access_settings <- function(nextToken = NULL, maxResults =
     http_path = "/ipAccessSettings",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$list_ip_access_settings_input(nextToken = nextToken, maxResults = maxResults)
   output <- .workspacesweb$list_ip_access_settings_output()
@@ -1863,7 +1917,8 @@ workspacesweb_list_network_settings <- function(nextToken = NULL, maxResults = N
     http_path = "/networkSettings",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$list_network_settings_input(nextToken = nextToken, maxResults = maxResults)
   output <- .workspacesweb$list_network_settings_output()
@@ -1895,7 +1950,8 @@ workspacesweb_list_portals <- function(nextToken = NULL, maxResults = NULL) {
     http_path = "/portals",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$list_portals_input(nextToken = nextToken, maxResults = maxResults)
   output <- .workspacesweb$list_portals_output()
@@ -1927,7 +1983,8 @@ workspacesweb_list_session_loggers <- function(nextToken = NULL, maxResults = NU
     http_path = "/sessionLoggers",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "sessionLoggers"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$list_session_loggers_input(nextToken = nextToken, maxResults = maxResults)
   output <- .workspacesweb$list_session_loggers_output()
@@ -1965,7 +2022,8 @@ workspacesweb_list_sessions <- function(portalId, username = NULL, sessionId = N
     http_path = "/portals/{portalId}/sessions",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "sessions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$list_sessions_input(portalId = portalId, username = username, sessionId = sessionId, sortBy = sortBy, status = status, maxResults = maxResults, nextToken = nextToken)
   output <- .workspacesweb$list_sessions_output()
@@ -1996,7 +2054,8 @@ workspacesweb_list_tags_for_resource <- function(resourceArn) {
     http_path = "/tags/{resourceArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .workspacesweb$list_tags_for_resource_output()
@@ -2029,7 +2088,8 @@ workspacesweb_list_trust_store_certificates <- function(trustStoreArn, nextToken
     http_path = "/trustStores/{trustStoreArn+}/certificates",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$list_trust_store_certificates_input(trustStoreArn = trustStoreArn, nextToken = nextToken, maxResults = maxResults)
   output <- .workspacesweb$list_trust_store_certificates_output()
@@ -2061,7 +2121,8 @@ workspacesweb_list_trust_stores <- function(nextToken = NULL, maxResults = NULL)
     http_path = "/trustStores",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$list_trust_stores_input(nextToken = nextToken, maxResults = maxResults)
   output <- .workspacesweb$list_trust_stores_output()
@@ -2093,7 +2154,8 @@ workspacesweb_list_user_access_logging_settings <- function(nextToken = NULL, ma
     http_path = "/userAccessLoggingSettings",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$list_user_access_logging_settings_input(nextToken = nextToken, maxResults = maxResults)
   output <- .workspacesweb$list_user_access_logging_settings_output()
@@ -2125,7 +2187,8 @@ workspacesweb_list_user_settings <- function(nextToken = NULL, maxResults = NULL
     http_path = "/userSettings",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$list_user_settings_input(nextToken = nextToken, maxResults = maxResults)
   output <- .workspacesweb$list_user_settings_output()
@@ -2160,7 +2223,8 @@ workspacesweb_tag_resource <- function(resourceArn, tags, clientToken = NULL) {
     http_path = "/tags/{resourceArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$tag_resource_input(resourceArn = resourceArn, tags = tags, clientToken = clientToken)
   output <- .workspacesweb$tag_resource_output()
@@ -2192,7 +2256,8 @@ workspacesweb_untag_resource <- function(resourceArn, tagKeys) {
     http_path = "/tags/{resourceArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .workspacesweb$untag_resource_output()
@@ -2228,7 +2293,8 @@ workspacesweb_update_browser_settings <- function(browserSettingsArn, browserPol
     http_path = "/browserSettings/{browserSettingsArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$update_browser_settings_input(browserSettingsArn = browserSettingsArn, browserPolicy = browserPolicy, clientToken = clientToken, webContentFilteringPolicy = webContentFilteringPolicy)
   output <- .workspacesweb$update_browser_settings_output()
@@ -2265,7 +2331,8 @@ workspacesweb_update_data_protection_settings <- function(dataProtectionSettings
     http_path = "/dataProtectionSettings/{dataProtectionSettingsArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$update_data_protection_settings_input(dataProtectionSettingsArn = dataProtectionSettingsArn, inlineRedactionConfiguration = inlineRedactionConfiguration, displayName = displayName, description = description, clientToken = clientToken)
   output <- .workspacesweb$update_data_protection_settings_output()
@@ -2364,7 +2431,8 @@ workspacesweb_update_identity_provider <- function(identityProviderArn, identity
     http_path = "/identityProviders/{identityProviderArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$update_identity_provider_input(identityProviderArn = identityProviderArn, identityProviderName = identityProviderName, identityProviderType = identityProviderType, identityProviderDetails = identityProviderDetails, clientToken = clientToken)
   output <- .workspacesweb$update_identity_provider_output()
@@ -2401,7 +2469,8 @@ workspacesweb_update_ip_access_settings <- function(ipAccessSettingsArn, display
     http_path = "/ipAccessSettings/{ipAccessSettingsArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$update_ip_access_settings_input(ipAccessSettingsArn = ipAccessSettingsArn, displayName = displayName, description = description, ipRules = ipRules, clientToken = clientToken)
   output <- .workspacesweb$update_ip_access_settings_output()
@@ -2438,7 +2507,8 @@ workspacesweb_update_network_settings <- function(networkSettingsArn, vpcId = NU
     http_path = "/networkSettings/{networkSettingsArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$update_network_settings_input(networkSettingsArn = networkSettingsArn, vpcId = vpcId, subnetIds = subnetIds, securityGroupIds = securityGroupIds, clientToken = clientToken)
   output <- .workspacesweb$update_network_settings_output()
@@ -2478,7 +2548,8 @@ workspacesweb_update_portal <- function(portalArn, displayName = NULL, authentic
     http_path = "/portals/{portalArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$update_portal_input(portalArn = portalArn, displayName = displayName, authenticationType = authenticationType, instanceType = instanceType, maxConcurrentSessions = maxConcurrentSessions, portalCustomDomain = portalCustomDomain)
   output <- .workspacesweb$update_portal_output()
@@ -2512,7 +2583,8 @@ workspacesweb_update_session_logger <- function(sessionLoggerArn, eventFilter = 
     http_path = "/sessionLoggers/{sessionLoggerArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$update_session_logger_input(sessionLoggerArn = sessionLoggerArn, eventFilter = eventFilter, logConfiguration = logConfiguration, displayName = displayName)
   output <- .workspacesweb$update_session_logger_output()
@@ -2548,7 +2620,8 @@ workspacesweb_update_trust_store <- function(trustStoreArn, certificatesToAdd = 
     http_path = "/trustStores/{trustStoreArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$update_trust_store_input(trustStoreArn = trustStoreArn, certificatesToAdd = certificatesToAdd, certificatesToDelete = certificatesToDelete, clientToken = clientToken)
   output <- .workspacesweb$update_trust_store_output()
@@ -2583,7 +2656,8 @@ workspacesweb_update_user_access_logging_settings <- function(userAccessLoggingS
     http_path = "/userAccessLoggingSettings/{userAccessLoggingSettingsArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$update_user_access_logging_settings_input(userAccessLoggingSettingsArn = userAccessLoggingSettingsArn, kinesisStreamArn = kinesisStreamArn, clientToken = clientToken)
   output <- .workspacesweb$update_user_access_logging_settings_output()
@@ -2631,7 +2705,8 @@ workspacesweb_update_user_settings <- function(userSettingsArn, copyAllowed = NU
     http_path = "/userSettings/{userSettingsArn+}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .workspacesweb$update_user_settings_input(userSettingsArn = userSettingsArn, copyAllowed = copyAllowed, pasteAllowed = pasteAllowed, downloadAllowed = downloadAllowed, uploadAllowed = uploadAllowed, printAllowed = printAllowed, disconnectTimeoutInMinutes = disconnectTimeoutInMinutes, idleDisconnectTimeoutInMinutes = idleDisconnectTimeoutInMinutes, clientToken = clientToken, cookieSynchronizationConfiguration = cookieSynchronizationConfiguration, deepLinkAllowed = deepLinkAllowed, toolbarConfiguration = toolbarConfiguration, brandingConfigurationInput = brandingConfigurationInput, webAuthnAllowed = webAuthnAllowed)
   output <- .workspacesweb$update_user_settings_output()

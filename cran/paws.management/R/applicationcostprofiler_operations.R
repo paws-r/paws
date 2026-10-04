@@ -22,7 +22,8 @@ applicationcostprofiler_delete_report_definition <- function(reportId) {
     http_path = "/reportDefinition/{reportId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .applicationcostprofiler$delete_report_definition_input(reportId = reportId)
   output <- .applicationcostprofiler$delete_report_definition_output()
@@ -54,7 +55,8 @@ applicationcostprofiler_get_report_definition <- function(reportId) {
     http_path = "/reportDefinition/{reportId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .applicationcostprofiler$get_report_definition_input(reportId = reportId)
   output <- .applicationcostprofiler$get_report_definition_output()
@@ -86,7 +88,8 @@ applicationcostprofiler_import_application_usage <- function(sourceS3Location) {
     http_path = "/importApplicationUsage",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .applicationcostprofiler$import_application_usage_input(sourceS3Location = sourceS3Location)
   output <- .applicationcostprofiler$import_application_usage_output()
@@ -119,7 +122,8 @@ applicationcostprofiler_list_report_definitions <- function(nextToken = NULL, ma
     http_path = "/reportDefinition",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "reportDefinitions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .applicationcostprofiler$list_report_definitions_input(nextToken = nextToken, maxResults = maxResults)
   output <- .applicationcostprofiler$list_report_definitions_output()
@@ -154,7 +158,8 @@ applicationcostprofiler_put_report_definition <- function(reportId, reportDescri
     http_path = "/reportDefinition",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .applicationcostprofiler$put_report_definition_input(reportId = reportId, reportDescription = reportDescription, reportFrequency = reportFrequency, format = format, destinationS3Location = destinationS3Location)
   output <- .applicationcostprofiler$put_report_definition_output()
@@ -189,7 +194,8 @@ applicationcostprofiler_update_report_definition <- function(reportId, reportDes
     http_path = "/reportDefinition/{reportId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .applicationcostprofiler$update_report_definition_input(reportId = reportId, reportDescription = reportDescription, reportFrequency = reportFrequency, format = format, destinationS3Location = destinationS3Location)
   output <- .applicationcostprofiler$update_report_definition_output()

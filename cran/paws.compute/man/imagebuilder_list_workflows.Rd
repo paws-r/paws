@@ -2,7 +2,7 @@
 % Please edit documentation in R/imagebuilder_operations.R
 \name{imagebuilder_list_workflows}
 \alias{imagebuilder_list_workflows}
-\title{Lists workflow build versions based on filtering parameters}
+\title{Lists workflow versions based on filtering parameters}
 \usage{
 imagebuilder_list_workflows(
   owner = NULL,
@@ -13,18 +13,18 @@ imagebuilder_list_workflows(
 )
 }
 \arguments{
-\item{owner}{Used to get a list of workflow build version filtered by the identity of the creator.}
+\item{owner}{Filters results based on the workflow owner. By default, this request returns the workflows that your account owns (\code{Self}). Specify \code{Amazon} to list the workflows that Image Builder manages. Image Builder rejects the \code{Shared} and \code{ThirdParty} owner values for workflows, and \code{AWSMarketplace} returns no results.}
 
-\item{filters}{Used to streamline search results.}
+\item{filters}{Filters to narrow the list of workflows. You can filter on \code{name}, \code{version}, \code{description}, and \code{type}.}
 
-\item{byName}{Specify all or part of the workflow name to streamline results.}
+\item{byName}{Specifies whether to return one entry per workflow name, with all versions of each workflow aggregated. Defaults to \code{false}, which returns one entry per workflow version. You can't combine this option with the \code{version} filter.}
 
 \item{maxResults}{The maximum number of items to return in a single request.}
 
 \item{nextToken}{A token to specify where to start paginating. Use the \code{nextToken} value from a previously truncated response.}
 }
 \description{
-Lists workflow build versions based on filtering parameters.
+Lists workflow versions based on filtering parameters. To list the build versions of a specific workflow version, call \code{\link[=imagebuilder_list_workflow_build_versions]{list_workflow_build_versions}}.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_list_workflows/} for full documentation.
 }

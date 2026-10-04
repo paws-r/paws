@@ -28,7 +28,8 @@ secretsmanager_batch_get_secret_value <- function(SecretIdList = NULL, Filters =
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .secretsmanager$batch_get_secret_value_input(SecretIdList = SecretIdList, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .secretsmanager$batch_get_secret_value_output()
@@ -62,7 +63,8 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .secretsmanager$cancel_rotate_secret_input(SecretId = SecretId)
   output <- .secretsmanager$cancel_rotate_secret_output()
@@ -148,7 +150,8 @@ secretsmanager_create_secret <- function(Name, ClientRequestToken = NULL, Descri
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .secretsmanager$create_secret_input(Name = Name, ClientRequestToken = ClientRequestToken, Description = Description, KmsKeyId = KmsKeyId, SecretBinary = SecretBinary, SecretString = SecretString, Tags = Tags, AddReplicaRegions = AddReplicaRegions, ForceOverwriteReplicaSecret = ForceOverwriteReplicaSecret, Type = Type)
   output <- .secretsmanager$create_secret_output()
@@ -181,7 +184,8 @@ secretsmanager_delete_resource_policy <- function(SecretId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .secretsmanager$delete_resource_policy_input(SecretId = SecretId)
   output <- .secretsmanager$delete_resource_policy_output()
@@ -222,7 +226,8 @@ secretsmanager_delete_secret <- function(SecretId, RecoveryWindowInDays = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .secretsmanager$delete_secret_input(SecretId = SecretId, RecoveryWindowInDays = RecoveryWindowInDays, ForceDeleteWithoutRecovery = ForceDeleteWithoutRecovery)
   output <- .secretsmanager$delete_secret_output()
@@ -255,7 +260,8 @@ secretsmanager_describe_secret <- function(SecretId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .secretsmanager$describe_secret_input(SecretId = SecretId)
   output <- .secretsmanager$describe_secret_output()
@@ -293,7 +299,8 @@ secretsmanager_get_random_password <- function(PasswordLength = NULL, ExcludeCha
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .secretsmanager$get_random_password_input(PasswordLength = PasswordLength, ExcludeCharacters = ExcludeCharacters, ExcludeNumbers = ExcludeNumbers, ExcludePunctuation = ExcludePunctuation, ExcludeUppercase = ExcludeUppercase, ExcludeLowercase = ExcludeLowercase, IncludeSpace = IncludeSpace, RequireEachIncludedType = RequireEachIncludedType)
   output <- .secretsmanager$get_random_password_output()
@@ -327,7 +334,8 @@ secretsmanager_get_resource_policy <- function(SecretId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .secretsmanager$get_resource_policy_input(SecretId = SecretId)
   output <- .secretsmanager$get_resource_policy_output()
@@ -368,7 +376,8 @@ secretsmanager_get_secret_value <- function(SecretId, VersionId = NULL, VersionS
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .secretsmanager$get_secret_value_input(SecretId = SecretId, VersionId = VersionId, VersionStage = VersionStage)
   output <- .secretsmanager$get_secret_value_output()
@@ -406,7 +415,8 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .secretsmanager$list_secret_version_ids_input(SecretId = SecretId, MaxResults = MaxResults, NextToken = NextToken, IncludeDeprecated = IncludeDeprecated)
   output <- .secretsmanager$list_secret_version_ids_output()
@@ -445,7 +455,8 @@ secretsmanager_list_secrets <- function(IncludePlannedDeletion = NULL, MaxResult
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SecretList"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .secretsmanager$list_secrets_input(IncludePlannedDeletion = IncludePlannedDeletion, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, SortOrder = SortOrder, SortBy = SortBy)
   output <- .secretsmanager$list_secrets_output()
@@ -488,7 +499,8 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .secretsmanager$put_resource_policy_input(SecretId = SecretId, ResourcePolicy = ResourcePolicy, BlockPublicPolicy = BlockPublicPolicy)
   output <- .secretsmanager$put_resource_policy_output()
@@ -561,7 +573,8 @@ secretsmanager_put_secret_value <- function(SecretId, ClientRequestToken = NULL,
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .secretsmanager$put_secret_value_input(SecretId = SecretId, ClientRequestToken = ClientRequestToken, SecretBinary = SecretBinary, SecretString = SecretString, VersionStages = VersionStages, RotationToken = RotationToken)
   output <- .secretsmanager$put_secret_value_output()
@@ -594,7 +607,8 @@ secretsmanager_remove_regions_from_replication <- function(SecretId, RemoveRepli
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .secretsmanager$remove_regions_from_replication_input(SecretId = SecretId, RemoveReplicaRegions = RemoveReplicaRegions)
   output <- .secretsmanager$remove_regions_from_replication_output()
@@ -627,7 +641,8 @@ secretsmanager_replicate_secret_to_regions <- function(SecretId, AddReplicaRegio
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .secretsmanager$replicate_secret_to_regions_input(SecretId = SecretId, AddReplicaRegions = AddReplicaRegions, ForceOverwriteReplicaSecret = ForceOverwriteReplicaSecret)
   output <- .secretsmanager$replicate_secret_to_regions_output()
@@ -661,7 +676,8 @@ secretsmanager_restore_secret <- function(SecretId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .secretsmanager$restore_secret_input(SecretId = SecretId)
   output <- .secretsmanager$restore_secret_output()
@@ -726,7 +742,8 @@ secretsmanager_rotate_secret <- function(SecretId, ClientRequestToken = NULL, Ro
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .secretsmanager$rotate_secret_input(SecretId = SecretId, ClientRequestToken = ClientRequestToken, RotationLambdaARN = RotationLambdaARN, RotationRules = RotationRules, ExternalSecretRotationMetadata = ExternalSecretRotationMetadata, ExternalSecretRotationRoleArn = ExternalSecretRotationRoleArn, RotateImmediately = RotateImmediately)
   output <- .secretsmanager$rotate_secret_output()
@@ -758,7 +775,8 @@ secretsmanager_stop_replication_to_replica <- function(SecretId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .secretsmanager$stop_replication_to_replica_input(SecretId = SecretId)
   output <- .secretsmanager$stop_replication_to_replica_output()
@@ -794,7 +812,8 @@ secretsmanager_tag_resource <- function(SecretId, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .secretsmanager$tag_resource_input(SecretId = SecretId, Tags = Tags)
   output <- .secretsmanager$tag_resource_output()
@@ -832,7 +851,8 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .secretsmanager$untag_resource_input(SecretId = SecretId, TagKeys = TagKeys)
   output <- .secretsmanager$untag_resource_output()
@@ -894,7 +914,8 @@ secretsmanager_update_secret <- function(SecretId, ClientRequestToken = NULL, De
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .secretsmanager$update_secret_input(SecretId = SecretId, ClientRequestToken = ClientRequestToken, Description = Description, KmsKeyId = KmsKeyId, SecretBinary = SecretBinary, SecretString = SecretString, Type = Type)
   output <- .secretsmanager$update_secret_output()
@@ -932,7 +953,8 @@ secretsmanager_update_secret_version_stage <- function(SecretId, VersionStage, R
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .secretsmanager$update_secret_version_stage_input(SecretId = SecretId, VersionStage = VersionStage, RemoveFromVersionId = RemoveFromVersionId, MoveToVersionId = MoveToVersionId)
   output <- .secretsmanager$update_secret_version_stage_output()
@@ -965,7 +987,8 @@ secretsmanager_validate_resource_policy <- function(SecretId = NULL, ResourcePol
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .secretsmanager$validate_resource_policy_input(SecretId = SecretId, ResourcePolicy = ResourcePolicy)
   output <- .secretsmanager$validate_resource_policy_output()

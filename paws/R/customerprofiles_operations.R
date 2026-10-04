@@ -54,7 +54,8 @@ customerprofiles_add_profile_key <- function(ProfileId, KeyName, Values, DomainN
     http_path = "/domains/{DomainName}/profiles/keys",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$add_profile_key_input(ProfileId = ProfileId, KeyName = KeyName, Values = Values, DomainName = DomainName)
   output <- .customerprofiles$add_profile_key_output()
@@ -110,7 +111,8 @@ customerprofiles_associate_stream_for_segments <- function(DomainName, Destinati
     http_path = "/domains/{DomainName}/segment-streams",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$associate_stream_for_segments_input(DomainName = DomainName, DestinationArn = DestinationArn, DestinationRoleArn = DestinationRoleArn)
   output <- .customerprofiles$associate_stream_for_segments_output()
@@ -199,7 +201,8 @@ customerprofiles_batch_get_calculated_attribute_for_profile <- function(Calculat
     http_path = "/domains/{DomainName}/calculated-attributes/{CalculatedAttributeName}/batch-get-for-profiles",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$batch_get_calculated_attribute_for_profile_input(CalculatedAttributeName = CalculatedAttributeName, DomainName = DomainName, ProfileIds = ProfileIds, ConditionOverrides = ConditionOverrides)
   output <- .customerprofiles$batch_get_calculated_attribute_for_profile_output()
@@ -359,7 +362,8 @@ customerprofiles_batch_get_profile <- function(DomainName, ProfileIds) {
     http_path = "/domains/{DomainName}/batch-get-profiles",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$batch_get_profile_input(DomainName = DomainName, ProfileIds = ProfileIds)
   output <- .customerprofiles$batch_get_profile_output()
@@ -437,7 +441,8 @@ customerprofiles_batch_put_profile_object <- function(DomainName, ObjectTypeName
     http_path = "/domains/{DomainName}/profiles/objects/batch-put-profile-object",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$batch_put_profile_object_input(DomainName = DomainName, ObjectTypeName = ObjectTypeName, Items = Items)
   output <- .customerprofiles$batch_put_profile_object_output()
@@ -613,7 +618,8 @@ customerprofiles_create_calculated_attribute_definition <- function(DomainName, 
     http_path = "/domains/{DomainName}/calculated-attributes/{CalculatedAttributeName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$create_calculated_attribute_definition_input(DomainName = DomainName, CalculatedAttributeName = CalculatedAttributeName, DisplayName = DisplayName, Description = Description, AttributeDetails = AttributeDetails, Conditions = Conditions, Filter = Filter, Statistic = Statistic, UseHistoricalData = UseHistoricalData, Tags = Tags)
   output <- .customerprofiles$create_calculated_attribute_definition_output()
@@ -838,7 +844,8 @@ customerprofiles_create_domain <- function(DomainName, DefaultExpirationDays, De
     http_path = "/domains/{DomainName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$create_domain_input(DomainName = DomainName, DefaultExpirationDays = DefaultExpirationDays, DefaultEncryptionKey = DefaultEncryptionKey, DeadLetterQueueUrl = DeadLetterQueueUrl, Matching = Matching, RuleBasedMatching = RuleBasedMatching, DataStore = DataStore, Tags = Tags)
   output <- .customerprofiles$create_domain_output()
@@ -919,7 +926,8 @@ customerprofiles_create_domain_layout <- function(DomainName, LayoutDefinitionNa
     http_path = "/domains/{DomainName}/layouts/{LayoutDefinitionName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$create_domain_layout_input(DomainName = DomainName, LayoutDefinitionName = LayoutDefinitionName, Description = Description, DisplayName = DisplayName, IsDefault = IsDefault, LayoutType = LayoutType, Layout = Layout, Tags = Tags)
   output <- .customerprofiles$create_domain_layout_output()
@@ -984,7 +992,8 @@ customerprofiles_create_event_stream <- function(DomainName, Uri, EventStreamNam
     http_path = "/domains/{DomainName}/event-streams/{EventStreamName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$create_event_stream_input(DomainName = DomainName, Uri = Uri, EventStreamName = EventStreamName, Tags = Tags)
   output <- .customerprofiles$create_event_stream_output()
@@ -1124,7 +1133,8 @@ customerprofiles_create_event_trigger <- function(DomainName, EventTriggerName, 
     http_path = "/domains/{DomainName}/event-triggers/{EventTriggerName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$create_event_trigger_input(DomainName = DomainName, EventTriggerName = EventTriggerName, ObjectTypeName = ObjectTypeName, Description = Description, EventTriggerConditions = EventTriggerConditions, SegmentFilter = SegmentFilter, EventTriggerLimits = EventTriggerLimits, Tags = Tags)
   output <- .customerprofiles$create_event_trigger_output()
@@ -1271,7 +1281,8 @@ customerprofiles_create_integration_workflow <- function(DomainName, WorkflowTyp
     http_path = "/domains/{DomainName}/workflows/integrations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$create_integration_workflow_input(DomainName = DomainName, WorkflowType = WorkflowType, IntegrationConfig = IntegrationConfig, ObjectTypeName = ObjectTypeName, RoleArn = RoleArn, Tags = Tags)
   output <- .customerprofiles$create_integration_workflow_output()
@@ -1441,7 +1452,8 @@ customerprofiles_create_profile <- function(DomainName, AccountNumber = NULL, Ad
     http_path = "/domains/{DomainName}/profiles",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$create_profile_input(DomainName = DomainName, AccountNumber = AccountNumber, AdditionalInformation = AdditionalInformation, PartyType = PartyType, BusinessName = BusinessName, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, BirthDate = BirthDate, Gender = Gender, PhoneNumber = PhoneNumber, MobilePhoneNumber = MobilePhoneNumber, HomePhoneNumber = HomePhoneNumber, BusinessPhoneNumber = BusinessPhoneNumber, EmailAddress = EmailAddress, PersonalEmailAddress = PersonalEmailAddress, BusinessEmailAddress = BusinessEmailAddress, Address = Address, ShippingAddress = ShippingAddress, MailingAddress = MailingAddress, BillingAddress = BillingAddress, Attributes = Attributes, PartyTypeString = PartyTypeString, GenderString = GenderString, ProfileType = ProfileType, EngagementPreferences = EngagementPreferences)
   output <- .customerprofiles$create_profile_output()
@@ -1542,7 +1554,8 @@ customerprofiles_create_recommender <- function(DomainName, RecommenderName, Rec
     http_path = "/domains/{DomainName}/recommenders/{RecommenderName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$create_recommender_input(DomainName = DomainName, RecommenderName = RecommenderName, RecommenderRecipeName = RecommenderRecipeName, RecommenderConfig = RecommenderConfig, Description = Description, RecommenderSchemaName = RecommenderSchemaName, Tags = Tags)
   output <- .customerprofiles$create_recommender_output()
@@ -1608,7 +1621,8 @@ customerprofiles_create_recommender_filter <- function(DomainName, RecommenderFi
     http_path = "/domains/{DomainName}/recommender-filters/{RecommenderFilterName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$create_recommender_filter_input(DomainName = DomainName, RecommenderFilterName = RecommenderFilterName, RecommenderFilterExpression = RecommenderFilterExpression, RecommenderSchemaName = RecommenderSchemaName, Description = Description, Tags = Tags)
   output <- .customerprofiles$create_recommender_filter_output()
@@ -1691,7 +1705,8 @@ customerprofiles_create_recommender_schema <- function(DomainName, RecommenderSc
     http_path = "/domains/{DomainName}/recommender-schemas/{RecommenderSchemaName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$create_recommender_schema_input(DomainName = DomainName, RecommenderSchemaName = RecommenderSchemaName, Fields = Fields, Tags = Tags)
   output <- .customerprofiles$create_recommender_schema_output()
@@ -2072,7 +2087,8 @@ customerprofiles_create_segment_definition <- function(DomainName, SegmentDefini
     http_path = "/domains/{DomainName}/segment-definitions/{SegmentDefinitionName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$create_segment_definition_input(DomainName = DomainName, SegmentDefinitionName = SegmentDefinitionName, DisplayName = DisplayName, Description = Description, SegmentGroups = SegmentGroups, SegmentSqlQuery = SegmentSqlQuery, SegmentSort = SegmentSort, Tags = Tags)
   output <- .customerprofiles$create_segment_definition_output()
@@ -2424,7 +2440,8 @@ customerprofiles_create_segment_estimate <- function(DomainName, SegmentQuery = 
     http_path = "/domains/{DomainName}/segment-estimates",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$create_segment_estimate_input(DomainName = DomainName, SegmentQuery = SegmentQuery, SegmentSqlQuery = SegmentSqlQuery)
   output <- .customerprofiles$create_segment_estimate_output()
@@ -2485,7 +2502,8 @@ customerprofiles_create_segment_snapshot <- function(DomainName, SegmentDefiniti
     http_path = "/domains/{DomainName}/segments/{SegmentDefinitionName}/snapshots",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$create_segment_snapshot_input(DomainName = DomainName, SegmentDefinitionName = SegmentDefinitionName, DataFormat = DataFormat, EncryptionKey = EncryptionKey, RoleArn = RoleArn, DestinationUri = DestinationUri)
   output <- .customerprofiles$create_segment_snapshot_output()
@@ -2549,7 +2567,8 @@ customerprofiles_create_upload_job <- function(DomainName, DisplayName, Fields, 
     http_path = "/domains/{DomainName}/upload-jobs",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$create_upload_job_input(DomainName = DomainName, DisplayName = DisplayName, Fields = Fields, UniqueKey = UniqueKey, DataExpiry = DataExpiry)
   output <- .customerprofiles$create_upload_job_output()
@@ -2596,7 +2615,8 @@ customerprofiles_delete_calculated_attribute_definition <- function(DomainName, 
     http_path = "/domains/{DomainName}/calculated-attributes/{CalculatedAttributeName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$delete_calculated_attribute_definition_input(DomainName = DomainName, CalculatedAttributeName = CalculatedAttributeName)
   output <- .customerprofiles$delete_calculated_attribute_definition_output()
@@ -2646,7 +2666,8 @@ customerprofiles_delete_domain <- function(DomainName) {
     http_path = "/domains/{DomainName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$delete_domain_input(DomainName = DomainName)
   output <- .customerprofiles$delete_domain_output()
@@ -2697,7 +2718,8 @@ customerprofiles_delete_domain_layout <- function(DomainName, LayoutDefinitionNa
     http_path = "/domains/{DomainName}/layouts/{LayoutDefinitionName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$delete_domain_layout_input(DomainName = DomainName, LayoutDefinitionName = LayoutDefinitionName)
   output <- .customerprofiles$delete_domain_layout_output()
@@ -2743,7 +2765,8 @@ customerprofiles_delete_domain_object_type <- function(DomainName, ObjectTypeNam
     http_path = "/domains/{DomainName}/domain-object-types/{ObjectTypeName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$delete_domain_object_type_input(DomainName = DomainName, ObjectTypeName = ObjectTypeName)
   output <- .customerprofiles$delete_domain_object_type_output()
@@ -2789,7 +2812,8 @@ customerprofiles_delete_event_stream <- function(DomainName, EventStreamName) {
     http_path = "/domains/{DomainName}/event-streams/{EventStreamName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$delete_event_stream_input(DomainName = DomainName, EventStreamName = EventStreamName)
   output <- .customerprofiles$delete_event_stream_output()
@@ -2842,7 +2866,8 @@ customerprofiles_delete_event_trigger <- function(DomainName, EventTriggerName) 
     http_path = "/domains/{DomainName}/event-triggers/{EventTriggerName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$delete_event_trigger_input(DomainName = DomainName, EventTriggerName = EventTriggerName)
   output <- .customerprofiles$delete_event_trigger_output()
@@ -2893,7 +2918,8 @@ customerprofiles_delete_integration <- function(DomainName, Uri) {
     http_path = "/domains/{DomainName}/integrations/delete",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$delete_integration_input(DomainName = DomainName, Uri = Uri)
   output <- .customerprofiles$delete_integration_output()
@@ -2945,7 +2971,8 @@ customerprofiles_delete_profile <- function(ProfileId, DomainName) {
     http_path = "/domains/{DomainName}/profiles/delete",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$delete_profile_input(ProfileId = ProfileId, DomainName = DomainName)
   output <- .customerprofiles$delete_profile_output()
@@ -3003,7 +3030,8 @@ customerprofiles_delete_profile_key <- function(ProfileId, KeyName, Values, Doma
     http_path = "/domains/{DomainName}/profiles/keys/delete",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$delete_profile_key_input(ProfileId = ProfileId, KeyName = KeyName, Values = Values, DomainName = DomainName)
   output <- .customerprofiles$delete_profile_key_output()
@@ -3059,7 +3087,8 @@ customerprofiles_delete_profile_object <- function(ProfileId, ProfileObjectUniqu
     http_path = "/domains/{DomainName}/profiles/objects/delete",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$delete_profile_object_input(ProfileId = ProfileId, ProfileObjectUniqueKey = ProfileObjectUniqueKey, ObjectTypeName = ObjectTypeName, DomainName = DomainName)
   output <- .customerprofiles$delete_profile_object_output()
@@ -3111,7 +3140,8 @@ customerprofiles_delete_profile_object_type <- function(DomainName, ObjectTypeNa
     http_path = "/domains/{DomainName}/object-types/{ObjectTypeName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$delete_profile_object_type_input(DomainName = DomainName, ObjectTypeName = ObjectTypeName)
   output <- .customerprofiles$delete_profile_object_type_output()
@@ -3157,7 +3187,8 @@ customerprofiles_delete_recommender <- function(DomainName, RecommenderName) {
     http_path = "/domains/{DomainName}/recommenders/{RecommenderName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$delete_recommender_input(DomainName = DomainName, RecommenderName = RecommenderName)
   output <- .customerprofiles$delete_recommender_output()
@@ -3209,7 +3240,8 @@ customerprofiles_delete_recommender_filter <- function(DomainName, RecommenderFi
     http_path = "/domains/{DomainName}/recommender-filters/{RecommenderFilterName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$delete_recommender_filter_input(DomainName = DomainName, RecommenderFilterName = RecommenderFilterName)
   output <- .customerprofiles$delete_recommender_filter_output()
@@ -3256,7 +3288,8 @@ customerprofiles_delete_recommender_schema <- function(DomainName, RecommenderSc
     http_path = "/domains/{DomainName}/recommender-schemas/{RecommenderSchemaName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$delete_recommender_schema_input(DomainName = DomainName, RecommenderSchemaName = RecommenderSchemaName)
   output <- .customerprofiles$delete_recommender_schema_output()
@@ -3308,7 +3341,8 @@ customerprofiles_delete_segment_definition <- function(DomainName, SegmentDefini
     http_path = "/domains/{DomainName}/segment-definitions/{SegmentDefinitionName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$delete_segment_definition_input(DomainName = DomainName, SegmentDefinitionName = SegmentDefinitionName)
   output <- .customerprofiles$delete_segment_definition_output()
@@ -3360,7 +3394,8 @@ customerprofiles_delete_segment_subscription <- function(DomainName, SegmentDefi
     http_path = "/domains/{DomainName}/segment-definitions/{SegmentDefinitionName}/subscriptions",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$delete_segment_subscription_input(DomainName = DomainName, SegmentDefinitionName = SegmentDefinitionName)
   output <- .customerprofiles$delete_segment_subscription_output()
@@ -3406,7 +3441,8 @@ customerprofiles_delete_workflow <- function(DomainName, WorkflowId) {
     http_path = "/domains/{DomainName}/workflows/{WorkflowId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$delete_workflow_input(DomainName = DomainName, WorkflowId = WorkflowId)
   output <- .customerprofiles$delete_workflow_output()
@@ -3483,7 +3519,8 @@ customerprofiles_detect_profile_object_type <- function(Objects, DomainName) {
     http_path = "/domains/{DomainName}/detect/object-types",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$detect_profile_object_type_input(Objects = Objects, DomainName = DomainName)
   output <- .customerprofiles$detect_profile_object_type_output()
@@ -3533,7 +3570,8 @@ customerprofiles_disassociate_stream_for_segments <- function(DomainName) {
     http_path = "/domains/{DomainName}/segment-streams",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$disassociate_stream_for_segments_input(DomainName = DomainName)
   output <- .customerprofiles$disassociate_stream_for_segments_output()
@@ -3606,7 +3644,8 @@ customerprofiles_get_auto_merging_preview <- function(DomainName, Consolidation,
     http_path = "/domains/{DomainName}/identity-resolution-jobs/auto-merging-preview",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$get_auto_merging_preview_input(DomainName = DomainName, Consolidation = Consolidation, ConflictResolution = ConflictResolution, MinAllowedConfidenceScoreForMerging = MinAllowedConfidenceScoreForMerging)
   output <- .customerprofiles$get_auto_merging_preview_output()
@@ -3722,7 +3761,8 @@ customerprofiles_get_calculated_attribute_definition <- function(DomainName, Cal
     http_path = "/domains/{DomainName}/calculated-attributes/{CalculatedAttributeName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$get_calculated_attribute_definition_input(DomainName = DomainName, CalculatedAttributeName = CalculatedAttributeName)
   output <- .customerprofiles$get_calculated_attribute_definition_output()
@@ -3782,7 +3822,8 @@ customerprofiles_get_calculated_attribute_for_profile <- function(DomainName, Pr
     http_path = "/domains/{DomainName}/profile/{ProfileId}/calculated-attributes/{CalculatedAttributeName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$get_calculated_attribute_for_profile_input(DomainName = DomainName, ProfileId = ProfileId, CalculatedAttributeName = CalculatedAttributeName)
   output <- .customerprofiles$get_calculated_attribute_for_profile_output()
@@ -3919,7 +3960,8 @@ customerprofiles_get_domain <- function(DomainName) {
     http_path = "/domains/{DomainName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$get_domain_input(DomainName = DomainName)
   output <- .customerprofiles$get_domain_output()
@@ -3985,7 +4027,8 @@ customerprofiles_get_domain_layout <- function(DomainName, LayoutDefinitionName)
     http_path = "/domains/{DomainName}/layouts/{LayoutDefinitionName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$get_domain_layout_input(DomainName = DomainName, LayoutDefinitionName = LayoutDefinitionName)
   output <- .customerprofiles$get_domain_layout_output()
@@ -4055,7 +4098,8 @@ customerprofiles_get_domain_object_type <- function(DomainName, ObjectTypeName) 
     http_path = "/domains/{DomainName}/domain-object-types/{ObjectTypeName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$get_domain_object_type_input(DomainName = DomainName, ObjectTypeName = ObjectTypeName)
   output <- .customerprofiles$get_domain_object_type_output()
@@ -4126,7 +4170,8 @@ customerprofiles_get_event_stream <- function(DomainName, EventStreamName) {
     http_path = "/domains/{DomainName}/event-streams/{EventStreamName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$get_event_stream_input(DomainName = DomainName, EventStreamName = EventStreamName)
   output <- .customerprofiles$get_event_stream_output()
@@ -4219,7 +4264,8 @@ customerprofiles_get_event_trigger <- function(DomainName, EventTriggerName) {
     http_path = "/domains/{DomainName}/event-triggers/{EventTriggerName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$get_event_trigger_input(DomainName = DomainName, EventTriggerName = EventTriggerName)
   output <- .customerprofiles$get_event_trigger_output()
@@ -4314,7 +4360,8 @@ customerprofiles_get_identity_resolution_job <- function(DomainName, JobId) {
     http_path = "/domains/{DomainName}/identity-resolution-jobs/{JobId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$get_identity_resolution_job_input(DomainName = DomainName, JobId = JobId)
   output <- .customerprofiles$get_identity_resolution_job_output()
@@ -4386,7 +4433,8 @@ customerprofiles_get_integration <- function(DomainName, Uri) {
     http_path = "/domains/{DomainName}/integrations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$get_integration_input(DomainName = DomainName, Uri = Uri)
   output <- .customerprofiles$get_integration_output()
@@ -4479,7 +4527,8 @@ customerprofiles_get_matches <- function(NextToken = NULL, MaxResults = NULL, Do
     http_path = "/domains/{DomainName}/matches",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$get_matches_input(NextToken = NextToken, MaxResults = MaxResults, DomainName = DomainName)
   output <- .customerprofiles$get_matches_output()
@@ -4556,7 +4605,8 @@ customerprofiles_get_object_type_attribute_statistics <- function(DomainName, Ob
     http_path = "/domains/{DomainName}/object-types/{ObjectTypeName}/attributes/{AttributeName}/statistics",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$get_object_type_attribute_statistics_input(DomainName = DomainName, ObjectTypeName = ObjectTypeName, AttributeName = AttributeName)
   output <- .customerprofiles$get_object_type_attribute_statistics_output()
@@ -4620,7 +4670,8 @@ customerprofiles_get_profile_history_record <- function(DomainName, ProfileId, I
     http_path = "/domains/{DomainName}/profiles/{ProfileId}/history-records/{Id}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$get_profile_history_record_input(DomainName = DomainName, ProfileId = ProfileId, Id = Id)
   output <- .customerprofiles$get_profile_history_record_output()
@@ -4708,7 +4759,8 @@ customerprofiles_get_profile_object_type <- function(DomainName, ObjectTypeName)
     http_path = "/domains/{DomainName}/object-types/{ObjectTypeName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$get_profile_object_type_input(DomainName = DomainName, ObjectTypeName = ObjectTypeName)
   output <- .customerprofiles$get_profile_object_type_output()
@@ -4782,7 +4834,8 @@ customerprofiles_get_profile_object_type_template <- function(TemplateId) {
     http_path = "/templates/{TemplateId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$get_profile_object_type_template_input(TemplateId = TemplateId)
   output <- .customerprofiles$get_profile_object_type_template_output()
@@ -4907,7 +4960,8 @@ customerprofiles_get_profile_recommendations <- function(DomainName, ProfileId, 
     http_path = "/domains/{DomainName}/profiles/{ProfileId}/recommendations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$get_profile_recommendations_input(DomainName = DomainName, ProfileId = ProfileId, RecommenderName = RecommenderName, Context = Context, RecommenderFilters = RecommenderFilters, RecommenderPromotionalFilters = RecommenderPromotionalFilters, CandidateIds = CandidateIds, MaxResults = MaxResults, MetadataConfig = MetadataConfig, DiversityConfig = DiversityConfig)
   output <- .customerprofiles$get_profile_recommendations_output()
@@ -5066,7 +5120,8 @@ customerprofiles_get_recommender <- function(DomainName, RecommenderName, Traini
     http_path = "/domains/{DomainName}/recommenders/{RecommenderName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$get_recommender_input(DomainName = DomainName, RecommenderName = RecommenderName, TrainingMetricsCount = TrainingMetricsCount)
   output <- .customerprofiles$get_recommender_output()
@@ -5129,7 +5184,8 @@ customerprofiles_get_recommender_filter <- function(DomainName, RecommenderFilte
     http_path = "/domains/{DomainName}/recommender-filters/{RecommenderFilterName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$get_recommender_filter_input(DomainName = DomainName, RecommenderFilterName = RecommenderFilterName)
   output <- .customerprofiles$get_recommender_filter_output()
@@ -5194,7 +5250,8 @@ customerprofiles_get_recommender_schema <- function(DomainName, RecommenderSchem
     http_path = "/domains/{DomainName}/recommender-schemas/{RecommenderSchemaName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$get_recommender_schema_input(DomainName = DomainName, RecommenderSchemaName = RecommenderSchemaName)
   output <- .customerprofiles$get_recommender_schema_output()
@@ -5564,7 +5621,8 @@ customerprofiles_get_segment_definition <- function(DomainName, SegmentDefinitio
     http_path = "/domains/{DomainName}/segment-definitions/{SegmentDefinitionName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$get_segment_definition_input(DomainName = DomainName, SegmentDefinitionName = SegmentDefinitionName)
   output <- .customerprofiles$get_segment_definition_output()
@@ -5620,7 +5678,8 @@ customerprofiles_get_segment_estimate <- function(DomainName, EstimateId) {
     http_path = "/domains/{DomainName}/segment-estimates/{EstimateId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$get_segment_estimate_input(DomainName = DomainName, EstimateId = EstimateId)
   output <- .customerprofiles$get_segment_estimate_output()
@@ -5791,7 +5850,8 @@ customerprofiles_get_segment_membership <- function(DomainName, SegmentDefinitio
     http_path = "/domains/{DomainName}/segments/{SegmentDefinitionName}/membership",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$get_segment_membership_input(DomainName = DomainName, SegmentDefinitionName = SegmentDefinitionName, ProfileIds = ProfileIds)
   output <- .customerprofiles$get_segment_membership_output()
@@ -5851,7 +5911,8 @@ customerprofiles_get_segment_snapshot <- function(DomainName, SegmentDefinitionN
     http_path = "/domains/{DomainName}/segments/{SegmentDefinitionName}/snapshots/{SnapshotId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$get_segment_snapshot_input(DomainName = DomainName, SegmentDefinitionName = SegmentDefinitionName, SnapshotId = SnapshotId)
   output <- .customerprofiles$get_segment_snapshot_output()
@@ -5923,7 +5984,8 @@ customerprofiles_get_segment_subscription <- function(DomainName, SegmentDefinit
     http_path = "/domains/{DomainName}/segment-definitions/{SegmentDefinitionName}/subscriptions",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$get_segment_subscription_input(DomainName = DomainName, SegmentDefinitionName = SegmentDefinitionName)
   output <- .customerprofiles$get_segment_subscription_output()
@@ -5991,7 +6053,8 @@ customerprofiles_get_similar_profiles <- function(NextToken = NULL, MaxResults =
     http_path = "/domains/{DomainName}/matches",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ProfileIds"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$get_similar_profiles_input(NextToken = NextToken, MaxResults = MaxResults, DomainName = DomainName, MatchType = MatchType, SearchKey = SearchKey, SearchValue = SearchValue)
   output <- .customerprofiles$get_similar_profiles_output()
@@ -6059,7 +6122,8 @@ customerprofiles_get_stream_for_segments <- function(DomainName) {
     http_path = "/domains/{DomainName}/segment-streams",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$get_stream_for_segments_input(DomainName = DomainName)
   output <- .customerprofiles$get_stream_for_segments_output()
@@ -6133,7 +6197,8 @@ customerprofiles_get_upload_job <- function(DomainName, JobId) {
     http_path = "/domains/{DomainName}/upload-jobs/{JobId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$get_upload_job_input(DomainName = DomainName, JobId = JobId)
   output <- .customerprofiles$get_upload_job_output()
@@ -6189,7 +6254,8 @@ customerprofiles_get_upload_job_path <- function(DomainName, JobId) {
     http_path = "/domains/{DomainName}/upload-jobs/{JobId}/path",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$get_upload_job_path_input(DomainName = DomainName, JobId = JobId)
   output <- .customerprofiles$get_upload_job_path_output()
@@ -6263,7 +6329,8 @@ customerprofiles_get_workflow <- function(DomainName, WorkflowId) {
     http_path = "/domains/{DomainName}/workflows/{WorkflowId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$get_workflow_input(DomainName = DomainName, WorkflowId = WorkflowId)
   output <- .customerprofiles$get_workflow_output()
@@ -6339,7 +6406,8 @@ customerprofiles_get_workflow_steps <- function(DomainName, WorkflowId, NextToke
     http_path = "/domains/{DomainName}/workflows/{WorkflowId}/steps",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$get_workflow_steps_input(DomainName = DomainName, WorkflowId = WorkflowId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .customerprofiles$get_workflow_steps_output()
@@ -6422,7 +6490,8 @@ customerprofiles_list_account_integrations <- function(Uri, NextToken = NULL, Ma
     http_path = "/integrations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$list_account_integrations_input(Uri = Uri, NextToken = NextToken, MaxResults = MaxResults, IncludeHidden = IncludeHidden)
   output <- .customerprofiles$list_account_integrations_output()
@@ -6494,7 +6563,8 @@ customerprofiles_list_calculated_attribute_definitions <- function(DomainName, N
     http_path = "/domains/{DomainName}/calculated-attributes",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$list_calculated_attribute_definitions_input(DomainName = DomainName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .customerprofiles$list_calculated_attribute_definitions_output()
@@ -6561,7 +6631,8 @@ customerprofiles_list_calculated_attributes_for_profile <- function(NextToken = 
     http_path = "/domains/{DomainName}/profile/{ProfileId}/calculated-attributes",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$list_calculated_attributes_for_profile_input(NextToken = NextToken, MaxResults = MaxResults, DomainName = DomainName, ProfileId = ProfileId)
   output <- .customerprofiles$list_calculated_attributes_for_profile_output()
@@ -6633,7 +6704,8 @@ customerprofiles_list_domain_layouts <- function(DomainName, NextToken = NULL, M
     http_path = "/domains/{DomainName}/layouts",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$list_domain_layouts_input(DomainName = DomainName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .customerprofiles$list_domain_layouts_output()
@@ -6702,7 +6774,8 @@ customerprofiles_list_domain_object_types <- function(DomainName, MaxResults = N
     http_path = "/domains/{DomainName}/domain-object-types",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$list_domain_object_types_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .customerprofiles$list_domain_object_types_output()
@@ -6768,7 +6841,8 @@ customerprofiles_list_domains <- function(NextToken = NULL, MaxResults = NULL) {
     http_path = "/domains",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$list_domains_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .customerprofiles$list_domains_output()
@@ -6842,7 +6916,8 @@ customerprofiles_list_event_streams <- function(DomainName, NextToken = NULL, Ma
     http_path = "/domains/{DomainName}/event-streams",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$list_event_streams_input(DomainName = DomainName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .customerprofiles$list_event_streams_output()
@@ -6911,7 +6986,8 @@ customerprofiles_list_event_triggers <- function(DomainName, NextToken = NULL, M
     http_path = "/domains/{DomainName}/event-triggers",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$list_event_triggers_input(DomainName = DomainName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .customerprofiles$list_event_triggers_output()
@@ -6990,7 +7066,8 @@ customerprofiles_list_identity_resolution_jobs <- function(DomainName, NextToken
     http_path = "/domains/{DomainName}/identity-resolution-jobs",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$list_identity_resolution_jobs_input(DomainName = DomainName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .customerprofiles$list_identity_resolution_jobs_output()
@@ -7072,7 +7149,8 @@ customerprofiles_list_integrations <- function(DomainName, NextToken = NULL, Max
     http_path = "/domains/{DomainName}/integrations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$list_integrations_input(DomainName = DomainName, NextToken = NextToken, MaxResults = MaxResults, IncludeHidden = IncludeHidden)
   output <- .customerprofiles$list_integrations_output()
@@ -7141,7 +7219,8 @@ customerprofiles_list_object_type_attribute_values <- function(NextToken = NULL,
     http_path = "/domains/{DomainName}/object-types/{ObjectTypeName}/attributes/{AttributeName}/values",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$list_object_type_attribute_values_input(NextToken = NextToken, MaxResults = MaxResults, DomainName = DomainName, ObjectTypeName = ObjectTypeName, AttributeName = AttributeName)
   output <- .customerprofiles$list_object_type_attribute_values_output()
@@ -7205,7 +7284,8 @@ customerprofiles_list_object_type_attributes <- function(NextToken = NULL, MaxRe
     http_path = "/domains/{DomainName}/object-types/{ObjectTypeName}/attributes",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$list_object_type_attributes_input(NextToken = NextToken, MaxResults = MaxResults, DomainName = DomainName, ObjectTypeName = ObjectTypeName)
   output <- .customerprofiles$list_object_type_attributes_output()
@@ -7264,7 +7344,8 @@ customerprofiles_list_profile_attribute_values <- function(DomainName, Attribute
     http_path = "/domains/{DomainName}/profile-attributes/{AttributeName}/values",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$list_profile_attribute_values_input(DomainName = DomainName, AttributeName = AttributeName)
   output <- .customerprofiles$list_profile_attribute_values_output()
@@ -7342,7 +7423,8 @@ customerprofiles_list_profile_history_records <- function(DomainName, ProfileId,
     http_path = "/domains/{DomainName}/profiles/history-records",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$list_profile_history_records_input(DomainName = DomainName, ProfileId = ProfileId, ObjectTypeName = ObjectTypeName, NextToken = NextToken, MaxResults = MaxResults, ActionType = ActionType, PerformedBy = PerformedBy)
   output <- .customerprofiles$list_profile_history_records_output()
@@ -7401,7 +7483,8 @@ customerprofiles_list_profile_object_type_templates <- function(NextToken = NULL
     http_path = "/templates",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$list_profile_object_type_templates_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .customerprofiles$list_profile_object_type_templates_output()
@@ -7473,7 +7556,8 @@ customerprofiles_list_profile_object_types <- function(DomainName, NextToken = N
     http_path = "/domains/{DomainName}/object-types",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$list_profile_object_types_input(DomainName = DomainName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .customerprofiles$list_profile_object_types_output()
@@ -7546,7 +7630,8 @@ customerprofiles_list_profile_objects <- function(NextToken = NULL, MaxResults =
     http_path = "/domains/{DomainName}/profiles/objects",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$list_profile_objects_input(NextToken = NextToken, MaxResults = MaxResults, DomainName = DomainName, ObjectTypeName = ObjectTypeName, ProfileId = ProfileId, ObjectFilter = ObjectFilter)
   output <- .customerprofiles$list_profile_objects_output()
@@ -7616,7 +7701,8 @@ customerprofiles_list_recommender_filters <- function(DomainName, MaxResults = N
     http_path = "/domains/{DomainName}/recommender-filters",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RecommenderFilters"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$list_recommender_filters_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .customerprofiles$list_recommender_filters_output()
@@ -7674,7 +7760,8 @@ customerprofiles_list_recommender_recipes <- function(MaxResults = NULL, NextTok
     http_path = "/recommender-recipes",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RecommenderRecipes"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$list_recommender_recipes_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .customerprofiles$list_recommender_recipes_output()
@@ -7746,7 +7833,8 @@ customerprofiles_list_recommender_schemas <- function(DomainName, MaxResults = N
     http_path = "/domains/{DomainName}/recommender-schemas",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RecommenderSchemas"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$list_recommender_schemas_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .customerprofiles$list_recommender_schemas_output()
@@ -7897,7 +7985,8 @@ customerprofiles_list_recommenders <- function(DomainName, MaxResults = NULL, Ne
     http_path = "/domains/{DomainName}/recommenders",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Recommenders"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$list_recommenders_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .customerprofiles$list_recommenders_output()
@@ -7954,7 +8043,8 @@ customerprofiles_list_rule_based_matches <- function(NextToken = NULL, MaxResult
     http_path = "/domains/{DomainName}/profiles/ruleBasedMatches",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "MatchIds"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$list_rule_based_matches_input(NextToken = NextToken, MaxResults = MaxResults, DomainName = DomainName)
   output <- .customerprofiles$list_rule_based_matches_output()
@@ -8023,7 +8113,8 @@ customerprofiles_list_segment_definitions <- function(DomainName, MaxResults = N
     http_path = "/domains/{DomainName}/segment-definitions",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$list_segment_definitions_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .customerprofiles$list_segment_definitions_output()
@@ -8091,7 +8182,8 @@ customerprofiles_list_segment_subscription_events <- function(DomainName, Segmen
     http_path = "/domains/{DomainName}/segment-definitions/{SegmentDefinitionName}/subscription-events",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Events"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$list_segment_subscription_events_input(DomainName = DomainName, SegmentDefinitionName = SegmentDefinitionName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .customerprofiles$list_segment_subscription_events_output()
@@ -8143,7 +8235,8 @@ customerprofiles_list_tags_for_resource <- function(resourceArn) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .customerprofiles$list_tags_for_resource_output()
@@ -8211,7 +8304,8 @@ customerprofiles_list_upload_jobs <- function(DomainName, MaxResults = NULL, Nex
     http_path = "/domains/{DomainName}/upload-jobs",
     host_prefix = "",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$list_upload_jobs_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .customerprofiles$list_upload_jobs_output()
@@ -8291,7 +8385,8 @@ customerprofiles_list_workflows <- function(DomainName, WorkflowType = NULL, Sta
     http_path = "/domains/{DomainName}/workflows",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$list_workflows_input(DomainName = DomainName, WorkflowType = WorkflowType, Status = Status, QueryStartDate = QueryStartDate, QueryEndDate = QueryEndDate, NextToken = NextToken, MaxResults = MaxResults)
   output <- .customerprofiles$list_workflows_output()
@@ -8395,7 +8490,8 @@ customerprofiles_merge_profiles <- function(DomainName, MainProfileId, ProfileId
     http_path = "/domains/{DomainName}/profiles/objects/merge",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$merge_profiles_input(DomainName = DomainName, MainProfileId = MainProfileId, ProfileIdsToBeMerged = ProfileIdsToBeMerged, FieldSourceProfileIds = FieldSourceProfileIds)
   output <- .customerprofiles$merge_profiles_output()
@@ -8483,7 +8579,8 @@ customerprofiles_put_domain_object_type <- function(DomainName, ObjectTypeName, 
     http_path = "/domains/{DomainName}/domain-object-types/{ObjectTypeName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$put_domain_object_type_input(DomainName = DomainName, ObjectTypeName = ObjectTypeName, Description = Description, EncryptionKey = EncryptionKey, Fields = Fields, Tags = Tags)
   output <- .customerprofiles$put_domain_object_type_output()
@@ -8652,7 +8749,8 @@ customerprofiles_put_integration <- function(DomainName, Uri = NULL, ObjectTypeN
     http_path = "/domains/{DomainName}/integrations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$put_integration_input(DomainName = DomainName, Uri = Uri, ObjectTypeName = ObjectTypeName, ObjectTypeNames = ObjectTypeNames, Tags = Tags, FlowDefinition = FlowDefinition, RoleArn = RoleArn, EventTriggerNames = EventTriggerNames, Scope = Scope)
   output <- .customerprofiles$put_integration_output()
@@ -8711,7 +8809,8 @@ customerprofiles_put_profile_object <- function(ObjectTypeName, Object, DomainNa
     http_path = "/domains/{DomainName}/profiles/objects",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$put_profile_object_input(ObjectTypeName = ObjectTypeName, Object = Object, DomainName = DomainName)
   output <- .customerprofiles$put_profile_object_output()
@@ -8845,7 +8944,8 @@ customerprofiles_put_profile_object_type <- function(DomainName, ObjectTypeName,
     http_path = "/domains/{DomainName}/object-types/{ObjectTypeName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$put_profile_object_type_input(DomainName = DomainName, ObjectTypeName = ObjectTypeName, Description = Description, TemplateId = TemplateId, ExpirationDays = ExpirationDays, EncryptionKey = EncryptionKey, AllowProfileCreation = AllowProfileCreation, SourceLastUpdatedTimestampFormat = SourceLastUpdatedTimestampFormat, MaxProfileObjectCount = MaxProfileObjectCount, SourcePriority = SourcePriority, Fields = Fields, Keys = Keys, Tags = Tags)
   output <- .customerprofiles$put_profile_object_type_output()
@@ -8913,7 +9013,8 @@ customerprofiles_put_segment_subscription <- function(DomainName, SegmentDefinit
     http_path = "/domains/{DomainName}/segment-definitions/{SegmentDefinitionName}/subscriptions",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$put_segment_subscription_input(DomainName = DomainName, SegmentDefinitionName = SegmentDefinitionName, ScheduleConfiguration = ScheduleConfiguration)
   output <- .customerprofiles$put_segment_subscription_output()
@@ -9098,7 +9199,8 @@ customerprofiles_search_profiles <- function(NextToken = NULL, MaxResults = NULL
     http_path = "/domains/{DomainName}/profiles/search",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$search_profiles_input(NextToken = NextToken, MaxResults = MaxResults, DomainName = DomainName, KeyName = KeyName, Values = Values, AdditionalSearchKeys = AdditionalSearchKeys, LogicalOperator = LogicalOperator)
   output <- .customerprofiles$search_profiles_output()
@@ -9228,7 +9330,8 @@ customerprofiles_search_recommendations <- function(DomainName, KeyName, KeyValu
     http_path = "/domains/{DomainName}/recommendations",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$search_recommendations_input(DomainName = DomainName, KeyName = KeyName, KeyValues = KeyValues, Recommender = Recommender, CandidateIds = CandidateIds, Context = Context, Diversity = Diversity, Metadata = Metadata, MaxRecommendations = MaxRecommendations)
   output <- .customerprofiles$search_recommendations_output()
@@ -9274,7 +9377,8 @@ customerprofiles_start_recommender <- function(DomainName, RecommenderName) {
     http_path = "/domains/{DomainName}/recommenders/{RecommenderName}/start",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$start_recommender_input(DomainName = DomainName, RecommenderName = RecommenderName)
   output <- .customerprofiles$start_recommender_output()
@@ -9320,7 +9424,8 @@ customerprofiles_start_upload_job <- function(DomainName, JobId) {
     http_path = "/domains/{DomainName}/upload-jobs/{JobId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$start_upload_job_input(DomainName = DomainName, JobId = JobId)
   output <- .customerprofiles$start_upload_job_output()
@@ -9366,7 +9471,8 @@ customerprofiles_stop_recommender <- function(DomainName, RecommenderName) {
     http_path = "/domains/{DomainName}/recommenders/{RecommenderName}/stop",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$stop_recommender_input(DomainName = DomainName, RecommenderName = RecommenderName)
   output <- .customerprofiles$stop_recommender_output()
@@ -9412,7 +9518,8 @@ customerprofiles_stop_upload_job <- function(DomainName, JobId) {
     http_path = "/domains/{DomainName}/upload-jobs/{JobId}/stop",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$stop_upload_job_input(DomainName = DomainName, JobId = JobId)
   output <- .customerprofiles$stop_upload_job_output()
@@ -9467,7 +9574,8 @@ customerprofiles_tag_resource <- function(resourceArn, tags) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .customerprofiles$tag_resource_output()
@@ -9516,7 +9624,8 @@ customerprofiles_untag_resource <- function(resourceArn, tagKeys) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .customerprofiles$untag_resource_output()
@@ -9633,7 +9742,8 @@ customerprofiles_update_calculated_attribute_definition <- function(DomainName, 
     http_path = "/domains/{DomainName}/calculated-attributes/{CalculatedAttributeName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$update_calculated_attribute_definition_input(DomainName = DomainName, CalculatedAttributeName = CalculatedAttributeName, DisplayName = DisplayName, Description = Description, Conditions = Conditions)
   output <- .customerprofiles$update_calculated_attribute_definition_output()
@@ -9855,7 +9965,8 @@ customerprofiles_update_domain <- function(DomainName, DefaultExpirationDays = N
     http_path = "/domains/{DomainName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$update_domain_input(DomainName = DomainName, DefaultExpirationDays = DefaultExpirationDays, DefaultEncryptionKey = DefaultEncryptionKey, DeadLetterQueueUrl = DeadLetterQueueUrl, Matching = Matching, RuleBasedMatching = RuleBasedMatching, DataStore = DataStore, Tags = Tags)
   output <- .customerprofiles$update_domain_output()
@@ -9932,7 +10043,8 @@ customerprofiles_update_domain_layout <- function(DomainName, LayoutDefinitionNa
     http_path = "/domains/{DomainName}/layouts/{LayoutDefinitionName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$update_domain_layout_input(DomainName = DomainName, LayoutDefinitionName = LayoutDefinitionName, Description = Description, DisplayName = DisplayName, IsDefault = IsDefault, LayoutType = LayoutType, Layout = Layout)
   output <- .customerprofiles$update_domain_layout_output()
@@ -10065,7 +10177,8 @@ customerprofiles_update_event_trigger <- function(DomainName, EventTriggerName, 
     http_path = "/domains/{DomainName}/event-triggers/{EventTriggerName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$update_event_trigger_input(DomainName = DomainName, EventTriggerName = EventTriggerName, ObjectTypeName = ObjectTypeName, Description = Description, EventTriggerConditions = EventTriggerConditions, SegmentFilter = SegmentFilter, EventTriggerLimits = EventTriggerLimits)
   output <- .customerprofiles$update_event_trigger_output()
@@ -10237,7 +10350,8 @@ customerprofiles_update_profile <- function(DomainName, ProfileId, AdditionalInf
     http_path = "/domains/{DomainName}/profiles",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$update_profile_input(DomainName = DomainName, ProfileId = ProfileId, AdditionalInformation = AdditionalInformation, AccountNumber = AccountNumber, PartyType = PartyType, BusinessName = BusinessName, FirstName = FirstName, MiddleName = MiddleName, LastName = LastName, BirthDate = BirthDate, Gender = Gender, PhoneNumber = PhoneNumber, MobilePhoneNumber = MobilePhoneNumber, HomePhoneNumber = HomePhoneNumber, BusinessPhoneNumber = BusinessPhoneNumber, EmailAddress = EmailAddress, PersonalEmailAddress = PersonalEmailAddress, BusinessEmailAddress = BusinessEmailAddress, Address = Address, ShippingAddress = ShippingAddress, MailingAddress = MailingAddress, BillingAddress = BillingAddress, Attributes = Attributes, PartyTypeString = PartyTypeString, GenderString = GenderString, ProfileType = ProfileType, EngagementPreferences = EngagementPreferences)
   output <- .customerprofiles$update_profile_output()
@@ -10329,7 +10443,8 @@ customerprofiles_update_recommender <- function(DomainName, RecommenderName, Des
     http_path = "/domains/{DomainName}/recommenders/{RecommenderName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .customerprofiles$update_recommender_input(DomainName = DomainName, RecommenderName = RecommenderName, Description = Description, RecommenderConfig = RecommenderConfig, RecommenderVersionName = RecommenderVersionName)
   output <- .customerprofiles$update_recommender_output()

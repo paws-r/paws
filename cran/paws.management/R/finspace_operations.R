@@ -37,7 +37,8 @@ finspace_create_environment <- function(name, description = NULL, kmsKeyId = NUL
     http_path = "/environment",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$create_environment_input(name = name, description = description, kmsKeyId = kmsKeyId, tags = tags, federationMode = federationMode, federationParameters = federationParameters, superuserParameters = superuserParameters, dataBundles = dataBundles)
   output <- .finspace$create_environment_output()
@@ -99,7 +100,8 @@ finspace_create_kx_changeset <- function(environmentId, databaseName, changeRequ
     http_path = "/kx/environments/{environmentId}/databases/{databaseName}/changesets",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$create_kx_changeset_input(environmentId = environmentId, databaseName = databaseName, changeRequests = changeRequests, clientToken = clientToken)
   output <- .finspace$create_kx_changeset_output()
@@ -164,7 +166,8 @@ finspace_create_kx_cluster <- function(clientToken = NULL, environmentId, cluste
     http_path = "/kx/environments/{environmentId}/clusters",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$create_kx_cluster_input(clientToken = clientToken, environmentId = environmentId, clusterName = clusterName, clusterType = clusterType, tickerplantLogConfiguration = tickerplantLogConfiguration, databases = databases, cacheStorageConfigurations = cacheStorageConfigurations, autoScalingConfiguration = autoScalingConfiguration, clusterDescription = clusterDescription, capacityConfiguration = capacityConfiguration, releaseLabel = releaseLabel, vpcConfiguration = vpcConfiguration, initializationScript = initializationScript, commandLineArguments = commandLineArguments, code = code, executionRole = executionRole, savedownStorageConfiguration = savedownStorageConfiguration, azMode = azMode, availabilityZoneId = availabilityZoneId, tags = tags, scalingGroupConfiguration = scalingGroupConfiguration)
   output <- .finspace$create_kx_cluster_output()
@@ -199,7 +202,8 @@ finspace_create_kx_database <- function(environmentId, databaseName, description
     http_path = "/kx/environments/{environmentId}/databases",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$create_kx_database_input(environmentId = environmentId, databaseName = databaseName, description = description, tags = tags, clientToken = clientToken)
   output <- .finspace$create_kx_database_output()
@@ -250,7 +254,8 @@ finspace_create_kx_dataview <- function(environmentId, databaseName, dataviewNam
     http_path = "/kx/environments/{environmentId}/databases/{databaseName}/dataviews",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$create_kx_dataview_input(environmentId = environmentId, databaseName = databaseName, dataviewName = dataviewName, azMode = azMode, availabilityZoneId = availabilityZoneId, changesetId = changesetId, segmentConfigurations = segmentConfigurations, autoUpdate = autoUpdate, readWrite = readWrite, description = description, tags = tags, clientToken = clientToken)
   output <- .finspace$create_kx_dataview_output()
@@ -285,7 +290,8 @@ finspace_create_kx_environment <- function(name, description = NULL, kmsKeyId, t
     http_path = "/kx/environments",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$create_kx_environment_input(name = name, description = description, kmsKeyId = kmsKeyId, tags = tags, clientToken = clientToken)
   output <- .finspace$create_kx_environment_output()
@@ -341,7 +347,8 @@ finspace_create_kx_scaling_group <- function(clientToken, environmentId, scaling
     http_path = "/kx/environments/{environmentId}/scalingGroups",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$create_kx_scaling_group_input(clientToken = clientToken, environmentId = environmentId, scalingGroupName = scalingGroupName, hostType = hostType, availabilityZoneId = availabilityZoneId, tags = tags)
   output <- .finspace$create_kx_scaling_group_output()
@@ -376,7 +383,8 @@ finspace_create_kx_user <- function(environmentId, userName, iamRole, tags = NUL
     http_path = "/kx/environments/{environmentId}/users",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$create_kx_user_input(environmentId = environmentId, userName = userName, iamRole = iamRole, tags = tags, clientToken = clientToken)
   output <- .finspace$create_kx_user_output()
@@ -416,7 +424,8 @@ finspace_create_kx_volume <- function(clientToken = NULL, environmentId, volumeT
     http_path = "/kx/environments/{environmentId}/kxvolumes",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$create_kx_volume_input(clientToken = clientToken, environmentId = environmentId, volumeType = volumeType, volumeName = volumeName, description = description, nas1Configuration = nas1Configuration, azMode = azMode, availabilityZoneIds = availabilityZoneIds, tags = tags)
   output <- .finspace$create_kx_volume_output()
@@ -447,7 +456,8 @@ finspace_delete_environment <- function(environmentId) {
     http_path = "/environment/{environmentId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$delete_environment_input(environmentId = environmentId)
   output <- .finspace$delete_environment_output()
@@ -480,7 +490,8 @@ finspace_delete_kx_cluster <- function(environmentId, clusterName, clientToken =
     http_path = "/kx/environments/{environmentId}/clusters/{clusterName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$delete_kx_cluster_input(environmentId = environmentId, clusterName = clusterName, clientToken = clientToken)
   output <- .finspace$delete_kx_cluster_output()
@@ -513,7 +524,8 @@ finspace_delete_kx_cluster_node <- function(environmentId, clusterName, nodeId) 
     http_path = "/kx/environments/{environmentId}/clusters/{clusterName}/nodes/{nodeId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$delete_kx_cluster_node_input(environmentId = environmentId, clusterName = clusterName, nodeId = nodeId)
   output <- .finspace$delete_kx_cluster_node_output()
@@ -546,7 +558,8 @@ finspace_delete_kx_database <- function(environmentId, databaseName, clientToken
     http_path = "/kx/environments/{environmentId}/databases/{databaseName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$delete_kx_database_input(environmentId = environmentId, databaseName = databaseName, clientToken = clientToken)
   output <- .finspace$delete_kx_database_output()
@@ -580,7 +593,8 @@ finspace_delete_kx_dataview <- function(environmentId, databaseName, dataviewNam
     http_path = "/kx/environments/{environmentId}/databases/{databaseName}/dataviews/{dataviewName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$delete_kx_dataview_input(environmentId = environmentId, databaseName = databaseName, dataviewName = dataviewName, clientToken = clientToken)
   output <- .finspace$delete_kx_dataview_output()
@@ -612,7 +626,8 @@ finspace_delete_kx_environment <- function(environmentId, clientToken = NULL) {
     http_path = "/kx/environments/{environmentId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$delete_kx_environment_input(environmentId = environmentId, clientToken = clientToken)
   output <- .finspace$delete_kx_environment_output()
@@ -645,7 +660,8 @@ finspace_delete_kx_scaling_group <- function(environmentId, scalingGroupName, cl
     http_path = "/kx/environments/{environmentId}/scalingGroups/{scalingGroupName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$delete_kx_scaling_group_input(environmentId = environmentId, scalingGroupName = scalingGroupName, clientToken = clientToken)
   output <- .finspace$delete_kx_scaling_group_output()
@@ -678,7 +694,8 @@ finspace_delete_kx_user <- function(userName, environmentId, clientToken = NULL)
     http_path = "/kx/environments/{environmentId}/users/{userName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$delete_kx_user_input(userName = userName, environmentId = environmentId, clientToken = clientToken)
   output <- .finspace$delete_kx_user_output()
@@ -711,7 +728,8 @@ finspace_delete_kx_volume <- function(environmentId, volumeName, clientToken = N
     http_path = "/kx/environments/{environmentId}/kxvolumes/{volumeName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$delete_kx_volume_input(environmentId = environmentId, volumeName = volumeName, clientToken = clientToken)
   output <- .finspace$delete_kx_volume_output()
@@ -742,7 +760,8 @@ finspace_get_environment <- function(environmentId) {
     http_path = "/environment/{environmentId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$get_environment_input(environmentId = environmentId)
   output <- .finspace$get_environment_output()
@@ -775,7 +794,8 @@ finspace_get_kx_changeset <- function(environmentId, databaseName, changesetId) 
     http_path = "/kx/environments/{environmentId}/databases/{databaseName}/changesets/{changesetId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$get_kx_changeset_input(environmentId = environmentId, databaseName = databaseName, changesetId = changesetId)
   output <- .finspace$get_kx_changeset_output()
@@ -807,7 +827,8 @@ finspace_get_kx_cluster <- function(environmentId, clusterName) {
     http_path = "/kx/environments/{environmentId}/clusters/{clusterName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$get_kx_cluster_input(environmentId = environmentId, clusterName = clusterName)
   output <- .finspace$get_kx_cluster_output()
@@ -840,7 +861,8 @@ finspace_get_kx_connection_string <- function(userArn, environmentId, clusterNam
     http_path = "/kx/environments/{environmentId}/connectionString",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$get_kx_connection_string_input(userArn = userArn, environmentId = environmentId, clusterName = clusterName)
   output <- .finspace$get_kx_connection_string_output()
@@ -872,7 +894,8 @@ finspace_get_kx_database <- function(environmentId, databaseName) {
     http_path = "/kx/environments/{environmentId}/databases/{databaseName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$get_kx_database_input(environmentId = environmentId, databaseName = databaseName)
   output <- .finspace$get_kx_database_output()
@@ -905,7 +928,8 @@ finspace_get_kx_dataview <- function(environmentId, databaseName, dataviewName) 
     http_path = "/kx/environments/{environmentId}/databases/{databaseName}/dataviews/{dataviewName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$get_kx_dataview_input(environmentId = environmentId, databaseName = databaseName, dataviewName = dataviewName)
   output <- .finspace$get_kx_dataview_output()
@@ -936,7 +960,8 @@ finspace_get_kx_environment <- function(environmentId) {
     http_path = "/kx/environments/{environmentId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$get_kx_environment_input(environmentId = environmentId)
   output <- .finspace$get_kx_environment_output()
@@ -968,7 +993,8 @@ finspace_get_kx_scaling_group <- function(environmentId, scalingGroupName) {
     http_path = "/kx/environments/{environmentId}/scalingGroups/{scalingGroupName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$get_kx_scaling_group_input(environmentId = environmentId, scalingGroupName = scalingGroupName)
   output <- .finspace$get_kx_scaling_group_output()
@@ -1000,7 +1026,8 @@ finspace_get_kx_user <- function(userName, environmentId) {
     http_path = "/kx/environments/{environmentId}/users/{userName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$get_kx_user_input(userName = userName, environmentId = environmentId)
   output <- .finspace$get_kx_user_output()
@@ -1032,7 +1059,8 @@ finspace_get_kx_volume <- function(environmentId, volumeName) {
     http_path = "/kx/environments/{environmentId}/kxvolumes/{volumeName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$get_kx_volume_input(environmentId = environmentId, volumeName = volumeName)
   output <- .finspace$get_kx_volume_output()
@@ -1064,7 +1092,8 @@ finspace_list_environments <- function(nextToken = NULL, maxResults = NULL) {
     http_path = "/environment",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$list_environments_input(nextToken = nextToken, maxResults = maxResults)
   output <- .finspace$list_environments_output()
@@ -1098,7 +1127,8 @@ finspace_list_kx_changesets <- function(environmentId, databaseName, nextToken =
     http_path = "/kx/environments/{environmentId}/databases/{databaseName}/changesets",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$list_kx_changesets_input(environmentId = environmentId, databaseName = databaseName, nextToken = nextToken, maxResults = maxResults)
   output <- .finspace$list_kx_changesets_output()
@@ -1132,7 +1162,8 @@ finspace_list_kx_cluster_nodes <- function(environmentId, clusterName, nextToken
     http_path = "/kx/environments/{environmentId}/clusters/{clusterName}/nodes",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$list_kx_cluster_nodes_input(environmentId = environmentId, clusterName = clusterName, nextToken = nextToken, maxResults = maxResults)
   output <- .finspace$list_kx_cluster_nodes_output()
@@ -1176,7 +1207,8 @@ finspace_list_kx_clusters <- function(environmentId, clusterType = NULL, maxResu
     http_path = "/kx/environments/{environmentId}/clusters",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$list_kx_clusters_input(environmentId = environmentId, clusterType = clusterType, maxResults = maxResults, nextToken = nextToken)
   output <- .finspace$list_kx_clusters_output()
@@ -1209,7 +1241,8 @@ finspace_list_kx_databases <- function(environmentId, nextToken = NULL, maxResul
     http_path = "/kx/environments/{environmentId}/databases",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$list_kx_databases_input(environmentId = environmentId, nextToken = nextToken, maxResults = maxResults)
   output <- .finspace$list_kx_databases_output()
@@ -1243,7 +1276,8 @@ finspace_list_kx_dataviews <- function(environmentId, databaseName, nextToken = 
     http_path = "/kx/environments/{environmentId}/databases/{databaseName}/dataviews",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$list_kx_dataviews_input(environmentId = environmentId, databaseName = databaseName, nextToken = nextToken, maxResults = maxResults)
   output <- .finspace$list_kx_dataviews_output()
@@ -1275,7 +1309,8 @@ finspace_list_kx_environments <- function(nextToken = NULL, maxResults = NULL) {
     http_path = "/kx/environments",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "environments"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$list_kx_environments_input(nextToken = nextToken, maxResults = maxResults)
   output <- .finspace$list_kx_environments_output()
@@ -1308,7 +1343,8 @@ finspace_list_kx_scaling_groups <- function(environmentId, maxResults = NULL, ne
     http_path = "/kx/environments/{environmentId}/scalingGroups",
     host_prefix = "",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$list_kx_scaling_groups_input(environmentId = environmentId, maxResults = maxResults, nextToken = nextToken)
   output <- .finspace$list_kx_scaling_groups_output()
@@ -1341,7 +1377,8 @@ finspace_list_kx_users <- function(environmentId, nextToken = NULL, maxResults =
     http_path = "/kx/environments/{environmentId}/users",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$list_kx_users_input(environmentId = environmentId, nextToken = nextToken, maxResults = maxResults)
   output <- .finspace$list_kx_users_output()
@@ -1375,7 +1412,8 @@ finspace_list_kx_volumes <- function(environmentId, maxResults = NULL, nextToken
     http_path = "/kx/environments/{environmentId}/kxvolumes",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$list_kx_volumes_input(environmentId = environmentId, maxResults = maxResults, nextToken = nextToken, volumeType = volumeType)
   output <- .finspace$list_kx_volumes_output()
@@ -1406,7 +1444,8 @@ finspace_list_tags_for_resource <- function(resourceArn) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .finspace$list_tags_for_resource_output()
@@ -1438,7 +1477,8 @@ finspace_tag_resource <- function(resourceArn, tags) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .finspace$tag_resource_output()
@@ -1470,7 +1510,8 @@ finspace_untag_resource <- function(resourceArn, tagKeys) {
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .finspace$untag_resource_output()
@@ -1509,7 +1550,8 @@ finspace_update_environment <- function(environmentId, name = NULL, description 
     http_path = "/environment/{environmentId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$update_environment_input(environmentId = environmentId, name = name, description = description, federationMode = federationMode, federationParameters = federationParameters)
   output <- .finspace$update_environment_output()
@@ -1550,7 +1592,8 @@ finspace_update_kx_cluster_code_configuration <- function(environmentId, cluster
     http_path = "/kx/environments/{environmentId}/clusters/{clusterName}/configuration/code",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$update_kx_cluster_code_configuration_input(environmentId = environmentId, clusterName = clusterName, clientToken = clientToken, code = code, initializationScript = initializationScript, commandLineArguments = commandLineArguments, deploymentConfiguration = deploymentConfiguration)
   output <- .finspace$update_kx_cluster_code_configuration_output()
@@ -1586,7 +1629,8 @@ finspace_update_kx_cluster_databases <- function(environmentId, clusterName, cli
     http_path = "/kx/environments/{environmentId}/clusters/{clusterName}/configuration/databases",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$update_kx_cluster_databases_input(environmentId = environmentId, clusterName = clusterName, clientToken = clientToken, databases = databases, deploymentConfiguration = deploymentConfiguration)
   output <- .finspace$update_kx_cluster_databases_output()
@@ -1620,7 +1664,8 @@ finspace_update_kx_database <- function(environmentId, databaseName, description
     http_path = "/kx/environments/{environmentId}/databases/{databaseName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$update_kx_database_input(environmentId = environmentId, databaseName = databaseName, description = description, clientToken = clientToken)
   output <- .finspace$update_kx_database_output()
@@ -1657,7 +1702,8 @@ finspace_update_kx_dataview <- function(environmentId, databaseName, dataviewNam
     http_path = "/kx/environments/{environmentId}/databases/{databaseName}/dataviews/{dataviewName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$update_kx_dataview_input(environmentId = environmentId, databaseName = databaseName, dataviewName = dataviewName, description = description, changesetId = changesetId, segmentConfigurations = segmentConfigurations, clientToken = clientToken)
   output <- .finspace$update_kx_dataview_output()
@@ -1691,7 +1737,8 @@ finspace_update_kx_environment <- function(environmentId, name = NULL, descripti
     http_path = "/kx/environments/{environmentId}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$update_kx_environment_input(environmentId = environmentId, name = name, description = description, clientToken = clientToken)
   output <- .finspace$update_kx_environment_output()
@@ -1726,7 +1773,8 @@ finspace_update_kx_environment_network <- function(environmentId, transitGateway
     http_path = "/kx/environments/{environmentId}/network",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$update_kx_environment_network_input(environmentId = environmentId, transitGatewayConfiguration = transitGatewayConfiguration, customDNSConfiguration = customDNSConfiguration, clientToken = clientToken)
   output <- .finspace$update_kx_environment_network_output()
@@ -1760,7 +1808,8 @@ finspace_update_kx_user <- function(environmentId, userName, iamRole, clientToke
     http_path = "/kx/environments/{environmentId}/users/{userName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$update_kx_user_input(environmentId = environmentId, userName = userName, iamRole = iamRole, clientToken = clientToken)
   output <- .finspace$update_kx_user_output()
@@ -1795,7 +1844,8 @@ finspace_update_kx_volume <- function(environmentId, volumeName, description = N
     http_path = "/kx/environments/{environmentId}/kxvolumes/{volumeName}",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .finspace$update_kx_volume_input(environmentId = environmentId, volumeName = volumeName, description = description, clientToken = clientToken, nas1Configuration = nas1Configuration)
   output <- .finspace$update_kx_volume_output()

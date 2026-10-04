@@ -18,7 +18,8 @@ glue_update_crawler(
   LineageConfiguration = NULL,
   LakeFormationConfiguration = NULL,
   Configuration = NULL,
-  CrawlerSecurityConfiguration = NULL
+  CrawlerSecurityConfiguration = NULL,
+  CatalogId = NULL
 )
 }
 \arguments{
@@ -49,6 +50,8 @@ glue_update_crawler(
 \item{Configuration}{Crawler configuration information. This versioned JSON string allows users to specify aspects of a crawler's behavior. For more information, see \href{https://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html}{Setting crawler configuration options}.}
 
 \item{CrawlerSecurityConfiguration}{The name of the \code{SecurityConfiguration} structure to be used by this crawler.}
+
+\item{CatalogId}{The ID of the Data Catalog in which to store the crawler's output. If you omit this value, the existing value on the crawler is preserved.}
 }
 \description{
 Updates a crawler. If a crawler is running, you must stop it using \code{\link[=glue_stop_crawler]{stop_crawler}} before updating it.

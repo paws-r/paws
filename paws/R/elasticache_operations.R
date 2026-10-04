@@ -6,7 +6,7 @@ NULL
 #' A tag is a key-value pair where the key and value are case-sensitive
 #'
 #' @description
-#' A tag is a key-value pair where the key and value are case-sensitive. You can use tags to categorize and track all your ElastiCache resources, with the exception of global replication group. When you add or remove tags on replication groups, those actions will be replicated to all nodes in the replication group. For more information, see [Resource-level permissions](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/IAM.ResourceLevelPermissions.html).
+#' A tag is a key-value pair where the key and value are case-sensitive. You can use tags to categorize and track all your ElastiCache resources. When you add or remove tags on replication groups, those actions will be replicated to all nodes in the replication group. For more information, see [Resource-level permissions](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/IAM.ResourceLevelPermissions.html).
 #' 
 #' For example, you can use cost-allocation tags to your ElastiCache resources, Amazon generates a cost allocation report as a comma-separated value (CSV) file with your usage and costs aggregated by your tags. You can apply tags that represent business categories (such as cost centers, application names, or owners) to organize your costs across multiple services.
 #' 
@@ -17,7 +17,7 @@ NULL
 #'
 #' @param ResourceName &#91;required&#93; The Amazon Resource Name (ARN) of the resource to which the tags are to be added, for example `arn:aws:elasticache:us-west-2:0123456789:cluster:myCluster` or `arn:aws:elasticache:us-west-2:0123456789:snapshot:mySnapshot`. ElastiCache resources are *cluster* and *snapshot*.
 #' 
-#' For more information about ARNs, see [Amazon Resource Names (ARNs) and Amazon Service Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
+#' For more information about ARNs, see [Amazon Resource Names (ARNs) and Amazon Service Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series).
 #' @param Tags &#91;required&#93; A list of tags to be added to this resource. A tag is a key-value pair. A tag key must be accompanied by a tag value, although null is accepted.
 #'
 #' @return
@@ -76,7 +76,8 @@ elasticache_add_tags_to_resource <- function(ResourceName, Tags) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$add_tags_to_resource_input(ResourceName = ResourceName, Tags = Tags)
   output <- .elasticache$add_tags_to_resource_output()
@@ -156,7 +157,8 @@ elasticache_authorize_cache_security_group_ingress <- function(CacheSecurityGrou
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$authorize_cache_security_group_ingress_input(CacheSecurityGroupName = CacheSecurityGroupName, EC2SecurityGroupName = EC2SecurityGroupName, EC2SecurityGroupOwnerId = EC2SecurityGroupOwnerId)
   output <- .elasticache$authorize_cache_security_group_ingress_output()
@@ -230,7 +232,8 @@ elasticache_batch_apply_update_action <- function(ReplicationGroupIds = NULL, Ca
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$batch_apply_update_action_input(ReplicationGroupIds = ReplicationGroupIds, CacheClusterIds = CacheClusterIds, ServiceUpdateName = ServiceUpdateName)
   output <- .elasticache$batch_apply_update_action_output()
@@ -304,7 +307,8 @@ elasticache_batch_stop_update_action <- function(ReplicationGroupIds = NULL, Cac
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$batch_stop_update_action_input(ReplicationGroupIds = ReplicationGroupIds, CacheClusterIds = CacheClusterIds, ServiceUpdateName = ServiceUpdateName)
   output <- .elasticache$batch_stop_update_action_output()
@@ -485,7 +489,8 @@ elasticache_complete_migration <- function(ReplicationGroupId, Force = NULL) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$complete_migration_input(ReplicationGroupId = ReplicationGroupId, Force = Force)
   output <- .elasticache$complete_migration_output()
@@ -565,7 +570,8 @@ elasticache_copy_serverless_cache_snapshot <- function(SourceServerlessCacheSnap
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$copy_serverless_cache_snapshot_input(SourceServerlessCacheSnapshotName = SourceServerlessCacheSnapshotName, TargetServerlessCacheSnapshotName = TargetServerlessCacheSnapshotName, KmsKeyId = KmsKeyId, Tags = Tags)
   output <- .elasticache$copy_serverless_cache_snapshot_output()
@@ -740,7 +746,8 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$copy_snapshot_input(SourceSnapshotName = SourceSnapshotName, TargetSnapshotName = TargetSnapshotName, TargetBucket = TargetBucket, KmsKeyId = KmsKeyId, Tags = Tags)
   output <- .elasticache$copy_snapshot_output()
@@ -1178,7 +1185,8 @@ elasticache_create_cache_cluster <- function(CacheClusterId, ReplicationGroupId 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$create_cache_cluster_input(CacheClusterId = CacheClusterId, ReplicationGroupId = ReplicationGroupId, AZMode = AZMode, PreferredAvailabilityZone = PreferredAvailabilityZone, PreferredAvailabilityZones = PreferredAvailabilityZones, NumCacheNodes = NumCacheNodes, CacheNodeType = CacheNodeType, Engine = Engine, EngineVersion = EngineVersion, CacheParameterGroupName = CacheParameterGroupName, CacheSubnetGroupName = CacheSubnetGroupName, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, Tags = Tags, SnapshotArns = SnapshotArns, SnapshotName = SnapshotName, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Port = Port, NotificationTopicArn = NotificationTopicArn, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, AuthToken = AuthToken, OutpostMode = OutpostMode, PreferredOutpostArn = PreferredOutpostArn, PreferredOutpostArns = PreferredOutpostArns, LogDeliveryConfigurations = LogDeliveryConfigurations, TransitEncryptionEnabled = TransitEncryptionEnabled, NetworkType = NetworkType, IpDiscovery = IpDiscovery)
   output <- .elasticache$create_cache_cluster_output()
@@ -1263,7 +1271,8 @@ elasticache_create_cache_parameter_group <- function(CacheParameterGroupName, Ca
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$create_cache_parameter_group_input(CacheParameterGroupName = CacheParameterGroupName, CacheParameterGroupFamily = CacheParameterGroupFamily, Description = Description, Tags = Tags)
   output <- .elasticache$create_cache_parameter_group_output()
@@ -1350,7 +1359,8 @@ elasticache_create_cache_security_group <- function(CacheSecurityGroupName, Desc
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$create_cache_security_group_input(CacheSecurityGroupName = CacheSecurityGroupName, Description = Description, Tags = Tags)
   output <- .elasticache$create_cache_security_group_output()
@@ -1455,7 +1465,8 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$create_cache_subnet_group_input(CacheSubnetGroupName = CacheSubnetGroupName, CacheSubnetGroupDescription = CacheSubnetGroupDescription, SubnetIds = SubnetIds, Tags = Tags)
   output <- .elasticache$create_cache_subnet_group_output()
@@ -1480,13 +1491,14 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' @usage
 #' elasticache_create_global_replication_group(
 #'   GlobalReplicationGroupIdSuffix, GlobalReplicationGroupDescription,
-#'   PrimaryReplicationGroupId)
+#'   PrimaryReplicationGroupId, Tags)
 #'
 #' @param GlobalReplicationGroupIdSuffix &#91;required&#93; The suffix name of a Global datastore. Amazon ElastiCache automatically applies a prefix to the Global datastore ID when it is created. Each Amazon Region has its own prefix. For instance, a Global datastore ID created in the US-West-1 region will begin with "dsdfu" along with the suffix name you provide. The suffix, combined with the auto-generated prefix, guarantees uniqueness of the Global datastore name across multiple regions.
 #' 
 #' For a full list of Amazon Regions and their respective Global datastore iD prefixes, see [Using the Amazon CLI with Global datastores](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Redis-Global-Datastores-CLI.html) .
 #' @param GlobalReplicationGroupDescription Provides details of the Global datastore
 #' @param PrimaryReplicationGroupId &#91;required&#93; The name of the primary cluster that accepts writes and will replicate updates to the secondary cluster. This value is stored as a lowercase string.
+#' @param Tags A list of tags to be added to this resource. A tag is a key-value pair. A tag key must be accompanied by a tag value, although null is accepted.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1528,7 +1540,13 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' svc$create_global_replication_group(
 #'   GlobalReplicationGroupIdSuffix = "string",
 #'   GlobalReplicationGroupDescription = "string",
-#'   PrimaryReplicationGroupId = "string"
+#'   PrimaryReplicationGroupId = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -1537,16 +1555,17 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' @rdname elasticache_create_global_replication_group
 #'
 #' @aliases elasticache_create_global_replication_group
-elasticache_create_global_replication_group <- function(GlobalReplicationGroupIdSuffix, GlobalReplicationGroupDescription = NULL, PrimaryReplicationGroupId) {
+elasticache_create_global_replication_group <- function(GlobalReplicationGroupIdSuffix, GlobalReplicationGroupDescription = NULL, PrimaryReplicationGroupId, Tags = NULL) {
   op <- new_operation(
     name = "CreateGlobalReplicationGroup",
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
-  input <- .elasticache$create_global_replication_group_input(GlobalReplicationGroupIdSuffix = GlobalReplicationGroupIdSuffix, GlobalReplicationGroupDescription = GlobalReplicationGroupDescription, PrimaryReplicationGroupId = PrimaryReplicationGroupId)
+  input <- .elasticache$create_global_replication_group_input(GlobalReplicationGroupIdSuffix = GlobalReplicationGroupIdSuffix, GlobalReplicationGroupDescription = GlobalReplicationGroupDescription, PrimaryReplicationGroupId = PrimaryReplicationGroupId, Tags = Tags)
   output <- .elasticache$create_global_replication_group_output()
   config <- get_config()
   svc <- .elasticache$service(config, op)
@@ -2093,7 +2112,8 @@ elasticache_create_replication_group <- function(ReplicationGroupId, Replication
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$create_replication_group_input(ReplicationGroupId = ReplicationGroupId, ReplicationGroupDescription = ReplicationGroupDescription, GlobalReplicationGroupId = GlobalReplicationGroupId, PrimaryClusterId = PrimaryClusterId, AutomaticFailoverEnabled = AutomaticFailoverEnabled, MultiAZEnabled = MultiAZEnabled, NumCacheClusters = NumCacheClusters, PreferredCacheClusterAZs = PreferredCacheClusterAZs, NumNodeGroups = NumNodeGroups, ReplicasPerNodeGroup = ReplicasPerNodeGroup, NodeGroupConfiguration = NodeGroupConfiguration, CacheNodeType = CacheNodeType, Engine = Engine, EngineVersion = EngineVersion, CacheParameterGroupName = CacheParameterGroupName, CacheSubnetGroupName = CacheSubnetGroupName, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, Tags = Tags, SnapshotArns = SnapshotArns, SnapshotName = SnapshotName, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Port = Port, NotificationTopicArn = NotificationTopicArn, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, AuthToken = AuthToken, TransitEncryptionEnabled = TransitEncryptionEnabled, AtRestEncryptionEnabled = AtRestEncryptionEnabled, KmsKeyId = KmsKeyId, UserGroupIds = UserGroupIds, LogDeliveryConfigurations = LogDeliveryConfigurations, DataTieringEnabled = DataTieringEnabled, NetworkType = NetworkType, IpDiscovery = IpDiscovery, TransitEncryptionMode = TransitEncryptionMode, ClusterMode = ClusterMode, ServerlessCacheSnapshotName = ServerlessCacheSnapshotName, Durability = Durability)
   output <- .elasticache$create_replication_group_output()
@@ -2114,7 +2134,7 @@ elasticache_create_replication_group <- function(ReplicationGroupId, Replication
 #' elasticache_create_serverless_cache(ServerlessCacheName, Description,
 #'   Engine, MajorEngineVersion, CacheUsageLimits, KmsKeyId,
 #'   SecurityGroupIds, SnapshotArnsToRestore, Tags, UserGroupId, SubnetIds,
-#'   SnapshotRetentionLimit, DailySnapshotTime, NetworkType)
+#'   SnapshotRetentionLimit, DailySnapshotTime, NetworkType, ConnectionType)
 #'
 #' @param ServerlessCacheName &#91;required&#93; User-provided identifier for the serverless cache. This parameter is stored as a lowercase string.
 #' @param Description User-provided description for the serverless cache. The default is NULL, i.e. if no description is provided then an empty string will be returned. The maximum length is 255 characters.
@@ -2130,6 +2150,7 @@ elasticache_create_replication_group <- function(ReplicationGroupId, Replication
 #' @param SnapshotRetentionLimit The number of days for which ElastiCache retains automatic snapshots before deleting them. Available for Valkey, Redis OSS and Serverless Memcached only. The maximum value allowed is 35 days.
 #' @param DailySnapshotTime The daily time that snapshots will be created from the new serverless cache. By default this number is populated with 0, i.e. no snapshots will be created on an automatic daily basis. Available for Valkey, Redis OSS and Serverless Memcached only.
 #' @param NetworkType The IP protocol version used by the serverless cache. Must be either `ipv4` | `ipv6` | `dual_stack`. `ipv6` is only supported with IPv6-only subnets. If not specified, defaults to `ipv4`, unless all provided subnets are IPv6-only, in which case it defaults to `ipv6`.
+#' @param ConnectionType The connection type for the serverless cache. Must be either `vpc` | `public`. Use `vpc` to access the cache through a VPC endpoint, or `public` to access the cache over the internet. If not specified, defaults to `vpc`. This value cannot be changed after the serverless cache is created. Setting this to `public` requires Valkey 9 or above.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2176,7 +2197,8 @@ elasticache_create_replication_group <- function(ReplicationGroupId, Replication
 #'     ),
 #'     SnapshotRetentionLimit = 123,
 #'     DailySnapshotTime = "string",
-#'     NetworkType = "ipv4"|"ipv6"|"dual_stack"
+#'     NetworkType = "ipv4"|"ipv6"|"dual_stack",
+#'     ConnectionType = "vpc"|"public"
 #'   )
 #' )
 #' ```
@@ -2218,7 +2240,8 @@ elasticache_create_replication_group <- function(ReplicationGroupId, Replication
 #'   ),
 #'   SnapshotRetentionLimit = 123,
 #'   DailySnapshotTime = "string",
-#'   NetworkType = "ipv4"|"ipv6"|"dual_stack"
+#'   NetworkType = "ipv4"|"ipv6"|"dual_stack",
+#'   ConnectionType = "vpc"|"public"
 #' )
 #' ```
 #'
@@ -2227,16 +2250,17 @@ elasticache_create_replication_group <- function(ReplicationGroupId, Replication
 #' @rdname elasticache_create_serverless_cache
 #'
 #' @aliases elasticache_create_serverless_cache
-elasticache_create_serverless_cache <- function(ServerlessCacheName, Description = NULL, Engine, MajorEngineVersion = NULL, CacheUsageLimits = NULL, KmsKeyId = NULL, SecurityGroupIds = NULL, SnapshotArnsToRestore = NULL, Tags = NULL, UserGroupId = NULL, SubnetIds = NULL, SnapshotRetentionLimit = NULL, DailySnapshotTime = NULL, NetworkType = NULL) {
+elasticache_create_serverless_cache <- function(ServerlessCacheName, Description = NULL, Engine, MajorEngineVersion = NULL, CacheUsageLimits = NULL, KmsKeyId = NULL, SecurityGroupIds = NULL, SnapshotArnsToRestore = NULL, Tags = NULL, UserGroupId = NULL, SubnetIds = NULL, SnapshotRetentionLimit = NULL, DailySnapshotTime = NULL, NetworkType = NULL, ConnectionType = NULL) {
   op <- new_operation(
     name = "CreateServerlessCache",
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
-  input <- .elasticache$create_serverless_cache_input(ServerlessCacheName = ServerlessCacheName, Description = Description, Engine = Engine, MajorEngineVersion = MajorEngineVersion, CacheUsageLimits = CacheUsageLimits, KmsKeyId = KmsKeyId, SecurityGroupIds = SecurityGroupIds, SnapshotArnsToRestore = SnapshotArnsToRestore, Tags = Tags, UserGroupId = UserGroupId, SubnetIds = SubnetIds, SnapshotRetentionLimit = SnapshotRetentionLimit, DailySnapshotTime = DailySnapshotTime, NetworkType = NetworkType)
+  input <- .elasticache$create_serverless_cache_input(ServerlessCacheName = ServerlessCacheName, Description = Description, Engine = Engine, MajorEngineVersion = MajorEngineVersion, CacheUsageLimits = CacheUsageLimits, KmsKeyId = KmsKeyId, SecurityGroupIds = SecurityGroupIds, SnapshotArnsToRestore = SnapshotArnsToRestore, Tags = Tags, UserGroupId = UserGroupId, SubnetIds = SubnetIds, SnapshotRetentionLimit = SnapshotRetentionLimit, DailySnapshotTime = DailySnapshotTime, NetworkType = NetworkType, ConnectionType = ConnectionType)
   output <- .elasticache$create_serverless_cache_output()
   config <- get_config()
   svc <- .elasticache$service(config, op)
@@ -2314,7 +2338,8 @@ elasticache_create_serverless_cache_snapshot <- function(ServerlessCacheSnapshot
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$create_serverless_cache_snapshot_input(ServerlessCacheSnapshotName = ServerlessCacheSnapshotName, ServerlessCacheName = ServerlessCacheName, KmsKeyId = KmsKeyId, Tags = Tags)
   output <- .elasticache$create_serverless_cache_snapshot_output()
@@ -2463,7 +2488,8 @@ elasticache_create_snapshot <- function(ReplicationGroupId = NULL, CacheClusterI
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$create_snapshot_input(ReplicationGroupId = ReplicationGroupId, CacheClusterId = CacheClusterId, SnapshotName = SnapshotName, KmsKeyId = KmsKeyId, Tags = Tags)
   output <- .elasticache$create_snapshot_output()
@@ -2552,7 +2578,8 @@ elasticache_create_user <- function(UserId, UserName, Engine, Passwords = NULL, 
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$create_user_input(UserId = UserId, UserName = UserName, Engine = Engine, Passwords = Passwords, AccessString = AccessString, NoPasswordRequired = NoPasswordRequired, Tags = Tags, AuthenticationMode = AuthenticationMode)
   output <- .elasticache$create_user_output()
@@ -2635,7 +2662,8 @@ elasticache_create_user_group <- function(UserGroupId, Engine, UserIds = NULL, T
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$create_user_group_input(UserGroupId = UserGroupId, Engine = Engine, UserIds = UserIds, Tags = Tags)
   output <- .elasticache$create_user_group_output()
@@ -2725,7 +2753,8 @@ elasticache_decrease_node_groups_in_global_replication_group <- function(GlobalR
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$decrease_node_groups_in_global_replication_group_input(GlobalReplicationGroupId = GlobalReplicationGroupId, NodeGroupCount = NodeGroupCount, GlobalNodeGroupsToRemove = GlobalNodeGroupsToRemove, GlobalNodeGroupsToRetain = GlobalNodeGroupsToRetain, ApplyImmediately = ApplyImmediately)
   output <- .elasticache$decrease_node_groups_in_global_replication_group_output()
@@ -2939,7 +2968,8 @@ elasticache_decrease_replica_count <- function(ReplicationGroupId, NewReplicaCou
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$decrease_replica_count_input(ReplicationGroupId = ReplicationGroupId, NewReplicaCount = NewReplicaCount, ReplicaConfiguration = ReplicaConfiguration, ReplicasToRemove = ReplicasToRemove, ApplyImmediately = ApplyImmediately)
   output <- .elasticache$decrease_replica_count_output()
@@ -3136,7 +3166,8 @@ elasticache_delete_cache_cluster <- function(CacheClusterId, FinalSnapshotIdenti
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$delete_cache_cluster_input(CacheClusterId = CacheClusterId, FinalSnapshotIdentifier = FinalSnapshotIdentifier)
   output <- .elasticache$delete_cache_cluster_output()
@@ -3190,7 +3221,8 @@ elasticache_delete_cache_parameter_group <- function(CacheParameterGroupName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$delete_cache_parameter_group_input(CacheParameterGroupName = CacheParameterGroupName)
   output <- .elasticache$delete_cache_parameter_group_output()
@@ -3246,7 +3278,8 @@ elasticache_delete_cache_security_group <- function(CacheSecurityGroupName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$delete_cache_security_group_input(CacheSecurityGroupName = CacheSecurityGroupName)
   output <- .elasticache$delete_cache_security_group_output()
@@ -3302,7 +3335,8 @@ elasticache_delete_cache_subnet_group <- function(CacheSubnetGroupName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$delete_cache_subnet_group_input(CacheSubnetGroupName = CacheSubnetGroupName)
   output <- .elasticache$delete_cache_subnet_group_output()
@@ -3389,7 +3423,8 @@ elasticache_delete_global_replication_group <- function(GlobalReplicationGroupId
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$delete_global_replication_group_input(GlobalReplicationGroupId = GlobalReplicationGroupId, RetainPrimaryReplicationGroup = RetainPrimaryReplicationGroup)
   output <- .elasticache$delete_global_replication_group_output()
@@ -3588,7 +3623,8 @@ elasticache_delete_replication_group <- function(ReplicationGroupId, RetainPrima
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$delete_replication_group_input(ReplicationGroupId = ReplicationGroupId, RetainPrimaryCluster = RetainPrimaryCluster, FinalSnapshotIdentifier = FinalSnapshotIdentifier)
   output <- .elasticache$delete_replication_group_output()
@@ -3659,7 +3695,8 @@ elasticache_delete_replication_group <- function(ReplicationGroupId, RetainPrima
 #'     ),
 #'     SnapshotRetentionLimit = 123,
 #'     DailySnapshotTime = "string",
-#'     NetworkType = "ipv4"|"ipv6"|"dual_stack"
+#'     NetworkType = "ipv4"|"ipv6"|"dual_stack",
+#'     ConnectionType = "vpc"|"public"
 #'   )
 #' )
 #' ```
@@ -3684,7 +3721,8 @@ elasticache_delete_serverless_cache <- function(ServerlessCacheName, FinalSnapsh
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$delete_serverless_cache_input(ServerlessCacheName = ServerlessCacheName, FinalSnapshotName = FinalSnapshotName)
   output <- .elasticache$delete_serverless_cache_output()
@@ -3752,7 +3790,8 @@ elasticache_delete_serverless_cache_snapshot <- function(ServerlessCacheSnapshot
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$delete_serverless_cache_snapshot_input(ServerlessCacheSnapshotName = ServerlessCacheSnapshotName)
   output <- .elasticache$delete_serverless_cache_snapshot_output()
@@ -3869,7 +3908,8 @@ elasticache_delete_snapshot <- function(SnapshotName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$delete_snapshot_input(SnapshotName = SnapshotName)
   output <- .elasticache$delete_snapshot_output()
@@ -3931,7 +3971,8 @@ elasticache_delete_user <- function(UserId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$delete_user_input(UserId = UserId)
   output <- .elasticache$delete_user_output()
@@ -4001,7 +4042,8 @@ elasticache_delete_user_group <- function(UserGroupId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$delete_user_group_input(UserGroupId = UserGroupId)
   output <- .elasticache$delete_user_group_output()
@@ -4213,7 +4255,8 @@ elasticache_describe_cache_clusters <- function(CacheClusterId = NULL, MaxRecord
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "CacheClusters"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$describe_cache_clusters_input(CacheClusterId = CacheClusterId, MaxRecords = MaxRecords, Marker = Marker, ShowCacheNodeInfo = ShowCacheNodeInfo, ShowCacheClustersNotInReplicationGroups = ShowCacheClustersNotInReplicationGroups)
   output <- .elasticache$describe_cache_clusters_output()
@@ -4312,7 +4355,8 @@ elasticache_describe_cache_engine_versions <- function(Engine = NULL, EngineVers
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "CacheEngineVersions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$describe_cache_engine_versions_input(Engine = Engine, EngineVersion = EngineVersion, CacheParameterGroupFamily = CacheParameterGroupFamily, MaxRecords = MaxRecords, Marker = Marker, DefaultOnly = DefaultOnly)
   output <- .elasticache$describe_cache_engine_versions_output()
@@ -4389,7 +4433,8 @@ elasticache_describe_cache_parameter_groups <- function(CacheParameterGroupName 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "CacheParameterGroups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$describe_cache_parameter_groups_input(CacheParameterGroupName = CacheParameterGroupName, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_cache_parameter_groups_output()
@@ -4494,7 +4539,8 @@ elasticache_describe_cache_parameters <- function(CacheParameterGroupName, Sourc
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "Parameters"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$describe_cache_parameters_input(CacheParameterGroupName = CacheParameterGroupName, Source = Source, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_cache_parameters_output()
@@ -4577,7 +4623,8 @@ elasticache_describe_cache_security_groups <- function(CacheSecurityGroupName = 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "CacheSecurityGroups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$describe_cache_security_groups_input(CacheSecurityGroupName = CacheSecurityGroupName, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_cache_security_groups_output()
@@ -4668,7 +4715,8 @@ elasticache_describe_cache_subnet_groups <- function(CacheSubnetGroupName = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "CacheSubnetGroups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$describe_cache_subnet_groups_input(CacheSubnetGroupName = CacheSubnetGroupName, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_cache_subnet_groups_output()
@@ -4773,7 +4821,8 @@ elasticache_describe_engine_default_parameters <- function(CacheParameterGroupFa
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "EngineDefaults.Marker", limit_key = "MaxRecords", result_key = "EngineDefaults.Parameters"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$describe_engine_default_parameters_input(CacheParameterGroupFamily = CacheParameterGroupFamily, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_engine_default_parameters_output()
@@ -4875,7 +4924,8 @@ elasticache_describe_events <- function(SourceIdentifier = NULL, SourceType = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "Events"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$describe_events_input(SourceIdentifier = SourceIdentifier, SourceType = SourceType, StartTime = StartTime, EndTime = EndTime, Duration = Duration, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_events_output()
@@ -4961,7 +5011,8 @@ elasticache_describe_global_replication_groups <- function(GlobalReplicationGrou
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "GlobalReplicationGroups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$describe_global_replication_groups_input(GlobalReplicationGroupId = GlobalReplicationGroupId, MaxRecords = MaxRecords, Marker = Marker, ShowMemberInfo = ShowMemberInfo)
   output <- .elasticache$describe_global_replication_groups_output()
@@ -5162,7 +5213,8 @@ elasticache_describe_replication_groups <- function(ReplicationGroupId = NULL, M
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "ReplicationGroups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$describe_replication_groups_input(ReplicationGroupId = ReplicationGroupId, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_replication_groups_output()
@@ -5336,7 +5388,8 @@ elasticache_describe_reserved_cache_nodes <- function(ReservedCacheNodeId = NULL
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "ReservedCacheNodes"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$describe_reserved_cache_nodes_input(ReservedCacheNodeId = ReservedCacheNodeId, ReservedCacheNodesOfferingId = ReservedCacheNodesOfferingId, CacheNodeType = CacheNodeType, Duration = Duration, ProductDescription = ProductDescription, OfferingType = OfferingType, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_reserved_cache_nodes_output()
@@ -5521,7 +5574,8 @@ elasticache_describe_reserved_cache_nodes_offerings <- function(ReservedCacheNod
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "ReservedCacheNodesOfferings"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$describe_reserved_cache_nodes_offerings_input(ReservedCacheNodesOfferingId = ReservedCacheNodesOfferingId, CacheNodeType = CacheNodeType, Duration = Duration, ProductDescription = ProductDescription, OfferingType = OfferingType, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_reserved_cache_nodes_offerings_output()
@@ -5600,7 +5654,8 @@ elasticache_describe_serverless_cache_snapshots <- function(ServerlessCacheName 
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ServerlessCacheSnapshots"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$describe_serverless_cache_snapshots_input(ServerlessCacheName = ServerlessCacheName, ServerlessCacheSnapshotName = ServerlessCacheSnapshotName, SnapshotType = SnapshotType, NextToken = NextToken, MaxResults = MaxResults)
   output <- .elasticache$describe_serverless_cache_snapshots_output()
@@ -5672,7 +5727,8 @@ elasticache_describe_serverless_cache_snapshots <- function(ServerlessCacheName 
 #'       ),
 #'       SnapshotRetentionLimit = 123,
 #'       DailySnapshotTime = "string",
-#'       NetworkType = "ipv4"|"ipv6"|"dual_stack"
+#'       NetworkType = "ipv4"|"ipv6"|"dual_stack",
+#'       ConnectionType = "vpc"|"public"
 #'     )
 #'   )
 #' )
@@ -5699,7 +5755,8 @@ elasticache_describe_serverless_caches <- function(ServerlessCacheName = NULL, M
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ServerlessCaches"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$describe_serverless_caches_input(ServerlessCacheName = ServerlessCacheName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticache$describe_serverless_caches_output()
@@ -5779,7 +5836,8 @@ elasticache_describe_service_updates <- function(ServiceUpdateName = NULL, Servi
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ServiceUpdates"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$describe_service_updates_input(ServiceUpdateName = ServiceUpdateName, ServiceUpdateStatus = ServiceUpdateStatus, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_service_updates_output()
@@ -5916,7 +5974,8 @@ elasticache_describe_snapshots <- function(ReplicationGroupId = NULL, CacheClust
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", output_token = "Marker", limit_key = "MaxRecords", result_key = "Snapshots"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$describe_snapshots_input(ReplicationGroupId = ReplicationGroupId, CacheClusterId = CacheClusterId, SnapshotName = SnapshotName, SnapshotSource = SnapshotSource, Marker = Marker, MaxRecords = MaxRecords, ShowNodeGroupConfig = ShowNodeGroupConfig)
   output <- .elasticache$describe_snapshots_output()
@@ -6078,7 +6137,8 @@ elasticache_describe_update_actions <- function(ServiceUpdateName = NULL, Replic
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "UpdateActions"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$describe_update_actions_input(ServiceUpdateName = ServiceUpdateName, ReplicationGroupIds = ReplicationGroupIds, CacheClusterIds = CacheClusterIds, Engine = Engine, ServiceUpdateStatus = ServiceUpdateStatus, ServiceUpdateTimeRange = ServiceUpdateTimeRange, UpdateActionStatus = UpdateActionStatus, ShowNodeLevelUpdateStatus = ShowNodeLevelUpdateStatus, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_update_actions_output()
@@ -6157,7 +6217,8 @@ elasticache_describe_user_groups <- function(UserGroupId = NULL, MaxRecords = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "UserGroups"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$describe_user_groups_input(UserGroupId = UserGroupId, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_user_groups_output()
@@ -6239,7 +6300,8 @@ elasticache_describe_users <- function(Engine = NULL, UserId = NULL, Filters = N
     http_path = "/",
     host_prefix = "",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Users"),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$describe_users_input(Engine = Engine, UserId = UserId, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_users_output()
@@ -6321,7 +6383,8 @@ elasticache_disassociate_global_replication_group <- function(GlobalReplicationG
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$disassociate_global_replication_group_input(GlobalReplicationGroupId = GlobalReplicationGroupId, ReplicationGroupId = ReplicationGroupId, ReplicationGroupRegion = ReplicationGroupRegion)
   output <- .elasticache$disassociate_global_replication_group_output()
@@ -6392,7 +6455,8 @@ elasticache_export_serverless_cache_snapshot <- function(ServerlessCacheSnapshot
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$export_serverless_cache_snapshot_input(ServerlessCacheSnapshotName = ServerlessCacheSnapshotName, S3BucketName = S3BucketName)
   output <- .elasticache$export_serverless_cache_snapshot_output()
@@ -6473,7 +6537,8 @@ elasticache_failover_global_replication_group <- function(GlobalReplicationGroup
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$failover_global_replication_group_input(GlobalReplicationGroupId = GlobalReplicationGroupId, PrimaryRegion = PrimaryRegion, PrimaryReplicationGroupId = PrimaryReplicationGroupId)
   output <- .elasticache$failover_global_replication_group_output()
@@ -6570,7 +6635,8 @@ elasticache_increase_node_groups_in_global_replication_group <- function(GlobalR
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$increase_node_groups_in_global_replication_group_input(GlobalReplicationGroupId = GlobalReplicationGroupId, NodeGroupCount = NodeGroupCount, RegionalConfigurations = RegionalConfigurations, ApplyImmediately = ApplyImmediately)
   output <- .elasticache$increase_node_groups_in_global_replication_group_output()
@@ -6770,7 +6836,8 @@ elasticache_increase_replica_count <- function(ReplicationGroupId, NewReplicaCou
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$increase_replica_count_input(ReplicationGroupId = ReplicationGroupId, NewReplicaCount = NewReplicaCount, ReplicaConfiguration = ReplicaConfiguration, ApplyImmediately = ApplyImmediately)
   output <- .elasticache$increase_replica_count_output()
@@ -6849,7 +6916,8 @@ elasticache_list_allowed_node_type_modifications <- function(CacheClusterId = NU
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$list_allowed_node_type_modifications_input(CacheClusterId = CacheClusterId, ReplicationGroupId = ReplicationGroupId)
   output <- .elasticache$list_allowed_node_type_modifications_output()
@@ -6866,7 +6934,7 @@ elasticache_list_allowed_node_type_modifications <- function(CacheClusterId = NU
 #' @description
 #' Lists all tags currently on a named resource.
 #' 
-#' A tag is a key-value pair where the key and value are case-sensitive. You can use tags to categorize and track all your ElastiCache resources, with the exception of global replication group. When you add or remove tags on replication groups, those actions will be replicated to all nodes in the replication group. For more information, see [Resource-level permissions](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/IAM.ResourceLevelPermissions.html).
+#' A tag is a key-value pair where the key and value are case-sensitive. You can use tags to categorize and track all your ElastiCache resources. When you add or remove tags on replication groups, those actions will be replicated to all nodes in the replication group. For more information, see [Resource-level permissions](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/IAM.ResourceLevelPermissions.html).
 #' 
 #' If the cluster is not in the *available* state, [`list_tags_for_resource`][elasticache_list_tags_for_resource] returns an error.
 #'
@@ -6875,7 +6943,7 @@ elasticache_list_allowed_node_type_modifications <- function(CacheClusterId = NU
 #'
 #' @param ResourceName &#91;required&#93; The Amazon Resource Name (ARN) of the resource for which you want the list of tags, for example `arn:aws:elasticache:us-west-2:0123456789:cluster:myCluster` or `arn:aws:elasticache:us-west-2:0123456789:snapshot:mySnapshot`.
 #' 
-#' For more information about ARNs, see [Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
+#' For more information about ARNs, see [Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series).
 #'
 #' @return
 #' A list with the following syntax:
@@ -6920,7 +6988,8 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$list_tags_for_resource_input(ResourceName = ResourceName)
   output <- .elasticache$list_tags_for_resource_output()
@@ -7303,7 +7372,8 @@ elasticache_modify_cache_cluster <- function(CacheClusterId, NumCacheNodes = NUL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$modify_cache_cluster_input(CacheClusterId = CacheClusterId, NumCacheNodes = NumCacheNodes, CacheNodeIdsToRemove = CacheNodeIdsToRemove, AZMode = AZMode, NewAvailabilityZones = NewAvailabilityZones, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, NotificationTopicArn = NotificationTopicArn, CacheParameterGroupName = CacheParameterGroupName, NotificationTopicStatus = NotificationTopicStatus, ApplyImmediately = ApplyImmediately, Engine = Engine, EngineVersion = EngineVersion, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, CacheNodeType = CacheNodeType, AuthToken = AuthToken, AuthTokenUpdateStrategy = AuthTokenUpdateStrategy, LogDeliveryConfigurations = LogDeliveryConfigurations, IpDiscovery = IpDiscovery, ScaleConfig = ScaleConfig)
   output <- .elasticache$modify_cache_cluster_output()
@@ -7379,7 +7449,8 @@ elasticache_modify_cache_parameter_group <- function(CacheParameterGroupName, Pa
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$modify_cache_parameter_group_input(CacheParameterGroupName = CacheParameterGroupName, ParameterNameValues = ParameterNameValues)
   output <- .elasticache$modify_cache_parameter_group_output()
@@ -7472,7 +7543,8 @@ elasticache_modify_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$modify_cache_subnet_group_input(CacheSubnetGroupName = CacheSubnetGroupName, CacheSubnetGroupDescription = CacheSubnetGroupDescription, SubnetIds = SubnetIds)
   output <- .elasticache$modify_cache_subnet_group_output()
@@ -7565,7 +7637,8 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$modify_global_replication_group_input(GlobalReplicationGroupId = GlobalReplicationGroupId, ApplyImmediately = ApplyImmediately, CacheNodeType = CacheNodeType, Engine = Engine, EngineVersion = EngineVersion, CacheParameterGroupName = CacheParameterGroupName, GlobalReplicationGroupDescription = GlobalReplicationGroupDescription, AutomaticFailoverEnabled = AutomaticFailoverEnabled)
   output <- .elasticache$modify_global_replication_group_output()
@@ -7919,7 +7992,8 @@ elasticache_modify_replication_group <- function(ReplicationGroupId, Replication
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$modify_replication_group_input(ReplicationGroupId = ReplicationGroupId, ReplicationGroupDescription = ReplicationGroupDescription, PrimaryClusterId = PrimaryClusterId, SnapshottingClusterId = SnapshottingClusterId, AutomaticFailoverEnabled = AutomaticFailoverEnabled, MultiAZEnabled = MultiAZEnabled, NodeGroupId = NodeGroupId, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, NotificationTopicArn = NotificationTopicArn, CacheParameterGroupName = CacheParameterGroupName, NotificationTopicStatus = NotificationTopicStatus, ApplyImmediately = ApplyImmediately, Engine = Engine, EngineVersion = EngineVersion, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, CacheNodeType = CacheNodeType, AuthToken = AuthToken, AuthTokenUpdateStrategy = AuthTokenUpdateStrategy, UserGroupIdsToAdd = UserGroupIdsToAdd, UserGroupIdsToRemove = UserGroupIdsToRemove, RemoveUserGroups = RemoveUserGroups, LogDeliveryConfigurations = LogDeliveryConfigurations, IpDiscovery = IpDiscovery, TransitEncryptionEnabled = TransitEncryptionEnabled, TransitEncryptionMode = TransitEncryptionMode, ClusterMode = ClusterMode, Durability = Durability)
   output <- .elasticache$modify_replication_group_output()
@@ -8131,7 +8205,8 @@ elasticache_modify_replication_group_shard_configuration <- function(Replication
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$modify_replication_group_shard_configuration_input(ReplicationGroupId = ReplicationGroupId, NodeGroupCount = NodeGroupCount, ApplyImmediately = ApplyImmediately, ReshardingConfiguration = ReshardingConfiguration, NodeGroupsToRemove = NodeGroupsToRemove, NodeGroupsToRetain = NodeGroupsToRetain)
   output <- .elasticache$modify_replication_group_shard_configuration_output()
@@ -8209,7 +8284,8 @@ elasticache_modify_replication_group_shard_configuration <- function(Replication
 #'     ),
 #'     SnapshotRetentionLimit = 123,
 #'     DailySnapshotTime = "string",
-#'     NetworkType = "ipv4"|"ipv6"|"dual_stack"
+#'     NetworkType = "ipv4"|"ipv6"|"dual_stack",
+#'     ConnectionType = "vpc"|"public"
 #'   )
 #' )
 #' ```
@@ -8254,7 +8330,8 @@ elasticache_modify_serverless_cache <- function(ServerlessCacheName, Description
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$modify_serverless_cache_input(ServerlessCacheName = ServerlessCacheName, Description = Description, CacheUsageLimits = CacheUsageLimits, RemoveUserGroup = RemoveUserGroup, UserGroupId = UserGroupId, SecurityGroupIds = SecurityGroupIds, SnapshotRetentionLimit = SnapshotRetentionLimit, DailySnapshotTime = DailySnapshotTime, Engine = Engine, MajorEngineVersion = MajorEngineVersion)
   output <- .elasticache$modify_serverless_cache_output()
@@ -8336,7 +8413,8 @@ elasticache_modify_user <- function(UserId, AccessString = NULL, AppendAccessStr
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$modify_user_input(UserId = UserId, AccessString = AccessString, AppendAccessString = AppendAccessString, Passwords = Passwords, NoPasswordRequired = NoPasswordRequired, AuthenticationMode = AuthenticationMode, Engine = Engine)
   output <- .elasticache$modify_user_output()
@@ -8417,7 +8495,8 @@ elasticache_modify_user_group <- function(UserGroupId, UserIdsToAdd = NULL, User
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$modify_user_group_input(UserGroupId = UserGroupId, UserIdsToAdd = UserIdsToAdd, UserIdsToRemove = UserIdsToRemove, Engine = Engine)
   output <- .elasticache$modify_user_group_output()
@@ -8515,7 +8594,8 @@ elasticache_purchase_reserved_cache_nodes_offering <- function(ReservedCacheNode
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$purchase_reserved_cache_nodes_offering_input(ReservedCacheNodesOfferingId = ReservedCacheNodesOfferingId, ReservedCacheNodeId = ReservedCacheNodeId, CacheNodeCount = CacheNodeCount, Tags = Tags)
   output <- .elasticache$purchase_reserved_cache_nodes_offering_output()
@@ -8595,7 +8675,8 @@ elasticache_rebalance_slots_in_global_replication_group <- function(GlobalReplic
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$rebalance_slots_in_global_replication_group_input(GlobalReplicationGroupId = GlobalReplicationGroupId, ApplyImmediately = ApplyImmediately)
   output <- .elasticache$rebalance_slots_in_global_replication_group_output()
@@ -8789,7 +8870,8 @@ elasticache_reboot_cache_cluster <- function(CacheClusterId, CacheNodeIdsToReboo
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$reboot_cache_cluster_input(CacheClusterId = CacheClusterId, CacheNodeIdsToReboot = CacheNodeIdsToReboot)
   output <- .elasticache$reboot_cache_cluster_output()
@@ -8804,14 +8886,14 @@ elasticache_reboot_cache_cluster <- function(CacheClusterId, CacheNodeIdsToReboo
 #' Removes the tags identified by the TagKeys list from the named resource
 #'
 #' @description
-#' Removes the tags identified by the `TagKeys` list from the named resource. A tag is a key-value pair where the key and value are case-sensitive. You can use tags to categorize and track all your ElastiCache resources, with the exception of global replication group. When you add or remove tags on replication groups, those actions will be replicated to all nodes in the replication group. For more information, see [Resource-level permissions](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/IAM.ResourceLevelPermissions.html).
+#' Removes the tags identified by the `TagKeys` list from the named resource. A tag is a key-value pair where the key and value are case-sensitive. You can use tags to categorize and track all your ElastiCache resources. When you add or remove tags on replication groups, those actions will be replicated to all nodes in the replication group. For more information, see [Resource-level permissions](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/IAM.ResourceLevelPermissions.html).
 #'
 #' @usage
 #' elasticache_remove_tags_from_resource(ResourceName, TagKeys)
 #'
 #' @param ResourceName &#91;required&#93; The Amazon Resource Name (ARN) of the resource from which you want the tags removed, for example `arn:aws:elasticache:us-west-2:0123456789:cluster:myCluster` or `arn:aws:elasticache:us-west-2:0123456789:snapshot:mySnapshot`.
 #' 
-#' For more information about ARNs, see [Amazon Resource Names (ARNs) and Amazon Service Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
+#' For more information about ARNs, see [Amazon Resource Names (ARNs) and Amazon Service Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series).
 #' @param TagKeys &#91;required&#93; A list of `TagKeys` identifying the tags you want removed from the named resource.
 #'
 #' @return
@@ -8863,7 +8945,8 @@ elasticache_remove_tags_from_resource <- function(ResourceName, TagKeys) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$remove_tags_from_resource_input(ResourceName = ResourceName, TagKeys = TagKeys)
   output <- .elasticache$remove_tags_from_resource_output()
@@ -8935,7 +9018,8 @@ elasticache_reset_cache_parameter_group <- function(CacheParameterGroupName, Res
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$reset_cache_parameter_group_input(CacheParameterGroupName = CacheParameterGroupName, ResetAllParameters = ResetAllParameters, ParameterNameValues = ParameterNameValues)
   output <- .elasticache$reset_cache_parameter_group_output()
@@ -9013,7 +9097,8 @@ elasticache_revoke_cache_security_group_ingress <- function(CacheSecurityGroupNa
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$revoke_cache_security_group_ingress_input(CacheSecurityGroupName = CacheSecurityGroupName, EC2SecurityGroupName = EC2SecurityGroupName, EC2SecurityGroupOwnerId = EC2SecurityGroupOwnerId)
   output <- .elasticache$revoke_cache_security_group_ingress_output()
@@ -9200,7 +9285,8 @@ elasticache_start_migration <- function(ReplicationGroupId, CustomerNodeEndpoint
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$start_migration_input(ReplicationGroupId = ReplicationGroupId, CustomerNodeEndpointList = CustomerNodeEndpointList)
   output <- .elasticache$start_migration_output()
@@ -9413,7 +9499,8 @@ elasticache_test_failover <- function(ReplicationGroupId, NodeGroupId) {
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$test_failover_input(ReplicationGroupId = ReplicationGroupId, NodeGroupId = NodeGroupId)
   output <- .elasticache$test_failover_output()
@@ -9599,7 +9686,8 @@ elasticache_test_migration <- function(ReplicationGroupId, CustomerNodeEndpointL
     http_path = "/",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = FALSE,
+    http_checksum = NULL
   )
   input <- .elasticache$test_migration_input(ReplicationGroupId = ReplicationGroupId, CustomerNodeEndpointList = CustomerNodeEndpointList)
   output <- .elasticache$test_migration_output()

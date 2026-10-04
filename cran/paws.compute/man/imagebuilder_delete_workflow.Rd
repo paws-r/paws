@@ -10,7 +10,7 @@ imagebuilder_delete_workflow(workflowBuildVersionArn)
 \item{workflowBuildVersionArn}{[required] The Amazon Resource Name (ARN) of the workflow resource to delete.}
 }
 \description{
-Deletes a specific workflow resource.
+Deletes a specific workflow resource. You can't delete a workflow build version while an image pipeline references it. The request fails with \code{ResourceDependencyException}.
 
 See \url{https://www.paws-r-sdk.com/docs/imagebuilder_delete_workflow/} for full documentation.
 }

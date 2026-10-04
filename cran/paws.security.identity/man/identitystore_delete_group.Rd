@@ -4,12 +4,18 @@
 \alias{identitystore_delete_group}
 \title{Delete a group within an identity store given GroupId}
 \usage{
-identitystore_delete_group(IdentityStoreId, GroupId)
+identitystore_delete_group(IdentityStoreId, GroupId, Revision = NULL)
 }
 \arguments{
-\item{IdentityStoreId}{[required] The globally unique identifier for the identity store.}
+\item{IdentityStoreId}{[required] The globally unique identifier for the identity store.
 
-\item{GroupId}{[required] The identifier for a group in the identity store.}
+You can specify the identity store by ID or by Amazon Resource Name (ARN). For example, identity store ID \code{d-1234567890} or identity store ARN \verb{arn:aws:identitystore::111122223333:identitystore/d-1234567890}.}
+
+\item{GroupId}{[required] The identifier for a group in the identity store.
+
+You can specify the group by ID or by Amazon Resource Name (ARN). For example, group ID \verb{a1b2c3d4-5678-90ab-cdef-EXAMPLE22222} or group ARN \verb{arn:aws:identitystore:::group/a1b2c3d4-5678-90ab-cdef-EXAMPLE22222}.}
+
+\item{Revision}{The expected current revision of the group. When you provide this value, the group is deleted only if it matches the current revision of the group in the identity store. If the value doesn't match, the operation fails with a \code{ConflictException}. If you don't provide this value, the group is deleted regardless of its current revision.}
 }
 \description{
 Delete a group within an identity store given \code{GroupId}.

@@ -1,4 +1,4 @@
-svc <- paws.management::licensemanagerusersubscriptions()
+svc <- paws::licensemanagerusersubscriptions()
 
 test_that("list_identity_providers", {
   skip_on_cran()

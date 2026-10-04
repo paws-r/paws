@@ -45,25 +45,25 @@ Object Lambda access points are not supported by directory buckets.
 
 If both of the \code{If-Match} and \code{If-Unmodified-Since} headers are present in the request as follows: \code{If-Match} condition evaluates to \code{true}, and; \code{If-Unmodified-Since} condition evaluates to \code{false}; then, S3 returns \verb{200 OK} and the data requested.
 
-For more information about conditional requests, see \href{https://datatracker.ietf.org/doc/html/rfc7232}{RFC 7232}.}
+For more information about conditional requests, see \href{https://www.rfc-editor.org/info/rfc7232/}{RFC 7232}.}
 
 \item{IfModifiedSince}{Return the object only if it has been modified since the specified time; otherwise, return a \verb{304 Not Modified} error.
 
 If both of the \code{If-None-Match} and \code{If-Modified-Since} headers are present in the request as follows:\code{ If-None-Match} condition evaluates to \code{false}, and; \code{If-Modified-Since} condition evaluates to \code{true}; then, S3 returns \verb{304 Not Modified} status code.
 
-For more information about conditional requests, see \href{https://datatracker.ietf.org/doc/html/rfc7232}{RFC 7232}.}
+For more information about conditional requests, see \href{https://www.rfc-editor.org/info/rfc7232/}{RFC 7232}.}
 
 \item{IfNoneMatch}{Return the object only if its entity tag (ETag) is different from the one specified in this header; otherwise, return a \verb{304 Not Modified} error.
 
 If both of the \code{If-None-Match} and \code{If-Modified-Since} headers are present in the request as follows:\code{ If-None-Match} condition evaluates to \code{false}, and; \code{If-Modified-Since} condition evaluates to \code{true}; then, S3 returns \verb{304 Not Modified} HTTP status code.
 
-For more information about conditional requests, see \href{https://datatracker.ietf.org/doc/html/rfc7232}{RFC 7232}.}
+For more information about conditional requests, see \href{https://www.rfc-editor.org/info/rfc7232/}{RFC 7232}.}
 
 \item{IfUnmodifiedSince}{Return the object only if it has not been modified since the specified time; otherwise, return a \verb{412 Precondition Failed} error.
 
 If both of the \code{If-Match} and \code{If-Unmodified-Since} headers are present in the request as follows: \code{If-Match} condition evaluates to \code{true}, and; \code{If-Unmodified-Since} condition evaluates to \code{false}; then, S3 returns \verb{200 OK} and the data requested.
 
-For more information about conditional requests, see \href{https://datatracker.ietf.org/doc/html/rfc7232}{RFC 7232}.}
+For more information about conditional requests, see \href{https://www.rfc-editor.org/info/rfc7232/}{RFC 7232}.}
 
 \item{Key}{[required] Key of the object to get.}
 
