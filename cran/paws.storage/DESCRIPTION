@@ -17,7 +17,7 @@ BugReports: https://github.com/paws-r/paws/issues
 Depends: 
     R (>= 3.5.0)
 Imports: 
-    paws.common (>= 0.8.11)
+    paws.common (>= 0.9.0)
 Suggests: 
     testthat
 Encoding: UTF-8

@@ -1451,7 +1451,7 @@ emr_list_studios <- function(Marker = NULL) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/emr_list_supported_instance_types/](https://www.paws-r-sdk.com/docs/emr_list_supported_instance_types/) for full documentation.
 #'
-#' @param ReleaseLabel &#91;required&#93; The Amazon EMR release label determines the [versions of open-source application packages](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-release-app-versions-6.x.html) that Amazon EMR has installed on the cluster. Release labels are in the format `emr-x.x.x`, where x.x.x is an Amazon EMR release number such as `emr-6.10.0`. For more information about Amazon EMR releases and their included application versions and features, see the *\href{https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-release-components.html}{Amazon EMR Release Guide}* .
+#' @param ReleaseLabel &#91;required&#93; The Amazon EMR release label determines the [versions of open-source application packages](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-release-app-versions-6.x.html) that Amazon EMR has installed on the cluster. Release labels are in the format `emr-x.x.x`, where x.x.x is an Amazon EMR release number such as `emr-6.10.0`. For more information about Amazon EMR releases and their included application versions and features, see the \emph{\href{https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-release-components.html}{Amazon EMR Release Guide}} .
 #' @param Marker The pagination token that marks the next set of results to retrieve.
 #'
 #' @keywords internal

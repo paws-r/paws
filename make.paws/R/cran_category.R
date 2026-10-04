@@ -1,7 +1,7 @@
 #' @include package.R service.R
 NULL
 
-.paws.common.import.version <- "paws.common (>= 0.8.11)"
+.paws.common.import.version <- "paws.common (>= 0.9.0)"
 
 # Make all category-level packages.
 make_categories <- function(sdk_dir, out_dir, categories, service_names) {
