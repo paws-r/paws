@@ -1,4 +1,4 @@
-svc <- paws::eventbridge()
+svc <- paws.application.integration::eventbridge()
 
 test_that("describe_event_bus", {
   skip_on_cran()

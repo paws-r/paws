@@ -1,4 +1,4 @@
-svc <- paws::networkfirewall()
+svc <- paws.networking::networkfirewall()
 
 test_that("describe_container_association", {
   skip_on_cran()

@@ -1,4 +1,4 @@
-svc <- paws::gluedatabrew()
+svc <- paws.analytics::gluedatabrew()
 
 test_that("list_datasets", {
   skip_on_cran()

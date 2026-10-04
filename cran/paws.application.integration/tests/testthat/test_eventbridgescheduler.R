@@ -1,4 +1,4 @@
-svc <- paws::eventbridgescheduler()
+svc <- paws.application.integration::eventbridgescheduler()
 
 test_that("list_schedule_groups", {
   skip_on_cran()

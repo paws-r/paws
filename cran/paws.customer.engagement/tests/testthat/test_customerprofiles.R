@@ -1,4 +1,4 @@
-svc <- paws::customerprofiles()
+svc <- paws.customer.engagement::customerprofiles()
 
 test_that("list_domains", {
   skip_on_cran()

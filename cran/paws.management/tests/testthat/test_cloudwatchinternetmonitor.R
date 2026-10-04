@@ -1,4 +1,4 @@
-svc <- paws::cloudwatchinternetmonitor()
+svc <- paws.management::cloudwatchinternetmonitor()
 
 test_that("list_internet_events", {
   skip_on_cran()

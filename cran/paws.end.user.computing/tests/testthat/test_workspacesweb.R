@@ -1,4 +1,4 @@
-svc <- paws::workspacesweb()
+svc <- paws.end.user.computing::workspacesweb()
 
 test_that("list_browser_settings", {
   skip_on_cran()

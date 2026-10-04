@@ -1,4 +1,4 @@
-svc <- paws::directoryservice()
+svc <- paws.security.identity::directoryservice()
 
 test_that("describe_directories", {
   skip_on_cran()

@@ -1,4 +1,4 @@
-svc <- paws::route53recoverycluster()
+svc <- paws.networking::route53recoverycluster()
 
 test_that("list_routing_controls", {
   skip_on_cran()

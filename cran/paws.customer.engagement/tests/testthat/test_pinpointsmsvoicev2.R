@@ -1,4 +1,4 @@
-svc <- paws::pinpointsmsvoicev2()
+svc <- paws.customer.engagement::pinpointsmsvoicev2()
 
 test_that("describe_account_attributes", {
   skip_on_cran()

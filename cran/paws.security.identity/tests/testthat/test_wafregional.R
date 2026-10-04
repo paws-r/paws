@@ -1,4 +1,4 @@
-svc <- paws::wafregional()
+svc <- paws.security.identity::wafregional()
 
 test_that("list_byte_match_sets", {
   skip_on_cran()

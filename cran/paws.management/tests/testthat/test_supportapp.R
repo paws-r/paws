@@ -1,4 +1,4 @@
-svc <- paws::supportapp()
+svc <- paws.management::supportapp()
 
 test_that("list_slack_channel_configurations", {
   skip_on_cran()

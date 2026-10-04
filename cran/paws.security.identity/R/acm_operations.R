@@ -14,7 +14,7 @@ NULL
 #' 
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
-#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series).
+#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #' @param Tags &#91;required&#93; The key-value pair that defines the tag. The tag value is optional.
 #'
 #' @keywords internal
@@ -257,7 +257,7 @@ acm_delete_acme_external_account_binding <- function(AcmeExternalAccountBindingA
 #' 
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
-#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series).
+#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #'
 #' @keywords internal
 #'
@@ -429,7 +429,7 @@ acm_describe_acme_external_account_binding <- function(AcmeExternalAccountBindin
 #' 
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
-#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series).
+#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #'
 #' @keywords internal
 #'
@@ -573,7 +573,7 @@ acm_get_acme_external_account_binding_credentials <- function(AcmeExternalAccoun
 #' 
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
-#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series).
+#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #'
 #' @keywords internal
 #'
@@ -606,7 +606,7 @@ acm_get_certificate <- function(CertificateArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/acm_import_certificate/](https://www.paws-r-sdk.com/docs/acm_import_certificate/) for full documentation.
 #'
-#' @param CertificateArn The [Amazon Resource Name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) of an imported certificate to replace. To import a new certificate, omit this field.
+#' @param CertificateArn The [Amazon Resource Name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) of an imported certificate to replace. To import a new certificate, omit this field.
 #' @param Certificate &#91;required&#93; The certificate to import.
 #' @param PrivateKey &#91;required&#93; The private key that matches the public key in the certificate.
 #' @param CertificateChain The PEM encoded certificate chain.
@@ -857,7 +857,7 @@ acm_list_certificates <- function(CertificateStatuses = NULL, CertificateKeyPair
 #' 
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
-#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series).
+#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #'
 #' @keywords internal
 #'
@@ -958,7 +958,7 @@ acm_put_account_configuration <- function(ExpiryEvents = NULL, IdempotencyToken)
 #' 
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
-#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series).
+#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #' @param Tags &#91;required&#93; The key-value pair that defines the tag to remove.
 #'
 #' @keywords internal
@@ -995,7 +995,7 @@ acm_remove_tags_from_certificate <- function(CertificateArn, Tags) {
 #' 
 #' `arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012`
 #' 
-#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series).
+#' For more information about ARNs, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #'
 #' @keywords internal
 #'

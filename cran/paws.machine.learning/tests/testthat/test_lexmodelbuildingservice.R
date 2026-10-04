@@ -1,3 +1,3 @@
-svc <- paws::lexmodelbuildingservice()
+svc <- paws.machine.learning::lexmodelbuildingservice()
 
 

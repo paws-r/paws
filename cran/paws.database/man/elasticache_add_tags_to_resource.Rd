@@ -9,7 +9,7 @@ elasticache_add_tags_to_resource(ResourceName, Tags)
 \arguments{
 \item{ResourceName}{[required] The Amazon Resource Name (ARN) of the resource to which the tags are to be added, for example \code{arn:aws:elasticache:us-west-2:0123456789:cluster:myCluster} or \code{arn:aws:elasticache:us-west-2:0123456789:snapshot:mySnapshot}. ElastiCache resources are \emph{cluster} and \emph{snapshot}.
 
-For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Names (ARNs) and Amazon Service Namespaces}.}
+For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs) and Amazon Service Namespaces}.}
 
 \item{Tags}{[required] A list of tags to be added to this resource. A tag is a key-value pair. A tag key must be accompanied by a tag value, although null is accepted.}
 }

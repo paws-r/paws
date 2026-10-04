@@ -1,4 +1,4 @@
-svc <- paws::redshiftserverless()
+svc <- paws.database::redshiftserverless()
 
 test_that("list_custom_domain_associations", {
   skip_on_cran()

@@ -1,4 +1,4 @@
-svc <- paws::transcribeservice()
+svc <- paws.machine.learning::transcribeservice()
 
 test_that("list_call_analytics_categories", {
   skip_on_cran()

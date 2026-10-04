@@ -14,7 +14,7 @@ NULL
 #' @usage
 #' resourceexplorer_associate_default_view(ViewArn)
 #'
-#' @param ViewArn &#91;required&#93; The [Amazon resource name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) of the view to set as the default for the Amazon Web Services Region and Amazon Web Services account in which you call this operation. The specified view must already exist in the called Region.
+#' @param ViewArn &#91;required&#93; The [Amazon resource name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) of the view to set as the default for the Amazon Web Services Region and Amazon Web Services account in which you call this operation. The specified view must already exist in the called Region.
 #'
 #' @return
 #' A list with the following syntax:
@@ -64,7 +64,7 @@ resourceexplorer_associate_default_view <- function(ViewArn) {
 #' @usage
 #' resourceexplorer_batch_get_view(ViewArns)
 #'
-#' @param ViewArns A list of [Amazon resource names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) that identify the views you want details for.
+#' @param ViewArns A list of [Amazon resource names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) that identify the views you want details for.
 #'
 #' @return
 #' A list with the following syntax:
@@ -276,7 +276,7 @@ resourceexplorer_create_resource_explorer_setup <- function(RegionList, Aggregat
 #' @description
 #' Creates a view that users can query by using the [`search`][resourceexplorer_search] operation. Results from queries that you make using this view include only resources that match the view's `Filters`. For more information about Amazon Web Services Resource Explorer views, see [Managing views](https://docs.aws.amazon.com/resource-explorer/latest/userguide/) in the *Amazon Web Services Resource Explorer User Guide*.
 #' 
-#' Only the principals with an IAM identity-based policy that grants `Allow` to the [`search`][resourceexplorer_search] action on a `Resource` with the [Amazon resource name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) of this view can [`search`][resourceexplorer_search] using views you create with this operation.
+#' Only the principals with an IAM identity-based policy that grants `Allow` to the [`search`][resourceexplorer_search] action on a `Resource` with the [Amazon resource name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) of this view can [`search`][resourceexplorer_search] using views you create with this operation.
 #'
 #' @usage
 #' resourceexplorer_create_view(ClientToken, ViewName, IncludedProperties,
@@ -377,7 +377,7 @@ resourceexplorer_create_view <- function(ClientToken = NULL, ViewName, IncludedP
 #' @usage
 #' resourceexplorer_delete_index(Arn)
 #'
-#' @param Arn &#91;required&#93; The [Amazon resource name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) of the index that you want to delete.
+#' @param Arn &#91;required&#93; The [Amazon resource name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) of the index that you want to delete.
 #'
 #' @return
 #' A list with the following syntax:
@@ -488,7 +488,7 @@ resourceexplorer_delete_resource_explorer_setup <- function(RegionList = NULL, D
 #' @usage
 #' resourceexplorer_delete_view(ViewArn)
 #'
-#' @param ViewArn &#91;required&#93; The [Amazon resource name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) of the view that you want to delete.
+#' @param ViewArn &#91;required&#93; The [Amazon resource name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) of the view that you want to delete.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1020,7 +1020,7 @@ resourceexplorer_get_service_view <- function(ServiceViewArn) {
 #' @usage
 #' resourceexplorer_get_view(ViewArn)
 #'
-#' @param ViewArn &#91;required&#93; The [Amazon resource name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) of the view that you want information about.
+#' @param ViewArn &#91;required&#93; The [Amazon resource name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) of the view that you want information about.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1627,7 +1627,7 @@ resourceexplorer_list_supported_resource_types <- function(NextToken = NULL, Max
 #' @usage
 #' resourceexplorer_list_tags_for_resource(resourceArn)
 #'
-#' @param resourceArn &#91;required&#93; The [Amazon resource name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) of the view or index that you want to attach tags to.
+#' @param resourceArn &#91;required&#93; The [Amazon resource name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) of the view or index that you want to attach tags to.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1675,7 +1675,7 @@ resourceexplorer_list_tags_for_resource <- function(resourceArn) {
 #' Amazon Web Services Region in which you call this operation
 #'
 #' @description
-#' Lists the [Amazon resource names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) of the views available in the Amazon Web Services Region in which you call this operation.
+#' Lists the [Amazon resource names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) of the views available in the Amazon Web Services Region in which you call this operation.
 #' 
 #' Always check the `NextToken` response parameter for a `null` value when calling a paginated operation. These operations can occasionally return an empty set of results even when there are more results available. The `NextToken` response parameter value is `null` *only* when there are no more results to display.
 #'
@@ -1756,7 +1756,7 @@ resourceexplorer_list_views <- function(NextToken = NULL, MaxResults = NULL) {
 #' @param MaxResults The maximum number of results that you want included on each page of the response. If you do not include this parameter, it defaults to a value appropriate to the operation. If additional items exist beyond those included in the current response, the `NextToken` response element is present and has a value (is not null). Include that value as the `NextToken` request parameter in the next call to the operation to get the next part of the results.
 #' 
 #' An API operation can return fewer results than the maximum even when there are more results available. You should check `NextToken` after every operation to ensure that you receive all of the results.
-#' @param ViewArn Specifies the [Amazon resource name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) of the view to use for the query. If you don't specify a value for this parameter, then the operation automatically uses the default view for the Amazon Web Services Region in which you called this operation. If the Region either doesn't have a default view or if you don't have permission to use the default view, then the operation fails with a `401 Unauthorized` exception.
+#' @param ViewArn Specifies the [Amazon resource name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) of the view to use for the query. If you don't specify a value for this parameter, then the operation automatically uses the default view for the Amazon Web Services Region in which you called this operation. If the Region either doesn't have a default view or if you don't have permission to use the default view, then the operation fails with a `401 Unauthorized` exception.
 #' @param NextToken The parameter for receiving additional results if you receive a `NextToken` response in a previous request. A `NextToken` response indicates that more output is available. Set this parameter to the value of the previous call's `NextToken` response to indicate where the output should continue from. The pagination tokens expire after 24 hours.
 #'
 #' @return
@@ -1954,7 +1954,7 @@ resourceexplorer_untag_resource <- function(resourceArn, tagKeys) {
 #' @usage
 #' resourceexplorer_update_index_type(Arn, Type)
 #'
-#' @param Arn &#91;required&#93; The [Amazon resource name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) of the index that you want to update.
+#' @param Arn &#91;required&#93; The [Amazon resource name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) of the index that you want to update.
 #' @param Type &#91;required&#93; The type of the index. To understand the difference between `LOCAL` and `AGGREGATOR`, see [Turning on cross-Region search](https://docs.aws.amazon.com/resource-explorer/latest/userguide/manage-aggregator-region.html) in the *Amazon Web Services Resource Explorer User Guide*.
 #'
 #' @return
@@ -2011,7 +2011,7 @@ resourceexplorer_update_index_type <- function(Arn, Type) {
 #' @usage
 #' resourceexplorer_update_view(ViewArn, IncludedProperties, Filters)
 #'
-#' @param ViewArn &#91;required&#93; The [Amazon resource name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) of the view that you want to modify.
+#' @param ViewArn &#91;required&#93; The [Amazon resource name (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) of the view that you want to modify.
 #' @param IncludedProperties Specifies optional fields that you want included in search results from this view. It is a list of objects that each describe a field to include.
 #' 
 #' The default is an empty list, with no optional fields included in the results.

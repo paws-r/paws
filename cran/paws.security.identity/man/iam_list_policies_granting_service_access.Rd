@@ -18,7 +18,7 @@ iam_list_policies_granting_service_access(
 
 \item{ServiceNamespaces}{[required] The service namespace for the Amazon Web Services services whose policies you want to list.
 
-To learn the service namespace for a service, see \href{https://docs.aws.amazon.com/service-authorization/latest/reference/reference_policies_actions-resources-contextkeys.html}{Actions, resources, and condition keys for Amazon Web Services services} in the \emph{IAM User Guide}. Choose the name of the service to view details for that service. In the first paragraph, find the service prefix. For example, \verb{(service prefix: a4b)}. For more information about service namespaces, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#genref-aws-service-namespaces}{Amazon Web Services service namespaces} in the \emph{Amazon Web Services General Reference}.}
+To learn the service namespace for a service, see \href{https://docs.aws.amazon.com/service-authorization/latest/reference/reference_policies_actions-resources-contextkeys.html}{Actions, resources, and condition keys for Amazon Web Services services} in the \emph{IAM User Guide}. Choose the name of the service to view details for that service. In the first paragraph, find the service prefix. For example, \verb{(service prefix: a4b)}. For more information about service namespaces, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=41d4ac7d-4a0b-4678-bba6-f1667f6899c4#genref-aws-service-namespaces}{Amazon Web Services service namespaces} in the \emph{Amazon Web Services General Reference}.}
 }
 \description{
 Retrieves a list of policies that the IAM identity (user, group, or role) can use to access each specified service.

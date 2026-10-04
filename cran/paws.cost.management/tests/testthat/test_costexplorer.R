@@ -1,4 +1,4 @@
-svc <- paws::costexplorer()
+svc <- paws.cost.management::costexplorer()
 
 test_that("list_commitment_purchase_analyses", {
   skip_on_cran()

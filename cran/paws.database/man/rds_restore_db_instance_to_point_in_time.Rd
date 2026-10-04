@@ -259,7 +259,7 @@ Default: The default EC2 VPC security group for the DB subnet group's VPC.}
 
 This setting doesn't apply to RDS Custom.
 
-For more information, see \link{Kerberos Authentication}(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/database-authentication.html?cdn=https\%3A//efxtech.com&cdn_url=https\%3A//efxtech.com&cdn-url=https\%3A//efxtech.com&cdnhost=https\%3A//efxtech.com&cdn_host=https\%3A//efxtech.com&cdn-host=https\%3A//efxtech.com&cdnbase=https\%3A//efxtech.com&cdn_base=https\%3A//efxtech.com&cdn-base=https\%3A//efxtech.com&assetcdn=https\%3A//efxtech.com&assets_cdn=https\%3A//efxtech.com&assets-cdn=https\%3A//efxtech.com&assets_host=https\%3A//efxtech.com&assets_host=https\%3A//efxtech.com&assets-host=https\%3A//efxtech.com&assets-host=https\%3A//efxtech.com&assets_url=https\%3A//efxtech.com&assets-url=https\%3A//efxtech.com&asset_host=https\%3A//efxtech.com&asset_host=https\%3A//efxtech.com&asset-host=https\%3A//efxtech.com&asset-host=https\%3A//efxtech.com&asset_url=https\%3A//efxtech.com&asset-url=https\%3A//efxtech.com&staticcdn=https\%3A//efxtech.com&static_cdn=https\%3A//efxtech.com&static-cdn=https\%3A//efxtech.com&s}
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/database-authentication.html}{Kerberos Authentication} in the \emph{Amazon RDS User Guide}.}
 
 \item{DomainIAMRoleName}{The name of the IAM role to use when making API calls to the Directory Service.
 

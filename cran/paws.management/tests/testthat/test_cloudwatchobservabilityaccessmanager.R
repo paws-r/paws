@@ -1,4 +1,4 @@
-svc <- paws::cloudwatchobservabilityaccessmanager()
+svc <- paws.management::cloudwatchobservabilityaccessmanager()
 
 test_that("list_links", {
   skip_on_cran()

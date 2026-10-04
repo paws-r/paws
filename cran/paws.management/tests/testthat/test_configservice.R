@@ -1,4 +1,4 @@
-svc <- paws::configservice()
+svc <- paws.management::configservice()
 
 test_that("describe_aggregation_authorizations", {
   skip_on_cran()

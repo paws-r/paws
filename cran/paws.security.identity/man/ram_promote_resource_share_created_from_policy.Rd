@@ -10,7 +10,7 @@ resource-based policy}
 ram_promote_resource_share_created_from_policy(resourceShareArn)
 }
 \arguments{
-\item{resourceShareArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon Resource Name (ARN)} of the resource share to promote.}
+\item{resourceShareArn}{[required] Specifies the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)} of the resource share to promote.}
 }
 \description{
 When you attach a resource-based policy to a resource, RAM automatically creates a resource share of \code{featureSet}=\code{CREATED_FROM_POLICY} with a managed permission that has the same IAM permissions as the original resource-based policy. However, this type of managed permission is visible to only the resource share owner, and the associated resource share can't be modified by using RAM.

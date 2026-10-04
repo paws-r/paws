@@ -7,7 +7,7 @@
 resourceexplorer_list_tags_for_resource(resourceArn)
 }
 \arguments{
-\item{resourceArn}{[required] The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon resource name (ARN)} of the view or index that you want to attach tags to.}
+\item{resourceArn}{[required] The \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon resource name (ARN)} of the view or index that you want to attach tags to.}
 }
 \description{
 Lists the tags that are attached to the specified resource.

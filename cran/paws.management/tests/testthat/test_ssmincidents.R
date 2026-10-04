@@ -1,4 +1,4 @@
-svc <- paws::ssmincidents()
+svc <- paws.management::ssmincidents()
 
 test_that("list_incident_records", {
   skip_on_cran()

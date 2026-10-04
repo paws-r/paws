@@ -1,4 +1,4 @@
-svc <- paws::appregistry()
+svc <- paws.management::appregistry()
 
 test_that("list_applications", {
   skip_on_cran()

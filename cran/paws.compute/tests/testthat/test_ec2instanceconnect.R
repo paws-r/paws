@@ -1,3 +1,3 @@
-svc <- paws::ec2instanceconnect()
+svc <- paws.compute::ec2instanceconnect()
 
 

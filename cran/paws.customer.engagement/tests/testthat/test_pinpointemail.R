@@ -1,3 +1,3 @@
-svc <- paws::pinpointemail()
+svc <- paws.customer.engagement::pinpointemail()
 
 

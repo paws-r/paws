@@ -1,4 +1,4 @@
-svc <- paws::forecastservice()
+svc <- paws.machine.learning::forecastservice()
 
 test_that("list_dataset_groups", {
   skip_on_cran()

@@ -1,4 +1,4 @@
-svc <- paws::elasticsearchservice()
+svc <- paws.analytics::elasticsearchservice()
 
 test_that("describe_inbound_cross_cluster_search_connections", {
   skip_on_cran()

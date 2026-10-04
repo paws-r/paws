@@ -1,4 +1,4 @@
-svc <- paws::paymentcryptographycontrolplane()
+svc <- paws.cost.management::paymentcryptographycontrolplane()
 
 test_that("list_aliases", {
   skip_on_cran()

@@ -15,7 +15,7 @@ resourceexplorer_list_views(NextToken = NULL, MaxResults = NULL)
 An API operation can return fewer results than the maximum even when there are more results available. You should check \code{NextToken} after every operation to ensure that you receive all of the results.}
 }
 \description{
-Lists the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series}{Amazon resource names (ARNs)} of the views available in the Amazon Web Services Region in which you call this operation.
+Lists the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon resource names (ARNs)} of the views available in the Amazon Web Services Region in which you call this operation.
 
 See \url{https://www.paws-r-sdk.com/docs/resourceexplorer_list_views/} for full documentation.
 }

@@ -1,4 +1,4 @@
-svc <- paws::bedrockagentcore()
+svc <- paws.machine.learning::bedrockagentcore()
 
 test_that("list_ab_tests", {
   skip_on_cran()

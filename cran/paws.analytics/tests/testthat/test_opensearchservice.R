@@ -1,4 +1,4 @@
-svc <- paws::opensearchservice()
+svc <- paws.analytics::opensearchservice()
 
 test_that("describe_inbound_connections", {
   skip_on_cran()

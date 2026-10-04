@@ -1,4 +1,4 @@
-svc <- paws::voiceid()
+svc <- paws.machine.learning::voiceid()
 
 test_that("list_domains", {
   skip_on_cran()

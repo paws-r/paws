@@ -144,7 +144,7 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #'
 #' @param ClientRequestToken (Optional) An idempotency token for resource creation, in a string of up to 63 ASCII characters. This token is automatically filled on your behalf when you use the Command Line Interface (CLI) or an Amazon Web Services SDK.
 #' @param VolumeId &#91;required&#93; Specifies the ID of the volume that you are copying the snapshot to.
-#' @param SourceSnapshotARN &#91;required&#93; The Amazon Resource Name (ARN) for a given resource. ARNs uniquely identify Amazon Web Services resources. We require an ARN when you need to specify a resource unambiguously across all of Amazon Web Services. For more information, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) in the *Amazon Web Services General Reference*.
+#' @param SourceSnapshotARN &#91;required&#93; The Amazon Resource Name (ARN) for a given resource. ARNs uniquely identify Amazon Web Services resources. We require an ARN when you need to specify a resource unambiguously across all of Amazon Web Services. For more information, see [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) in the *Amazon Web Services General Reference*.
 #' @param CopyStrategy Specifies the strategy to use when copying data from a snapshot to the volume.
 #' 
 #' -   `FULL_COPY` - Copies all data from the snapshot to the volume.

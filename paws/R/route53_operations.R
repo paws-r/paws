@@ -82,7 +82,7 @@ route53_activate_key_signing_key <- function(HostedZoneId, Name) {
 #' 
 #' -   `aws-us-gov` - Amazon Web Services GovCloud (US) Region
 #' 
-#' For more information, see [Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) in the *Amazon Web Services General Reference*.
+#' For more information, see [Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) in the *Amazon Web Services General Reference*.
 #'
 #' @usage
 #' route53_associate_vpc_with_hosted_zone(HostedZoneId, VPC, Comment)
@@ -1195,7 +1195,7 @@ route53_create_health_check <- function(CallerReference, HealthCheckConfig) {
 #' 
 #' -   `aws-us-gov` - Amazon Web Services GovCloud (US) Region
 #' 
-#' For more information, see [Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) in the *Amazon Web Services General Reference*.
+#' For more information, see [Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) in the *Amazon Web Services General Reference*.
 #'
 #' @usage
 #' route53_create_hosted_zone(Name, VPC, CallerReference, HostedZoneConfig,
@@ -2541,7 +2541,7 @@ route53_disable_hosted_zone_dnssec <- function(HostedZoneId) {
 #' 
 #' -   `aws-us-gov` - Amazon Web Services GovCloud (US) Region
 #' 
-#' For more information, see [Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) in the *Amazon Web Services General Reference*.
+#' For more information, see [Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) in the *Amazon Web Services General Reference*.
 #'
 #' @usage
 #' route53_disassociate_vpc_from_hosted_zone(HostedZoneId, VPC, Comment)
@@ -4442,7 +4442,7 @@ route53_list_hosted_zones_by_name <- function(DNSName = NULL, HostedZoneId = NUL
 #' 
 #' -   `aws-us-gov` - Amazon Web Services GovCloud (US) Region
 #' 
-#' For more information, see [Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=e072b57e-c748-4712-a675-b2b5d0ef7f14&trkcampaign=tw-webinar-series) in the *Amazon Web Services General Reference*.
+#' For more information, see [Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) in the *Amazon Web Services General Reference*.
 #'
 #' @usage
 #' route53_list_hosted_zones_by_vpc(VPCId, VPCRegion, MaxItems, NextToken)
