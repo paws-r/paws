@@ -48,7 +48,7 @@ test_that("make_tests", {
     )
   )
   categories <- list(list(name = "widgets", services = list("api")))
-  a <- make_tests(api, categories)
+  a <- make_tests(api, categories, api_name = "api")
   e <- 'svc <- paws.widgets::api()
 
     test_that("describe_foo", {
@@ -64,6 +64,28 @@ test_that("make_tests", {
     test_that("list_bar", {
       skip_on_cran()
       expect_error(svc$list_bar(), NA)
+    })
+  '
+  actual <- format_test_code(a)
+  expected <- format_test_code(e)
+  expect_equal(actual, expected)
+})
+
+test_that("make_tests uses api_name (not the derived service name) for category lookup", {
+  api <- list(
+    metadata = list(serviceAbbreviation = "Amazon Elasticsearch Service"),
+    operations = list(
+      ListDomainNames = list(name = "ListDomainNames")
+    ),
+    shapes = list()
+  )
+  categories <- list(list(name = "analytics", services = list("es")))
+  a <- make_tests(api, categories, api_name = "es")
+  e <- 'svc <- paws.analytics::elasticsearchservice()
+
+    test_that("list_domain_names", {
+      skip_on_cran()
+      expect_error(svc$list_domain_names(), NA)
     })
   '
   actual <- format_test_code(a)

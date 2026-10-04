@@ -35,7 +35,7 @@ write_testthat_file <- function(path, package) {
 }
 
 # Make all tests for a given API.
-make_tests <- function(api, categories) {
+make_tests <- function(api, categories, api_name) {
   tests <- list()
   i <- 1
   for (operation in get_testable_operations(api)) {
@@ -47,7 +47,7 @@ make_tests <- function(api, categories) {
   }
   tests <- paste(tests, collapse = "\n\n")
   service <- package_name(api)
-  package <- get_service_package_name(service, categories)
+  package <- get_service_package_name(api_name, categories)
   render(test_file_template, package = package, service = service, tests = tests)
 }
 

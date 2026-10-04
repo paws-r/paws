@@ -14,7 +14,7 @@ make_sdk_for_api <- function(api_name, in_dir, categories) {
   result <- list(
     name = package_name(api),
     code = make_code_files(api),
-    tests = make_tests_files(api, categories),
+    tests = make_tests_files(api, categories, api_name),
     docs = make_docs_files(api)
   )
   return(result)
@@ -70,9 +70,9 @@ make_service_files <- function(api, path) {
 }
 
 # Generate tests for the package.
-make_tests_files <- function(api, categories) {
+make_tests_files <- function(api, categories, api_name) {
   result <- list()
-  tests <- make_tests(api, categories)
+  tests <- make_tests(api, categories, api_name)
   filename <- paste0("test_", package_name(api), ".R")
   result[[file.path(TEST_DIR, filename)]] <- tests
   return(result)
