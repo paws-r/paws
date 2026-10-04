@@ -106,7 +106,8 @@ resolver_endpoint <- function(
   endpoints,
   sts_regional_endpoint = "",
   scheme = "https",
-  partition_name = ""
+  partition_name = "",
+  use_dual_stack = FALSE
 ) {
   switch(
     vendor_cache[["vendor"]],
@@ -116,7 +117,8 @@ resolver_endpoint <- function(
       endpoints = endpoints,
       sts_regional_endpoint = sts_regional_endpoint,
       scheme = scheme,
-      partition_name = partition_name
+      partition_name = partition_name,
+      use_dual_stack = use_dual_stack
     ),
     "js" = resolver_endpoint_js(
       service = service,
@@ -134,7 +136,8 @@ resolver_endpoint_boto <- function(
   endpoints,
   sts_regional_endpoint,
   scheme,
-  partition_name
+  partition_name,
+  use_dual_stack = FALSE
 ) {
   # Set default region for s3 if not provided
   # https://github.com/boto/botocore/blob/develop/botocore/regions.py#L200-L205
@@ -157,6 +160,9 @@ resolver_endpoint_boto <- function(
   if (service == "sts" & nzchar(sts_regional_endpoint)) {
     e[["endpoint"]] <- set_sts_regional_endpoint(sts_regional_endpoint, e[["endpoint"]])
     e[["signing_region"]] <- set_sts_region(sts_regional_endpoint, region)
+  }
+  if (isTRUE(use_dual_stack) && !is.null(e[["dualstack_endpoint"]])) {
+    e[["endpoint"]] <- e[["dualstack_endpoint"]]
   }
   endpoint <- fstring(e[["endpoint"]], list(region = e[["signing_region"]]))
   endpoint <- gsub("^(.+://)?", sprintf("%s://", scheme), endpoint)
@@ -298,7 +304,8 @@ client_config <- function(
         signing_region,
         endpoints,
         sess[["config"]][["sts_regional_endpoint"]],
-        partition_name = sess[["config"]][["partition_name"]]
+        partition_name = sess[["config"]][["partition_name"]],
+        use_dual_stack = sess[["config"]][["use_dual_stack"]]
       )
       endpoint <- re[["endpoint"]]
       signing_region <- re[["signing_region"]]

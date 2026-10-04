@@ -10,7 +10,6 @@
   "s3_use_accelerate",
   "s3_disable_content_md5_validation",
   "ec2_metadata_disable_timeout_override",
-  "use_dual_stack",
   "sleep_delay",
   "disable_rest_protocol_uri_cleaning",
   "provider",

@@ -480,7 +480,18 @@ get_sts_regional_endpoint <- function(profile = "") {
   return(sts_regional_endpoint %||% "")
 }
 
-.optional_config_parameter <- list("sts_regional_endpoint" = get_sts_regional_endpoint)
+# Get the AWS_USE_DUALSTACK_ENDPOINT setting from the environment. The envvar
+# is only consulted as a fallback default when `config$use_dual_stack` isn't
+# set explicitly, mirroring botocore's precedence.
+get_use_dual_stack <- function(profile = "") {
+  use_dual_stack <- get_env("AWS_USE_DUALSTACK_ENDPOINT")
+  return(tolower(trimws(use_dual_stack)) %in% c("true", "1"))
+}
+
+.optional_config_parameter <- list(
+  "sts_regional_endpoint" = get_sts_regional_endpoint,
+  "use_dual_stack" = get_use_dual_stack
+)
 
 # Ensures config is built correctly from service parameters
 build_config <- function(cfg) {

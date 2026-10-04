@@ -86,12 +86,8 @@ jobs:
         run: |
           install.packages('pak')
           pak::pkg_install("rcmdcheck")
-        shell: Rscript {0}
-
-      - name: Install paws packages
-        run: |
-          pak::local_install('paws.common', upgrade = TRUE)
-          pak::local_install('make.paws', upgrade = TRUE)
+          pak::local_install('paws.common', dependencies = TRUE, upgrade = TRUE)
+          pak::local_install('make.paws', dependencies = TRUE, upgrade = TRUE)
         shell: Rscript {0}
 
       - name: Check paws.common

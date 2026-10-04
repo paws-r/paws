@@ -23,6 +23,34 @@ test_that("check generated presigned url with different http_method", {
     http_method = "HTTP"
   )
 
+  # Default is SigV4 (not the legacy "v1" query-auth scheme); see
+  # s3_generate_presigned_url()'s signer default.
+  expect_true(grepl(
+    sprintf(
+      "HTTP://%s.s3.us-east-1.amazonaws.com/\\?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=%s.*&X-Amz-Date=.*&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&list-type=2&prefix=%s&X-Amz-Signature=.*",
+      "foo",
+      "DUMMY",
+      "bar"
+    ),
+    actual
+  ))
+})
+
+test_that("check generate_presigned_url falls back to the legacy v1 scheme when requested", {
+  skip_if_not_installed("paws.common")
+  skip_if_not_installed("paws.storage")
+  Sys.setenv("AWS_ACCESS_KEY_ID" = "DUMMY")
+  Sys.setenv("AWS_SECRET_ACCESS_KEY" = "SECRETDUMMY")
+  Sys.setenv("AWS_REGION" = "us-east-1")
+
+  svc <- paws.common::set_config(list(), cfgs = list(signature_version = "v1"))
+  svc$generate_presigned_url <- s3_generate_presigned_url
+  actual <- svc$generate_presigned_url(
+    client_method = "list_objects_v2",
+    params = list(Bucket = "foo", Prefix = "bar"),
+    http_method = "HTTP"
+  )
+
   expect_true(grepl(
     sprintf(
       "HTTP://%s.s3.us-east-1.amazonaws.com/\\?list-type=2&prefix=%s&AWSAccessKeyId=%s&Expires=.*?&Signature=.*",

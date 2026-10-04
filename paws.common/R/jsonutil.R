@@ -109,11 +109,14 @@ json_parse_map <- function(node, interface) {
   if (length(interface) == 0) {
     return(node)
   }
-  result <- list()
-  for (name in names(node)) {
-    parsed <- json_parse(node[[name]], interface[[1]])
-    result[[name]] <- parsed
+  # Pre-size and assign by position rather than growing a named list with
+  # result[[name]] <- ..., which is O(n^2) for a map with n keys.
+  n <- length(node)
+  result <- vector("list", n)
+  for (i in seq_len(n)) {
+    result[[i]] <- json_parse(node[[i]], interface[[1]])
   }
+  names(result) <- names(node)
   return(result)
 }
 
