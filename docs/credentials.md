@@ -497,6 +497,11 @@ Paws supports the following settings provided as arguments to a service:
 
 * `region` - Specifies the AWS region to send the request to.
 
+* `use_dual_stack` - Set to `TRUE` to resolve the service's dualstack (IPv4
+  and IPv6) endpoint where one exists, falling back to the regular endpoint
+  otherwise. Defaults to the `AWS_USE_DUALSTACK_ENDPOINT` environment variable
+  when unset.
+
 They must be provided to the service in the following structure. It is
 allowable to specify only some of the settings, e.g. only `region`.
 
@@ -538,6 +543,16 @@ Paws supports the following settings in environment variables.
 * `AWS_EC2_METADATA_DISABLED` - Disables the use of the Amazon EC2 instance
   metadata service (IMDS) when set to `"true"` (case insensitive) or `"1"`.
 
+* `AWS_EC2_METADATA_SERVICE_ENDPOINT_MODE` - Specifies whether IMDS is reached
+  over `"ipv4"` (default, `169.254.169.254`) or `"ipv6"`
+  (`[fd00:ec2::254]`).
+
+* `AWS_IMDS_USE_IPV6` - Set to `"true"` or `"1"` to use the IPv6 IMDS
+  endpoint. Equivalent to setting `AWS_EC2_METADATA_SERVICE_ENDPOINT_MODE=ipv6`.
+
+* `AWS_EC2_METADATA_SERVICE_ENDPOINT` - Overrides the IMDS endpoint entirely
+  with a custom URL, taking precedence over the endpoint mode settings above.
+
 * `AWS_PROFILE` - Specifies the name of the profile with the credentials and
   options to use.
 
@@ -556,6 +571,11 @@ Paws supports the following settings in environment variables.
 * `AWS_ENDPOINT_URL`- Set global endpoint URL.
 
 * `AWS_ENDPOINT_URL_<SERVICE>` - [Service-specific endpoints: List of service-specific identifiers](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-endpoints.html#endpoints-service-specific-table)
+
+* `AWS_USE_DUALSTACK_ENDPOINT` - Set to `"true"` or `"1"` to resolve each
+  service's dualstack (IPv4 and IPv6) endpoint where one exists, falling back
+  to the regular endpoint otherwise. Can also be set per-service via the
+  `use_dual_stack` [service setting](#service-settings).
 
 ---
 
