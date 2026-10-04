@@ -479,8 +479,16 @@ s3_generate_presigned_post <- function(
   # base64-encoded policy document goes in the "policy" field
   expiration <- format(now_time + ExpiresIn, tz = "UTC", format = "%Y-%m-%dT%H:%M:%SZ")
   policy <- list(expiration = expiration, conditions = conditions)
-  policy_json <- as.character(jsonlite::toJSON(policy, auto_unbox = TRUE))
-  policy_b64 <- base64enc::base64encode(charToRaw(policy_json))
+  policy_json <- do.call(
+    "json_build",
+    list(object = policy),
+    envir = getNamespace("paws.common")
+  )
+  policy_b64 <- do.call(
+    "raw_to_base64",
+    list(value = charToRaw(policy_json)),
+    envir = getNamespace("paws.common")
+  )
   fields$policy <- policy_b64
 
   # Sign the base64 policy string directly (not the usual canonical-request
