@@ -1,4 +1,4 @@
-# paws.common 0.8.11
+# paws.common 0.9.0
 * add support for S3 outposts and S3 Object Lambda access point ARNs, resolving the correct endpoint host, signing service name, and signing region for each ARN type.
 * fix header injection in SigV4 query string signing where `x-amz-*`, `content-md5` and `content-type` headers could be written to the wrong query parameters, and fix `canonical_string` failing to join canonical headers onto separate lines.
 * fix `build_canonical_headers` to also skip the `Content-Length` header for empty-body `DELETE` requests, extending the existing fix for `GET`/`HEAD` (#996). Thanks to @Aariq for raising issue and implementing solution.
