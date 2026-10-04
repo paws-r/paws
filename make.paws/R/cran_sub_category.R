@@ -10,6 +10,7 @@ make_category_collection <- function(
   package <- sprintf("paws.%s", package)
   package_dir <- file.path(out_dir, package)
   write_skeleton_category(package_dir, package)
+  write_placeholder_test(package_dir, package)
   write_description_category(
     package_dir,
     package,

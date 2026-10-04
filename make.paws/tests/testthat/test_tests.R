@@ -71,6 +71,22 @@ test_that("make_tests", {
   expect_equal(actual, expected)
 })
 
+test_that("write_placeholder_test writes a loadable-package smoke test", {
+  dir <- withr::local_tempdir()
+  dir.create(file.path(dir, "tests", "testthat"), recursive = TRUE)
+  write_placeholder_test(dir, "paws")
+  a <- read_utf8(file.path(dir, "tests", "testthat", "test_paws.R"))
+  e <- '# paws re-exports its category packages (e.g. paws.storage) and has
+    # no operations of its own, so there are no generated service tests here.
+    test_that("paws loads", {
+      expect_true(requireNamespace("paws", quietly = TRUE))
+    })
+  '
+  actual <- format_test_code(paste(a, collapse = "\n"))
+  expected <- format_test_code(e)
+  expect_equal(actual, expected)
+})
+
 test_that("make_tests uses api_name (not the derived service name) for category lookup", {
   api <- list(
     metadata = list(serviceAbbreviation = "Amazon Elasticsearch Service"),
