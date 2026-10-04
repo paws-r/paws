@@ -87,9 +87,12 @@ The runtime that every `paws.<category>` package depends on. It has no
 knowledge of individual AWS services — it just knows how to turn a populated
 request object into a signed HTTP call and turn the HTTP response back into an
 R list. This is where credential resolution ([credentials.md](credentials.md)),
-region/endpoint resolution (including [dualstack endpoints](credentials.md#service-settings)),
+region/endpoint resolution (including [dualstack](credentials.md#service-settings)
+and [custom](custom_endpoints.md) endpoints),
 SigV4 and [bearer token](bearer_tokens.md) signing, [checksums](checksums.md),
-[streaming](streaming.md), [pagination](paginators.md), and [retries](retries.md) all live.
+[streaming](streaming.md), [pagination](paginators.md), [retries](retries.md),
+[error handling](error_handling.md), [logging](logging.md), and other
+[service configuration](configuration.md) all live.
 
 Because it's the single shared dependency, a fix or feature added to
 `paws.common` (e.g. IPv6 IMDS support, dualstack endpoints) is immediately
