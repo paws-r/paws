@@ -55,9 +55,9 @@ This reference is intended to be used with the \href{https://docs.aws.amazon.com
 \strong{Related resources}
 \itemize{
 \item For information about each of the tools that comprise Systems Manager, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-tools.html}{Using Systems Manager tools} in the \emph{Amazon Web Services Systems Manager User Guide}.
-\item For details about predefined runbooks for Automation, a tool in Amazon Web Services Systems Manager, see the \emph{\if{html}{\out{\href{https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/automation-runbook-reference.html}{Systems Manager Automation Runbook Reference\if{html}{\out{}} .
-\item For information about AppConfig, a tool in Systems Manager, see the \emph{\if{html}{\out{\href{https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/}{AppConfig API Reference\if{html}{\out{}} .
-\item For information about Incident Manager, a tool in Systems Manager, see the \emph{\if{html}{\out{\href{https://docs.aws.amazon.com/incident-manager/latest/APIReference/}{Systems Manager Incident Manager API Reference\if{html}{\out{}} .
+\item For details about predefined runbooks for Automation, a tool in Amazon Web Services Systems Manager, see the \emph{\href{https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/automation-runbook-reference.html}{Systems Manager Automation Runbook Reference}} .
+\item For information about AppConfig, a tool in Systems Manager, see the \emph{\href{https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/}{AppConfig API Reference}} .
+\item For information about Incident Manager, a tool in Systems Manager, see the \emph{\href{https://docs.aws.amazon.com/incident-manager/latest/APIReference/}{Systems Manager Incident Manager API Reference}} .
 }
 }
 \section{Service syntax}{
