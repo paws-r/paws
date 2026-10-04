@@ -285,6 +285,104 @@ services/"
   expect_equal(charToRaw(valid_metadata_response), actual$body)
 })
 
+test_that("resolve_imds_base_url defaults to IPv4", {
+  withr::with_envvar(
+    c(
+      AWS_EC2_METADATA_SERVICE_ENDPOINT = "",
+      AWS_EC2_METADATA_SERVICE_ENDPOINT_MODE = "",
+      AWS_IMDS_USE_IPV6 = ""
+    ),
+    expect_equal(resolve_imds_base_url(), IMDS_BASE_URL_IPV4)
+  )
+})
+
+test_that("resolve_imds_base_url uses IPv6 when AWS_IMDS_USE_IPV6 is true", {
+  withr::with_envvar(
+    c(
+      AWS_EC2_METADATA_SERVICE_ENDPOINT = "",
+      AWS_EC2_METADATA_SERVICE_ENDPOINT_MODE = "",
+      AWS_IMDS_USE_IPV6 = "true"
+    ),
+    expect_equal(resolve_imds_base_url(), IMDS_BASE_URL_IPV6)
+  )
+})
+
+test_that("resolve_imds_base_url uses IPv6 when the endpoint mode is explicitly ipv6", {
+  withr::with_envvar(
+    c(
+      AWS_EC2_METADATA_SERVICE_ENDPOINT = "",
+      AWS_EC2_METADATA_SERVICE_ENDPOINT_MODE = "ipv6",
+      AWS_IMDS_USE_IPV6 = ""
+    ),
+    expect_equal(resolve_imds_base_url(), IMDS_BASE_URL_IPV6)
+  )
+})
+
+test_that("resolve_imds_base_url endpoint mode takes precedence over the boolean", {
+  withr::with_envvar(
+    c(
+      AWS_EC2_METADATA_SERVICE_ENDPOINT = "",
+      AWS_EC2_METADATA_SERVICE_ENDPOINT_MODE = "ipv4",
+      AWS_IMDS_USE_IPV6 = "true"
+    ),
+    expect_equal(resolve_imds_base_url(), IMDS_BASE_URL_IPV4)
+  )
+})
+
+test_that("resolve_imds_base_url a custom endpoint takes precedence over both", {
+  withr::with_envvar(
+    c(
+      AWS_EC2_METADATA_SERVICE_ENDPOINT = "http://custom-imds.example",
+      AWS_EC2_METADATA_SERVICE_ENDPOINT_MODE = "ipv6",
+      AWS_IMDS_USE_IPV6 = "true"
+    ),
+    expect_equal(resolve_imds_base_url(), "http://custom-imds.example")
+  )
+})
+
+test_that("resolve_imds_base_url errors on an invalid endpoint mode", {
+  withr::with_envvar(
+    c(
+      AWS_EC2_METADATA_SERVICE_ENDPOINT = "",
+      AWS_EC2_METADATA_SERVICE_ENDPOINT_MODE = "ipv5",
+      AWS_IMDS_USE_IPV6 = ""
+    ),
+    expect_error(resolve_imds_base_url(), "Invalid EC2 Instance Metadata Service endpoint mode")
+  )
+})
+
+test_that("get_instance_metadata uses the IPv6 IMDS host under AWS_IMDS_USE_IPV6", {
+  valid_metadata_response <- "ami-id"
+  test_aws_token <- "AWSTESTINGTokENZZ-XXXXxxxXXXx2XXx1X45XXxXXxX-XxXXxxxXx=="
+  imdsv6_behaviour <- function(http_request) {
+    expect_equal(http_request$url$host, "[fd00:ec2::254]")
+    if (http_request$method == "PUT" && http_request$url$path == "/latest/api/token") {
+      return(HttpResponse(
+        status_code = 200,
+        header = list("Content-Length" = as.character(nchar(test_aws_token))),
+        content_length = nchar(test_aws_token),
+        body = charToRaw(test_aws_token)
+      ))
+    }
+    HttpResponse(
+      status_code = 200,
+      header = list("Content-Length" = as.character(nchar(valid_metadata_response))),
+      content_length = nchar(valid_metadata_response),
+      body = charToRaw(valid_metadata_response)
+    )
+  }
+  mock_imdsv6_behaviour <- mock2(side_effect = imdsv6_behaviour)
+  mockery::stub(get_instance_metadata, "issue", mock_imdsv6_behaviour)
+
+  withr::with_envvar(
+    c(AWS_IMDS_USE_IPV6 = "true"),
+    actual <- get_instance_metadata()
+  )
+
+  expect_equal(mock_call_no(mock_imdsv6_behaviour), 2)
+  expect_equal(charToRaw(valid_metadata_response), actual$body)
+})
+
 test_that("get sso legacy credentials", {
   mock_get_config_file_path <- mock2("data_sso_ini")
   mock_sso_credential_process <- mock2(invisible(TRUE))
