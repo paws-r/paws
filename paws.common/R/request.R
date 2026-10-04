@@ -234,6 +234,17 @@ get_host <- function(http_request) {
 
 # Return the port from an HTTP request.
 get_port <- function(host) {
+  if (startsWith(host, "[")) {
+    close_bracket <- regexpr("]", host, fixed = TRUE)
+    if (close_bracket == -1) {
+      return("")
+    }
+    rest <- substring(host, close_bracket + 1)
+    if (startsWith(rest, ":")) {
+      return(substring(rest, 2))
+    }
+    return("")
+  }
   port <- strsplit(host, ":")[[1]][-1]
   if (length(port) == 0) {
     port <- ""
@@ -243,6 +254,13 @@ get_port <- function(host) {
 
 # Return a host with the port stripped off, e.g. "example.com:80" -> "example.com."
 strip_port <- function(host) {
+  if (startsWith(host, "[")) {
+    close_bracket <- regexpr("]", host, fixed = TRUE)
+    if (close_bracket == -1) {
+      return(host)
+    }
+    return(substring(host, 1, close_bracket))
+  }
   port <- strsplit(host, ":")[[1]][1]
   return(port)
 }

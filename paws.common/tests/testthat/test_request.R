@@ -19,12 +19,38 @@ test_that("sanitize_host_for_header", {
     c("https://estest.us-east-1.es.amazonaws.com", "estest.us-east-1.es.amazonaws.com"),
     c("https://localhost:9200", "localhost:9200"),
     c("http://localhost:80", "localhost"),
-    c("http://localhost:8080", "localhost:8080")
+    c("http://localhost:8080", "localhost:8080"),
+    c("https://[fd00:ec2::254]:443", "[fd00:ec2::254]"),
+    c("https://[fd00:ec2::254]:8443", "[fd00:ec2::254]:8443")
   )
   for (case in cases) {
     c <- list(url = case[1], expected = case[2])
     r <- new_http_request("GET", c$url, NULL)
     r <- sanitize_host_for_header(r)
     expect_equal(r$host, c$expected)
+  }
+})
+
+test_that("get_port", {
+  cases <- list(
+    c("example.com", ""),
+    c("example.com:8080", "8080"),
+    c("[fd00:ec2::254]", ""),
+    c("[fd00:ec2::254]:8080", "8080")
+  )
+  for (case in cases) {
+    expect_equal(get_port(case[1]), case[2])
+  }
+})
+
+test_that("strip_port", {
+  cases <- list(
+    c("example.com", "example.com"),
+    c("example.com:8080", "example.com"),
+    c("[fd00:ec2::254]", "[fd00:ec2::254]"),
+    c("[fd00:ec2::254]:8080", "[fd00:ec2::254]")
+  )
+  for (case in cases) {
+    expect_equal(strip_port(case[1]), case[2])
   }
 })
