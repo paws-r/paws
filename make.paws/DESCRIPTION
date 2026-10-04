@@ -43,7 +43,8 @@ Suggests:
     testthat,
     paws.storage,
     withr,
-    mockery
+    mockery,
+    base64enc
 Remotes:
     r-lib/cachem
 SystemRequirements: pandoc (>= 1.12.3) - http://pandoc.org
