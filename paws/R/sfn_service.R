@@ -13,7 +13,7 @@ NULL
 #' 
 #' With API calls, you can also manage other aspects of your workflow, such as tags, versions, and aliases.
 #' 
-#' For more information about developing solutions with Step Functions, see the *\href{https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html}{Step Functions Developer Guide}* .
+#' For more information about developing solutions with Step Functions, see the \emph{\href{https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html}{Step Functions Developer Guide}} .
 #' 
 #' If you use the Step Functions API actions using Amazon Web Services SDK integrations, make sure the API actions are in camel case and parameter names are in Pascal case. For example, you might use Step Functions API action `startSyncExecution` and specify its parameter as `StateMachineArn`.
 #'
