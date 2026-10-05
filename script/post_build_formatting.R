@@ -1,10 +1,10 @@
+library(make.paws)
+
 args <- commandArgs(trailingOnly = TRUE)
 options(paws.log_level = 3)
 
-library(make.paws)
-
-root <- args[1]
-in_dir <- args[2]
+root <- if (is.na(args[1])) "." else args[1]
+in_dir <- if (is.na(args[2])) "./cran" else args[2]
 
 before <- c(
   "ﬁ",
@@ -53,4 +53,6 @@ paws_post_build_format(root = root, patterns_before = before, patterns_after = a
 
 # Rebuild documentation (this will re-read source files to generate docs)
 paws_pkg_doc_build(in_dir = in_dir)
+roxygen2::roxygenise(file.path(in_dir, "paws"))
+
 paws_rd_links(in_dir = in_dir)
