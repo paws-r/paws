@@ -9,7 +9,10 @@ get_config <- get("get_config", asNamespace("paws.common"))
 new_request <- get("new_request", asNamespace("paws.common"))
 
 decode_policy <- function(fields) {
-  jsonlite::fromJSON(rawToChar(base64enc::base64decode(fields$policy)), simplifyVector = FALSE)
+  jsonlite::fromJSON(
+    rawToChar(base64enc::base64decode(fields$policy)),
+    simplifyVector = FALSE
+  )
 }
 
 test_that("generate_presigned_post returns the expected url and fields", {
@@ -42,9 +45,21 @@ test_that("generate_presigned_post returns the expected url and fields", {
   policy <- decode_policy(result$fields)
   expect_match(policy$expiration, "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$")
   conditions <- lapply(policy$conditions, unlist)
-  expect_true(any(vapply(conditions, function(c) identical(c, c(acl = "public-read")), logical(1))))
-  expect_true(any(vapply(conditions, function(c) identical(c, c(bucket = "foo")), logical(1))))
-  expect_true(any(vapply(conditions, function(c) identical(c, c(key = "bar.txt")), logical(1))))
+  expect_true(any(vapply(
+    conditions,
+    function(c) identical(c, c(acl = "public-read")),
+    logical(1)
+  )))
+  expect_true(any(vapply(
+    conditions,
+    function(c) identical(c, c(bucket = "foo")),
+    logical(1)
+  )))
+  expect_true(any(vapply(
+    conditions,
+    function(c) identical(c, c(key = "bar.txt")),
+    logical(1)
+  )))
 })
 
 test_that("generate_presigned_post handles a ${filename} key suffix", {
@@ -64,7 +79,11 @@ test_that("generate_presigned_post handles a ${filename} key suffix", {
   conditions <- policy$conditions
   found <- any(vapply(
     conditions,
-    function(c) is.null(names(c)) && length(c) == 3 && identical(unlist(c), c("starts-with", "$key", "uploads/")),
+    function(c) {
+      is.null(names(c)) &&
+        length(c) == 3 &&
+        identical(unlist(c), c("starts-with", "$key", "uploads/"))
+    },
     logical(1)
   ))
   expect_true(found)
@@ -99,6 +118,14 @@ test_that("generate_presigned_post validates its arguments", {
   svc <- paws.common::set_config(list())
   svc$generate_presigned_post <- s3_generate_presigned_post
 
-  expect_error(svc$generate_presigned_post(Bucket = "foo", Key = "bar.txt", ExpiresIn = 0))
-  expect_error(svc$generate_presigned_post(Bucket = "foo", Key = "bar.txt", Fields = "not-a-list"))
+  expect_error(svc$generate_presigned_post(
+    Bucket = "foo",
+    Key = "bar.txt",
+    ExpiresIn = 0
+  ))
+  expect_error(svc$generate_presigned_post(
+    Bucket = "foo",
+    Key = "bar.txt",
+    Fields = "not-a-list"
+  ))
 })

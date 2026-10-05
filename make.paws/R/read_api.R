@@ -166,7 +166,12 @@ merge_region_config <- function(api, region_config) {
     if (!is.null(result$credentialScope$region)) {
       endpoint$signing_region <- result$credentialScope$region
     }
-    dualstack_endpoint <- get_dualstack_endpoint(service, service_data, service_defaults, dnsSuffix)
+    dualstack_endpoint <- get_dualstack_endpoint(
+      service,
+      service_data,
+      service_defaults,
+      dnsSuffix
+    )
     if (!is.null(dualstack_endpoint)) {
       endpoint$dualstack_endpoint <- dualstack_endpoint
     }
