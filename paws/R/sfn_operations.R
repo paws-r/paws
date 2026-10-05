@@ -2001,7 +2001,7 @@ sfn_publish_state_machine_version <- function(stateMachineArn, revisionId = NULL
 #' 
 #' -   Your workflow execution has not exceeded the redrivable period of 14 days. Redrivable period refers to the time during which you can redrive a given execution. This period starts from the day a state machine completes its execution.
 #' 
-#' -   The workflow execution has not exceeded the maximum open time of one year. For more information about state machine quotas, see [Quotas related to state machine executions](https://docs.aws.amazon.com/step-functions/latest/dg/service-quotas.html#service-limits-state-machine-executions).
+#' -   The workflow execution has not exceeded the maximum open time of one year. For more information about state machine quotas, see [Quotas related to state machine executions](https://docs.aws.amazon.com/step-functions/latest/dg/service-quotas.html?session=7f5dde43-7afd-4d8b-8c93-8c80997c1cff#service-limits-state-machine-executions).
 #' 
 #' -   The execution event history count is less than 24,999. Redriven executions append their event history to the existing event history. Make sure your workflow execution contains less than 24,999 events to accommodate the `ExecutionRedriven` history event and at least one other history event.
 #'

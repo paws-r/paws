@@ -29,6 +29,7 @@ codegurureviewer(
 \item{\strong{timeout}: The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 \item{\strong{s3_force_path_style}: Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
 \item{\strong{sts_regional_endpoint}: Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+\item{\strong{use_dual_stack}: Set this to \code{true} to use the dualstack (IPv4 and IPv6) endpoint for a service, where available, falling back to the regular endpoint when it isn't. Defaults to the \code{AWS_USE_DUALSTACK_ENDPOINT} environment variable when unset.}
 }}
 
 \item{credentials}{Optional credentials shorthand for the config parameter
@@ -55,7 +56,7 @@ Operations section.
 \description{
 This section provides documentation for the Amazon CodeGuru Reviewer API operations. CodeGuru Reviewer is a service that uses program analysis and machine learning to detect potential defects that are difficult for developers to find and recommends fixes in your Java and Python code.
 
-By proactively detecting and providing recommendations for addressing code defects and implementing best practices, CodeGuru Reviewer improves the overall quality and maintainability of your code base during the code review stage. For more information about CodeGuru Reviewer, see the \emph{\href{https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/welcome.html}{Amazon CodeGuru Reviewer User Guide}}.
+By proactively detecting and providing recommendations for addressing code defects and implementing best practices, CodeGuru Reviewer improves the overall quality and maintainability of your code base during the code review stage. For more information about CodeGuru Reviewer, see the \emph{\href{https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/welcome.html}{Amazon CodeGuru Reviewer User Guide}.}
 
 To improve the security of your CodeGuru Reviewer API calls, you can establish a private connection between your VPC and CodeGuru Reviewer by creating an \emph{interface VPC endpoint}. For more information, see \href{https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/vpc-interface-endpoints.html}{CodeGuru Reviewer and interface VPC endpoints (Amazon Web Services PrivateLink)} in the \emph{Amazon CodeGuru Reviewer User Guide}.
 }
@@ -78,7 +79,8 @@ To improve the security of your CodeGuru Reviewer API calls, you can establish a
     close_connection = "logical",
     timeout = "numeric",
     s3_force_path_style = "logical",
-    sts_regional_endpoint = "string"
+    sts_regional_endpoint = "string",
+    use_dual_stack = "logical"
   ),
   credentials = list(
     creds = list(

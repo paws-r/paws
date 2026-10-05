@@ -1487,7 +1487,7 @@ kms_delete_imported_key_material <- function(KeyId, KeyMaterialId = NULL) {
 #' 
 #' You must use an asymmetric NIST-standard elliptic curve (ECC) or SM2 (China Regions only) KMS key pair with a `KeyUsage` value of `KEY_AGREEMENT` to call DeriveSharedSecret.
 #' 
-#' DeriveSharedSecret uses the [Elliptic Curve Cryptography Cofactor Diffie-Hellman Primitive](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-56Ar3.pdf#page%3D60) (ECDH) to establish a key agreement between two peers by deriving a shared secret from their elliptic curve public-private key pairs. You can use the raw shared secret that DeriveSharedSecret returns to derive a symmetric key that can encrypt and decrypt data that is sent between the two peers, or that can generate and verify HMACs. KMS recommends that you follow NIST recommendations for key derivation when using the raw shared secret to derive a symmetric key.
+#' DeriveSharedSecret uses the Elliptic Curve Cryptography Cofactor Diffie-Hellman Primitive (ECDH) to establish a key agreement between two peers by deriving a shared secret from their elliptic curve public-private key pairs. You can use the raw shared secret that DeriveSharedSecret returns to derive a symmetric key that can encrypt and decrypt data that is sent between the two peers, or that can generate and verify HMACs. KMS recommends that you follow NIST recommendations for key derivation when using the raw shared secret to derive a symmetric key.
 #' 
 #' The following workflow demonstrates how to establish key agreement over an insecure communication channel using DeriveSharedSecret.
 #' 
@@ -5768,7 +5768,7 @@ kms_schedule_key_deletion <- function(KeyId, PendingWindowInDays = NULL) {
 #' 
 #' -   ED25519_PH_SHA_512 signing algorithm requires KMS `MessageType:DIGEST`
 #' 
-#' When you specify the ED25519_PH_SHA_512 signing algorithm with `MessageType:DIGEST`, KMS still performs the SHA-512 prehash described in [Step 1 of Section 7.8.1 in FIPS 186-5](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-5.pdf#page%3D39). This means the input is hashed twice: once by you and once by KMS.
+#' When you specify the ED25519_PH_SHA_512 signing algorithm with `MessageType:DIGEST`, KMS still performs the SHA-512 prehash described in Step 1 of Section 7.8.1 in FIPS 186-5. This means the input is hashed twice: once by you and once by KMS.
 #' 
 #' When the value of `MessageType` is `DIGEST`, the length of the `Message` value must match the length of hashed messages for the specified signing algorithm.
 #' 
@@ -6578,7 +6578,7 @@ kms_update_primary_region <- function(KeyId, PrimaryRegion) {
 #' 
 #' -   ED25519_PH_SHA_512 signing algorithm requires KMS `MessageType:DIGEST`
 #' 
-#' When you specify the ED25519_PH_SHA_512 signing algorithm with `MessageType:DIGEST`, KMS still performs the SHA-512 prehash described in [Step 1 of Section 7.8.1 in FIPS 186-5](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-5.pdf#page%3D39). This means the input is hashed twice: once by you and once by KMS.
+#' When you specify the ED25519_PH_SHA_512 signing algorithm with `MessageType:DIGEST`, KMS still performs the SHA-512 prehash described in Step 1 of Section 7.8.1 in FIPS 186-5. This means the input is hashed twice: once by you and once by KMS.
 #' 
 #' When the value of `MessageType` is `DIGEST`, the length of the `Message` value must match the length of hashed messages for the specified signing algorithm.
 #' 

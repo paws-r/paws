@@ -2125,7 +2125,7 @@ s3control_delete_multi_region_access_point <- function(AccountId, ClientToken, D
 #' @description
 #' This operation is not supported by directory buckets.
 #' 
-#' Removes the `PublicAccessBlock` configuration for an Amazon Web Services account. This operation might be restricted when the account is managed by organization-level Block Public Access policies. You’ll get an Access Denied (403) error when the account is managed by organization-level Block Public Access policies. Organization-level policies override account-level settings, preventing direct account-level modifications. For more information, see [Using Amazon S3 block public access](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html).
+#' Removes the `PublicAccessBlock` configuration for an Amazon Web Services account. This operation might be restricted when the account is managed by organization-level Block Public Access policies. You’ll get an Access Denied (403) error when the account is managed by organization-level Block Public Access policies. Organization-level policies override account-level settings, preventing direct account-level modifications. For more information, see [Using Amazon S3 block public access](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html?refid=5a5e1287-c028-4184-8719-3a5a862834a2).
 #' 
 #' Related actions include:
 #' 
@@ -4706,7 +4706,7 @@ s3control_get_multi_region_access_point_routes <- function(AccountId, Mrap) {
 #' @description
 #' This operation is not supported by directory buckets.
 #' 
-#' Retrieves the `PublicAccessBlock` configuration for an Amazon Web Services account. This operation returns the effective account-level configuration, which may inherit from organization-level policies. For more information, see [Using Amazon S3 block public access](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html).
+#' Retrieves the `PublicAccessBlock` configuration for an Amazon Web Services account. This operation returns the effective account-level configuration, which may inherit from organization-level policies. For more information, see [Using Amazon S3 block public access](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html?refid=5a5e1287-c028-4184-8719-3a5a862834a2).
 #' 
 #' Related actions include:
 #' 
@@ -7174,7 +7174,7 @@ s3control_put_multi_region_access_point_policy <- function(AccountId, ClientToke
 #' @description
 #' This operation is not supported by directory buckets.
 #' 
-#' Creates or modifies the `PublicAccessBlock` configuration for an Amazon Web Services account. This operation may be restricted when the account is managed by organization-level Block Public Access policies. You might get an Access Denied (403) error when the account is managed by organization-level Block Public Access policies. Organization-level policies override account-level settings, preventing direct account-level modifications. For this operation, users must have the `s3:PutAccountPublicAccessBlock` permission. For more information, see [Using Amazon S3 block public access](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html).
+#' Creates or modifies the `PublicAccessBlock` configuration for an Amazon Web Services account. This operation may be restricted when the account is managed by organization-level Block Public Access policies. You might get an Access Denied (403) error when the account is managed by organization-level Block Public Access policies. Organization-level policies override account-level settings, preventing direct account-level modifications. For this operation, users must have the `s3:PutAccountPublicAccessBlock` permission. For more information, see [Using Amazon S3 block public access](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html?refid=5a5e1287-c028-4184-8719-3a5a862834a2).
 #' 
 #' Related actions include:
 #' 

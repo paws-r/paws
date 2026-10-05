@@ -30,7 +30,7 @@ elasticsearchservice_create_elasticsearch_domain(
 \arguments{
 \item{DomainName}{[required] The name of the Elasticsearch domain that you are creating. Domain names are unique across the domains owned by an account within an AWS region. Domain names must start with a lowercase letter and can contain the following characters: a-z (lowercase), 0-9, and - (hyphen).}
 
-\item{ElasticsearchVersion}{String of format X.Y to specify version for the Elasticsearch domain eg. "1.5" or "2.3". For more information, see \if{html}{\out{<a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#es-createdomains" target="_blank">}}Creating Elasticsearch Domains\if{html}{\out{</a>}} in the \emph{Amazon Elasticsearch Service Developer Guide}.}
+\item{ElasticsearchVersion}{String of format X.Y to specify version for the Elasticsearch domain eg. "1.5" or "2.3". For more information, see \if{html}{\out{<a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html?refid=ep_card_main_event_page#es-createdomains" target="_blank">}}Creating Elasticsearch Domains\if{html}{\out{</a>}} in the \emph{Amazon Elasticsearch Service Developer Guide}.}
 
 \item{ElasticsearchClusterConfig}{Configuration options for an Elasticsearch domain. Specifies the instance type and number of instances in the domain cluster.}
 
@@ -48,7 +48,7 @@ elasticsearchservice_create_elasticsearch_domain(
 
 \item{NodeToNodeEncryptionOptions}{Specifies the NodeToNodeEncryptionOptions.}
 
-\item{AdvancedOptions}{Option to allow references to indices in an HTTP request body. Must be \code{false} when configuring access to individual sub-resources. By default, the value is \code{true}. See \if{html}{\out{<a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#es-createdomain-configure-advanced-options" target="_blank">}}Configuration Advanced Options\if{html}{\out{</a>}} for more information.}
+\item{AdvancedOptions}{Option to allow references to indices in an HTTP request body. Must be \code{false} when configuring access to individual sub-resources. By default, the value is \code{true}. See \if{html}{\out{<a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html?refid=ep_card_main_event_page#es-createdomain-configure-advanced-options" target="_blank">}}Configuration Advanced Options\if{html}{\out{</a>}} for more information.}
 
 \item{LogPublishingOptions}{Map of \code{LogType} and \code{LogPublishingOption}, each containing options to publish a given type of Elasticsearch log.}
 
@@ -73,7 +73,7 @@ Maximum suspension duration: 3 days.}
 \item{EngineMode}{The engine mode for the domain. For valid values and requirements, see \code{DomainEngineMode}.}
 }
 \description{
-Creates a new Elasticsearch domain. For more information, see \if{html}{\out{<a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#es-createdomains" target="_blank">}}Creating Elasticsearch Domains\if{html}{\out{</a>}} in the \emph{Amazon Elasticsearch Service Developer Guide}.
+Creates a new Elasticsearch domain. For more information, see \if{html}{\out{<a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html?refid=ep_card_main_event_page#es-createdomains" target="_blank">}}Creating Elasticsearch Domains\if{html}{\out{</a>}} in the \emph{Amazon Elasticsearch Service Developer Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/elasticsearchservice_create_elasticsearch_domain/} for full documentation.
 }

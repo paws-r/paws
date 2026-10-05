@@ -14,7 +14,7 @@ kinesis_list_stream_consumers(
 )
 }
 \arguments{
-\item{StreamARN}{[required] The ARN of the Kinesis data stream for which you want to list the registered consumers. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-kinesis-streams}{Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces}.}
+\item{StreamARN}{[required] The ARN of the Kinesis data stream for which you want to list the registered consumers. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=c7bead05-c8d7-43aa-88b1-1c8faa1b5c49#arn-syntax-kinesis-streams}{Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces}.}
 
 \item{NextToken}{When the number of consumers that are registered with the data stream is greater than the default value for the \code{MaxResults} parameter, or if you explicitly specify a value for \code{MaxResults} that is less than the number of consumers that are registered with the data stream, the response includes a pagination token named \code{NextToken}. You can specify this \code{NextToken} value in a subsequent call to \code{\link[=kinesis_list_stream_consumers]{list_stream_consumers}} to list the next set of registered consumers.
 

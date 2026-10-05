@@ -40,6 +40,7 @@ NULL
 #' \item{\strong{timeout}: The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}: Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
 #' \item{\strong{sts_regional_endpoint}: Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' \item{\strong{use_dual_stack}: Set this to `true` to use the dualstack (IPv4 and IPv6) endpoint for a service, where available, falling back to the regular endpoint when it isn't. Defaults to the `AWS_USE_DUALSTACK_ENDPOINT` environment variable when unset.}
 #' }
 #' @param
 #' credentials
@@ -78,7 +79,8 @@ NULL
 #'     close_connection = "logical",
 #'     timeout = "numeric",
 #'     s3_force_path_style = "logical",
-#'     sts_regional_endpoint = "string"
+#'     sts_regional_endpoint = "string",
+#'     use_dual_stack = "logical"
 #'   ),
 #'   credentials = list(
 #'     creds = list(
@@ -136,6 +138,7 @@ NULL
 #'  \link[=s3_delete_object_tagging]{delete_object_tagging} \tab This operation is not supported for directory buckets\cr
 #'  \link[=s3_delete_public_access_block]{delete_public_access_block} \tab This operation is not supported for directory buckets\cr
 #'  \link[=s3_download_file]{download_file} \tab Download a file from S3 and store it at a specified file location\cr
+#'  \link[=s3_generate_presigned_post]{generate_presigned_post} \tab @title Generate the url and form fields used for a presigned s3 post\cr
 #'  \link[=s3_generate_presigned_url]{generate_presigned_url} \tab @title Generate a presigned url given a client, its method, and arguments\cr
 #'  \link[=s3_get_bucket_abac]{get_bucket_abac} \tab Returns the attribute-based access control (ABAC) property of the general purpose bucket\cr
 #'  \link[=s3_get_bucket_accelerate_configuration]{get_bucket_accelerate_configuration} \tab This operation is not supported for directory buckets\cr
@@ -256,7 +259,7 @@ s3 <- function(config = list(), credentials = list(), endpoint = NULL, region = 
 
 .s3$metadata <- list(
   service_name = "s3",
-  endpoints = list("aws-global" = list(endpoint = "s3.amazonaws.com", global = TRUE, signing_region = "us-east-1"), "us-east-1" = list(endpoint = "s3.amazonaws.com", global = TRUE), "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "s3.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "s3.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "s3.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "s3.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "s3.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "s3.{region}.amazonaws.eu", global = FALSE)),
+  endpoints = list("aws-global" = list(endpoint = "s3.amazonaws.com", global = TRUE, signing_region = "us-east-1"), "us-east-1" = list(endpoint = "s3.amazonaws.com", global = TRUE), "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE, dualstack_endpoint = "s3.dualstack.{region}.amazonaws.com"), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "s3.{region}.amazonaws.com.cn", global = FALSE, dualstack_endpoint = "s3.dualstack.{region}.amazonaws.com.cn"), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "s3.{region}.amazonaws.com", global = FALSE, dualstack_endpoint = "s3.dualstack.{region}.amazonaws.com"), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "s3.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "s3.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "s3.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "s3.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "s3.{region}.amazonaws.eu", global = FALSE)),
   service_id = "S3",
   api_version = "2006-03-01",
   signing_name = "s3",

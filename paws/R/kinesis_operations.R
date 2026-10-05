@@ -593,7 +593,7 @@ kinesis_delete_stream <- function(StreamName = NULL, EnforceConsumerDeletion = N
 #' kinesis_deregister_stream_consumer(StreamARN, ConsumerName, ConsumerARN,
 #'   StreamId)
 #'
-#' @param StreamARN The ARN of the Kinesis data stream that the consumer is registered with. For more information, see [Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-kinesis-streams).
+#' @param StreamARN The ARN of the Kinesis data stream that the consumer is registered with. For more information, see [Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=c7bead05-c8d7-43aa-88b1-1c8faa1b5c49#arn-syntax-kinesis-streams).
 #' @param ConsumerName The name that you gave to the consumer.
 #' @param ConsumerARN The ARN returned by Kinesis Data Streams when you registered the consumer. If you don't know the ARN of the consumer that you want to deregister, you can use the ListStreamConsumers operation to get a list of the descriptions of all the consumers that are currently registered with a given data stream. The description of a consumer contains its ARN.
 #' @param StreamId Not Implemented. Reserved for future use.
@@ -1006,7 +1006,7 @@ kinesis_describe_stream <- function(StreamName = NULL, Limit = NULL, ExclusiveSt
 #' kinesis_describe_stream_consumer(StreamARN, ConsumerName, ConsumerARN,
 #'   StreamId)
 #'
-#' @param StreamARN The ARN of the Kinesis data stream that the consumer is registered with. For more information, see [Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-kinesis-streams).
+#' @param StreamARN The ARN of the Kinesis data stream that the consumer is registered with. For more information, see [Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=c7bead05-c8d7-43aa-88b1-1c8faa1b5c49#arn-syntax-kinesis-streams).
 #' @param ConsumerName The name that you gave to the consumer.
 #' @param ConsumerARN The ARN returned by Kinesis Data Streams when you registered the consumer.
 #' @param StreamId Not Implemented. Reserved for future use.
@@ -1848,7 +1848,7 @@ kinesis_list_shards <- function(StreamName = NULL, NextToken = NULL, ExclusiveSt
 #' kinesis_list_stream_consumers(StreamARN, NextToken, MaxResults,
 #'   StreamCreationTimestamp, StreamId)
 #'
-#' @param StreamARN &#91;required&#93; The ARN of the Kinesis data stream for which you want to list the registered consumers. For more information, see [Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-kinesis-streams).
+#' @param StreamARN &#91;required&#93; The ARN of the Kinesis data stream for which you want to list the registered consumers. For more information, see [Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=c7bead05-c8d7-43aa-88b1-1c8faa1b5c49#arn-syntax-kinesis-streams).
 #' @param NextToken When the number of consumers that are registered with the data stream is greater than the default value for the `MaxResults` parameter, or if you explicitly specify a value for `MaxResults` that is less than the number of consumers that are registered with the data stream, the response includes a pagination token named `NextToken`. You can specify this `NextToken` value in a subsequent call to [`list_stream_consumers`][kinesis_list_stream_consumers] to list the next set of registered consumers.
 #' 
 #' Don't specify `StreamName` or `StreamCreationTimestamp` if you specify `NextToken` because the latter unambiguously identifies the stream.
@@ -2454,7 +2454,7 @@ kinesis_put_resource_policy <- function(ResourceARN, StreamId = NULL, Policy) {
 #' kinesis_register_stream_consumer(StreamARN, ConsumerName, StreamId,
 #'   Tags)
 #'
-#' @param StreamARN &#91;required&#93; The ARN of the Kinesis data stream that you want to register the consumer with. For more info, see [Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-kinesis-streams).
+#' @param StreamARN &#91;required&#93; The ARN of the Kinesis data stream that you want to register the consumer with. For more info, see [Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=c7bead05-c8d7-43aa-88b1-1c8faa1b5c49#arn-syntax-kinesis-streams).
 #' @param ConsumerName &#91;required&#93; For a given Kinesis data stream, each consumer must have a unique name. However, consumer names don't have to be unique across data streams.
 #' @param StreamId Not Implemented. Reserved for future use.
 #' @param Tags A set of up to 50 key-value pairs. A tag consists of a required key and an optional value.

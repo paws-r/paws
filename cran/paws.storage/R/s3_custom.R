@@ -306,8 +306,12 @@ s3_generate_presigned_url <- function(
   }
 
   # sign request
+  # Default to SigV4 (not the legacy "v1" query-auth scheme), matching
+  # boto3's default and because SigV4-only regions reject "v1" presigned
+  # URLs outright. Set `signature_version = "v1"` to opt back into the
+  # legacy scheme.
   request <- do.call(
-    signer(config, "v1_sign_request_handler"),
+    signer(config, "v4_sign_request_handler"),
     list(request = request),
     envir = getNamespace("paws.common")
   )
@@ -324,3 +328,193 @@ s3_generate_presigned_url <- function(
 }
 
 .s3$operations$generate_presigned_url <- s3_generate_presigned_url
+
+#' @title Generate the url and form fields used for a presigned s3 post
+#'
+#' @usage
+#' s3_generate_presigned_post(Bucket, Key, Fields = list(),
+#' Conditions = list(), ExpiresIn = 3600)
+#'
+#' @param Bucket (character): The name of the bucket to presign the post to.
+#' Note that bucket related conditions should not be included in the
+#' ``Conditions`` parameter.
+#' @param Key (character): Key name, optionally add \code{${filename}} to the
+#' end to attach the submitted filename. Note that key related conditions and
+#' fields are filled out for you and should not be included in the
+#' ``Fields`` or ``Conditions`` parameter.
+#' @param Fields (list): A list of prefilled form fields to build on top of.
+#' Note that if a particular element is included in ``Fields`` it will not
+#' be automatically added to ``Conditions``; you must specify a condition
+#' for it as well.
+#' @param Conditions (list): A list of conditions to include in the policy.
+#' Each element is either a named list for an exact-match condition, e.g.
+#' \code{list(acl = "public-read")}, or a plain list for an array-style
+#' condition, e.g. \code{list("starts-with", "$key", "uploads/")} or
+#' \code{list("content-length-range", 1, 10485760)}.
+#' @param ExpiresIn (numeric): The number of seconds the presigned post is
+#' valid for. By default it expires in an hour (3600 seconds).
+#' @return A list with two elements: ``url`` and ``fields``. ``url`` is the
+#' url to post to. ``fields`` is a list of form fields and values to
+#' include in the post.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$generate_presigned_post(
+#'   Bucket = "string",
+#'   Key = "string",
+#'   Fields = list(),
+#'   Conditions = list(),
+#'   ExpiresIn = 3600
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # The following example generates the url and form fields for a presigned
+#' # post that you can give to others so that they can upload a file to an
+#' # S3 bucket without needing AWS credentials.
+#' svc$generate_presigned_post(
+#'   Bucket = "BUCKET_NAME",
+#'   Key = "OBJECT_KEY"
+#' )
+#' }
+#' @keywords internal
+#' @rdname s3_generate_presigned_post
+s3_generate_presigned_post <- function(
+  Bucket,
+  Key,
+  Fields = list(),
+  Conditions = list(),
+  ExpiresIn = 3600
+) {
+  stopifnot(
+    "`Bucket` must be a character" = is.character(Bucket),
+    "`Key` must be a character" = is.character(Key),
+    "`Fields` must be a list of prefilled form fields" = is.list(Fields),
+    "`Conditions` must be a list of conditions" = is.list(Conditions),
+    "`ExpiresIn` must be numeric" = is.numeric(ExpiresIn),
+    "`ExpiresIn` must be greater than 0" = ExpiresIn > 0L
+  )
+
+  pkg_name <- "paws.storage"
+  pkg_api <- "s3"
+  .pkg_api <- paste0(".", pkg_api)
+
+  # Reuse CreateBucket's operation metadata for its url shape, the same
+  # reason botocore does:
+  # https://github.com/boto/botocore/blob/develop/botocore/signers.py#L945
+  operation_fun <- get(
+    sprintf("%s_create_bucket", pkg_api),
+    envir = getNamespace(pkg_name)
+  )
+  operation_body <- body(operation_fun)
+  op <- eval(operation_body[[2]][[3]], envir = getNamespace("paws.common"))
+
+  input <- get(.pkg_api, envir = getNamespace(pkg_name))$create_bucket_input(
+    Bucket = Bucket
+  )
+  output <- get(.pkg_api, envir = getNamespace(pkg_name))$create_bucket_output()
+  config <- get_config()
+  svc <- get(.pkg_api, envir = getNamespace(pkg_name))[["service"]](config, op)
+  request <- new_request(svc, op, input, output)
+
+  # resolve the bucket's url (dualstack, custom endpoints, path- vs.
+  # virtual-hosted-style, ARN access points - same as every other S3 op)
+  request <- do.call(
+    "build",
+    list(request = request),
+    envir = getNamespace("paws.common")
+  )
+
+  region <- request$client_info$signing_region
+  if (is.null(region) || region == "") {
+    region <- request$config$region
+  }
+  service <- "s3"
+
+  credentials <- do.call(
+    "get_credentials",
+    list(credentials = request$config$credentials, signing_name = service),
+    envir = getNamespace("paws.common")
+  )
+  creds <- credentials$creds
+
+  fields <- Fields
+  conditions <- Conditions
+
+  conditions[[length(conditions) + 1]] <- list(bucket = Bucket)
+
+  # a key ending in ${filename} can only be constrained with a prefix match
+  filename_suffix <- "${filename}"
+  if (endsWith(Key, filename_suffix)) {
+    prefix <- substr(Key, 1, nchar(Key) - nchar(filename_suffix))
+    conditions[[length(conditions) + 1]] <- list("starts-with", "$key", prefix)
+  } else {
+    conditions[[length(conditions) + 1]] <- list(key = Key)
+  }
+  fields$key <- Key
+
+  now_time <- Sys.time()
+  timestamp <- format(now_time, tz = "UTC", format = "%Y%m%dT%H%M%SZ")
+  short_date <- format(now_time, tz = "UTC", format = "%Y%m%d")
+
+  credential_scope <- paste(short_date, region, service, "aws4_request", sep = "/")
+  scope <- paste(creds$access_key_id, credential_scope, sep = "/")
+
+  fields[["x-amz-algorithm"]] <- "AWS4-HMAC-SHA256"
+  fields[["x-amz-credential"]] <- scope
+  fields[["x-amz-date"]] <- timestamp
+
+  conditions[[length(conditions) + 1]] <- list("x-amz-algorithm" = "AWS4-HMAC-SHA256")
+  conditions[[length(conditions) + 1]] <- list("x-amz-credential" = scope)
+  conditions[[length(conditions) + 1]] <- list("x-amz-date" = timestamp)
+
+  if (!is.null(creds$session_token) && nzchar(creds$session_token)) {
+    fields[["x-amz-security-token"]] <- creds$session_token
+    conditions[[length(conditions) + 1]] <- list(
+      "x-amz-security-token" = creds$session_token
+    )
+  }
+
+  # base64-encoded policy document goes in the "policy" field
+  expiration <- format(now_time + ExpiresIn, tz = "UTC", format = "%Y-%m-%dT%H:%M:%SZ")
+  policy <- list(expiration = expiration, conditions = conditions)
+  policy_json <- do.call(
+    "json_build",
+    list(object = policy),
+    envir = getNamespace("paws.common")
+  )
+  policy_b64 <- do.call(
+    "raw_to_base64",
+    list(value = charToRaw(policy_json)),
+    envir = getNamespace("paws.common")
+  )
+  fields$policy <- policy_b64
+
+  # Sign the base64 policy string directly (not the usual canonical-request
+  # string-to-sign) using the same SigV4 key-derivation chain as every other
+  # paws signer.
+  hmac_sign <- function(key, data) {
+    do.call(
+      "make_hmac",
+      list(key = key, data = data),
+      envir = getNamespace("paws.common")
+    )
+  }
+  date_key <- hmac_sign(paste0("AWS4", creds$secret_access_key), short_date)
+  region_key <- hmac_sign(date_key, region)
+  service_key <- hmac_sign(region_key, service)
+  signing_key <- hmac_sign(service_key, "aws4_request")
+  signature_raw <- hmac_sign(signing_key, policy_b64)
+  fields[["x-amz-signature"]] <- paste(signature_raw, collapse = "")
+
+  url <- do.call(
+    "build_url",
+    list(url = request$http_request$url),
+    envir = getNamespace("paws.common")
+  )
+
+  return(list(url = url, fields = fields))
+}
+
+.s3$operations$generate_presigned_post <- s3_generate_presigned_post

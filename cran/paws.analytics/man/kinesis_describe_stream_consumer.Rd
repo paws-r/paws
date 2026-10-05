@@ -13,7 +13,7 @@ kinesis_describe_stream_consumer(
 )
 }
 \arguments{
-\item{StreamARN}{The ARN of the Kinesis data stream that the consumer is registered with. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-kinesis-streams}{Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces}.}
+\item{StreamARN}{The ARN of the Kinesis data stream that the consumer is registered with. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=c7bead05-c8d7-43aa-88b1-1c8faa1b5c49#arn-syntax-kinesis-streams}{Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces}.}
 
 \item{ConsumerName}{The name that you gave to the consumer.}
 

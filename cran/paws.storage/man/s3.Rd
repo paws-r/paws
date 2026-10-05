@@ -24,6 +24,7 @@ s3(config = list(), credentials = list(), endpoint = NULL, region = NULL)
 \item{\strong{timeout}: The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 \item{\strong{s3_force_path_style}: Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
 \item{\strong{sts_regional_endpoint}: Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+\item{\strong{use_dual_stack}: Set this to \code{true} to use the dualstack (IPv4 and IPv6) endpoint for a service, where available, falling back to the regular endpoint when it isn't. Defaults to the \code{AWS_USE_DUALSTACK_ENDPOINT} environment variable when unset.}
 }}
 
 \item{credentials}{Optional credentials shorthand for the config parameter
@@ -83,7 +84,8 @@ Support for SOAP over HTTP is deprecated, but it is still available over HTTPS. 
     close_connection = "logical",
     timeout = "numeric",
     s3_force_path_style = "logical",
-    sts_regional_endpoint = "string"
+    sts_regional_endpoint = "string",
+    use_dual_stack = "logical"
   ),
   credentials = list(
     creds = list(
@@ -132,6 +134,7 @@ Support for SOAP over HTTP is deprecated, but it is still available over HTTPS. 
 \link[=s3_delete_object_tagging]{delete_object_tagging} \tab This operation is not supported for directory buckets\cr
 \link[=s3_delete_public_access_block]{delete_public_access_block} \tab This operation is not supported for directory buckets\cr
 \link[=s3_download_file]{download_file} \tab Download a file from S3 and store it at a specified file location\cr
+\link[=s3_generate_presigned_post]{generate_presigned_post} \tab @title Generate the url and form fields used for a presigned s3 post\cr
 \link[=s3_generate_presigned_url]{generate_presigned_url} \tab @title Generate a presigned url given a client, its method, and arguments\cr
 \link[=s3_get_bucket_abac]{get_bucket_abac} \tab Returns the attribute-based access control (ABAC) property of the general purpose bucket\cr
 \link[=s3_get_bucket_accelerate_configuration]{get_bucket_accelerate_configuration} \tab This operation is not supported for directory buckets\cr
