@@ -1,5 +1,5 @@
 ## Submission
-This release fixes C++ compilation issues on older R versions and improves handling of nested structures in DynamoDB operations
+This release adds S3 outposts/Object Lambda ARN support, S3 flexible checksums, dualstack and IPv6 endpoint support, a credentials vignette, and fixes SigV4 header-injection and IPv6 host-parsing bugs.
 
 ## Test environments
 
