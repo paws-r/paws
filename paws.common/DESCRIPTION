@@ -37,8 +37,8 @@ Suggests:
     mockery,
     withr,
     rstudioapi,
-    testthat (>= 3.0.0)
-SystemRequirements: pandoc (>= 1.12.3) - http://pandoc.org
+    testthat (>= 3.0.0),
+    litedown
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
 Collate:
     'RcppExports.R'
@@ -95,3 +95,4 @@ Collate:
     'time.R'
 Config/testthat/edition: 3
 Config/roxygen2/version: 8.1.0
+VignetteBuilder: litedown

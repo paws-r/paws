@@ -6,6 +6,7 @@
 * add IPv6 support for the EC2 Instance Metadata Service (IMDS), aligning with boto3: set `AWS_EC2_METADATA_SERVICE_ENDPOINT_MODE=ipv6` or `AWS_IMDS_USE_IPV6=true` to fetch credentials over `[fd00:ec2::254]` instead of `169.254.169.254`, or set `AWS_EC2_METADATA_SERVICE_ENDPOINT` to use a fully custom metadata endpoint (#561). Thanks to @jornfranke for raising issue.
 * fix `get_port`/`strip_port` corrupting literal IPv6 host addresses (e.g. `[fd00:ec2::254]:443`) when stripping the default port from the signed `Host` header, which could produce a `SignatureDoesNotMatch` error for services with an `endpoint` pointed directly at a literal IPv6 address. Also fix the same class of bug in the C++ `parse_url()`/`build_url()` host/port splitting.
 * add support for dualstack (IPv4 and IPv6) API endpoints via the `use_dual_stack` config option (also settable via `AWS_USE_DUALSTACK_ENDPOINT`), resolving to each service's dualstack hostname (e.g. `s3.dualstack.{region}.amazonaws.com`) where one exists, and falling back to the regular endpoint otherwise.
+* add a `vignette("credentials", "paws.common")` documenting how to set credentials, region, and profile.
 
 # paws.common 0.8.10
 * replace `Rf_error` with `Rcpp::stop` in C++ code for proper stack unwinding and memory cleanup (#971). This change prevents memory leaks when errors occur in the populate function and ensures compatibility with future Rcpp versions. Thanks to @Enchufa2 for raising issue.

@@ -347,7 +347,10 @@ test_that("resolve_imds_base_url errors on an invalid endpoint mode", {
       AWS_EC2_METADATA_SERVICE_ENDPOINT_MODE = "ipv5",
       AWS_IMDS_USE_IPV6 = ""
     ),
-    expect_error(resolve_imds_base_url(), "Invalid EC2 Instance Metadata Service endpoint mode")
+    expect_error(
+      resolve_imds_base_url(),
+      "Invalid EC2 Instance Metadata Service endpoint mode"
+    )
   )
 })
 
@@ -374,10 +377,7 @@ test_that("get_instance_metadata uses the IPv6 IMDS host under AWS_IMDS_USE_IPV6
   mock_imdsv6_behaviour <- mock2(side_effect = imdsv6_behaviour)
   mockery::stub(get_instance_metadata, "issue", mock_imdsv6_behaviour)
 
-  withr::with_envvar(
-    c(AWS_IMDS_USE_IPV6 = "true"),
-    actual <- get_instance_metadata()
-  )
+  withr::with_envvar(c(AWS_IMDS_USE_IPV6 = "true"), actual <- get_instance_metadata())
 
   expect_equal(mock_call_no(mock_imdsv6_behaviour), 2)
   expect_equal(charToRaw(valid_metadata_response), actual$body)

@@ -145,14 +145,14 @@ test_that("merge_region_config: service with no dualstack variant", {
       defaults = list(hostname = "{service}.{region}.{dnsSuffix}"),
       dnsSuffix = "amazonaws.com",
       regionRegex = "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$",
-      services = list(
-        logs = list(endpoints = list("us-east-1" = list()))
-      )
+      services = list(logs = list(endpoints = list("us-east-1" = list())))
     ))
   )
   api <- list(metadata = list(endpointPrefix = "logs"))
   actual <- merge_region_config(api, region_config)
-  endpoint <- actual$region_config[["^(us|eu|ap|sa|ca|me|af|il|mx)\\\\-\\\\w+\\\\-\\\\d+$"]]
+  endpoint <- actual$region_config[[
+    "^(us|eu|ap|sa|ca|me|af|il|mx)\\\\-\\\\w+\\\\-\\\\d+$"
+  ]]
   expect_false("dualstack_endpoint" %in% names(endpoint))
 })
 
@@ -178,7 +178,9 @@ test_that("merge_region_config: service with a plain per-region dualstack varian
   )
   api <- list(metadata = list(endpointPrefix = "ec2"))
   actual <- merge_region_config(api, region_config)
-  endpoint <- actual$region_config[["^(us|eu|ap|sa|ca|me|af|il|mx)\\\\-\\\\w+\\\\-\\\\d+$"]]
+  endpoint <- actual$region_config[[
+    "^(us|eu|ap|sa|ca|me|af|il|mx)\\\\-\\\\w+\\\\-\\\\d+$"
+  ]]
   expect_equal(endpoint$dualstack_endpoint, "ec2.{region}.api.aws")
 })
 
@@ -211,7 +213,9 @@ test_that("merge_region_config: service with a defaults.variants dualstack templ
   )
   api <- list(metadata = list(endpointPrefix = "s3"))
   actual <- merge_region_config(api, region_config)
-  endpoint <- actual$region_config[["^(us|eu|ap|sa|ca|me|af|il|mx)\\\\-\\\\w+\\\\-\\\\d+$"]]
+  endpoint <- actual$region_config[[
+    "^(us|eu|ap|sa|ca|me|af|il|mx)\\\\-\\\\w+\\\\-\\\\d+$"
+  ]]
   expect_equal(endpoint$dualstack_endpoint, "s3.dualstack.{region}.amazonaws.com")
 })
 
@@ -225,9 +229,10 @@ test_that("merge_region_config: combined dualstack+fips variant is skipped", {
         foo = list(
           endpoints = list(
             "us-east-1" = list(
-              variants = list(
-                list(hostname = "foo-fips.dualstack.us-east-1.amazonaws.com", tags = list("dualstack", "fips"))
-              )
+              variants = list(list(
+                hostname = "foo-fips.dualstack.us-east-1.amazonaws.com",
+                tags = list("dualstack", "fips")
+              ))
             )
           )
         )
@@ -236,6 +241,8 @@ test_that("merge_region_config: combined dualstack+fips variant is skipped", {
   )
   api <- list(metadata = list(endpointPrefix = "foo"))
   actual <- merge_region_config(api, region_config)
-  endpoint <- actual$region_config[["^(us|eu|ap|sa|ca|me|af|il|mx)\\\\-\\\\w+\\\\-\\\\d+$"]]
+  endpoint <- actual$region_config[[
+    "^(us|eu|ap|sa|ca|me|af|il|mx)\\\\-\\\\w+\\\\-\\\\d+$"
+  ]]
   expect_false("dualstack_endpoint" %in% names(endpoint))
 })

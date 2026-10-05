@@ -90,9 +90,7 @@ test_that("write_placeholder_test writes a loadable-package smoke test", {
 test_that("make_tests uses api_name (not the derived service name) for category lookup", {
   api <- list(
     metadata = list(serviceAbbreviation = "Amazon Elasticsearch Service"),
-    operations = list(
-      ListDomainNames = list(name = "ListDomainNames")
-    ),
+    operations = list(ListDomainNames = list(name = "ListDomainNames")),
     shapes = list()
   )
   categories <- list(list(name = "analytics", services = list("es")))
