@@ -23,7 +23,7 @@ For requests made using the Amazon Web Services Command Line Interface (CLI) or 
 
 If you provide an individual checksum, Amazon S3 ignores any provided \code{ChecksumAlgorithm} parameter.}
 
-\item{PublicAccessBlockConfiguration}{[required] The \code{PublicAccessBlock} configuration that you want to apply to this Amazon S3 bucket. You can enable the configuration options in any combination. For more information about when Amazon S3 considers a bucket or object public, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html#access-control-block-public-access-policy-status}{The Meaning of "Public"} in the \emph{Amazon S3 User Guide}.}
+\item{PublicAccessBlockConfiguration}{[required] The \code{PublicAccessBlock} configuration that you want to apply to this Amazon S3 bucket. You can enable the configuration options in any combination. For more information about when Amazon S3 considers a bucket or object public, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html?refid=5a5e1287-c028-4184-8719-3a5a862834a2#access-control-block-public-access-policy-status}{The Meaning of "Public"} in the \emph{Amazon S3 User Guide}.}
 
 \item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you provide does not match the actual owner of the bucket, the request fails with the HTTP status code \verb{403 Forbidden} (access denied).}
 }

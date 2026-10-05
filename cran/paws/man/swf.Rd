@@ -24,6 +24,7 @@ swf(config = list(), credentials = list(), endpoint = NULL, region = NULL)
 \item{\strong{timeout}: The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 \item{\strong{s3_force_path_style}: Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
 \item{\strong{sts_regional_endpoint}: Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+\item{\strong{use_dual_stack}: Set this to \code{true} to use the dualstack (IPv4 and IPv6) endpoint for a service, where available, falling back to the regular endpoint when it isn't. Defaults to the \code{AWS_USE_DUALSTACK_ENDPOINT} environment variable when unset.}
 }}
 
 \item{credentials}{Optional credentials shorthand for the config parameter
@@ -52,7 +53,7 @@ The Amazon Simple Workflow Service (Amazon SWF) makes it easy to build applicati
 
 Amazon SWF gives you full control over implementing tasks and coordinating them without worrying about underlying complexities such as tracking their progress and maintaining their state.
 
-This documentation serves as reference only. For a broader overview of the Amazon SWF programming model, see the \emph{\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/}{Amazon SWF Developer Guide}} .
+This documentation serves as reference only. For a broader overview of the Amazon SWF programming model, see the \emph{\if{html}{\out{\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/}{Amazon SWF Developer Guide\if{html}{\out{}} .
 }
 \section{Service syntax}{
 
@@ -73,7 +74,8 @@ This documentation serves as reference only. For a broader overview of the Amazo
     close_connection = "logical",
     timeout = "numeric",
     s3_force_path_style = "logical",
-    sts_regional_endpoint = "string"
+    sts_regional_endpoint = "string",
+    use_dual_stack = "logical"
   ),
   credentials = list(
     creds = list(

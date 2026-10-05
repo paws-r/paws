@@ -26,6 +26,7 @@ NULL
 #' \item{\strong{timeout}: The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}: Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
 #' \item{\strong{sts_regional_endpoint}: Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' \item{\strong{use_dual_stack}: Set this to `true` to use the dualstack (IPv4 and IPv6) endpoint for a service, where available, falling back to the regular endpoint when it isn't. Defaults to the `AWS_USE_DUALSTACK_ENDPOINT` environment variable when unset.}
 #' }
 #' @param
 #' credentials
@@ -64,7 +65,8 @@ NULL
 #'     close_connection = "logical",
 #'     timeout = "numeric",
 #'     s3_force_path_style = "logical",
-#'     sts_regional_endpoint = "string"
+#'     sts_regional_endpoint = "string",
+#'     use_dual_stack = "logical"
 #'   ),
 #'   credentials = list(
 #'     creds = list(
@@ -129,7 +131,7 @@ cloudcontrolapi <- function(config = list(), credentials = list(), endpoint = NU
 
 .cloudcontrolapi$metadata <- list(
   service_name = "cloudcontrolapi",
-  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "cloudcontrolapi.{region}.amazonaws.com", global = FALSE), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "cloudcontrolapi.{region}.amazonaws.com.cn", global = FALSE), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "cloudcontrolapi.{region}.amazonaws.com", global = FALSE), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "cloudcontrolapi.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "cloudcontrolapi.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "cloudcontrolapi.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "cloudcontrolapi.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "cloudcontrolapi.{region}.amazonaws.eu", global = FALSE)),
+  endpoints = list("^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(endpoint = "cloudcontrolapi.{region}.amazonaws.com", global = FALSE, dualstack_endpoint = "cloudcontrolapi.{region}.api.aws"), "^cn\\-\\w+\\-\\d+$" = list(endpoint = "cloudcontrolapi.{region}.amazonaws.com.cn", global = FALSE, dualstack_endpoint = "cloudcontrolapi.{region}.api.amazonwebservices.com.cn"), "^us\\-gov\\-\\w+\\-\\d+$" = list(endpoint = "cloudcontrolapi.{region}.amazonaws.com", global = FALSE, dualstack_endpoint = "cloudcontrolapi.{region}.api.aws"), "^us\\-iso\\-\\w+\\-\\d+$" = list(endpoint = "cloudcontrolapi.{region}.c2s.ic.gov", global = FALSE), "^us\\-isob\\-\\w+\\-\\d+$" = list(endpoint = "cloudcontrolapi.{region}.sc2s.sgov.gov", global = FALSE), "^eu\\-isoe\\-\\w+\\-\\d+$" = list(endpoint = "cloudcontrolapi.{region}.cloud.adc-e.uk", global = FALSE), "^us\\-isof\\-\\w+\\-\\d+$" = list(endpoint = "cloudcontrolapi.{region}.csp.hci.ic.gov", global = FALSE), "^eusc\\-(de)\\-\\w+\\-\\d+$" = list(endpoint = "cloudcontrolapi.{region}.amazonaws.eu", global = FALSE)),
   service_id = "CloudControl",
   api_version = "2021-09-30",
   signing_name = "cloudcontrolapi",

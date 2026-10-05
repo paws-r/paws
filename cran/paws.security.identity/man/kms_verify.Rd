@@ -45,7 +45,7 @@ When using ECC_NIST_EDWARDS25519 KMS keys:
 \item ED25519_PH_SHA_512 signing algorithm requires KMS \code{MessageType:DIGEST}
 }
 
-When you specify the ED25519_PH_SHA_512 signing algorithm with \code{MessageType:DIGEST}, KMS still performs the SHA-512 prehash described in \href{https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-5.pdf#page\%3D39}{Step 1 of Section 7.8.1 in FIPS 186-5}. This means the input is hashed twice: once by you and once by KMS.
+When you specify the ED25519_PH_SHA_512 signing algorithm with \code{MessageType:DIGEST}, KMS still performs the SHA-512 prehash described in Step 1 of Section 7.8.1 in FIPS 186-5. This means the input is hashed twice: once by you and once by KMS.
 
 When the value of \code{MessageType} is \code{DIGEST}, the length of the \code{Message} value must match the length of hashed messages for the specified signing algorithm.
 

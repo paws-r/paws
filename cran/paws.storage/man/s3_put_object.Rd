@@ -219,7 +219,7 @@ In the following example, the request header sets the object redirect to another
 
 \verb{x-amz-website-redirect-location: http://www.example.com/}
 
-For more information about website hosting in Amazon S3, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html}{Hosting Websites on Amazon S3} and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/how-to-page-redirect.html}{How to Configure Website Page Redirects} in the \emph{Amazon S3 User Guide}.
+For more information about website hosting in Amazon S3, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html?sc_channel=sm&sc_campaign=Docs&sc_publisher=LINKEDIN&sc_country=Global&sc_geo=GLOBAL&sc_outcome=awareness&trk=Docs_LINKEDIN&sc_content=Docs&linkId=71842622}{Hosting Websites on Amazon S3} and \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/how-to-page-redirect.html}{How to Configure Website Page Redirects} in the \emph{Amazon S3 User Guide}.
 
 This functionality is not supported for directory buckets.}
 

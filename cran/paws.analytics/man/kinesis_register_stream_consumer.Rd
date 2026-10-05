@@ -12,7 +12,7 @@ kinesis_register_stream_consumer(
 )
 }
 \arguments{
-\item{StreamARN}{[required] The ARN of the Kinesis data stream that you want to register the consumer with. For more info, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arn-syntax-kinesis-streams}{Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces}.}
+\item{StreamARN}{[required] The ARN of the Kinesis data stream that you want to register the consumer with. For more info, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html?refid=c7bead05-c8d7-43aa-88b1-1c8faa1b5c49#arn-syntax-kinesis-streams}{Amazon Resource Names (ARNs) and Amazon Web Services Service Namespaces}.}
 
 \item{ConsumerName}{[required] For a given Kinesis data stream, each consumer must have a unique name. However, consumer names don't have to be unique across data streams.}
 

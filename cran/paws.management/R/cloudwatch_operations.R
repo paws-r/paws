@@ -2027,21 +2027,21 @@ cloudwatch_put_managed_insight_rules <- function(ManagedRules) {
 #' 
 #' We recommend omitting `Unit` so that you don't inadvertently specify an incorrect unit that is not published for this metric. Doing so causes the alarm to be stuck in the `INSUFFICIENT DATA` state.
 #' @param EvaluationPeriods The number of periods over which data is compared to the specified threshold. If you are setting an alarm that requires that a number of consecutive data points be breaching to trigger the alarm, this value specifies that number. If you are setting an "M out of N" alarm, this value is the N.
-#' @param DatapointsToAlarm The number of data points that must be breaching to trigger the alarm. This is used only if you are setting an "M out of N" alarm. In that case, this value is the M. For more information, see [Evaluating an Alarm](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Alarms.html?session=e08070c7-eef1-4525-9c25-b611f17ed51f#alarm-evaluation) in the *Amazon CloudWatch User Guide*.
+#' @param DatapointsToAlarm The number of data points that must be breaching to trigger the alarm. This is used only if you are setting an "M out of N" alarm. In that case, this value is the M. For more information, see [Evaluating an Alarm](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Alarms.html#alarm-evaluation) in the *Amazon CloudWatch User Guide*.
 #' @param Threshold The value against which the specified statistic is compared.
 #' 
 #' This parameter is required for alarms based on static thresholds, but should not be used for alarms based on anomaly detection models.
 #' @param ComparisonOperator The arithmetic operation to use when comparing the specified statistic and threshold. The specified statistic value is used as the first operand.
 #' 
 #' The values `LessThanLowerOrGreaterThanUpperThreshold`, `LessThanLowerThreshold`, and `GreaterThanUpperThreshold` are used only for alarms based on anomaly detection models.
-#' @param TreatMissingData Sets how this alarm is to handle missing data points. If `TreatMissingData` is omitted, the default behavior of `missing` is used. For more information, see [Configuring How CloudWatch Alarms Treats Missing Data](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Alarms.html?session=e08070c7-eef1-4525-9c25-b611f17ed51f#alarms-and-missing-data).
+#' @param TreatMissingData Sets how this alarm is to handle missing data points. If `TreatMissingData` is omitted, the default behavior of `missing` is used. For more information, see [Configuring How CloudWatch Alarms Treats Missing Data](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Alarms.html#alarms-and-missing-data).
 #' 
 #' Valid Values: `breaching | notBreaching | ignore | missing`
 #' 
 #' Alarms that evaluate metrics in the `AWS/DynamoDB` namespace always `ignore` missing data even if you choose a different option for `TreatMissingData`. When an `AWS/DynamoDB` metric has missing data, alarms that evaluate that metric remain in their current state.
 #' 
 #' This parameter is not applicable to PromQL alarms.
-#' @param EvaluateLowSampleCountPercentile Used only for alarms based on percentiles. If you specify `ignore`, the alarm state does not change during periods with too few data points to be statistically significant. If you specify `evaluate` or omit this parameter, the alarm is always evaluated and possibly changes state no matter how many data points are available. For more information, see [Percentile-Based CloudWatch Alarms and Low Data Samples](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Alarms.html?session=e08070c7-eef1-4525-9c25-b611f17ed51f#percentiles-with-low-samples).
+#' @param EvaluateLowSampleCountPercentile Used only for alarms based on percentiles. If you specify `ignore`, the alarm state does not change during periods with too few data points to be statistically significant. If you specify `evaluate` or omit this parameter, the alarm is always evaluated and possibly changes state no matter how many data points are available. For more information, see [Percentile-Based CloudWatch Alarms and Low Data Samples](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Alarms.html#percentiles-with-low-samples).
 #' 
 #' Valid Values: `evaluate | ignore`
 #' @param Metrics An array of `MetricDataQuery` structures that enable you to create an alarm based on the result of a metric math expression. For each [`put_metric_alarm`][cloudwatch_put_metric_alarm] operation, you must specify either `MetricName`, a `Metrics` array, or an `EvaluationCriteria`.

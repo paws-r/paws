@@ -2598,7 +2598,7 @@ kms_schedule_key_deletion <- function(KeyId, PendingWindowInDays = NULL) {
 #' 
 #' -   ED25519_PH_SHA_512 signing algorithm requires KMS `MessageType:DIGEST`
 #' 
-#' When you specify the ED25519_PH_SHA_512 signing algorithm with `MessageType:DIGEST`, KMS still performs the SHA-512 prehash described in [Step 1 of Section 7.8.1 in FIPS 186-5](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-5.pdf#page%3D39). This means the input is hashed twice: once by you and once by KMS.
+#' When you specify the ED25519_PH_SHA_512 signing algorithm with `MessageType:DIGEST`, KMS still performs the SHA-512 prehash described in Step 1 of Section 7.8.1 in FIPS 186-5. This means the input is hashed twice: once by you and once by KMS.
 #' 
 #' When the value of `MessageType` is `DIGEST`, the length of the `Message` value must match the length of hashed messages for the specified signing algorithm.
 #' 
@@ -2999,7 +2999,7 @@ kms_update_primary_region <- function(KeyId, PrimaryRegion) {
 #' 
 #' -   ED25519_PH_SHA_512 signing algorithm requires KMS `MessageType:DIGEST`
 #' 
-#' When you specify the ED25519_PH_SHA_512 signing algorithm with `MessageType:DIGEST`, KMS still performs the SHA-512 prehash described in [Step 1 of Section 7.8.1 in FIPS 186-5](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-5.pdf#page%3D39). This means the input is hashed twice: once by you and once by KMS.
+#' When you specify the ED25519_PH_SHA_512 signing algorithm with `MessageType:DIGEST`, KMS still performs the SHA-512 prehash described in Step 1 of Section 7.8.1 in FIPS 186-5. This means the input is hashed twice: once by you and once by KMS.
 #' 
 #' When the value of `MessageType` is `DIGEST`, the length of the `Message` value must match the length of hashed messages for the specified signing algorithm.
 #' 

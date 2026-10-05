@@ -3704,7 +3704,7 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #' 
 #' -   **Directory buckets** - For directory buckets, `/` is the only supported delimiter.
 #' 
-#' -   **Directory buckets** - When you query [`list_objects_v2`][s3_list_objects_v2] with a delimiter during in-progress multipart uploads, the `CommonPrefixes` response parameter contains the prefixes that are associated with the in-progress multipart uploads. For more information about multipart uploads, see [Multipart Upload Overview](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html?refid=a1158afe-048d-4d0d-966a-4cf0d8f86d2b&trkcampaign=aws-summit-online) in the *Amazon S3 User Guide*.
+#' -   **Directory buckets** - When you query [`list_objects_v2`][s3_list_objects_v2] with a delimiter during in-progress multipart uploads, the `CommonPrefixes` response parameter contains the prefixes that are associated with the in-progress multipart uploads. For more information about multipart uploads, see [Multipart Upload Overview](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html) in the *Amazon S3 User Guide*.
 #' @param EncodingType Encoding type used by Amazon S3 to encode the [object keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html) in the response. Responses are encoded only in UTF-8. An object key can contain any Unicode character. However, the XML 1.0 parser can't parse certain characters, such as characters with an ASCII value from 0 to 10. For characters that aren't supported in XML 1.0, you can add this parameter to request that Amazon S3 encode the keys in the response. For more information about characters to avoid in object key names, see [Object key naming guidelines](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-guidelines).
 #' 
 #' When using the URL encoding type, non-ASCII characters that are used in an object's key name will be percent-encoded according to UTF-8 code values. For example, the object `test_file(3).png` will appear as `test_file%283%29.png`.
@@ -4838,7 +4838,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' 
 #' `x-amz-website-redirect-location: http://www.example.com/`
 #' 
-#' For more information about website hosting in Amazon S3, see [Hosting Websites on Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html) and [How to Configure Website Page Redirects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/how-to-page-redirect.html) in the *Amazon S3 User Guide*.
+#' For more information about website hosting in Amazon S3, see [Hosting Websites on Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html?sc_channel=sm&sc_campaign=Docs&sc_publisher=LINKEDIN&sc_country=Global&sc_geo=GLOBAL&sc_outcome=awareness&trk=Docs_LINKEDIN&sc_content=Docs&linkId=71842622) and [How to Configure Website Page Redirects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/how-to-page-redirect.html) in the *Amazon S3 User Guide*.
 #' 
 #' This functionality is not supported for directory buckets.
 #' @param SSECustomerAlgorithm Specifies the algorithm to use when encrypting the object (for example, `AES256`).
@@ -5237,7 +5237,7 @@ s3_put_object_tagging <- function(Bucket, Key, VersionId = NULL, ContentMD5 = NU
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when you use the SDK. This header will not provide any additional functionality if you don't use the SDK. When you send this header, there must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent. Otherwise, Amazon S3 fails the request with the HTTP status code `400 Bad Request`. For more information, see [Checking object integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html) in the *Amazon S3 User Guide*.
 #' 
 #' If you provide an individual checksum, Amazon S3 ignores any provided `ChecksumAlgorithm` parameter.
-#' @param PublicAccessBlockConfiguration &#91;required&#93; The `PublicAccessBlock` configuration that you want to apply to this Amazon S3 bucket. You can enable the configuration options in any combination. For more information about when Amazon S3 considers a bucket or object public, see [The Meaning of "Public"](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html#access-control-block-public-access-policy-status) in the *Amazon S3 User Guide*.
+#' @param PublicAccessBlockConfiguration &#91;required&#93; The `PublicAccessBlock` configuration that you want to apply to this Amazon S3 bucket. You can enable the configuration options in any combination. For more information about when Amazon S3 considers a bucket or object public, see [The Meaning of "Public"](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html?refid=5a5e1287-c028-4184-8719-3a5a862834a2#access-control-block-public-access-policy-status) in the *Amazon S3 User Guide*.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you provide does not match the actual owner of the bucket, the request fails with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @keywords internal

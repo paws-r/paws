@@ -1287,11 +1287,11 @@ s3_create_bucket_metadata_table_configuration <- function(Bucket, ContentMD5 = N
 #' 
 #' This change affects the following Amazon Web Services Regions: US East (N. Virginia), US West (N. California), US West (Oregon), Asia Pacific (Singapore), Asia Pacific (Sydney), Asia Pacific (Tokyo), Europe (Ireland), and South America (São Paulo).
 #' 
-#' This action initiates a multipart upload and returns an upload ID. This upload ID is used to associate all of the parts in the specific multipart upload. You specify this upload ID in each of your subsequent upload part requests (see [`upload_part`][s3_upload_part]). You also include this upload ID in the final request to either complete or abort the multipart upload request. For more information about multipart uploads, see [Multipart Upload Overview](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html?refid=a1158afe-048d-4d0d-966a-4cf0d8f86d2b&trkcampaign=aws-summit-online) in the *Amazon S3 User Guide*.
+#' This action initiates a multipart upload and returns an upload ID. This upload ID is used to associate all of the parts in the specific multipart upload. You specify this upload ID in each of your subsequent upload part requests (see [`upload_part`][s3_upload_part]). You also include this upload ID in the final request to either complete or abort the multipart upload request. For more information about multipart uploads, see [Multipart Upload Overview](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html) in the *Amazon S3 User Guide*.
 #' 
 #' After you initiate a multipart upload and upload one or more parts, to stop being charged for storing the uploaded parts, you must either complete or abort the multipart upload. Amazon S3 frees up the space used to store the parts and stops charging you for storing them only after you either complete or abort a multipart upload.
 #' 
-#' If you have configured a lifecycle rule to abort incomplete multipart uploads, the created multipart upload must be completed within the number of days specified in the bucket lifecycle configuration. Otherwise, the incomplete multipart upload becomes eligible for an abort action and Amazon S3 aborts the multipart upload. For more information, see [Aborting Incomplete Multipart Uploads Using a Bucket Lifecycle Configuration](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html?refid=a1158afe-048d-4d0d-966a-4cf0d8f86d2b&trkcampaign=aws-summit-online#mpu-abort-incomplete-mpu-lifecycle-config).
+#' If you have configured a lifecycle rule to abort incomplete multipart uploads, the created multipart upload must be completed within the number of days specified in the bucket lifecycle configuration. Otherwise, the incomplete multipart upload becomes eligible for an abort action and Amazon S3 aborts the multipart upload. For more information, see [Aborting Incomplete Multipart Uploads Using a Bucket Lifecycle Configuration](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config).
 #' 
 #' -   **Directory buckets** - S3 Lifecycle is not supported by directory buckets.
 #' 
@@ -2074,7 +2074,7 @@ s3_delete_bucket_cors <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @description
 #' This implementation of the DELETE action resets the default encryption for the bucket as server-side encryption with Amazon S3 managed keys (SSE-S3).
 #' 
-#' -   **General purpose buckets** - For information about the bucket default encryption feature, see [Amazon S3 Bucket Default Encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html) in the *Amazon S3 User Guide*.
+#' -   **General purpose buckets** - For information about the bucket default encryption feature, see [Amazon S3 Bucket Default Encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html?refid=faq_card) in the *Amazon S3 User Guide*.
 #' 
 #' -   **Directory buckets** - For directory buckets, there are only two supported options for server-side encryption: SSE-S3 and SSE-KMS. For information about the default encryption configuration in directory buckets, see [Setting default server-side encryption behavior for directory buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-bucket-encryption.html).
 #' 
@@ -2886,7 +2886,7 @@ s3_delete_bucket_tagging <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' 
 #' This DELETE action requires the `S3:DeleteBucketWebsite` permission. By default, only the bucket owner can delete the website configuration attached to a bucket. However, bucket owners can grant other users permission to delete the website configuration by writing a bucket policy granting them the `S3:DeleteBucketWebsite` permission.
 #' 
-#' For more information about hosting websites, see [Hosting Websites on Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html).
+#' For more information about hosting websites, see [Hosting Websites on Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html?sc_channel=sm&sc_campaign=Docs&sc_publisher=LINKEDIN&sc_country=Global&sc_geo=GLOBAL&sc_outcome=awareness&trk=Docs_LINKEDIN&sc_content=Docs&linkId=71842622).
 #' 
 #' The following operations are related to [`delete_bucket_website`][s3_delete_bucket_website]:
 #' 
@@ -3518,7 +3518,7 @@ s3_delete_objects <- function(Bucket, Delete, MFA = NULL, RequestPayer = NULL, B
 #' 
 #' The following operations are related to [`delete_public_access_block`][s3_delete_public_access_block]:
 #' 
-#' -   [Using Amazon S3 Block Public Access](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html)
+#' -   [Using Amazon S3 Block Public Access](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html?refid=5a5e1287-c028-4184-8719-3a5a862834a2)
 #' 
 #' -   [`get_public_access_block`][s3_get_public_access_block]
 #' 
@@ -5152,7 +5152,7 @@ s3_get_bucket_notification <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' 
 #' When you use this API operation with an Object Lambda access point, provide the alias of the Object Lambda access point in place of the bucket name. If the Object Lambda access point alias in a request is not valid, the error code `InvalidAccessPointAliasError` is returned. For more information about `InvalidAccessPointAliasError`, see [List of Error Codes](https://docs.aws.amazon.com/AmazonS3/latest/API/#ErrorCodeList).
 #' 
-#' For more information about setting and reading the notification configuration on a bucket, see [Setting Up Notification of Bucket Events](https://docs.aws.amazon.com/AmazonS3/latest/userguide/EventNotifications.html?refid=f0010660-2c4f-40ef-9c70-40d705413ec5&trkcampaign=aws-summit). For more information about bucket policies, see [Using Bucket Policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html).
+#' For more information about setting and reading the notification configuration on a bucket, see [Setting Up Notification of Bucket Events](https://docs.aws.amazon.com/AmazonS3/latest/userguide/EventNotifications.html). For more information about bucket policies, see [Using Bucket Policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html).
 #' 
 #' The following action is related to [`get_bucket_notification`][s3_get_bucket_notification]:
 #' 
@@ -5453,11 +5453,11 @@ s3_get_bucket_policy <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' 
 #' Retrieves the policy status for an Amazon S3 bucket, indicating whether the bucket is public. In order to use this operation, you must have the `s3:GetBucketPolicyStatus` permission. For more information about Amazon S3 permissions, see [Specifying Permissions in a Policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security_iam_service-with-iam.html).
 #' 
-#' For more information about when Amazon S3 considers a bucket public, see [The Meaning of "Public"](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html#access-control-block-public-access-policy-status).
+#' For more information about when Amazon S3 considers a bucket public, see [The Meaning of "Public"](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html?refid=5a5e1287-c028-4184-8719-3a5a862834a2#access-control-block-public-access-policy-status).
 #' 
 #' The following operations are related to [`get_bucket_policy_status`][s3_get_bucket_policy_status]:
 #' 
-#' -   [Using Amazon S3 Block Public Access](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html)
+#' -   [Using Amazon S3 Block Public Access](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html?refid=5a5e1287-c028-4184-8719-3a5a862834a2)
 #' 
 #' -   [`get_public_access_block`][s3_get_public_access_block]
 #' 
@@ -5664,7 +5664,7 @@ s3_get_bucket_replication <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @description
 #' This operation is not supported for directory buckets.
 #' 
-#' Returns the request payment configuration of a bucket. To use this version of the operation, you must be the bucket owner. For more information, see [Requester Pays Buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/RequesterPaysBuckets.html).
+#' Returns the request payment configuration of a bucket. To use this version of the operation, you must be the bucket owner. For more information, see [Requester Pays Buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/RequesterPaysBuckets.html?refid=f0010660-2c4f-40ef-9c70-40d705413ec5&trkcampaign=lightsail).
 #' 
 #' The following operations are related to [`get_bucket_request_payment`][s3_get_bucket_request_payment]:
 #' 
@@ -5892,7 +5892,7 @@ s3_get_bucket_versioning <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @description
 #' This operation is not supported for directory buckets.
 #' 
-#' Returns the website configuration for a bucket. To host website on Amazon S3, you can configure a bucket as website by adding a website configuration. For more information about hosting websites, see [Hosting Websites on Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html).
+#' Returns the website configuration for a bucket. To host website on Amazon S3, you can configure a bucket as website by adding a website configuration. For more information about hosting websites, see [Hosting Websites on Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html?sc_channel=sm&sc_campaign=Docs&sc_publisher=LINKEDIN&sc_country=Global&sc_geo=GLOBAL&sc_outcome=awareness&trk=Docs_LINKEDIN&sc_content=Docs&linkId=71842622).
 #' 
 #' This GET action requires the `S3:GetBucketWebsite` permission. By default, only the bucket owner can read the bucket website configuration. However, bucket owners can allow other users to read the website configuration by writing a bucket policy granting them the `S3:GetBucketWebsite` permission.
 #' 
@@ -7166,11 +7166,11 @@ s3_get_object_torrent <- function(Bucket, Key, RequestPayer = NULL, ExpectedBuck
 #' 
 #' When Amazon S3 evaluates the `PublicAccessBlock` configuration for a bucket or an object, it checks the `PublicAccessBlock` configuration for both the bucket (or the bucket that contains the object) and the bucket owner's account. Account-level settings automatically inherit from organization-level policies when present. If the `PublicAccessBlock` settings are different between the bucket and the account, Amazon S3 uses the most restrictive combination of the bucket-level and account-level settings.
 #' 
-#' For more information about when Amazon S3 considers a bucket or an object public, see [The Meaning of "Public"](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html#access-control-block-public-access-policy-status).
+#' For more information about when Amazon S3 considers a bucket or an object public, see [The Meaning of "Public"](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html?refid=5a5e1287-c028-4184-8719-3a5a862834a2#access-control-block-public-access-policy-status).
 #' 
 #' The following operations are related to [`get_public_access_block`][s3_get_public_access_block]:
 #' 
-#' -   [Using Amazon S3 Block Public Access](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html)
+#' -   [Using Amazon S3 Block Public Access](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html?refid=5a5e1287-c028-4184-8719-3a5a862834a2)
 #' 
 #' -   [`put_public_access_block`][s3_put_public_access_block]
 #' 
@@ -8891,7 +8891,7 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #' 
 #' -   **Directory buckets** - For directory buckets, `/` is the only supported delimiter.
 #' 
-#' -   **Directory buckets** - When you query [`list_objects_v2`][s3_list_objects_v2] with a delimiter during in-progress multipart uploads, the `CommonPrefixes` response parameter contains the prefixes that are associated with the in-progress multipart uploads. For more information about multipart uploads, see [Multipart Upload Overview](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html?refid=a1158afe-048d-4d0d-966a-4cf0d8f86d2b&trkcampaign=aws-summit-online) in the *Amazon S3 User Guide*.
+#' -   **Directory buckets** - When you query [`list_objects_v2`][s3_list_objects_v2] with a delimiter during in-progress multipart uploads, the `CommonPrefixes` response parameter contains the prefixes that are associated with the in-progress multipart uploads. For more information about multipart uploads, see [Multipart Upload Overview](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html) in the *Amazon S3 User Guide*.
 #' @param EncodingType Encoding type used by Amazon S3 to encode the [object keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html) in the response. Responses are encoded only in UTF-8. An object key can contain any Unicode character. However, the XML 1.0 parser can't parse certain characters, such as characters with an ASCII value from 0 to 10. For characters that aren't supported in XML 1.0, you can add this parameter to request that Amazon S3 encode the keys in the response. For more information about characters to avoid in object key names, see [Object key naming guidelines](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-guidelines).
 #' 
 #' When using the URL encoding type, non-ASCII characters that are used in an object's key name will be percent-encoded according to UTF-8 code values. For example, the object `test_file(3).png` will appear as `test_file%283%29.png`.
@@ -9828,9 +9828,9 @@ s3_put_bucket_cors <- function(Bucket, CORSConfiguration, ContentMD5 = NULL, Che
 #' 
 #' -   **General purpose buckets**
 #' 
-#'     -   You can optionally configure default encryption for a bucket by using server-side encryption with Key Management Service (KMS) keys (SSE-KMS) or dual-layer server-side encryption with Amazon Web Services KMS keys (DSSE-KMS). If you specify default encryption by using SSE-KMS, you can also configure [Amazon S3 Bucket Keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-key.html). For information about the bucket default encryption feature, see [Amazon S3 Bucket Default Encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html) in the *Amazon S3 User Guide*.
+#'     -   You can optionally configure default encryption for a bucket by using server-side encryption with Key Management Service (KMS) keys (SSE-KMS) or dual-layer server-side encryption with Amazon Web Services KMS keys (DSSE-KMS). If you specify default encryption by using SSE-KMS, you can also configure [Amazon S3 Bucket Keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-key.html). For information about the bucket default encryption feature, see [Amazon S3 Bucket Default Encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html?refid=faq_card) in the *Amazon S3 User Guide*.
 #' 
-#'     -   If you use PutBucketEncryption to set your [default bucket encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html) to SSE-KMS, you should verify that your KMS key ID is correct. Amazon S3 doesn't validate the KMS key ID provided in PutBucketEncryption requests.
+#'     -   If you use PutBucketEncryption to set your [default bucket encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html?refid=faq_card) to SSE-KMS, you should verify that your KMS key ID is correct. Amazon S3 doesn't validate the KMS key ID provided in PutBucketEncryption requests.
 #' 
 #' -   **Directory buckets** - You can optionally configure default encryption for a bucket by using server-side encryption with Key Management Service (KMS) keys (SSE-KMS).
 #' 
@@ -9842,7 +9842,7 @@ s3_put_bucket_cors <- function(Bucket, CORSConfiguration, ContentMD5 = NULL, Che
 #' 
 #'     -   When you specify an [KMS customer managed key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk) for encryption in your directory bucket, only use the key ID or key ARN. The key alias format of the KMS key isn't supported.
 #' 
-#'     -   For directory buckets, if you use PutBucketEncryption to set your [default bucket encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html) to SSE-KMS, Amazon S3 validates the KMS key ID provided in PutBucketEncryption requests.
+#'     -   For directory buckets, if you use PutBucketEncryption to set your [default bucket encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html?refid=faq_card) to SSE-KMS, Amazon S3 validates the KMS key ID provided in PutBucketEncryption requests.
 #' 
 #' If you're specifying a customer managed KMS key, we recommend using a fully qualified KMS key ARN. If you use a KMS key alias instead, then KMS resolves the key within the requester’s account. This behavior can result in data that's encrypted with a KMS key that belongs to the requester, and not the bucket owner.
 #' 
@@ -10893,7 +10893,7 @@ s3_put_bucket_notification <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 #' @description
 #' This operation is not supported for directory buckets.
 #' 
-#' Enables notifications of specified events for a bucket. For more information about event notifications, see [Configuring Event Notifications](https://docs.aws.amazon.com/AmazonS3/latest/userguide/EventNotifications.html?refid=f0010660-2c4f-40ef-9c70-40d705413ec5&trkcampaign=aws-summit).
+#' Enables notifications of specified events for a bucket. For more information about event notifications, see [Configuring Event Notifications](https://docs.aws.amazon.com/AmazonS3/latest/userguide/EventNotifications.html).
 #' 
 #' Using this API, you can replace an existing notification configuration. The configuration is an XML file that defines the event types that you want Amazon S3 to publish and the destination where you want Amazon S3 to publish an event notification when it detects an event of the specified type.
 #' 
@@ -10905,7 +10905,7 @@ s3_put_bucket_notification <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 #' 
 #' This action replaces the existing notification configuration with the configuration you include in the request body.
 #' 
-#' After Amazon S3 receives this request, it first verifies that any Amazon Simple Notification Service (Amazon SNS) or Amazon Simple Queue Service (Amazon SQS) destination exists, and that the bucket owner has permission to publish to it by sending a test notification. In the case of Lambda destinations, Amazon S3 verifies that the Lambda function permissions grant Amazon S3 permission to invoke the function from the Amazon S3 bucket. For more information, see [Configuring Notifications for Amazon S3 Events](https://docs.aws.amazon.com/AmazonS3/latest/userguide/EventNotifications.html?refid=f0010660-2c4f-40ef-9c70-40d705413ec5&trkcampaign=aws-summit).
+#' After Amazon S3 receives this request, it first verifies that any Amazon Simple Notification Service (Amazon SNS) or Amazon Simple Queue Service (Amazon SQS) destination exists, and that the bucket owner has permission to publish to it by sending a test notification. In the case of Lambda destinations, Amazon S3 verifies that the Lambda function permissions grant Amazon S3 permission to invoke the function from the Amazon S3 bucket. For more information, see [Configuring Notifications for Amazon S3 Events](https://docs.aws.amazon.com/AmazonS3/latest/userguide/EventNotifications.html).
 #' 
 #' You can disable notifications by adding the empty NotificationConfiguration element.
 #' 
@@ -11445,7 +11445,7 @@ s3_put_bucket_replication <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorit
 #' @description
 #' This operation is not supported for directory buckets.
 #' 
-#' Sets the request payment configuration for a bucket. By default, the bucket owner pays for downloads from the bucket. This configuration parameter enables the bucket owner (only) to specify that the person requesting the download will be charged for the download. For more information, see [Requester Pays Buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/RequesterPaysBuckets.html).
+#' Sets the request payment configuration for a bucket. By default, the bucket owner pays for downloads from the bucket. This configuration parameter enables the bucket owner (only) to specify that the person requesting the download will be charged for the download. For more information, see [Requester Pays Buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/RequesterPaysBuckets.html?refid=f0010660-2c4f-40ef-9c70-40d705413ec5&trkcampaign=lightsail).
 #' 
 #' The following operations are related to [`put_bucket_request_payment`][s3_put_bucket_request_payment]:
 #' 
@@ -11741,7 +11741,7 @@ s3_put_bucket_versioning <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorith
 #' @description
 #' This operation is not supported for directory buckets.
 #' 
-#' Sets the configuration of the website that is specified in the `website` subresource. To configure a bucket as a website, you can add this subresource on the bucket with website configuration information such as the file name of the index document and any redirect rules. For more information, see [Hosting Websites on Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html).
+#' Sets the configuration of the website that is specified in the `website` subresource. To configure a bucket as a website, you can add this subresource on the bucket with website configuration information such as the file name of the index document and any redirect rules. For more information, see [Hosting Websites on Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html?sc_channel=sm&sc_campaign=Docs&sc_publisher=LINKEDIN&sc_country=Global&sc_geo=GLOBAL&sc_outcome=awareness&trk=Docs_LINKEDIN&sc_content=Docs&linkId=71842622).
 #' 
 #' This PUT action requires the `S3:PutBucketWebsite` permission. By default, only the bucket owner can configure the website attached to a bucket; however, bucket owners can allow other users to set the website configuration by writing a bucket policy that grants them the `S3:PutBucketWebsite` permission.
 #' 
@@ -12119,7 +12119,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' 
 #' `x-amz-website-redirect-location: http://www.example.com/`
 #' 
-#' For more information about website hosting in Amazon S3, see [Hosting Websites on Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html) and [How to Configure Website Page Redirects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/how-to-page-redirect.html) in the *Amazon S3 User Guide*.
+#' For more information about website hosting in Amazon S3, see [Hosting Websites on Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html?sc_channel=sm&sc_campaign=Docs&sc_publisher=LINKEDIN&sc_country=Global&sc_geo=GLOBAL&sc_outcome=awareness&trk=Docs_LINKEDIN&sc_content=Docs&linkId=71842622) and [How to Configure Website Page Redirects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/how-to-page-redirect.html) in the *Amazon S3 User Guide*.
 #' 
 #' This functionality is not supported for directory buckets.
 #' @param SSECustomerAlgorithm Specifies the algorithm to use when encrypting the object (for example, `AES256`).
@@ -13137,7 +13137,7 @@ s3_put_object_tagging <- function(Bucket, Key, VersionId = NULL, ContentMD5 = NU
 #' 
 #' When Amazon S3 evaluates the `PublicAccessBlock` configuration for a bucket or an object, it checks the `PublicAccessBlock` configuration for both the bucket (or the bucket that contains the object) and the bucket owner's account. Account-level settings automatically inherit from organization-level policies when present. If the `PublicAccessBlock` configurations are different between the bucket and the account, Amazon S3 uses the most restrictive combination of the bucket-level and account-level settings.
 #' 
-#' For more information about when Amazon S3 considers a bucket or an object public, see [The Meaning of "Public"](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html#access-control-block-public-access-policy-status).
+#' For more information about when Amazon S3 considers a bucket or an object public, see [The Meaning of "Public"](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html?refid=5a5e1287-c028-4184-8719-3a5a862834a2#access-control-block-public-access-policy-status).
 #' 
 #' The following operations are related to [`put_public_access_block`][s3_put_public_access_block]:
 #' 
@@ -13147,7 +13147,7 @@ s3_put_object_tagging <- function(Bucket, Key, VersionId = NULL, ContentMD5 = NU
 #' 
 #' -   [`get_bucket_policy_status`][s3_get_bucket_policy_status]
 #' 
-#' -   [Using Amazon S3 Block Public Access](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html)
+#' -   [Using Amazon S3 Block Public Access](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html?refid=5a5e1287-c028-4184-8719-3a5a862834a2)
 #' 
 #' You must URL encode any signed header values that contain spaces. For example, if your header value is `my file.txt`, containing two spaces after `my`, you must URL encode this value to `my%20%20file.txt`.
 #'
@@ -13162,7 +13162,7 @@ s3_put_object_tagging <- function(Bucket, Key, VersionId = NULL, ContentMD5 = NU
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when you use the SDK. This header will not provide any additional functionality if you don't use the SDK. When you send this header, there must be a corresponding `x-amz-checksum` or `x-amz-trailer` header sent. Otherwise, Amazon S3 fails the request with the HTTP status code `400 Bad Request`. For more information, see [Checking object integrity](https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html) in the *Amazon S3 User Guide*.
 #' 
 #' If you provide an individual checksum, Amazon S3 ignores any provided `ChecksumAlgorithm` parameter.
-#' @param PublicAccessBlockConfiguration &#91;required&#93; The `PublicAccessBlock` configuration that you want to apply to this Amazon S3 bucket. You can enable the configuration options in any combination. For more information about when Amazon S3 considers a bucket or object public, see [The Meaning of "Public"](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html#access-control-block-public-access-policy-status) in the *Amazon S3 User Guide*.
+#' @param PublicAccessBlockConfiguration &#91;required&#93; The `PublicAccessBlock` configuration that you want to apply to this Amazon S3 bucket. You can enable the configuration options in any combination. For more information about when Amazon S3 considers a bucket or object public, see [The Meaning of "Public"](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html?refid=5a5e1287-c028-4184-8719-3a5a862834a2#access-control-block-public-access-policy-status) in the *Amazon S3 User Guide*.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you provide does not match the actual owner of the bucket, the request fails with the HTTP status code `403 Forbidden` (access denied).
 #'
 #' @return
@@ -13355,7 +13355,7 @@ s3_rename_object <- function(Bucket, Key, RenameSource, DestinationIfMatch = NUL
 #' 
 #' You can use Amazon S3 restore speed upgrade to change the restore speed to a faster speed while it is in progress. For more information, see [Upgrading the speed of an in-progress restore](https://docs.aws.amazon.com/AmazonS3/latest/userguide/restoring-objects.html#restoring-objects-upgrade-tier.title.html) in the *Amazon S3 User Guide*.
 #' 
-#' To get the status of object restoration, you can send a `HEAD` request. Operations return the `x-amz-restore` header, which provides information about the restoration status, in the response. You can use Amazon S3 event notifications to notify you when a restore is initiated or completed. For more information, see [Configuring Amazon S3 Event Notifications](https://docs.aws.amazon.com/AmazonS3/latest/userguide/EventNotifications.html?refid=f0010660-2c4f-40ef-9c70-40d705413ec5&trkcampaign=aws-summit) in the *Amazon S3 User Guide*.
+#' To get the status of object restoration, you can send a `HEAD` request. Operations return the `x-amz-restore` header, which provides information about the restoration status, in the response. You can use Amazon S3 event notifications to notify you when a restore is initiated or completed. For more information, see [Configuring Amazon S3 Event Notifications](https://docs.aws.amazon.com/AmazonS3/latest/userguide/EventNotifications.html) in the *Amazon S3 User Guide*.
 #' 
 #' After restoring an archived object, you can update the restoration period by reissuing the request with a new period. Amazon S3 updates the restoration period relative to the current time and charges only for the request-there are no data transfer charges. You cannot update the restoration period when Amazon S3 is actively processing your current restore request for the object.
 #' 
@@ -14140,7 +14140,7 @@ s3_update_object_encryption <- function(Bucket, Key, VersionId = NULL, ObjectEnc
 #' 
 #' After you initiate multipart upload and upload one or more parts, you must either complete or abort multipart upload in order to stop getting charged for storage of the uploaded parts. Only after you either complete or abort multipart upload, Amazon S3 frees up the parts storage and stops charging you for the parts storage.
 #' 
-#' For more information on multipart uploads, go to [Multipart Upload Overview](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html?refid=a1158afe-048d-4d0d-966a-4cf0d8f86d2b&trkcampaign=aws-summit-online) in the *Amazon S3 User Guide* .
+#' For more information on multipart uploads, go to [Multipart Upload Overview](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html) in the *Amazon S3 User Guide* .
 #' 
 #' **Directory buckets** - For directory buckets, you must make requests for this API operation to the Zonal endpoint. These endpoints support virtual-hosted-style requests in the format `https://amzn-s3-demo-bucket.s3express-zone-id.region-code.amazonaws.com/key-name `. Path-style requests are not supported. For more information about endpoints in Availability Zones, see [Regional and Zonal endpoints for directory buckets in Availability Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/endpoint-directory-buckets-AZ.html) in the *Amazon S3 User Guide*. For more information about endpoints in Local Zones, see [Concepts for directory buckets in Local Zones](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html) in the *Amazon S3 User Guide*.
 #' 

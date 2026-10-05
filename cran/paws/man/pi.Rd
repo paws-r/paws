@@ -24,6 +24,7 @@ pi(config = list(), credentials = list(), endpoint = NULL, region = NULL)
 \item{\strong{timeout}: The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 \item{\strong{s3_force_path_style}: Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
 \item{\strong{sts_regional_endpoint}: Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+\item{\strong{use_dual_stack}: Set this to \code{true} to use the dualstack (IPv4 and IPv6) endpoint for a service, where available, falling back to the regular endpoint when it isn't. Defaults to the \code{AWS_USE_DUALSTACK_ENDPOINT} environment variable when unset.}
 }}
 
 \item{credentials}{Optional credentials shorthand for the config parameter
@@ -56,9 +57,9 @@ When Performance Insights is enabled, the Amazon RDS Performance Insights API pr
 
 DB load is measured as average active sessions. Performance Insights provides the data to API consumers as a two-dimensional time-series dataset. The time dimension provides DB load data for each time point in the queried time range. Each time point decomposes overall load in relation to the requested dimensions, measured at that time point. Examples include SQL, Wait event, User, and Host.
 \itemize{
-\item To learn more about Performance Insights and Amazon Aurora DB instances, go to the \emph{\href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_PerfInsights.html}{ Amazon Aurora User Guide}} .
-\item To learn more about Performance Insights and Amazon RDS DB instances, go to the \emph{\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{ Amazon RDS User Guide}} .
-\item To learn more about Performance Insights and Amazon DocumentDB clusters, go to the \emph{\href{https://docs.aws.amazon.com/documentdb/latest/developerguide/performance-insights.html}{ Amazon DocumentDB Developer Guide}} .
+\item To learn more about Performance Insights and Amazon Aurora DB instances, go to the \emph{\if{html}{\out{\href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_PerfInsights.html}{ Amazon Aurora User Guide\if{html}{\out{}} .
+\item To learn more about Performance Insights and Amazon RDS DB instances, go to the \emph{\if{html}{\out{\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{ Amazon RDS User Guide\if{html}{\out{}} .
+\item To learn more about Performance Insights and Amazon DocumentDB clusters, go to the \emph{\if{html}{\out{\href{https://docs.aws.amazon.com/documentdb/latest/developerguide/performance-insights.html}{ Amazon DocumentDB Developer Guide\if{html}{\out{}} .
 }
 }
 \section{Service syntax}{
@@ -80,7 +81,8 @@ DB load is measured as average active sessions. Performance Insights provides th
     close_connection = "logical",
     timeout = "numeric",
     s3_force_path_style = "logical",
-    sts_regional_endpoint = "string"
+    sts_regional_endpoint = "string",
+    use_dual_stack = "logical"
   ),
   credentials = list(
     creds = list(

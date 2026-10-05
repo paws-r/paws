@@ -8833,7 +8833,7 @@ ec2_create_image_usage_report <- function(ImageId, DryRun = NULL, ResourceTypes,
 #' @description
 #' Creates an EC2 Instance Connect Endpoint.
 #' 
-#' An EC2 Instance Connect Endpoint allows you to connect to an instance, without requiring the instance to have a public IPv4 or public IPv6 address. For more information, see [Connect to your instances using EC2 Instance Connect Endpoint](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-with-ec2-instance-connect-endpoint.html) in the *Amazon EC2 User Guide*.
+#' An EC2 Instance Connect Endpoint allows you to connect to an instance, without requiring the instance to have a public IPv4 or public IPv6 address. For more information, see [Connect to your instances using EC2 Instance Connect Endpoint](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-with-ec2-instance-connect-endpoint.html?icmpid=docs_ec2_console) in the *Amazon EC2 User Guide*.
 #'
 #' @usage
 #' ec2_create_instance_connect_endpoint(DryRun, SubnetId, SecurityGroupIds,

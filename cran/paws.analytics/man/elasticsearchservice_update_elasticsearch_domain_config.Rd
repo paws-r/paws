@@ -40,7 +40,7 @@ elasticsearchservice_update_elasticsearch_domain_config(
 
 \item{CognitoOptions}{Options to specify the Cognito user and identity pools for Kibana authentication. For more information, see \if{html}{\out{<a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cognito-auth.html" target="_blank">}}Amazon Cognito Authentication for Kibana\if{html}{\out{</a>}}.}
 
-\item{AdvancedOptions}{Modifies the advanced option to allow references to indices in an HTTP request body. Must be \code{false} when configuring access to individual sub-resources. By default, the value is \code{true}. See \if{html}{\out{<a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#es-createdomain-configure-advanced-options" target="_blank">}}Configuration Advanced Options\if{html}{\out{</a>}} for more information.}
+\item{AdvancedOptions}{Modifies the advanced option to allow references to indices in an HTTP request body. Must be \code{false} when configuring access to individual sub-resources. By default, the value is \code{true}. See \if{html}{\out{<a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html?refid=ep_card_main_event_page#es-createdomain-configure-advanced-options" target="_blank">}}Configuration Advanced Options\if{html}{\out{</a>}} for more information.}
 
 \item{AccessPolicies}{IAM access policy as a JSON-formatted string.}
 
