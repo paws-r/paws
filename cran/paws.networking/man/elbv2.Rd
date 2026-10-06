@@ -58,7 +58,7 @@ Elastic Load Balancing supports the following types of load balancers: Applicati
 \item Gateway Load Balancer - Operates at the network layer (layer 3).
 }
 
-For more information, see the \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/}{Elastic Load Balancing User Guide}.
+For more information, see the \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html}{Elastic Load Balancing User Guide}.
 
 All Elastic Load Balancing operations are idempotent, which means that they complete at most one time. If you repeat an operation, it succeeds.
 }

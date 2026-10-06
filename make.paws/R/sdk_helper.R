@@ -81,7 +81,10 @@ paws_check_local_sub_cat <- function(
 #' @export
 paws_check_url <- function(in_dir = "../cran", path, pkg_list = list()) {
   pkgs <- list_paws_pkgs(in_dir, pkg_list)
-  results <- setNames(lapply(pkgs, urlchecker::url_check, fail = FALSE), basename(pkgs))
+  results <- setNames(
+    lapply(pkgs, urlchecker::url_check, parallel = FALSE, fail = FALSE),
+    basename(pkgs)
+  )
   if (!missing(path)) {
     yaml::write_yaml(results, path)
   }
