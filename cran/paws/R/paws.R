@@ -11138,7 +11138,7 @@ directconnect <- function(config = list(), credentials = list(), endpoint = NULL
 #' @description
 #' A load balancer can distribute incoming traffic across your EC2 instances. This enables you to increase the availability of your application. The load balancer also monitors the health of its registered instances and ensures that it routes traffic only to healthy instances. You configure your load balancer to accept incoming traffic by specifying one or more listeners, which are configured with a protocol and port number for connections from clients to the load balancer and a protocol and port number for connections from the load balancer to the instances.
 #' 
-#' Elastic Load Balancing supports three types of load balancers: Application Load Balancers, Network Load Balancers, and Classic Load Balancers. You can select a load balancer based on your application needs. For more information, see the [Elastic Load Balancing User Guide](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/).
+#' Elastic Load Balancing supports three types of load balancers: Application Load Balancers, Network Load Balancers, and Classic Load Balancers. You can select a load balancer based on your application needs. For more information, see the [Elastic Load Balancing User Guide](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html).
 #' 
 #' This reference covers the 2012-06-01 API, which supports Classic Load Balancers. The 2015-12-01 API supports Application Load Balancers and Network Load Balancers.
 #' 
@@ -11305,7 +11305,7 @@ elb <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' 
 #' -   Gateway Load Balancer - Operates at the network layer (layer 3).
 #' 
-#' For more information, see the [Elastic Load Balancing User Guide](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/).
+#' For more information, see the [Elastic Load Balancing User Guide](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html).
 #' 
 #' All Elastic Load Balancing operations are idempotent, which means that they complete at most one time. If you repeat an operation, it succeeds.
 #'
@@ -21202,7 +21202,7 @@ organizations <- function(config = list(), credentials = list(), endpoint = NULL
 #' 
 #' -   To learn more about Performance Insights and Amazon RDS DB instances, go to the \emph{\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{ Amazon RDS User Guide}} .
 #' 
-#' -   To learn more about Performance Insights and Amazon DocumentDB clusters, go to the \emph{\href{https://docs.aws.amazon.com/documentdb/latest/developerguide/performance-insights.html}{ Amazon DocumentDB Developer Guide}} .
+#' -   To learn more about Performance Insights and Amazon DocumentDB clusters, go to the \emph{\href{https://docs.aws.amazon.com/documentdb/latest/devguide/performance-insights.html}{ Amazon DocumentDB Developer Guide}} .
 #'
 #' @param
 #' config
@@ -41703,7 +41703,7 @@ sqs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' 
 #' Amazon SWF gives you full control over implementing tasks and coordinating them without worrying about underlying complexities such as tracking their progress and maintaining their state.
 #' 
-#' This documentation serves as reference only. For a broader overview of the Amazon SWF programming model, see the \emph{\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/}{Amazon SWF Developer Guide}} .
+#' This documentation serves as reference only. For a broader overview of the Amazon SWF programming model, see the \emph{\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/welcome.html}{Amazon SWF Developer Guide}} .
 #'
 #' @param
 #' config

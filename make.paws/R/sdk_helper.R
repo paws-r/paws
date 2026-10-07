@@ -81,7 +81,24 @@ paws_check_local_sub_cat <- function(
 #' @export
 paws_check_url <- function(in_dir = "../cran", path, pkg_list = list()) {
   pkgs <- list_paws_pkgs(in_dir, pkg_list)
-  results <- setNames(lapply(pkgs, urlchecker::url_check), basename(pkgs))
+  results <- setNames(
+    lapply(pkgs, urlchecker::url_check, parallel = FALSE, fail = FALSE),
+    basename(pkgs)
+  )
+  if (!missing(path)) {
+    yaml::write_yaml(results, path)
+  }
+  return(results)
+}
+
+#' @title Update paws urls
+#' @param in_dir Directory containing paws sdk packages.
+#' @param path Path to output paws sdk check results.
+#' @param pkg_list list of packages urls to check, check all packages by default
+#' @export
+paws_update_url <- function(in_dir = "../cran", path, pkg_list = list()) {
+  pkgs <- list_paws_pkgs(in_dir, pkg_list)
+  results <- setNames(lapply(pkgs, urlchecker::url_update), basename(pkgs))
   if (!missing(path)) {
     yaml::write_yaml(results, path)
   }

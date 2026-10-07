@@ -15,7 +15,7 @@ NULL
 #' 
 #' -   Gateway Load Balancer - Operates at the network layer (layer 3).
 #' 
-#' For more information, see the [Elastic Load Balancing User Guide](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/).
+#' For more information, see the [Elastic Load Balancing User Guide](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html).
 #' 
 #' All Elastic Load Balancing operations are idempotent, which means that they complete at most one time. If you repeat an operation, it succeeds.
 #'
