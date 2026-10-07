@@ -383,6 +383,14 @@ paws_build_cran_comments <- function(
     idcol = "package",
     use.names = T
   ))
+  if (nrow(result_dt) == 0) {
+    result_dt <- data.table::data.table(
+      package = character(0),
+      errors = character(0),
+      warnings = character(0),
+      notes = character(0)
+    )
+  }
 
   dir_info[
     result_dt,
