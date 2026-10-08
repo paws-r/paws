@@ -328,10 +328,6 @@ batch <- function(config = list(), credentials = list(), endpoint = NULL, region
 #' 
 #' **In this guide:**
 #' 
-#' -
-#' 
-#' -
-#' 
 #' -   CommonParameters
 #' 
 #' -   CommonErrors
