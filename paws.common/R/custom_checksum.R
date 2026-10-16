@@ -19,7 +19,8 @@ NULL
   MD5 = list(digest_algo = "md5", header_suffix = "md5"),
   XXHASH64 = list(digest_algo = "xxhash64", header_suffix = "xxhash64"),
   XXHASH3 = list(digest_algo = "xxh3_64", header_suffix = "xxhash3"),
-  XXHASH128 = list(digest_algo = "xxh3_128", header_suffix = "xxhash128")
+  XXHASH128 = list(digest_algo = "xxh3_128", header_suffix = "xxhash128"),
+  CRC64NVME = list(digest_algo = "crc64nvme", header_suffix = "crc64nvme")
 )
 
 DEFAULT_CHECKSUM_ALGORITHM <- "CRC32"
@@ -33,6 +34,9 @@ checksum_algorithm_spec <- function(algorithm) {
       paste(names(.CHECKSUM_ALGORITHMS), collapse = ", ")
     )
   }
+  if (spec$digest_algo == "crc64nvme" && !checksum_cache$awscrt) {
+    stopf("Please install `awscrt` for checksum `CRC64NVME`")
+  }
   return(spec)
 }
 
@@ -44,12 +48,12 @@ checksum_digest <- function(body, algorithm) {
   if (length(body) == 0) {
     body <- raw(0)
   }
-  hash <- digest::digest(
-    body,
-    algo = checksum_algorithm_spec(algorithm)$digest_algo,
-    serialize = FALSE,
-    raw = TRUE
-  )
+  algo <- checksum_algorithm_spec(algorithm)$digest_algo
+  if (algo != "crc64nvme") {
+    hash <- digest::digest(body, algo = , serialize = FALSE, raw = TRUE)
+  } else {
+    hash <- awscrt::crc64nvme(body, raw = TRUE)
+  }
   return(base64enc::base64encode(hash))
 }
 

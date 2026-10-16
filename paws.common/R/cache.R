@@ -6,6 +6,7 @@ ini_cache <- new.env(parent = emptyenv())
 os_env_cache <- new.env(parent = emptyenv())
 bearer_token_cache <- new.env(parent = emptyenv())
 vendor_cache <- list2env(list(vendor = "boto"), parent = emptyenv())
+checksum_cache <- new.env(parent = emptyenv())
 
 set_os_env_cache <- function() {
   env_vars <- system("printenv", intern = TRUE)
@@ -35,4 +36,8 @@ paws_reset_cache <- function() {
     rm(list = names(os_env_cache), envir = os_env_cache)
     set_os_env_cache()
   }
+}
+
+check_awscrt <- function() {
+  checksum_cache$awscrt <- requireNamespace("awscrt", quietly = T)
 }

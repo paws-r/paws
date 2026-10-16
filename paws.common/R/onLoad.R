@@ -11,4 +11,5 @@
   if (.Platform$OS.type == "unix") {
     set_os_env_cache()
   }
+  check_awscrt()
 }
