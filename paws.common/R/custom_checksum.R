@@ -50,7 +50,7 @@ checksum_digest <- function(body, algorithm) {
   }
   algo <- checksum_algorithm_spec(algorithm)$digest_algo
   if (algo != "crc64nvme") {
-    hash <- digest::digest(body, algo = , serialize = FALSE, raw = TRUE)
+    hash <- digest::digest(body, algo = algo, serialize = FALSE, raw = TRUE)
   } else {
     hash <- awscrt::crc64nvme(body, raw = TRUE)
   }
