@@ -37,7 +37,3 @@ paws_reset_cache <- function() {
     set_os_env_cache()
   }
 }
-
-check_awscrt <- function() {
-  checksum_cache$awscrt <- requireNamespace("awscrt", quietly = T)
-}

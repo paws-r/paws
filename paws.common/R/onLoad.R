@@ -11,5 +11,5 @@
   if (.Platform$OS.type == "unix") {
     set_os_env_cache()
   }
-  check_awscrt()
+  checksum_algorithm_spec <<- set_checksum_algorithm_spec()
 }
