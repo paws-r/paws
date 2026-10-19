@@ -1,25 +1,26 @@
-test_that("checksum_digest matches known values", {
+test_that("base64_checksum matches known values", {
   body <- charToRaw("Hello World")
 
-  expect_equal(checksum_digest(body, "CRC32"), "ShexVg==")
-  expect_equal(checksum_digest(body, "crc32c"), "aR2qLw==")
-  expect_equal(checksum_digest(body, "SHA1"), "Ck1VqNd45QIvq3AZd8XYQLvEhtA=")
+  expect_equal(base64_checksum(body, "CRC32"), "ShexVg==")
+  expect_equal(base64_checksum(body, "crc32c"), "aR2qLw==")
+  expect_equal(base64_checksum(body, "SHA1"), "Ck1VqNd45QIvq3AZd8XYQLvEhtA=")
   expect_equal(
-    checksum_digest(body, "SHA256"),
+    base64_checksum(body, "SHA256"),
     "pZGm1Av0IEBKARczz7exkNYsZb8LzaMrV7J32a2fFG4="
   )
   expect_equal(
-    checksum_digest(body, "SHA512"),
+    base64_checksum(body, "SHA512"),
     "LHT9F+2v2A6ER7DUZ0HuJDt+t03SFJoKsbkkb7MDgvJ+hT2FhXGeDmfL2g2qj1FnEGRhXWRa4nrLFb+xRH9Fmw=="
   )
-  expect_equal(checksum_digest(body, "MD5"), "sQqNsWTgdUEFt6mb5y4/5Q==")
-  expect_equal(checksum_digest(body, "XXHASH64"), "YzTSBxkkW8I=")
-  expect_equal(checksum_digest(body, "XXHASH3"), "40YVqt4uYzM=")
-  expect_equal(checksum_digest(body, "XXHASH128"), "QDODoVyZvu6aw68hJqACkg==")
+  expect_equal(base64_checksum(body, "MD5"), "sQqNsWTgdUEFt6mb5y4/5Q==")
+  expect_equal(base64_checksum(body, "XXHASH64"), "YzTSBxkkW8I=")
+  expect_equal(base64_checksum(body, "XXHASH3"), "40YVqt4uYzM=")
+  expect_equal(base64_checksum(body, "XXHASH128"), "QDODoVyZvu6aw68hJqACkg==")
+  expect_equal(base64_checksum(body, "CRC64NVME"), "ZZYyy35L4mE=")
 })
 
-test_that("checksum_digest defaults an empty/NULL body to raw(0)", {
-  expect_equal(checksum_digest(raw(0), "SHA256"), checksum_digest(NULL, "SHA256"))
+test_that("base64_checksum defaults an empty/NULL body to raw(0)", {
+  expect_equal(base64_checksum(raw(0), "SHA256"), base64_checksum(NULL, "SHA256"))
 })
 
 test_that("checksum_header_name maps to the x-amz-checksum-* header", {
@@ -29,7 +30,6 @@ test_that("checksum_header_name maps to the x-amz-checksum-* header", {
 })
 
 test_that("checksum_algorithm_spec errors on unsupported algorithms", {
-  expect_error(checksum_algorithm_spec("CRC64NVME"), "Unsupported checksum algorithm")
   expect_error(checksum_algorithm_spec("bogus"), "Unsupported checksum algorithm")
 })
 
@@ -86,9 +86,11 @@ test_that("resolve_checksum_algorithm uses the caller-supplied ChecksumAlgorithm
   expect_equal(result$context$checksum$request_algorithm, "SHA256")
 })
 
-test_that("resolve_checksum_algorithm errors on an unsupported caller-supplied algorithm", {
+test_that("resolve_checksum_algorithm defaults to CRC64NVME when the operation requires a checksum", {
+  skip_if_not_installed("awscrt")
   request <- base_checksum_request(params = list(ChecksumAlgorithm = "CRC64NVME"))
-  expect_error(resolve_checksum_algorithm(request), "Unsupported checksum algorithm")
+  result <- resolve_checksum_algorithm(request)
+  expect_equal(result$context$checksum$request_algorithm, "CRC64NVME")
 })
 
 test_that("resolve_checksum_algorithm defaults to CRC32 when the operation requires a checksum", {

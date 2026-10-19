@@ -58,7 +58,7 @@ checksum_header_name <- function(algorithm) {
   sprintf("x-amz-checksum-%s", checksum_algorithm_spec(algorithm)$header_suffix)
 }
 
-checksum_digest <- function(body, algorithm) {
+base64_checksum <- function(body, algorithm) {
   if (length(body) == 0) {
     body <- raw(0)
   }
@@ -127,7 +127,7 @@ apply_checksum_header <- function(request) {
 
   header_name <- checksum_header_name(algorithm)
   if (is.null(request$http_request$header[[header_name]])) {
-    request$http_request$header[[header_name]] <- checksum_digest(request$body, algorithm)
+    request$http_request$header[[header_name]] <- base64_checksum(request$body, algorithm)
   }
 
   algorithm_header <- request$operation$http_checksum$request_algorithm_header
