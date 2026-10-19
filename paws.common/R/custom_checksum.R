@@ -7,6 +7,8 @@ NULL
 # Flexible checksum support, driven by an operation's `httpChecksum` trait.
 # https://github.com/boto/botocore/blob/develop/botocore/httpchecksum.py
 
+DEFAULT_CHECKSUM_ALGORITHM <- "CRC32"
+
 digest_checksum <- function(algo) {
   function(body) digest::digest(body, algo = algo, serialize = FALSE, raw = TRUE)
 }
@@ -22,7 +24,7 @@ checksum_algorithm_spec <- NULL
 set_checksum_algorithm_spec <- function() {
   if (requireNamespace("awscrt", quietly = TRUE)) {
     aws_checksum <- function() {
-      list(fn = awscrt_checksum("crc64nvme"), header_suffix = suffix)
+      list(fn = awscrt_checksum("crc64nvme"), header_suffix = "crc64nvme")
     }
   } else {
     aws_checksum <- function() {
@@ -50,24 +52,6 @@ set_checksum_algorithm_spec <- function() {
       )
     )
   }
-}
-
-
-DEFAULT_CHECKSUM_ALGORITHM <- "CRC32"
-
-checksum_algorithm_spec <- function(algorithm) {
-  spec <- .CHECKSUM_ALGORITHMS[[toupper(algorithm)]]
-  if (is.null(spec)) {
-    stopf(
-      "Unsupported checksum algorithm: %s. paws.common currently supports: %s.",
-      algorithm,
-      paste(names(.CHECKSUM_ALGORITHMS), collapse = ", ")
-    )
-  }
-  if (spec$digest_algo == "crc64nvme" && !checksum_cache$awscrt) {
-    stopf("Please install `awscrt` for checksum `CRC64NVME`")
-  }
-  return(spec)
 }
 
 checksum_header_name <- function(algorithm) {
