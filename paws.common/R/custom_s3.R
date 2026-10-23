@@ -549,7 +549,14 @@ s3_get_bucket_region <- function(request, error, bucket) {
   }
 
   # Finally, HEAD the bucket. No other choice sadly.
-  resp <- s3(request$config)$head_bucket(Bucket = bucket)
+  # The client is built straight from the request's config, which shares its
+  # credentials (and any already fetched) instead of copying them through
+  # `set_config()`. This lookup must really send, even if the request being
+  # redirected came from a `request_only()` client.
+  svc <- .s3$operations
+  svc$.internal <- list(config = request$config)
+  svc$.internal$config$send <- TRUE
+  resp <- svc$head_bucket(Bucket = bucket)
   return(resp$BucketRegion)
 }
 
