@@ -6,6 +6,8 @@ ini_cache <- new.env(parent = emptyenv())
 os_env_cache <- new.env(parent = emptyenv())
 bearer_token_cache <- new.env(parent = emptyenv())
 vendor_cache <- list2env(list(vendor = "boto"), parent = emptyenv())
+# bucket -> region, learnt from S3 wrong-region redirects (see `s3_redirect_from_cache`)
+s3_region_cache <- new.env(parent = emptyenv())
 
 set_os_env_cache <- function() {
   env_vars <- system("printenv", intern = TRUE)
@@ -27,10 +29,12 @@ set_os_env_cache <- function() {
 #' * `ini_cache`: an environment that stores the results from `read_ini`, mainly used for storing AWS config files.
 #' * `os_env_cache`: an environment that stores environmental variables from Unix Operating Systems.
 #' * `bearer_token_cache`: an environment that stores bearer tokens
+#' * `s3_region_cache`: an environment that stores the region of S3 buckets learnt from wrong-region redirects
 #' @export
 paws_reset_cache <- function() {
   rm(list = names(ini_cache), envir = ini_cache)
   rm(list = names(bearer_token_cache), envir = bearer_token_cache)
+  rm(list = names(s3_region_cache), envir = s3_region_cache)
   if (.Platform$OS.type == "unix") {
     rm(list = names(os_env_cache), envir = os_env_cache)
     set_os_env_cache()
