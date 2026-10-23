@@ -93,7 +93,7 @@ perform_requests <- function(requests, max_active = 10) {
     if (length(pending) > 0) {
       round <- round + 1L
       delay <- min(runif(1) * 2^round, 20)
-      log_error(
+      log_warn(
         "%d request(s) failed. Retrying in %.3f seconds...",
         length(pending),
         delay

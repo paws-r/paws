@@ -214,3 +214,73 @@ test_that("check log message additional arguments", {
   expect_true(grepl("^.*ERROR.*: foo bar", result[[4]]))
   unlink(temp_file)
 })
+
+test_that("check timestamp format is honoured", {
+  temp_file <- tempfile()
+  paws_config_log(level = 3L, file = temp_file, timestamp_fmt = "FMT-%Y")
+  log_info("foo")
+  expect_match(readLines(temp_file), "INFO \\[FMT-\\d{4}\\]: foo")
+  unlink(temp_file)
+  paws_config_log()
+})
+
+test_that("check console logs don't colour log files", {
+  temp_file <- tempfile()
+  paws_config_log(level = 3L, file = temp_file)
+  log_info("foo")
+  expect_false(grepl("\033", readLines(temp_file), fixed = TRUE))
+  unlink(temp_file)
+  paws_config_log()
+})
+
+test_that("check secrets are redacted from http logs", {
+  lines <- c(
+    "Authorization: AWS4-HMAC-SHA256 Credential=AKIAXXX/20250101/us-east-1/s3/aws4_request, Signature=abc",
+    "x-amz-security-token: SECRETTOKEN",
+    "GET /key?X-Amz-Signature=deadbeef&X-Amz-Expires=60 HTTP/1.1",
+    "Host: s3.amazonaws.com"
+  )
+  out <- redact_secrets(lines)
+  expect_equal(out[[1]], "Authorization: <redacted>")
+  expect_equal(out[[2]], "x-amz-security-token: <redacted>")
+  expect_equal(out[[3]], "GET /key?X-Amz-Signature=<redacted>&X-Amz-Expires=60 HTTP/1.1")
+  expect_equal(out[[4]], lines[[4]])
+})
+
+test_that("cached timestamp matches strftime", {
+  fmt <- "%Y-%m-%d %H:%M:%OS3"
+  for (i in 1:3) {
+    before <- strftime(now(), fmt)
+    got <- log_timestamp(now(), fmt)
+    after <- strftime(now(), fmt)
+    expect_match(got, "^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d{3}$")
+    expect_true(got >= before && got <= after)
+    Sys.sleep(0.3)
+  }
+})
+
+test_that("cached timestamp uses the fractional seconds of the given time", {
+  time <- as.POSIXct("2025-01-02 03:04:05", tz = "UTC") + 0.625
+  withr::local_timezone("UTC")
+  expect_equal(log_timestamp(time, "%Y-%m-%d %H:%M:%OS3"), "2025-01-02 03:04:05.625")
+  expect_equal(log_timestamp(time, "%H:%M:%OS1"), "03:04:05.6")
+  # a later time in the same second reuses the cache but not the fraction
+  expect_equal(log_timestamp(time + 0.125, "%H:%M:%OS3"), "03:04:05.750")
+  # and a new second refreshes it
+  expect_equal(log_timestamp(time + 1, "%H:%M:%OS3"), "03:04:06.625")
+})
+
+test_that("cached timestamp handles other formats", {
+  time <- as.POSIXct("2025-01-02 03:04:05", tz = "UTC") + 0.625
+  withr::local_timezone("UTC")
+  expect_equal(log_timestamp(time, "%Y-%m-%d %H:%M"), "2025-01-02 03:04")
+  expect_equal(log_timestamp(time, "made-up"), "made-up")
+  expect_equal(log_timestamp(time, ""), "")
+  # literal percent signs survive
+  expect_equal(log_timestamp(time, "100%% %H:%M:%OS3"), "100% 03:04:05.625")
+  # more than one fractional field
+  expect_equal(log_timestamp(time, "%OS3 %OS3"), "05.625 05.625")
+  # no digits follows `digits.secs`
+  withr::local_options(digits.secs = 2L)
+  expect_equal(log_timestamp(time, "%H:%M:%OS"), "03:04:05.62")
+})
