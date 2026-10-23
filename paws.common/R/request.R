@@ -82,7 +82,8 @@ Request <- struct(
   expire_time = 0,
   context = list(),
   built = FALSE,
-  safe_body = ""
+  safe_body = "",
+  prefetched_response = NULL
 )
 
 #' Return an API request object
@@ -182,7 +183,19 @@ send_request <- function(request) {
   if (!is.null(request$error)) {
     stop(aws_error(request$error))
   }
+  # A client from `request_only()` stops here, handing back the signed request.
+  if (isFALSE(request$config$send)) {
+    if (isTRUE(request$http_request$stream_api)) {
+      stop("streaming operations can't be performed in parallel", call. = FALSE)
+    }
+    return(request)
+  }
   request <- send(request)
+  return(finish_request(request))
+}
+
+# Handle the response of a sent request: unmarshal, validate, retry on error.
+finish_request <- function(request) {
   request <- unmarshal_meta(request)
   request <- validate_response(request)
 

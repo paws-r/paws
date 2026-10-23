@@ -1,3 +1,8 @@
+# paws.common 0.10.0
+* remember the region of an S3 bucket after a wrong-region redirect (as botocore does), so later requests to the same bucket go straight to the right region instead of being redirected each time; `paws_reset_cache()` clears it. Requests using a custom endpoint or an access point ARN are unaffected.
+* add `multipart_upload_file()` and `multipart_download_file()`, the engines behind parallel S3 `upload_file()`/`download_file()`: large files are transferred as multipart uploads or byte ranges, with up to `max_concurrency` requests in flight on a `curl` pool (no new dependencies). Failed uploads are aborted and failed downloads never leave a partial file.
+* skip the SHA256 hash of the body when signing S3 requests over HTTPS that already carry a checksum header (`x-amz-checksum-*` or `Content-MD5`), signing with `UNSIGNED-PAYLOAD` as boto3 does; this removes a full pass over the body on every `put_object`/`upload_part`. Set `s3_payload_signing_enabled = TRUE` in the service config to always sign the body.
+
 # paws.common 0.9.0
 * add support for S3 outposts and S3 Object Lambda access point ARNs, resolving the correct endpoint host, signing service name, and signing region for each ARN type.
 * fix header injection in SigV4 query string signing where `x-amz-*`, `content-md5` and `content-type` headers could be written to the wrong query parameters, and fix `canonical_string` failing to join canonical headers onto separate lines.

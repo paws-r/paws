@@ -1,7 +1,7 @@
 Package: paws.common
 Type: Package
 Title: Paws Low-Level Amazon Web Services API
-Version: 0.9.0
+Version: 0.10.0
 Authors@R: c(
         person("David", "Kretch", email = "david.kretch@gmail.com", role = "aut"),
         person("Adam", "Banker", email = "adam.banker39@gmail.com", role = "aut"),
@@ -82,6 +82,7 @@ Collate:
     'mock_bindings.R'
     'onLoad.R'
     'paginate.R'
+    'parallel.R'
     'populateutil.R'
     'queryutil.R'
     'retry.R'
@@ -93,6 +94,7 @@ Collate:
     'signer_v1.R'
     'signer_v2.R'
     'time.R'
+    'transfer.R'
 Config/testthat/edition: 3
 Config/roxygen2/version: 8.1.0
 VignetteBuilder: litedown

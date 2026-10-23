@@ -235,3 +235,110 @@ test_that("Test anonymous credentials", {
 
   expect_equal(res$http_request$header[["Authorization"]], "")
 })
+
+s3_put_request <- function(headers = list(), body = charToRaw("hello"), config = list()) {
+  metadata <- list(
+    endpoints = list(
+      "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(
+        endpoint = "s3.amazonaws.com",
+        global = FALSE
+      )
+    ),
+    service_name = "s3"
+  )
+  client <- new_service(metadata, new_handlers("restxml", "s3"), Config())
+  client$config$credentials <- test_creds
+  client$client_info$signing_region <- "us-east-1"
+  for (nm in names(config)) {
+    client$config[[nm]] <- config[[nm]]
+  }
+  op <- new_operation("PutObject", "PUT", "/bucket/key", list())
+  req <- new_request(client, op, list(), list())
+  req$body <- body
+  for (nm in names(headers)) {
+    req$http_request$header[[nm]] <- headers[[nm]]
+  }
+  return(req)
+}
+
+test_that("S3 over https with a checksum header uses UNSIGNED-PAYLOAD", {
+  req <- s3_put_request(list("x-amz-checksum-crc32" = "ShexVg=="))
+  res <- v4_sign_request_handler(req)
+  expect_equal(res$http_request$header[["X-Amz-Content-Sha256"]], "UNSIGNED-PAYLOAD")
+
+  req <- s3_put_request(list("Content-Md5" = "sQqNsWTgdUEFt6mb5y4/5Q=="))
+  res <- v4_sign_request_handler(req)
+  expect_equal(res$http_request$header[["X-Amz-Content-Sha256"]], "UNSIGNED-PAYLOAD")
+})
+
+test_that("S3 without a body checksum header still signs the SHA256 of the body", {
+  body <- charToRaw("hello")
+  expected <- digest::digest(body, "sha256", serialize = FALSE)
+
+  res <- v4_sign_request_handler(s3_put_request(body = body))
+  expect_equal(res$http_request$header[["X-Amz-Content-Sha256"]], expected)
+
+  # algorithm-only headers don't carry a checksum of the body
+  res <- v4_sign_request_handler(s3_put_request(
+    list("x-amz-checksum-algorithm" = "CRC32"),
+    body = body
+  ))
+  expect_equal(res$http_request$header[["X-Amz-Content-Sha256"]], expected)
+})
+
+test_that("S3 over http always signs the SHA256 of the body", {
+  body <- charToRaw("hello")
+  req <- s3_put_request(list("x-amz-checksum-crc32" = "ShexVg=="), body = body)
+  req$http_request$url$scheme <- "http"
+  res <- v4_sign_request_handler(req)
+  expect_equal(
+    res$http_request$header[["X-Amz-Content-Sha256"]],
+    digest::digest(body, "sha256", serialize = FALSE)
+  )
+})
+
+test_that("s3_payload_signing_enabled overrides the default", {
+  body <- charToRaw("hello")
+  headers <- list("x-amz-checksum-crc32" = "ShexVg==")
+
+  res <- v4_sign_request_handler(s3_put_request(
+    headers,
+    body,
+    config = list(s3_payload_signing_enabled = TRUE)
+  ))
+  expect_equal(
+    res$http_request$header[["X-Amz-Content-Sha256"]],
+    digest::digest(body, "sha256", serialize = FALSE)
+  )
+
+  res <- v4_sign_request_handler(s3_put_request(
+    list(),
+    body,
+    config = list(s3_payload_signing_enabled = FALSE)
+  ))
+  expect_equal(res$http_request$header[["X-Amz-Content-Sha256"]], "UNSIGNED-PAYLOAD")
+})
+
+test_that("an unset s3_payload_signing_enabled (as populated by the config struct) is ignored", {
+  body <- charToRaw("hello")
+  expected <- digest::digest(body, "sha256", serialize = FALSE)
+  for (unset in list(NULL, logical(0), NA)) {
+    req <- s3_put_request(body = body)
+    req$config$s3_payload_signing_enabled <- unset
+    res <- v4_sign_request_handler(req)
+    expect_equal(res$http_request$header[["X-Amz-Content-Sha256"]], expected)
+  }
+})
+
+test_that("S3 requests built through a real client config sign the body over http", {
+  svc <- paws.common:::new_session()
+  expect_length(svc$config$s3_payload_signing_enabled, 0)
+  req <- s3_put_request(body = charToRaw("hello"))
+  req$config <- svc$config
+  req$config$credentials <- test_creds
+  res <- v4_sign_request_handler(req)
+  expect_equal(
+    res$http_request$header[["X-Amz-Content-Sha256"]],
+    digest::digest(charToRaw("hello"), "sha256", serialize = FALSE)
+  )
+})

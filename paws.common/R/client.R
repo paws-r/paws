@@ -25,6 +25,8 @@ Config <- struct(
   s3_disable_100_continue = FALSE,
   s3_use_accelerate = FALSE,
   s3_disable_content_md5_validation = FALSE,
+  s3_payload_signing_enabled = NULL,
+  send = TRUE,
   ec2_metadata_disable_timeout_override = FALSE,
   use_dual_stack = FALSE,
   sleep_delay = NULL,
