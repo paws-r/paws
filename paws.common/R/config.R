@@ -92,7 +92,9 @@ set_config <- function(svc, cfgs = list()) {
 
   # update optional config parameters
   cfgs <- update_optional_config_parameter(cfgs, cfgs$credentials$profile)
+  cfgs <- resolve_retry_config(cfgs, cfgs$credentials$profile)
   config <- populate(cfgs, shape)
+  config$retry_state <- new_retry_state()
   config$credentials <- as.environment(config$credentials)
   if (nchar(config$region) == 0) {
     config$region <- get_region(config[["credentials"]][["profile"]])
@@ -445,27 +447,6 @@ get_web_identity_token <- function(web_identity_token_file = "") {
   return(readLines(get_web_identity_token_file(web_identity_token_file), warn = FALSE))
 }
 
-# Check if sts_regional_endpoint is present in config file
-check_config_file_sts_regional_endpoint <- function(profile = "") {
-  if (is.null(config_path <- get_config_file_path())) {
-    return(NULL)
-  }
-
-  profile <- get_profile_name(profile)
-  if (profile != "default") {
-    profile <- paste("profile", profile)
-  }
-
-  config_values <- read_ini(config_path)
-
-  if (is.null(config_values[[profile]])) {
-    return(NULL)
-  }
-
-  sts_regional_endpoint <- config_values[[profile]]$sts_regional_endpoint
-
-  return(sts_regional_endpoint)
-}
 
 # Get the AWS STS Regional Endpoint property from envvar or
 # config file. Envvar takes precedence as per general AWS strategy
@@ -475,7 +456,8 @@ get_sts_regional_endpoint <- function(profile = "") {
     return(sts_regional_endpoint)
   }
 
-  sts_regional_endpoint <- check_config_file_sts_regional_endpoint(profile)
+  # Check if sts_regional_endpoint is present in config file
+  sts_regional_endpoint <- get_config_file_value("sts_regional_endpoint", profile)
 
   return(sts_regional_endpoint %||% "")
 }
@@ -486,6 +468,72 @@ get_sts_regional_endpoint <- function(profile = "") {
 get_use_dual_stack <- function(profile = "") {
   use_dual_stack <- get_env("AWS_USE_DUALSTACK_ENDPOINT")
   return(tolower(trimws(use_dual_stack)) %in% c("true", "1"))
+}
+
+# Look up `key` in the AWS config file profile (NULL if absent).
+get_config_file_value <- function(key, profile = "") {
+  if (is.null(config_path <- get_config_file_path())) {
+    return(NULL)
+  }
+  profile <- get_profile_name(profile)
+  if (profile != "default") {
+    profile <- paste("profile", profile)
+  }
+  return(read_ini(config_path)[[profile]][[key]])
+}
+
+# Get the retry mode from the `AWS_RETRY_MODE` envvar or the `retry_mode` key of
+# the config file. Defaults to "standard".
+get_retry_mode <- function(profile = "") {
+  mode <- get_env("AWS_RETRY_MODE")
+  if (mode == "") {
+    mode <- get_config_file_value("retry_mode", profile) %||% "standard"
+  }
+  return(tolower(trimws(mode)))
+}
+
+# Get the total number of attempts from the `AWS_MAX_ATTEMPTS` envvar or the
+# `max_attempts` key of the config file (NULL if neither is set).
+get_max_attempts <- function(profile = "") {
+  attempts <- get_env("AWS_MAX_ATTEMPTS")
+  if (attempts == "") {
+    attempts <- get_config_file_value("max_attempts", profile) %||% ""
+  }
+  attempts <- suppressWarnings(as.integer(attempts))
+  if (is.na(attempts) || attempts < 1) {
+    return(NULL)
+  }
+  return(attempts)
+}
+
+# Settle `retry_mode` and `max_retries` in `cfgs`. Precedence, highest first:
+# the client's `max_attempts`, its `max_retries`, then the environment/config
+# file (`max_attempts` counts the first attempt, `max_retries` doesn't).
+resolve_retry_config <- function(cfgs, profile = "") {
+  # `cfgs` may be a struct (e.g. a built config passed back in), which rejects
+  # elements it doesn't define such as `max_attempts`.
+  cl <- oldClass(cfgs)
+  cfgs <- unclass(cfgs)
+  if (length(cfgs$retry_mode) == 0 || identical(cfgs$retry_mode, "")) {
+    cfgs$retry_mode <- get_retry_mode(profile)
+  }
+  if (!cfgs$retry_mode %in% c("standard", "adaptive")) {
+    stopf(
+      "Invalid `retry_mode` '%s'. Must be one of 'standard' or 'adaptive'.",
+      cfgs$retry_mode
+    )
+  }
+  if (length(cfgs$max_attempts) > 0) {
+    cfgs$max_retries <- max(cfgs$max_attempts - 1, 0)
+    cfgs$max_attempts <- NULL
+  } else if (length(cfgs$max_retries) == 0) {
+    max_attempts <- get_max_attempts(profile)
+    if (!is.null(max_attempts)) {
+      cfgs$max_retries <- max_attempts - 1
+    }
+  }
+  class(cfgs) <- cl
+  return(cfgs)
 }
 
 .optional_config_parameter <- list(

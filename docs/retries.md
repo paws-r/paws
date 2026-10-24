@@ -2,8 +2,10 @@
 
 - [Default behavior](#default-behavior)
 - [Configuring the number of retries](#configuring-the-number-of-retries)
+- [Retry modes](#retry-modes)
 - [What gets retried](#what-gets-retried)
 - [Backoff](#backoff)
+- [Retry quota](#retry-quota)
 
 ---
 
@@ -40,6 +42,42 @@ svc <- s3(config(max_retries = 10))
 svc <- s3(config(max_retries = 0))
 ```
 
+`max_attempts` counts the first try as well, so `max_attempts = 4` is the same
+as `max_retries = 3`. It takes precedence if both are given. When neither is set
+in the client config, Paws uses the `AWS_MAX_ATTEMPTS` environment variable, then
+the `max_attempts` key of your profile in the AWS config file.
+
+```r
+svc <- s3(config(max_attempts = 5))
+```
+
+## Retry modes
+
+Set `retry_mode` in the service config, with the `AWS_RETRY_MODE` environment
+variable, or with `retry_mode` in your profile in the AWS config file (in that
+order of precedence).
+
+* `"standard"` (default): failed requests are retried with exponential backoff
+  as described below.
+* `"adaptive"`: everything in standard mode, plus a client side rate limiter.
+  Once the service throttles a request, the client slows its own sending rate
+  down (and speeds it back up as requests succeed) instead of sending requests
+  that are likely to be rejected. Until the first throttling response, adaptive
+  mode adds no delay.
+
+```r
+svc <- s3(config(retry_mode = "adaptive", max_attempts = 5))
+```
+
+Adaptive mode follows [botocore's adaptive mode](https://docs.aws.amazon.com/sdkref/latest/guide/feature-retry-behavior.html)
+and, as there, the rate limit belongs to the client object. Use one client per
+throttled resource (for example one S3 client for each heavily used bucket),
+otherwise a throttled resource slows down requests to healthy ones.
+Rate limiting is also per R session. It is not shared between processes.
+
+Parallel S3 transfers (`upload_file()` / `download_file()`) take part too: each
+request waits for the rate limiter, and every response updates it.
+
 ## What gets retried
 
 A failed request is retried if either:
@@ -57,3 +95,11 @@ is raised immediately without being retried.
 Between retries, Paws waits with an exponential backoff: on retry attempt
 `i`, it sleeps a random amount of time between `0` and `2^i` seconds, capped
 at a maximum of 20 seconds, before trying again.
+
+## Retry quota
+
+Each client has a retry quota of 500 tokens. Every retry takes 5 tokens from
+it, and a request that succeeds gives back what its last retry took (or 1 token
+if it needed no retry). When the quota can't cover a retry, the request fails
+with its original error instead of being retried. This stops a client that is
+hitting sustained failures from retrying forever; it recovers as requests succeed.

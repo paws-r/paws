@@ -14,7 +14,8 @@
   "disable_rest_protocol_uri_cleaning",
   "provider",
   "provider_name",
-  "partition_name"
+  "partition_name",
+  "retry_state"
 )
 
 firstup <- function(x) {

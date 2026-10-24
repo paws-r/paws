@@ -371,3 +371,68 @@ test_that("a prepared request really sends once it is being completed", {
   expect_true(seen)
   expect_true(resign_request(req, 1)$config$send)
 })
+
+# a prepared batch whose requests share one client's retry state
+prepared_parts_with_state <- function(n, mode = "standard", max_retries = 3) {
+  client <- s3_test_client()
+  client$config$max_retries <- max_retries
+  client$config$retry_mode <- mode
+  client$config$retry_state <- new_retry_state()
+  lapply(seq_len(n), function(i) fake_operation(request_only_client(client)))
+}
+
+test_that("perform_requests updates the adaptive rate limiter", {
+  mockery::stub(perform_requests, "Sys.sleep", function(...) NULL)
+  reqs <- prepared_parts_with_state(2, mode = "adaptive")
+  limiter <- reqs[[1]]$config$retry_state$limiter
+  limiter$bucket$sleep <- function(x) NULL
+  calls <- 0
+  mock <- function(req) {
+    calls <<- calls + 1
+    if (calls == 1) slow_down_response() else ok_response("\"e\"")
+  }
+  out <- perform_requests_mocked(mock, reqs)
+  expect_false(any(vapply(out, inherits, logical(1), "error")))
+  expect_true(limiter$enabled)
+})
+
+test_that("perform_requests leaves the rate limiter alone in standard mode", {
+  mockery::stub(perform_requests, "Sys.sleep", function(...) NULL)
+  reqs <- prepared_parts_with_state(2)
+  calls <- 0
+  mock <- function(req) {
+    calls <<- calls + 1
+    if (calls == 1) slow_down_response() else ok_response("\"e\"")
+  }
+  perform_requests_mocked(mock, reqs)
+  expect_false(reqs[[1]]$config$retry_state$limiter$enabled)
+})
+
+test_that("perform_requests stops retrying when the retry quota is spent", {
+  mockery::stub(perform_requests, "Sys.sleep", function(...) NULL)
+  reqs <- prepared_parts_with_state(1)
+  quota <- reqs[[1]]$config$retry_state$quota
+  quota$available <- 7 # one retry (5), not two
+  calls <- 0
+  mock <- function(req) {
+    calls <<- calls + 1
+    slow_down_response()
+  }
+  out <- perform_requests_mocked(mock, reqs)
+  expect_equal(calls, 2) # 1 attempt + 1 retry, then the quota refuses
+  expect_s3_class(out[[1]], "paws_error")
+  expect_equal(quota$available, 2)
+})
+
+test_that("perform_requests refunds the retry quota on success", {
+  mockery::stub(perform_requests, "Sys.sleep", function(...) NULL)
+  reqs <- prepared_parts_with_state(2)
+  quota <- reqs[[1]]$config$retry_state$quota
+  calls <- 0
+  mock <- function(req) {
+    calls <<- calls + 1
+    if (calls == 1) slow_down_response() else ok_response("\"e\"")
+  }
+  perform_requests_mocked(mock, reqs)
+  expect_equal(quota$available, quota$max_capacity)
+})

@@ -190,6 +190,7 @@ send_request <- function(request) {
     }
     return(request)
   }
+  retry_before_send(request)
   request <- send(request)
   return(finish_request(request))
 }

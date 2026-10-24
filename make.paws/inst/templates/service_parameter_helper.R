@@ -29,6 +29,13 @@
 #' @param connect_timeout The time in seconds till a timeout exception is thrown
 #' when attempting to make a connection. The default is 60 seconds.
 #' @param max_retries Max number of retries call AWS API (default set to 3).
+#' @param retry_mode Retry mode, `"standard"` or `"adaptive"`. Adaptive mode adds a
+#' client side rate limiter that slows requests down once the service starts throttling.
+#' Defaults to the `AWS_RETRY_MODE` environment variable or the `retry_mode` key of the
+#' config file profile, then `"standard"`.
+#' @param max_attempts Max number of attempts, i.e. the first try plus retries. Takes
+#' precedence over `max_retries`. Defaults to the `AWS_MAX_ATTEMPTS` environment variable
+#' or the `max_attempts` key of the config file profile when `max_retries` isn't set.
 #' @param s3_force_path_style Set this to `true` to force the request to use path-style
 #' addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.
 #' @param s3_virtual_address Set this to `true` to force the request to use virtual-hosted-style

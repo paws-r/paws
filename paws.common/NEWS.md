@@ -1,4 +1,6 @@
 # paws.common 0.10.0
+* add adaptive retries: set `retry_mode = "adaptive"` in the service config (or `AWS_RETRY_MODE`, or `retry_mode` in the AWS config file) for a client side rate limiter that slows requests once the service throttles, as in botocore. `max_attempts` (or `AWS_MAX_ATTEMPTS`) sets the total number of attempts. Retries are also now limited by a per-client retry quota, and parallel S3 transfers take part in both. Retry mode is `"standard"` by default.
+* fix retries never re-sending a request that failed with an error response: the previous attempt's error was raised again without the request being sent, so retried requests failed without reaching the service.
 * logging: `paws.log_timestamp_fmt` (and `paws_config_log(timestamp_fmt =)`) is now honoured, colour codes are no longer written to log files, and retry messages log at `WARN` rather than `ERROR`.
 * the HTTP debug callback does no work unless the level is `DEBUG` or above, and log timestamps are formatted once per second instead of on every message, making enabled logging cheaper.
 * redact `Authorization`, `X-Amz-Security-Token`, SSE-C key headers and presigned `X-Amz-Signature` values from `DEBUG`/`TRACE` HTTP logs.
