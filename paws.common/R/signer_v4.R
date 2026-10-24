@@ -139,6 +139,7 @@ sign_sdk_request_with_curr_time <- function(request, curr_time_fn = now, opts = 
 
   if (is_s3_family) {
     v4$disable_uri_path_escaping <- TRUE
+    v4$unsigned_payload <- s3_skip_payload_signing(request)
   }
 
   # TODO: Fix.
@@ -167,6 +168,38 @@ sign_sdk_request_with_curr_time <- function(request, curr_time_fn = now, opts = 
   }
 
   return(request)
+}
+
+# Whether to sign an S3 request with `UNSIGNED-PAYLOAD` rather than a SHA256 of
+# the body. Mirrors botocore's `S3SigV4Auth._should_sha256_sign_payload`: over
+# HTTPS, a checksum header (`x-amz-checksum-*` or `Content-MD5`) that is part of
+# the signed headers already lets S3 verify the body, so hashing it again is
+# wasted work on every upload.
+# The `s3_payload_signing_enabled` config option takes precedence when set.
+# https://github.com/boto/botocore/blob/develop/botocore/auth.py
+s3_skip_payload_signing <- function(request) {
+  # An unset option arrives as NULL or, via the config struct, a zero-length
+  # logical; only a single TRUE/FALSE counts as set.
+  explicit <- request$config$s3_payload_signing_enabled
+  if (is.logical(explicit) && length(explicit) == 1 && !is.na(explicit)) {
+    return(!explicit)
+  }
+  http_request <- request$http_request
+  if (!identical(http_request$url$scheme, "https")) {
+    return(FALSE)
+  }
+  headers <- names(http_request$header)
+  if (length(headers) == 0) {
+    return(FALSE)
+  }
+  # `x-amz-checksum-algorithm`/`-type` only name an algorithm (e.g. on
+  # CreateMultipartUpload), they don't carry a checksum of the body.
+  return(any(grepl(
+    "^(x-amz-checksum-(?!algorithm$|type$)|content-md5$)",
+    headers,
+    ignore.case = TRUE,
+    perl = TRUE
+  )))
 }
 
 sign_with_body <- function(

@@ -102,11 +102,66 @@ log_error <- function(...) {
   }
 }
 
+# Formatting a POSIXct is slow (timezone conversion on every call), so the
+# whole-second part of the timestamp is formatted once per second and cached per
+# format as a `sprintf()` template. Each call then only splices in the
+# fractional seconds (`%OSn`).
+log_timestamp_cache <- new.env(parent = emptyenv())
+
+compile_timestamp <- function(fmt) {
+  m <- regmatches(fmt, regexpr("%OS[0-6]?", fmt))
+  digits <- if (length(m) == 0L) {
+    0L
+  } else if (nchar(m) == 4L) {
+    as.integer(substr(m, 4L, 4L))
+  } else {
+    as.integer(getOption("digits.secs", 0L))
+  }
+  list(
+    base = gsub("%OS[0-6]?", if (digits > 0L) "%S.\001" else "%S", fmt),
+    digits = digits,
+    frac_fmt = paste0("%0", digits, "d"),
+    sec = -1,
+    template = ""
+  )
+}
+
+log_timestamp <- function(time, fmt) {
+  if (!nzchar(fmt)) {
+    return("")
+  }
+  t <- unclass(time)
+  sec <- floor(t)
+  entry <- log_timestamp_cache[[fmt]]
+  if (is.null(entry)) {
+    entry <- compile_timestamp(fmt)
+  }
+  if (sec != entry$sec) {
+    out <- format.POSIXct(.POSIXct(sec), entry$base)
+    # escape literal % in the formatted text, then turn the marker into a placeholder
+    out <- gsub("%", "%%", out, fixed = TRUE)
+    entry$template <- gsub("\001", "%1$s", out, fixed = TRUE)
+    entry$sec <- sec
+    log_timestamp_cache[[fmt]] <- entry
+  }
+  if (entry$digits == 0L) {
+    return(sprintf(entry$template))
+  }
+  frac <- sprintf(entry$frac_fmt, as.integer((t - sec) * 10^entry$digits))
+  sprintf(entry$template, frac)
+}
+
 log_msg <- function(lvl, msg) {
   log_file <- getOption("paws.log_file")
-  now <- strftime(now(), "%Y-%m-%d %H:%M:%OS3")
-  cat(sprintf("%s [%s]: %s\n", log_color(lvl), now, msg), file = log_file, append = TRUE)
-  on.exit(flush.console())
+  timestamp_fmt <- getOption("paws.log_timestamp_fmt", "%Y-%m-%d %H:%M:%OS3")
+  now <- log_timestamp(now(), timestamp_fmt)
+  to_console <- identical(log_file, "")
+  # only colour console output, so log files stay free of escape codes
+  if (to_console) {
+    lvl <- log_color(lvl)
+    on.exit(flush.console())
+  }
+  cat(sprintf("%s [%s]: %s\n", lvl, now, msg), file = log_file, append = TRUE)
 }
 
 log_color <- function(lvl) {
@@ -125,6 +180,10 @@ log_color <- function(lvl) {
 # modified httr2::req_verbose to align with paws logging system
 # https://github.com/r-lib/httr2/blob/8e9f8588e66378f1f419158cd1810a82a4dad022/R/req-options.R#L167-L187
 paws_debug <- function(type, msg) {
+  # curl calls this for every header once verbose; skip the work unless DEBUG is on
+  if (!isTRUE(getOption("paws.log_level") >= 4L)) {
+    return(invisible())
+  }
   switch(
     type + 1,
     text = prefix_trace("*  ", msg),
@@ -133,9 +192,32 @@ paws_debug <- function(type, msg) {
   )
 }
 
+# Headers and query parameters that carry credentials or signatures, redacted
+# before anything is written to the log.
+redact_secrets <- function(lines) {
+  lines <- sub(
+    paste0(
+      "^((?:authorization|proxy-authorization|x-amz-security-token|x-amz-s3session-token|",
+      "x-amz-server-side-encryption-customer-key|",
+      "x-amz-copy-source-server-side-encryption-customer-key):[ \\t]*).*$"
+    ),
+    "\\1<redacted>",
+    lines,
+    ignore.case = TRUE,
+    perl = TRUE
+  )
+  gsub(
+    "((?:X-Amz-Signature|X-Amz-Security-Token)=)[^&\\s]+",
+    "\\1<redacted>",
+    lines,
+    ignore.case = TRUE,
+    perl = TRUE
+  )
+}
+
 prefix_debug <- function(prefix, x) {
   x <- readBin(x, character())
-  lines <- unlist(strsplit(x, "\r?\n", useBytes = TRUE))
+  lines <- redact_secrets(unlist(strsplit(x, "\r?\n", useBytes = TRUE)))
   out <- paste0(prefix, lines, collapse = "\n")
   log_debug(out)
 }

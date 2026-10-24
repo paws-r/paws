@@ -554,8 +554,31 @@ SEXP populate_scalar_cpp(SEXP input, SEXP interface, SEXP parent) {
   return result;
 }
 
+// The objects of an environment as a named list, sorted by name.
+//
+// An environment has a length but no `names` attribute, so the code below can't
+// read it as it does a list (e.g. the `credentials` of a config that was built
+// by `set_config()`). Populating from one used to work in the R implementation,
+// where `names()` and `[[` handle environments.
+inline SEXP environment_as_list_cpp(SEXP env) {
+  // as.list.environment(x, all.names = TRUE, sorted = TRUE); the logical
+  // scalars are R's shared constants, so nothing here is allocated unprotected.
+  SEXP call = PROTECT(Rf_lang4(Rf_install("as.list.environment"), env,
+                               Rf_ScalarLogical(TRUE), Rf_ScalarLogical(TRUE)));
+  SEXP out = Rf_eval(call, R_BaseEnv);
+  UNPROTECT(1);
+  return out;
+}
+
 // Main populate function - inline type checks for speed
 SEXP populate_cpp_impl(SEXP input, SEXP interface, SEXP parent) {
+  if (TYPEOF(input) == ENVSXP) {
+    SEXP as_list = PROTECT(environment_as_list_cpp(input));
+    SEXP result = populate_cpp_impl(as_list, interface, parent);
+    UNPROTECT(1);
+    return result;
+  }
+
   // Fast type checking using integer codes
   TypeCode type = get_type_code(interface);
 

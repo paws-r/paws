@@ -99,6 +99,6 @@ exp_back_off <- function(error, i, retries) {
     stop(error)
   }
   time <- min(runif(1) * 2^i, 20)
-  log_error("Request failed. Retrying in %.3f seconds...", time)
+  log_warn("Request failed. Retrying in %.3f seconds...", time)
   Sys.sleep(time)
 }

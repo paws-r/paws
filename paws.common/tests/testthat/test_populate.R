@@ -364,3 +364,43 @@ test_that("check populate with child classes", {
     expect_equal(attributes(actual[[i]]), attributes(expected[[i]]))
   }
 })
+
+test_that("populate reads an environment as a named list", {
+  interface <- tag_add(
+    list(a = tag_add(list(x = "", y = ""), list(type = "structure")), b = ""),
+    list(type = "structure")
+  )
+  env <- list2env(list(x = "1", y = "2"))
+
+  # an environment as a field, and as the whole input
+  expect_equal(
+    populate(list(a = env), interface),
+    populate(list(a = list(x = "1", y = "2")), interface)
+  )
+  expect_equal(populate(env, interface$a), populate(list(x = "1", y = "2"), interface$a))
+  expect_equal(populate(list(a = env), interface)$a$y, "2")
+
+  # unknown names in an environment are rejected, as they are in a list
+  expect_error(populate(list(a = list2env(list(z = "1"))), interface), "invalid name")
+
+  # an empty environment populates nothing
+  expect_equal(
+    populate(list(a = new.env()), interface),
+    populate(list(a = list()), interface)
+  )
+})
+
+test_that("a config built by set_config can be passed to set_config again", {
+  built <- s3(list(
+    region = "eu-west-1",
+    max_retries = 7,
+    credentials = list(creds = list(access_key_id = "AKID", secret_access_key = "SECRET"))
+  ))$.internal$config
+
+  again <- s3(built)$.internal$config
+
+  expect_equal(again$region, "eu-west-1", ignore_attr = TRUE)
+  expect_equal(again$max_retries, 7, ignore_attr = TRUE)
+  expect_equal(again$credentials$creds$access_key_id, "AKID", ignore_attr = TRUE)
+  expect_equal(again$credentials$creds$secret_access_key, "SECRET", ignore_attr = TRUE)
+})

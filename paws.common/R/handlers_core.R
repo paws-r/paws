@@ -73,7 +73,13 @@ send_handler <- function(request) {
   #   request$http_request$body <- NULL
   # }
 
-  request$http_response <- sender(request)
+  if (!is.null(request$prefetched_response)) {
+    # response already fetched elsewhere, e.g. by a parallel batch
+    request$http_response <- request$prefetched_response
+    request$prefetched_response <- NULL
+  } else {
+    request$http_response <- sender(request)
+  }
 
   return(request)
 }
