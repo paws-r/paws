@@ -32,6 +32,8 @@ throttling_codes <- c(
   "EC2ThrottledException"
 )
 
+DEFAULT_MAX_RETRIES <- 3
+
 # Retry attempts for an expanded list of errors/exceptions:
 retryable_codes <- unique(c(transient_codes, throttling_codes))
 
@@ -48,7 +50,7 @@ retry_handler <- function(request) {
   request <- unmarshal_error(request)
   error <- aws_error(request[["error"]])
   retry_on_response(request, error)
-  retries <- request[["config"]][["max_retries"]]
+  retries <- get_max_retries(request)
   exit_retries <- retries + 1
 
   # If error is not retryable raise error
@@ -121,6 +123,13 @@ is_transient_error <- function(error) {
 
 check_if_retryable <- function(error) {
   return(is_throttling_error(error) || is_transient_error(error))
+}
+
+# `max_retries` is unset (NULL) unless the user, an environment variable or the
+# config file set it, so that those can be told apart from the default.
+get_max_retries <- function(request) {
+  retries <- request[["config"]][["max_retries"]]
+  if (length(retries) == 1 && !is.na(retries)) retries else DEFAULT_MAX_RETRIES
 }
 
 # -- Per-client retry state: retry quota and adaptive rate limiter ------------

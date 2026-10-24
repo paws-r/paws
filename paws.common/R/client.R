@@ -14,7 +14,7 @@ Config <- struct(
   region = "",
   disable_ssl = FALSE,
   close_connection = FALSE,
-  max_retries = 3,
+  max_retries = NULL,
   retry_mode = "",
   max_attempts = NULL,
   retry_state = NULL,

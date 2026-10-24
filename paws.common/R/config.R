@@ -1,6 +1,7 @@
 #' @include cache.R
 #' @include util.R
 #' @include iniutil.R
+#' @include retry.R
 NULL
 
 #' Get the service configuration from the service object.
@@ -528,8 +529,10 @@ resolve_retry_config <- function(cfgs, profile = "") {
     cfgs$max_attempts <- NULL
   } else if (length(cfgs$max_retries) == 0) {
     max_attempts <- get_max_attempts(profile)
-    if (!is.null(max_attempts)) {
-      cfgs$max_retries <- max_attempts - 1
+    cfgs$max_retries <- if (!is.null(max_attempts)) {
+      max_attempts - 1
+    } else {
+      DEFAULT_MAX_RETRIES
     }
   }
   class(cfgs) <- cl

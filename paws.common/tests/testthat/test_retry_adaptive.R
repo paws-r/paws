@@ -241,6 +241,24 @@ test_that("retry_mode and max_attempts resolve through a real client config", {
   )
 })
 
+test_that("max_retries is unset unless given, and falls back to 3", {
+  withr::local_envvar(c(AWS_RETRY_MODE = "", AWS_MAX_ATTEMPTS = ""))
+  expect_equal(length(Config()$max_retries), 0)
+  expect_equal(get_max_retries(list(config = Config())), 3)
+  expect_equal(get_max_retries(list(config = Config(max_retries = 0))), 0)
+
+  svc <- set_config(list(), list(region = "us-east-1"))
+  expect_true(svc$.internal$config$max_retries == 3)
+})
+
+test_that("AWS_MAX_ATTEMPTS applies unless max_retries or max_attempts is given", {
+  withr::local_envvar(c(AWS_RETRY_MODE = "", AWS_MAX_ATTEMPTS = "2"))
+  cfg <- function(...) set_config(list(), list(region = "us-east-1", ...))$.internal$config
+  expect_true(cfg()$max_retries == 1)
+  expect_true(cfg(max_retries = 7)$max_retries == 7)
+  expect_true(cfg(max_attempts = 5)$max_retries == 4)
+})
+
 test_that("each client gets its own retry state", {
   a <- set_config(list(), list(region = "us-east-1"))
   b <- set_config(list(), list(region = "us-east-1"))

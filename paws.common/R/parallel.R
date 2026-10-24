@@ -87,7 +87,7 @@ perform_requests <- function(requests, max_active = 10) {
       i <- pending[[k]]
       outcome <- complete_attempt(requests[[i]], resps[[k]])
       retry_on_response(requests[[i]], outcome$error)
-      max_retries <- requests[[i]]$config$max_retries
+      max_retries <- get_max_retries(requests[[i]])
       if (!outcome$ok && check_if_retryable(outcome$error) && round < max_retries) {
         # a retry that the quota can't cover is not made
         cost <- tryCatch(
