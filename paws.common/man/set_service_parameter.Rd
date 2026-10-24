@@ -71,7 +71,8 @@ in the \verb{IAM Identity Center OIDC API Reference Guide}.}
 \item{retry_mode}{Retry mode, \code{"standard"} or \code{"adaptive"}. Adaptive mode adds a
 client side rate limiter that slows requests down once the service starts throttling.
 Defaults to the \code{AWS_RETRY_MODE} environment variable or the \code{retry_mode} key of the
-config file profile, then \code{"standard"}.}
+config file profile, then \code{"standard"}. \code{"legacy"} (accepted for compatibility with
+other AWS SDKs) is treated as \code{"standard"}.}
 
 \item{max_attempts}{Max number of attempts, i.e. the first try plus retries. Takes
 precedence over \code{max_retries}. Defaults to the \code{AWS_MAX_ATTEMPTS} environment variable

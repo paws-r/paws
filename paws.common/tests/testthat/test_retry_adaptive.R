@@ -241,6 +241,23 @@ test_that("retry_mode and max_attempts resolve through a real client config", {
   )
 })
 
+test_that("retry_mode 'legacy' is accepted and runs as standard", {
+  mode <- function(...) {
+    set_config(list(), list(region = "us-east-1", ...))$.internal$config$retry_mode
+  }
+  withr::local_envvar(c(AWS_RETRY_MODE = "legacy", AWS_MAX_ATTEMPTS = ""))
+  expect_true(mode() == "standard")
+  expect_true(mode(retry_mode = "legacy") == "standard")
+
+  # case and whitespace from the environment are tolerated too
+  withr::local_envvar(c(AWS_RETRY_MODE = " Legacy "))
+  expect_true(mode() == "standard")
+
+  # a client setting still wins over the environment
+  expect_true(mode(retry_mode = "adaptive") == "adaptive")
+  expect_error(mode(retry_mode = "nope"), "'standard', 'adaptive' or 'legacy'")
+})
+
 test_that("max_retries is unset unless given, and falls back to 3", {
   withr::local_envvar(c(AWS_RETRY_MODE = "", AWS_MAX_ATTEMPTS = ""))
   expect_equal(length(Config()$max_retries), 0)
@@ -253,7 +270,9 @@ test_that("max_retries is unset unless given, and falls back to 3", {
 
 test_that("AWS_MAX_ATTEMPTS applies unless max_retries or max_attempts is given", {
   withr::local_envvar(c(AWS_RETRY_MODE = "", AWS_MAX_ATTEMPTS = "2"))
-  cfg <- function(...) set_config(list(), list(region = "us-east-1", ...))$.internal$config
+  cfg <- function(...) {
+    set_config(list(), list(region = "us-east-1", ...))$.internal$config
+  }
   expect_true(cfg()$max_retries == 1)
   expect_true(cfg(max_retries = 7)$max_retries == 7)
   expect_true(cfg(max_attempts = 5)$max_retries == 4)

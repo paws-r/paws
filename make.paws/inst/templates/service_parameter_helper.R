@@ -32,7 +32,8 @@
 #' @param retry_mode Retry mode, `"standard"` or `"adaptive"`. Adaptive mode adds a
 #' client side rate limiter that slows requests down once the service starts throttling.
 #' Defaults to the `AWS_RETRY_MODE` environment variable or the `retry_mode` key of the
-#' config file profile, then `"standard"`.
+#' config file profile, then `"standard"`. `"legacy"` (accepted for compatibility with
+#' other AWS SDKs) is treated as `"standard"`.
 #' @param max_attempts Max number of attempts, i.e. the first try plus retries. Takes
 #' precedence over `max_retries`. Defaults to the `AWS_MAX_ATTEMPTS` environment variable
 #' or the `max_attempts` key of the config file profile when `max_retries` isn't set.

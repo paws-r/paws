@@ -69,6 +69,10 @@ order of precedence).
 svc <- s3(config(retry_mode = "adaptive", max_attempts = 5))
 ```
 
+Other AWS SDKs and the CLI also accept `"legacy"`. Paws has no separate legacy mode,
+so `retry_mode = "legacy"` (or `AWS_RETRY_MODE=legacy`) is accepted and treated as
+`"standard"`, rather than stopping your code from running.
+
 Adaptive mode follows [botocore's adaptive mode](https://docs.aws.amazon.com/sdkref/latest/guide/feature-retry-behavior.html)
 and, as there, the rate limit belongs to the client object. Use one client per
 throttled resource (for example one S3 client for each heavily used bucket),

@@ -518,9 +518,17 @@ resolve_retry_config <- function(cfgs, profile = "") {
   if (length(cfgs$retry_mode) == 0 || identical(cfgs$retry_mode, "")) {
     cfgs$retry_mode <- get_retry_mode(profile)
   }
+  cfgs$retry_mode <- tolower(trimws(cfgs$retry_mode))
+  # `legacy` is botocore's default mode and valid in AWS_RETRY_MODE / the config
+  # file for other SDKs and the CLI. Paws has no separate legacy mode, so it
+  # retries as `standard` rather than failing to create the client.
+  if (identical(cfgs$retry_mode, "legacy")) {
+    log_info("`retry_mode` 'legacy' is not implemented by paws, using 'standard'.")
+    cfgs$retry_mode <- "standard"
+  }
   if (!cfgs$retry_mode %in% c("standard", "adaptive")) {
     stopf(
-      "Invalid `retry_mode` '%s'. Must be one of 'standard' or 'adaptive'.",
+      "Invalid `retry_mode` '%s'. Must be one of 'standard', 'adaptive' or 'legacy'.",
       cfgs$retry_mode
     )
   }
