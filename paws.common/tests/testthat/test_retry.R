@@ -82,7 +82,7 @@ op_output <- Structure(Timestamp = Scalar(type = "timestamp"))
 req1 <- new_request(svc1, op, NULL, op_output)
 
 test_that("no error", {
-  resp <- standard_retry_handler(req1)
+  resp <- retry_handler(req1)
   expect_equal(resp, req1)
 })
 
@@ -94,20 +94,24 @@ test_that("default number of retries", {
     dummy_req_error(req1, "ThrottledException", "foo", 400)
   )
   mock_sign <- mock2(side_effect = function(x) x)
-  mock_send <- mock2(side_effect = function(x) x)
+  mock_send <- mock2(
+    dummy_req_error(req1, "ThrottledException", "foo", 400),
+    dummy_req_error(req1, "ThrottledException", "foo", 400),
+    dummy_req_error(req1, "ThrottledException", "foo", 400)
+  )
   mock_unmarshal_meta <- mock2(side_effect = function(x) x)
   mock_validate_response <- mock2(side_effect = function(x) x)
 
   mock_exp_back_off <- mock2()
 
-  mockery::stub(standard_retry_handler, "unmarshal_error", mock_unmarshal_error)
-  mockery::stub(standard_retry_handler, "sign", mock_sign)
-  mockery::stub(standard_retry_handler, "send", mock_send)
-  mockery::stub(standard_retry_handler, "unmarshal_meta", mock_unmarshal_meta)
-  mockery::stub(standard_retry_handler, "validate_response", mock_validate_response)
-  mockery::stub(standard_retry_handler, "exp_back_off", mock_exp_back_off)
+  mockery::stub(retry_handler, "unmarshal_error", mock_unmarshal_error)
+  mockery::stub(retry_handler, "sign", mock_sign)
+  mockery::stub(retry_handler, "send", mock_send)
+  mockery::stub(retry_handler, "unmarshal_meta", mock_unmarshal_meta)
+  mockery::stub(retry_handler, "validate_response", mock_validate_response)
+  mockery::stub(retry_handler, "exp_back_off", mock_exp_back_off)
 
-  standard_retry_handler(dummy_req_error(req1, "ThrottledException", "foo", 400))
+  retry_handler(dummy_req_error(req1, "ThrottledException", "foo", 400))
 
   last_args <- mock_arg(mock_exp_back_off)
   expect_equal(mock_call_no(mock_exp_back_off), 4)
@@ -127,14 +131,14 @@ test_that("default number of retries", {
 
   mock_exp_back_off <- mock2()
 
-  mockery::stub(standard_retry_handler, "unmarshal_error", mock_unmarshal_error)
-  mockery::stub(standard_retry_handler, "sign", mock_sign)
-  mockery::stub(standard_retry_handler, "send", mock_send)
-  mockery::stub(standard_retry_handler, "unmarshal_meta", mock_unmarshal_meta)
-  mockery::stub(standard_retry_handler, "validate_response", mock_validate_response)
-  mockery::stub(standard_retry_handler, "exp_back_off", mock_exp_back_off)
+  mockery::stub(retry_handler, "unmarshal_error", mock_unmarshal_error)
+  mockery::stub(retry_handler, "sign", mock_sign)
+  mockery::stub(retry_handler, "send", mock_send)
+  mockery::stub(retry_handler, "unmarshal_meta", mock_unmarshal_meta)
+  mockery::stub(retry_handler, "validate_response", mock_validate_response)
+  mockery::stub(retry_handler, "exp_back_off", mock_exp_back_off)
 
-  standard_retry_handler(dummy_req_error(req1, "ThrottledException", "foo", 400))
+  retry_handler(dummy_req_error(req1, "ThrottledException", "foo", 400))
 
   last_args <- mock_arg(mock_exp_back_off)
   expect_equal(mock_call_no(mock_exp_back_off), 4)
@@ -154,15 +158,15 @@ test_that("non retryable error", {
 
   mock_exp_back_off <- mock2()
 
-  mockery::stub(standard_retry_handler, "unmarshal_error", mock_unmarshal_error)
-  mockery::stub(standard_retry_handler, "sign", mock_sign)
-  mockery::stub(standard_retry_handler, "send", mock_send)
-  mockery::stub(standard_retry_handler, "unmarshal_meta", mock_unmarshal_meta)
-  mockery::stub(standard_retry_handler, "validate_response", mock_validate_response)
-  mockery::stub(standard_retry_handler, "exp_back_off", mock_exp_back_off)
+  mockery::stub(retry_handler, "unmarshal_error", mock_unmarshal_error)
+  mockery::stub(retry_handler, "sign", mock_sign)
+  mockery::stub(retry_handler, "send", mock_send)
+  mockery::stub(retry_handler, "unmarshal_meta", mock_unmarshal_meta)
+  mockery::stub(retry_handler, "validate_response", mock_validate_response)
+  mockery::stub(retry_handler, "exp_back_off", mock_exp_back_off)
 
   expect_error(
-    standard_retry_handler(dummy_req_error(req1, "ThrottledException", "foo", 400)),
+    retry_handler(dummy_req_error(req1, "ThrottledException", "foo", 400)),
     "non retryable error"
   )
   last_args <- mock_arg(mock_exp_back_off)
@@ -183,14 +187,14 @@ test_that("succesful retry", {
 
   mock_exp_back_off <- mock2()
 
-  mockery::stub(standard_retry_handler, "unmarshal_error", mock_unmarshal_error)
-  mockery::stub(standard_retry_handler, "sign", mock_sign)
-  mockery::stub(standard_retry_handler, "send", mock_send)
-  mockery::stub(standard_retry_handler, "unmarshal_meta", mock_unmarshal_meta)
-  mockery::stub(standard_retry_handler, "validate_response", mock_validate_response)
-  mockery::stub(standard_retry_handler, "exp_back_off", mock_exp_back_off)
+  mockery::stub(retry_handler, "unmarshal_error", mock_unmarshal_error)
+  mockery::stub(retry_handler, "sign", mock_sign)
+  mockery::stub(retry_handler, "send", mock_send)
+  mockery::stub(retry_handler, "unmarshal_meta", mock_unmarshal_meta)
+  mockery::stub(retry_handler, "validate_response", mock_validate_response)
+  mockery::stub(retry_handler, "exp_back_off", mock_exp_back_off)
 
-  resp <- standard_retry_handler(dummy_req_error(req1, "ThrottledException", "foo", 400))
+  resp <- retry_handler(dummy_req_error(req1, "ThrottledException", "foo", 400))
   last_args <- mock_arg(mock_exp_back_off)
   expect_equal(mock_call_no(mock_exp_back_off), 3)
   expect_true(last_args[[2]] != last_args[[3]])
@@ -204,11 +208,11 @@ test_that("no retries", {
   mock_unmarshal_error <- mock2(side_effect = function(x) x)
   mock_exp_back_off <- mock2()
 
-  mockery::stub(standard_retry_handler, "unmarshal_error", mock_unmarshal_error)
-  mockery::stub(standard_retry_handler, "exp_back_off", mock_exp_back_off)
+  mockery::stub(retry_handler, "unmarshal_error", mock_unmarshal_error)
+  mockery::stub(retry_handler, "exp_back_off", mock_exp_back_off)
 
   expect_error(
-    standard_retry_handler(dummy_req_error(req2, "ThrottledException", "foo", 400)),
+    retry_handler(dummy_req_error(req2, "ThrottledException", "foo", 400)),
     "foo"
   )
 
@@ -222,11 +226,11 @@ test_that("no retries", {
   mock_unmarshal_error <- mock2(side_effect = function(x) x)
   mock_exp_back_off <- mock2()
 
-  mockery::stub(standard_retry_handler, "unmarshal_error", mock_unmarshal_error)
-  mockery::stub(standard_retry_handler, "exp_back_off", mock_exp_back_off)
+  mockery::stub(retry_handler, "unmarshal_error", mock_unmarshal_error)
+  mockery::stub(retry_handler, "exp_back_off", mock_exp_back_off)
 
   expect_error(
-    standard_retry_handler(dummy_req_error(req2, "ThrottledException", "foo", 400)),
+    retry_handler(dummy_req_error(req2, "ThrottledException", "foo", 400)),
     "foo"
   )
 
@@ -245,14 +249,14 @@ test_that("1 retries", {
 
   mock_exp_back_off <- mock2()
 
-  mockery::stub(standard_retry_handler, "unmarshal_error", mock_unmarshal_error)
-  mockery::stub(standard_retry_handler, "sign", mock_sign)
-  mockery::stub(standard_retry_handler, "send", mock_send)
-  mockery::stub(standard_retry_handler, "unmarshal_meta", mock_unmarshal_meta)
-  mockery::stub(standard_retry_handler, "validate_response", mock_validate_response)
-  mockery::stub(standard_retry_handler, "exp_back_off", mock_exp_back_off)
+  mockery::stub(retry_handler, "unmarshal_error", mock_unmarshal_error)
+  mockery::stub(retry_handler, "sign", mock_sign)
+  mockery::stub(retry_handler, "send", mock_send)
+  mockery::stub(retry_handler, "unmarshal_meta", mock_unmarshal_meta)
+  mockery::stub(retry_handler, "validate_response", mock_validate_response)
+  mockery::stub(retry_handler, "exp_back_off", mock_exp_back_off)
 
-  standard_retry_handler(dummy_req_error(req3, "ThrottledException", "foo", 400))
+  retry_handler(dummy_req_error(req3, "ThrottledException", "foo", 400))
 
   last_args <- mock_arg(mock_exp_back_off)
   expect_equal(mock_call_no(mock_exp_back_off), 2)

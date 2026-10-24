@@ -63,6 +63,8 @@ complete_request <- function(request, resp) {
 # `check_if_retryable`) are re-signed and re-queued into the next parallel
 # round after one shared backoff, up to `max_retries` times per request, so
 # retries are not serialised the way the per-request `retry` handler would be.
+# The retry quota and, in adaptive mode, the rate limiter apply as they do there:
+# every request waits for a send token, and every response updates the rate.
 #
 # @param requests List of signed Requests from a `request_only()` client.
 # @param max_active Maximum number of simultaneous connections.
@@ -70,19 +72,39 @@ perform_requests <- function(requests, max_active = 10) {
   n <- length(requests)
   results <- vector("list", n)
   pending <- seq_len(n)
+  consumed <- numeric(n) # retry quota each request is holding
   round <- 0L
 
   while (length(pending) > 0) {
+    # adaptive retries: wait for a send token for each request in the round
+    for (i in pending) {
+      retry_before_send(requests[[i]])
+    }
     resps <- perform_batch(requests[pending], max_active)
 
     retry_idx <- integer(0)
     for (k in seq_along(pending)) {
       i <- pending[[k]]
       outcome <- complete_attempt(requests[[i]], resps[[k]])
-      max_retries <- requests[[i]]$config$max_retries
+      retry_on_response(requests[[i]], outcome$error)
+      max_retries <- get_max_retries(requests[[i]])
       if (!outcome$ok && check_if_retryable(outcome$error) && round < max_retries) {
-        retry_idx <- c(retry_idx, i)
+        # a retry that the quota can't cover is not made
+        cost <- tryCatch(
+          retry_quota_acquire(requests[[i]], outcome$error),
+          paws_error = function(e) NA_real_
+        )
+        if (is.na(cost)) {
+          results[[i]] <- outcome$error
+        } else {
+          consumed[[i]] <- cost
+          retry_idx <- c(retry_idx, i)
+        }
       } else if (outcome$ok) {
+        retry_quota_refund(
+          requests[[i]],
+          if (consumed[[i]] > 0) consumed[[i]] else RETRY_QUOTA_NO_RETRY_INCREMENT
+        )
         results[[i]] <- outcome$data
       } else {
         results[[i]] <- outcome$error
