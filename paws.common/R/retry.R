@@ -90,7 +90,11 @@ retry_handler <- function(request) {
       },
       paws_error = function(error) {
         if (check_if_retryable(error)) {
-          consumed <<- if (i < exit_retries) retry_quota_acquire(request, error) else 0
+          consumed <<- if (i < exit_retries) {
+            retry_quota_acquire(request, error)
+          } else {
+            0
+          }
           exp_back_off(error, i, exit_retries)
         } else {
           stop(error)
@@ -100,8 +104,11 @@ retry_handler <- function(request) {
   }
 }
 
+# The error name, without any namespace the service put in front of it.
 error_code_of <- function(error) {
-  return(error[["error_response"]][["Code"]] %||% error[["error_response"]][["__type"]])
+  code <- error[["error_response"]][["Code"]] %||%
+    sub(".*#", "", error[["error_response"]][["__type"]])
+  return(code)
 }
 
 # Errors the service raised because we are sending too fast.

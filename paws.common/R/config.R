@@ -111,11 +111,7 @@ set_config <- function(svc, cfgs = list()) {
 set_paws_vendor <- function() {
   where <- topenv(parent.frame(n = 2))
   pkg_name <- get0(".packageName", where, inherits = FALSE)
-  if (
-    !is.null(pkg_name) &&
-      startsWith(pkg_name, "paws.") &&
-      pkg_name != "paws.common"
-  ) {
+  if (!is.null(pkg_name) && startsWith(pkg_name, "paws.") && pkg_name != "paws.common") {
     vendor <- "js"
     if (packageVersion(pkg_name) >= numeric_version("0.8.0")) {
       vendor <- "boto"
@@ -244,9 +240,7 @@ resolve_imds_base_url <- function() {
 get_instance_metadata <- function(query_path = "") {
   token_ttl <- "21600" # same approach as in boto3: https://github.com/boto/botocore/blob/master/botocore/utils.py#L376
   # Do not get metadata when the disabled setting is on.
-  if (
-    trimws(tolower(get_env("AWS_EC2_METADATA_DISABLED"))) %in% c("true", "1")
-  ) {
+  if (trimws(tolower(get_env("AWS_EC2_METADATA_DISABLED"))) %in% c("true", "1")) {
     return(NULL)
   }
   imds_base_url <- resolve_imds_base_url()
@@ -268,20 +262,12 @@ get_instance_metadata <- function(query_path = "") {
       NULL
     }
   )
-  if (
-    !is.null(metadata_token_response) &&
-      metadata_token_response$status_code == 200
-  ) {
+  if (!is.null(metadata_token_response) && metadata_token_response$status_code == 200) {
     if (length(metadata_token_response[["body"]]) > 0) {
       token <- rawToChar(metadata_token_response[["body"]])
     }
   }
-  metadata_url <- file.path(
-    imds_base_url,
-    "latest/meta-data",
-    query_path,
-    fsep = "/"
-  )
+  metadata_url <- file.path(imds_base_url, "latest/meta-data", query_path, fsep = "/")
   if (token != "") {
     metadata_request <- new_http_request(
       "GET",
@@ -404,9 +390,7 @@ check_config_file_endpoint <- function(profile = "", service_id = "") {
   if (is.null(service_name <- profile[["services"]])) {
     return(profile[["endpoint_url"]])
   }
-  profile_service <- config_values[[paste("services", service_name)]][[
-    service_id
-  ]]
+  profile_service <- config_values[[paste("services", service_name)]][[service_id]]
   if (is.null(profile_service)) {
     return(profile[["endpoint_url"]])
   }
@@ -461,10 +445,7 @@ get_web_identity_token_file <- function(web_identity_token_file = "") {
 
 # Get the Web Identity Token from reading the token file
 get_web_identity_token <- function(web_identity_token_file = "") {
-  return(readLines(
-    get_web_identity_token_file(web_identity_token_file),
-    warn = FALSE
-  ))
+  return(readLines(get_web_identity_token_file(web_identity_token_file), warn = FALSE))
 }
 
 
@@ -477,10 +458,7 @@ get_sts_regional_endpoint <- function(profile = "") {
   }
 
   # Check if sts_regional_endpoint is present in config file
-  sts_regional_endpoint <- get_config_file_value(
-    "sts_regional_endpoint",
-    profile
-  )
+  sts_regional_endpoint <- get_config_file_value("sts_regional_endpoint", profile)
 
   return(sts_regional_endpoint %||% "")
 }
@@ -545,9 +523,7 @@ resolve_retry_config <- function(cfgs, profile = "") {
   # file for other SDKs and the CLI. Paws has no separate legacy mode, so it
   # retries as `standard` rather than failing to create the client.
   if (identical(cfgs$retry_mode, "legacy")) {
-    log_info(
-      "`retry_mode` 'legacy' is not implemented by paws, using 'standard'."
-    )
+    log_info("`retry_mode` 'legacy' is not implemented by paws, using 'standard'.")
     cfgs$retry_mode <- "standard"
   }
   if (!cfgs$retry_mode %in% c("standard", "adaptive")) {
@@ -593,9 +569,7 @@ build_config <- function(cfg) {
 
   # Filter names vectorized (avoid loops)
   cred_names <- cred_names[cred_names != "provider_name"]
-  credentials_names <- credentials_names[
-    !(credentials_names %in% c("provider", "creds"))
-  ]
+  credentials_names <- credentials_names[!(credentials_names %in% c("provider", "creds"))]
 
   if (length(credentials <- as.list(cfg[["credentials"]])) > 0) {
     nms <- names(credentials) %in% credentials_names

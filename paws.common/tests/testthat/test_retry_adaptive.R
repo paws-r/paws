@@ -121,22 +121,25 @@ test_that("throttling slows the client down", {
 # retry handler wiring
 ########################################################################
 
-test_that("is_throttling_error and is_transient_error", {
-  throttle <- Error(
+test_that("JSON services send the error name behind a namespace", {
+  dynamo <- Error(
     "x",
     "y",
     status_code = 400,
-    error_response = list(Code = "SlowDown")
+    error_response = list(
+      `__type` = "com.amazonaws.dynamodb.v20120810#ProvisionedThroughputExceededException"
+    )
   )
+  expect_true(is_throttling_error(aws_error(dynamo)))
+  expect_true(check_if_retryable(aws_error(dynamo)))
+})
+
+test_that("is_throttling_error and is_transient_error", {
+  throttle <- Error("x", "y", status_code = 400, error_response = list(Code = "SlowDown"))
   expect_true(is_throttling_error(aws_error(throttle)))
   expect_true(check_if_retryable(aws_error(throttle)))
 
-  server <- Error(
-    "x",
-    "y",
-    status_code = 503,
-    error_response = list(Code = "Other")
-  )
+  server <- Error("x", "y", status_code = 503, error_response = list(Code = "Other"))
   expect_false(is_throttling_error(aws_error(server)))
   expect_true(is_transient_error(aws_error(server)))
 
@@ -253,10 +256,7 @@ test_that("retry_mode and max_attempts resolve through a real client config", {
 
 test_that("retry_mode 'legacy' is accepted and runs as standard", {
   mode <- function(...) {
-    set_config(
-      list(),
-      list(region = "us-east-1", ...)
-    )$.internal$config$retry_mode
+    set_config(list(), list(region = "us-east-1", ...))$.internal$config$retry_mode
   }
   withr::local_envvar(c(AWS_RETRY_MODE = "legacy", AWS_MAX_ATTEMPTS = ""))
   expect_true(mode() == "standard")
@@ -322,8 +322,5 @@ test_that("AWS_MAX_ATTEMPTS applies unless max_retries or max_attempts is given"
 test_that("each client gets its own retry state", {
   a <- set_config(list(), list(region = "us-east-1"))
   b <- set_config(list(), list(region = "us-east-1"))
-  expect_false(identical(
-    a$.internal$config$retry_state,
-    b$.internal$config$retry_state
-  ))
+  expect_false(identical(a$.internal$config$retry_state, b$.internal$config$retry_state))
 })
