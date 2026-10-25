@@ -639,3 +639,17 @@ test_that("unmarshal error with no message", {
   expect_equal(out$status_code, 400)
   expect_equal(out$error_response$`__type`, "FooException")
 })
+
+test_that("unmarshal error strips the namespace from the code", {
+  req <- new_request(svc, op, NULL, NULL)
+  req$http_response <- HttpResponse(
+    status_code = 400,
+    body = charToRaw(
+      "{\"__type\":\"com.amazonaws.dynamodb.v20120810#ProvisionedThroughputExceededException\",\"message\":\"slow\"}"
+    )
+  )
+  req <- unmarshal_error(req)
+  expect_equal(req$error$code, "ProvisionedThroughputExceededException")
+  expect_true(is_throttling_error(aws_error(req$error)))
+  expect_true(check_if_retryable(aws_error(req$error)))
+})

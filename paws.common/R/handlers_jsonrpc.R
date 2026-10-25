@@ -62,7 +62,8 @@ jsonrpc_unmarshal_error <- function(request) {
   if (length(error) == 0) {
     return(request)
   }
-  code <- strsplit(error[["__type"]], "#")[[1]][1]
+  # the name follows any namespace, e.g. "com.amazonaws.dynamodb.v20120810#Foo"
+  code <- sub(".*#", "", error[["__type"]] %||% "")
   message <- ""
   message_name <- grep("message", names(error), ignore.case = TRUE, value = TRUE)
   if (length(message_name) > 0) {

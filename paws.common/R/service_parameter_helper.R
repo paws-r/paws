@@ -29,9 +29,23 @@
 #' @param connect_timeout The time in seconds till a timeout exception is thrown
 #' when attempting to make a connection. The default is 60 seconds.
 #' @param max_retries Max number of retries call AWS API (default set to 3).
+#' @param retry_mode Retry mode, `"standard"` or `"adaptive"`. Adaptive mode adds a
+#' client side rate limiter that slows requests down once the service starts throttling.
+#' Defaults to the `AWS_RETRY_MODE` environment variable or the `retry_mode` key of the
+#' config file profile, then `"standard"`. `"legacy"` (accepted for compatibility with
+#' other AWS SDKs) is treated as `"standard"`.
+#' @param max_attempts Max number of attempts, i.e. the first try plus retries. Takes
+#' precedence over `max_retries`. Defaults to the `AWS_MAX_ATTEMPTS` environment variable
+#' or the `max_attempts` key of the config file profile when `max_retries` isn't set.
+#' @param request_checksum_calculation When to calculate request checksums: `"when_supported"`
+#' (the default, a checksum is attached to every operation that supports one) or
+#' `"when_required"` (only where the API requires one).
 #' @param s3_force_path_style Set this to `true` to force the request to use path-style
 #' addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.
 #' @param s3_virtual_address Set this to `true` to force the request to use virtual-hosted-style
+#' @param s3_payload_signing_enabled Set this to `true` to always sign the body of S3 requests
+#' with a SHA256 hash, or `false` to never do so. Unset, the body is not hashed over HTTPS when
+#' a checksum header is present (the same as boto3).
 #' @param sts_regional_endpoint Set sts regional endpoint resolver to regional or
 #' legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}
 #' @param use_dual_stack Set this to `true` to use the dualstack (IPv4 and IPv6) endpoint
@@ -93,12 +107,16 @@ config <- function(
   endpoint = "",
   region = "",
   close_connection = FALSE,
-  max_retries = 3,
+  max_retries = NULL,
+  retry_mode = "",
+  max_attempts = NULL,
   connect_timeout = 60,
+  request_checksum_calculation = "when_supported",
   s3_force_path_style = FALSE,
   s3_virtual_address = FALSE,
-  sts_regional_endpoint = "",
+  s3_payload_signing_enabled = NULL,
   use_dual_stack = FALSE,
+  sts_regional_endpoint = "",
   signature_version = ""
 ) {
   .args <- as.list(environment(), all.names = TRUE)

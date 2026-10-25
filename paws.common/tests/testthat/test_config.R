@@ -637,16 +637,19 @@ test_that("check sts regional from environment", {
 })
 
 test_that("check sts regional from config file", {
-  mock_get_config_file_path <- mock2("data_ini")
-  mockery::stub(
-    check_config_file_sts_regional_endpoint,
-    "get_config_file_path",
-    mock_get_config_file_path
-  )
+  withr::local_envvar(AWS_CONFIG_FILE = test_path("data_ini"))
 
-  actual <- check_config_file_sts_regional_endpoint("sts")
+  actual <- get_config_file_value("sts_regional_endpoint", "sts")
 
   expect_equal(actual, "legacy")
+})
+
+test_that("get_config_file_value", {
+  withr::local_envvar(AWS_CONFIG_FILE = test_path("data_ini"))
+
+  expect_equal(get_config_file_value("sts_regional_endpoint", "sts"), "legacy")
+  expect_null(get_config_file_value("not_a_key", "sts"))
+  expect_null(get_config_file_value("sts_regional_endpoint", "not_a_profile"))
 })
 
 test_that("merge_config default param config", {

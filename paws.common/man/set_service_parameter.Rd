@@ -14,12 +14,16 @@ config(
   endpoint = "",
   region = "",
   close_connection = FALSE,
-  max_retries = 3,
+  max_retries = NULL,
+  retry_mode = "",
+  max_attempts = NULL,
   connect_timeout = 60,
+  request_checksum_calculation = "when_supported",
   s3_force_path_style = FALSE,
   s3_virtual_address = FALSE,
-  sts_regional_endpoint = "",
+  s3_payload_signing_enabled = NULL,
   use_dual_stack = FALSE,
+  sts_regional_endpoint = "",
   signature_version = ""
 )
 
@@ -64,20 +68,38 @@ in the \verb{IAM Identity Center OIDC API Reference Guide}.}
 
 \item{max_retries}{Max number of retries call AWS API (default set to 3).}
 
+\item{retry_mode}{Retry mode, \code{"standard"} or \code{"adaptive"}. Adaptive mode adds a
+client side rate limiter that slows requests down once the service starts throttling.
+Defaults to the \code{AWS_RETRY_MODE} environment variable or the \code{retry_mode} key of the
+config file profile, then \code{"standard"}. \code{"legacy"} (accepted for compatibility with
+other AWS SDKs) is treated as \code{"standard"}.}
+
+\item{max_attempts}{Max number of attempts, i.e. the first try plus retries. Takes
+precedence over \code{max_retries}. Defaults to the \code{AWS_MAX_ATTEMPTS} environment variable
+or the \code{max_attempts} key of the config file profile when \code{max_retries} isn't set.}
+
 \item{connect_timeout}{The time in seconds till a timeout exception is thrown
 when attempting to make a connection. The default is 60 seconds.}
+
+\item{request_checksum_calculation}{When to calculate request checksums: \code{"when_supported"}
+(the default, a checksum is attached to every operation that supports one) or
+\code{"when_required"} (only where the API requires one).}
 
 \item{s3_force_path_style}{Set this to \code{true} to force the request to use path-style
 addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
 
 \item{s3_virtual_address}{Set this to \code{true} to force the request to use virtual-hosted-style}
 
-\item{sts_regional_endpoint}{Set sts regional endpoint resolver to regional or
-legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+\item{s3_payload_signing_enabled}{Set this to \code{true} to always sign the body of S3 requests
+with a SHA256 hash, or \code{false} to never do so. Unset, the body is not hashed over HTTPS when
+a checksum header is present (the same as boto3).}
 
 \item{use_dual_stack}{Set this to \code{true} to use the dualstack (IPv4 and IPv6) endpoint
 for a service, where available, falling back to the regular endpoint when it isn't.
 Defaults to the \code{AWS_USE_DUALSTACK_ENDPOINT} environment variable when unset.}
+
+\item{sts_regional_endpoint}{Set sts regional endpoint resolver to regional or
+legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 
 \item{signature_version}{The signature version used when signing requests.
 Note that the default version is Signature Version 4.}
