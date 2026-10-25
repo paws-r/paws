@@ -4,5 +4,5 @@ indent-width = 2
 indent-style = "space"
 line-ending = "auto"
 persistent-line-breaks = false
-exclude = ["RcppExports.R", "service_parameter_helper.R"]
+exclude = ["RcppExports.R"]
 default-exclude = true

@@ -122,11 +122,21 @@ test_that("throttling slows the client down", {
 ########################################################################
 
 test_that("is_throttling_error and is_transient_error", {
-  throttle <- Error("x", "y", status_code = 400, error_response = list(Code = "SlowDown"))
+  throttle <- Error(
+    "x",
+    "y",
+    status_code = 400,
+    error_response = list(Code = "SlowDown")
+  )
   expect_true(is_throttling_error(aws_error(throttle)))
   expect_true(check_if_retryable(aws_error(throttle)))
 
-  server <- Error("x", "y", status_code = 503, error_response = list(Code = "Other"))
+  server <- Error(
+    "x",
+    "y",
+    status_code = 503,
+    error_response = list(Code = "Other")
+  )
   expect_false(is_throttling_error(aws_error(server)))
   expect_true(is_transient_error(aws_error(server)))
 
@@ -243,7 +253,10 @@ test_that("retry_mode and max_attempts resolve through a real client config", {
 
 test_that("retry_mode 'legacy' is accepted and runs as standard", {
   mode <- function(...) {
-    set_config(list(), list(region = "us-east-1", ...))$.internal$config$retry_mode
+    set_config(
+      list(),
+      list(region = "us-east-1", ...)
+    )$.internal$config$retry_mode
   }
   withr::local_envvar(c(AWS_RETRY_MODE = "legacy", AWS_MAX_ATTEMPTS = ""))
   expect_true(mode() == "standard")
@@ -256,6 +269,34 @@ test_that("retry_mode 'legacy' is accepted and runs as standard", {
   # a client setting still wins over the environment
   expect_true(mode(retry_mode = "adaptive") == "adaptive")
   expect_error(mode(retry_mode = "nope"), "'standard', 'adaptive' or 'legacy'")
+})
+
+test_that("warns when max_retries conflicts with max_attempts", {
+  warned <- mock2()
+  mockery::stub(resolve_retry_config, "log_warn", warned)
+  resolve_retry_config(
+    list(retry_mode = "standard", max_retries = 5, max_attempts = 2),
+    ""
+  )
+  expect_equal(mock_call_no(warned), 1)
+  expect_match(do.call(sprintf, mock_arg(warned)), "using 2 attempts")
+
+  # same meaning in both settings: no warning
+  warned <- mock2()
+  mockery::stub(resolve_retry_config, "log_warn", warned)
+  cfg <- resolve_retry_config(
+    list(retry_mode = "standard", max_retries = 1, max_attempts = 2),
+    ""
+  )
+  expect_equal(mock_call_no(warned), 0)
+  expect_equal(cfg$max_retries, 1)
+
+  # only one of them set: no warning
+  warned <- mock2()
+  mockery::stub(resolve_retry_config, "log_warn", warned)
+  resolve_retry_config(list(retry_mode = "standard", max_retries = 5), "")
+  resolve_retry_config(list(retry_mode = "standard", max_attempts = 2), "")
+  expect_equal(mock_call_no(warned), 0)
 })
 
 test_that("max_retries is unset unless given, and falls back to 3", {
@@ -281,5 +322,8 @@ test_that("AWS_MAX_ATTEMPTS applies unless max_retries or max_attempts is given"
 test_that("each client gets its own retry state", {
   a <- set_config(list(), list(region = "us-east-1"))
   b <- set_config(list(), list(region = "us-east-1"))
-  expect_false(identical(a$.internal$config$retry_state, b$.internal$config$retry_state))
+  expect_false(identical(
+    a$.internal$config$retry_state,
+    b$.internal$config$retry_state
+  ))
 })
