@@ -1,24 +1,29 @@
 test_that("env_provider", {
-  Sys.setenv("AWS_ACCESS_KEY_ID" = "foo", "AWS_SECRET_ACCESS_KEY" = "bar")
+  withr::defer(paws_reset_cache())
+  withr::local_envvar(c(
+    AWS_ACCESS_KEY_ID = "foo",
+    AWS_SECRET_ACCESS_KEY = "bar",
+    AWS_SESSION_TOKEN = NA,
+    AWS_CREDENTIAL_EXPIRATION = NA
+  ))
+  paws_reset_cache()
   creds <- env_provider()
   expect_equal(creds$access_key_id, "foo")
   expect_equal(creds$secret_access_key, "bar")
 
-  Sys.setenv(
-    "AWS_ACCESS_KEY_ID" = "foo",
-    "AWS_SECRET_ACCESS_KEY" = "bar",
-    "AWS_SESSION_TOKEN" = "foobar"
-  )
+  withr::local_envvar(c(AWS_SESSION_TOKEN = "foobar"))
+  paws_reset_cache()
   creds <- env_provider()
   expect_equal(creds$access_key_id, "foo")
   expect_equal(creds$secret_access_key, "bar")
   expect_equal(creds$session_token, "foobar")
 
-  Sys.setenv(
-    "AWS_ACCESS_KEY_ID" = "",
-    "AWS_SECRET_ACCESS_KEY" = "",
-    "AWS_SESSION_TOKEN" = ""
-  )
+  withr::local_envvar(c(
+    AWS_ACCESS_KEY_ID = "",
+    AWS_SECRET_ACCESS_KEY = "",
+    AWS_SESSION_TOKEN = ""
+  ))
+  paws_reset_cache()
   creds <- env_provider()
   expect_null(creds)
 })

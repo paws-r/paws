@@ -7,49 +7,62 @@ NULL
 # Flexible checksum support, driven by an operation's `httpChecksum` trait.
 # https://github.com/boto/botocore/blob/develop/botocore/httpchecksum.py
 
-# Maps AWS's `ChecksumAlgorithm` values to `digest`'s `algo` name and the
-# x-amz-checksum-<suffix> header. CRC64NVME is absent: AWS SDKs only support
-# it via the CRT, which `digest` has no equivalent of.
-.CHECKSUM_ALGORITHMS <- list(
-  CRC32 = list(digest_algo = "crc32", header_suffix = "crc32"),
-  CRC32C = list(digest_algo = "crc32c", header_suffix = "crc32c"),
-  SHA1 = list(digest_algo = "sha1", header_suffix = "sha1"),
-  SHA256 = list(digest_algo = "sha256", header_suffix = "sha256"),
-  SHA512 = list(digest_algo = "sha512", header_suffix = "sha512"),
-  MD5 = list(digest_algo = "md5", header_suffix = "md5"),
-  XXHASH64 = list(digest_algo = "xxhash64", header_suffix = "xxhash64"),
-  XXHASH3 = list(digest_algo = "xxh3_64", header_suffix = "xxhash3"),
-  XXHASH128 = list(digest_algo = "xxh3_128", header_suffix = "xxhash128")
-)
-
 DEFAULT_CHECKSUM_ALGORITHM <- "CRC32"
 
-checksum_algorithm_spec <- function(algorithm) {
-  spec <- .CHECKSUM_ALGORITHMS[[toupper(algorithm)]]
-  if (is.null(spec)) {
-    stopf(
-      "Unsupported checksum algorithm: %s. paws.common currently supports: %s.",
-      algorithm,
-      paste(names(.CHECKSUM_ALGORITHMS), collapse = ", ")
+digest_checksum <- function(algo) {
+  function(body) digest::digest(body, algo = algo, serialize = FALSE, raw = TRUE)
+}
+
+awscrt_checksum <- function(algo) {
+  function(body) {
+    get0(algo, envir = getNamespace("awscrt"), inherits = FALSE)(body, raw = TRUE)
+  }
+}
+
+checksum_algorithm_spec <- NULL
+
+set_checksum_algorithm_spec <- function() {
+  if (requireNamespace("awscrt", quietly = TRUE)) {
+    aws_checksum <- function() {
+      list(fn = awscrt_checksum("crc64nvme"), header_suffix = "crc64nvme")
+    }
+  } else {
+    aws_checksum <- function() {
+      stop("Please install `awscrt` for checksum `CRC64NVME`", call. = FALSE)
+    }
+  }
+
+  function(algorithm) {
+    switch(
+      toupper(algorithm),
+      CRC32 = list(fn = digest_checksum("crc32"), header_suffix = "crc32"),
+      CRC32C = list(fn = digest_checksum("crc32c"), header_suffix = "crc32c"),
+      SHA1 = list(fn = digest_checksum("sha1"), header_suffix = "sha1"),
+      SHA256 = list(fn = digest_checksum("sha256"), header_suffix = "sha256"),
+      SHA512 = list(fn = digest_checksum("sha512"), header_suffix = "sha512"),
+      MD5 = list(fn = digest_checksum("md5"), header_suffix = "md5"),
+      XXHASH64 = list(fn = digest_checksum("xxhash64"), header_suffix = "xxhash64"),
+      XXHASH3 = list(fn = digest_checksum("xxh3_64"), header_suffix = "xxhash3"),
+      XXHASH128 = list(fn = digest_checksum("xxh3_128"), header_suffix = "xxhash128"),
+      CRC64NVME = aws_checksum(),
+      stopf(
+        "Unsupported checksum algorithm: %s. paws.common currently supports: %s.",
+        algorithm,
+        "CRC32, CRC32C, SHA1, SHA256, SHA512, MD5, XXHASH64, XXHASH3, XXHASH128, CRC64NVME"
+      )
     )
   }
-  return(spec)
 }
 
 checksum_header_name <- function(algorithm) {
   sprintf("x-amz-checksum-%s", checksum_algorithm_spec(algorithm)$header_suffix)
 }
 
-checksum_digest <- function(body, algorithm) {
+base64_checksum <- function(body, algorithm) {
   if (length(body) == 0) {
     body <- raw(0)
   }
-  hash <- digest::digest(
-    body,
-    algo = checksum_algorithm_spec(algorithm)$digest_algo,
-    serialize = FALSE,
-    raw = TRUE
-  )
+  hash <- checksum_algorithm_spec(algorithm)$fn(body)
   return(base64enc::base64encode(hash))
 }
 
@@ -114,7 +127,7 @@ apply_checksum_header <- function(request) {
 
   header_name <- checksum_header_name(algorithm)
   if (is.null(request$http_request$header[[header_name]])) {
-    request$http_request$header[[header_name]] <- checksum_digest(request$body, algorithm)
+    request$http_request$header[[header_name]] <- base64_checksum(request$body, algorithm)
   }
 
   algorithm_header <- request$operation$http_checksum$request_algorithm_header
