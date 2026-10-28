@@ -286,6 +286,21 @@ test_that("ignore redirect if already redirected", {
   expect_equal(actual, req)
 })
 
+# A built config for a client with static credentials, as `request$config` is.
+bucket_region_config <- function() {
+  s3(list(
+    region = "us-east-1",
+    credentials = list(creds = list(access_key_id = "AKID", secret_access_key = "SECRET"))
+  ))$.internal$config
+}
+
+head_bucket_region_mock <- function(env, region = "bar") {
+  function(req) {
+    env$requests <- c(env$requests, list(req))
+    httr2::response(200L, headers = list("x-amz-bucket-region" = region))
+  }
+}
+
 test_that("default to head_bucket for final region check", {
   raw_error <- charToRaw(paste0(
     "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code>",
@@ -293,18 +308,73 @@ test_that("default to head_bucket for final region check", {
     "<Bucket>foo</Bucket></Error>"
   ))
   req <- build_request(bucket = "foo", operation = "ListObjects")
+  req$config <- bucket_region_config()
   req$http_response <- HttpResponse(status_code = 301, body = raw_error)
-  mock_head_bucket <- mock2(list(BucketRegion = "bar"))
-  mock_s3 <- mock2(list(head_bucket = mock_head_bucket))
-  mockery::stub(s3_get_bucket_region, "s3", mock_s3)
-
   error <- decode_xml(raw_error)$Error
+  seen <- new.env()
 
-  actual <- s3_get_bucket_region(req, error, "foo")
+  actual <- httr2::with_mocked_responses(
+    head_bucket_region_mock(seen),
+    s3_get_bucket_region(req, error, "foo")
+  )
 
-  head_bucket_args <- mockery::mock_args(mock_head_bucket)[[1]]
-  expect_equal(head_bucket_args, list(Bucket = "foo"))
   expect_equal(actual, "bar")
+  expect_length(seen$requests, 1)
+  expect_equal(seen$requests[[1]]$method, "HEAD")
+  expect_match(httr2::url_parse(seen$requests[[1]]$url)$hostname, "foo")
+  # signed with the credentials from the request's config
+  expect_match(seen$requests[[1]]$headers$Authorization, "Credential=AKID/")
+})
+
+test_that("the bucket region lookup works when the redirect has no region", {
+  req <- build_request(bucket = "foo", operation = "ListObjects")
+  req$config <- bucket_region_config()
+  req$http_response <- HttpResponse(status_code = 301, body = raw(0), header = list())
+  seen <- new.env()
+
+  actual <- httr2::with_mocked_responses(
+    head_bucket_region_mock(seen, "eu-west-1"),
+    s3_get_bucket_region(req, list(), "foo")
+  )
+
+  expect_equal(actual, "eu-west-1")
+})
+
+test_that("the bucket region lookup sends even for a request_only config", {
+  req <- build_request(bucket = "foo", operation = "ListObjects")
+  req$config <- bucket_region_config()
+  req$config$send <- FALSE
+  req$http_response <- HttpResponse(status_code = 301, body = raw(0), header = list())
+  seen <- new.env()
+
+  actual <- httr2::with_mocked_responses(
+    head_bucket_region_mock(seen, "eu-west-1"),
+    s3_get_bucket_region(req, list(), "foo")
+  )
+
+  expect_equal(actual, "eu-west-1")
+  expect_length(seen$requests, 1)
+  # the caller's config is left as it was
+  expect_false(req$config$send)
+})
+
+test_that("the bucket region lookup uses the config as it is, without rebuilding it", {
+  req <- build_request(bucket = "foo", operation = "ListObjects")
+  req$config <- bucket_region_config()
+  req$http_response <- HttpResponse(status_code = 301, body = raw(0), header = list())
+  seen <- new.env()
+  # Not something a rebuilt config would accept (`set_config()` rejects unknown
+  # names), but it must be left alone, as must everything cached in the
+  # credentials environment.
+  req$config$credentials$marker <- "cached in the credentials environment"
+
+  actual <- httr2::with_mocked_responses(
+    head_bucket_region_mock(seen),
+    s3_get_bucket_region(req, list(), "foo")
+  )
+
+  expect_equal(actual, "bar")
+  expect_equal(req$config$credentials$marker, "cached in the credentials environment")
 })
 
 test_that("redirect request from http response error", {
@@ -329,6 +399,218 @@ test_that("redirect request from http response error", {
   expect_false(sign_args[[1]]$built)
   expect_equal(actual$client_info$endpoint, "https://s3.eu-east-2.amazonaws.com")
   expect_equal(actual$http_request$url$host, "s3.eu-east-2.amazonaws.com")
+})
+
+reset_s3_region_cache <- function() {
+  rm(list = names(s3_region_cache), envir = s3_region_cache)
+}
+
+local_s3_region_cache <- function(env = parent.frame()) {
+  reset_s3_region_cache()
+  withr::defer(reset_s3_region_cache(), envir = env)
+}
+
+test_that("a redirect remembers the bucket's region", {
+  local_s3_region_cache()
+  req <- build_request(bucket = "foo", operation = "ListObjects")
+  req$http_response <- HttpResponse(
+    status_code = 301,
+    body = charToRaw(paste0(
+      "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Error><Code>PermanentRedirect</Code>",
+      "<Message>Dummy Error</Message><Endpoint>foo.s3.us-east-2.amazonaws.com</Endpoint>",
+      "<Bucket>foo</Bucket></Error>"
+    )),
+    header = list("x-amz-bucket-region" = "eu-east-2")
+  )
+  pass <- mock2(side_effect = function(...) as.list(...))
+  mockery::stub(s3_redirect_from_error, "sign", pass)
+  mockery::stub(s3_redirect_from_error, "send", pass)
+
+  s3_redirect_from_error(req)
+
+  expect_equal(s3_region_cache[["/foo"]], "eu-east-2")
+})
+
+test_that("a cached bucket region is used for later requests", {
+  local_s3_region_cache()
+  s3_region_cache[["/foo"]] <- "eu-east-2"
+  req <- build_request(bucket = "foo", operation = "ListObjects")
+
+  actual <- s3_redirect_from_cache(req)
+
+  expect_equal(actual$client_info$signing_region, "eu-east-2")
+  expect_equal(actual$client_info$endpoint, "https://s3.eu-east-2.amazonaws.com")
+  expect_equal(actual$http_request$url$host, "s3.eu-east-2.amazonaws.com")
+  # not marked as redirected, so a stale entry can still be corrected
+  expect_null(actual$context$s3_redirect)
+})
+
+test_that("the cached region is applied before the endpoint is built", {
+  local_s3_region_cache()
+  s3_region_cache[["/foo"]] <- "eu-east-2"
+  req <- build_request(bucket = "foo", operation = "ListObjects")
+  expect_identical(req$handlers$build$list[[1]]$fn, s3_redirect_from_cache)
+})
+
+test_that("the region cache is ignored when it should be", {
+  local_s3_region_cache()
+  s3_region_cache[["/foo"]] <- "eu-east-2"
+  s3_region_cache[["/arn:aws:s3:us-west-2:123456789012:accesspoint:ap"]] <- "eu-east-2"
+  s3_region_cache[["aws/foo"]] <- "ap-south-1"
+
+  # no entry for this bucket
+  req <- build_request(bucket = "bar", operation = "ListObjects")
+  expect_identical(s3_redirect_from_cache(req), req)
+
+  # already in the cached region
+  req <- build_request(bucket = "foo", operation = "ListObjects")
+  req$client_info$signing_region <- "eu-east-2"
+  expect_identical(s3_redirect_from_cache(req), req)
+
+  # a custom endpoint is the user's choice
+  req <- build_request(bucket = "foo", operation = "ListObjects")
+  req$client_info$custom_endpoint <- TRUE
+  expect_identical(s3_redirect_from_cache(req), req)
+
+  # a request that was already redirected has its region
+  req <- build_request(bucket = "foo", operation = "ListObjects")
+  req$context$s3_redirect <- TRUE
+  expect_identical(s3_redirect_from_cache(req), req)
+
+  # access point ARNs carry their own region
+  req <- build_request(
+    bucket = "arn:aws:s3:us-west-2:123456789012:accesspoint:ap",
+    operation = "ListObjects"
+  )
+  expect_identical(s3_redirect_from_cache(req), req)
+
+  # entries are per partition: "aws/foo" does not apply to a client with no partition
+  req <- build_request(bucket = "foo", operation = "ListObjects")
+  req$config$partition_name <- "aws-cn"
+  expect_identical(s3_redirect_from_cache(req), req)
+})
+
+test_that("paws_reset_cache clears the bucket regions", {
+  local_s3_region_cache()
+  s3_region_cache[["/foo"]] <- "eu-east-2"
+  paws_reset_cache()
+  expect_length(names(s3_region_cache), 0)
+})
+
+# An S3 client in us-east-1 and a function that lists the bucket "foo" with it.
+redirect_test_client <- function() {
+  metadata <- list(
+    endpoints = list(
+      "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$" = list(
+        endpoint = "s3.{region}.amazonaws.com",
+        global = FALSE
+      )
+    ),
+    service_name = "s3"
+  )
+  client <- new_service(metadata, new_handlers("restxml", "s3"), Config())
+  client$config$region <- "us-east-1"
+  client$config$partition_name <- "aws"
+  client$client_info$signing_region <- "us-east-1"
+  client$config$credentials <- Credentials(
+    provider = list(function() {
+      list(
+        access_key_id = "AKID",
+        secret_access_key = "SECRET",
+        session_token = "SESSION",
+        provider_name = "StaticProvider"
+      )
+    })
+  )
+  op <- new_operation("ListObjects", "GET", "/{Bucket}", list())
+  list_objects <- function() {
+    input <- tag_add(list(Bucket = "foo"), list(type = "structure"))
+    output <- tag_add(list(), list(type = "structure"))
+    send_request(new_request(client, op, input, output))
+  }
+
+  return(list_objects)
+}
+
+# Answers like S3: the bucket lives in eu-west-1, any other region redirects there.
+redirecting_mock <- function(env) {
+  function(req) {
+    host <- httr2::url_parse(req$url)$hostname
+    env$hosts <- c(env$hosts, host)
+    if (grepl("eu-west-1", host)) {
+      return(httr2::response(200L, body = charToRaw("<ListBucketResult/>")))
+    }
+    httr2::response(
+      301L,
+      headers = list(
+        "x-amz-bucket-region" = "eu-west-1",
+        "content-type" = "application/xml"
+      ),
+      body = charToRaw(
+        "<Error><Code>PermanentRedirect</Code><Message>m</Message></Error>"
+      )
+    )
+  }
+}
+
+test_that("after one redirect later requests go straight to the bucket's region", {
+  local_s3_region_cache()
+  list_objects <- redirect_test_client()
+  seen <- new.env()
+  seen$hosts <- character()
+  mock <- redirecting_mock(seen)
+
+  httr2::with_mocked_responses(mock, {
+    list_objects()
+    list_objects()
+    list_objects()
+  })
+  # the first request is redirected; the next two are sent to the right region
+  expect_equal(
+    seen$hosts,
+    c(
+      "foo.s3.us-east-1.amazonaws.com",
+      "foo.s3.eu-west-1.amazonaws.com",
+      "foo.s3.eu-west-1.amazonaws.com",
+      "foo.s3.eu-west-1.amazonaws.com"
+    )
+  )
+
+  # forgetting the region brings the redirect back
+  paws_reset_cache()
+  seen$hosts <- character()
+  httr2::with_mocked_responses(mock, list_objects())
+  expect_equal(
+    seen$hosts,
+    c("foo.s3.us-east-1.amazonaws.com", "foo.s3.eu-west-1.amazonaws.com")
+  )
+})
+
+test_that("a stale cached region is corrected by the next redirect", {
+  local_s3_region_cache()
+  list_objects <- redirect_test_client()
+  # the bucket moved: the cache says ap-south-1 but it is in eu-west-1
+  s3_region_cache[["aws/foo"]] <- "ap-south-1"
+  seen <- new.env()
+  seen$hosts <- character()
+  mock <- redirecting_mock(seen)
+
+  httr2::with_mocked_responses(mock, {
+    list_objects()
+    list_objects()
+  })
+
+  # the stale entry sends the first request to ap-south-1, which redirects once;
+  # the entry is then replaced, so the second request goes straight to eu-west-1
+  expect_equal(
+    seen$hosts,
+    c(
+      "foo.s3.ap-south-1.amazonaws.com",
+      "foo.s3.eu-west-1.amazonaws.com",
+      "foo.s3.eu-west-1.amazonaws.com"
+    )
+  )
+  expect_equal(s3_region_cache[["aws/foo"]], "eu-west-1")
 })
 
 test_that("redirect error with region", {

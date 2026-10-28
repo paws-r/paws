@@ -426,13 +426,28 @@ s3_redirect_from_error <- function(request) {
     bucket_name,
     new_region
   )
-  # Update client_info for redirect
-  request$client_info$signing_region <- new_region
+  # Remember the bucket's region so later requests go straight to it
+  s3_region_cache[[s3_region_cache_key(request, bucket_name)]] <- new_region
   # Re-resolve endpoint with new region and modify request_dict with
   # the new URL, auth scheme, and signing context.
+  request <- s3_set_request_region(request, new_region)
+  request$built <- FALSE
+  request$context$s3_redirect <- TRUE
+  # re-sign redirect request
+  request <- sign(request)
+  # re-send redirect request
+  request <- send(request)
+
+  return(request)
+}
+
+# Point `request` at the endpoint of `region`: update the signing region, the
+# client endpoint and the request URL.
+s3_set_request_region <- function(request, region) {
+  request$client_info$signing_region <- region
   ep_info <- resolver_endpoint(
     service = "s3",
-    region = new_region,
+    region = region,
     endpoints = .s3_endpoint()
   )
   request$client_info$endpoint <- set_request_url(
@@ -443,14 +458,52 @@ s3_redirect_from_error <- function(request) {
     request$client_info$endpoint,
     request$operation$http_path
   ))
-  request$built <- FALSE
-  request$context$s3_redirect <- TRUE
-  # re-sign redirect request
-  request <- sign(request)
-  # re-send redirect request
-  request <- send(request)
-
   return(request)
+}
+
+# Bucket names are unique within an AWS partition, so a bucket's region is
+# remembered per partition.
+s3_region_cache_key <- function(request, bucket) {
+  return(paste0(request$config$partition_name, "/", bucket))
+}
+
+# Developed from botocore S3RegionRedirectorv2.redirect_from_cache:
+# once a bucket has been redirected, send its later requests to the region it
+# is in, instead of paying for a redirect (and, for an upload, a second send of
+# every body) on each request. A request redirected from here is not marked as
+# redirected, so a stale entry (e.g. the bucket was recreated elsewhere) is
+# corrected by the next redirect.
+s3_redirect_from_cache <- function(request) {
+  bucket <- request$params[["Bucket"]]
+  if (!is.character(bucket) || length(bucket) != 1) {
+    return(request)
+  }
+  # Access points carry their own region, and an explicit endpoint is the
+  # user's choice; a request that was already redirected has its region.
+  if (
+    is_access_point(bucket) ||
+      isTRUE(request$client_info$custom_endpoint) ||
+      isTRUE(request$context$s3_redirect)
+  ) {
+    return(request)
+  }
+  region <- s3_region_cache[[s3_region_cache_key(request, bucket)]]
+  if (is.null(region)) {
+    return(request)
+  }
+  current <- request$client_info$signing_region
+  if (!nzchar(current)) {
+    current <- request$config$region
+  }
+  if (identical(region, current)) {
+    return(request)
+  }
+  log_debug(
+    "Bucket %s was redirected to region %s before; using it for this request.",
+    bucket,
+    region
+  )
+  return(s3_set_request_region(request, region))
 }
 
 can_be_redirected <- function(request, error_code, error) {
@@ -496,7 +549,14 @@ s3_get_bucket_region <- function(request, error, bucket) {
   }
 
   # Finally, HEAD the bucket. No other choice sadly.
-  resp <- s3(request$config)$head_bucket(Bucket = bucket)
+  # The client is built straight from the request's config, which shares its
+  # credentials (and any already fetched) instead of copying them through
+  # `set_config()`. This lookup must really send, even if the request being
+  # redirected came from a `request_only()` client.
+  svc <- .s3$operations
+  svc$.internal <- list(config = request$config)
+  svc$.internal$config$send <- TRUE
+  resp <- svc$head_bucket(Bucket = bucket)
   return(resp$BucketRegion)
 }
 
@@ -578,6 +638,7 @@ customizations$s3 <- function(handlers) {
   handlers$build <- handlers_add_front(handlers$build, convert_file_to_raw)
   handlers$build <- handlers_add_front(handlers$build, handle_copy_source_param)
   handlers$build <- handlers_add_front(handlers$build, sse_md5_build)
+  handlers$build <- handlers_add_front(handlers$build, s3_redirect_from_cache)
   handlers$build <- handlers_add_back(handlers$build, content_md5)
   handlers$send <- handlers_add_back(handlers$send, s3_redirect_from_error)
   handlers$unmarshal <- handlers_add_back(

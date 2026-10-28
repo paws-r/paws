@@ -75,12 +75,19 @@ jobs:
           )
         shell: Rscript {0}
 
+      # `ubuntu-latest` changes underlying image (e.g. 24.04 -> 26.04), and compiled
+      # packages like xml2 link against that image's system libraries, so the image
+      # must be part of the cache key.
+      - name: Record runner image
+        run: echo "RUNNER_IMAGE=${ImageOS:-$RUNNER_OS}" >> "$GITHUB_ENV"
+        shell: bash
+
       - name: Cache R packages
         uses: actions/cache@v4
         with:
           path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-${{ matrix.config.R }}-1-${{ hashFiles('.github/depends.Rds') }}
-          restore-keys: ${{ runner.os }}-${{ matrix.config.R }}-1-
+          key: ${{ env.RUNNER_IMAGE }}-${{ matrix.config.R }}-2-${{ hashFiles('.github/depends.Rds') }}
+          restore-keys: ${{ env.RUNNER_IMAGE }}-${{ matrix.config.R }}-2-
 
       - name: Install dependencies
         run: |

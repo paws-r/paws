@@ -109,32 +109,29 @@ valid_method <- function(method) {
 # Issue an HTTP request.
 issue <- function(http_request) {
   url <- build_url(http_request$url)
-  if (http_request$close) {
-    http_request$header$Connection <- "close"
-  }
-
   if (url == "") {
     stop("no url provided")
   }
   resp <- request_aws(url, http_request)
-  response <- HttpResponse(
-    status_code = resp$status_code,
-    header = resp$headers,
-    content_length = as.integer(resp$headers$`content-length`),
-    # Prevent reading in data when output is set
-    body = resp_body(resp, http_request$dest, http_request$stream_api)
-  )
-
-  # Decode gzipped response bodies that are not automatically decompressed
-  # by httr/curl.
-  if (is_compressed(response)) {
-    response <- decompress(response)
-  }
-
-  return(response)
+  return(as_http_response(resp, http_request))
 }
 
 request_aws <- function(url, http_request) {
+  req <- as_httr2_request(http_request, url)
+  if (http_request$stream_api) {
+    return(req_perform_connection(req))
+  } else {
+    return(req_perform(req, path = http_request$dest))
+  }
+}
+
+# Convert a signed paws HttpRequest into an httr2 request, without performing
+# it. Used by the serial path (`request_aws`); `as_curl_handle()` in parallel.R
+# sets up parallel batches the same way.
+as_httr2_request <- function(http_request, url = build_url(http_request$url)) {
+  if (http_request$close) {
+    http_request$header$Connection <- "close"
+  }
   req <- request(url)
   req$method <- http_request$method
   req$headers <- http_request$header
@@ -154,11 +151,26 @@ request_aws <- function(url, http_request) {
     debugfunction = paws_debug,
     verbose = isTRUE(getOption("paws.log_level") >= 3L)
   )
-  if (http_request$stream_api) {
-    return(req_perform_connection(req))
-  } else {
-    return(req_perform(req, path = http_request$dest))
+  return(req)
+}
+
+# Convert an httr2 response into a paws HttpResponse.
+as_http_response <- function(resp, http_request) {
+  response <- HttpResponse(
+    status_code = resp$status_code,
+    header = resp$headers,
+    content_length = as.integer(resp$headers$`content-length`),
+    # Prevent reading in data when output is set
+    body = resp_body(resp, http_request$dest, http_request$stream_api)
+  )
+
+  # Decode gzipped response bodies that are not automatically decompressed
+  # by httr/curl.
+  if (is_compressed(response)) {
+    response <- decompress(response)
   }
+
+  return(response)
 }
 
 resp_body <- function(resp, path, stream_api) {
