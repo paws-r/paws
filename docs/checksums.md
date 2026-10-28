@@ -30,7 +30,7 @@ svc$put_object(Bucket = "my-bucket", Key = "file.txt", Body = "hello")
 
 Pass `ChecksumAlgorithm` on supporting operations to choose a different
 algorithm. Supported values are `CRC32`, `CRC32C`, `SHA1`, `SHA256`, `SHA512`,
-`MD5`, `XXHASH64`, `XXHASH3`, and `XXHASH128` and `CRC64NVME`.
+`MD5`, `XXHASH64`, `XXHASH3`, `XXHASH128` and `CRC64NVME`.
 
 ```r
 svc$put_object(
