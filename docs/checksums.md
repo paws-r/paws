@@ -30,7 +30,7 @@ svc$put_object(Bucket = "my-bucket", Key = "file.txt", Body = "hello")
 
 Pass `ChecksumAlgorithm` on supporting operations to choose a different
 algorithm. Supported values are `CRC32`, `CRC32C`, `SHA1`, `SHA256`, `SHA512`,
-`MD5`, `XXHASH64`, `XXHASH3`, and `XXHASH128`.
+`MD5`, `XXHASH64`, `XXHASH3`, and `XXHASH128` and `CRC64NVME`.
 
 ```r
 svc$put_object(
@@ -41,8 +41,8 @@ svc$put_object(
 )
 ```
 
-`CRC64NVME` is not supported, since it requires AWS's CRT, which Paws has no
-equivalent of.
+**NOTE**: `CRC64NVME` is supported through `awscrt`, please make sure it is installed 
+(`install.packages("awscrt")`) if you require `CRC64NVME` checksum algorithm.  
 
 ## Reading the checksum back
 
