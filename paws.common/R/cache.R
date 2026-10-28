@@ -6,7 +6,6 @@ ini_cache <- new.env(parent = emptyenv())
 os_env_cache <- new.env(parent = emptyenv())
 bearer_token_cache <- new.env(parent = emptyenv())
 vendor_cache <- list2env(list(vendor = "boto"), parent = emptyenv())
-checksum_cache <- new.env(parent = emptyenv())
 # bucket -> region, learnt from S3 wrong-region redirects (see `s3_redirect_from_cache`)
 s3_region_cache <- new.env(parent = emptyenv())
 
