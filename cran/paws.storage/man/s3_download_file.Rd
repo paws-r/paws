@@ -9,7 +9,7 @@ IfNoneMatch, IfUnmodifiedSince, Range, ResponseCacheControl,
 ResponseContentDisposition, ResponseContentEncoding, ResponseContentLanguage,
 ResponseContentType, ResponseExpires, VersionId, SSECustomerAlgorithm,
 SSECustomerKey, SSECustomerKeyMD5, RequestPayer, PartNumber,
-ExpectedBucketOwner)
+ExpectedBucketOwner, chunksize, max_concurrency, progress)
 }
 \arguments{
 \item{Bucket}{[required] The bucket name containing the object.
@@ -92,6 +92,15 @@ specified. Useful for downloading just a part of an object.}
 \item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
 different account, the request will fail with an HTTP
 \verb{403 (Access Denied)} error.}
+
+\item{chunksize}{Size in bytes of each range of a large download (default
+8 MiB).}
+
+\item{max_concurrency}{Number of ranges fetched at the same time (default
+10). Memory use is roughly \code{max_concurrency * chunksize}. Use \code{1} to fetch
+ranges one at a time.}
+
+\item{progress}{If \code{TRUE}, show a progress bar.}
 }
 \description{
 Download a file from S3 and store it at a specified file location.
@@ -99,6 +108,13 @@ Download a file from S3 and store it at a specified file location.
 \details{
 This is a wrapper function for \code{\link[=s3_get_object]{get_object}} that will
 write the downloaded object to the file location specified.
+
+Large objects are downloaded as several byte ranges fetched at the same
+time (see \code{chunksize} and \code{max_concurrency}). The object is written to a
+temporary file that is moved to \code{Filename} once the download completes, so a
+failed download never leaves a partial file. Requests that use \code{Range},
+\code{PartNumber}, any \verb{If*} condition or any \verb{Response*} override are made as a
+single \code{get_object} request instead.
 }
 \section{Request syntax}{
 
