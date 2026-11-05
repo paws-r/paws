@@ -594,8 +594,7 @@ s3_upload_file <- function(
   )
 }
 
-.s3$operations$jamie
-file <- s3_upload_file
+.s3$operations$upload_file <- s3_upload_file
 
 #' @title Generate a presigned url given a client, its method, and arguments
 #'
