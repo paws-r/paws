@@ -1,15 +1,19 @@
 ## Submission
-This release adds S3 outposts/Object Lambda ARN support, S3 flexible checksums, dualstack and IPv6 endpoint support, a credentials vignette, and fixes SigV4 header-injection and IPv6 host-parsing bugs.
+This release adds adaptive retries and a retry quota, parallel multipart S3 transfers, `CRC64NVME` checksum support, and S3 bucket-region caching. It also fixes request retries, JSON-protocol throttling detection, `populate()` with environments, and secret redaction in debug logs.
 
 ## Test environments
 
-* Ubuntu 20.04, R-latest
-* macOS 10.15, R-latest
-* R-hub
+GitHub Actions:
+
+* Ubuntu: R-devel, R-latest, R-oldrel-1 to oldrel-4
+* macOS: R-latest
+* Windows: R-devel, R-latest, R-oldrel-4
+
+R-hub (R-devel): linux, windows, macos-arm64, m1-san
 
 ## R CMD check results
 
-There was no NOTE, no ERRORs or WARNINGs.
+There were no ERRORs, WARNINGs or NOTEs.
 
 ## Downstream dependencies
 
